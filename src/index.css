@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ucla-blue: #2774AE;
+  --color-ucla-dark: #005587;
+  --color-ucla-gold: #FFD100;
+  --color-ucla-light: #DAEBFE;
+  --color-ucla-gray: #F5F5F5;
+}
+
+body {
+  background-color: var(--color-ucla-gray);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+}
