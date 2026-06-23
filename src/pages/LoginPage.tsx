@@ -11,6 +11,7 @@ import {
   returnPathFromState,
 } from "@/lib/login-return";
 import { useEffect, useState } from "react";
+import PageLoader from "@/components/ui/PageLoader";
 
 function shouldUseRedirectFallback(err: unknown): boolean {
   const code = (err as { code?: string } | null)?.code;
@@ -96,11 +97,7 @@ export default function LoginPage() {
   }
 
   if (loading || checkingRedirect) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
-      </div>
-    );
+    return <PageLoader fullHeight label="Preparing sign-in..." />;
   }
 
   return (

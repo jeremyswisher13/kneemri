@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { courseRegistry, coursePath, type CourseDefinition } from "@/content/courses";
+import { courseRegionAccent } from "@/lib/course-visuals";
 
 /**
  * Landing / course-picker shown on first open (the app's `/` index, rendered
@@ -20,7 +21,7 @@ export default function HomePage() {
         <p className="mt-2 text-gray-500">Choose a course to begin — pick up right where you left off.</p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {courseRegistry.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
@@ -32,12 +33,6 @@ export default function HomePage() {
     </div>
   );
 }
-
-const REGION_ACCENT: Record<string, string> = {
-  knee: "from-[#003B5C] to-[#2774AE]",
-  shoulder: "from-[#2774AE] to-[#0ea5e9]",
-  hip: "from-[#155e75] to-[#0891b2]",
-};
 
 /** Rough "what am I committing to" estimate from the modules' own minute budgets. */
 function estDuration(course: CourseDefinition): string {
@@ -57,7 +52,7 @@ function CourseCard({ course }: { course: CourseDefinition }) {
       to={coursePath(course, "/")}
       className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-ucla-blue/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
     >
-      <div className={`relative h-24 bg-gradient-to-br ${REGION_ACCENT[course.bodyRegion] ?? REGION_ACCENT.knee}`}>
+      <div className={`relative h-24 bg-gradient-to-br ${courseRegionAccent(course.bodyRegion)}`}>
         <RegionIcon region={course.bodyRegion} />
         {building && (
           <span className="absolute right-3 top-3 rounded-full bg-amber-400/90 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-950">

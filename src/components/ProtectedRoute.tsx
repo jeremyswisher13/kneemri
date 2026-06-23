@@ -2,6 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import RoleSelection from "@/components/ui/RoleSelection";
 import SpecialtySelection from "@/components/ui/SpecialtySelection";
+import PageLoader from "@/components/ui/PageLoader";
 
 interface ProtectedRouteProps {
   requireAdmin?: boolean;
@@ -13,11 +14,7 @@ export default function ProtectedRoute({ requireAdmin = false, children }: Prote
   const location = useLocation();
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
-      </div>
-    );
+    return <PageLoader fullHeight label="Loading your course access..." />;
   }
 
   if (!user) {
