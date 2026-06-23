@@ -75,8 +75,8 @@ export interface UserProgress {
   totalModules: number;
   casesCompleted: number;
   totalCases: number;
-  // Interactive Normal Knee MRI (knee course only). "Complete" = passed the
-  // marker Knowledge Check on all planes. Required for completion; cases are not.
+  // Interactive Normal MRI workstation for the active course. "Complete" =
+  // passed the Knowledge Check on all required planes.
   normalMriComplete: boolean;
   normalPlanesPassed: number;
   totalNormalPlanes: number;

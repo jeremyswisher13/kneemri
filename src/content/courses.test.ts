@@ -2,9 +2,14 @@ import { describe, it, expect } from 'vitest'
 import {
   courseRegistry,
   defaultCourse,
+  coreCasesRequiredForCompletion,
   getCourseById,
   getCourseBasePath,
   coursePath,
+  hasNormalMriWorkstation,
+  interactiveNormalMriTitle,
+  normalMriPath,
+  normalMriTitle,
   getVisibleCoreCases,
   getVisibleAdvancedCases,
   getPreQuizQuestions,
@@ -72,6 +77,28 @@ describe('coursePath', () => {
   it('treats empty string like the course base', () => {
     expect(coursePath(knee, '')).toBe('/courses/knee-mri')
     expect(coursePath(shoulder, '')).toBe('/courses/shoulder-mri')
+  })
+})
+
+describe('course display helpers', () => {
+  it('builds course-aware Normal MRI titles and paths', () => {
+    expect(normalMriTitle(knee)).toBe('Normal Knee MRI')
+    expect(normalMriTitle(shoulder)).toBe('Normal Shoulder MRI')
+    expect(normalMriTitle(hip)).toBe('Normal Hip MRI')
+    expect(normalMriTitle(elbow)).toBe('Normal Elbow MRI')
+    expect(interactiveNormalMriTitle(elbow)).toBe('Interactive Normal Elbow MRI')
+    expect(normalMriPath(hip)).toBe('/courses/hip-mri/normal-hip-mri')
+  })
+
+  it('treats every live course as a Normal MRI workstation course', () => {
+    expect(courseRegistry.every(hasNormalMriWorkstation)).toBe(true)
+  })
+
+  it('keeps knee cases optional and non-knee core cases required for completion', () => {
+    expect(coreCasesRequiredForCompletion(knee)).toBe(false)
+    expect(coreCasesRequiredForCompletion(shoulder)).toBe(true)
+    expect(coreCasesRequiredForCompletion(hip)).toBe(true)
+    expect(coreCasesRequiredForCompletion(elbow)).toBe(true)
   })
 })
 

@@ -15,9 +15,14 @@ import {
   postScorePct,
 } from "@/lib/completion";
 import {
+  courseRegionTitle,
   coursePath,
   courseRegistry,
+  coreCasesRequiredForCompletion,
   getVisibleCoreCases,
+  hasNormalMriWorkstation,
+  normalMriPath,
+  normalMriTitle,
 } from "@/content/courses";
 
 export default function DashboardPage() {
@@ -58,9 +63,12 @@ export default function DashboardPage() {
     ? progress?.postQuizCompleted && progress?.postSurveyCompleted
     : true;
   const isKnee = activeCourse.bodyRegion === "knee";
+  const casesRequired = coreCasesRequiredForCompletion(activeCourse);
   const region = activeCourse.bodyRegion;
-  const regionTitle = region.charAt(0).toUpperCase() + region.slice(1);
-  const isWorkstationCourse = region === "knee" || region === "shoulder" || region === "hip" || region === "elbow";
+  const regionTitle = courseRegionTitle(activeCourse);
+  const normalTitle = normalMriTitle(activeCourse);
+  const normalPath = normalMriPath(activeCourse);
+  const isWorkstationCourse = hasNormalMriWorkstation(activeCourse);
   const workstationImg =
     region === "shoulder"
       ? "/images/teaching/stacks/normal-shoulder-coronal/slice_12.jpg"
@@ -151,13 +159,13 @@ export default function DashboardPage() {
 
       {/* Focal point — the interactive Normal MRI workstation is the heart of every course. */}
       {isWorkstationCourse && (
-        <Link to={coursePath(activeCourse, `/normal-${region}-mri`)} className="mt-6 block">
+        <Link to={normalPath} className="mt-6 block">
           <div className="flex items-center gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-[#003B5C] to-[#2774AE] px-6 py-6 text-white shadow-lg transition-shadow hover:shadow-xl sm:px-8">
             <div className="min-w-0 flex-1">
               <span className="inline-flex items-center rounded-full bg-ucla-gold px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-[#003B5C]">
                 Start here
               </span>
-              <h2 className="mt-3 text-xl font-bold sm:text-2xl">Master the Normal {regionTitle} MRI</h2>
+              <h2 className="mt-3 text-xl font-bold sm:text-2xl">Master the {normalTitle}</h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-blue-100">
                 The heart of the course. Scroll a real {region} on a workstation and learn everything
                 about reading it — the sequences, every plane, the normal anatomy, the variants you
@@ -237,8 +245,8 @@ export default function DashboardPage() {
           ctaText = "Start Pre-Assessment";
           ctaLink = coursePath(activeCourse, "/pre-assessment");
         } else if (!normalMriComplete) {
-          ctaText = `Master the Normal ${regionTitle} MRI`;
-          ctaLink = coursePath(activeCourse, `/normal-${region}-mri`);
+          ctaText = `Master the ${normalTitle}`;
+          ctaLink = normalPath;
         } else if (modulesCompleted < totalModules) {
           const firstIncomplete = activeCourse.modules.find((mod) => {
             const record = progress?.moduleProgress?.find((m) => m.id === mod.id);
@@ -250,7 +258,7 @@ export default function DashboardPage() {
           ctaLink = firstIncomplete
             ? coursePath(activeCourse, `/modules/${firstIncomplete.id}`)
             : coursePath(activeCourse, "/modules");
-        } else if (!isKnee && casesCompleted < totalCases) {
+        } else if (casesRequired && casesCompleted < totalCases) {
           // On non-knee courses the core cases are required (they gate the
           // post-assessment unlock and the certificate), so surface them before
           // pointing the learner at the post-assessment.
@@ -381,8 +389,8 @@ export default function DashboardPage() {
           {!postAssessmentAvailable && assessmentsEnabled && (
             <p className="mt-2 text-xs text-gray-500">
               {isKnee
-                ? "Complete all modules and the Normal Knee MRI to unlock."
-                : `Complete all modules, cases, and the Normal ${regionTitle} MRI to unlock.`}
+                ? `Complete all modules and the ${normalTitle} to unlock.`
+                : `Complete all modules, cases, and the ${normalTitle} to unlock.`}
             </p>
           )}
           {!assessmentsEnabled && (

@@ -9,7 +9,7 @@ import { useProgress } from "@/hooks/useProgress";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
 import { isCourseComplete } from "@/lib/completion";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
-import { coursePath, getPostQuizQuestions } from "@/content/courses";
+import { coursePath, getPostQuizQuestions, normalMriTitle } from "@/content/courses";
 
 function Confetti() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,6 +70,8 @@ export default function PostAssessmentPage() {
     );
   }
 
+  const normalTitle = normalMriTitle(activeCourse);
+
   // Locked state — admins (and admin preview) bypass the unlock gate so they
   // can review the post-assessment flow without completing all modules + cases.
   if (!progress.postQuizUnlocked && !isAdminView) {
@@ -97,11 +99,9 @@ export default function PostAssessmentPage() {
           </h2>
           <p className="mt-2 text-gray-500 max-w-md mx-auto">
             {activeCourse.bodyRegion === "knee"
-              ? "Finish all modules and the Interactive Normal Knee MRI to unlock the post-assessment. (Cases are optional.)"
+              ? `Finish all modules and the Interactive ${normalTitle} to unlock the post-assessment. (Cases are optional.)`
               : (progress.totalNormalPlanes ?? 0) > 0
-                ? `Complete all modules, all cases, and the Interactive Normal ${
-                    activeCourse.bodyRegion.charAt(0).toUpperCase() + activeCourse.bodyRegion.slice(1)
-                  } MRI to unlock the post-assessment.`
+                ? `Complete all modules, all cases, and the Interactive ${normalTitle} to unlock the post-assessment.`
                 : "Complete all modules and cases to unlock the post-assessment."}
           </p>
           <div className="mt-6">

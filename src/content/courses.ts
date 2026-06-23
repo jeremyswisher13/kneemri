@@ -166,6 +166,26 @@ export function getCourseById(courseId: string | undefined): CourseDefinition {
   return courseRegistry.find((course) => course.id === courseId) ?? defaultCourse;
 }
 
+export function courseRegionTitle(course: CourseDefinition): string {
+  return course.bodyRegion.charAt(0).toUpperCase() + course.bodyRegion.slice(1);
+}
+
+export function normalMriTitle(course: CourseDefinition): string {
+  return `Normal ${courseRegionTitle(course)} MRI`;
+}
+
+export function interactiveNormalMriTitle(course: CourseDefinition): string {
+  return `Interactive ${normalMriTitle(course)}`;
+}
+
+export function hasNormalMriWorkstation(course: CourseDefinition): boolean {
+  return ["knee", "shoulder", "hip", "elbow"].includes(course.bodyRegion);
+}
+
+export function coreCasesRequiredForCompletion(course: CourseDefinition): boolean {
+  return course.bodyRegion !== "knee";
+}
+
 // Every course is reached under its own `/courses/:id` namespace now that the
 // app opens on a course-picker home page at `/`. (The old root paths like
 // `/modules` are kept as backward-compatible aliases for the knee course in
@@ -178,6 +198,10 @@ export function coursePath(course: CourseDefinition, path = "/"): string {
   const base = getCourseBasePath(course);
   if (path === "/" || path === "") return base || "/";
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function normalMriPath(course: CourseDefinition): string {
+  return coursePath(course, `/normal-${course.bodyRegion}-mri`);
 }
 
 export function getVisibleCoreCases(course: CourseDefinition, isResident: boolean): CaseMeta[] {

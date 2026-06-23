@@ -6,8 +6,8 @@ import { STACK_ATTR, type InteractiveBlock } from "@/content/module-interactives
 
 /**
  * Renders one interactive MRI block inside a reading module (meniscus, cartilage).
- * Thin wrappers compose the existing workstation components so the look + behavior
- * match the Interactive Normal Knee MRI.
+ * Thin wrappers compose the workstation components so the look + behavior match
+ * the Interactive Normal MRI pages.
  */
 export default function ModuleInteractive({ block }: { block: InteractiveBlock }) {
   return (

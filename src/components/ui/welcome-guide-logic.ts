@@ -1,4 +1,10 @@
-import { coursePath, type CourseDefinition } from "@/content/courses";
+import {
+  coursePath,
+  hasNormalMriWorkstation,
+  normalMriPath,
+  normalMriTitle,
+  type CourseDefinition,
+} from "@/content/courses";
 
 /**
  * Pure step/status logic for the WelcomeGuide, extracted from the component so
@@ -92,12 +98,12 @@ export function buildStepData(course: CourseDefinition): WelcomeStep[] {
     linkLabel: "Start Pre-Assessment",
   };
   const region = course.bodyRegion;
-  const regionTitle = region.charAt(0).toUpperCase() + region.slice(1);
+  const normalTitle = normalMriTitle(course);
   const normal: WelcomeStep = {
     kind: "normal",
-    title: `Master the Normal ${regionTitle} MRI`,
+    title: `Master the ${normalTitle}`,
     description: `The heart of the course — scroll a real normal ${region} MRI like a workstation, take the guided tour, then prove it with the knowledge check on each plane.`,
-    link: coursePath(course, `/normal-${region}-mri`),
+    link: normalMriPath(course),
     linkLabel: "Open the workstation",
   };
   const modules: WelcomeStep = {
@@ -118,19 +124,15 @@ export function buildStepData(course: CourseDefinition): WelcomeStep[] {
     kind: "post",
     title: "Post-Assessment",
     description: isKnee
-      ? "After the Normal Knee MRI and the modules, the post-assessment unlocks so you can measure your improvement."
-      : `After completing the Normal ${regionTitle} MRI, all modules, and cases, the post-assessment unlocks so you can measure your improvement.`,
+      ? `After the ${normalTitle} and the modules, the post-assessment unlocks so you can measure your improvement.`
+      : `After completing the ${normalTitle}, all modules, and cases, the post-assessment unlocks so you can measure your improvement.`,
     link: coursePath(course, "/post-assessment"),
     linkLabel: "View Post-Assessment",
   };
 
   // The Normal-MRI workstation is the primary focus, placed before the modules.
   // Knee: cases are optional (omitted). Shoulder/hip/elbow: cases are required.
-  const hasWorkstation =
-    course.bodyRegion === "knee" ||
-    course.bodyRegion === "shoulder" ||
-    course.bodyRegion === "hip" ||
-    course.bodyRegion === "elbow";
+  const hasWorkstation = hasNormalMriWorkstation(course);
   const steps: WelcomeStep[] = [pre];
   if (hasWorkstation) steps.push(normal);
   steps.push(modules);

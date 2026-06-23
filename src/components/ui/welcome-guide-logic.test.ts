@@ -79,6 +79,20 @@ describe('buildStepData links are course-scoped', () => {
   })
 })
 
+describe('buildStepData copy is course-aware', () => {
+  it('uses the active course Normal MRI title in post-assessment guidance', () => {
+    const kneePost = buildStepData(knee).find((s) => s.kind === 'post')
+    const shoulderPost = buildStepData(shoulder).find((s) => s.kind === 'post')
+    const hipPost = buildStepData(hip).find((s) => s.kind === 'post')
+    const elbowPost = buildStepData(elbow).find((s) => s.kind === 'post')
+
+    expect(kneePost?.description).toContain('Normal Knee MRI')
+    expect(shoulderPost?.description).toContain('Normal Shoulder MRI')
+    expect(hipPost?.description).toContain('Normal Hip MRI')
+    expect(elbowPost?.description).toContain('Normal Elbow MRI')
+  })
+})
+
 describe('stepDone', () => {
   it('reflects each kind’s completion field', () => {
     const p = progress({ preAssessmentComplete: true, modulesCompleted: 5, totalModules: 5 })

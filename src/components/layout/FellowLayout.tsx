@@ -10,7 +10,14 @@ const GlobalSearch = lazy(() => import("@/components/ui/GlobalSearch"));
 const FAQChatbot = lazy(() => import("@/components/ui/FAQChatbot"));
 import { useProgress } from "@/hooks/useProgress";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
-import { coursePath, courseRegistry, getVisibleCoreCases } from "@/content/courses";
+import {
+  coursePath,
+  courseRegistry,
+  getVisibleCoreCases,
+  hasNormalMriWorkstation,
+  interactiveNormalMriTitle,
+  normalMriPath,
+} from "@/content/courses";
 
 const assessmentItems = [
   { label: "Pre-Assessment", path: "/pre-assessment" },
@@ -121,23 +128,11 @@ export default function FellowLayout() {
   const totalCases = requiredCaseIds.size;
   // The interactive workstation is the course's starting point, so it sits at the
   // top (right under Dashboard, above Modules) and renders as a highlighted card.
-  const isWorkstationCourse =
-    activeCourse.bodyRegion === "knee" ||
-    activeCourse.bodyRegion === "shoulder" ||
-    activeCourse.bodyRegion === "hip" ||
-    activeCourse.bodyRegion === "elbow";
-  const regionTitle =
-    activeCourse.bodyRegion === "knee"
-      ? "Knee"
-      : activeCourse.bodyRegion === "shoulder"
-        ? "Shoulder"
-        : activeCourse.bodyRegion === "hip"
-          ? "Hip"
-          : "Elbow";
+  const isWorkstationCourse = hasNormalMriWorkstation(activeCourse);
   const workstationItem: NavItem | null = isWorkstationCourse
     ? {
-        label: `Interactive Normal ${regionTitle} MRI`,
-        path: coursePath(activeCourse, `/normal-${activeCourse.bodyRegion}-mri`),
+        label: interactiveNormalMriTitle(activeCourse),
+        path: normalMriPath(activeCourse),
         highlight: true,
       }
     : null;

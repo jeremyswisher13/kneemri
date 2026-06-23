@@ -13,10 +13,12 @@ import {
 } from "@/lib/completion";
 import {
   coursePath,
+  coreCasesRequiredForCompletion,
   defaultCourse,
   getPreQuizQuestions,
   getPostQuizQuestions,
   getVisibleCoreCases,
+  normalMriTitle,
 } from "@/content/courses";
 
 /* ─── helpers ─── */
@@ -320,7 +322,8 @@ export default function CertificatePage() {
   const postAssessmentComplete =
     progress?.postQuizCompleted && progress?.postSurveyCompleted;
   const isKnee = activeCourse.bodyRegion === "knee";
-  const regionTitle = activeCourse.bodyRegion.charAt(0).toUpperCase() + activeCourse.bodyRegion.slice(1);
+  const casesRequired = coreCasesRequiredForCompletion(activeCourse);
+  const normalTitle = normalMriTitle(activeCourse);
   const hasWorkstation = (progress?.totalNormalPlanes ?? 0) > 0;
   const requirementsDone = progress ? hasCompletedRequirements(progress, activeCourse) : false;
   const scorePassed = progress ? meetsPassThreshold(progress, activeCourse) : false;
@@ -341,12 +344,18 @@ export default function CertificatePage() {
       ...(hasWorkstation
         ? [
             {
-              label: `Interactive Normal ${regionTitle} MRI`,
+              label: `Interactive ${normalTitle}`,
               done: !!progress?.normalMriComplete,
               detail: `${progress?.normalPlanesPassed ?? 0}/${progress?.totalNormalPlanes ?? 0} planes passed`,
             },
           ]
         : []),
+      {
+        label: "Cases",
+        done: casesCompleted === totalCases,
+        detail: `${casesCompleted}/${totalCases} reviewed · ${casesRequired ? "required" : "optional"}`,
+        optional: !casesRequired,
+      },
       {
         label: "Post-Assessment",
         done: !!postAssessmentComplete,
@@ -355,16 +364,10 @@ export default function CertificatePage() {
           : progress?.postQuizUnlocked
           ? "Available - quiz and survey required"
           : isKnee
-          ? "Locked - finish modules and the Normal Knee MRI first"
+          ? `Locked - finish modules and the ${normalTitle} first`
           : hasWorkstation
-          ? `Locked - finish modules, cases, and the Normal ${regionTitle} MRI first`
+          ? `Locked - finish modules, cases, and the ${normalTitle} first`
           : "Locked - complete modules and cases first",
-      },
-      {
-        label: "Cases",
-        done: casesCompleted === totalCases,
-        detail: `${casesCompleted}/${totalCases} reviewed · optional`,
-        optional: true,
       },
     ];
 

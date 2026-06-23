@@ -379,8 +379,8 @@ export async function getUserProgress(
 
   // Required learning to unlock the post-assessment:
   //  • Knee: all modules + the Normal Knee MRI (cases are OPTIONAL).
-  //  • Shoulder: all modules + all core cases + the Normal Shoulder MRI.
-  //  • Any other course: all modules + all role-appropriate core cases.
+  //  • Shoulder/hip/elbow: all modules + all role-appropriate core cases + the
+  //    course's Normal MRI workstation.
   const requiredLearningDone = isKnee
     ? allModulesDone && normalMriComplete
     : allModulesDone && allCasesDone && normalMriComplete;
@@ -421,7 +421,7 @@ export async function getUserProgress(
 export async function getAllFellows(course: CourseDefinition = defaultCourse) {
   // Fetch both fellows and residents (exclude admins with no learner role).
   // Progress is computed for the supplied course so the admin dashboard can
-  // switch between cohorts (knee / shoulder).
+  // switch between cohorts.
   const certificateFields = certificateFieldsForCourse(course.id);
   const fellowSnap = await getDocs(query(collection(db, "users"), where("role", "==", "fellow")));
   const residentSnap = await getDocs(query(collection(db, "users"), where("role", "==", "resident")));

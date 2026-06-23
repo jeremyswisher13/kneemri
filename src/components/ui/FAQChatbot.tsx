@@ -89,7 +89,7 @@ export default function FAQChatbot() {
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-ucla-blue text-white shadow-lg transition-all duration-200 hover:bg-ucla-dark hover:shadow-xl hover:scale-105 active:scale-95 sm:bottom-4 sm:h-14 sm:w-14"
-        aria-label={open ? 'Close chat' : 'Open Knee MRI Assistant'}
+        aria-label={open ? 'Close chat' : 'Open MRI Course Assistant'}
       >
         {open ? (
           <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -111,7 +111,7 @@ export default function FAQChatbot() {
           open/close transition). */}
       <div
         inert={!open}
-        aria-label="Knee MRI Assistant chat"
+        aria-label="MRI Course Assistant chat"
         className={`fixed bottom-20 right-4 z-50 flex w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 sm:w-96 ${
           open
             ? 'pointer-events-auto translate-y-0 opacity-100'
@@ -129,7 +129,7 @@ export default function FAQChatbot() {
                 d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z"
               />
             </svg>
-            <span className="text-sm font-semibold text-white">Knee MRI Assistant</span>
+            <span className="text-sm font-semibold text-white">MRI Course Assistant</span>
           </div>
           {messages.length > 0 && (
             <button
@@ -156,7 +156,7 @@ export default function FAQChatbot() {
           {messages.length === 0 && (
             <div className="space-y-3">
               <p className="text-sm text-gray-500">
-                Ask me anything about knee MRI interpretation, the course, or how to use the app.
+                Ask me anything about MRI interpretation, the courses, or how to use the app.
               </p>
               <div className="space-y-1.5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
