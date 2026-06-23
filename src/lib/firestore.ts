@@ -6,6 +6,12 @@ import { logAuditEvent } from "./audit";
 import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
 import { certificateFieldsForCourse } from "@/lib/course-certificate";
 import { defaultCourse, getCourseById, LEGACY_DEFAULT_COURSE_ID, type CourseDefinition, type CourseId } from "@/content/courses";
+import {
+  medicalQaReviewId,
+  type MedicalQaReviewInput,
+  type MedicalQaReviewRecord,
+  type MedicalQaReviewTarget,
+} from "@/lib/medical-qa-review";
 import type {
   CaseAttemptItem,
   ModuleProgressItem,
@@ -477,6 +483,59 @@ export async function togglePostQuizUnlock(
 
   await logAuditEvent(userId, userEmail, "post_quiz_unlocked", { courseId, unlocked });
   return { success: true, postQuizUnlocked: unlocked };
+}
+
+// --- Medical QA Review ---
+export async function getMedicalQaReviews(): Promise<Record<string, MedicalQaReviewRecord>> {
+  const snap = await getDocs(collection(db, "medicalQaReviews"));
+  return Object.fromEntries(
+    snap.docs.map((reviewDoc) => [
+      reviewDoc.id,
+      { id: reviewDoc.id, ...reviewDoc.data() } as MedicalQaReviewRecord,
+    ]),
+  );
+}
+
+export async function saveMedicalQaReview(
+  userId: string,
+  userEmail: string,
+  target: MedicalQaReviewTarget,
+  input: MedicalQaReviewInput,
+): Promise<MedicalQaReviewRecord> {
+  const reviewId = medicalQaReviewId(target);
+  const reviewedAt = input.status === "pending" ? null : serverTimestamp();
+  const payload = {
+    courseId: target.courseId,
+    itemType: target.itemType,
+    itemId: target.itemId,
+    title: target.title ?? "",
+    risk: target.risk ?? "standard",
+    sourcePath: target.sourcePath ?? "",
+    flags: target.flags ?? [],
+    status: input.status,
+    sourceNotes: input.sourceNotes.trim(),
+    reviewerNotes: input.reviewerNotes.trim(),
+    reviewedBy: userId,
+    reviewerEmail: userEmail,
+    reviewedAt,
+    updatedAt: serverTimestamp(),
+  };
+
+  await setDoc(doc(db, "medicalQaReviews", reviewId), payload, { merge: true });
+  await logAuditEvent(userId, userEmail, "medical_qa_review_saved", {
+    reviewId,
+    courseId: target.courseId,
+    itemType: target.itemType,
+    itemId: target.itemId,
+    status: input.status,
+  });
+
+  return {
+    id: reviewId,
+    ...payload,
+    reviewedAt: input.status === "pending" ? null : new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
 }
 
 // --- Spaced Repetition Review Cards ---
