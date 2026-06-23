@@ -29,6 +29,7 @@ import ItemAnalysisTable from "@/components/admin/ItemAnalysisTable";
 import TestQualityPanel from "@/components/admin/TestQualityPanel";
 import ResearchSummaryPanel from "@/components/admin/ResearchSummaryPanel";
 import EngagementPanel from "@/components/admin/EngagementPanel";
+import MedicalQaReadinessPanel from "@/components/admin/MedicalQaReadinessPanel";
 
 /* ───────── Helpers ───────── */
 
@@ -708,6 +709,8 @@ export default function AdminDashboardPage() {
             <SummaryCard label="Avg Post-Confidence" value={stats.avgPostConf !== null ? `${stats.avgPostConf}/5` : "--"} color="#16a34a" />
             <SummaryCard label="Completion Rate" value={`${stats.completionRate}%`} color="#005587" />
           </div>
+
+          <MedicalQaReadinessPanel course={selectedCourse} />
 
           <StatusFunnel
             fellows={filteredFellows}

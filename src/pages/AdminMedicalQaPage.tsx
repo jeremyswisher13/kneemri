@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Card from "@/components/ui/Card";
 import { useAuth } from "@/contexts/AuthContext";
 import { courseRegistry } from "@/content/courses";
@@ -19,6 +20,7 @@ import {
   type MedicalQaReviewRecord,
   type MedicalQaReviewStatus,
 } from "@/lib/medical-qa-review";
+import { isMedicalQaReviewStatus } from "@/lib/medical-qa-readiness";
 
 type CourseFilter = "all" | string;
 type RiskFilter = "all" | MedicalQaRisk;
@@ -42,6 +44,21 @@ const reviewStatusStyles: Record<MedicalQaReviewStatus, string> = {
   "needs-revision": "border-red-200 bg-red-50 text-red-700",
   "source-needed": "border-amber-200 bg-amber-50 text-amber-700",
 };
+
+function parseCourseFilter(value: string | null): CourseFilter {
+  if (!value || value === "all") return "all";
+  return courseRegistry.some((course) => course.id === value) ? value : "all";
+}
+
+function parseRiskFilter(value: string | null): RiskFilter {
+  if (value === "all" || value === "high" || value === "medium" || value === "standard") return value;
+  return "high";
+}
+
+function parseReviewStatusFilter(value: string | null): ReviewStatusFilter {
+  if (value === "all") return "all";
+  return isMedicalQaReviewStatus(value) ? value : "pending";
+}
 
 function formatNumber(value: number): string {
   return new Intl.NumberFormat("en-US").format(value);
@@ -231,11 +248,14 @@ function SourceCheckRow({
 
 export default function AdminMedicalQaPage() {
   const { user } = useAuth();
-  const [courseFilter, setCourseFilter] = useState<CourseFilter>("all");
-  const [riskFilter, setRiskFilter] = useState<RiskFilter>("high");
-  const [reviewStatusFilter, setReviewStatusFilter] = useState<ReviewStatusFilter>("pending");
-  const [typeFilter, setTypeFilter] = useState("all");
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [courseFilter, setCourseFilter] = useState<CourseFilter>(() => parseCourseFilter(searchParams.get("course")));
+  const [riskFilter, setRiskFilter] = useState<RiskFilter>(() => parseRiskFilter(searchParams.get("risk")));
+  const [reviewStatusFilter, setReviewStatusFilter] = useState<ReviewStatusFilter>(() =>
+    parseReviewStatusFilter(searchParams.get("status")),
+  );
+  const [typeFilter, setTypeFilter] = useState(() => searchParams.get("type") || "all");
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [sourceCheckItems, setSourceCheckItems] = useState<MedicalQaPriorityItem[]>([]);
   const [queueLoading, setQueueLoading] = useState(true);
   const [queueError, setQueueError] = useState<string | null>(null);
@@ -248,6 +268,16 @@ export default function AdminMedicalQaPage() {
   const [draftReviewerNotes, setDraftReviewerNotes] = useState("");
   const [savingReview, setSavingReview] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const next = new URLSearchParams();
+    if (courseFilter !== "all") next.set("course", courseFilter);
+    if (riskFilter !== "high") next.set("risk", riskFilter);
+    if (reviewStatusFilter !== "pending") next.set("status", reviewStatusFilter);
+    if (typeFilter !== "all") next.set("type", typeFilter);
+    if (query.trim()) next.set("q", query.trim());
+    setSearchParams(next, { replace: true });
+  }, [courseFilter, query, reviewStatusFilter, riskFilter, setSearchParams, typeFilter]);
 
   useEffect(() => {
     let active = true;
