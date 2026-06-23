@@ -5,6 +5,7 @@ import PageLoader from "@/components/ui/PageLoader";
 
 const adminNavItems = [
   { label: "Dashboard", path: "/admin" },
+  { label: "Medical QA", path: "/admin/medical-qa" },
   { label: "Settings", path: "/admin/settings" },
 ];
 

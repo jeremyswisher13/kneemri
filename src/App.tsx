@@ -36,6 +36,7 @@ const NormalElbowMriPage = lazy(() => import("@/pages/NormalElbowMriPage"));
 const LearningPathsPage = lazy(() => import("@/pages/LearningPathsPage"));
 const AdminDashboardPage = lazy(() => import("@/pages/AdminDashboardPage"));
 const AdminSettingsPage = lazy(() => import("@/pages/AdminSettingsPage"));
+const AdminMedicalQaPage = lazy(() => import("@/pages/AdminMedicalQaPage"));
 
 function LegacyRedirect({ to, param }: { to: string; param?: string }) {
   const params = useParams<Record<string, string | undefined>>();
@@ -106,6 +107,7 @@ export default function App() {
             <Route element={<ProtectedRoute requireAdmin />}>
               <Route element={<AdminLayout />}>
                 <Route path="admin" element={<AdminDashboardPage />} />
+                <Route path="admin/medical-qa" element={<AdminMedicalQaPage />} />
                 <Route path="admin/settings" element={<AdminSettingsPage />} />
               </Route>
             </Route>
