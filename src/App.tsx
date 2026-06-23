@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import AppLayout from "@/components/layout/AppLayout";
@@ -37,6 +37,13 @@ const LearningPathsPage = lazy(() => import("@/pages/LearningPathsPage"));
 const AdminDashboardPage = lazy(() => import("@/pages/AdminDashboardPage"));
 const AdminSettingsPage = lazy(() => import("@/pages/AdminSettingsPage"));
 
+function LegacyRedirect({ to, param }: { to: string; param?: string }) {
+  const params = useParams<Record<string, string | undefined>>();
+  const location = useLocation();
+  const suffix = param && params[param] ? `/${encodeURIComponent(params[param])}` : "";
+  return <Navigate to={`${to}${suffix}${location.search}${location.hash}`} replace />;
+}
+
 export default function App() {
   return (
     <ErrorBoundary>
@@ -51,11 +58,6 @@ export default function App() {
               {/* Course-picker landing — standalone (AppLayout chrome, no course sidebar). */}
               <Route index element={<HomePage />} />
               <Route element={<FellowLayout />}>
-                <Route path="modules" element={<ModulesPage />} />
-                <Route path="modules/:moduleId" element={<ModulePage />} />
-                <Route path="search-pattern" element={<SearchPatternPage />} />
-                <Route path="cases" element={<CasesPage />} />
-                <Route path="cases/:caseId" element={<CasePage />} />
                 <Route path="courses/:courseId" element={<DashboardPage />} />
                 <Route path="courses/:courseId/modules" element={<ModulesPage />} />
                 <Route path="courses/:courseId/modules/:moduleId" element={<ModulePage />} />
@@ -77,20 +79,26 @@ export default function App() {
                 <Route path="courses/:courseId/normal-shoulder-mri" element={<NormalShoulderMriPage />} />
                 <Route path="courses/:courseId/normal-hip-mri" element={<NormalHipMriPage />} />
                 <Route path="courses/:courseId/normal-elbow-mri" element={<NormalElbowMriPage />} />
-                <Route path="pre-assessment" element={<PreAssessmentPage />} />
-                <Route path="pre-assessment/quiz" element={<PreQuizPage />} />
-                <Route path="pre-assessment/survey" element={<PreSurveyPage />} />
-                <Route path="post-assessment" element={<PostAssessmentPage />} />
-                <Route path="post-assessment/quiz" element={<PostQuizPage />} />
-                <Route path="post-assessment/survey" element={<PostSurveyPage />} />
-                <Route path="progress" element={<ProgressPage />} />
-                <Route path="certificate" element={<CertificatePage />} />
-                <Route path="reference" element={<ReferencePage />} />
-                <Route path="review" element={<ReviewPage />} />
-                <Route path="normal-knee-mri" element={<NormalKneeMriPage />} />
-                <Route path="normal-shoulder-mri" element={<NormalShoulderMriPage />} />
-                <Route path="normal-hip-mri" element={<NormalHipMriPage />} />
-                <Route path="learning-paths" element={<LearningPathsPage />} />
+                <Route path="modules" element={<LegacyRedirect to="/courses/knee-mri/modules" />} />
+                <Route path="modules/:moduleId" element={<LegacyRedirect to="/courses/knee-mri/modules" param="moduleId" />} />
+                <Route path="search-pattern" element={<LegacyRedirect to="/courses/knee-mri/search-pattern" />} />
+                <Route path="cases" element={<LegacyRedirect to="/courses/knee-mri/cases" />} />
+                <Route path="cases/:caseId" element={<LegacyRedirect to="/courses/knee-mri/cases" param="caseId" />} />
+                <Route path="pre-assessment" element={<LegacyRedirect to="/courses/knee-mri/pre-assessment" />} />
+                <Route path="pre-assessment/quiz" element={<LegacyRedirect to="/courses/knee-mri/pre-assessment/quiz" />} />
+                <Route path="pre-assessment/survey" element={<LegacyRedirect to="/courses/knee-mri/pre-assessment/survey" />} />
+                <Route path="post-assessment" element={<LegacyRedirect to="/courses/knee-mri/post-assessment" />} />
+                <Route path="post-assessment/quiz" element={<LegacyRedirect to="/courses/knee-mri/post-assessment/quiz" />} />
+                <Route path="post-assessment/survey" element={<LegacyRedirect to="/courses/knee-mri/post-assessment/survey" />} />
+                <Route path="progress" element={<LegacyRedirect to="/courses/knee-mri/progress" />} />
+                <Route path="certificate" element={<LegacyRedirect to="/courses/knee-mri/certificate" />} />
+                <Route path="reference" element={<LegacyRedirect to="/courses/knee-mri/reference" />} />
+                <Route path="review" element={<LegacyRedirect to="/courses/knee-mri/review" />} />
+                <Route path="normal-knee-mri" element={<LegacyRedirect to="/courses/knee-mri/normal-knee-mri" />} />
+                <Route path="normal-shoulder-mri" element={<LegacyRedirect to="/courses/shoulder-mri/normal-shoulder-mri" />} />
+                <Route path="normal-hip-mri" element={<LegacyRedirect to="/courses/hip-mri/normal-hip-mri" />} />
+                <Route path="normal-elbow-mri" element={<LegacyRedirect to="/courses/elbow-mri/normal-elbow-mri" />} />
+                <Route path="learning-paths" element={<LegacyRedirect to="/courses/knee-mri/learning-paths" />} />
               </Route>
             </Route>
 
