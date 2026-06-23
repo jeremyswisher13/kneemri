@@ -111,6 +111,25 @@ describe("buildResearchDataset (de-identification)", () => {
     expect(headers.some((h) => h.startsWith("Bones:"))).toBe(true);
     expect(headers.some((h) => h.startsWith("Ligaments:"))).toBe(true);
   });
+
+  it("scores case completion against required core cases, not optional advanced cases", () => {
+    const courseWithAdvanced = {
+      ...course,
+      coreCases: [{ id: "core-1", residentVisible: true }],
+      advancedCases: [{ id: "advanced-1", residentVisible: true }],
+      cases: [
+        { id: "core-1", residentVisible: true },
+        { id: "advanced-1", residentVisible: true },
+      ],
+    } as unknown as CourseDefinition;
+    const dataset = buildResearchDataset(
+      [fellow("uid-cases", 1, 2, { casesCompleted: 1 })],
+      courseWithAdvanced,
+    );
+    const casesCol = dataset.headers.indexOf("Cases Completed %");
+
+    expect(dataset.rows[0][casesCol]).toBe(100);
+  });
 });
 
 describe("buildCohortReport", () => {

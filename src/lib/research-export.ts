@@ -23,7 +23,6 @@ import {
 import { computeGrowth, domainLabel } from "@/lib/growth";
 import {
   getVisibleCoreCases,
-  getVisibleAdvancedCases,
   type CourseDefinition,
 } from "@/content/courses";
 import type { SurveyResponse, QuizResponse } from "@/types/progress";
@@ -79,9 +78,9 @@ function domainKeysOf(course: CourseDefinition): string[] {
 
 function casesPctFor(f: ResearchFellow, course: CourseDefinition): number | null {
   const isResident = f.role === "resident";
-  const total =
-    getVisibleCoreCases(course, isResident).length +
-    getVisibleAdvancedCases(course, isResident).length;
+  // `casesCompleted` is sourced from getUserProgress and intentionally counts
+  // role-visible core cases only; advanced cases are optional practice.
+  const total = getVisibleCoreCases(course, isResident).length;
   if (total === 0) return null;
   return (f.casesCompleted / total) * 100;
 }

@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import { kneeCaseMetas, shoulderCaseMetas, type CaseMeta } from '@/content/case-metas'
+import { kneeCaseMetas, shoulderCaseMetas, hipCaseMetas, elbowCaseMetas, type CaseMeta } from '@/content/case-metas'
 import { caseRegistry, type CaseMetadata } from '@/content/cases'
 import { shoulderCaseRegistry } from '@/content/shoulder/cases'
+import { hipCaseRegistry } from '@/content/hip/cases'
+import { elbowCaseRegistry } from '@/content/elbow/cases'
 import { caseContentById } from '@/content/cases/content-by-id'
 
 // The lightweight case metas are generated from the full registries and kept
@@ -24,8 +26,14 @@ describe('case metas are in sync with the full registry (no drift)', () => {
   it('shoulder', () => {
     expect(shoulderCaseMetas).toEqual(shoulderCaseRegistry.map(project))
   })
+  it('hip', () => {
+    expect(hipCaseMetas).toEqual(hipCaseRegistry.map(project))
+  })
+  it('elbow', () => {
+    expect(elbowCaseMetas).toEqual(elbowCaseRegistry.map(project))
+  })
   it('every meta id resolves in the lazy content map', () => {
-    for (const c of [...kneeCaseMetas, ...shoulderCaseMetas]) {
+    for (const c of [...kneeCaseMetas, ...shoulderCaseMetas, ...hipCaseMetas, ...elbowCaseMetas]) {
       expect(caseContentById[c.id], `missing content for case ${c.id}`).toBeTruthy()
     }
   })

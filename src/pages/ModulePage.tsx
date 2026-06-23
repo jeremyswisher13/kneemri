@@ -231,14 +231,13 @@ export default function ModulePage() {
     const total = filteredQuestions.length;
 
     try {
-      await completeModule(user.uid, user.email || "", mod.id, score, total, activeCourse.id);
+      if (!isAdminView) {
+        await completeModule(user.uid, user.email || "", mod.id, score, total, activeCourse.id);
+      }
 
       // Add wrong answers to spaced repetition review system (non-blocking —
       // don't let review-card failures prevent showing quiz results).
-      // Only for courses with the review-card feature enabled, so a course
-      // without spaced review (e.g. shoulder) doesn't leak cards into the
-      // knee review queue.
-      if (activeCourse.features.reviewCards) {
+      if (activeCourse.features.reviewCards && !isAdminView) {
         const wrongAnswers = details.filter((d) => !d.correct);
         await Promise.all(
           wrongAnswers.map((d) =>
@@ -249,9 +248,11 @@ export default function ModulePage() {
         );
       }
 
-      await refresh();
+      if (!isAdminView) {
+        await refresh();
+      }
 
-      // Only show results AFTER Firestore write succeeds
+      // Learners see results only after the write succeeds; admins never write.
       setQuizResults({ score, total, details });
     } catch {
       setQuizError("Failed to save your quiz results. Please check your connection and try again.");

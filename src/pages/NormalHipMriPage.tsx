@@ -23,6 +23,7 @@ import {
   hipCrossPlane,
 } from "@/content/normal-hip-learn";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -111,19 +112,20 @@ const COMING_SOON: string[] = [];
 export default function NormalHipMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
+  const isAdminView = useIsAdminView();
   const [activeId, setActiveId] = useState(SERIES[0].id);
   const [mode, setMode] = useState<Mode>("explore");
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalHipLearn[series.id];
 
   async function handleCheckComplete(planeId: string, score: number, total: number) {
-    if (!user || total <= 0 || score / total < 0.7) return;
+    if (!user || isAdminView || total <= 0 || score / total < 0.7) return;
     const { markNormalPlanePassed } = await import("@/lib/firestore");
     markNormalPlanePassed(user.uid, user.email || "", planeId, score, total).catch(() => {});
   }
 
   function handleMiss(itemId: string) {
-    if (!user || !getCourseById("hip-mri").features.reviewCards) return;
+    if (!user || isAdminView || !getCourseById("hip-mri").features.reviewCards) return;
     import("@/lib/firestore")
       .then(({ addWrongAnswerToReview }) =>
         addWrongAnswerToReview(user.uid, workstationReviewId("hip-mri", itemId), "workstation", "hip-mri"),

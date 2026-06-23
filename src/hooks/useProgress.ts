@@ -17,16 +17,19 @@ export function useProgress(course: CourseDefinition = defaultCourse) {
 
   const refresh = useCallback(async () => {
     if (!user) {
+      setProgress(null);
       setLoading(false);
       return;
     }
     setLoading(true);
+    setProgress(null);
     try {
       const { loadProgress } = await import("@/lib/firestore");
       const data = await loadProgress(user.uid, course);
       setProgress(data);
     } catch (err) {
       console.error("Failed to load progress:", err);
+      setProgress(null);
     } finally {
       setLoading(false);
     }
@@ -37,14 +40,19 @@ export function useProgress(course: CourseDefinition = defaultCourse) {
   useEffect(() => {
     let cancelled = false;
     if (!user) {
+      setProgress(null);
       setLoading(false);
       return;
     }
     setLoading(true);
+    setProgress(null);
     import("@/lib/firestore")
       .then(({ loadProgress }) => loadProgress(user.uid, course))
       .then((data) => { if (!cancelled) setProgress(data); })
-      .catch((err) => console.error("Failed to load progress:", err))
+      .catch((err) => {
+        console.error("Failed to load progress:", err);
+        if (!cancelled) setProgress(null);
+      })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -23,6 +23,7 @@ import {
 } from "@/content/normal-knee-learn";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -126,6 +127,7 @@ const COMING_SOON: string[] = [];
 export default function NormalKneeMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
+  const isAdminView = useIsAdminView();
   const [activeId, setActiveId] = useState(SERIES[0].id);
   const [mode, setMode] = useState<Mode>("explore");
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
@@ -142,14 +144,14 @@ export default function NormalKneeMriPage() {
   // Passing a plane's Knowledge Check (70%+) records it toward completing the
   // Interactive Normal Knee MRI — a required part of the course.
   async function handleCheckComplete(planeId: string, score: number, total: number) {
-    if (!user || total <= 0 || score / total < 0.7) return;
+    if (!user || isAdminView || total <= 0 || score / total < 0.7) return;
     const { markNormalPlanePassed } = await import("@/lib/firestore");
     markNormalPlanePassed(user.uid, user.email || "", planeId, score, total).catch(() => {});
   }
 
   // Missed Knowledge-Check / Advanced items feed the spaced-review queue.
   function handleMiss(itemId: string) {
-    if (!user || !getCourseById("knee-mri").features.reviewCards) return;
+    if (!user || isAdminView || !getCourseById("knee-mri").features.reviewCards) return;
     import("@/lib/firestore")
       .then(({ addWrongAnswerToReview }) =>
         addWrongAnswerToReview(user.uid, workstationReviewId("knee-mri", itemId), "workstation", "knee-mri"),

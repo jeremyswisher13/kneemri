@@ -155,23 +155,30 @@ export default function FellowLayout() {
   ];
 
   const [dueCardCount, setDueCardCount] = useState(0);
+  const dueCardRequestRef = useRef(0);
 
   // Refetch the due-card badge once per (user, course) and on tab refocus — NOT
   // on every in-app navigation, which previously re-scanned the whole reviewCards
   // collection on each page change. (Focus refresh keeps it current after a
   // review session in another tab / on returning to the app.)
   const refreshDueCount = useCallback(() => {
-    let cancelled = false;
-    if (user && activeCourse.features.reviewCards) {
-      import("@/lib/firestore")
-        .then(({ getDueCards }) => getDueCards(user.uid, activeCourse))
-        .then((cards) => { if (!cancelled) setDueCardCount(cards.length); })
-        .catch(() => {});
+    const requestId = ++dueCardRequestRef.current;
+    if (!user || !activeCourse.features.reviewCards) {
+      setDueCardCount(0);
+      return;
     }
-    return () => { cancelled = true; };
+    setDueCardCount(0);
+    import("@/lib/firestore")
+      .then(({ getDueCards }) => getDueCards(user.uid, activeCourse))
+      .then((cards) => {
+        if (dueCardRequestRef.current === requestId) setDueCardCount(cards.length);
+      })
+      .catch(() => {});
   }, [user, activeCourse]);
 
-  useEffect(() => refreshDueCount(), [refreshDueCount]);
+  useEffect(() => {
+    refreshDueCount();
+  }, [refreshDueCount]);
   useEffect(() => {
     window.addEventListener("focus", refreshDueCount);
     return () => window.removeEventListener("focus", refreshDueCount);

@@ -7,6 +7,7 @@ import { caseContentById } from "@/content/cases/content-by-id";
 import MriStackViewer from "@/components/ui/MriStackViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { coursePath, courseRegistry } from "@/content/courses";
 import { submitCaseAttempt } from "@/lib/firestore";
 
@@ -69,6 +70,7 @@ export default function CasePage() {
   const { caseId } = useParams<{ caseId: string }>();
   const { user, role } = useAuth();
   const activeCourse = useActiveCourse();
+  const isAdminView = useIsAdminView();
   const searchPatternSteps = activeCourse.searchPatternSteps;
   const isResident = role === "resident";
   const stepperRef = useRef<HTMLDivElement>(null);
@@ -271,7 +273,9 @@ export default function CasePage() {
     setSubmitError(null);
     setSubmitting(true);
     try {
-      await submitCaseAttempt(user.uid, user.email || "", caseId, checkedItems, "", activeCourse.id);
+      if (!isAdminView) {
+        await submitCaseAttempt(user.uid, user.email || "", caseId, checkedItems, "", activeCourse.id);
+      }
       setSubmitted(true);
     } catch {
       setSubmitError("Failed to submit your case. Please check your connection and try again.");

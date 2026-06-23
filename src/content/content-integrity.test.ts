@@ -328,9 +328,29 @@ describe('module quizzes', () => {
     }
   })
 
+  it('every live module has a completion quiz, including at least one resident-visible item when filtered', () => {
+    for (const course of courseRegistry) {
+      for (const mod of course.modules) {
+        const qs = moduleQuizzes[mod.id] ?? []
+        expect(qs.length, `${course.id}/${mod.id} has no module quiz`).toBeGreaterThan(0)
+
+        const essentialTopics = moduleContentById[mod.id]?.essentialTopics
+        if (Array.isArray(essentialTopics) && essentialTopics.length > 0) {
+          const residentVisible = qs.filter((q) => essentialTopics.includes(q.topicIndex))
+          expect(
+            residentVisible.length,
+            `${course.id}/${mod.id} resident track has no visible quiz items`,
+          ).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+
   it('every question is well-formed (unique keys, correctAnswer present)', () => {
     const allIds: string[] = []
+    const moduleById = new Map(courseRegistry.flatMap((c) => c.modules.map((m) => [m.id, m] as const)))
     for (const [mod, qs] of Object.entries(moduleQuizzes)) {
+      const moduleMeta = moduleById.get(mod)
       for (const q of qs) {
         allIds.push(q.id)
         const keys = q.options.map((o) => o.key)
@@ -338,6 +358,8 @@ describe('module quizzes', () => {
         expect(keys.includes(q.correctAnswer), `${mod}/${q.id} correctAnswer not an option`).toBe(true)
         expect(q.stem.trim().length, `${mod}/${q.id} empty stem`).toBeGreaterThan(0)
         expect(q.explanation.trim().length, `${mod}/${q.id} empty explanation`).toBeGreaterThan(0)
+        expect(q.topicIndex, `${mod}/${q.id} topicIndex >= 0`).toBeGreaterThanOrEqual(0)
+        expect(q.topicIndex, `${mod}/${q.id} topicIndex < topic count`).toBeLessThan(moduleMeta?.topics.length ?? 0)
       }
     }
     expect(new Set(allIds).size, 'duplicate module-quiz ids').toBe(allIds.length)
@@ -513,6 +535,7 @@ describe('review registry', () => {
       ['knee', kneeImageCaq],
       ['shoulder', shoulderImageCaq],
       ['hip', hipImageCaq],
+      ['elbow', elbowImageCaq],
     ]
     const ids: string[] = []
     for (const [region, bank] of banks) {
@@ -527,6 +550,14 @@ describe('review registry', () => {
         expect(q.answer, `${region}/${q.id} answer in range`).toBeLessThan(q.options.length)
         expect(q.vignette.trim().length, `${region}/${q.id} empty vignette`).toBeGreaterThan(0)
         expect(q.dir.startsWith('/images/teaching/stacks/'), `${region}/${q.id} bad dir`).toBe(true)
+        const stackDir = join(process.cwd(), 'public', q.dir)
+        expect(existsSync(stackDir), `${region}/${q.id} stack dir missing: ${q.dir}`).toBe(true)
+        if (existsSync(stackDir)) {
+          const actualCount = readdirSync(stackDir).filter((f) => f.endsWith('.jpg')).length
+          expect(q.count, `${region}/${q.id} count does not match stack files`).toBe(actualCount)
+          const anchor = `slice_${String(q.startIndex + 1).padStart(2, '0')}.jpg`
+          expect(existsSync(join(stackDir, anchor)), `${region}/${q.id} anchor image missing: ${anchor}`).toBe(true)
+        }
       }
     }
     expect(new Set(ids).size, 'duplicate imageCaq ids').toBe(ids.length)
