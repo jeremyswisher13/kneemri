@@ -1,46 +1,21 @@
 import type { ConfidenceStatement } from '@/types/content';
 
+/**
+ * Knee MRI confidence / self-efficacy survey.
+ *
+ * One statement per KNOWLEDGE domain (domain ids match the pre/post item domains),
+ * so each fellow's confidence pairs 1:1 with their measured competence. Rated on a
+ * 5-point scale; at post the survey also collects a retrospective "before the course"
+ * rating (response-shift correction).
+ */
 export const confidenceStatements: ConfidenceStatement[] = [
-  {
-    id: 's1',
-    domain: 'marrow-patterns',
-    statement:
-      'I can identify marrow edema patterns and correctly associate them with injury mechanisms (pivot-shift, dashboard, patellar dislocation, insufficiency).',
-  },
-  {
-    id: 's2',
-    domain: 'cartilage',
-    statement:
-      'I can evaluate articular cartilage and osteochondral lesions, including assessing fragment stability and identifying loose bodies.',
-  },
-  {
-    id: 's3',
-    domain: 'ligaments-cruciate',
-    statement:
-      'I can diagnose ACL and PCL tears using primary signs and distinguish true tears from mucoid degeneration or post-surgical changes.',
-  },
-  {
-    id: 's4',
-    domain: 'menisci',
-    statement:
-      'I can systematically trace each meniscus and its roots, identify root tears, ramp lesions, and bucket-handle tears, and report extrusion when present.',
-  },
-  {
-    id: 's5',
-    domain: 'corners-collaterals',
-    statement:
-      'I can evaluate collateral ligaments and posterolateral/posteromedial corner structures as combined injury patterns.',
-  },
-  {
-    id: 's6',
-    domain: 'patellofemoral',
-    statement:
-      'I can recognize the patellar dislocation pattern and report MPFL injury, osteochondral damage, and relevant maltracking anatomy.',
-  },
-  {
-    id: 's7',
-    domain: 'reporting',
-    statement:
-      'I can produce a structured knee MRI impression that prioritizes management-changing findings using precise anatomic language.',
-  },
+  { id: "kc-mri-basics", domain: "mri-basics", statement: "I can select the appropriate MRI sequence for a given knee question and interpret fluid-sensitive fat-saturated signal to distinguish true pathology from normal tissue." },
+  { id: "kc-normal-variants", domain: "normal-variants", statement: "I can recognize normal knee variants such as the popliteal hiatus and meniscofemoral ligaments and tell them apart from a genuine meniscal or ligament tear." },
+  { id: "kc-search-reporting", domain: "search-reporting", statement: "I can apply a systematic knee MRI search pattern that avoids satisfaction of search and produce a structured impression that prioritizes management-changing findings." },
+  { id: "kc-marrow-mechanism", domain: "marrow-mechanism", statement: "I can read bone marrow edema patterns to infer the injury mechanism (pivot-shift, dashboard/PCL, patellar dislocation) and distinguish insufficiency edema from traumatic contusion." },
+  { id: "kc-menisci", domain: "menisci", statement: "I can systematically trace each meniscus and its roots to identify root tears, ramp lesions, and bucket-handle tears, measure extrusion, and apply the two-slice-touch rule." },
+  { id: "kc-cartilage-osteochondral", domain: "cartilage-osteochondral", statement: "I can grade chondral lesions and judge osteochondral-fragment stability using interface fluid signal, cysts, and cartilage breach, accounting for reduced specificity in juveniles." },
+  { id: "kc-cruciates", domain: "cruciates", statement: "I can diagnose ACL and PCL tears from direct fiber-discontinuity signs and distinguish a true tear from mucoid degeneration with preserved fiber continuity." },
+  { id: "kc-collateral-corner", domain: "collateral-corner", statement: "I can evaluate the collateral ligaments and the posterolateral and posteromedial corners as combined injury patterns rather than isolated findings." },
+  { id: "kc-extensor-synovium", domain: "extensor-synovium", statement: "I can assess the quadriceps and patellar tendons, characterize a joint effusion versus a Baker cyst, and identify loose bodies in the synovial compartments." },
 ];

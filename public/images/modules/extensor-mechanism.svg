@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 600" width="750" height="600" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="extArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#005587"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="750" height="50" fill="#005587" rx="4"/>
+  <text x="375" y="33" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Extensor Mechanism: Lateral (Sagittal) View</text>
+
+  <!-- Main diagram area -->
+  <rect x="15" y="60" width="470" height="530" fill="#f8f9fa" stroke="#DAEBFE" stroke-width="1" rx="8"/>
+
+  <!-- FEMUR (upper portion) -->
+  <path d="M 200,80 C 200,80 190,120 185,170
+           C 180,220 190,280 220,320
+           C 240,345 270,360 300,365
+           C 320,368 340,365 355,355
+           C 375,340 385,315 385,280
+           C 385,240 380,180 375,120
+           C 372,100 370,80 370,80"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="285" y="200" text-anchor="middle" fill="#005587" font-size="14" font-weight="bold">FEMUR</text>
+
+  <!-- PATELLA -->
+  <path d="M 205,335 C 195,355 195,380 200,400
+           C 205,415 215,425 230,430
+           C 250,435 265,430 275,418
+           C 285,405 290,385 288,365
+           C 285,348 275,335 260,330
+           C 240,325 220,328 205,335 Z"
+        fill="#FFD100" fill-opacity="0.3" stroke="#005587" stroke-width="2.5"/>
+  <text x="245" y="385" text-anchor="middle" fill="#005587" font-size="12" font-weight="bold">PATELLA</text>
+
+  <!-- TIBIA -->
+  <path d="M 225,445 C 225,445 220,450 218,460
+           L 210,560 L 380,560 L 372,460
+           C 370,450 365,445 365,445"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="295" y="530" text-anchor="middle" fill="#005587" font-size="14" font-weight="bold">TIBIA</text>
+
+  <!-- Tibial Tubercle -->
+  <ellipse cx="240" cy="455" rx="18" ry="12" fill="#FFD100" fill-opacity="0.3" stroke="#005587" stroke-width="2"/>
+
+  <!-- QUADRICEPS TENDON (multi-layered) -->
+  <!-- Rectus Femoris (superficial) -->
+  <path d="M 225,80 C 222,120 218,180 216,240 C 215,270 214,300 212,325"
+        fill="none" stroke="#2774AE" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <!-- VM/VL (middle layer) -->
+  <path d="M 240,100 C 238,140 236,200 234,260 C 233,280 232,310 230,330"
+        fill="none" stroke="#2774AE" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <!-- VI (deep) -->
+  <path d="M 255,120 C 254,160 252,220 250,270 C 249,295 248,315 247,335"
+        fill="none" stroke="#2774AE" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Quad tendon bracket -->
+  <path d="M 200,200 L 190,200 L 190,310 L 200,310" fill="none" stroke="#005587" stroke-width="1.5"/>
+  <text x="175" y="250" text-anchor="end" fill="#005587" font-size="10" font-weight="bold" transform="rotate(-90, 175, 250)">QUAD TENDON</text>
+
+  <!-- Layer labels -->
+  <line x1="225" y1="160" x2="110" y2="130" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="30" y="115" width="85" height="24" fill="white" stroke="#2774AE" stroke-width="1" rx="3"/>
+  <text x="72" y="131" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">RF (superficial)</text>
+
+  <line x1="240" y1="170" x2="110" y2="160" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="35" y="148" width="80" height="24" fill="white" stroke="#2774AE" stroke-width="1" rx="3"/>
+  <text x="75" y="164" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">VM/VL (mid)</text>
+
+  <line x1="255" y1="180" x2="110" y2="192" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="45" y="182" width="68" height="24" fill="white" stroke="#2774AE" stroke-width="1" rx="3"/>
+  <text x="79" y="198" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">VI (deep)</text>
+
+  <!-- PATELLAR TENDON -->
+  <path d="M 238,430 C 238,435 238,440 240,455"
+        fill="none" stroke="#2774AE" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Patellar tendon label -->
+  <line x1="238" y1="442" x2="130" y2="445" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="30" y="432" width="105" height="24" fill="white" stroke="#2774AE" stroke-width="1" rx="3"/>
+  <text x="82" y="448" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">Patellar Tendon</text>
+
+  <!-- Tibial tubercle label -->
+  <line x1="240" y1="468" x2="130" y2="485" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="30" y="475" width="105" height="24" fill="white" stroke="#FFD100" stroke-width="1.5" rx="3"/>
+  <text x="82" y="491" text-anchor="middle" fill="#005587" font-size="10" font-weight="bold">Tibial Tubercle</text>
+
+  <!-- Patella label -->
+  <line x1="280" y1="380" x2="395" y2="370" stroke="#005587" stroke-width="1" marker-end="url(#extArrow)"/>
+  <rect x="385" y="358" width="85" height="24" fill="white" stroke="#005587" stroke-width="1" rx="3"/>
+  <text x="427" y="374" text-anchor="middle" fill="#005587" font-size="10" font-weight="bold">Patella</text>
+
+  <!-- Chain arrow showing force transmission -->
+  <path d="M 420,120 L 420,170 L 420,260 L 420,340 L 420,420 L 420,470"
+        fill="none" stroke="#FFD100" stroke-width="2" stroke-dasharray="8,4"/>
+  <path d="M 415,465 L 420,475 L 425,465" fill="#FFD100"/>
+  <text x="440" y="290" fill="#FFD100" font-size="10" font-weight="bold" transform="rotate(90, 440, 290)">Force Transmission</text>
+
+  <!-- ===== MPFL INSET (Axial View) ===== -->
+  <rect x="500" y="60" width="240" height="280" fill="white" stroke="#005587" stroke-width="2" rx="8"/>
+  <rect x="500" y="60" width="240" height="30" fill="#2774AE" rx="8"/>
+  <rect x="500" y="78" width="240" height="12" fill="#2774AE"/>
+  <text x="620" y="82" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MPFL (Axial View at Patella)</text>
+
+  <!-- Axial patella -->
+  <path d="M 570,190 C 560,170 570,150 590,140
+           C 610,132 640,135 655,148
+           C 668,160 670,180 660,195
+           L 620,210 Z"
+        fill="#FFD100" fill-opacity="0.3" stroke="#005587" stroke-width="2"/>
+  <text x="618" y="175" text-anchor="middle" fill="#005587" font-size="10" font-weight="bold">Patella</text>
+  <text x="618" y="188" text-anchor="middle" fill="#005587" font-size="9">(axial)</text>
+
+  <!-- Medial femoral condyle -->
+  <ellipse cx="540" cy="240" rx="25" ry="30" fill="#DAEBFE" stroke="#005587" stroke-width="2"/>
+  <text x="540" y="237" text-anchor="middle" fill="#005587" font-size="8" font-weight="bold">Medial</text>
+  <text x="540" y="248" text-anchor="middle" fill="#005587" font-size="8" font-weight="bold">Fem.</text>
+  <text x="540" y="259" text-anchor="middle" fill="#005587" font-size="8" font-weight="bold">Condyle</text>
+
+  <!-- Lateral femoral condyle -->
+  <ellipse cx="700" cy="240" rx="25" ry="30" fill="#DAEBFE" stroke="#005587" stroke-width="2"/>
+  <text x="700" y="244" text-anchor="middle" fill="#005587" font-size="8" font-weight="bold">LFC</text>
+
+  <!-- MPFL band -->
+  <path d="M 570,195 C 560,210 550,220 545,225"
+        fill="none" stroke="#cc3333" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- MPFL label -->
+  <line x1="558" y1="208" x2="630" y2="250" stroke="#cc3333" stroke-width="1"/>
+  <rect x="600" y="243" width="60" height="20" fill="white" stroke="#cc3333" stroke-width="1" rx="3"/>
+  <text x="630" y="257" text-anchor="middle" fill="#cc3333" font-size="10" font-weight="bold">MPFL</text>
+
+  <!-- Orientation -->
+  <text x="520" y="130" fill="#005587" font-size="9">Medial</text>
+  <text x="695" y="130" fill="#005587" font-size="9">Lateral</text>
+
+  <text x="620" y="310" text-anchor="middle" fill="#005587" font-size="9" font-style="italic">MPFL: Medial Patellofemoral</text>
+  <text x="620" y="323" text-anchor="middle" fill="#005587" font-size="9" font-style="italic">Ligament (primary restraint</text>
+  <text x="620" y="336" text-anchor="middle" fill="#005587" font-size="9" font-style="italic">to lateral patellar dislocation)</text>
+
+  <!-- Key features box -->
+  <rect x="500" y="360" width="240" height="225" fill="#f8f9fa" stroke="#005587" stroke-width="1" rx="6"/>
+  <text x="620" y="385" text-anchor="middle" fill="#005587" font-size="12" font-weight="bold">Key Points</text>
+  <line x1="520" y1="392" x2="720" y2="392" stroke="#DAEBFE" stroke-width="1"/>
+  <text x="515" y="412" fill="#005587" font-size="10">Quad tendon has 3 layers:</text>
+  <text x="525" y="428" fill="#2774AE" font-size="10">1. RF (rectus femoris)</text>
+  <text x="525" y="444" fill="#2774AE" font-size="10">2. VM + VL (vastus med/lat)</text>
+  <text x="525" y="460" fill="#2774AE" font-size="10">3. VI (vastus intermedius)</text>
+  <line x1="520" y1="470" x2="720" y2="470" stroke="#DAEBFE" stroke-width="1"/>
+  <text x="515" y="488" fill="#005587" font-size="10">Patellar tendon: patella</text>
+  <text x="515" y="502" fill="#005587" font-size="10">inferior pole to tibial tubercle</text>
+  <line x1="520" y1="512" x2="720" y2="512" stroke="#DAEBFE" stroke-width="1"/>
+  <text x="515" y="530" fill="#005587" font-size="10">MPFL tears commonly at</text>
+  <text x="515" y="544" fill="#005587" font-size="10">femoral attachment in</text>
+  <text x="515" y="558" fill="#005587" font-size="10">patellar dislocation</text>
+  <line x1="520" y1="568" x2="720" y2="568" stroke="#DAEBFE" stroke-width="1"/>
+  <text x="515" y="582" fill="#cc3333" font-size="10" font-weight="bold">MPFL tears: 90%+ of lateral</text>
+  <text x="515" y="596" fill="#cc3333" font-size="10" font-weight="bold">patellar dislocations</text>
+</svg>

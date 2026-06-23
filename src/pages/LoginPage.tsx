@@ -4,7 +4,7 @@ import { signInWithGoogle } from "@/lib/auth";
 import { useEffect, useState } from "react";
 
 export default function LoginPage() {
-  const { user, loading } = useAuth();
+  const { user, loading, setRole } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [signingIn, setSigningIn] = useState(false);
@@ -19,10 +19,12 @@ export default function LoginPage() {
     setError(null);
     setSigningIn(true);
     try {
-      await signInWithGoogle();
+      const { role } = await signInWithGoogle();
+      // Set the role directly — avoids race with onAuthStateChanged
+      setRole(role);
       navigate("/", { replace: true });
-    } catch (err: any) {
-      setError(err.message || "Failed to sign in");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign in");
     } finally {
       setSigningIn(false);
     }
@@ -43,9 +45,9 @@ export default function LoginPage() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-ucla-dark text-white text-2xl font-bold">
             MRI
           </div>
-          <h1 className="text-2xl font-bold text-ucla-dark">UCLA Knee MRI Fellows</h1>
+          <h1 className="text-2xl font-bold text-ucla-dark">UCLA Sports MRI Courses</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Interactive Knee MRI Interpretation Course for Sports Medicine Fellows
+            Interactive MRI interpretation courses for sports medicine learners
           </p>
         </div>
 
@@ -72,8 +74,8 @@ export default function LoginPage() {
             {signingIn ? "Signing in..." : "Sign in with Google"}
           </button>
 
-          <p className="mt-4 text-center text-xs text-gray-400">
-            Sign in with your Google account to access the course.
+          <p className="mt-4 text-center text-xs text-gray-500">
+            Sign in with your Google account to access the courses.
           </p>
         </div>
       </div>

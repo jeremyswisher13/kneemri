@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 440" width="660" height="440" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="aW" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 Z" fill="#fff"/></marker>
+    <marker id="aY" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 Z" fill="#FFD100"/></marker>
+  </defs>
+  <rect width="660" height="440" fill="#1a1a2e"/>
+  <rect width="660" height="44" fill="#2774AE"/>
+  <text x="330" y="29" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">Adhesive Capsulitis: Where to Look</text>
+  <text x="330" y="62" text-anchor="middle" fill="#9fb6cc" font-size="12">Clinical diagnosis — MRI supports it &amp; excludes mimics (e.g., cuff tear)</text>
+
+  <!-- LEFT: rotator interval (sagittal) -->
+  <rect x="20" y="78" width="300" height="300" fill="#0f0f23" stroke="#333" rx="6"/>
+  <text x="170" y="98" text-anchor="middle" fill="#FFD100" font-size="13" font-weight="bold">ROTATOR INTERVAL (sagittal)</text>
+  <!-- coracoid + humeral head -->
+  <circle cx="210" cy="250" r="78" fill="#3a3f55"/>
+  <text x="210" y="254" text-anchor="middle" fill="#7f8aa3" font-size="9">humeral head</text>
+  <path d="M120,150 q20,30 50,40" stroke="#4a4f68" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <text x="120" y="142" fill="#7f8aa3" font-size="9">coracoid</text>
+  <!-- normally fat triangle here; show it obliterated/edematous (bright) -->
+  <path d="M150,196 q34,-2 44,22 q-26,8 -48,-4 Z" fill="#dfeefc"/>
+  <line x1="120" y1="300" x2="160" y2="214" stroke="#FFD100" stroke-width="2" marker-end="url(#aY)"/>
+  <text x="170" y="404" text-anchor="middle" fill="#cfe3f5" font-size="10">CHL thickening + loss of subcoracoid fat triangle</text>
+
+  <!-- RIGHT: axillary pouch (coronal) -->
+  <rect x="340" y="78" width="300" height="300" fill="#0f0f23" stroke="#333" rx="6"/>
+  <text x="490" y="98" text-anchor="middle" fill="#FFD100" font-size="13" font-weight="bold">AXILLARY POUCH (coronal)</text>
+  <path d="M420,360 Q490,250 560,360 Z" fill="#3a3f55"/>
+  <rect x="430" y="250" width="14" height="100" rx="4" fill="#4a4f68"/>
+  <text x="437" y="364" text-anchor="middle" fill="#7f8aa3" font-size="9">glenoid</text>
+  <!-- inferior capsule thickened (bright band along axillary recess) -->
+  <path d="M444,330 Q495,360 548,330 L548,346 Q495,378 444,346 Z" fill="#dfeefc"/>
+  <line x1="560" y1="300" x2="520" y2="344" stroke="#fff" stroke-width="2" marker-end="url(#aW)"/>
+  <text x="490" y="404" text-anchor="middle" fill="#cfe3f5" font-size="10">Thickened, edematous inferior capsule / IGHL</text>
+
+  <text x="330" y="424" text-anchor="middle" fill="#5b6680" font-size="10">UCLA Shoulder MRI Course — original teaching illustration (schematic)</text>
+</svg>

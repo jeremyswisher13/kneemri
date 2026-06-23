@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 0 674 580" width="674" height="580" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="labelArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#005587"/>
+    </marker>
+    <linearGradient id="aclGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2774AE"/>
+      <stop offset="100%" stop-color="#1a5c8f"/>
+    </linearGradient>
+    <linearGradient id="pclGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#005587"/>
+      <stop offset="100%" stop-color="#003d5c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <rect x="-12" y="0" width="674" height="50" fill="#005587" rx="4"/>
+  <text x="325" y="33" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Cruciate Ligaments: Sagittal View</text>
+
+  <!-- Orientation -->
+  <text x="50" y="80" fill="#005587" font-size="12" font-weight="bold">ANTERIOR</text>
+  <text x="530" y="80" fill="#005587" font-size="12" font-weight="bold">POSTERIOR</text>
+
+  <!-- FEMUR -->
+  <path d="M 120,100
+           C 120,100 100,150 95,200
+           C 90,250 100,300 140,340
+           C 170,365 210,380 260,385
+           C 310,388 360,385 400,380
+           C 445,375 490,360 515,335
+           C 550,305 560,260 555,210
+           C 550,160 540,110 530,100
+           L 530,90 L 120,90 Z"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="325" y="160" text-anchor="middle" fill="#005587" font-size="16" font-weight="bold">FEMUR</text>
+
+  <!-- Femoral condyle articular surface -->
+  <path d="M 140,340 C 170,370 220,388 270,390 C 330,392 390,385 430,375 C 470,365 510,340 515,335"
+        fill="none" stroke="#005587" stroke-width="1.5"/>
+
+  <!-- Intercondylar notch -->
+  <path d="M 270,385 C 275,360 290,345 325,340 C 360,345 375,360 380,385"
+        fill="white" stroke="#005587" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="325" y="360" text-anchor="middle" fill="#005587" font-size="9">Intercondylar</text>
+  <text x="325" y="372" text-anchor="middle" fill="#005587" font-size="9">Notch</text>
+
+  <!-- TIBIA -->
+  <path d="M 130,410
+           C 130,410 120,415 115,425
+           L 110,500 L 540,500 L 535,425
+           C 530,415 520,410 520,410 Z"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="325" y="480" text-anchor="middle" fill="#005587" font-size="16" font-weight="bold">TIBIA</text>
+
+  <!-- Tibial plateau surface -->
+  <line x1="130" y1="410" x2="520" y2="410" stroke="#005587" stroke-width="2"/>
+
+  <!-- Tibial eminence -->
+  <path d="M 290,410 L 310,395 L 340,395 L 360,410" fill="#DAEBFE" stroke="#005587" stroke-width="1.5"/>
+
+  <!-- ACL - from posterolateral femoral condyle to anterior tibial plateau -->
+  <path d="M 420,340 C 400,355 340,370 280,385 C 240,395 210,405 200,410"
+        fill="none" stroke="url(#aclGrad)" stroke-width="12" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 420,340 C 400,355 340,370 280,385 C 240,395 210,405 200,410"
+        fill="none" stroke="#2774AE" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ACL label -->
+  <text x="275" y="405" text-anchor="middle" fill="white" font-size="13" font-weight="bold"
+        stroke="#2774AE" stroke-width="3" paint-order="stroke">ACL</text>
+
+  <!-- PCL - from anteromedial femoral condyle to posterior tibial plateau -->
+  <path d="M 260,350 C 280,365 340,385 390,400 C 420,408 445,412 460,420"
+        fill="none" stroke="url(#pclGrad)" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 260,350 C 280,365 340,385 390,400 C 420,408 445,412 460,420"
+        fill="none" stroke="#005587" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- PCL label -->
+  <text x="385" y="398" text-anchor="middle" fill="white" font-size="13" font-weight="bold"
+        stroke="#005587" stroke-width="3" paint-order="stroke">PCL</text>
+
+  <!-- ACL Origin label -->
+  <line x1="420" y1="335" x2="510" y2="270" stroke="#005587" stroke-width="1" marker-end="url(#labelArrow)"/>
+  <rect x="475" y="246" width="168" height="48" fill="white" stroke="#2774AE" stroke-width="1.5" rx="4"/>
+  <text x="559" y="261" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">ACL Origin:</text>
+  <text x="559" y="275" text-anchor="middle" fill="#2774AE" font-size="9">Lateral femoral condyle, medial wall</text>
+  <text x="559" y="288" text-anchor="middle" fill="#2774AE" font-size="8" font-style="italic">(medial/lateral seen on axial/coronal)</text>
+
+  <!-- ACL Insertion label -->
+  <line x1="200" y1="415" x2="120" y2="445" stroke="#005587" stroke-width="1" marker-end="url(#labelArrow)"/>
+  <rect x="25" y="435" width="155" height="34" fill="white" stroke="#2774AE" stroke-width="1.5" rx="4"/>
+  <text x="102" y="450" text-anchor="middle" fill="#2774AE" font-size="10" font-weight="bold">ACL Insertion:</text>
+  <text x="102" y="464" text-anchor="middle" fill="#2774AE" font-size="10">Anterior tibial plateau</text>
+
+  <!-- PCL Origin label -->
+  <line x1="260" y1="345" x2="130" y2="282" stroke="#005587" stroke-width="1" marker-end="url(#labelArrow)"/>
+  <rect x="14" y="246" width="172" height="48" fill="white" stroke="#005587" stroke-width="1.5" rx="4"/>
+  <text x="100" y="261" text-anchor="middle" fill="#005587" font-size="10" font-weight="bold">PCL Origin:</text>
+  <text x="100" y="275" text-anchor="middle" fill="#005587" font-size="9">Medial femoral condyle, lateral wall</text>
+  <text x="100" y="288" text-anchor="middle" fill="#005587" font-size="8" font-style="italic">(medial/lateral seen on axial/coronal)</text>
+
+  <!-- PCL Insertion label -->
+  <line x1="460" y1="425" x2="530" y2="450" stroke="#005587" stroke-width="1" marker-end="url(#labelArrow)"/>
+  <rect x="470" y="440" width="165" height="34" fill="white" stroke="#005587" stroke-width="1.5" rx="4"/>
+  <text x="552" y="455" text-anchor="middle" fill="#005587" font-size="10" font-weight="bold">PCL Insertion:</text>
+  <text x="552" y="469" text-anchor="middle" fill="#005587" font-size="10">Posterior tibial plateau</text>
+
+  <!-- Key features box -->
+  <rect x="30" y="515" width="590" height="55" fill="#f8f9fa" stroke="#005587" stroke-width="1" rx="6"/>
+  <text x="50" y="535" fill="#005587" font-size="11" font-weight="bold">Key Points:</text>
+  <text x="50" y="552" fill="#005587" font-size="10">ACL: Runs from posterior to anterior (femur to tibia); courses obliquely through the intercondylar notch</text>
+  <text x="50" y="565" fill="#005587" font-size="10">PCL: Stronger, thicker; runs anterior to posterior; normally a smooth, dark arc on sagittal MRI</text>
+
+  <!-- Legend -->
+  <rect x="200" y="85" width="250" height="28" fill="white" fill-opacity="0.9" stroke="#005587" stroke-width="1" rx="4"/>
+  <line x1="220" y1="99" x2="250" y2="99" stroke="#2774AE" stroke-width="4" stroke-linecap="round"/>
+  <text x="258" y="103" fill="#2774AE" font-size="11" font-weight="bold">ACL</text>
+  <line x1="320" y1="99" x2="350" y2="99" stroke="#005587" stroke-width="5" stroke-linecap="round"/>
+  <text x="358" y="103" fill="#005587" font-size="11" font-weight="bold">PCL (thicker)</text>
+</svg>

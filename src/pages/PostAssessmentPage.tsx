@@ -1,10 +1,57 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import YourGrowthReport from "@/components/YourGrowthReport";
+import PostQuizReview from "@/components/PostQuizReview";
+import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
+import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { isCourseComplete } from "@/lib/completion";
+import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { coursePath, getPostQuizQuestions } from "@/content/courses";
+
+function Confetti() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const colors = ["#FFD100", "#2774AE", "#005587", "#4CAF50", "#FF6B6B"];
+    for (let i = 0; i < 60; i++) {
+      const piece = document.createElement("div");
+      piece.style.cssText = `
+        position: absolute;
+        width: ${6 + Math.random() * 8}px;
+        height: ${6 + Math.random() * 8}px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        left: ${Math.random() * 100}%;
+        top: -10px;
+        opacity: 0;
+        border-radius: ${Math.random() > 0.5 ? "50%" : "2px"};
+        animation: confetti-fall ${2 + Math.random() * 3}s ease-out ${Math.random() * 1.5}s forwards;
+      `;
+      container.appendChild(piece);
+    }
+    const timeout = setTimeout(() => {
+      if (container) container.style.display = "none";
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
+    />
+  );
+}
 
 export default function PostAssessmentPage() {
-  const { progress, loading } = useProgress();
+  const { user } = useAuth();
+  const activeCourse = useActiveCourse();
+  const isAdminView = useIsAdminView();
+  const { progress, loading } = useProgress(activeCourse);
 
   if (loading) {
     return (
@@ -23,8 +70,9 @@ export default function PostAssessmentPage() {
     );
   }
 
-  // Locked state
-  if (!progress.postQuizUnlocked) {
+  // Locked state — admins (and admin preview) bypass the unlock gate so they
+  // can review the post-assessment flow without completing all modules + cases.
+  if (!progress.postQuizUnlocked && !isAdminView) {
     return (
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Post-Assessment</h1>
@@ -48,11 +96,16 @@ export default function PostAssessmentPage() {
             Post-Assessment Locked
           </h2>
           <p className="mt-2 text-gray-500 max-w-md mx-auto">
-            Your instructor has not yet unlocked the post-assessment. Complete
-            all modules and cases, then check back.
+            {activeCourse.bodyRegion === "knee"
+              ? "Finish all modules and the Interactive Normal Knee MRI to unlock the post-assessment. (Cases are optional.)"
+              : (progress.totalNormalPlanes ?? 0) > 0
+                ? `Complete all modules, all cases, and the Interactive Normal ${
+                    activeCourse.bodyRegion.charAt(0).toUpperCase() + activeCourse.bodyRegion.slice(1)
+                  } MRI to unlock the post-assessment.`
+                : "Complete all modules and cases to unlock the post-assessment."}
           </p>
           <div className="mt-6">
-            <Link to="/dashboard">
+            <Link to={coursePath(activeCourse, "/")}>
               <Button variant="secondary">Back to Dashboard</Button>
             </Link>
           </div>
@@ -64,69 +117,63 @@ export default function PostAssessmentPage() {
   const allComplete =
     progress.postQuizCompleted && progress.postSurveyCompleted;
 
+  const courseComplete = isCourseComplete(progress, activeCourse);
+
+  const fellowName = user?.displayName || user?.email || "Fellow";
+
   // Comparison view when both post assessments are complete
   if (allComplete) {
     return (
       <div>
+        {courseComplete && <Confetti />}
+
         <h1 className="text-2xl font-bold text-gray-900">Post-Assessment</h1>
-        <div className="mt-8 rounded-xl bg-green-50 border border-green-200 p-8 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-            <svg
-              className="h-8 w-8 text-green-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
+
+        {courseComplete ? (
+          <div className="mt-8 overflow-hidden rounded-xl border-2 border-ucla-gold bg-gradient-to-r from-ucla-dark to-ucla-blue p-8 text-center text-white">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-ucla-gold/20 ring-2 ring-ucla-gold">
+              <svg className="h-8 w-8 text-ucla-gold" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 3h14c.6 0 1 .4 1 1v2c0 2.8-2 5.1-4.6 5.8-.4 1.4-1.5 2.5-2.9 2.9V17h3a1 1 0 110 2H8a1 1 0 110-2h3v-2.3c-1.4-.4-2.5-1.5-2.9-2.9C5.5 11.1 4 8.8 4 6V4c0-.6.4-1 1-1zm1 2v1c0 1.9 1.2 3.5 2.8 4.2.5-.3 1-.4 1.6-.4h1.2c.6 0 1.1.1 1.6.4C14.8 9.5 16 7.9 16 6V5H6z" />
+              </svg>
+            </div>
+            <h2 className="mt-4 text-2xl font-bold">
+              Congratulations, {fellowName}!
+            </h2>
+            <p className="mt-2 text-white/80">
+              You have completed the entire {activeCourse.title}.
+            </p>
+            <Link
+              to={coursePath(activeCourse, "/certificate")}
+              className="mt-4 inline-block rounded-lg bg-ucla-gold px-6 py-2 text-sm font-semibold text-ucla-dark shadow transition-colors hover:bg-yellow-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+              View Your Certificate
+            </Link>
           </div>
-          <h2 className="mt-4 text-xl font-semibold text-green-800">
-            Post-Assessment Complete
-          </h2>
+        ) : (
+          <div className="mt-8 rounded-xl bg-green-50 border border-green-200 p-8 text-center">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 className="mt-4 text-xl font-semibold text-green-800">
+              Post-Assessment Complete
+            </h2>
+          </div>
+        )}
+
+        {/* Your Growth: domain-level knowledge gain + confidence calibration */}
+        <div className="mt-8">
+          <YourGrowthReport progress={progress} course={activeCourse} />
         </div>
 
-        {/* Pre vs Post Score Comparison */}
-        <div className="mt-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Knowledge Quiz: Pre vs Post
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 text-center">
-              <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Pre-Assessment
-              </p>
-              <p className="mt-2 text-4xl font-bold text-gray-400">
-                {progress.preQuizScore ?? "N/A"}
-              </p>
-            </div>
-            <div className="rounded-xl bg-white p-6 shadow-sm border border-ucla-blue text-center">
-              <p className="text-sm font-medium text-ucla-blue uppercase tracking-wider">
-                Post-Assessment
-              </p>
-              <p className="mt-2 text-4xl font-bold text-ucla-blue">
-                {progress.postQuizScore ?? "N/A"}
-              </p>
-            </div>
-          </div>
-          {progress.preQuizScore != null &&
-            progress.postQuizScore != null && (
-              <p className="mt-4 text-center text-sm text-gray-600">
-                {progress.postQuizScore > progress.preQuizScore
-                  ? `You improved by ${progress.postQuizScore - progress.preQuizScore} point(s).`
-                  : progress.postQuizScore === progress.preQuizScore
-                    ? "Your score remained the same."
-                    : `Your score decreased by ${progress.preQuizScore - progress.postQuizScore} point(s).`}
-              </p>
-            )}
+        {/* Per-item review of the post quiz (your answer vs correct + explanation) */}
+        <div className="mt-6">
+          <PostQuizReview progress={progress} course={activeCourse} />
         </div>
 
         <div className="mt-8 text-center">
-          <Link to="/dashboard">
+          <Link to={coursePath(activeCourse, "/")}>
             <Button size="lg">Back to Dashboard</Button>
           </Link>
         </div>
@@ -186,7 +233,7 @@ export default function PostAssessmentPage() {
                 Knowledge Quiz
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                14 questions on knee MRI interpretation concepts.
+                {getPostQuizQuestions(activeCourse).length} questions on {activeCourse.bodyRegion} MRI interpretation concepts.
               </p>
               <div className="mt-2 flex items-center gap-2">
                 <span
@@ -202,7 +249,7 @@ export default function PostAssessmentPage() {
               </div>
               {!progress.postQuizCompleted && (
                 <div className="mt-4">
-                  <Link to="/post-assessment/quiz">
+                  <Link to={coursePath(activeCourse, "/post-assessment/quiz")}>
                     <Button size="sm">Start Quiz</Button>
                   </Link>
                 </div>
@@ -254,7 +301,7 @@ export default function PostAssessmentPage() {
                 Confidence Survey
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                7 statements to rate your confidence level after the course.
+                {activeCourse.confidenceStatements.length} statements to rate your confidence level after the course.
               </p>
               <div className="mt-2 flex items-center gap-2">
                 <span
@@ -270,7 +317,7 @@ export default function PostAssessmentPage() {
               </div>
               {!progress.postSurveyCompleted && (
                 <div className="mt-4">
-                  <Link to="/post-assessment/survey">
+                  <Link to={coursePath(activeCourse, "/post-assessment/survey")}>
                     <Button size="sm">Start Survey</Button>
                   </Link>
                 </div>

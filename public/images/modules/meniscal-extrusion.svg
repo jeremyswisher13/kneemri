@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 520" width="650" height="520" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="measArrow" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#cc3333"/>
+    </marker>
+    <marker id="measArrowRev" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto-start-reverse">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#cc3333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="650" height="50" fill="#005587" rx="4"/>
+  <text x="325" y="33" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Meniscal Extrusion: Measurement Technique</text>
+  <text x="325" y="48" text-anchor="middle" fill="#DAEBFE" font-size="11">Coronal View - Medial Compartment</text>
+
+  <!-- Main diagram area -->
+  <rect x="20" y="60" width="390" height="450" fill="#f8f9fa" stroke="#DAEBFE" stroke-width="1" rx="8"/>
+
+  <!-- Orientation -->
+  <text x="50" y="85" fill="#005587" font-size="11" font-weight="bold">LATERAL</text>
+  <text x="340" y="85" fill="#005587" font-size="11" font-weight="bold">MEDIAL</text>
+
+  <!-- FEMUR (coronal view, medial condyle) -->
+  <path d="M 100,120
+           C 100,120 90,170 90,220
+           C 90,260 110,290 150,310
+           C 180,322 220,330 260,332
+           C 290,333 310,325 325,310
+           C 340,295 345,270 345,240
+           C 345,200 340,160 335,120"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="215" y="200" text-anchor="middle" fill="#005587" font-size="14" font-weight="bold">FEMUR</text>
+  <text x="215" y="218" text-anchor="middle" fill="#005587" font-size="10">(Medial Condyle)</text>
+
+  <!-- Articular cartilage on femur -->
+  <path d="M 150,310 C 180,324 220,332 260,334 C 290,335 310,327 325,312"
+        fill="none" stroke="#2774AE" stroke-width="4" opacity="0.4"/>
+
+  <!-- TIBIA (coronal view) -->
+  <path d="M 80,370 L 80,480 L 360,480 L 360,370
+           C 350,365 320,360 280,358
+           C 240,356 180,358 150,362
+           C 120,365 95,368 80,370 Z"
+        fill="#DAEBFE" stroke="#005587" stroke-width="2.5"/>
+  <text x="295" y="465" text-anchor="middle" fill="#005587" font-size="14" font-weight="bold">TIBIA</text>
+
+  <!-- Tibial plateau surface -->
+  <path d="M 80,370 C 95,368 120,365 150,362 C 180,358 240,356 280,358 C 320,360 350,365 360,370"
+        fill="none" stroke="#005587" stroke-width="2"/>
+
+  <!-- Articular cartilage on tibia -->
+  <path d="M 130,365 C 170,360 240,358 290,360 C 330,362 350,366 355,368"
+        fill="none" stroke="#2774AE" stroke-width="4" opacity="0.4"/>
+
+  <!-- MEDIAL MENISCUS - showing extrusion beyond tibial margin -->
+  <!-- Normal position would end at tibial edge (~345). Extruded goes to ~390 -->
+  <path d="M 280,340 C 290,338 310,340 330,345
+           C 350,350 370,355 388,358
+           C 400,360 405,365 400,372
+           C 395,380 380,382 365,378
+           C 345,374 325,372 310,374
+           C 295,376 285,370 280,360
+           Z"
+        fill="#2774AE" fill-opacity="0.5" stroke="#2774AE" stroke-width="2"/>
+  <text x="345" y="362" text-anchor="middle" fill="white" font-size="9" font-weight="bold"
+        stroke="#005587" stroke-width="0.3">Meniscus</text>
+
+  <!-- TIBIAL PLATEAU MARGIN REFERENCE LINE -->
+  <line x1="360" y1="310" x2="360" y2="420" stroke="#005587" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="365" y="305" fill="#005587" font-size="9" font-weight="bold">Tibial margin</text>
+  <text x="365" y="317" fill="#005587" font-size="9" font-weight="bold">reference line</text>
+
+  <!-- MEASUREMENT ARROW -->
+  <line x1="360" y1="395" x2="400" y2="395" stroke="#cc3333" stroke-width="2.5"/>
+  <!-- Tick marks -->
+  <line x1="360" y1="390" x2="360" y2="400" stroke="#cc3333" stroke-width="2"/>
+  <line x1="400" y1="390" x2="400" y2="400" stroke="#cc3333" stroke-width="2"/>
+  <!-- Arrow heads -->
+  <path d="M 363,395 L 358,391 M 363,395 L 358,399" fill="none" stroke="#cc3333" stroke-width="1.5"/>
+  <path d="M 397,395 L 402,391 M 397,395 L 402,399" fill="none" stroke="#cc3333" stroke-width="1.5"/>
+  <!-- Measurement label -->
+  <text x="380" y="412" text-anchor="middle" fill="#cc3333" font-size="11" font-weight="bold">Extrusion</text>
+  <text x="380" y="426" text-anchor="middle" fill="#cc3333" font-size="10">distance</text>
+
+  <!-- Joint space -->
+  <text x="250" y="355" text-anchor="middle" fill="#005587" font-size="9" font-style="italic">Joint space</text>
+
+  <!-- Right panel: Clinical significance -->
+  <rect x="430" y="60" width="205" height="450" fill="white" stroke="#005587" stroke-width="1.5" rx="8"/>
+  <rect x="430" y="60" width="205" height="35" fill="#2774AE" rx="8"/>
+  <rect x="430" y="83" width="205" height="12" fill="#2774AE"/>
+  <text x="532" y="83" text-anchor="middle" fill="white" font-size="13" font-weight="bold">Measurement Guide</text>
+
+  <!-- Normal -->
+  <rect x="445" y="108" width="175" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.5" rx="6"/>
+  <text x="532" y="128" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">Normal: 0-3 mm</text>
+  <text x="532" y="145" text-anchor="middle" fill="#2e7d32" font-size="10">Physiologic extrusion</text>
+
+  <!-- Pathologic -->
+  <rect x="445" y="170" width="175" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="1.5" rx="6"/>
+  <text x="532" y="190" text-anchor="middle" fill="#e65100" font-size="12" font-weight="bold">&gt;3 mm = Pathologic</text>
+  <text x="532" y="206" text-anchor="middle" fill="#e65100" font-size="10">Associated with meniscal</text>
+  <text x="532" y="220" text-anchor="middle" fill="#e65100" font-size="10">tears and degeneration</text>
+
+  <!-- Severe -->
+  <rect x="445" y="242" width="175" height="65" fill="#ffebee" stroke="#cc3333" stroke-width="1.5" rx="6"/>
+  <text x="532" y="262" text-anchor="middle" fill="#cc3333" font-size="12" font-weight="bold">&gt;5 mm = Severe</text>
+  <text x="532" y="278" text-anchor="middle" fill="#cc3333" font-size="10">Complete loss of meniscal</text>
+  <text x="532" y="292" text-anchor="middle" fill="#cc3333" font-size="10">hoop stress function</text>
+
+  <!-- Technique box -->
+  <rect x="445" y="325" width="175" height="170" fill="#DAEBFE" fill-opacity="0.3" stroke="#005587" stroke-width="1" rx="6"/>
+  <text x="532" y="345" text-anchor="middle" fill="#005587" font-size="11" font-weight="bold">Technique</text>
+  <line x1="460" y1="352" x2="605" y2="352" stroke="#005587" stroke-width="0.5"/>
+
+  <text x="455" y="372" fill="#005587" font-size="10">1. Use mid-coronal image</text>
+  <text x="455" y="390" fill="#005587" font-size="10">2. Draw vertical line at</text>
+  <text x="462" y="404" fill="#005587" font-size="10">outer tibial plateau edge</text>
+  <text x="455" y="422" fill="#005587" font-size="10">3. Measure horizontal</text>
+  <text x="462" y="436" fill="#005587" font-size="10">distance from line to</text>
+  <text x="462" y="450" fill="#005587" font-size="10">outer meniscal edge</text>
+  <text x="455" y="472" fill="#005587" font-size="10" font-weight="bold">4. Exclude osteophytes</text>
+  <text x="462" y="486" fill="#005587" font-size="10" font-weight="bold">from measurement</text>
+
+  <!-- Visual scale bar in diagram -->
+  <g transform="translate(90, 388)">
+    <rect x="0" y="0" width="50" height="4" fill="#4caf50"/>
+    <rect x="50" y="0" width="30" height="4" fill="#ff9800"/>
+    <rect x="80" y="0" width="30" height="4" fill="#cc3333"/>
+    <text x="25" y="16" text-anchor="middle" fill="#4caf50" font-size="8">0-3mm</text>
+    <text x="65" y="16" text-anchor="middle" fill="#ff9800" font-size="8">3-5mm</text>
+    <text x="95" y="16" text-anchor="middle" fill="#cc3333" font-size="8">&gt;5mm</text>
+  </g>
+
+  <!-- Associations note -->
+  <rect x="35" y="430" width="170" height="60" fill="white" stroke="#FFD100" stroke-width="1.5" rx="4"/>
+  <text x="120" y="448" text-anchor="middle" fill="#005587" font-size="9" font-weight="bold">Associated with:</text>
+  <text x="120" y="462" text-anchor="middle" fill="#005587" font-size="9">- Root tears</text>
+  <text x="120" y="475" text-anchor="middle" fill="#005587" font-size="9">- Medial OA progression</text>
+  <text x="120" y="488" text-anchor="middle" fill="#005587" font-size="9">- Subchondral insufficiency fx</text>
+</svg>

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrowRedSmall" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#DC2626"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="white"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="600" height="40" fill="#005587" rx="0"/>
+  <text x="300" y="27" text-anchor="middle" fill="white" font-size="17" font-weight="bold">Bucket-Handle Meniscal Tear: Cardinal Signs</text>
+
+  <!-- Grid: 2x2 layout -->
+  <!-- Panel 1: Double PCL Sign (top-left) -->
+  <rect x="10" y="50" width="285" height="165" fill="#0f0f23" stroke="#2774AE" stroke-width="1.5" rx="6"/>
+  <rect x="10" y="50" width="285" height="24" fill="#2774AE" rx="6"/>
+  <rect x="10" y="62" width="285" height="12" fill="#2774AE" rx="0"/>
+  <text x="152" y="67" text-anchor="middle" fill="white" font-size="13" font-weight="bold">1. Double PCL Sign</text>
+  <text x="152" y="86" text-anchor="middle" fill="#DAEBFE" font-size="10">(Sagittal View)</text>
+
+  <!-- Femur P1 -->
+  <path d="M 40,110 C 38,130 36,155 50,175 C 60,188 85,198 120,200 C 155,202 180,198 200,188 C 215,178 222,160 220,135 L 220,110 Z"
+        fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <text x="130" y="145" text-anchor="middle" fill="#888" font-size="9">FEMUR</text>
+
+  <!-- Tibia P1 -->
+  <path d="M 50,208 L 45,240 L 205,240 L 200,208 Z"
+        fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+
+  <!-- Normal PCL -->
+  <path d="M 160,180 C 155,190 140,198 120,206"
+        fill="none" stroke="#88ccff" stroke-width="4" stroke-linecap="round"/>
+  <text x="172" y="204" fill="#88ccff" font-size="8">PCL</text>
+
+  <!-- Displaced fragment parallel to PCL = "Double PCL" -->
+  <path d="M 145,178 C 140,188 125,196 108,203"
+        fill="none" stroke="#FFD100" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Red arrow to fragment (label moved to clear dark margin, lower-left) -->
+  <line x1="52" y1="201" x2="112" y2="197" stroke="#DC2626" stroke-width="1.5" marker-end="url(#arrowRedSmall)"/>
+  <text x="14" y="204" fill="#DC2626" font-size="9" font-weight="bold">Fragment</text>
+
+  <!-- Label -->
+  <text x="235" y="125" fill="#FFD100" font-size="9" font-weight="bold">Displaced</text>
+  <text x="235" y="137" fill="#FFD100" font-size="9" font-weight="bold">meniscal</text>
+  <text x="235" y="149" fill="#FFD100" font-size="9" font-weight="bold">fragment</text>
+  <text x="235" y="161" fill="#FFD100" font-size="9">mimics 2nd</text>
+  <text x="235" y="173" fill="#FFD100" font-size="9">PCL</text>
+
+  <!-- Panel 2: Absent Bow-Tie Sign (top-right) -->
+  <rect x="305" y="50" width="285" height="165" fill="#0f0f23" stroke="#2774AE" stroke-width="1.5" rx="6"/>
+  <rect x="305" y="50" width="285" height="24" fill="#2774AE" rx="6"/>
+  <rect x="305" y="62" width="285" height="12" fill="#2774AE" rx="0"/>
+  <text x="447" y="67" text-anchor="middle" fill="white" font-size="13" font-weight="bold">2. Absent Bow-Tie Sign</text>
+  <text x="447" y="86" text-anchor="middle" fill="#DAEBFE" font-size="10">(Sagittal View, Body Region)</text>
+
+  <!-- Normal meniscus bow-tie (left side) -->
+  <text x="355" y="105" text-anchor="middle" fill="#88ccff" font-size="9">Normal</text>
+  <path d="M 325,120 C 340,115 355,115 370,120 C 365,128 345,133 335,128 C 350,133 365,128 370,120"
+        fill="none" stroke="#88ccff" stroke-width="2"/>
+  <!-- Simplified bow-tie shape -->
+  <path d="M 325,118 L 347,126 L 325,134" fill="none" stroke="#88ccff" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M 385,118 L 363,126 L 385,134" fill="none" stroke="#88ccff" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Absent bow-tie (right side) - dashed outline showing missing body -->
+  <text x="530" y="105" text-anchor="middle" fill="#DC2626" font-size="9" font-weight="bold">Absent</text>
+  <path d="M 500,118 L 522,126 L 500,134" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="4,3" stroke-linejoin="round" opacity="0.5"/>
+  <path d="M 560,118 L 538,126 L 560,134" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="4,3" stroke-linejoin="round" opacity="0.5"/>
+  <text x="530" y="145" text-anchor="middle" fill="#DC2626" font-size="8">Body displaced</text>
+
+  <!-- Explanation below -->
+  <rect x="315" y="155" width="265" height="50" fill="#1a1a2e" rx="4"/>
+  <text x="447" y="172" text-anchor="middle" fill="#DAEBFE" font-size="10">Normal: bow-tie seen on 2+ sagittal</text>
+  <text x="447" y="185" text-anchor="middle" fill="#DAEBFE" font-size="10">images. &lt;2 consecutive bow-ties =</text>
+  <text x="447" y="198" text-anchor="middle" fill="#FFD100" font-size="10" font-weight="bold">bucket-handle tear</text>
+
+  <!-- Panel 3: Truncated Body in Notch (coronal confirmation, bottom-left) -->
+  <rect x="10" y="225" width="285" height="165" fill="#0f0f23" stroke="#2774AE" stroke-width="1.5" rx="6"/>
+  <rect x="10" y="225" width="285" height="24" fill="#2774AE" rx="6"/>
+  <rect x="10" y="237" width="285" height="12" fill="#2774AE" rx="0"/>
+  <text x="152" y="242" text-anchor="middle" fill="white" font-size="13" font-weight="bold">3. Truncated Body in Notch</text>
+  <text x="152" y="261" text-anchor="middle" fill="#DAEBFE" font-size="10">(Coronal View)</text>
+
+  <!-- Coronal knee outline -->
+  <!-- Femoral condyles -->
+  <path d="M 50,290 C 50,270 70,268 100,270 C 130,272 140,285 140,300" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <path d="M 170,300 C 170,285 180,272 210,270 C 240,268 260,270 260,290" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <text x="95" y="288" text-anchor="middle" fill="#888" font-size="8">MFC</text>
+  <text x="215" y="288" text-anchor="middle" fill="#888" font-size="8">LFC</text>
+
+  <!-- Intercondylar notch -->
+  <path d="M 140,300 C 143,285 150,278 155,275 C 160,278 167,285 170,300" fill="#0f0f23" stroke="#666" stroke-width="1"/>
+
+  <!-- Flipped fragment in notch -->
+  <ellipse cx="155" cy="290" rx="10" ry="5" fill="#FFD100" opacity="0.8" stroke="#DC2626" stroke-width="1.5"/>
+
+  <!-- Red leader from label (clear dark space, upper-left) to fragment -->
+  <text x="20" y="271" fill="#DC2626" font-size="8" font-weight="bold">Fragment</text>
+  <text x="20" y="281" fill="#DC2626" font-size="8" font-weight="bold">in notch</text>
+  <line x1="60" y1="278" x2="144" y2="289" stroke="#DC2626" stroke-width="1.5" marker-end="url(#arrowRedSmall)"/>
+
+  <!-- Tibial plateau -->
+  <line x1="45" y1="310" x2="265" y2="310" stroke="#888" stroke-width="1.5"/>
+  <rect x="45" y="310" width="220" height="30" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <text x="155" y="330" text-anchor="middle" fill="#888" font-size="8">TIBIA</text>
+
+  <!-- Normal medial meniscus (intact) -->
+  <path d="M 55,305 C 60,300 80,298 100,300 C 110,302 115,306 115,310" fill="#555" stroke="#888" stroke-width="1.5"/>
+
+  <!-- Empty lateral meniscus space -->
+  <path d="M 195,310 C 195,306 200,302 210,300 C 230,298 250,300 255,305" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="225" y="357" text-anchor="middle" fill="#DAEBFE" font-size="9">Meniscal body absent</text>
+  <text x="225" y="368" text-anchor="middle" fill="#DAEBFE" font-size="9">from normal location</text>
+
+  <!-- Panel 4: Fragment in Gutter (bottom-right) -->
+  <rect x="305" y="225" width="285" height="165" fill="#0f0f23" stroke="#2774AE" stroke-width="1.5" rx="6"/>
+  <rect x="305" y="225" width="285" height="24" fill="#2774AE" rx="6"/>
+  <rect x="305" y="237" width="285" height="12" fill="#2774AE" rx="0"/>
+  <text x="447" y="242" text-anchor="middle" fill="white" font-size="13" font-weight="bold">4. Fragment in Gutter</text>
+  <text x="447" y="261" text-anchor="middle" fill="#DAEBFE" font-size="10">(Coronal View)</text>
+
+  <!-- Coronal knee - lateral side focus -->
+  <!-- Femoral condyle -->
+  <path d="M 380,280 C 380,268 400,265 430,267 C 460,269 480,275 490,290 C 495,298 498,305 500,310"
+        fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <text x="435" y="285" text-anchor="middle" fill="#888" font-size="9">LFC</text>
+
+  <!-- Tibial plateau -->
+  <rect x="370" y="315" width="150" height="25" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+  <text x="445" y="332" text-anchor="middle" fill="#888" font-size="8">TIBIA</text>
+
+  <!-- Normal meniscus position (absent/dashed) -->
+  <path d="M 385,312 C 390,308 420,305 460,308 C 480,310 490,313 495,315" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.4"/>
+
+  <!-- Displaced fragment in peripheral gutter/recess -->
+  <ellipse cx="510" cy="300" rx="12" ry="6" fill="#FFD100" opacity="0.8" stroke="#DC2626" stroke-width="1.5"/>
+
+  <!-- Red arrow to gutter fragment -->
+  <line x1="540" y1="280" x2="523" y2="296" stroke="#DC2626" stroke-width="1.5" marker-end="url(#arrowRedSmall)"/>
+  <text x="555" y="275" text-anchor="middle" fill="#DC2626" font-size="9" font-weight="bold">Displaced</text>
+  <text x="555" y="286" text-anchor="middle" fill="#DC2626" font-size="9" font-weight="bold">fragment</text>
+
+  <!-- Peripheral gutter label -->
+  <text x="350" y="300" fill="#DAEBFE" font-size="9">Peripheral</text>
+  <text x="350" y="312" fill="#DAEBFE" font-size="9">gutter</text>
+  <line x1="383" y1="304" x2="498" y2="300" stroke="#DAEBFE" stroke-width="0.5" stroke-dasharray="2,2"/>
+
+  <!-- Summary box -->
+  <text x="447" y="355" text-anchor="middle" fill="#FFD100" font-size="9" font-weight="bold">Look in the medial/lateral gutter</text>
+  <text x="447" y="367" text-anchor="middle" fill="#FFD100" font-size="9" font-weight="bold">for displaced meniscal tissue</text>
+  <text x="447" y="380" text-anchor="middle" fill="#DAEBFE" font-size="8">Often an overlooked location</text>
+</svg>

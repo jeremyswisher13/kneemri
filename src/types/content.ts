@@ -8,6 +8,10 @@ export interface QuizQuestion {
   domain: string;
   prePostMapping: 'identical' | 'parallel-pre' | 'parallel-post' | 'pre-only' | 'post-only';
   parallelId?: string;
+  /** Module this item is blueprinted to (for content-validity traceability). */
+  moduleId?: string;
+  /** Bloom level the item targets — application/analysis for interpretation skill. */
+  cognitiveLevel?: 'apply' | 'analyze';
 }
 
 export interface ConfidenceStatement {

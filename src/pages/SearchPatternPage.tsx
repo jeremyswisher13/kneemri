@@ -1,13 +1,103 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
-import { searchPatternSteps } from "@/content/search-pattern";
+import MriStackViewer from "@/components/ui/MriStackViewer";
+import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { coursePath } from "@/content/courses";
+
+/**
+ * Optional "look HERE" target for a search-pattern step: a stack plane + slice
+ * the embedded viewer jumps to when the step is tapped. Plane dirs and slice
+ * indices are reused verbatim from the vision-verified normal-MRI workstation
+ * content (normal-knee-learn / normal-shoulder-learn) — steps without a clean
+ * verified target are intentionally omitted rather than guessed.
+ */
+interface StepTarget {
+  dir: string;
+  count: number;
+  plane: string;
+  sliceIndex: number;
+}
+
+const KNEE_SAG = "/images/teaching/stacks/normal-knee-sagittal";
+const KNEE_COR = "/images/teaching/stacks/normal-knee-coronal";
+const SH_SAG = "/images/teaching/stacks/normal-shoulder-sagittal";
+const SH_COR = "/images/teaching/stacks/normal-shoulder-coronal";
+const SH_AXI = "/images/teaching/stacks/normal-shoulder-axial";
+
+// Keyed by course id → search-pattern step number.
+const STEP_TARGETS: Record<string, Record<number, StepTarget>> = {
+  "knee-mri": {
+    1: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 13 },
+    2: { dir: KNEE_COR, count: 19, plane: "Coronal PD-FS", sliceIndex: 7 },
+    3: { dir: KNEE_COR, count: 19, plane: "Coronal PD-FS", sliceIndex: 7 },
+    4: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 8 },
+    5: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 21 },
+    6: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 13 },
+    7: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 14 },
+  },
+  "shoulder-mri": {
+    1: { dir: SH_SAG, count: 28, plane: "Oblique sagittal T2-FS", sliceIndex: 11 },
+    2: { dir: SH_COR, count: 24, plane: "Oblique coronal T2-FS", sliceIndex: 11 },
+    3: { dir: SH_COR, count: 24, plane: "Oblique coronal T2-FS", sliceIndex: 7 },
+    4: { dir: SH_SAG, count: 28, plane: "Oblique sagittal T2-FS", sliceIndex: 5 },
+    5: { dir: SH_AXI, count: 30, plane: "Axial PD-FS", sliceIndex: 13 },
+    6: { dir: SH_AXI, count: 30, plane: "Axial PD-FS", sliceIndex: 13 },
+    7: { dir: SH_COR, count: 24, plane: "Oblique coronal T2-FS", sliceIndex: 11 },
+  },
+};
+
+function stackAttr(bodyRegion: string) {
+  return `De-identified normal ${bodyRegion} MRI · UCLA Sports Medicine teaching collection`;
+}
+
+function targetSlices(target: StepTarget) {
+  return Array.from({ length: target.count }, (_, i) => ({
+    src: `${target.dir}/slice_${String(i + 1).padStart(2, "0")}.jpg`,
+    alt: `${target.plane} slice ${i + 1}`,
+  }));
+}
 
 export default function SearchPatternPage() {
+  const activeCourse = useActiveCourse();
+  const searchPatternSteps = activeCourse.searchPatternSteps;
   const [currentStep, setCurrentStep] = useState(0);
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [showSummary, setShowSummary] = useState(false);
+
+  const courseTargets = STEP_TARGETS[activeCourse.id] ?? {};
+  // The step number the embedded viewer is parked on, and whether it's expanded.
+  const [activeTargetStep, setActiveTargetStep] = useState<number | null>(null);
+  const [viewerOpen, setViewerOpen] = useState(true);
+  const activeTarget =
+    activeTargetStep != null ? courseTargets[activeTargetStep] : undefined;
+  // Memoize so toggling a checklist item (which re-renders) doesn't hand the
+  // viewer a brand-new slices array each render — that referential change would
+  // reset its zoom/pan and jump it back to the anchor slice. activeTarget is a
+  // stable object from courseTargets, so this recomputes only on target change.
+  const slices = useMemo(
+    () => (activeTarget ? targetSlices(activeTarget) : []),
+    [activeTarget],
+  );
+  const activeTargetName =
+    activeTargetStep != null
+      ? searchPatternSteps.find((s) => s.number === activeTargetStep)?.name
+      : undefined;
+
+  // React Router reuses this component instance across course-scoped routes, and
+  // step numbers collide between courses (both start at 1), so stale checkbox
+  // state would bleed from one course's checklist into another's. Reset when the
+  // active course changes — adjusted during render (not in an effect) so the new
+  // course never renders a frame with the previous course's checked items.
+  const [prevCourse, setPrevCourse] = useState(activeCourse.id);
+  if (activeCourse.id !== prevCourse) {
+    setPrevCourse(activeCourse.id);
+    setCheckedItems({});
+    setCurrentStep(0);
+    setShowSummary(false);
+    setActiveTargetStep(null);
+  }
 
   function toggleItem(stepNumber: number, itemIndex: number) {
     const key = `${stepNumber}-${itemIndex}`;
@@ -40,6 +130,7 @@ export default function SearchPatternPage() {
     (sum, s) => sum + s.checklistItems.length,
     0
   );
+  const percentChecked = totalItems > 0 ? Math.round((totalChecked / totalItems) * 100) : 0;
 
   if (showSummary) {
     return (
@@ -48,7 +139,7 @@ export default function SearchPatternPage() {
           Search Pattern Summary
         </h1>
         <p className="mt-1 text-gray-500">
-          You checked {totalChecked} of {totalItems} items across all 7 steps.
+          You checked {totalChecked} of {totalItems} items across all {searchPatternSteps.length} steps.
         </p>
 
         {/* Progress bar */}
@@ -56,11 +147,11 @@ export default function SearchPatternPage() {
           <div className="h-3 w-full rounded-full bg-gray-200">
             <div
               className="h-3 rounded-full bg-ucla-blue transition-all"
-              style={{ width: `${(totalChecked / totalItems) * 100}%` }}
+              style={{ width: `${percentChecked}%` }}
             />
           </div>
-          <p className="mt-1 text-sm text-gray-400 text-right">
-            {Math.round((totalChecked / totalItems) * 100)}% complete
+          <p className="mt-1 text-sm text-gray-500 text-right">
+            {percentChecked}% complete
           </p>
         </div>
 
@@ -100,7 +191,7 @@ export default function SearchPatternPage() {
                     className={`text-sm ${
                       isItemChecked(step.number, i)
                         ? "text-green-700"
-                        : "text-gray-400"
+                        : "text-gray-500"
                     }`}
                   >
                     {isItemChecked(step.number, i) ? "\u2713" : "\u2717"} {item}
@@ -115,7 +206,7 @@ export default function SearchPatternPage() {
           <Button variant="secondary" onClick={() => setShowSummary(false)}>
             Back to Steps
           </Button>
-          <Link to="/cases">
+          <Link to={coursePath(activeCourse, "/cases")}>
             <Button>Practice on a Case</Button>
           </Link>
         </div>
@@ -126,12 +217,57 @@ export default function SearchPatternPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-gray-900">
-        7-Step Search Pattern Trainer
+        {searchPatternSteps.length}-Step Search Pattern Trainer
       </h1>
       <p className="mt-1 text-gray-500">
-        Practice the systematic approach to knee MRI interpretation. Complete
+        Practice the systematic approach to {activeCourse.bodyRegion} MRI interpretation. Complete
         each step&apos;s checklist to build your reading pattern.
       </p>
+
+      {/* Embedded "look here" viewer — jumps to the verified plane/slice for the
+          tapped step so the checklist becomes "look HERE". Collapsible. */}
+      {activeTarget && (
+        <div className="mt-6 overflow-hidden rounded-xl border-2 border-ucla-blue/25 bg-ucla-blue/[0.04]">
+          <button
+            type="button"
+            onClick={() => setViewerOpen((v) => !v)}
+            aria-expanded={viewerOpen}
+            className="flex w-full items-center gap-2 border-b border-ucla-blue/15 bg-ucla-blue/[0.06] px-4 py-2.5 text-left"
+          >
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-ucla-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+              Look here
+            </span>
+            <span className="flex-1 text-sm font-semibold text-gray-900">
+              {activeTargetName} — {activeTarget.plane}
+            </span>
+            <svg
+              className={`h-5 w-5 shrink-0 text-gray-500 transition-transform ${
+                viewerOpen ? "rotate-180" : ""
+              }`}
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          {viewerOpen && (
+            <div className="px-4 py-4">
+              <MriStackViewer
+                key={`${activeTarget.dir}-${activeTarget.sliceIndex}`}
+                slices={slices}
+                plane={activeTarget.plane}
+                attribution={stackAttr(activeCourse.bodyRegion)}
+                startIndex={activeTarget.sliceIndex}
+              />
+              <p className="mt-2 text-xs text-gray-500">
+                Jumped to the key slice for this step. Scroll to explore the rest of the stack.
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Overall Progress */}
       <div className="mt-6 mb-8">
@@ -163,9 +299,13 @@ export default function SearchPatternPage() {
             <div key={step.number}>
               {/* Step Header */}
               <button
-                onClick={() =>
-                  setCurrentStep(isActive ? -1 : stepIdx)
-                }
+                onClick={() => {
+                  setCurrentStep(isActive ? -1 : stepIdx);
+                  if (courseTargets[step.number]) {
+                    setActiveTargetStep(step.number);
+                    setViewerOpen(true);
+                  }
+                }}
                 className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all ${
                   isActive
                     ? "border-ucla-blue bg-white shadow-sm"
@@ -208,7 +348,7 @@ export default function SearchPatternPage() {
                     Step {step.number}: {step.name}
                   </h3>
                   {!isActive && (
-                    <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
+                    <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">
                       {step.description}
                     </p>
                   )}
@@ -216,13 +356,13 @@ export default function SearchPatternPage() {
 
                 {/* Progress indicator */}
                 {!stepComplete && (
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-500">
                     {getStepProgress(step.number)}%
                   </span>
                 )}
 
                 <svg
-                  className={`h-5 w-5 shrink-0 text-gray-400 transition-transform ${
+                  className={`h-5 w-5 shrink-0 text-gray-500 transition-transform ${
                     isActive ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -245,6 +385,25 @@ export default function SearchPatternPage() {
                     {step.description}
                   </p>
 
+                  {/* Jump the embedded viewer to this step's key slice */}
+                  {courseTargets[step.number] && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveTargetStep(step.number);
+                        setViewerOpen(true);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="mb-4 inline-flex items-center gap-1.5 rounded-lg border border-ucla-blue/40 bg-ucla-blue/10 px-3 py-1.5 text-xs font-semibold text-ucla-blue transition-colors hover:bg-ucla-blue/20"
+                    >
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                      </svg>
+                      Show on MRI
+                    </button>
+                  )}
+
                   {/* Checklist */}
                   <div className="space-y-2">
                     {step.checklistItems.map((item, i) => (
@@ -261,7 +420,7 @@ export default function SearchPatternPage() {
                         <span
                           className={`text-sm ${
                             isItemChecked(step.number, i)
-                              ? "text-gray-400 line-through"
+                              ? "text-gray-500 line-through"
                               : "text-gray-700 group-hover:text-gray-900"
                           }`}
                         >
@@ -344,7 +503,7 @@ export default function SearchPatternPage() {
             setCheckedItems({});
             setCurrentStep(0);
           }}
-          className="text-sm text-gray-400 hover:text-gray-600"
+          className="text-sm text-gray-500 hover:text-gray-600"
         >
           Reset all checkboxes
         </button>
@@ -352,7 +511,7 @@ export default function SearchPatternPage() {
           <Button variant="secondary" onClick={() => setShowSummary(true)}>
             View Summary
           </Button>
-          <Link to="/cases">
+          <Link to={coursePath(activeCourse, "/cases")}>
             <Button>Practice on a Case</Button>
           </Link>
         </div>

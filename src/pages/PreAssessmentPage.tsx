@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { useProgress } from "@/hooks/useProgress";
+import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { coursePath, getPreQuizQuestions } from "@/content/courses";
 
 export default function PreAssessmentPage() {
-  const { progress, loading } = useProgress();
+  const activeCourse = useActiveCourse();
+  const { progress, loading } = useProgress(activeCourse);
 
   if (loading) {
     return (
@@ -53,7 +56,7 @@ export default function PreAssessmentPage() {
             now proceed to the course modules.
           </p>
           <div className="mt-6">
-            <Link to="/modules">
+            <Link to={coursePath(activeCourse, "/modules")}>
               <Button variant="primary" size="lg">
                 Continue to Modules
               </Button>
@@ -118,7 +121,7 @@ export default function PreAssessmentPage() {
                 Knowledge Quiz
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                14 questions on knee MRI interpretation concepts.
+                {getPreQuizQuestions(activeCourse).length} questions on {activeCourse.bodyRegion} MRI interpretation concepts.
               </p>
               <div className="mt-2 flex items-center gap-2">
                 <span
@@ -134,7 +137,7 @@ export default function PreAssessmentPage() {
               </div>
               {!progress.preQuizCompleted && (
                 <div className="mt-4">
-                  <Link to="/pre-assessment/quiz">
+                  <Link to={coursePath(activeCourse, "/pre-assessment/quiz")}>
                     <Button size="sm">Start Quiz</Button>
                   </Link>
                 </div>
@@ -188,7 +191,7 @@ export default function PreAssessmentPage() {
                 Confidence Survey
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                7 statements to rate your current confidence level.
+                {activeCourse.confidenceStatements.length} statements to rate your current confidence level.
               </p>
               <div className="mt-2 flex items-center gap-2">
                 <span
@@ -204,7 +207,7 @@ export default function PreAssessmentPage() {
               </div>
               {!progress.preSurveyCompleted && (
                 <div className="mt-4">
-                  <Link to="/pre-assessment/survey">
+                  <Link to={coursePath(activeCourse, "/pre-assessment/survey")}>
                     <Button size="sm">Start Survey</Button>
                   </Link>
                 </div>

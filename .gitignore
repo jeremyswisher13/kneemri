@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw MRI screenshot uploads (staging only — processed/de-identified copies go in public/images)
+mri-staging/
+
+# Firebase deploy cache (build artifact)
+.firebase/
+
+# Environment files (secrets / Firebase web config). *.local already covers
+# .env.local; this also catches a bare .env in the repo root or functions/.
+.env

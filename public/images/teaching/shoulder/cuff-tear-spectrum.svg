@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 440" width="660" height="440" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arW" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 Z" fill="#ffffff"/></marker>
+    <marker id="arY" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 Z" fill="#FFD100"/></marker>
+  </defs>
+  <rect width="660" height="440" fill="#1a1a2e"/>
+  <rect x="0" y="0" width="660" height="44" fill="#2774AE"/>
+  <text x="330" y="29" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">Rotator Cuff: Tendinosis vs Partial vs Full-Thickness</text>
+  <text x="330" y="62" text-anchor="middle" fill="#9fb6cc" font-size="12">Oblique coronal — supraspinatus from musculotendinous junction to footprint</text>
+
+  <!-- Three panels -->
+  <!-- Panel template: humeral head (curved), greater tuberosity footprint, tendon, bursa above -->
+  <!-- PANEL 1: TENDINOSIS -->
+  <g>
+    <rect x="20" y="78" width="200" height="300" fill="#0f0f23" stroke="#333" rx="6"/>
+    <text x="120" y="98" text-anchor="middle" fill="#FFD100" font-size="13" font-weight="bold">TENDINOSIS</text>
+    <!-- humeral head -->
+    <path d="M40,360 Q120,250 200,360 Z" fill="#3a3f55"/>
+    <!-- footprint / greater tuberosity -->
+    <rect x="150" y="300" width="40" height="22" rx="3" fill="#4a4f68"/>
+    <!-- tendon (thickened, intermediate gray, intact, no surface defect) -->
+    <path d="M55,250 Q120,230 185,300 L185,322 Q120,262 55,278 Z" fill="#8a8fa6"/>
+    <!-- bursa (thin) -->
+    <path d="M55,244 Q120,224 185,294" fill="none" stroke="#5566aa" stroke-width="4" opacity="0.5"/>
+    <line x1="118" y1="150" x2="118" y2="244" stroke="#FFD100" stroke-width="2" marker-end="url(#arY)"/>
+    <text x="120" y="142" text-anchor="middle" fill="#FFD100" font-size="11">Thick, gray signal</text>
+    <text x="120" y="128" text-anchor="middle" fill="#FFD100" font-size="11">— no surface defect</text>
+  </g>
+
+  <!-- PANEL 2: PARTIAL (articular-sided) -->
+  <g>
+    <rect x="230" y="78" width="200" height="300" fill="#0f0f23" stroke="#333" rx="6"/>
+    <text x="330" y="98" text-anchor="middle" fill="#FFD100" font-size="13" font-weight="bold">PARTIAL — ARTICULAR</text>
+    <path d="M250,360 Q330,250 410,360 Z" fill="#3a3f55"/>
+    <rect x="360" y="300" width="40" height="22" rx="3" fill="#4a4f68"/>
+    <!-- tendon with undersurface (articular) defect -->
+    <path d="M265,250 Q330,232 395,300 L395,320 Q330,266 265,278 Z" fill="#8a8fa6"/>
+    <!-- bright fluid notch on deep/articular surface -->
+    <path d="M300,300 q14,-16 30,-12 l-4,18 q-14,2 -26,-6 Z" fill="#eaf6ff"/>
+    <line x1="318" y1="372" x2="318" y2="330" stroke="#fff" stroke-width="2" marker-end="url(#arW)"/>
+    <text x="330" y="392" text-anchor="middle" fill="#cfe3f5" font-size="11">Fluid-bright reaches</text>
+    <text x="330" y="376" text-anchor="middle" fill="#cfe3f5" font-size="11">deep (joint) surface only</text>
+  </g>
+
+  <!-- PANEL 3: FULL-THICKNESS -->
+  <g>
+    <rect x="440" y="78" width="200" height="300" fill="#0f0f23" stroke="#333" rx="6"/>
+    <text x="540" y="98" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="bold">FULL-THICKNESS</text>
+    <path d="M460,360 Q540,250 620,360 Z" fill="#3a3f55"/>
+    <rect x="570" y="300" width="40" height="22" rx="3" fill="#4a4f68"/>
+    <!-- retracted tendon stump -->
+    <path d="M470,252 Q500,240 520,262 L520,286 Q500,266 470,280 Z" fill="#8a8fa6"/>
+    <!-- gap with bright fluid spanning surfaces, footprint bare -->
+    <path d="M520,258 q30,4 56,40 l0,20 q-30,-34 -56,-40 Z" fill="#eaf6ff"/>
+    <!-- bursal fluid above communicating -->
+    <path d="M470,236 Q540,220 615,290" fill="none" stroke="#bfe0ff" stroke-width="5" opacity="0.8"/>
+    <line x1="556" y1="150" x2="552" y2="282" stroke="#fff" stroke-width="2" marker-end="url(#arW)"/>
+    <text x="556" y="142" text-anchor="middle" fill="#cfe3f5" font-size="11">Gap spans articular→bursal;</text>
+    <text x="556" y="128" text-anchor="middle" fill="#cfe3f5" font-size="11">joint–bursa fluid communicates</text>
+  </g>
+
+  <text x="330" y="404" text-anchor="middle" fill="#7f8aa3" font-size="11">Tendinosis = thick/gray, no surface defect  ·  Partial = one surface  ·  Full-thickness = both surfaces, fluid communicates to bursa</text>
+  <text x="330" y="424" text-anchor="middle" fill="#5b6680" font-size="10">UCLA Shoulder MRI Course — original teaching illustration (schematic)</text>
+</svg>

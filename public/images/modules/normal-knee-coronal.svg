@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 0 800 500" width="800" height="500" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="cLeader" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+      <path d="M0,0 L6,2 L0,4 Z" fill="white"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="-100" y="0" width="800" height="500" fill="#1a1a2e"/>
+
+  <!-- Title bar -->
+  <rect x="-100" y="0" width="800" height="44" fill="#2774AE" rx="0"/>
+  <text x="300" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Normal Knee: Coronal MRI Anatomy</text>
+
+  <!-- Orientation -->
+  <text x="40" y="68" fill="#888" font-size="11" font-weight="bold">LATERAL</text>
+  <text x="480" y="68" fill="#888" font-size="11" font-weight="bold">MEDIAL</text>
+
+  <!-- FEMORAL SHAFT -->
+  <path d="M 225,75 L 220,140 C 218,160 210,190 195,220 C 175,260 155,280 140,300
+           C 130,315 128,330 140,345 C 155,360 175,365 200,367
+           L 200,367 C 240,370 270,370 300,370
+           C 330,370 360,370 400,367
+           L 400,367 C 425,365 445,360 460,345 C 472,330 470,315 460,300
+           C 445,280 425,260 405,220 C 390,190 382,160 380,140 L 375,75 Z"
+        fill="#3a3a4e" stroke="#666" stroke-width="2"/>
+
+  <!-- Femoral marrow -->
+  <path d="M 240,90 L 237,150 C 235,170 228,195 215,225 C 200,255 185,275 170,295
+           C 165,305 168,320 180,335 C 195,350 220,358 280,360
+           C 340,362 380,355 415,340 C 430,328 435,310 428,295
+           C 415,275 400,255 385,225 C 372,195 365,170 363,150 L 360,90 Z"
+        fill="#4a4a5e" stroke="none" opacity="0.3"/>
+
+  <!-- Femoral condyle articular cartilage -->
+  <path d="M 140,345 C 155,362 175,367 200,369 C 240,372 270,372 300,372 C 330,372 360,372 400,369 C 425,367 445,362 460,345"
+        fill="none" stroke="#777" stroke-width="4" opacity="0.6"/>
+
+  <text x="300" y="160" text-anchor="middle" fill="#777" font-size="14" font-weight="bold">FEMUR</text>
+
+  <!-- Lateral femoral condyle label area -->
+  <!-- Medial femoral condyle label area -->
+
+  <!-- Joint space -->
+  <rect x="125" y="375" width="350" height="10" fill="#0f0f23" opacity="0.5"/>
+
+  <!-- TIBIA -->
+  <path d="M 120,385 C 120,385 115,390 112,400
+           L 105,450 L 495,450 L 488,400
+           C 485,390 480,385 480,385 Z"
+        fill="#3a3a4e" stroke="#666" stroke-width="2"/>
+
+  <!-- Tibial marrow -->
+  <path d="M 130,395 L 125,440 L 480,440 L 475,395"
+        fill="#4a4a5e" stroke="none" opacity="0.3"/>
+
+  <!-- Tibial plateau surface -->
+  <line x1="120" y1="385" x2="480" y2="385" stroke="#666" stroke-width="1.5"/>
+
+  <!-- Tibial eminences -->
+  <path d="M 270,385 L 285,372 L 315,372 L 330,385" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+
+  <text x="300" y="435" text-anchor="middle" fill="#777" font-size="14" font-weight="bold">TIBIA</text>
+
+  <!-- LATERAL MENISCUS (dark triangle, left side) -->
+  <path d="M 135,378 L 180,360 L 230,378 Z"
+        fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+
+  <!-- MEDIAL MENISCUS (dark triangle, right side) -->
+  <path d="M 370,378 L 420,360 L 465,378 Z"
+        fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+
+  <!-- LCL (cord-like, lateral side) -->
+  <path d="M 148,260 L 105,400"
+        fill="none" stroke="#555" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 148,260 L 105,400"
+        fill="none" stroke="#4a4a5e" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- MCL superficial layer (long band, medial side) -->
+  <path d="M 452,260 L 490,420"
+        fill="none" stroke="#555" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 452,260 L 490,420"
+        fill="none" stroke="#4a4a5e" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- MCL deep layer (shorter, attaches to meniscus) -->
+  <path d="M 460,330 L 465,375"
+        fill="none" stroke="#666" stroke-width="3" stroke-linecap="round" stroke-dasharray="4,3"/>
+
+  <!-- LABELS -->
+
+  <!-- Lateral femoral condyle -->
+  <line x1="175" y1="330" x2="40" y2="290" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="35" y="286" text-anchor="end" fill="white" font-size="10">Lateral femoral</text>
+  <text x="35" y="298" text-anchor="end" fill="white" font-size="10">condyle</text>
+
+  <!-- Medial femoral condyle -->
+  <line x1="425" y1="330" x2="560" y2="290" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="565" y="286" fill="white" font-size="10">Medial femoral</text>
+  <text x="565" y="298" fill="white" font-size="10">condyle</text>
+
+  <!-- LCL label -->
+  <line x1="120" y1="340" x2="30" y2="350" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="25" y="346" text-anchor="end" fill="#2774AE" font-size="11" font-weight="bold">LCL</text>
+
+  <!-- MCL superficial label -->
+  <line x1="480" y1="340" x2="565" y2="330" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="570" y="326" fill="#2774AE" font-size="11" font-weight="bold">MCL</text>
+  <text x="570" y="338" fill="#aaa" font-size="9">(superficial)</text>
+
+  <!-- MCL deep label -->
+  <line x1="465" y1="355" x2="565" y2="360" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="570" y="356" fill="#2774AE" font-size="10">Deep MCL</text>
+  <text x="570" y="368" fill="#aaa" font-size="9">(to meniscus)</text>
+
+  <!-- Lateral meniscus label -->
+  <line x1="180" y1="365" x2="35" y2="385" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="30" y="382" text-anchor="end" fill="white" font-size="10">Lateral meniscus</text>
+  <text x="30" y="394" text-anchor="end" fill="#aaa" font-size="9">(body)</text>
+
+  <!-- Medial meniscus label -->
+  <line x1="420" y1="365" x2="565" y2="390" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="570" y="388" fill="white" font-size="10">Medial meniscus</text>
+  <text x="570" y="400" fill="#aaa" font-size="9">(body)</text>
+
+  <!-- Articular cartilage label -->
+  <line x1="300" y1="370" x2="300" y2="340" stroke="white" stroke-width="0.8"/>
+  <text x="300" y="335" text-anchor="middle" fill="#aaa" font-size="9">Articular cartilage</text>
+
+  <!-- Lateral tibial plateau label -->
+  <line x1="190" y1="387" x2="35" y2="430" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="30" y="428" text-anchor="end" fill="white" font-size="10">Lateral tibial plateau</text>
+
+  <!-- Medial tibial plateau label -->
+  <line x1="410" y1="387" x2="565" y2="430" stroke="white" stroke-width="0.8" marker-end="url(#cLeader)"/>
+  <text x="570" y="428" fill="white" font-size="10">Medial tibial plateau</text>
+
+  <!-- Tibial eminence label -->
+  <line x1="300" y1="375" x2="300" y2="350" stroke="white" stroke-width="0.8"/>
+  <text x="300" y="348" text-anchor="middle" fill="white" font-size="9">Tibial eminence</text>
+
+  <!-- Bottom info -->
+  <rect x="15" y="457" width="570" height="35" fill="#16213e" stroke="#333" stroke-width="1" rx="4"/>
+  <text x="30" y="474" fill="white" font-size="10" font-weight="bold">Coronal view:</text>
+  <text x="120" y="474" fill="#aaa" font-size="10">Best for collateral ligaments (MCL/LCL), meniscal bodies, alignment, and root tears</text>
+  <text x="30" y="487" fill="#2774AE" font-size="10" font-weight="bold">MCL has 2 layers:</text>
+  <text x="155" y="487" fill="#aaa" font-size="10">Superficial (long band to tibia) and deep (short, attaches to medial meniscus)</text>
+</svg>

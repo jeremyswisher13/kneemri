@@ -1,0 +1,637 @@
+{
+  "course": {
+    "title": "Elbow MRI for Primary Care Sports Medicine",
+    "shortTitle": "Elbow MRI",
+    "blurb": "A primary care sports medicine elbow MRI course focused on management-changing interpretation: the thrower's elbow (UCL and valgus overload, capitellar OCD, ulnar neuritis, olecranon stress), the LCL complex and posterolateral rotatory instability, the coronoid/anteromedial-facet axis and varus posteromedial rotatory instability, the distal biceps and triceps, common flexor/extensor tendinopathy, the three nerves, and don't-miss findings. Certification course: pre-assessment + confidence survey, eight teaching modules, an interactive MRI workstation, knowledge check, spaced review, and a matched post-assessment; >=70% post-quiz gates the certificate (threshold kept in sync client<->Cloud Functions, per the email-cert pipeline).",
+    "planes": [
+      "Coronal T2-FS (the only sequence/plane available so far): the workhorse for the UCL anterior bundle to the sublime tubercle and the T-sign, the LCL/RCL/LUCL common origin, the common flexor and extensor origins, and the radiocapitellar contact zone where capitellar OCD lives. NOTE: as of this build the only elbow MRI images on hand are coronal T2-FS, so the workstation will initially teach UCL, epicondylitis, LCL-origin, and the coronal OCD face on this single plane; axial, sagittal, FABS, and arthrographic stacks must be acquired before nerve, distal-biceps-footprint, loose-body, and full OCD-staging teaching can be image-driven.",
+      "Axial (to acquire): nerves (ulnar nerve in the cubital tunnel including flexion subluxation, radial/PIN at the arcade of Frohse, median/AIN), the annular ligament around the radial neck, common flexor/extensor origins in cross-section, and the distal biceps footprint.",
+      "Sagittal (to acquire): olecranon and coronoid fossae and the radiocapitellar recess for loose bodies, the olecranon/triceps insertion, the anterior/posterior fat pads, and the anterior-to-posterior extent/contour of a capitellar OCD (read OCD on coronal + sagittal together).",
+      "FABS — Flexed elbow, ABducted shoulder, forearm Supinated (to acquire): lays the distal biceps tendon out in-plane to its radial-tuberosity footprint for partial-vs-complete grading and retraction measurement.",
+      "MR arthrography (direct intra-articular gadolinium, to acquire): the most sensitive study for the partial undersurface UCL tear (T-sign) and for intra-articular loose bodies/chondral delamination; add when non-contrast MRI is equivocal in a thrower whose exam says UCL, or when OCD stability will change the surgical decision."
+    ]
+  },
+  "modules": [
+    {
+      "id": "elbow-mri-orientation",
+      "title": "Elbow MRI Orientation",
+      "domain": "elbow-orientation-protocol",
+      "searchPatternStep": 1,
+      "objectives": [
+        "Choose the right protocol: routine non-contrast elbow vs MR arthrogram, and recognize when FABS positioning helps the distal biceps.",
+        "Assign each imaging plane to the structure it best shows, and state which plane answers which clinical question.",
+        "Translate the clinical question (UCL vs medial epicondylitis vs ulnar nerve vs OCD vs distal biceps) into a focused but complete search."
+      ],
+      "keyPoints": [
+        "Plane-to-structure map: AXIAL = nerves (cubital and radial tunnels), common flexor/extensor origins in cross-section, biceps footprint, annular ligament; CORONAL = UCL anterior bundle to the sublime tubercle, LCL/RCL/LUCL origin, epicondyle origins, and the radiocapitellar contact zone where capitellar OCD lives; SAGITTAL = olecranon/coronoid fossa loose bodies, olecranon/triceps, anterior-to-posterior extent of a capitellar OCD. Capitellar OCD is best assessed on CORONAL + SAGITTAL together, not sagittal alone (verifier correction).",
+        "FABS (Flexed elbow, ABducted shoulder, forearm Supinated, prone) lays the distal biceps tendon in-plane to its radial-tuberosity footprint — order it when distal biceps partial-vs-complete tear and retraction are the question.",
+        "MR arthrography (direct intra-articular gadolinium) raises sensitivity for the partial undersurface UCL tear (the T-sign) and for intra-articular loose bodies and chondral flaps; non-contrast 3T answers most cases. An abduction/valgus-applied or flexed positioning adjunct CAN open the medial joint to improve undersurface-tear conspicuity, but the elbow 'ABER' evidence base is thin compared with the shoulder — present it as an adjunct, not a validated routine sequence (verifier hedge).",
+        "Fluid-sensitive fat-suppressed (PD/T2 FS or STIR) for edema/fluid/stress; T1 for marrow, fat, anatomy, and arthrogram contrast; confirm any finding in >=2 planes.",
+        "Pitfalls seeded here: the pseudodefect of the capitellum (the normal POSTEROLATERAL/postero-inferior bare-area groove at the capitellum-lateral-epicondyle junction) and the transverse trochlear ridge/trochlear groove mimicking osteochondral lesions; a small normal synovial recess near the distal UCL mimicking a partial tear."
+      ]
+    },
+    {
+      "id": "elbow-search-pattern",
+      "title": "Elbow Search Pattern",
+      "domain": "elbow-search-pattern",
+      "searchPatternStep": 0,
+      "objectives": [
+        "Apply the 8-step elbow search pattern to every case, bones and marrow first.",
+        "Recognize where misses cluster: partial undersurface UCL tears, subtle ulnar neuritis, small loose bodies, the radiocapitellar plica, and the small-but-unstable anteromedial coronoid facet fracture.",
+        "Produce a structured impression that names the structure, the grade/severity, and the management consequence."
+      ],
+      "keyPoints": [
+        "NOTE on searchPatternStep: this module teaches the pattern itself and has no single mapped structure step — it is authored as null (no step) in code like the shoulder/hip Search-Pattern modules; it is encoded here as 0 only because the output schema requires a number. The engineer should write `searchPatternStep: null`.",
+        "The 8-step order starts with context and bones/marrow, then ligaments, tendons, nerves, joint/synovium, and a final management review — so high-consequence osseous and ligament findings are not lost to satisfaction-of-search after an obvious tendinopathy.",
+        "Satisfaction-of-search traps: calling lateral epicondylitis and stopping (miss the deep common-extensor tear undercutting the LUCL -> PLRI); calling medial epicondylitis and stopping (miss the UCL and the ulnar nerve sitting just posterior in the cubital tunnel).",
+        "Medial 'two-compartment habit': every thrower's medial-pain read is UCL + flexor-pronator origin + ulnar nerve as a linked triad, because valgus overload injures all three.",
+        "Post-trauma habit: in any dislocated/post-dislocation or 'terrible-triad' elbow, the read is a circle — LCL/LUCL (the usual primary lesion), then the coronoid (including the small anteromedial facet that implies varus posteromedial rotatory instability), then the radial head, then the Osborne-Cotterill posterolateral capitellar impaction and heterotopic ossification. Small does not mean stable at the coronoid.",
+        "Always sweep the coronoid fossa, olecranon fossa, and radiocapitellar recess for loose bodies in a locking/catching history, and check the radiocapitellar plica as a mimic.",
+        "Structured impression language: low-grade vs high-grade, partial undersurface vs full-thickness, acute vs chronic, attenuated vs avulsed, stable vs instability-pattern, ulnar nerve subluxation/edema, fragment displacement in mm and intra-articular vs not."
+      ]
+    },
+    {
+      "id": "elbow-bones-marrow",
+      "title": "Bones, Marrow & Osteochondral",
+      "domain": "elbow-bones-marrow-osteochondral",
+      "searchPatternStep": 2,
+      "objectives": [
+        "Distinguish capitellar osteochondritis dissecans (OCD) from Panner disease by age and reversibility, and judge OCD stability from interface signs.",
+        "Recognize the thrower's osseous stress lesions: medial epicondyle apophysis (Little League elbow), olecranon stress reaction vs stress fracture and the persistent olecranon physis, and the posteromedial olecranon osteophyte of valgus extension overload.",
+        "Apply CRITOE and the radiocapitellar line, detect occult radial-head fracture, localize loose bodies, and recognize primary elbow OA as a common non-thrower source of loose bodies.",
+        "Recognize the high-stakes pediatric misses: displaced medial epicondyle avulsion/intra-articular incarceration and the lateral condyle (Salter-Harris IV) fracture."
+      ],
+      "keyPoints": [
+        "Panner disease = self-limited osteochondrosis/AVN of the ENTIRE capitellar ossific nucleus in a younger child (~5-10 yr), reversible, no fragment/cyst/loose body, managed conservatively. Capitellar OCD = FOCAL anterolateral/central osteochondral lesion of the adolescent/teen (~12-17 yr) thrower/gymnast that can fragment and form a loose body. Age + focality + stability are the discriminators.",
+        "OCD INSTABILITY signs (toward surgical referral): a T2-bright fluid line completely undercutting the fragment at the interface (the most reliable adult criterion, matching joint-fluid signal); a sizeable or multiple subchondral cyst(s) deep to the fragment; a high-signal cartilage cleft reaching the fragment (delamination); or a displaced fragment/loose body. The 5 mm cyst figure is De Smet's knee-derived criterion (NOT 'Dipaola/De Smet' jointly; Dipaola is a staging system) and is not validated for the capitellum — teach 'sizeable or multiple subchondral cysts,' not a hard 5 mm cutoff (verifier correction).",
+        "Surrounding marrow edema alone is NOT a stability sign (present in stable and unstable lesions). An isolated high-T2 line WITHOUT a cartilage breach or cyst is INDETERMINATE (can be healing granulation tissue) — get MR/CT arthrography when stability will change the operation.",
+        "Do not assert elbow-specific pooled accuracy: the often-quoted ~0.92 sensitivity / 0.85 specificity for OCD MRI stability criteria comes from an OCD-wide (predominantly KNEE) meta-analysis, extrapolated to the elbow — cite it that way or teach the signs qualitatively (verifier correction).",
+        "Little League elbow = medial epicondyle apophysitis/avulsion from repetitive valgus traction in the skeletally immature thrower (widened, fluid-bright physis + marrow edema). Operative triggers in a throwing athlete: displacement >=5 mm, an intra-articular/incarcerated fragment, or valgus instability — report the exact mm and whether the fragment is intra-articular (mm cutoff is debated in the general population; >=5 mm is the widely taught throwing-athlete trigger; incarceration/instability mandates surgery regardless of mm). After a transient dislocation that spontaneously reduced, the avulsed medial epicondyle can be trapped in the joint — a classic pediatric miss.",
+        "CRITOE (Capitellum ~1, Radial head ~3, Internal/medial epicondyle ~5, Trochlea ~7, Olecranon ~9, External/lateral epicondyle ~11): the trochlea NEVER ossifies before the medial epicondyle — if you 'see' the trochlea but not the medial epicondyle, the medial epicondyle has been avulsed (often into the joint).",
+        "Olecranon stress: a discrete low-signal fracture LINE (classically posteromedial/mid-olecranon) + marrow edema = stress fracture (longer rest +/- fixation, especially if widening/displaced); edema WITHOUT a line = lower-grade stress reaction. The olecranon apophysis is among the last to fuse — roughly mid-to-late teens (~15-17 yr, later in throwers); a persistently widened, fluid-bright olecranon physis is a physeal stress injury — compare to the contralateral side rather than relying on a hard fusion age (verifier correction).",
+        "Radiocapitellar line: a line through the central long axis of the radial neck must bisect the capitellum on EVERY projection/plane; failure = radial head subluxation/dislocation (including an occult Monteggia). Repetitive valgus also drives radiocapitellar (lateral compartment) osteochondral overload — the lateral partner of medial UCL injury in the valgus-overload triad.",
+        "Occult radial-head fracture: any visible (displaced) POSTERIOR fat pad in an adult after trauma = hemarthrosis = occult intra-articular fracture (radial head most common in adults, supracondylar in children) until proven otherwise; MRI shows a low-signal line + fat-suppressed-bright marrow edema and distinguishes a true fracture from a bone bruise (edema only). Mason framework: I = non-displaced/minimally displaced; II = displaced (commonly >2 mm) partial articular; III = comminuted whole-head. The true surgical trigger is a mechanical BLOCK to forearm rotation, an articular fragment displaced enough to impede motion, or comminution — not the 2 mm number alone; many Mason II without a block are managed nonoperatively (verifier correction).",
+        "Loose bodies migrate to dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) and are best seen against bright joint fluid on sagittal fluid-sensitive images; GRE blooms ossified bodies and CT/CT arthrography is most sensitive for small ossified bodies and counting them pre-op. Primary elbow OA (coronoid/olecranon-tip and fossa osteophytes, capitellar/radial-head chondral loss) is the most common source of loose bodies and mechanical symptoms in the non-thrower/laborer — don't ascribe every loose body to a throwing lesion. The lateral condyle fracture (Salter-Harris IV) is the pediatric fracture most prone to non-union/malunion and is often the 'fat pad without an obvious line' that needs MRI/follow-up."
+      ]
+    },
+    {
+      "id": "elbow-ucl-valgus",
+      "title": "UCL & Valgus Overload (Thrower)",
+      "domain": "elbow-ucl-valgus",
+      "searchPatternStep": 3,
+      "objectives": [
+        "Evaluate the UCL anterior bundle from the medial epicondyle to the sublime tubercle and classify normal vs sprain vs partial undersurface vs full-thickness tear.",
+        "Recognize the T-sign of a partial undersurface (distal) tear and distinguish it from the normal distal recess; describe location, surface, and acute vs chronic.",
+        "Read the UCL together with the flexor-pronator origin and ulnar nerve as the valgus-overload triad, and frame the repair-vs-reconstruction conversation by lesion features and athlete demand."
+      ],
+      "keyPoints": [
+        "The anterior bundle of the UCL is the primary valgus restraint across the functional throwing arc (~20-120 deg), running from the anteroinferior medial epicondyle to the sublime tubercle of the medial coronoid; it is the band reconstructed in Tommy John surgery and is best on coronal (or coronal-oblique) fluid-sensitive fat-sat along the band. The posterior bundle (cubital tunnel floor) and transverse/Cooper ligament contribute little to valgus restraint.",
+        "Normal distal footprint is a thin, taut, uniformly low-signal band inserting on the sublime tubercle. A small normal synovial recess can exist — so the abnormal threshold is fluid/contrast tracking distal to the sublime-tubercle margin BEYOND the edge of the articular cartilage (a sliver of fluid undercutting the most distal fibers by a couple of millimeters can be a normal variant), not 'any undercutting at all' (verifier correction).",
+        "T-sign = on coronal fluid-sensitive MRI or MR arthrography, fluid/contrast tracks medially along the sublime tubercle UNDER the distal UCL attachment, forming an inverted/right-angle 'T' with the joint-fluid column, while the ligament remains attached more proximally — the signature of a partial-thickness undersurface (articular-sided) DISTAL tear, the classic throwing injury undercalled on non-contrast MRI. MR arthrography is the most sensitive study for it.",
+        "Distal (sublime-tubercle) tears are clinically important, more often occult, and do worse nonoperatively, which is why naming the location matters — but distal-vs-proximal PREDOMINANCE in throwers is genuinely NOT uniform in the literature (several series report proximal/humeral-sided partials as at least as common). Teach distal tears as a recognized, prognostically worse, under-recognized pattern, NOT as the more frequent lesion (verifier correction). Proximal partials are the ones favored for nonoperative/PRP management.",
+        "Grade and locate (proximal/midsubstance/distal; partial undersurface vs full-thickness; thickened/heterogeneous/+/-ossified = chronic). A <50%/>50% partial-thickness call is a useful DESCRIPTIVE heuristic, not a formally validated/named UCL grading scale — surgeons weight location, surface, acute vs chronic, and the moving-valgus exam, so don't imply a validated cutoff drives the decision by itself (verifier hedge). Full-thickness = fluid-bright signal spanning the entire thickness with a gap/retraction or medial extravasation through the defect.",
+        "Management is driven by the lesion + the athlete's demand, not the MRI alone: most partial/low-grade tears in throwers are managed nonoperatively first (rest, flexor-pronator/kinetic-chain rehab, return-to-throwing; PRP increasingly used especially for proximal partials). Reconstruction (Tommy John, autograft) is the conversation for full-thickness tears in throwers wanting high-level return, high-grade/symptomatic partials that fail ~3-6 months of rehab, or valgus instability discordant with demand. Repair +/- internal brace has re-emerged for acute avulsion-type tears with good tissue, particularly younger/lower-demand or earlier-return athletes — so 'avulsion off bone vs shredded midsubstance' is a distinction the surgeon wants. The exact failed-conservative interval, repair-vs-reconstruction boundaries, and PRP efficacy are evolving — present decision DRIVERS, not a rigid cutoff.",
+        "The medial triad travels together: UCL injury + flexor-pronator (common flexor) strain/tendinosis + ulnar neuritis. Document ulnar neuritis/subluxation, but note that concurrent ulnar nerve transposition with UCL reconstruction is SELECTIVE — done for preoperative ulnar symptoms/instability, not routinely (routine transposition adds morbidity) (verifier correction). The sublime-tubercle traction spur/ulnar traction marrow change is a common incidental bony clue to chronic valgus overload.",
+        "Carryable adjunct numbers for counseling: dynamic valgus-stress ultrasound quantifies side-to-side medial ulnohumeral GAPPING — a side-to-side difference of roughly >1 mm (commonly cited ~1.5-2 mm) is the functional threshold MRI cannot give. Typical return is ~12-15 months after reconstruction vs ~6-9 months after repair + internal brace; prevention is pitch-count/workload limits and avoiding breaking balls before skeletal maturity."
+      ]
+    },
+    {
+      "id": "elbow-lcl-plri",
+      "title": "LCL Complex, PLRI & Post-Traumatic Instability",
+      "domain": "elbow-lcl-plri",
+      "searchPatternStep": 4,
+      "objectives": [
+        "Identify the LCL complex components and the role of the lateral ulnar collateral ligament (LUCL) as the key PLRI restraint.",
+        "Recognize the LCL injury patterns of dislocation, the iatrogenic post-lateral-release LUCL injury, and the secondary signs of PLRI, and separate symptomatic LCL/RCL tears from accompanying common-extensor tendinosis.",
+        "Operationalize the coronoid/anteromedial-facet axis and varus posteromedial rotatory instability (VPMRI), the O'Driscoll circle of dislocation, the terrible triad, the Osborne-Cotterill lesion, and post-traumatic heterotopic ossification."
+      ],
+      "keyPoints": [
+        "LCL complex = radial collateral ligament (RCL, blends into the annular ligament), lateral ulnar collateral ligament (LUCL), annular ligament (encircles the radial neck, best on axial), and accessory LCL. The LUCL (lateral epicondyle -> arcs posterior to the radial head -> supinator crest of the ulna) is the principal restraint to posterolateral rotatory instability (PLRI). Trace its posterolateral arc across consecutive coronal AND axial images because partial-volume averaging is the main reason it is missed.",
+        "PLRI (LUCL incompetence allowing posterolateral subluxation of the radius/ulna off the capitellum; lateral pivot-shift apprehension) is the most common chronic/recurrent elbow instability and follows dislocation/subluxation or iatrogenic injury from aggressive lateral epicondylitis release or radial-head surgery. The LUCL/RCL origin lies deep to the common extensor tendon, so a deep undersurface tear there can hide beneath what looks like simple lateral epicondylitis — this is the lesion that converts refractory 'tennis elbow' into instability.",
+        "O'Driscoll circle of dislocation: soft-tissue disruption proceeds lateral-to-medial (LCL/LUCL first -> anterior and posterior capsule -> finally the MCL), which is WHY the LCL is the primary lesion in most simple dislocations and why valgus stability is often preserved — comment explicitly on LUCL integrity in every post-dislocation and post-lateral-surgery elbow.",
+        "VARUS POSTEROMEDIAL ROTATORY INSTABILITY (VPMRI) is the third, distinct instability mechanism (separate from valgus and from PLRI): an ANTEROMEDIAL CORONOID FACET fracture + LUCL injury. The anteromedial facet fragment looks small on radiographs but is highly unstable and surgical, and untreated VPMRI drives early arthrosis — a classic don't-miss MRI/CT call. Use the O'Driscoll anteromedial-facet classification for these; use Regan-Morrey for coronoid HEIGHT (Type I tip avulsion, II <=50%, III >50% of coronoid height), with the coronoid as the keystone of terrible-triad reconstruction.",
+        "Terrible triad = elbow dislocation + radial head fracture + coronoid fracture — recognizable on MRI/CT and surgical; the coronoid and LCL are the reconstructive keystones. After dislocation, look for the Osborne-Cotterill lesion (posterolateral capitellar impaction fracture + posterolateral capsular avulsion) — the lateral analog of a Hill-Sachs that perpetuates recurrent PLRI and is a clue to occult instability — and for post-traumatic HETEROTOPIC OSSIFICATION, a common function-limiting cause of the stiff elbow that changes management (timing of excision, indomethacin/radiation prophylaxis).",
+        "Grading vocabulary mirrors the UCL (intact thin low-signal band to the supinator crest; sprain = thickening/edema, fibers intact; partial = surface-reaching fluid not spanning thickness; full-thickness = discontinuity/avulsion, usually proximal/epicondylar). There is NO standardized single MRI measurement for an LUCL tear — call it on continuity, surface, and radiocapitellar alignment plus the clinical pivot-shift, not a millimeter cutoff. Secondary PLRI signs: posterolateral radial subluxation, radiocapitellar incongruity, lateral capsular and common-extensor deep tear.",
+        "Management hinge: an acute LUCL injury after dislocation is often treated nonoperatively if the elbow is concentrically reduced and stable; persistent/recurrent PLRI -> LUCL repair or reconstruction. Iatrogenic LUCL injury during lateral release or radial-head surgery is a recognized cause of acquired PLRI."
+      ]
+    },
+    {
+      "id": "elbow-tendons",
+      "title": "Tendons: Distal Biceps, Triceps & Epicondylitis",
+      "domain": "elbow-tendons-biceps-triceps-epicondylitis",
+      "searchPatternStep": 5,
+      "objectives": [
+        "Classify distal biceps tendon injury (tendinosis, partial, complete) and report retraction and lacertus fibrosus status — the features that drive repair urgency.",
+        "Recognize triceps tendinosis and the surgically relevant complete (or high-grade partial deep-fiber) triceps avulsion.",
+        "Grade lateral epicondylitis (common extensor/ECRB) and medial epicondylitis (common flexor) and flag the adjacent ligament injury that changes management."
+      ],
+      "keyPoints": [
+        "Distal biceps inserts on the radial (bicipital) tuberosity as a bifurcated footprint (short head distal/anterior = flexion lever; long head proximal/posterior = supination lever); the lacertus fibrosus arises from the medial musculotendinous junction and blends into the forearm flexor fascia; the bicipitoradial bursa lies between the tendon and the tuberosity. Best on axial fluid-sensitive FS and the FABS view.",
+        "Distal biceps grading: tendinosis = thickening + intrasubstance signal, no discontinuity; partial = fluid-bright with some fibers still reaching the tuberosity (non-retracted); complete = full discontinuity with a fluid/hematoma gap and a balled-up wavy stump. The lacertus is the discriminator that changes everything: a COMPLETE tear with an INTACT lacertus does NOT retract (or minimally) and can mimic a partial tear clinically and on imaging (the commonly missed complete tear); a complete tear with a DISRUPTED lacertus retracts proximally with an 'empty tuberosity.' Report partial-vs-complete AND lacertus-intact-vs-torn, and state retraction (where the stump sits in cm).",
+        "Distal biceps surgical timing: a complete retracted tear is a time-sensitive surgical lesion in active patients — earlier anatomic repair is technically easier, and chronicity/retraction increasingly necessitate graft. Frame this as a guideline (earlier is better; chronic retracted tears that won't reach the tuberosity need graft, often only after many weeks to months when the tendon is irreducible), NOT a hard '2-4 week / graft after 6 week' deadline — many primary repairs succeed out to ~4-6 weeks and beyond (verifier correction). Bicipitoradial bursitis is a CLUE, not a diagnosis — scrutinize the adjacent insertion for a partial tear and don't mistake a distended bursa for a mass (a large bursa can also compress the PIN/radial nerve). Partial tears and tendinosis are managed conservatively first.",
+        "Triceps inserts broadly on the olecranon; rupture is uncommon but the most under-diagnosed major tendon avulsion at the elbow (risk factors: anabolic steroids, fluoroquinolones, renal failure/hyperparathyroidism, local steroid injection; an avulsed olecranon flake on the lateral radiograph is the classic tip-off). Deep (central) fibers tear first while the superficial expansion can stay intact (analogous to the biceps lacertus), so a clinically near-complete tear can look partial — report the PERCENTAGE of width torn and the gap, because complete ruptures and high-grade partials (commonly >50% width, or any tear with extension weakness) are repaired. Don't undercall a high-grade partial as 'tendinosis' if the patient can't extend against resistance.",
+        "Lateral epicondylitis = angiofibroblastic TENDINOSIS (not inflammation) of the common extensor origin (ECRB the principal culprit) off the lateral epicondyle. Grade tendinosis (thickening + intermediate signal, no surface-reaching fluid/gap) vs partial (fluid-bright reaching a surface/focal discontinuity, intact deep fibers) vs full-thickness (complete fluid-bright gap at the origin). ALWAYS trace the LUCL to the supinator crest: a deep/full-thickness CET tear with a fluid-bright gap that undercuts or communicates with the radiocapitellar joint and involves the LUCL implies PLRI — a surgical problem and a known complication of prior lateral steroid injection/release. Do NOT over-call associated lateral-epicondyle marrow edema or a thin reactive RCL signal as an LCL tear. Corticosteroid injection gives only short-term benefit and may worsen long-term outcomes.",
+        "Medial epicondylitis = common flexor/pronator tendinosis (golfer's elbow), less common than lateral; same grading ladder. ALWAYS trace the anterior bundle of the UCL to the sublime tubercle (medial epicondylitis and UCL injury frequently coexist, especially in throwers) and interrogate the ulnar nerve immediately posterior in the cubital tunnel — medial pain is the triad. A concomitant UCL tear changes the conversation toward reconstruction in a thrower.",
+        "Universal muscle-strain grade 1/2/3 framework (grade 1 = feathery perifascial edema, intact architecture; grade 2 = fiber disruption with focal fluid/hematoma; grade 3 = complete discontinuity with retraction, most common at the myotendinous junction) applies to flexor-pronator and extensor strains."
+      ]
+    },
+    {
+      "id": "elbow-nerves",
+      "title": "Nerves: Ulnar, Median/AIN, Radial/PIN",
+      "domain": "elbow-nerves-entrapment",
+      "searchPatternStep": 6,
+      "objectives": [
+        "Evaluate the ulnar nerve in the cubital tunnel for neuritis, subluxation, and a space-occupying cause, using a side-to-side and internal-control comparison technique.",
+        "Localize median/anterior interosseous (AIN) and radial/posterior interosseous (PIN) entrapment by site and by the muscles that denervate.",
+        "Use muscle denervation edema/atrophy as a secondary sign, and recognize the management-changing caveats (Parsonage-Turner, snapping triceps, mass as the cause)."
+      ],
+      "keyPoints": [
+        "General nerve-entrapment signs: intraneural T2 hyperintensity, focal caliber enlargement (at/above the compression), loss of fascicular architecture, an identifiable structural cause (ganglion, anconeus epitrochlearis, osteophyte, mass), and the highest-yield secondary sign — target-muscle denervation. Denervation has THREE phases, not two: NO MRI change in the first ~2-4 weeks, then SUBACUTE T2/STIR muscle edema (can be reversible with reinnervation), then CHRONIC T1 fatty atrophy — so label the edema phase 'subacute,' not 'acute' (verifier correction). Name the affected muscles to localize the lesion.",
+        "Ulnar nerve / cubital tunnel is the most common elbow neuropathy (second most common compression neuropathy overall after carpal tunnel), between the medial epicondyle and olecranon beneath the cubital tunnel retinaculum (Osborne's). Report nerve enlargement and T2 hyperintensity at/just distal to the medial epicondyle and denervation of FCU, ulnar FDP, and ulnar intrinsics; it is the third member of the valgus-overload triad in throwers. PRACTICAL TECHNIQUE for the absent universal CSA cutoff: assess at the medial-epicondyle level and compare caliber/signal to the CONTRALATERAL side and to the ipsilateral MEDIAN nerve as an internal control — mild T2 hyperintensity can be normal, so anchor the call to caliber change + denervation + clinical correlation, not signal alone (verifier-confirmed).",
+        "Ulnar nerve SUBLUXATION/dislocation over the medial epicondyle in flexion is a management-changing finding (favors transposition over in-situ decompression); assess on axial images in flexion, and look for an anconeus epitrochlearis accessory muscle (replacing Osborne's retinaculum) or osteophyte/ganglion as the cause. SNAPPING TRICEPS can coexist: the medial head of the triceps AND the ulnar nerve can both subluxate over the medial epicondyle in flexion — recognizing it changes the operation (must address the triceps, not just transpose the nerve); dynamic/flexion imaging is the key.",
+        "Median/AIN: the AIN (Kiloh-Nevin) is PURE MOTOR — denervates FPL, FDP to index/middle, and pronator quadratus (classically isolated pronator quadratus edema), with weak pinch and NO sensory loss. Critical caveat that stops a surgeon: an AIN palsy is frequently neuralgic amyotrophy (Parsonage-Turner), not a mechanical compression — so surgery is usually NOT indicated and the work-up pivots to EMG and observation (search the brachial-plexus/viral-prodrome history). Pronator syndrome is median compression between the two heads of pronator teres or under the lacertus fibrosus / FDS arch / ligament of Struthers (watch for a supracondylar process), and is mixed sensory + motor.",
+        "Radial/PIN (radial tunnel): the PIN is most commonly compressed at the arcade of Frohse (the proximal, often fibrous supinator edge). PIN syndrome is motor with a digit drop and radially-deviated wrist extension (ECRL spared). Localize by denervation of the extensor compartment (extensor digitorum, EDM, ECU, APL, EPB/EPL, EI); the SUPINATOR is variably involved/often SPARED because its branches frequently arise proximal to the arcade — do NOT assert supinator denervation as a constant feature (verifier correction). Radial tunnel syndrome is pain WITHOUT motor deficit and often a normal MRI — say so rather than over-read; report any mass (ganglion, lipoma, distended bicipitoradial bursa) at the arcade.",
+        "Always look for a mass/cyst/ganglion as the compressive cause — that changes management from splinting/therapy to referral."
+      ]
+    },
+    {
+      "id": "elbow-dont-miss",
+      "title": "Don't-Miss Findings",
+      "domain": "elbow-dont-miss",
+      "searchPatternStep": 7,
+      "objectives": [
+        "Recognize the elbow findings that shift the plan away from routine rehab: occult fracture, septic arthritis/osteomyelitis, aggressive marrow/soft-tissue lesions.",
+        "Identify the surgically urgent ligament/tendon/bone injuries — complete UCL or LUCL avulsion, complete distal biceps or triceps avulsion, the anteromedial coronoid facet fracture, and frank instability patterns.",
+        "Prioritize the single management-changing finding in the impression and route each to the correct disposition."
+      ],
+      "keyPoints": [
+        "Occult fracture: a 'normal' radiograph with an effusion (displaced posterior fat pad/anterior sail sign) still needs the fracture search — radial head in adults, supracondylar and the subtle, non-union-prone lateral condyle (Salter-Harris IV) in children. MRI shows the line + marrow edema.",
+        "Don't-miss surgical soft-tissue injuries: acute complete distal biceps avulsion (empty tuberosity, retraction — and the great mimic, the complete tear with an INTACT lacertus that does not retract), complete triceps avulsion (+/- olecranon flake), a full-thickness UCL in a thrower whose career depends on it, and a deep common-extensor tear involving the LUCL -> PLRI.",
+        "Don't-miss bony instability: the ANTEROMEDIAL CORONOID FACET fracture (small on radiographs, implies VPMRI, surgical) and the terrible triad — name the coronoid and the LCL as the reconstructive keystones; look for the Osborne-Cotterill posterolateral capitellar impaction after dislocation and post-traumatic heterotopic ossification in the stiff elbow.",
+        "Infection/inflammation: distinguish septic olecranon bursitis vs septic joint vs osteomyelitis — but the don't-miss point is that MRI cannot reliably exclude infection, so a red, warm, fluctuant olecranon bursa needs ASPIRATION, not just imaging; gout/RA/repetitive-trauma cause aseptic bursitis. Joint effusion plus aggressive periarticular edema and rim-enhancement escalates urgently.",
+        "Marrow/soft-tissue red flags: confluent low-T1 marrow REPLACEMENT (signal below skeletal muscle/disc, lacking interspersed fat) — particularly with a soft-tissue mass, cortical destruction, or a wide transition zone — is tumor or infiltration until proven otherwise; do NOT bury it as 'edema.' Frame the heuristic carefully, because benign causes (red-marrow reconversion in athletes/smokers, fracture, osteomyelitis, stress-injury edema) also lower T1 (verifier correction)."
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "elbow-orientation-protocol",
+      "label": "Elbow MRI Orientation",
+      "confidenceStatement": "I can choose the correct elbow protocol (non-contrast, FABS, or MR arthrogram), assign each imaging plane to the structure it best shows, and translate the clinical question into a focused but complete search without skipping a key structure."
+    },
+    {
+      "id": "elbow-search-pattern",
+      "label": "Elbow Search Pattern",
+      "confidenceStatement": "I can apply an eight-step elbow MRI search pattern that starts with bones and marrow and avoids satisfaction-of-search misses such as a partial UCL tear hidden behind obvious medial epicondylitis or a small-but-unstable anteromedial coronoid facet fracture in a post-trauma elbow."
+    },
+    {
+      "id": "elbow-bones-marrow-osteochondral",
+      "label": "Bones, Marrow & Osteochondral",
+      "confidenceStatement": "I can distinguish capitellar OCD from Panner disease by age and reversibility, judge OCD stability from the fluid-undercutting and cyst/cartilage-breach signs, recognize the thrower's olecranon and medial-epicondyle stress lesions, apply CRITOE and the radiocapitellar line, and find intra-articular loose bodies."
+    },
+    {
+      "id": "elbow-ucl-valgus",
+      "label": "UCL & Valgus Overload (Thrower)",
+      "confidenceStatement": "I can evaluate the UCL anterior bundle to the sublime tubercle, recognize the T-sign of a partial undersurface tear (and distinguish it from a normal distal recess), and read the UCL together with the flexor-pronator origin and ulnar nerve as the valgus-overload triad while framing the repair-vs-reconstruction conversation by lesion and demand."
+    },
+    {
+      "id": "elbow-lcl-plri",
+      "label": "LCL Complex, PLRI & Post-Traumatic Instability",
+      "confidenceStatement": "I can identify the LCL complex and the LUCL, recognize the undersurface LUCL/RCL tear that underlies refractory lateral elbow pain and PLRI, and read the post-traumatic elbow for the coronoid (including the anteromedial-facet fracture of varus posteromedial rotatory instability), the terrible triad, the Osborne-Cotterill lesion, and heterotopic ossification."
+    },
+    {
+      "id": "elbow-tendons-biceps-triceps-epicondylitis",
+      "label": "Tendons: Distal Biceps, Triceps & Epicondylitis",
+      "confidenceStatement": "I can classify distal biceps and triceps tendon injuries with their retraction and lacertus/deep-fiber status, and grade lateral (common extensor) and medial (common flexor) epicondylitis while checking the ligament beneath each."
+    },
+    {
+      "id": "elbow-nerves-entrapment",
+      "label": "Nerves: Ulnar, Median/AIN, Radial/PIN",
+      "confidenceStatement": "I can evaluate the ulnar nerve in the cubital tunnel for neuritis and subluxation using a side-to-side and median-nerve internal-control comparison, localize median/AIN and radial/PIN entrapment by site and by the muscles they denervate, and recognize the caveats (subacute vs chronic denervation, Parsonage-Turner AIN palsy, snapping triceps) that change management."
+    },
+    {
+      "id": "elbow-dont-miss",
+      "label": "Don't-Miss Findings",
+      "confidenceStatement": "I can recognize the elbow findings that change urgency — occult fracture, infection (aspirate the warm bursa), aggressive marrow/soft-tissue lesions, complete UCL/biceps/triceps avulsions, the anteromedial coronoid facet fracture, and instability patterns — and prioritize the management-changing finding in my impression."
+    }
+  ],
+  "searchPattern": [
+    {
+      "number": 1,
+      "region": "Verify Protocol & Clinical Question",
+      "targets": [
+        "Confirm correct patient, side, and any comparison/contralateral imaging",
+        "Identify protocol: non-contrast vs MR arthrogram; is a FABS view present for the distal biceps?",
+        "Inventory planes and sequences (axial, coronal, sagittal, FABS, T1, PD/T2 FS, STIR) and note artifact",
+        "State the exact management question: UCL vs medial epicondylitis vs ulnar nerve vs OCD vs distal biceps vs post-trauma instability",
+        "Map the symptom: medial (valgus triad), lateral (epicondylitis/LCL/PLRI), anterior (biceps), posterior (triceps/olecranon/VEO), or mechanical (loose body/plica)"
+      ]
+    },
+    {
+      "number": 2,
+      "region": "Bones, Marrow & Osteochondral",
+      "targets": [
+        "Radial head, capitellum, trochlea, olecranon, coronoid: marrow edema tied to a line, physis, cyst, or fragment",
+        "Capitellar OCD vs Panner; judge OCD stability (fluid undercutting fragment, sizeable/multiple cysts, cartilage breach, displaced fragment); read on coronal + sagittal",
+        "Thrower stress: medial epicondyle apophysis (Little League elbow), olecranon stress reaction vs fracture / persistent physis, posteromedial olecranon (VEO) osteophyte",
+        "Occult fracture (posterior fat-pad sign; lateral condyle in children); CRITOE and the radiocapitellar line",
+        "Sweep coronoid + olecranon fossae and the radiocapitellar recess for loose bodies; consider primary OA as the source in non-throwers"
+      ]
+    },
+    {
+      "number": 3,
+      "region": "Medial Ligament — UCL & Valgus Overload",
+      "targets": [
+        "Anterior bundle from the medial epicondyle to the sublime tubercle on coronal",
+        "Partial undersurface (T-sign, fluid beyond the articular-cartilage edge) vs full-thickness; location proximal/mid/distal",
+        "Chronic attenuation/thickening/ossification; sublime-tubercle marrow edema or traction spur",
+        "Link to the flexor-pronator origin and the ulnar nerve (the medial triad)"
+      ]
+    },
+    {
+      "number": 4,
+      "region": "Lateral Ligament — LCL Complex, PLRI & Coronoid/VPMRI",
+      "targets": [
+        "LUCL (epicondyle -> posterior to radial head -> supinator crest), RCL, annular ligament; trace on coronal + axial",
+        "Humeral-origin avulsion and the undersurface tear deep to the common extensor; secondary PLRI signs (posterolateral radial subluxation, radiocapitellar incongruity)",
+        "Coronoid: anteromedial-facet fracture (VPMRI, small but unstable/surgical) and Regan-Morrey height; terrible-triad pattern",
+        "Post-dislocation Osborne-Cotterill posterolateral capitellar impaction and heterotopic ossification"
+      ]
+    },
+    {
+      "number": 5,
+      "region": "Tendons — Biceps, Triceps, Common Flexor & Extensor",
+      "targets": [
+        "Distal biceps on FABS: partial vs complete, retraction in cm, lacertus fibrosus intact vs torn; bicipitoradial bursitis as a clue",
+        "Triceps: partial (deep-fiber, report % width) vs complete avulsion +/- olecranon flake",
+        "Lateral (ECRB) epicondylitis grade — trace the LUCL to the supinator crest; medial (flexor-pronator) epicondylitis grade — trace the UCL",
+        "Apply the grade 1/2/3 muscle-strain framework to flexor-pronator and extensor strains"
+      ]
+    },
+    {
+      "number": 6,
+      "region": "Nerves — Ulnar, Median/AIN, Radial/PIN",
+      "targets": [
+        "Ulnar nerve in the cubital tunnel: caliber/signal vs contralateral and ipsilateral median nerve; flexion subluxation; anconeus epitrochlearis; snapping triceps",
+        "Median/AIN: isolated pronator-quadratus / FPL / FDP(index-middle) denervation (consider Parsonage-Turner before calling mechanical)",
+        "Radial/PIN at the arcade of Frohse: extensor-compartment denervation (supinator variably spared), radial tunnel = pain with normal MRI",
+        "Muscle denervation edema (subacute) / fatty atrophy (chronic) as the localizing secondary sign; hunt a mass/ganglion as the cause"
+      ]
+    },
+    {
+      "number": 7,
+      "region": "Cartilage, Joint, Capsule, Bursa & Synovium",
+      "targets": [
+        "Radiocapitellar and ulnotrochlear cartilage; effusion and synovitis",
+        "Radiocapitellar plica / posterolateral synovial fold (>3 mm) as a mimic of loose body/OCD",
+        "Olecranon bursitis — aseptic vs septic (aspirate the warm bursa; MRI cannot exclude infection)",
+        "Loose bodies in dependent recesses; primary OA osteophytes at coronoid/olecranon tips"
+      ]
+    },
+    {
+      "number": 8,
+      "region": "Masses, Final Management Review & Red Flags",
+      "targets": [
+        "Masses/ganglia (often the entrapment cause); distended bicipitoradial bursa compressing the PIN",
+        "Confluent low-T1 marrow replacement, cortical destruction, soft-tissue mass: infection/tumor red flags",
+        "Confirm the surgically urgent injury (complete biceps/triceps/UCL/LUCL avulsion, anteromedial coronoid facet, instability)",
+        "Summarize the single management-changing finding: rehab/injection, surgical referral, or urgent escalation"
+      ]
+    }
+  ],
+  "reference": {
+    "anatomySections": [
+      {
+        "title": "Planes — what each one answers",
+        "items": [
+          "Axial: cross-sections the four compartments; best for the ulnar nerve in the cubital tunnel (and dynamic flexion subluxation), the radial nerve/PIN at the radiocapitellar level, the common flexor/extensor origins, the annular ligament around the radial neck, and the distal biceps footprint.",
+          "Coronal: the UCL anterior bundle to the sublime tubercle and the RCL/LUCL complex, the common flexor and extensor origins, and the capitellar/trochlear articular surfaces. The plane to read the T-sign. (Currently the only available sequence/plane is coronal T2-FS.)",
+          "Sagittal: the distal biceps and triceps, the brachialis, anterior/posterior fat pads, the trochlea/capitellum cartilage contour, and the olecranon/coronoid fossae for loose bodies. Read capitellar OCD on coronal + sagittal together.",
+          "FABS (Flexion-ABduction-Supination, prone): a dedicated view that lays the distal biceps footprint flat at the radial tuberosity for partial-tear grading and retraction measurement."
+        ]
+      },
+      {
+        "title": "Sequences — what they're for",
+        "items": [
+          "Fluid-sensitive fat-sat (T2 FS / STIR): edema, partial/complete tendon and ligament tears, the OCD fluid rim, marrow injury, effusions, and (subacute) muscle denervation edema.",
+          "T1: anatomy, marrow replacement (confluent low-T1 below muscle = the red flag), arthrogram contrast, occult fracture lines, and chronic fatty muscle atrophy.",
+          "MR arthrography: most sensitive for the UCL undersurface (T-sign) tear and intra-articular loose bodies/chondral delamination; intra-articular contrast undercuts a partial tear and outlines bodies. An abduction/valgus or flexed positioning adjunct can help open the medial joint (thin elbow-specific evidence base, unlike the shoulder ABER)."
+        ]
+      },
+      {
+        "title": "Medial compartment",
+        "items": [
+          "UCL (ulnar collateral) complex: the anterior bundle is the primary valgus restraint (origin anteroinferior medial epicondyle -> insertion sublime tubercle of the coronoid); posterior bundle (cubital tunnel floor) and transverse/Cooper ligament are secondary. Normal anterior bundle = thin, taut, uniformly low signal to the sublime tubercle; a small synovial recess can be normal.",
+          "Common flexor-pronator origin: uniform low-signal tendon off the medial epicondyle; site of medial epicondylitis; overlies the UCL.",
+          "Ulnar nerve: in the cubital tunnel posterior to the medial epicondyle beneath Osborne's retinaculum — assess caliber/signal and flexion subluxation; compare to the median nerve and the contralateral side."
+        ]
+      },
+      {
+        "title": "Lateral compartment",
+        "items": [
+          "Common extensor origin (ECRB): off the lateral epicondyle; site of lateral epicondylitis (angiofibroblastic tendinosis).",
+          "Radial/lateral collateral ligament complex: RCL (blends into annular ligament) + the LUCL (lateral epicondyle -> posterior to the radial head -> supinator crest), the key restraint to PLRI; the LUCL/RCL origin lies deep to the common extensor tendon.",
+          "Annular ligament & radiocapitellar joint: the annular ligament stabilizes the radial head (best on axial); the capitellum is the OCD site (anterolateral/central).",
+          "Radial nerve / PIN: divides at the radiocapitellar level; the PIN enters the supinator under the arcade of Frohse.",
+          "Pseudodefect of the capitellum: a normal posterolateral/postero-inferior bare-area groove — not an osteochondral lesion."
+        ]
+      },
+      {
+        "title": "Anterior, posterior compartments & coronoid",
+        "items": [
+          "Distal biceps tendon: bifurcated footprint on the radial tuberosity; the lacertus fibrosus is the aponeurotic expansion that tethers it; the bicipitoradial bursa sits between tendon and tuberosity.",
+          "Brachialis: inserts on the coronoid/ulnar tuberosity; primary elbow flexor behind the biceps.",
+          "Triceps tendon: inserts broadly on the olecranon; deep central fibers can tear first while the superficial expansion stays intact.",
+          "Olecranon, coronoid & fossae: VEO posteromedial olecranon osteophyte and loose-body niches; the coronoid (sublime tubercle medially, anteromedial facet laterally) is the keystone of post-traumatic stability.",
+          "Fat pads: anterior fat pad normally seen (elevation = sail sign); the posterior fat pad is normally hidden in the olecranon fossa — any visible posterior fat pad after trauma means effusion/hemarthrosis."
+        ]
+      },
+      {
+        "title": "Normal variants — don't overcall",
+        "items": [
+          "Pseudodefect of the capitellum (posterolateral bare-area groove) and the transverse trochlear ridge/groove — not osteochondral lesions.",
+          "A small normal synovial recess near the distal UCL — the abnormal T-sign threshold is fluid tracking beyond the articular-cartilage edge.",
+          "Mild ulnar nerve T2 hyperintensity can occur in asymptomatic elbows — anchor to caliber change + denervation + clinical correlation.",
+          "Reactive lateral-epicondyle marrow edema and a thin RCL signal with lateral epicondylitis — do not over-call an LCL tear.",
+          "Skeletally immature secondary ossification centers (CRITOE) — do not call Panner/OCD on a normal center."
+        ]
+      }
+    ],
+    "measurementSections": [
+      {
+        "title": "UCL grading & the T-sign",
+        "content": "Sprain/low-grade: periligamentous/intrasubstance edema, fibers grossly intact, no surface-reaching defect, no T-sign. Partial undersurface tear = T-sign: fluid/contrast undermines the distal/sublime-tubercle attachment BEYOND the articular-cartilage edge while proximal fibers stay attached (articular-sided, not full-thickness); MR arthrography is most sensitive. Full-thickness: fiber discontinuity spanning the whole thickness, gap/retraction, or medial extravasation. Describe location (proximal/mid/distal) and acute vs chronic. A <50%/>50% partial call is a descriptive heuristic, not a validated graded scale.",
+        "threshold": "Abnormal undercutting threshold: fluid extends beyond the articular-cartilage margin at the sublime tubercle (a couple of mm undercutting the most distal fibers can be a normal recess). Repair +/- internal brace vs reconstruction is driven by location/surface/acute-vs-chronic + athlete demand + the moving-valgus exam, NOT a single MRI cutoff. Distal/full-thickness do worse nonoperatively. Dynamic valgus-stress US: side-to-side medial gapping difference ~>1 mm (commonly cited ~1.5-2 mm) is the functional threshold."
+      },
+      {
+        "title": "Capitellar OCD — stability criteria",
+        "content": "Stable: no fluid-bright surrounding signal, intact overlying cartilage, in-situ fragment, low-signal demarcating margin -> throwing rest + serial follow-up. Unstable (any of): a T2 fluid-bright line completely undercutting the fragment (matching joint-fluid signal); a sizeable or multiple subchondral cyst(s); a high-signal cartilage cleft reaching the fragment; or a displaced fragment/loose body -> surgical referral. Surrounding marrow edema alone is NOT a stability sign; an isolated high-T2 line without a cartilage breach or cyst is INDETERMINATE. Read on coronal + sagittal; add MR/CT arthrography when stability will change the operation. OCD vs Panner: OCD = adolescent (~12-17 yr), focal anterolateral, fragmentation possible; Panner = osteochondrosis age ~5-10, whole ossific nucleus, self-limited, no fragment/cyst.",
+        "threshold": "The 5 mm cyst figure is De Smet's KNEE-derived criterion (not 'Dipaola/De Smet' jointly), not validated for the capitellum — teach 'sizeable or multiple subchondral cysts.' The often-quoted ~0.92 sensitivity / 0.85 specificity is OCD-wide (predominantly knee) meta-analysis data extrapolated to the elbow, not elbow-specific."
+      },
+      {
+        "title": "Medial epicondyle avulsion & olecranon stress (skeletally immature thrower)",
+        "content": "Little League elbow / medial epicondyle apophysitis: widened, fluid-bright medial epicondyle physis + marrow edema; managed with throwing rest. Avulsion: report exact displacement in mm and whether the fragment is intra-articular/incarcerated (a transiently dislocated elbow can trap it after spontaneous reduction). Olecranon: a discrete low-signal line + edema = stress fracture; edema only = stress reaction. CRITOE rule: trochlea never ossifies before the medial epicondyle — trochlea visible without the medial epicondyle implies the epicondyle is avulsed (often intra-articular).",
+        "threshold": "Operative triggers in a throwing athlete: medial epicondyle displacement >=5 mm, intra-articular/incarcerated fragment, or valgus instability (mm cutoff debated in the general population; incarceration/instability mandates surgery regardless of mm). Olecranon apophysis fuses mid-to-late teens (~15-17 yr, later in throwers) — compare to the contralateral side rather than a hard cutoff."
+      },
+      {
+        "title": "Distal biceps tear — retraction & lacertus",
+        "content": "Partial (usually undersurface at the radial-tuberosity footprint, best on FABS) vs complete (full discontinuity, balled-up wavy stump). State retraction (where the stump sits, in cm) and lacertus fibrosus status: an INTACT lacertus tethers the tendon, limits retraction, and can mask a complete tear clinically/on imaging; a DISRUPTED lacertus allows proximal retraction and an empty tuberosity. Bicipitoradial bursitis is a clue (scrutinize the insertion), not a diagnosis.",
+        "threshold": "Surgical timing is a guideline, not a fixed deadline: earlier anatomic repair is technically easier; chronic retracted tears that won't reach the tuberosity (often only after many weeks-to-months when irreducible) need graft. Many primary repairs succeed out to ~4-6 weeks and beyond — do NOT teach a hard 2-4 wk / graft-after-6-wk cutoff."
+      },
+      {
+        "title": "Triceps tear",
+        "content": "Tendinosis vs partial (deep central fibers fail first while the superficial expansion stays intact — can look partial despite near-complete clinical weakness) vs complete avulsion (full-thickness gap, retracted stump, +/- olecranon flake). Report the percentage of tendon width torn and the gap.",
+        "threshold": "Complete rupture is surgical; high-grade partials (commonly >50% width torn, or ANY tear with extension weakness against resistance) are repaired — don't undercall as 'tendinosis.'"
+      },
+      {
+        "title": "Lateral / medial epicondylitis & the adjacent ligament",
+        "content": "Grade tendinosis (thickening + intermediate signal, intact fibers, no surface-reaching fluid/gap) -> partial-thickness tear -> full-thickness gap at the origin. Lateral = common extensor (ECRB); medial = common flexor/pronator. The management-changing companions: trace the LUCL to the supinator crest with lateral epicondylitis and the anterior-bundle UCL with medial epicondylitis.",
+        "threshold": "Escalation: a deep/full-thickness common-extensor tear with a fluid-bright gap that undercuts/communicates with the radiocapitellar joint and INVOLVES the LUCL implies PLRI -> ligament repair/reconstruction (a known complication of prior lateral steroid injection/release). Concomitant UCL tear with medial epicondylitis shifts a thrower toward UCL reconstruction. Do not over-call reactive epicondyle marrow edema or thin RCL signal as an LCL tear."
+      },
+      {
+        "title": "LCL complex, PLRI & the coronoid (post-trauma instability)",
+        "content": "LUCL: lateral epicondyle -> posterior to the radial head -> supinator crest; primary restraint to PLRI; trace on coronal + axial (partial-volume averaging causes misses). No standardized single MRI measurement — call it on continuity, surface, and radiocapitellar alignment + the clinical pivot-shift. O'Driscoll circle: dislocation disrupts soft tissue lateral-to-medial (LUCL -> capsule -> MCL), so the LCL is the primary lesion in most simple dislocations. Coronoid classifications: Regan-Morrey by HEIGHT (I tip avulsion, II <=50%, III >50%); O'Driscoll for the ANTEROMEDIAL FACET (the VPMRI lesion). Look for the Osborne-Cotterill posterolateral capitellar impaction and heterotopic ossification after dislocation.",
+        "threshold": "Surgical pattern: persistent/recurrent PLRI -> LUCL repair/reconstruction; the anteromedial coronoid facet fracture (small on radiographs) implies varus posteromedial rotatory instability and is surgical; the terrible triad (dislocation + radial head fracture + coronoid fracture) is surgical with the coronoid and LCL as keystones. Comment on LUCL integrity in EVERY post-dislocation and post-lateral-surgery elbow."
+      },
+      {
+        "title": "Ulnar nerve / cubital tunnel",
+        "content": "Report nerve enlargement and T2 hyperintensity at/just distal to the medial epicondyle and denervation of FCU, ulnar FDP, and ulnar intrinsics. Compare caliber/signal to the median nerve and the contralateral side (no universal CSA cutoff; mild T2 brightness can be normal). Assess flexion subluxation on axial; look for an anconeus epitrochlearis, ganglion, or osteophyte. Snapping triceps (medial triceps head subluxing with the nerve) can coexist.",
+        "threshold": "Anchor the diagnosis to caliber change + muscle denervation + clinical correlation, not signal alone. Structural cause that changes surgery: dynamic subluxation or an accessory muscle favors transposition over in-situ decompression; snapping triceps means the triceps must be addressed, not just the nerve."
+      },
+      {
+        "title": "PIN / radial tunnel & AIN",
+        "content": "PIN compresses most commonly at the arcade of Frohse; PIN syndrome = motor digit drop with radially-deviated wrist extension (ECRL spared) and extensor-compartment denervation; the SUPINATOR is variably involved/often spared (branches arise proximal to the arcade). Radial tunnel syndrome = pain without motor deficit, often a normal MRI — report any mass at the arcade. AIN (Kiloh-Nevin) = pure motor (FPL, FDP index/middle, pronator quadratus; classically isolated PQ edema).",
+        "threshold": "Don't assert supinator denervation as a constant PIN feature. Management caveat: an AIN palsy is frequently neuralgic amyotrophy (Parsonage-Turner) rather than mechanical compression -> usually NO surgery; pivot to EMG/observation. Denervation timeline: no MRI change first ~2-4 wk -> subacute T2/STIR edema -> chronic T1 fatty atrophy."
+      },
+      {
+        "title": "Occult fracture & alignment",
+        "content": "Any visible (displaced) posterior fat pad in an adult after trauma = hemarthrosis from an occult intra-articular fracture (radial head most common; supracondylar and the non-union-prone lateral condyle/Salter-Harris IV in children) until proven otherwise; MRI shows the line + marrow edema and distinguishes a true fracture from a bone bruise. Radiocapitellar line: a line through the central long axis of the radial neck must bisect the capitellum on every projection — failure = radial head subluxation/dislocation (occult Monteggia). Mason radial-head framework: I non-/minimally displaced, II displaced (commonly >2 mm) partial articular, III comminuted whole-head.",
+        "threshold": "The radial-head surgical trigger is a mechanical BLOCK to forearm rotation, an articular fragment displaced enough to impede motion, or comminution (Mason III) — NOT the 2 mm number alone (many Mason II without a block are managed nonoperatively)."
+      },
+      {
+        "title": "Loose bodies, radiocapitellar plica & olecranon bursitis",
+        "content": "Loose bodies migrate to dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) and are best seen against bright joint fluid on sagittal fluid-sensitive images; GRE blooms ossified bodies; CT/CT arthrography is most sensitive for small ossified bodies and counting them pre-op. Primary elbow OA (coronoid/olecranon-tip and fossa osteophytes, chondral loss) is the most common loose-body source in non-throwers. A thickened radiocapitellar plica/posterolateral synovial fold causes lateral catching and mimics a loose body/OCD.",
+        "threshold": "Radiocapitellar plica is considered pathologic when thickened beyond ~3 mm with mechanical symptoms. Olecranon bursitis: MRI cannot reliably exclude infection — a red/warm/fluctuant bursa needs ASPIRATION, not just imaging."
+      },
+      {
+        "title": "Protocol — when each study changes management",
+        "content": "Non-contrast MRI: first study for most questions (tendons, OCD, nerves, occult fracture, loose bodies). MR arthrography: add for the suspected UCL undersurface (T-sign) tear and for loose-body/chondral-delamination detection when non-contrast MRI is equivocal, or when OCD stability will change the operation. CT: best for osseous fragment/loose-body quantification and complex fracture mapping (coronoid, terrible triad). Radiograph/dynamic ultrasound: radiograph first-line for the fat-pad sign, the radiocapitellar line, and osteophytes; dynamic US confirms ulnar-nerve subluxation and UCL valgus gapping that static MRI cannot.",
+        "threshold": "Add MR arthrography when it changes the surgical decision (T-sign confirmation, OCD stability, loose-body count); otherwise non-contrast 3T answers most cases."
+      }
+    ]
+  },
+  "redFlags": [
+    {
+      "finding": "Complete distal biceps avulsion (empty tuberosity, retraction) — or the great mimic, a complete tear with an INTACT lacertus that does not retract",
+      "why": "A complete tear loses ~40-50% supination and ~30% flexion strength and is a time-sensitive surgical repair; an intact lacertus tethers the tendon so it neither retracts nor presents as an obvious clinical gap, and it is undercalled as a partial tear. Chronic/irreducible tears need graft.",
+      "action": "Report partial-vs-complete, retraction in cm, and lacertus integrity explicitly; refer promptly for repair while the tendon still reaches the tuberosity. Don't be reassured by a preserved exam when the lacertus is intact."
+    },
+    {
+      "finding": "Unstable capitellar OCD (fluid line undercutting the fragment, sizeable/multiple subchondral cysts, cartilage breach, or displaced fragment/loose body)",
+      "why": "An unstable fragment in a young thrower/gymnast will not reliably revascularize, can delaminate and displace, and risks radiocapitellar incongruity. Surrounding edema alone is not instability; an isolated high-T2 line without a cyst/breach is indeterminate.",
+      "action": "Stop throwing and refer for surgery (fixation/microfracture/fragment removal +/- grafting). Add MR/CT arthrography when stability is equivocal and will change the operation."
+    },
+    {
+      "finding": "UCL tear with the deep-fiber T-sign (or full-thickness UCL) in a throwing athlete",
+      "why": "The undersurface (sublime-tubercle) partial tear is occult to exam and at arthroscopy and ends a throwing season if missed; distal/full-thickness tears do worse nonoperatively.",
+      "action": "Name the surface, location, and acute-vs-chronic; add MR arthrography when non-contrast MRI is equivocal. Frame the repair-vs-reconstruction conversation by lesion features and athlete demand — don't bury it in a list."
+    },
+    {
+      "finding": "Deep common-extensor tear involving the LUCL (posterolateral rotatory instability)",
+      "why": "A deep ECRB tear with a fluid-bright gap that undercuts/communicates with the radiocapitellar joint and involves the LUCL converts a routine 'tennis elbow' debridement into a ligament repair/reconstruction; it is a classic post-injection/post-release complication.",
+      "action": "Trace the LUCL to the supinator crest before signing off any high-grade lateral epicondylitis; report PLRI secondary signs. Don't over-call reactive epicondyle edema or thin RCL signal as a tear."
+    },
+    {
+      "finding": "Anteromedial coronoid facet fracture (varus posteromedial rotatory instability) — and the terrible triad",
+      "why": "The anteromedial facet fragment looks small on radiographs but implies VPMRI (a distinct instability mechanism from PLRI) and untreated drives early arthrosis; the terrible triad (dislocation + radial head + coronoid fracture) is unstable with the coronoid and LCL as reconstructive keystones.",
+      "action": "Call the coronoid facet and classify it (O'Driscoll for the anteromedial facet, Regan-Morrey for height); look for the Osborne-Cotterill lesion and heterotopic ossification on any post-dislocation elbow; route to surgery. (CT maps the osseous fragments best.)"
+    }
+  ],
+  "cases": [
+    {
+      "id": "elbow-ucl-tear-thrower",
+      "title": "UCL Tear in a Thrower (Distal Avulsion + T-Sign)",
+      "domain": "elbow-ucl-valgus",
+      "tier": "core",
+      "presentation": "A 19-year-old collegiate pitcher with progressive medial elbow pain and loss of velocity over one season, now with a 'pop' and pain at ball release; positive moving-valgus stress test. (difficulty: foundational; residentVisible: true)",
+      "findings": "Anterior bundle of the UCL thickened with intrasubstance T2 hyperintensity; distal (sublime-tubercle) detachment with the T-sign — fluid/contrast undermining the deep fibers beyond the articular-cartilage edge on coronal fat-sat — while proximal fibers stay attached. Sublime-tubercle and adjacent ulnar marrow edema; flexor-pronator tendinosis; interrogate the ulnar nerve.",
+      "teaching": "The partial undersurface tear (T-sign) is the lesion missed at exam and arthroscopy, and MR arthrography is the most sensitive study. Describe surface (undersurface vs full-thickness), location (proximal/mid/distal), and acute vs chronic; a <50%/>50% call is a descriptive heuristic, not a validated scale. Distal tears are prognostically worse and more often occult, but distal-vs-proximal predominance is genuinely not uniform — teach distal tears as a recognized, important pattern, not as the more common one. Lesion + moving-valgus exam + athlete demand (not the MRI alone) drives the repair-+/-internal-brace vs reconstruction (Tommy John) conversation; concurrent ulnar transposition is selective, only for symptomatic nerves."
+    },
+    {
+      "id": "elbow-capitellar-ocd",
+      "title": "Capitellar Osteochondritis Dissecans — Stable vs Unstable",
+      "domain": "elbow-bones-marrow-osteochondral",
+      "tier": "core",
+      "presentation": "A 13-year-old gymnast (or Little League pitcher) with lateral elbow pain, catching, and a 15-degree flexion contracture; radiographs show capitellar lucency. (difficulty: intermediate; residentVisible: true)",
+      "findings": "Focal anterolateral capitellar subchondral signal abnormality (read on coronal + sagittal). Unstable if a T2 fluid-bright line completely undercuts the fragment (matching joint-fluid signal), a sizeable/multiple subchondral cyst(s), a high-signal cartilage cleft reaches the fragment, or a displaced fragment/loose body. Stable if no surrounding fluid-bright signal and intact overlying cartilage with a low-signal demarcating margin.",
+      "teaching": "Distinguish OCD (focal osteochondral lesion, adolescent ~12-17 yr, capitellum) from Panner disease (self-limited osteochondrosis of the whole ossific nucleus, age ~5-10, no fragmentation). Instability = fluid undercutting the fragment, cyst, cartilage breach, or displaced fragment -> surgery; a stable lesion with intact cartilage is managed with rest. Surrounding edema alone is not a stability sign and an isolated high-T2 line is indeterminate. The 5 mm cyst figure is De Smet's knee criterion (not validated for the capitellum); the ~0.92/0.85 stability performance is OCD-wide (knee-dominant) data extrapolated to the elbow — teach the signs qualitatively."
+    },
+    {
+      "id": "elbow-distal-biceps-tear",
+      "title": "Distal Biceps Tendon Tear (Retraction + Lacertus)",
+      "domain": "elbow-tendons-biceps-triceps-epicondylitis",
+      "tier": "core",
+      "presentation": "A 48-year-old man felt a tearing sensation lifting a heavy box with the elbow flexed; antecubital ecchymosis, weak supination, positive hook test. (difficulty: foundational; residentVisible: true)",
+      "findings": "Discontinuity of the distal biceps at the radial tuberosity with fluid in the bicipitoradial bursa. State the retraction distance (where the stump sits, in cm) and the lacertus fibrosus status; the FABS view profiles the footprint. An intact lacertus may leave the stump near the radial neck despite a full rupture.",
+      "teaching": "The two management-changing variables are degree of retraction and lacertus integrity: an intact lacertus tethers the tendon, limits retraction, and can mask the tear clinically while it is still completely torn — a surgical/anatomic repair. Report partial (usually undersurface at the footprint) vs complete and the retraction in cm. Earlier repair is technically easier and chronic retracted/irreducible tears need graft — frame this as a guideline, not a hard 2-4-week deadline."
+    },
+    {
+      "id": "elbow-lateral-epicondylitis-lucl",
+      "title": "Lateral Epicondylitis + Partial Common Extensor / LUCL Tear",
+      "domain": "elbow-tendons-biceps-triceps-epicondylitis",
+      "tier": "core",
+      "presentation": "A 45-year-old recreational tennis player with chronic lateral elbow pain refractory to rehab; tender over the lateral epicondyle. (difficulty: foundational; residentVisible: true)",
+      "findings": "Thickened, T2-hyperintense common extensor origin (ECRB) tendinosis; grade as tendinosis vs partial vs full-thickness tear. Critically assess the adjacent LUCL to the supinator crest for a deep tear that undercuts/communicates with the radiocapitellar joint. Reactive lateral-epicondyle marrow edema and a thin RCL signal are not, by themselves, an LCL tear.",
+      "teaching": "'Tennis elbow' is tendinosis/degeneration, not inflammation — but the management-changing companion is the LUCL: a deep common-extensor tear involving the LUCL implies PLRI and changes the plan from simple debridement to ligament repair/reconstruction (a classic post-injection/post-release complication). Trace the LUCL every time, and don't over-call reactive edema. Corticosteroid injection gives only short-term benefit and may worsen long-term outcomes."
+    },
+    {
+      "id": "elbow-medial-epicondylitis-ulnar",
+      "title": "Medial Epicondylitis with Adjacent Ulnar Neuritis",
+      "domain": "elbow-nerves-entrapment",
+      "tier": "core",
+      "presentation": "A 50-year-old golfer with medial elbow pain plus tingling in the ring and small fingers. (difficulty: intermediate; residentVisible: false)",
+      "findings": "Common flexor-pronator origin tendinosis/partial tear at the medial epicondyle; a T2-hyperintense, enlarged ulnar nerve in the cubital tunnel just posterior to it. Compare the nerve to the median nerve and the contralateral side; assess flexion subluxation.",
+      "teaching": "Medial epicondylitis (golfer's elbow) commonly coexists with ulnar neuritis because the cubital tunnel sits immediately posterior to the flexor-pronator origin — when you call medial epicondylitis, always interrogate the ulnar nerve and the UCL (the third member of the medial triad). Anchor the ulnar call to caliber change + denervation + clinical correlation (mild T2 brightness can be normal). Concomitant ulnar symptoms or a subluxating nerve change operative planning (may add a selective transposition)."
+    },
+    {
+      "id": "elbow-cubital-tunnel-ulnar-neuritis",
+      "title": "Cubital Tunnel Syndrome — Ulnar Neuritis +/- Subluxation",
+      "domain": "elbow-nerves-entrapment",
+      "tier": "core",
+      "presentation": "A 38-year-old with numbness in the ulnar two digits, worse with elbow flexion; positive Tinel at the cubital tunnel. (difficulty: intermediate; residentVisible: false)",
+      "findings": "Ulnar nerve enlargement and T2 hyperintensity at/just distal to the medial epicondyle, with FCU/ulnar-FDP denervation edema. Assess dynamic subluxation of the nerve over the epicondyle in flexion and any anconeus epitrochlearis accessory muscle, ganglion, or osteophyte; watch for snapping triceps (the medial triceps head subluxing with the nerve).",
+      "teaching": "Cubital tunnel is the second most common compression neuropathy after carpal tunnel. MRI defines the structural cause — accessory muscle, ganglion, osteophyte, or subluxation — and a subluxating nerve, accessory muscle, or co-existing snapping triceps changes the operation (transposition, and addressing the triceps, vs simple decompression). Compare nerve caliber/signal to the contralateral side and the median nerve as an internal control; denervation edema is a subacute (not hyperacute) finding."
+    },
+    {
+      "id": "elbow-veo-posteromedial-loose-body",
+      "title": "Valgus Extension Overload — Posteromedial Loose Body",
+      "domain": "elbow-bones-marrow-osteochondral",
+      "tier": "advanced",
+      "presentation": "A veteran pitcher with posterior elbow pain at ball release, loss of terminal extension, and a catching sensation. (difficulty: advanced; residentVisible: false)",
+      "findings": "Posteromedial olecranon osteophyte (chondromalacia / kissing lesion) with posteromedial trochlear chondral wear and an intra-articular loose body, classically in the posterior compartment/olecranon fossa; often co-existing UCL pathology. Hunt loose bodies in the olecranon, coronoid, and radial fossae on sagittal fluid-sensitive images.",
+      "teaching": "Valgus extension overload is the throwing-elbow chain: UCL insufficiency -> posteromedial olecranon impingement -> osteophyte and loose body. The loose body causes the mechanical catching, but the underlying UCL MUST be assessed because debriding the osteophyte without addressing UCL laxity can unmask/worsen valgus instability. In a non-thrower/laborer, primary OA is the more common source of the same loose-body pattern."
+    },
+    {
+      "id": "elbow-occult-radial-head-fracture",
+      "title": "Occult Radial Head Fracture vs Normal Variant (Pseudodefect)",
+      "domain": "elbow-dont-miss",
+      "tier": "core",
+      "presentation": "A 30-year-old after a fall on an outstretched hand with lateral elbow pain and a positive fat-pad sign on radiograph but no visible fracture line. (difficulty: intermediate; residentVisible: true)",
+      "findings": "Non-displaced radial head/neck fracture line with marrow edema and a displaced posterior fat pad / effusion. The radiocapitellar pseudodefect (posterolateral bare-area groove) and the transverse trochlear ridge are normal and must not be called fractures or osteochondral lesions.",
+      "teaching": "A displaced posterior fat-pad sign with a normal radiograph means an occult fracture until proven otherwise — most often the radial head — and MRI confirms it (line + edema vs bone bruise = edema only). The high-value 'don't-overcall' counterpoint is the pseudodefect and trochlear ridge. The radial-head surgical trigger is a mechanical block to forearm rotation, an articular fragment that impedes motion, or comminution (Mason III) — not the 2 mm number alone. In children, also clear the non-union-prone lateral condyle fracture as the subtle 'fat pad without a line.' This is the normal/variant anchor case."
+    }
+  ],
+  "quizConcepts": [
+    {
+      "domain": "elbow-orientation-protocol",
+      "concept": "Choosing the protocol/plane that answers the clinical question (when MR arthrography or FABS changes management; which plane shows which structure).",
+      "correctManagement": "Add MR arthrography for the suspected UCL undersurface (T-sign) tear or for loose-body/chondral detection when non-contrast MRI is equivocal (or when OCD stability will change the operation); order FABS when distal biceps partial-vs-complete and retraction are the question; read capitellar OCD on coronal + sagittal.",
+      "distractorMisconceptions": [
+        "MR arthrography is needed for every elbow MRI",
+        "Capitellar OCD is best assessed on sagittal alone",
+        "An elbow 'ABER' sequence is a validated routine like the shoulder",
+        "FABS is for the UCL rather than the distal biceps footprint"
+      ]
+    },
+    {
+      "domain": "elbow-search-pattern",
+      "concept": "Avoiding satisfaction-of-search by reading the linked structures (medial triad; lateral epicondylitis + LUCL; post-trauma coronoid).",
+      "correctManagement": "After an obvious tendinopathy, complete the linked search — UCL + flexor-pronator + ulnar nerve medially, common extensor + LUCL laterally, and the coronoid (including the anteromedial facet) + LCL in any post-dislocation elbow — and name the single management-changing finding.",
+      "distractorMisconceptions": [
+        "Calling lateral epicondylitis and stopping (missing the LUCL undersurface tear -> PLRI)",
+        "Calling medial epicondylitis and stopping (missing the UCL and ulnar nerve)",
+        "A small coronoid facet fragment is stable because it looks small on radiographs",
+        "Reading tendons before bones/marrow is fine"
+      ]
+    },
+    {
+      "domain": "elbow-bones-marrow-osteochondral",
+      "concept": "What makes a capitellar OCD UNSTABLE (and the OCD-vs-Panner discriminator).",
+      "correctManagement": "Call it unstable on a fluid line completely undercutting the fragment, a sizeable/multiple subchondral cyst, a cartilage cleft reaching the fragment, or a displaced fragment/loose body -> stop throwing and refer; a stable lesion with intact cartilage is managed with rest.",
+      "distractorMisconceptions": [
+        "Surrounding marrow edema alone means the lesion is unstable",
+        "An isolated high-T2 line (without cyst/cartilage breach) is definitely unstable",
+        "Panner (whole ossific nucleus, age ~5-10) and OCD are the same entity",
+        "A subchondral cyst must be >=5 mm to count, by a validated elbow criterion"
+      ]
+    },
+    {
+      "domain": "elbow-ucl-valgus",
+      "concept": "Recognizing the T-sign of a partial undersurface (distal) UCL tear and what drives management.",
+      "correctManagement": "Identify fluid/contrast undercutting the distal UCL beyond the articular-cartilage edge while proximal fibers stay attached (T-sign = partial undersurface tear); manage by lesion + athlete demand + moving-valgus exam — nonoperative/PRP for most partials, reconstruction or repair-+internal-brace for full-thickness/failed high-grade partials.",
+      "distractorMisconceptions": [
+        "A small normal distal synovial recess is a T-sign",
+        "Distal tears definitively outnumber proximal tears in throwers",
+        "The MRI tear grade alone dictates surgery",
+        "Routine ulnar nerve transposition is standard with every UCL reconstruction"
+      ]
+    },
+    {
+      "domain": "elbow-lcl-plri",
+      "concept": "The LUCL as the PLRI restraint, and the anteromedial coronoid facet fracture as the distinct VPMRI lesion.",
+      "correctManagement": "Trace the LUCL (epicondyle -> posterior to radial head -> supinator crest) on coronal + axial and comment on it in every post-dislocation/post-lateral-surgery elbow; call and classify the anteromedial coronoid facet fracture (O'Driscoll) as the surgical VPMRI lesion.",
+      "distractorMisconceptions": [
+        "PLRI and VPMRI are the same instability mechanism",
+        "The anteromedial coronoid facet fragment is stable because it is small",
+        "Valgus is the only medial-sided instability to consider post-trauma",
+        "The MCL is the primary lesion in most simple elbow dislocations"
+      ]
+    },
+    {
+      "domain": "elbow-tendons-biceps-triceps-epicondylitis",
+      "concept": "Using lacertus integrity to predict distal biceps retraction and surgical urgency (and the deep-fiber triceps analog).",
+      "correctManagement": "Report complete-vs-partial AND lacertus-intact-vs-torn with retraction in cm; an intact lacertus tethers a complete tear (limits retraction, masks it clinically) but it is still a surgical repair; for the triceps, report % width torn because high-grade partials/complete tears are repaired.",
+      "distractorMisconceptions": [
+        "A non-retracted, preserved-exam distal biceps tear is only partial",
+        "Bicipitoradial bursitis is itself the diagnosis",
+        "A high-grade partial triceps tear with extension weakness is just tendinosis",
+        "Graft is mandatory after a fixed 6-week cutoff regardless of reducibility"
+      ]
+    },
+    {
+      "domain": "elbow-nerves-entrapment",
+      "concept": "Localizing entrapment by the denervated-muscle pattern and recognizing the management caveats.",
+      "correctManagement": "Localize by muscle (isolated PQ/FPL/FDP index-middle = AIN; extensor compartment +/- radial-deviated wrist extension = PIN at the arcade of Frohse; FCU/ulnar-FDP/intrinsics = ulnar at the cubital tunnel); anchor the ulnar call to caliber + denervation vs contralateral/median internal control; treat an AIN palsy as possible Parsonage-Turner (EMG/observation, not surgery).",
+      "distractorMisconceptions": [
+        "Mild ulnar nerve T2 brightness alone diagnoses entrapment",
+        "Supinator denervation is a constant feature of PIN syndrome",
+        "An AIN palsy always needs surgical decompression",
+        "T2/STIR muscle denervation edema appears in the first few days (acute)"
+      ]
+    },
+    {
+      "domain": "elbow-dont-miss",
+      "concept": "Prioritizing the management-changing don't-miss finding (and not over-calling a marrow red flag, and aspirating the septic bursa).",
+      "correctManagement": "Name the single urgent finding (complete biceps/triceps/UCL/LUCL avulsion, anteromedial coronoid facet, unstable OCD, occult fracture, infection, marrow-replacing lesion) and route it; aspirate a warm olecranon bursa (MRI cannot exclude infection); reserve 'tumor until proven otherwise' for confluent low-T1 replacement with a mass/cortical destruction/wide transition zone.",
+      "distractorMisconceptions": [
+        "Any low-T1 marrow signal is tumor until proven otherwise",
+        "MRI can reliably exclude a septic olecranon bursa",
+        "A normal radiograph with an effusion excludes fracture",
+        "The pseudodefect/trochlear ridge are osteochondral lesions"
+      ]
+    }
+  ],
+  "dailyPearls": [
+    "Edema is the smoke — find the fire: tie every elbow marrow edema to a fracture line, a physis, a subchondral cyst, or an osteochondral fragment before moving on.",
+    "Capitellar OCD instability is about the interface: a fluid line undercutting the fragment, a sizeable/multiple cyst, a cartilage breach, or a displaced fragment = unstable. Surrounding edema alone is not, and an isolated high-T2 line is indeterminate.",
+    "Panner is the whole young capitellum (~5-10 yr) and it heals; OCD is the focal teenage capitellum (~12-17 yr) and it doesn't always.",
+    "'Trochlea before medial epicondyle is impossible' — if you see the trochlea but not the medial epicondyle, the epicondyle is avulsed, often into the joint.",
+    "A displaced posterior fat pad after adult elbow trauma is a fracture until disproven — radial head first; the surgical trigger is a block to forearm rotation, not the 2 mm number alone.",
+    "The T-sign — fluid undermining the distal UCL beyond the articular-cartilage edge — is the partial undersurface tear missed at exam and arthroscopy; MR arthrography is the most sensitive study. (Distal tears are important and under-recognized, but don't claim they outnumber proximal tears.)",
+    "Medial elbow pain is a triad: read the flexor-pronator origin, the UCL to the sublime tubercle, AND the ulnar nerve together — they injure together in valgus overload.",
+    "Read lateral epicondylitis? Trace the LUCL to the supinator crest. Read medial epicondylitis? Trace the UCL. The adjacent ligament is where the surgery hides.",
+    "The lacertus decides whether a complete distal biceps tear retracts — always report complete-vs-partial AND lacertus-intact-vs-torn; an intact lacertus is the classic mimic of a partial tear.",
+    "Localize a nerve by its muscle: isolated pronator quadratus edema = AIN (consider Parsonage-Turner, not surgery); extensor compartment = PIN at the arcade of Frohse; FCU/ulnar-FDP/intrinsics = ulnar at the cubital tunnel — and compare the ulnar nerve to the median nerve and the other side.",
+    "In the post-dislocation elbow the LCL is usually the primary lesion (O'Driscoll lateral-to-medial circle); chase the coronoid too — a small anteromedial facet fracture means varus posteromedial rotatory instability and is surgical."
+  ],
+  "openQuestionsForFaculty": [
+    "Module count and scope: the blueprint keeps the 8-module / 8-domain shape to match shoulder and hip, but the LCL module has been broadened to 'LCL Complex, PLRI & Post-Traumatic Instability' to absorb the verifier-flagged coronoid/anteromedial-facet/VPMRI, terrible-triad, Osborne-Cotterill, and heterotopic-ossification gaps. Confirm whether the post-traumatic instability axis should stay folded into the LCL module or be split into a 9th 'Instability & Trauma' module (it is dense for one module).",
+    "Image-dependency for UCL teaching: the only available elbow stacks are non-arthrographic CORONAL T2-FS. The course teaches the T-sign as best seen on MR arthrography. Confirm how to handle this — teach the T-sign concept on the available coronal non-contrast images (with an explicit 'arthrography is more sensitive' caveat), defer T-sign workstation teaching until arthrographic stacks are acquired, or acquire arthrographic and axial/sagittal/FABS stacks before launch. The same image gap blocks image-driven nerve, distal-biceps-footprint, loose-body, and full OCD-staging teaching.",
+    "searchPatternStep for the Search-Pattern module: like the shoulder/hip Search-Pattern modules, Module 2 should be authored as `searchPatternStep: null` in code (it teaches the pattern, not a single structure step). It is encoded as 0 in this blueprint only because the output schema requires a number — confirm the engineer writes null.",
+    "Resident-vs-fellow case split: the proposed split keeps the four high-yield throwing/biceps/epicondylitis/occult-fracture cases resident-visible and marks the two nerve cases and the VEO case as non-resident-visible. Confirm whether the cubital-tunnel and medial-epicondylitis-with-ulnar-neuritis cases should be resident-visible given the sports-med fellow audience, and whether to add a dedicated post-traumatic terrible-triad/coronoid case (currently taught in the module/reference but without its own case).",
+    "Depth of the surgical-management numbers for a primary-care sports-med audience: the modules carry return-to-throw timelines (~12-15 mo reconstruction vs ~6-9 mo repair+brace), the dynamic-US gapping threshold (~>1 mm, commonly ~1.5-2 mm cited), and pitch-count/skeletal-maturity prevention. Confirm how much surgical-timeline and counseling detail belongs in a primary-care course vs being flagged for the surgical-correlate toggle.",
+    "Contested points to present as unsettled (confirm framing): (a) distal-vs-proximal UCL tear predominance in throwers; (b) the repair-+internal-brace vs reconstruction indication boundary; (c) the distal biceps repair-vs-graft time window; (d) the medial-epicondyle-avulsion mm cutoff. The blueprint presents all four as decision drivers/ranges rather than fixed rules — confirm this is the desired teaching stance.",
+    "Quiz/confidence count and parallel-form mapping: 8 quiz concepts (one per domain) and 8 confidence statements (1:1 to domains) are provided to match the existing matched parallel pre/post design and the 70% certificate gate. Confirm quizTotal and the per-item parallel-pre/parallel-post mapping with the engineer so the client and Cloud Functions thresholds stay in sync.",
+    "Olecranon bursitis aspiration teaching: the don't-miss module states MRI cannot exclude a septic olecranon bursa and a warm bursa needs aspiration. Confirm whether this clinical-action teaching (vs purely imaging interpretation) is in scope for the imaging course or belongs in a clinical-correlate aside."
+  ]
+}

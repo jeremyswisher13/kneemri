@@ -1,22 +1,94 @@
 import {
   collection, doc, getDoc, getDocs, setDoc, addDoc, query, where, serverTimestamp
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "./db";
 import { logAuditEvent } from "./audit";
-import { prePostQuizQuestions } from "@/content/quizzes/pre-post-quiz";
+import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
+import { defaultCourse, getCourseById, LEGACY_DEFAULT_COURSE_ID, type CourseDefinition, type CourseId } from "@/content/courses";
+import type {
+  CaseAttemptItem,
+  ModuleProgressItem,
+  QuizAttempt,
+  SurveyAttempt,
+  UserProgress,
+} from "@/types/progress";
+
+// Interactive Normal MRI — the plane Knowledge Checks a fellow must pass for the
+// workstation to count as "complete". Plane passes are stored in the per-user
+// "normalKnee" subcollection keyed by these (course-disambiguated) ids; the
+// shoulder ids carry an "sh-" prefix so the two courses never collide.
+export const NORMAL_KNEE_PLANE_IDS = ["sag-pdfs", "cor-pdfs", "axi-t2fs", "sag-t1"];
+export const NORMAL_SHOULDER_PLANE_IDS = ["sh-sag-t2fs", "sh-cor-t2fs", "sh-axi-t2fs", "sh-sag-t1"];
+// Hip workstation plane passes are stored as `hip-${seriesId}` (see
+// NormalHipMriPage.handleCheckComplete). Like shoulder, passing every plane is
+// required for the client-side "course complete" / post-assessment unlock; the
+// certificate Cloud Function treats non-knee normal-MRI as not-gating
+// (meetsCompletion: normalOk = isKnee ? normalDone : true), so the two stay in
+// sync without a function change.
+export const NORMAL_HIP_PLANE_IDS = ["hip-cor-t2fs", "hip-axi", "hip-sag"];
+export const NORMAL_ELBOW_PLANE_IDS = ["elbow-cor-t2fs", "elbow-axi-t2fs", "elbow-sag-ir"];
+export const NORMAL_KNEE_PASS_PCT = 0.7;
+
+/** The workstation plane ids for a course's bodyRegion (empty if no workstation). */
+export function normalPlaneIdsFor(bodyRegion: string): string[] {
+  if (bodyRegion === "knee") return NORMAL_KNEE_PLANE_IDS;
+  if (bodyRegion === "shoulder") return NORMAL_SHOULDER_PLANE_IDS;
+  if (bodyRegion === "hip") return NORMAL_HIP_PLANE_IDS;
+  if (bodyRegion === "elbow") return NORMAL_ELBOW_PLANE_IDS;
+  return [];
+}
+
+// --- Admin Preview Guard ---
+function isAdminPreview(): boolean {
+  try {
+    return !!sessionStorage.getItem('adminPreviewRole');
+  } catch {
+    return false;
+  }
+}
+
+// --- Specialty + surgical-correlate preference ---
+export async function setUserSpecialty(uid: string, specialty: "sports-med" | "ortho"): Promise<void> {
+  const userRef = doc(db, "users", uid);
+  // Default the surgical-correlate toggle from specialty (ortho → on); the learner
+  // can flip it anytime via setShowSurgical.
+  await setDoc(userRef, { specialty, showSurgical: specialty === "ortho" }, { merge: true });
+}
+
+export async function setShowSurgical(uid: string, showSurgical: boolean): Promise<void> {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, { showSurgical }, { merge: true });
+}
+
+// --- Touch Last Active ---
+async function touchLastActive(uid: string) {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, { lastActive: serverTimestamp() }, { merge: true });
+}
+
+// --- User Role ---
+export async function setUserRole(uid: string, role: 'fellow' | 'resident'): Promise<void> {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, { role }, { merge: true });
+}
 
 // --- Quiz ---
 export async function submitQuiz(
   userId: string,
   userEmail: string,
   quizType: "pre" | "post",
-  answers: { questionId: string; selectedAnswer: string }[]
+  answers: { questionId: string; selectedAnswer: string }[],
+  courseId: CourseId = defaultCourse.id,
+  // When true (admin viewing the course directly), score and return results for
+  // the UI but DO NOT persist — so an admin's own test runs never pollute cohort data.
+  skipWrite = false
 ) {
-  // Filter questions for this quiz type
+  // Filter questions for this quiz type, scoped to the submitting course's instrument.
   const validMappings = quizType === "pre"
     ? ["identical", "parallel-pre", "pre-only"]
     : ["identical", "parallel-post", "post-only"];
-  const questions = prePostQuizQuestions.filter(q => validMappings.includes(q.prePostMapping));
+  const questions = getCourseById(courseId).prePostQuizQuestions
+    .filter(q => validMappings.includes(q.prePostMapping));
 
   // Score
   let score = 0;
@@ -32,8 +104,14 @@ export async function submitQuiz(
     };
   });
 
+  // Admin preview / admin-view: return real scoring without writing anything.
+  if (isAdminPreview() || skipWrite) {
+    return { score, totalQuestions: questions.length, results, attemptId: "preview" };
+  }
+
   // Save to Firestore
   const attemptRef = await addDoc(collection(db, "users", userId, "quizAttempts"), {
+    courseId,
     quizType,
     answers,
     score,
@@ -41,7 +119,8 @@ export async function submitQuiz(
     completedAt: serverTimestamp(),
   });
 
-  await logAuditEvent(userId, userEmail, "quiz_submitted", { quizType, score, totalQuestions: questions.length });
+  logAuditEvent(userId, userEmail, "quiz_submitted", { courseId, quizType, score, totalQuestions: questions.length }).catch(() => {});
+  touchLastActive(userId).catch(() => {});
 
   return { score, totalQuestions: questions.length, results, attemptId: attemptRef.id };
 }
@@ -51,16 +130,45 @@ export async function submitSurvey(
   userId: string,
   userEmail: string,
   surveyType: "pre" | "post",
-  responses: { statementId: string; rating: number }[]
+  responses: { statementId: string; rating: number }[],
+  courseId: CourseId = defaultCourse.id,
+  // Post survey only: the retrospective "then" ratings (confidence as the learner
+  // now judges it to have been before the course). Omitted/empty on the pre survey.
+  retroResponses?: { statementId: string; rating: number }[],
+  // When true (admin viewing directly), skip the write so test runs don't pollute data.
+  skipWrite = false
 ) {
+  if (isAdminPreview() || skipWrite) return { success: true };
   await addDoc(collection(db, "users", userId, "surveyResponses"), {
+    courseId,
     surveyType,
     responses,
+    ...(retroResponses && retroResponses.length > 0 ? { retroResponses } : {}),
     completedAt: serverTimestamp(),
   });
 
-  await logAuditEvent(userId, userEmail, "survey_submitted", { surveyType });
+  logAuditEvent(userId, userEmail, "survey_submitted", { courseId, surveyType }).catch(() => {});
+  touchLastActive(userId).catch(() => {});
+
   return { success: true };
+}
+
+// --- Module Progress (Admin) ---
+export async function completeModuleAdmin(
+  userId: string,
+  moduleId: string,
+  quizScore: number,
+  quizTotal: number,
+  courseId: CourseId = defaultCourse.id
+) {
+  const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);
+  await setDoc(moduleRef, {
+    courseId,
+    completed: true,
+    quizScore,
+    quizTotal,
+    completedAt: serverTimestamp(),
+  }, { merge: true });
 }
 
 // --- Module Progress ---
@@ -69,17 +177,50 @@ export async function completeModule(
   userEmail: string,
   moduleId: string,
   quizScore?: number,
-  quizTotal?: number
+  quizTotal?: number,
+  courseId: CourseId = defaultCourse.id
 ) {
+  if (isAdminPreview()) return { success: true };
   const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);
   await setDoc(moduleRef, {
+    courseId,
     completed: true,
     quizScore: quizScore ?? null,
     quizTotal: quizTotal ?? null,
     completedAt: serverTimestamp(),
   }, { merge: true });
 
-  await logAuditEvent(userId, userEmail, "module_completed", { moduleId, quizScore, quizTotal });
+  // Non-blocking: don't let audit/activity tracking failures prevent module completion
+  logAuditEvent(userId, userEmail, "module_completed", { courseId, moduleId, quizScore, quizTotal }).catch(() => {});
+  touchLastActive(userId).catch(() => {});
+
+  return { success: true };
+}
+
+// --- Interactive Normal MRI workstation: plane pass (ALL courses) ---
+// NOTE: the per-user subcollection is still named "normalKnee" (the knee course
+// shipped first), but it is the SHARED store for every course — plane passes are
+// keyed by course-disambiguated ids (knee bare, "sh-"/"hip-"/"elbow-" prefixed;
+// see NORMAL_*_PLANE_IDS). Renaming the collection would orphan existing data, so
+// only the function name is generic. There is NO knee-specific behavior here.
+/** Record that a fellow passed the Knowledge Check for one workstation plane (any course). */
+export async function markNormalPlanePassed(
+  userId: string,
+  userEmail: string,
+  planeId: string,
+  score: number,
+  total: number,
+) {
+  if (isAdminPreview()) return { success: true };
+  const ref = doc(db, "users", userId, "normalKnee", planeId);
+  await setDoc(ref, {
+    passed: true,
+    score,
+    total,
+    completedAt: serverTimestamp(),
+  }, { merge: true });
+  logAuditEvent(userId, userEmail, "normal_knee_plane_passed", { planeId, score, total }).catch(() => {});
+  touchLastActive(userId).catch(() => {});
   return { success: true };
 }
 
@@ -89,89 +230,349 @@ export async function submitCaseAttempt(
   userEmail: string,
   caseId: string,
   searchPatternChecklist: Record<string, boolean>,
-  report: string
+  report: string,
+  courseId: CourseId = defaultCourse.id
 ) {
+  if (isAdminPreview()) return { success: true, attemptId: "preview" };
   const ref = await addDoc(collection(db, "users", userId, "caseAttempts"), {
+    courseId,
     caseId,
     searchPatternChecklist,
     report,
     completedAt: serverTimestamp(),
   });
 
-  await logAuditEvent(userId, userEmail, "case_submitted", { caseId });
+  logAuditEvent(userId, userEmail, "case_submitted", { courseId, caseId }).catch(() => {});
+  touchLastActive(userId).catch(() => {});
+
   return { success: true, attemptId: ref.id };
 }
 
 // --- Progress ---
-export async function getUserProgress(userId: string) {
+/**
+ * Course-scoped progress. Reads are filtered to the supplied course:
+ *  - moduleProgress / caseAttempts / reviewCards are namespaced by content ID
+ *    (e.g. "shoulder-rotator-cuff"), so we filter by course content membership.
+ *  - quizAttempts / surveyResponses are keyed only by "pre"/"post", so they
+ *    carry a `courseId` field. For backward compatibility, documents written
+ *    before multi-course support (no `courseId`) are attributed to the default
+ *    (knee) course.
+ */
+// The global cohort settings doc (admin post-quiz-unlock flags) is identical for
+// every learner, so cache it briefly rather than re-reading it inside every
+// getUserProgress call — the admin getAllFellows loop would otherwise read the
+// same doc once per learner. Invalidated explicitly when an admin toggles a flag.
+let cohortCache: { data: Record<string, unknown>; at: number } | null = null;
+const COHORT_TTL_MS = 60_000;
+async function getCohortSettings(): Promise<Record<string, unknown>> {
+  if (cohortCache && Date.now() - cohortCache.at < COHORT_TTL_MS) return cohortCache.data;
+  const snap = await getDoc(doc(db, "settings", "cohort"));
+  const data = snap.exists() ? snap.data() : {};
+  cohortCache = { data, at: Date.now() };
+  return data;
+}
+
+export async function getUserProgress(
+  userId: string,
+  course: CourseDefinition = defaultCourse,
+): Promise<UserProgress> {
+  const isDefaultCourse = course.id === defaultCourse.id;
+  // Legacy (pre-multi-course) docs have no courseId and belong to the knee
+  // course. Pinned to LEGACY_DEFAULT_COURSE_ID (not defaultCourse) so a registry
+  // reorder can't reattribute them. This is distinct from isDefaultCourse below,
+  // which gates the global admin post-quiz-unlock setting.
+  const isLegacyOwnerCourse = course.id === LEGACY_DEFAULT_COURSE_ID;
+  // A quiz/survey doc belongs to this course if its courseId matches, or — for
+  // the legacy-owner course only — if it predates course tagging (no courseId).
+  const belongsToCourse = (data: { courseId?: string }) =>
+    data.courseId === course.id || (isLegacyOwnerCourse && data.courseId == null);
+
+  // Newest-first ordering so find() returns the MOST RECENT attempt deterministically
+  // (Firestore returns docs in random doc-ID order; addDoc IDs aren't chronological).
+  const completedMs = (t: unknown): number =>
+    t != null && typeof (t as { toMillis?: unknown }).toMillis === "function"
+      ? (t as { toMillis: () => number }).toMillis()
+      : 0;
+
+  // The per-plane workstation read is gated only on course.bodyRegion (no
+  // Firestore dependency), so it can join the same parallel wave as the other
+  // independent subcollection/doc reads.
+  const planeIds = normalPlaneIdsFor(course.bodyRegion);
+  const hasWorkstation = planeIds.length > 0;
+
+  // All of these reads are independent — fire them in one wave.
+  const [[quizSnap, surveySnap, moduleSnap, caseSnap, userSnap, nkSnap], settingsData] =
+    await Promise.all([
+      Promise.all([
+        getDocs(collection(db, "users", userId, "quizAttempts")),
+        getDocs(collection(db, "users", userId, "surveyResponses")),
+        getDocs(collection(db, "users", userId, "moduleProgress")),
+        getDocs(collection(db, "users", userId, "caseAttempts")),
+        getDoc(doc(db, "users", userId)),
+        hasWorkstation
+          ? getDocs(collection(db, "users", userId, "normalKnee"))
+          : Promise.resolve(null),
+      ]),
+      getCohortSettings(),
+    ]);
+
   // Quiz attempts
-  const quizSnap = await getDocs(collection(db, "users", userId, "quizAttempts"));
-  const quizAttempts = quizSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-  const preQuiz = quizAttempts.find((a: any) => a.quizType === "pre");
-  const postQuiz = quizAttempts.find((a: any) => a.quizType === "post");
+  const quizAttempts = quizSnap.docs
+    .map(d => ({ id: d.id, ...d.data() } as QuizAttempt & { courseId?: string }))
+    .filter(belongsToCourse)
+    .sort((a, b) => completedMs(b.completedAt) - completedMs(a.completedAt));
+  const preQuiz = quizAttempts.find((a) => a.quizType === "pre");
+  const postQuiz = quizAttempts.find((a) => a.quizType === "post");
 
   // Survey responses
-  const surveySnap = await getDocs(collection(db, "users", userId, "surveyResponses"));
-  const surveyResponses = surveySnap.docs.map(d => ({ id: d.id, ...d.data() }));
-  const preSurvey = surveyResponses.find((s: any) => s.surveyType === "pre");
-  const postSurvey = surveyResponses.find((s: any) => s.surveyType === "post");
+  const surveyResponses = surveySnap.docs
+    .map(d => ({ id: d.id, ...d.data() } as SurveyAttempt & { courseId?: string }))
+    .filter(belongsToCourse)
+    .sort((a, b) => completedMs(b.completedAt) - completedMs(a.completedAt));
+  const preSurvey = surveyResponses.find((s) => s.surveyType === "pre");
+  const postSurvey = surveyResponses.find((s) => s.surveyType === "post");
 
-  // Module progress
-  const moduleSnap = await getDocs(collection(db, "users", userId, "moduleProgress"));
-  const moduleProgress = moduleSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-  const modulesCompleted = moduleProgress.filter((m: any) => m.completed).length;
+  // Module progress — filter to this course's modules (IDs are namespaced)
+  const courseModuleIds = new Set(course.modules.map((m) => m.id));
+  const moduleProgress = moduleSnap.docs
+    .map(d => ({ id: d.id, ...d.data() } as ModuleProgressItem))
+    .filter((m) => courseModuleIds.has(m.id));
+  const modulesCompleted = moduleProgress.filter((m) => m.completed).length;
 
-  // Case attempts
-  const caseSnap = await getDocs(collection(db, "users", userId, "caseAttempts"));
-  const caseAttempts = caseSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-  const uniqueCases = new Set(caseAttempts.map((c: any) => c.caseId));
+  // Case attempts — filter to this course's cases (IDs are namespaced)
+  const courseCaseIds = new Set(course.cases.map((c) => c.id));
+  const caseAttempts = caseSnap.docs
+    .map(d => ({ id: d.id, ...d.data() } as CaseAttemptItem))
+    .filter((c) => courseCaseIds.has(c.caseId));
 
-  // Cohort settings
-  const settingsSnap = await getDoc(doc(db, "settings", "cohort"));
-  const postQuizUnlocked = settingsSnap.exists() ? settingsSnap.data().postQuizUnlocked === true : false;
+  // Cohort settings — admin unlock is course-scoped via a per-course field
+  // (postQuizUnlocked_<courseId>); the legacy global `postQuizUnlocked` flag is
+  // honored as the default (knee) course's value for backward compatibility.
+  const adminUnlocked =
+    settingsData[`postQuizUnlocked_${course.id}`] === true ||
+    (isDefaultCourse && settingsData.postQuizUnlocked === true);
+
+  // Auto-unlock: if user completed all modules and all role-appropriate cases
+  const userRole = userSnap.exists() ? userSnap.data().role : null;
+  const isResident = userRole === 'resident';
+  const visibleCoreCases = isResident
+    ? course.coreCases.filter(c => c.residentVisible)
+    : course.coreCases;
+  const requiredCases = visibleCoreCases.length;
+  const visibleCaseIds = new Set(visibleCoreCases.map(c => c.id));
+  const completedVisibleCases = new Set(
+    caseAttempts.filter((c) => visibleCaseIds.has(c.caseId)).map((c) => c.caseId)
+  );
+  const allModulesDone = modulesCompleted >= course.modules.length;
+  // An empty required-case set is trivially satisfied (nothing left to do).
+  const allCasesDone = completedVisibleCases.size >= requiredCases;
+
+  // Interactive Normal MRI: "complete" = passed the Knowledge Check on every
+  // plane of this course's workstation. Courses without a workstation (none
+  // currently) treat it as not-applicable (complete).
+  const isKnee = course.bodyRegion === "knee";
+  let normalPlanesPassed = 0;
+  if (hasWorkstation && nkSnap) {
+    const passedIds = new Set(nkSnap.docs.filter((d) => d.data().passed === true).map((d) => d.id));
+    normalPlanesPassed = planeIds.filter((id) => passedIds.has(id)).length;
+  }
+  const totalNormalPlanes = planeIds.length;
+  const normalMriComplete = !hasWorkstation || normalPlanesPassed >= planeIds.length;
+
+  // Required learning to unlock the post-assessment:
+  //  • Knee: all modules + the Normal Knee MRI (cases are OPTIONAL).
+  //  • Shoulder: all modules + all core cases + the Normal Shoulder MRI.
+  //  • Any other course: all modules + all role-appropriate core cases.
+  const requiredLearningDone = isKnee
+    ? allModulesDone && normalMriComplete
+    : allModulesDone && allCasesDone && normalMriComplete;
+  const postQuizUnlocked = adminUnlocked || requiredLearningDone;
 
   return {
     preQuizCompleted: !!preQuiz,
-    preQuizScore: (preQuiz as any)?.score ?? null,
-    preQuizTotal: (preQuiz as any)?.totalQuestions ?? null,
+    preQuizScore: preQuiz?.score ?? null,
+    preQuizTotal: preQuiz?.totalQuestions ?? null,
+    preQuizCompletedAt: preQuiz?.completedAt ?? null,
+    preQuizResponses: preQuiz?.answers ?? null,
     preSurveyCompleted: !!preSurvey,
-    preSurveyResponses: (preSurvey as any)?.responses ?? null,
+    preSurveyResponses: preSurvey?.responses ?? null,
+    preSurveyCompletedAt: preSurvey?.completedAt ?? null,
     postQuizCompleted: !!postQuiz,
-    postQuizScore: (postQuiz as any)?.score ?? null,
+    postQuizScore: postQuiz?.score ?? null,
+    postQuizResponses: postQuiz?.answers ?? null,
     postSurveyCompleted: !!postSurvey,
+    postSurveyResponses: postSurvey?.responses ?? null,
+    postRetroResponses: postSurvey?.retroResponses ?? null,
+    postQuizTotal: postQuiz?.totalQuestions ?? null,
+    postSurveyCompletedAt: postSurvey?.completedAt ?? null,
+    postQuizCompletedAt: postQuiz?.completedAt ?? null,
     postQuizUnlocked,
     modulesCompleted,
-    totalModules: 10,
-    casesCompleted: uniqueCases.size,
-    totalCases: 12,
+    totalModules: course.modules.length,
+    casesCompleted: completedVisibleCases.size,
+    totalCases: requiredCases,
+    normalMriComplete,
+    normalPlanesPassed,
+    totalNormalPlanes,
     moduleProgress,
     caseAttempts,
   };
 }
 
 // --- Admin ---
-export async function getAllFellows() {
-  const q = query(collection(db, "users"), where("role", "==", "fellow"));
-  const snap = await getDocs(q);
-  const fellows = [];
-  for (const userDoc of snap.docs) {
-    const userData = userDoc.data();
-    const progress = await getUserProgress(userDoc.id);
-    fellows.push({
-      id: userDoc.id,
-      ...userData,
-      ...progress,
-    });
-  }
-  return fellows;
+export async function getAllFellows(course: CourseDefinition = defaultCourse) {
+  // Fetch both fellows and residents (exclude admins with no learner role).
+  // Progress is computed for the supplied course so the admin dashboard can
+  // switch between cohorts (knee / shoulder).
+  const fellowSnap = await getDocs(query(collection(db, "users"), where("role", "==", "fellow")));
+  const residentSnap = await getDocs(query(collection(db, "users"), where("role", "==", "resident")));
+  const allDocs = [...fellowSnap.docs, ...residentSnap.docs];
+  const users = await Promise.all(
+    allDocs.map(async (userDoc) => {
+      const userData = userDoc.data();
+      const progress = await getUserProgress(userDoc.id, course);
+      return {
+        id: userDoc.id,
+        ...userData,
+        ...progress,
+      };
+    }),
+  );
+  return users;
 }
 
-export async function togglePostQuizUnlock(userId: string, userEmail: string, unlocked: boolean) {
-  await setDoc(doc(db, "settings", "cohort"), {
-    postQuizUnlocked: unlocked,
-    updatedAt: serverTimestamp(),
-  }, { merge: true });
+// In-flight coalescer for getUserProgress: FellowLayout and the dashboard page
+// each call useProgress(activeCourse) on the same mount, which would otherwise
+// run the full ~6-read wave TWICE. Sharing the pending promise collapses them
+// into one wave; cleared once settled so a later mount / refresh() refetches
+// fresh (no long-lived staleness after a progress-writing mutation).
+const progressInFlight = new Map<string, Promise<UserProgress>>();
+export function loadProgress(userId: string, course: CourseDefinition = defaultCourse): Promise<UserProgress> {
+  const key = `${userId}:${course.id}`;
+  const existing = progressInFlight.get(key);
+  if (existing) return existing;
+  const p = getUserProgress(userId, course);
+  progressInFlight.set(key, p);
+  p.catch(() => {}).finally(() => {
+    if (progressInFlight.get(key) === p) progressInFlight.delete(key);
+  });
+  return p;
+}
 
-  await logAuditEvent(userId, userEmail, "post_quiz_unlocked", { unlocked });
+export async function togglePostQuizUnlock(
+  userId: string,
+  userEmail: string,
+  unlocked: boolean,
+  courseId: CourseId = defaultCourse.id,
+) {
+  const update: Record<string, unknown> = {
+    [`postQuizUnlocked_${courseId}`]: unlocked,
+    updatedAt: serverTimestamp(),
+  };
+  // Keep the legacy global flag in sync for the default (knee) course.
+  if (courseId === defaultCourse.id) update.postQuizUnlocked = unlocked;
+  await setDoc(doc(db, "settings", "cohort"), update, { merge: true });
+  cohortCache = null; // so the toggling admin sees the new unlock state immediately
+
+  await logAuditEvent(userId, userEmail, "post_quiz_unlocked", { courseId, unlocked });
   return { success: true, postQuizUnlocked: unlocked };
+}
+
+// --- Spaced Repetition Review Cards ---
+
+// In-flight coalescer: the dashboard fires getReviewCards twice on mount (the
+// FellowLayout due-badge via getDueCards and the ReviewSummaryCard via
+// getCourseCards). Sharing the in-flight promise collapses those into one
+// collection read; cleared once settled so later navigations still refetch.
+let reviewCardsInFlight: { uid: string; p: Promise<ReviewCard[]> } | null = null;
+export async function getReviewCards(userId: string): Promise<ReviewCard[]> {
+  if (reviewCardsInFlight && reviewCardsInFlight.uid === userId) return reviewCardsInFlight.p;
+  const p = (async () => {
+    const snap = await getDocs(collection(db, "users", userId, "reviewCards"));
+    return snap.docs.map((d) => ({ questionId: d.id, ...d.data() } as ReviewCard));
+  })();
+  reviewCardsInFlight = { uid: userId, p };
+  p.catch(() => {}).finally(() => {
+    if (reviewCardsInFlight?.p === p) reviewCardsInFlight = null;
+  });
+  return p;
+}
+
+export async function saveReviewCard(userId: string, card: ReviewCard): Promise<void> {
+  if (isAdminPreview()) return;
+  const cardRef = doc(db, "users", userId, "reviewCards", card.questionId);
+  await setDoc(cardRef, {
+    moduleId: card.moduleId,
+    ...(card.courseId ? { courseId: card.courseId } : {}),
+    easeFactor: card.easeFactor,
+    interval: card.interval,
+    repetitions: card.repetitions,
+    nextReviewDate: card.nextReviewDate,
+  }, { merge: true });
+}
+
+/**
+ * Due cards for a course. A card belongs to the course when its courseId
+ * matches, or — for the legacy-owner (knee) course only — when it predates
+ * course tagging (no courseId), mirroring getUserProgress's backward-compat
+ * rule. Pinned to LEGACY_DEFAULT_COURSE_ID so a registry reorder can't
+ * reattribute production knee review cards.
+ */
+export async function getDueCards(
+  userId: string,
+  course: CourseDefinition = defaultCourse,
+): Promise<ReviewCard[]> {
+  const today = new Date().toISOString().split("T")[0];
+  return (await getCourseCards(userId, course)).filter(card => card.nextReviewDate <= today);
+}
+
+/**
+ * All of a learner's review cards owned by a course (due or not), using the same
+ * ownership rule as getDueCards. Feeds the dashboard review-summary widget.
+ */
+export async function getCourseCards(
+  userId: string,
+  course: CourseDefinition = defaultCourse,
+): Promise<ReviewCard[]> {
+  const allCards = await getReviewCards(userId);
+  const isLegacyOwnerCourse = course.id === LEGACY_DEFAULT_COURSE_ID;
+  return allCards.filter(
+    card => card.courseId === course.id || (isLegacyOwnerCourse && card.courseId == null),
+  );
+}
+
+export async function addWrongAnswerToReview(
+  userId: string,
+  questionId: string,
+  moduleId: string,
+  courseId: CourseId = defaultCourse.id,
+): Promise<void> {
+  if (isAdminPreview()) return;
+  // Check if card already exists — don't overwrite an existing card's scheduling
+  // if it's not yet due (nextReviewDate is in the future).
+  const cardRef = doc(db, "users", userId, "reviewCards", questionId);
+  const existing = await getDoc(cardRef);
+  if (existing.exists()) {
+    const data = existing.data();
+    const today = new Date().toISOString().split("T")[0];
+    if (data.nextReviewDate && data.nextReviewDate > today) {
+      // Card exists and isn't due yet — leave its scheduling alone
+      return;
+    }
+    // Card exists but is currently due — apply a "again" (quality=1) review,
+    // preserving its ease/repetition history rather than resetting from scratch.
+    // Note: questionId is the doc ID, not a stored field — must add it back.
+    const existingCard = {
+      ...data,
+      questionId,
+      moduleId: data.moduleId || moduleId,
+      courseId: data.courseId || courseId,
+    } as ReviewCard;
+    const card = calculateNextReview(existingCard, 1);
+    await saveReviewCard(userId, card);
+    return;
+  }
+  // Card doesn't exist — create a new one
+  const card = createNewCard(questionId, moduleId, courseId);
+  await saveReviewCard(userId, card);
 }

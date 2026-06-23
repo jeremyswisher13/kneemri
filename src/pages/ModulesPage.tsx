@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import Card from "@/components/ui/Card";
-import { moduleRegistry } from "@/content/modules";
 import { useProgress } from "@/hooks/useProgress";
+import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { coursePath } from "@/content/courses";
 
 export default function ModulesPage() {
-  const { progress, loading } = useProgress();
+  const activeCourse = useActiveCourse();
+  const { progress, loading } = useProgress(activeCourse);
+  const modules = activeCourse.modules;
 
   function getModuleStatus(moduleId: string) {
     const record = progress?.moduleProgress?.find(
-      (m: any) => m.id === moduleId
+      (m) => m.id === moduleId
     );
     if (!record) return "not-started";
     if (record.completed) return "completed";
@@ -23,39 +26,61 @@ export default function ModulesPage() {
     );
   }
 
+  const completedModuleCount = modules.filter(
+    (mod) => getModuleStatus(mod.id) === "completed"
+  ).length;
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Course Modules</h1>
       <p className="mt-1 text-gray-500">
-        Work through each module sequentially to build your knee MRI
+        Work through each module sequentially to build your {activeCourse.bodyRegion} MRI
         interpretation skills.
       </p>
 
+      {/* Milestone encouragement banners */}
+      {completedModuleCount >= Math.ceil(modules.length / 2) && completedModuleCount < modules.length && (
+        <div className="mt-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
+          You've completed {completedModuleCount} of {modules.length} modules -- keep up the great work.
+        </div>
+      )}
+      {completedModuleCount === modules.length && (
+        <div className="mt-4 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+          All modules complete! Time to put your knowledge to the test with cases.
+        </div>
+      )}
+
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        {moduleRegistry.map((mod) => {
+        {modules.map((mod) => {
           const status = getModuleStatus(mod.id);
 
           return (
-            <Link key={mod.id} to={`/modules/${mod.id}`} className="block">
+            <Link key={mod.id} to={coursePath(activeCourse, `/modules/${mod.id}`)} className="block">
               <Card className="relative h-full transition-shadow hover:shadow-md hover:border-ucla-blue/30">
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
-                  {status === "completed" && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
-                      <svg
-                        className="h-3.5 w-3.5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Complete
-                    </span>
-                  )}
+                  {status === "completed" && (() => {
+                    const record = progress?.moduleProgress?.find(
+                      (m) => m.id === mod.id
+                    );
+                    const hasScore = record?.quizScore != null && record?.quizTotal != null;
+                    return (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
+                        <svg
+                          className="h-3.5 w-3.5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {hasScore ? `${record.quizScore}/${record.quizTotal}` : "Complete"}
+                      </span>
+                    );
+                  })()}
                   {status === "in-progress" && (
                     <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-ucla-blue">
                       <span className="h-1.5 w-1.5 rounded-full bg-ucla-blue" />
@@ -80,7 +105,7 @@ export default function ModulesPage() {
                 </div>
 
                 {/* Estimated Time */}
-                <div className="mt-4 flex items-center gap-1.5 text-xs text-gray-400">
+                <div className="mt-4 flex items-center gap-1.5 text-xs text-gray-500">
                   <svg
                     className="h-3.5 w-3.5"
                     fill="none"
@@ -110,7 +135,7 @@ export default function ModulesPage() {
                       </li>
                     ))}
                     {mod.topics.length > 4 && (
-                      <li className="text-xs text-gray-400 pl-3">
+                      <li className="text-xs text-gray-500 pl-3">
                         +{mod.topics.length - 4} more topics
                       </li>
                     )}

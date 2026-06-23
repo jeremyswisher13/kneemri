@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" width="400" height="720" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#005587" flood-opacity="0.15"/>
+    </filter>
+    <marker id="flowArrow" markerWidth="10" markerHeight="8" refX="5" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#FFD100"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="400" height="50" fill="#005587" rx="4"/>
+  <text x="200" y="28" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Systematic Search Pattern</text>
+  <text x="200" y="44" text-anchor="middle" fill="#DAEBFE" font-size="12">Knee MRI Interpretation Checklist</text>
+
+  <!-- Step 1 -->
+  <rect x="60" y="70" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="97" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="102" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">1</text>
+  <text x="210" y="92" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Verify &amp; Orient</text>
+  <text x="210" y="110" text-anchor="middle" fill="#DAEBFE" font-size="10">Patient ID, side, sequences, quality</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="200" y1="125" x2="200" y2="150" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 2 -->
+  <rect x="60" y="155" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="182" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="187" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">2</text>
+  <text x="210" y="177" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Bones &amp; Marrow</text>
+  <text x="210" y="195" text-anchor="middle" fill="#DAEBFE" font-size="10">Fractures, contusions, tumors, edema</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="200" y1="210" x2="200" y2="235" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 3 -->
+  <rect x="60" y="240" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="267" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="272" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">3</text>
+  <text x="210" y="262" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Cartilage &amp; Osteochondral</text>
+  <text x="210" y="280" text-anchor="middle" fill="#DAEBFE" font-size="10">Chondral defects, OCD lesions, loose bodies</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="200" y1="295" x2="200" y2="320" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 4 -->
+  <rect x="60" y="325" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="352" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="357" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">4</text>
+  <text x="210" y="347" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Menisci</text>
+  <text x="210" y="365" text-anchor="middle" fill="#DAEBFE" font-size="10">Tears, degeneration, extrusion, cysts</text>
+
+  <!-- Arrow 4->5 -->
+  <line x1="200" y1="380" x2="200" y2="405" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 5 -->
+  <rect x="60" y="410" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="437" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="442" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">5</text>
+  <text x="210" y="432" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Ligaments</text>
+  <text x="210" y="450" text-anchor="middle" fill="#DAEBFE" font-size="10">ACL, PCL, MCL, LCL, posterolateral corner</text>
+
+  <!-- Arrow 5->6 -->
+  <line x1="200" y1="465" x2="200" y2="490" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 6 -->
+  <rect x="60" y="495" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="522" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="527" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">6</text>
+  <text x="210" y="517" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Extensor Mechanism</text>
+  <text x="210" y="535" text-anchor="middle" fill="#DAEBFE" font-size="10">Quad/patellar tendons, patella, MPFL</text>
+
+  <!-- Arrow 6->7 -->
+  <line x1="200" y1="550" x2="200" y2="575" stroke="#FFD100" stroke-width="3" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 7 -->
+  <rect x="60" y="580" width="280" height="55" fill="#2774AE" stroke="#005587" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  <circle cx="85" cy="607" r="14" fill="#FFD100" stroke="#005587" stroke-width="1.5"/>
+  <text x="85" y="612" text-anchor="middle" fill="#005587" font-size="13" font-weight="bold">7</text>
+  <text x="210" y="602" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Synovium, Bursae &amp; Other</text>
+  <text x="210" y="620" text-anchor="middle" fill="#DAEBFE" font-size="10">Effusion, Baker cyst, plicae, soft tissues</text>
+
+  <!-- Completion checkmark -->
+  <circle cx="200" cy="665" r="18" fill="#FFD100" stroke="#005587" stroke-width="2"/>
+  <path d="M 190,665 L 197,673 L 212,658" fill="none" stroke="#005587" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="700" text-anchor="middle" fill="#005587" font-size="12" font-weight="bold">Systematic Review Complete</text>
+
+  <!-- Side note -->
+  <rect x="5" y="325" width="48" height="55" fill="#FFD100" fill-opacity="0.15" stroke="#FFD100" stroke-width="1" rx="4"/>
+  <text x="29" y="347" text-anchor="middle" fill="#FFD100" font-size="8" font-weight="bold">TIP:</text>
+  <text x="29" y="358" text-anchor="middle" fill="#005587" font-size="7">Same</text>
+  <text x="29" y="367" text-anchor="middle" fill="#005587" font-size="7">order</text>
+  <text x="29" y="376" text-anchor="middle" fill="#005587" font-size="7">every</text>
+  <text x="29" y="385" text-anchor="middle" fill="#005587" font-size="7">time!</text>
+</svg>

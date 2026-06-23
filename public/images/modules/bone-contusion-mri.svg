@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <radialGradient id="edemaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#88ccff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#88ccff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#88ccff" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="forceArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#FFD100"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="400" fill="#1a1a2e"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="700" height="44" fill="#2774AE" rx="0"/>
+  <text x="350" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Bone Contusion Patterns: Mechanism-Based (MRI)</text>
+
+  <!-- Panel 1: Pivot-Shift -->
+  <rect x="15" y="55" width="215" height="335" fill="#0f0f23" stroke="#444" stroke-width="1" rx="6"/>
+  <rect x="25" y="62" width="195" height="24" fill="#2774AE" rx="3"/>
+  <text x="122" y="79" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Pivot-Shift (ACL Injury)</text>
+
+  <!-- Pivot-shift knee -->
+  <g transform="translate(122, 210)">
+    <!-- Femur -->
+    <path d="M -55,-95 C -55,-95 -65,-45 -65,0 C -65,25 -35,42 0,42 C 35,42 65,25 65,0 C 65,-45 55,-95 55,-95"
+          fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="0" y="-70" text-anchor="middle" fill="#777" font-size="10" font-weight="bold">Femur</text>
+
+    <!-- Tibia -->
+    <path d="M -65,52 L -55,120 L 55,120 L 65,52"
+          fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="0" y="115" text-anchor="middle" fill="#777" font-size="10" font-weight="bold">Tibia</text>
+
+    <!-- Lateral femoral condyle edema -->
+    <ellipse cx="35" cy="-5" rx="22" ry="28" fill="url(#edemaGlow)"/>
+
+    <!-- Posterolateral tibial plateau edema -->
+    <ellipse cx="30" cy="68" rx="25" ry="16" fill="url(#edemaGlow)"/>
+
+    <!-- Orientation -->
+    <text x="-55" y="0" fill="#555" font-size="8">M</text>
+    <text x="52" y="0" fill="#555" font-size="8">L</text>
+
+    <!-- Force arrow (valgus + rotation) -->
+    <path d="M -85,30 C -80,10 -75,-10 -60,-20" fill="none" stroke="#FFD100" stroke-width="2" marker-end="url(#forceArrow)"/>
+    <text x="-90" y="48" fill="#FFD100" font-size="8" font-weight="bold">Valgus +</text>
+    <text x="-90" y="58" fill="#FFD100" font-size="8" font-weight="bold">rotation</text>
+  </g>
+
+  <!-- Pivot-shift labels -->
+  <text x="122" y="310" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">Lateral fem. condyle</text>
+  <text x="122" y="324" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">+ Posterolat. tibial plateau</text>
+  <line x1="50" y1="335" x2="195" y2="335" stroke="#444" stroke-width="1"/>
+  <rect x="55" y="342" width="135" height="20" fill="#FFD100" fill-opacity="0.15" stroke="#FFD100" stroke-width="1" rx="3"/>
+  <text x="122" y="356" text-anchor="middle" fill="#FFD100" font-size="10" font-weight="bold">Look for ACL tear!</text>
+
+  <!-- Panel 2: Dashboard -->
+  <rect x="243" y="55" width="215" height="335" fill="#0f0f23" stroke="#444" stroke-width="1" rx="6"/>
+  <rect x="253" y="62" width="195" height="24" fill="#2774AE" rx="3"/>
+  <text x="350" y="79" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Dashboard (PCL Injury)</text>
+
+  <!-- Dashboard knee -->
+  <g transform="translate(350, 210)">
+    <!-- Femur -->
+    <path d="M -55,-95 C -55,-95 -65,-45 -65,0 C -65,25 -35,42 0,42 C 35,42 65,25 65,0 C 65,-45 55,-95 55,-95"
+          fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="0" y="-70" text-anchor="middle" fill="#777" font-size="10" font-weight="bold">Femur</text>
+
+    <!-- Tibia -->
+    <path d="M -65,52 L -55,120 L 55,120 L 65,52"
+          fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="0" y="115" text-anchor="middle" fill="#777" font-size="10" font-weight="bold">Tibia</text>
+
+    <!-- Anterior proximal tibia edema -->
+    <ellipse cx="0" cy="65" rx="40" ry="15" fill="url(#edemaGlow)"/>
+
+    <!-- Force arrow (posterior blow to anterior tibia) -->
+    <line x1="-85" y1="65" x2="-65" y2="65" stroke="#FFD100" stroke-width="2.5" marker-end="url(#forceArrow)"/>
+    <text x="-90" y="55" fill="#FFD100" font-size="8" font-weight="bold">Anterior</text>
+    <text x="-90" y="80" fill="#FFD100" font-size="8" font-weight="bold">blow</text>
+  </g>
+
+  <!-- Dashboard labels -->
+  <text x="350" y="310" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">Anterior proximal tibia</text>
+  <text x="350" y="324" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">(pretibial contusion)</text>
+  <line x1="278" y1="335" x2="423" y2="335" stroke="#444" stroke-width="1"/>
+  <rect x="283" y="342" width="135" height="20" fill="#FFD100" fill-opacity="0.15" stroke="#FFD100" stroke-width="1" rx="3"/>
+  <text x="350" y="356" text-anchor="middle" fill="#FFD100" font-size="10" font-weight="bold">Look for PCL tear!</text>
+
+  <!-- Panel 3: Patellar Dislocation -->
+  <rect x="470" y="55" width="215" height="335" fill="#0f0f23" stroke="#444" stroke-width="1" rx="6"/>
+  <rect x="480" y="62" width="195" height="24" fill="#2774AE" rx="3"/>
+  <text x="577" y="79" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Patellar Dislocation</text>
+
+  <!-- Patellar dislocation (axial view) -->
+  <g transform="translate(577, 200)">
+    <!-- Trochlear groove (axial) -->
+    <path d="M -65,25 C -65,25 -35,-10 0,-18 C 35,-10 65,25 65,25"
+          fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="0" y="42" text-anchor="middle" fill="#777" font-size="9">Trochlear groove (axial)</text>
+
+    <!-- Patella -->
+    <ellipse cx="-12" cy="-48" rx="32" ry="16" fill="#3a3a4e" stroke="#666" stroke-width="1.5"/>
+    <text x="-12" y="-44" text-anchor="middle" fill="#777" font-size="9" font-weight="bold">Patella</text>
+
+    <!-- Inferomedial patella edema -->
+    <ellipse cx="-32" cy="-38" rx="14" ry="10" fill="url(#edemaGlow)"/>
+
+    <!-- Anterolateral LFC edema -->
+    <ellipse cx="45" cy="2" rx="16" ry="18" fill="url(#edemaGlow)"/>
+
+    <!-- Orientation -->
+    <text x="-70" y="-18" fill="#555" font-size="8">M</text>
+    <text x="62" y="-18" fill="#555" font-size="8">L</text>
+
+    <!-- Dislocation arrow -->
+    <path d="M -12,-65 C 10,-78 38,-68 50,-45" fill="none" stroke="#FFD100" stroke-width="2" stroke-dasharray="5,3"/>
+    <path d="M 47,-50 L 53,-42 L 45,-44" fill="#FFD100"/>
+    <text x="20" y="-72" fill="#FFD100" font-size="8" font-weight="bold">Lateral</text>
+    <text x="20" y="-62" fill="#FFD100" font-size="8" font-weight="bold">dislocation</text>
+  </g>
+
+  <!-- Patellar dislocation labels -->
+  <text x="577" y="310" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">Inferomedial patella +</text>
+  <text x="577" y="324" text-anchor="middle" fill="#88ccff" font-size="10" font-weight="bold">Anterolateral LFC</text>
+  <line x1="505" y1="335" x2="650" y2="335" stroke="#444" stroke-width="1"/>
+  <rect x="510" y="342" width="135" height="20" fill="#FFD100" fill-opacity="0.15" stroke="#FFD100" stroke-width="1" rx="3"/>
+  <text x="577" y="356" text-anchor="middle" fill="#FFD100" font-size="10" font-weight="bold">Look for MPFL tear!</text>
+
+  <!-- Legend -->
+  <rect x="190" y="95" width="320" height="22" fill="#1a1a2e" fill-opacity="0.9" stroke="#444" stroke-width="1" rx="3"/>
+  <ellipse cx="210" cy="106" rx="10" ry="7" fill="url(#edemaGlow)"/>
+  <text x="228" y="110" fill="#88ccff" font-size="10">= Bone marrow edema (bright on PD FS)</text>
+</svg>

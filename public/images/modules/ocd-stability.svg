@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="600" height="350" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="350" fill="white"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="600" height="40" fill="#005587"/>
+  <text x="300" y="27" text-anchor="middle" fill="white" font-size="17" font-weight="bold">OCD Lesion: Stable vs. Unstable (MRI Signs)</text>
+
+  <!-- LEFT PANEL: Stable OCD -->
+  <rect x="10" y="50" width="280" height="230" fill="#0f0f23" stroke="#22c55e" stroke-width="2" rx="6"/>
+  <rect x="10" y="50" width="280" height="26" fill="#22c55e" rx="6"/>
+  <rect x="10" y="64" width="280" height="12" fill="#22c55e"/>
+  <text x="150" y="69" text-anchor="middle" fill="white" font-size="14" font-weight="bold">STABLE OCD</text>
+
+  <!-- Femoral condyle - stable -->
+  <path d="M 40,130 C 40,110 60,95 100,90 C 140,85 180,85 220,90 C 260,95 270,110 270,130
+           C 270,160 255,185 230,200 C 210,210 180,218 150,220 C 120,218 90,210 70,200
+           C 50,185 40,160 40,130 Z"
+        fill="#3a3a4e" stroke="#888" stroke-width="2"/>
+  <text x="155" y="130" text-anchor="middle" fill="#999" font-size="11" font-weight="bold">MFC</text>
+
+  <!-- Articular cartilage surface (intact) -->
+  <path d="M 65,195 C 90,208 120,216 150,218 C 180,216 210,208 235,195"
+        fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+  <text x="155" y="240" text-anchor="middle" fill="#22c55e" font-size="9">Intact cartilage surface</text>
+
+  <!-- OCD fragment in situ (low signal rim) -->
+  <ellipse cx="155" cy="175" rx="30" ry="18" fill="#4a4a5e" stroke="#888" stroke-width="1.5"/>
+  <!-- Low signal rim around fragment -->
+  <ellipse cx="155" cy="175" rx="33" ry="21" fill="none" stroke="#555" stroke-width="2.5" stroke-dasharray="none"/>
+
+  <!-- Label for low signal rim -->
+  <line x1="195" y1="170" x2="225" y2="155" stroke="#888" stroke-width="1"/>
+  <text x="228" y="152" fill="#DAEBFE" font-size="9">Low T2 signal rim</text>
+  <text x="228" y="163" fill="#DAEBFE" font-size="9">(sclerotic border)</text>
+
+  <!-- No fluid signal -->
+  <text x="155" y="175" text-anchor="middle" fill="#888" font-size="8">No fluid</text>
+  <text x="155" y="185" text-anchor="middle" fill="#888" font-size="8">interface</text>
+
+  <!-- Stable checklist -->
+  <text x="30" y="265" fill="#22c55e" font-size="10">&#x2713; Intact cartilage</text>
+  <text x="30" y="278" fill="#22c55e" font-size="10">&#x2713; No fluid rim</text>
+
+  <!-- RIGHT PANEL: Unstable OCD -->
+  <rect x="310" y="50" width="280" height="230" fill="#0f0f23" stroke="#DC2626" stroke-width="2" rx="6"/>
+  <rect x="310" y="50" width="280" height="26" fill="#DC2626" rx="6"/>
+  <rect x="310" y="64" width="280" height="12" fill="#DC2626"/>
+  <text x="450" y="69" text-anchor="middle" fill="white" font-size="14" font-weight="bold">UNSTABLE OCD</text>
+
+  <!-- Femoral condyle - unstable -->
+  <path d="M 340,130 C 340,110 360,95 400,90 C 440,85 480,85 520,90 C 560,95 570,110 570,130
+           C 570,160 555,185 530,200 C 510,210 480,218 450,220 C 420,218 390,210 370,200
+           C 350,185 340,160 340,130 Z"
+        fill="#3a3a4e" stroke="#888" stroke-width="2"/>
+  <text x="455" y="130" text-anchor="middle" fill="#999" font-size="11" font-weight="bold">MFC</text>
+
+  <!-- Disrupted articular cartilage -->
+  <path d="M 365,195 C 390,208 415,214 430,216"
+        fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+  <!-- Gap in cartilage -->
+  <path d="M 470,216 C 485,214 510,208 535,195"
+        fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+  <!-- Cartilage breach indicator -->
+  <line x1="432" y1="210" x2="468" y2="210" stroke="#DC2626" stroke-width="2" stroke-dasharray="3,2"/>
+
+  <!-- Red arrow to cartilage breach -->
+  <line x1="450" y1="237" x2="450" y2="218" stroke="#DC2626" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <text x="450" y="248" text-anchor="middle" fill="#DC2626" font-size="8" font-weight="bold">3. Cartilage breach</text>
+
+  <!-- OCD fragment - partially displaced -->
+  <ellipse cx="455" cy="175" rx="30" ry="18" fill="#4a4a5e" stroke="#FFD100" stroke-width="2" transform="rotate(8, 455, 175)"/>
+
+  <!-- High T2 fluid signal rim (bright) -->
+  <ellipse cx="455" cy="175" rx="34" ry="22" fill="none" stroke="#88ccff" stroke-width="3" opacity="0.8" transform="rotate(8, 455, 175)"/>
+
+  <!-- Fluid rim label -->
+  <line x1="420" y1="158" x2="370" y2="140" stroke="#88ccff" stroke-width="1"/>
+  <text x="340" y="110" fill="#88ccff" font-size="9" font-weight="bold">1. High T2</text>
+  <text x="340" y="122" fill="#88ccff" font-size="9" font-weight="bold">signal rim</text>
+  <text x="340" y="134" fill="#88ccff" font-size="9">(fluid interface)</text>
+
+  <!-- Subchondral cysts -->
+  <circle cx="440" cy="155" r="5" fill="#336" stroke="#88ccff" stroke-width="1"/>
+  <circle cx="465" cy="150" r="4" fill="#336" stroke="#88ccff" stroke-width="1"/>
+  <line x1="480" y1="148" x2="520" y2="108" stroke="#88ccff" stroke-width="1"/>
+  <text x="520" y="105" fill="#88ccff" font-size="9" font-weight="bold">2. Subchondral</text>
+  <text x="520" y="117" fill="#88ccff" font-size="9" font-weight="bold">cysts</text>
+
+  <!-- Loose body suggestion -->
+  <ellipse cx="480" cy="230" rx="7" ry="5" fill="#FFD100" stroke="#DC2626" stroke-width="1.5" opacity="0.8"/>
+  <line x1="488" y1="228" x2="520" y2="220" stroke="#DC2626" stroke-width="1"/>
+  <text x="523" y="218" fill="#DC2626" font-size="8" font-weight="bold">4. Fragment</text>
+  <text x="523" y="228" fill="#DC2626" font-size="8" font-weight="bold">displacement</text>
+
+  <!-- Unstable checklist -->
+  <text x="330" y="265" fill="#DC2626" font-size="10">&#x2717; Fluid undermining fragment</text>
+  <text x="330" y="278" fill="#DC2626" font-size="10">&#x2717; Cysts, breach, displacement</text>
+
+  <!-- Bottom summary bar -->
+  <rect x="10" y="290" width="580" height="50" fill="#DAEBFE" stroke="#2774AE" stroke-width="1.5" rx="6"/>
+  <text x="300" y="310" text-anchor="middle" fill="#005587" font-size="12" font-weight="bold">4 MRI Signs of Instability:</text>
+  <text x="300" y="328" text-anchor="middle" fill="#005587" font-size="11">1) High T2 rim (fluid)   2) Subchondral cysts   3) Cartilage breach   4) Fragment displacement</text>
+</svg>

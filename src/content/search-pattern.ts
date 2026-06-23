@@ -84,7 +84,7 @@ export const searchPatternSteps: SearchPatternStep[] = [
     checklistItems: [
       'ACL: continuity, orientation, signal (primary signs)',
       'ACL secondary signs: bone bruises, anterior tibial translation',
-      'PCL: continuity, signal, buckling',
+      'PCL: continuity, signal, morphology',
       'MCL: proximal to distal, deep vs superficial',
       'LCL and posterolateral corner: popliteus, popliteofibular ligament',
       'MPFL (if patellar instability indicated)',

@@ -13,3 +13,78 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   margin: 0;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Confetti animation */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Respect the OS "reduce motion" setting: neutralize animations/transitions
+   (confetti, spinners, slide/fade transitions) for motion-sensitive users. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles for certificate */
+@media print {
+  body {
+    background-color: white !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Hide navigation, sidebar, footer */
+  nav,
+  aside,
+  header,
+  footer,
+  [data-sidebar],
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Show only the main content area */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  #certificate {
+    border: 2px solid #FFD100 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  @page {
+    size: letter landscape;
+    margin: 0.5in;
+  }
+}

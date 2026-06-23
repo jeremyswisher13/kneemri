@@ -8,11 +8,11 @@ interface LikertScaleProps {
 }
 
 const labels = [
-  "Not at all confident",
-  "Slightly confident",
-  "Moderately confident",
+  "Very not confident",
+  "Not confident",
+  "Neutral",
+  "Confident",
   "Very confident",
-  "Extremely confident",
 ];
 
 const shortLabels = ["1", "2", "3", "4", "5"];
@@ -35,7 +35,10 @@ export default function LikertScale({
           return (
             <button
               key={value}
+              type="button"
               onClick={() => onRate(value)}
+              aria-label={`${value} — ${labels[value - 1]}`}
+              aria-pressed={isSelected}
               className={`flex flex-1 flex-col items-center rounded-lg border-2 px-2 py-3 transition-colors ${
                 isSelected
                   ? "border-ucla-blue bg-ucla-light"
@@ -44,12 +47,14 @@ export default function LikertScale({
             >
               <span
                 className={`text-lg font-bold ${
-                  isSelected ? "text-ucla-blue" : "text-gray-400"
+                  isSelected ? "text-ucla-blue" : "text-gray-500"
                 }`}
               >
                 {shortLabels[value - 1]}
               </span>
-              <span className="mt-1 hidden text-center text-[10px] leading-tight text-gray-500 sm:block">
+              <span className={`mt-1 text-center text-[10px] leading-tight text-gray-500 ${
+                value === 1 || value === 5 ? "block" : "hidden sm:block"
+              }`}>
                 {labels[value - 1]}
               </span>
             </button>

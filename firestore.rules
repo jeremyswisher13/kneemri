@@ -6,14 +6,76 @@ service cloud.firestore {
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
     }
 
+    // The ONLY way a client may obtain the admin role: the request must carry a
+    // Google-verified token email that is on the hardcoded admin allow-list. The
+    // token email is asserted by Firebase Auth and cannot be forged by a client,
+    // so a non-admin can never self-assign admin. (Keep in sync with ADMIN_EMAILS
+    // in src/lib/auth.ts.)
+    function isAdminEmail() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in [
+          'jeremyswisher13@gmail.com',
+          'jeremyswisher@gmail.com',
+          'jswisher@mednet.ucla.edu'
+        ];
+    }
+
     match /users/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      // On create, a client may set role only to a non-privileged value (or none).
+      // 'admin' can NEVER be self-assigned from the client — this closes a
+      // privilege-escalation hole where create bypassed the role guard on update.
+      allow create: if request.auth != null && request.auth.uid == userId
+        && (
+          !('role' in request.resource.data)
+          || request.resource.data.role == null
+          || request.resource.data.role in ['fellow', 'resident']
+          || (request.resource.data.role == 'admin' && isAdminEmail())
+        );
+      allow update: if request.auth != null && (
+        (request.auth.uid == userId && (
+          // Users cannot change their own role UNLESS they don't have one yet
+          // (initial fellow/resident selection), or they are a verified admin
+          // email being promoted to admin (the login/ensureAdminRole path).
+          !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role'])
+          || (resource.data.role == null && request.resource.data.role in ['fellow', 'resident'])
+          || (request.resource.data.role == 'admin' && isAdminEmail())
+        ))
+        || isAdmin()
+      );
 
+      // Quiz attempts are APPEND-ONLY for the learner and shape-validated: a
+      // client may create its own attempt but cannot retroactively edit a score,
+      // write an out-of-range/garbage score, or use an invalid quiz type — so the
+      // certificate's score input can't be trivially forged from the SDK. (Admins
+      // keep full access for the dashboard.) Determined forgery of *completion*
+      // flags is still possible by design — progress is client-tracked — and is
+      // mitigated server-side by the certificate's completion re-check.
+      match /quizAttempts/{docId} {
+        allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+        allow create: if isAdmin() || (
+          request.auth != null && request.auth.uid == userId
+          && request.resource.data.quizType in ['pre', 'post']
+          && request.resource.data.score is number
+          && request.resource.data.score >= 0
+          && request.resource.data.totalQuestions is number
+          && request.resource.data.totalQuestions > 0
+          && request.resource.data.score <= request.resource.data.totalQuestions
+        );
+        allow update, delete: if isAdmin();
+      }
+
+      // Every OTHER learner subcollection (moduleProgress, normalKnee,
+      // caseAttempts, surveyResponses, reviewCards): owner or admin read/write,
+      // unchanged. quizAttempts is governed by its stricter rule above and
+      // excluded here so this permissive rule can't override it.
       match /{subcollection}/{docId} {
         allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
-        allow write: if request.auth != null && request.auth.uid == userId;
+        allow write: if isAdmin() || (
+          request.auth != null && request.auth.uid == userId
+          && subcollection != 'quizAttempts'
+        );
       }
     }
 
@@ -23,8 +85,22 @@ service cloud.firestore {
     }
 
     match /auditLog/{logId} {
-      allow create: if request.auth != null;
+      // Anti-forgery: a client can only write an entry attributed to itself,
+      // with a server timestamp, and cannot create then mutate/delete it.
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.action is string
+        && request.resource.data.timestamp == request.time;
       allow read: if isAdmin();
+    }
+
+    match /analytics/{docId} {
+      allow read: if isAdmin();
+      // Only Cloud Functions (admin SDK) can write — no client write rules needed
+
+      match /{subcollection}/{subDocId} {
+        allow read: if isAdmin();
+      }
     }
   }
 }

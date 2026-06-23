@@ -1,13 +1,47 @@
-import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useParams, Link, Navigate } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
-import { caseRegistry } from "@/content/cases";
-import { searchPatternSteps } from "@/content/search-pattern";
+import type { TeachingImage } from "@/content/cases";
+import { caseContentById } from "@/content/cases/content-by-id";
+import MriStackViewer from "@/components/ui/MriStackViewer";
 import { useAuth } from "@/contexts/AuthContext";
+import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { coursePath, courseRegistry } from "@/content/courses";
 import { submitCaseAttempt } from "@/lib/firestore";
 
-type TabKey = "clinical" | "search-pattern" | "report" | "answer-key";
+/* ------------------------------------------------------------------ */
+/*  Constants & helpers                                                */
+/* ------------------------------------------------------------------ */
+
+// Generic connective / locational / descriptor words that appear across many
+// findings — matching one of these should never credit a finding.
+const FINDING_STOPWORDS = new Set([
+  "with", "without", "the", "and", "for", "this", "that", "there", "from", "into",
+  "over", "near", "along", "both", "within", "aspect", "region", "area", "appears",
+  "seen", "noted", "present", "change", "changes", "mild", "small", "large", "acute",
+  "chronic", "left", "right", "medial", "lateral", "anterior", "posterior", "superior",
+  "inferior", "central", "joint", "knee", "shoulder", "signal", "edema", "fluid",
+]);
+
+function significantTerms(finding: string): string[] {
+  return finding
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((w) => w.length >= 4 && !FINDING_STOPWORDS.has(w));
+}
+
+// Whether the learner's free text MENTIONS a finding: requires a majority of the
+// finding's significant (non-generic) terms as WHOLE words. This is a self-check
+// hint only ("you mentioned related terms"), not a graded judgment — it cannot
+// detect negation, so the UI copy is framed as "mentioned," not "correct."
+function mentionsFinding(userText: string, finding: string): boolean {
+  const terms = significantTerms(finding);
+  if (terms.length === 0) return false;
+  const words = new Set(userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean));
+  const hits = terms.filter((t) => words.has(t)).length;
+  return hits >= Math.max(1, Math.ceil(terms.length / 2));
+}
 
 const difficultyConfig = {
   foundational: { label: "Foundational", bg: "bg-green-100", text: "text-green-700" },
@@ -15,27 +49,150 @@ const difficultyConfig = {
   advanced: { label: "Advanced", bg: "bg-red-100", text: "text-red-700" },
 } as const;
 
+function CheckIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fillRule="evenodd"
+        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Component                                                          */
+/* ------------------------------------------------------------------ */
+
 export default function CasePage() {
   const { caseId } = useParams<{ caseId: string }>();
-  const { user } = useAuth();
+  const { user, role } = useAuth();
+  const activeCourse = useActiveCourse();
+  const searchPatternSteps = activeCourse.searchPatternSteps;
+  const isResident = role === "resident";
+  const stepperRef = useRef<HTMLDivElement>(null);
 
-  const caseItem = caseRegistry.find((c) => c.id === caseId);
+  // activeCourse.cases carries only lightweight metas; the full case body
+  // (model report, per-step findings, images) is loaded here in this lazy page
+  // chunk, keeping it out of the eager bundle.
+  const caseItem = caseId ? caseContentById[caseId] : undefined;
+  const reviewStep = searchPatternSteps.length + 1;
+  const totalSteps = reviewStep + 1;
+  const stepperLabels: { label: string; short: string }[] = [
+    { label: "Clinical", short: "Clinical" },
+    ...searchPatternSteps.map((step) => ({
+      label: `${step.number}. ${step.shortName}`,
+      short: String(step.number),
+    })),
+    { label: "Review", short: "Review" },
+  ];
 
-  const [activeTab, setActiveTab] = useState<TabKey>("clinical");
+  // Walkthrough state
+  const [currentStep, setCurrentStep] = useState(0);
+  const [highestStep, setHighestStep] = useState(0);
+
+  // Checklist state (same key format as before)
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
-  const [findings, setFindings] = useState("");
-  const [impression, setImpression] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
+  // Per-step findings typed by the fellow
+  const [stepFindings, setStepFindings] = useState<Record<number, string>>({});
+
+  // Which steps have had their expected findings revealed
+  const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
+
+  // Submit state
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Teaching image lightbox
+  const [expandedImage, setExpandedImage] = useState<TeachingImage | null>(null);
+  const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+
+  // Close the teaching-image lightbox on Escape and move focus to the close
+  // button on open — keyboard and screen-reader users previously had no way to
+  // dismiss it (backdrop-click only).
+  useEffect(() => {
+    if (!expandedImage) return;
+    lightboxCloseRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setExpandedImage(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [expandedImage]);
+
+  // Try-again confirmation dialog
+  const [showTryAgain, setShowTryAgain] = useState(false);
+
+  const handleTryAgain = useCallback(() => {
+    setCurrentStep(0);
+    setHighestStep(0);
+    setCheckedItems({});
+    setStepFindings({});
+    setRevealedSteps(new Set());
+    setSubmitted(false);
+    setSubmitError(null);
+    setShowTryAgain(false);
+  }, []);
+
+  // Reset all state when navigating between cases
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setCurrentStep(0);
+    setHighestStep(0);
+    setCheckedItems({});
+    setStepFindings({});
+    setRevealedSteps(new Set());
+    setSubmitted(false);
+    setSubmitError(null);
+    setExpandedImage(null);
+    setShowTryAgain(false);
+  }, [caseId]);
+
+  // Scroll active stepper pill into view when step changes
+  useEffect(() => {
+    if (!stepperRef.current) return;
+    const active = stepperRef.current.querySelector("[data-active-step]");
+    if (active) {
+      active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  }, [currentStep]);
+
+
+  /* ---- Cross-course canonicalization ----
+     The bare /cases/:id route carries no :courseId, so activeCourse defaults to
+     knee. Since caseContentById is a global map, a case owned by another course
+     would otherwise render under the wrong course context — redirect it to its
+     canonical course-scoped URL. (In-app links are already course-scoped.) */
+  if (caseItem && caseId && !activeCourse.cases.some((c) => c.id === caseId)) {
+    const owning = courseRegistry.find((co) => co.cases.some((c) => c.id === caseId));
+    if (owning) return <Navigate to={coursePath(owning, `/cases/${caseId}`)} replace />;
+  }
+
+  /* ---- Not found ---- */
   if (!caseItem) {
     return (
       <div className="py-20 text-center">
         <h1 className="text-2xl font-bold text-gray-900">Case Not Found</h1>
+        <p className="mt-2 text-gray-500">The requested case could not be found.</p>
+        <Link to={coursePath(activeCourse, "/cases")} className="mt-4 inline-block">
+          <Button variant="secondary">Back to Cases</Button>
+        </Link>
+      </div>
+    );
+  }
+
+  /* ---- Resident access gate ---- */
+  if (isResident && !caseItem.residentVisible) {
+    return (
+      <div className="py-20 text-center">
+        <h1 className="text-2xl font-bold text-gray-900">Not Available</h1>
         <p className="mt-2 text-gray-500">
-          The requested case could not be found.
+          This case is part of the optional advanced track and is not required for residents.
         </p>
-        <Link to="/cases" className="mt-4 inline-block">
+        <Link to={coursePath(activeCourse, "/cases")} className="mt-4 inline-block">
           <Button variant="secondary">Back to Cases</Button>
         </Link>
       </div>
@@ -43,6 +200,31 @@ export default function CasePage() {
   }
 
   const diff = difficultyConfig[caseItem.difficulty];
+  const teachingImages = caseItem.teachingImages ?? [];
+  const teachingStacks = caseItem.teachingStacks ?? [];
+  const previewImages = teachingImages.slice(0, 4);
+  const hasEmbeddedReferences = teachingImages.length > 0 || teachingStacks.length > 0;
+
+  /* ---- Helpers ---- */
+
+  function goToStep(step: number) {
+    if (step < 0 || step >= totalSteps) return;
+    // Can go back freely; can only go forward up to highestStep + 1
+    if (step <= highestStep) {
+      setCurrentStep(step);
+    }
+  }
+
+  function advanceStep() {
+    const next = currentStep + 1;
+    if (next >= totalSteps) return;
+    setCurrentStep(next);
+    setHighestStep((prev) => Math.max(prev, next));
+    // Auto-submit when advancing to the review step
+    if (next === reviewStep && !submitted) {
+      submitCase();
+    }
+  }
 
   function toggleItem(stepNumber: number, itemIndex: number) {
     const key = `${stepNumber}-${itemIndex}`;
@@ -53,39 +235,114 @@ export default function CasePage() {
     return !!checkedItems[`${stepNumber}-${itemIndex}`];
   }
 
-  async function handleSubmit() {
-    if (!findings.trim() && !impression.trim()) return;
-    if (!user || !caseId) return;
+  function revealFindings(stepNumber: number) {
+    setRevealedSteps((prev) => new Set(prev).add(stepNumber));
+  }
 
+  function getExpectedFindings(stepNumber: number) {
+    if (!caseItem?.searchPatternFindings) return null;
+    return caseItem.searchPatternFindings.find((f) => f.step === stepNumber) ?? null;
+  }
+
+  async function submitCase() {
+    if (!user || !caseId || submitting) return;
+
+    setSubmitError(null);
     setSubmitting(true);
     try {
-      const report = `FINDINGS:\n${findings}\n\nIMPRESSION:\n${impression}`;
-      await submitCaseAttempt(user.uid, user.email || "", caseId, checkedItems, report);
+      await submitCaseAttempt(user.uid, user.email || "", caseId, checkedItems, "", activeCourse.id);
       setSubmitted(true);
-      setActiveTab("answer-key");
     } catch {
-      // silently fail
+      setSubmitError("Failed to submit your case. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
   }
 
-  const tabs: { key: TabKey; label: string; locked?: boolean }[] = [
-    { key: "clinical", label: "Clinical Info" },
-    { key: "search-pattern", label: "Search Pattern" },
-    { key: "report", label: "Your Report" },
-    { key: "answer-key", label: "Answer Key", locked: !submitted },
-  ];
+  function isStepComplete(idx: number) {
+    if (idx === 0) return highestStep > 0;
+    if (idx >= 1 && idx <= searchPatternSteps.length) return highestStep > idx;
+    if (idx === reviewStep) return false; // review is never "complete"
+    return false;
+  }
+
+  /* ================================================================ */
+  /*  RENDER                                                          */
+  /* ================================================================ */
 
   return (
     <div>
+      {/* Try Again Confirmation Dialog */}
+      {showTryAgain && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="mx-4 w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Start this case over?
+            </h3>
+            <p className="text-sm text-gray-600 mb-5">
+              Your previous submission is saved. This will reset all your notes
+              and progress for this case so you can try again from the beginning.
+            </p>
+            <div className="flex justify-end gap-3">
+              <Button variant="secondary" size="sm" onClick={() => setShowTryAgain(false)}>
+                Cancel
+              </Button>
+              <Button size="sm" onClick={handleTryAgain}>
+                Start Over
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Teaching Image Lightbox */}
+      {expandedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setExpandedImage(null)}
+        >
+          <div
+            className="relative max-h-[90vh] max-w-4xl w-full bg-white rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Teaching image: ${expandedImage.caption || expandedImage.alt}`}
+          >
+            <button
+              ref={lightboxCloseRef}
+              onClick={() => setExpandedImage(null)}
+              className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="overflow-auto max-h-[75vh] bg-gray-900 flex items-center justify-center">
+              <img
+                src={expandedImage.src}
+                alt={expandedImage.alt}
+                className="max-h-[75vh] w-auto object-contain"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              />
+            </div>
+            <div className="p-4">
+              <p className="text-sm text-gray-700">{expandedImage.caption}</p>
+              <p className="mt-1 text-xs text-gray-500">{expandedImage.attribution}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-gray-400 mb-6">
-        <Link to="/cases" className="hover:text-ucla-blue transition-colors">
+      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+        <Link to={coursePath(activeCourse, "/cases")} className="hover:text-ucla-blue transition-colors">
           Cases
         </Link>
         <span>/</span>
-        <span className="text-gray-600 line-clamp-1">{caseItem.title}</span>
+        <span className="text-gray-600 line-clamp-1">
+          {currentStep === reviewStep ? caseItem.title : `Case: ${diff.label}`}
+        </span>
       </nav>
 
       {/* Header */}
@@ -98,25 +355,17 @@ export default function CasePage() {
           </span>
           {submitted && (
             <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700">
-              <svg
-                className="h-3.5 w-3.5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <CheckIcon className="h-3.5 w-3.5" />
               Submitted
             </span>
           )}
         </div>
-        <h1 className="text-2xl font-bold text-gray-900">{caseItem.title}</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {currentStep === reviewStep ? caseItem.title : `Case: ${diff.label}`}
+        </h1>
       </div>
 
-      {/* Clinical Scenario Banner */}
+      {/* Clinical Scenario Banner (always visible) */}
       <div className="mb-6 rounded-xl border border-ucla-blue/20 bg-ucla-light px-5 py-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-ucla-blue mb-1">
           Clinical Scenario
@@ -126,47 +375,58 @@ export default function CasePage() {
         </p>
       </div>
 
-      {/* Tabs */}
-      <div className="border-b border-gray-200 mb-6">
-        <nav className="flex gap-6 -mb-px overflow-x-auto">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => {
-                if (tab.locked) return;
-                setActiveTab(tab.key);
-              }}
-              className={`whitespace-nowrap border-b-2 py-3 px-1 text-sm font-medium transition-colors ${
-                activeTab === tab.key
-                  ? "border-ucla-blue text-ucla-blue"
-                  : tab.locked
-                  ? "border-transparent text-gray-300 cursor-not-allowed"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              }`}
-            >
-              {tab.label}
-              {tab.locked && (
-                <svg
-                  className="ml-1.5 inline h-3.5 w-3.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+      {/* ============================================================ */}
+      {/*  STEPPER                                                      */}
+      {/* ============================================================ */}
+      <div
+        ref={stepperRef}
+        className="mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide"
+      >
+        <div className="flex items-center gap-1 min-w-max pb-2">
+          {stepperLabels.map((s, idx) => {
+            const isCurrent = idx === currentStep;
+            const completed = isStepComplete(idx);
+            const reachable = idx <= highestStep;
+
+            return (
+              <div key={idx} className="flex items-center">
+                {idx > 0 && (
+                  <div
+                    className={`w-4 h-0.5 mx-0.5 ${
+                      idx <= highestStep ? "bg-ucla-blue" : "bg-gray-200"
+                    }`}
                   />
-                </svg>
-              )}
-            </button>
-          ))}
-        </nav>
+                )}
+                <button
+                  {...(isCurrent ? { "data-active-step": true } : {})}
+                  onClick={() => goToStep(idx)}
+                  disabled={!reachable}
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                    isCurrent
+                      ? "bg-ucla-blue text-white shadow-sm"
+                      : completed
+                      ? "bg-green-100 text-green-700 hover:bg-green-200"
+                      : reachable
+                      ? "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      : "bg-gray-50 text-gray-300 cursor-not-allowed"
+                  }`}
+                >
+                  {completed && <CheckIcon className="h-3 w-3" />}
+                  <span className="hidden sm:inline">{s.label}</span>
+                  <span className="sm:hidden">{s.short}</span>
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Tab Content */}
-      {activeTab === "clinical" && (
+      {/* ============================================================ */}
+      {/*  STEP CONTENT                                                 */}
+      {/* ============================================================ */}
+
+      {/* ---- Step 0: Clinical Presentation ---- */}
+      {currentStep === 0 && (
         <div className="space-y-6">
           <Card>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
@@ -179,8 +439,112 @@ export default function CasePage() {
 
           <Card>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Tags
+              Embedded Teaching Images
             </h3>
+            {hasEmbeddedReferences ? (
+              <div className="space-y-4">
+                <p className="text-sm text-gray-600">
+                  Review the local teaching images first, then work through the
+                  search pattern. These images stay inside the course so the
+                  case does not depend on an external tab.
+                </p>
+
+                {previewImages.length > 0 && (
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {previewImages.map((image, index) => (
+                      <button
+                        key={`${image.src}-${index}`}
+                        type="button"
+                        onClick={() => setExpandedImage(image)}
+                        className="overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-left transition hover:border-ucla-blue/50 hover:shadow-sm"
+                      >
+                        <div className="aspect-square bg-gray-900">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            loading="lazy"
+                            className="h-full w-full object-contain"
+                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                          />
+                        </div>
+                        <div className="p-2">
+                          <p className="line-clamp-2 text-xs font-medium text-gray-700">
+                            {image.caption}
+                          </p>
+                          {image.step && (
+                            <p className="mt-1 text-[11px] text-ucla-blue">
+                              Search pattern step {image.step}
+                            </p>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {teachingStacks.slice(0, 1).map((stack) => (
+                  <MriStackViewer
+                    key={stack.id}
+                    slices={stack.slices}
+                    title={stack.title}
+                    plane={stack.plane}
+                    caption={stack.caption}
+                    attribution={stack.attribution}
+                    sourceUrl={stack.sourceUrl}
+                  />
+                ))}
+
+                {(teachingImages.length > previewImages.length || teachingStacks.length > 1) && (
+                  <p className="text-xs text-gray-500">
+                    More embedded teaching material appears in the guided review:
+                    {" "}
+                    {teachingImages.length} image{teachingImages.length === 1 ? "" : "s"}
+                    {teachingStacks.length > 0 && (
+                      <>
+                        {" and "}
+                        {teachingStacks.length} stack{teachingStacks.length === 1 ? "" : "s"}
+                      </>
+                    )}
+                    .
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-600">
+                Embedded teaching images are still being added for this case.
+                Use the clinical scenario, search-pattern walkthrough, and
+                model findings here; the external source remains available for
+                faculty review.
+              </p>
+            )}
+            {caseItem.radiopaediaUrl && (
+              <a
+                href={caseItem.radiopaediaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10"
+              >
+                <span className="flex items-center gap-3">
+                  <svg className="h-6 w-6 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75 12 3l8.25 3.75L12 10.5 3.75 6.75Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 12 8.25 3.75L20.25 12M3.75 17.25 12 21l8.25-3.75" />
+                  </svg>
+                  <span>
+                    <span className="block text-sm font-semibold text-ucla-dark">
+                      Open the full scrollable MRI on Radiopaedia
+                    </span>
+                    <span className="block text-xs text-gray-500">
+                      {caseItem.radiopaediaTitle} — scroll through every slice like a workstation
+                    </span>
+                  </span>
+                </span>
+                <span className="shrink-0 text-ucla-blue" aria-hidden>&#8599;</span>
+              </a>
+            )}
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {caseItem.tags.map((tag, i) => (
                 <span
@@ -194,177 +558,263 @@ export default function CasePage() {
           </Card>
 
           <div className="flex justify-end">
-            <Button onClick={() => setActiveTab("search-pattern")}>
-              Begin Search Pattern &rarr;
+            <Button size="lg" onClick={advanceStep}>
+              Begin Case Walkthrough &rarr;
             </Button>
           </div>
         </div>
       )}
 
-      {activeTab === "search-pattern" && (
-        <div className="space-y-4">
-          <p className="text-sm text-gray-500 mb-2">
-            Work through each step of the search pattern for this case. Check
-            off items as you evaluate them.
-          </p>
+      {/* ---- Search Pattern Walkthrough ---- */}
+      {currentStep >= 1 && currentStep <= searchPatternSteps.length && (() => {
+        const stepNumber = currentStep;
+        const step = searchPatternSteps.find((s) => s.number === stepNumber)!;
+        const expected = getExpectedFindings(stepNumber);
+        const isRevealed = revealedSteps.has(stepNumber);
+        const allChecked = step.checklistItems.every((_, i) =>
+          isItemChecked(stepNumber, i)
+        );
 
-          {searchPatternSteps.map((step) => {
-            const allChecked = step.checklistItems.every((_, i) =>
-              isItemChecked(step.number, i)
-            );
-            const someChecked = step.checklistItems.some((_, i) =>
-              isItemChecked(step.number, i)
-            );
-
-            return (
-              <Card key={step.number}>
-                <div className="flex items-center gap-3 mb-3">
+        return (
+          <div className="space-y-6">
+            {/* Progress indicator */}
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-gray-500">
+                Step {stepNumber} of {searchPatternSteps.length}
+              </p>
+              <div className="flex gap-1">
+                {Array.from({ length: searchPatternSteps.length }, (_, i) => (
                   <div
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
-                      allChecked
-                        ? "bg-green-100 text-green-700"
-                        : someChecked
-                        ? "bg-ucla-light text-ucla-blue"
-                        : "bg-gray-100 text-gray-500"
+                    key={i}
+                    className={`h-1.5 w-6 rounded-full ${
+                      i + 1 < stepNumber
+                        ? "bg-green-400"
+                        : i + 1 === stepNumber
+                        ? "bg-ucla-blue"
+                        : "bg-gray-200"
                     }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Step card with checklist */}
+            <Card>
+              <div className="flex items-center gap-3 mb-1">
+                <div
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                    allChecked
+                      ? "bg-green-100 text-green-700"
+                      : "bg-ucla-light text-ucla-blue"
+                  }`}
+                >
+                  {allChecked ? <CheckIcon /> : stepNumber}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {step.name}
+                </h3>
+              </div>
+              <p className="text-sm text-gray-500 mb-4 pl-12">
+                {step.description}
+              </p>
+
+              <div className="space-y-2 pl-12">
+                {step.checklistItems.map((item, i) => (
+                  <label
+                    key={i}
+                    className="flex items-start gap-3 cursor-pointer group"
                   >
-                    {allChecked ? (
-                      <svg
-                        className="h-4 w-4"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      step.number
-                    )}
-                  </div>
-                  <h3 className="font-semibold text-gray-900">
-                    Step {step.number}: {step.name}
-                  </h3>
-                </div>
-
-                <div className="space-y-2 pl-11">
-                  {step.checklistItems.map((item, i) => (
-                    <label
-                      key={i}
-                      className="flex items-start gap-3 cursor-pointer group"
+                    <input
+                      type="checkbox"
+                      checked={isItemChecked(stepNumber, i)}
+                      onChange={() => toggleItem(stepNumber, i)}
+                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
+                    />
+                    <span
+                      className={`text-sm ${
+                        isItemChecked(stepNumber, i)
+                          ? "text-gray-500 line-through"
+                          : "text-gray-700 group-hover:text-gray-900"
+                      }`}
                     >
-                      <input
-                        type="checkbox"
-                        checked={isItemChecked(step.number, i)}
-                        onChange={() => toggleItem(step.number, i)}
-                        className="mt-0.5 h-4 w-4 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
-                      />
-                      <span
-                        className={`text-sm ${
-                          isItemChecked(step.number, i)
-                            ? "text-gray-400 line-through"
-                            : "text-gray-700 group-hover:text-gray-900"
-                        }`}
-                      >
-                        {item}
-                      </span>
-                    </label>
-                  ))}
+                      {item}
+                    </span>
+                  </label>
+                ))}
+              </div>
+
+              {/* Pearls */}
+              {step.pearls.length > 0 && (
+                <div className="mt-4 pl-12">
+                  <div className="rounded-lg bg-amber-50 border border-amber-200 p-3">
+                    <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">
+                      Pearl{step.pearls.length > 1 ? "s" : ""}
+                    </p>
+                    {step.pearls.map((pearl, i) => (
+                      <p key={i} className="text-sm text-amber-800 leading-relaxed">
+                        {pearl}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </Card>
-            );
-          })}
+              )}
+            </Card>
 
-          <div className="flex justify-end">
-            <Button onClick={() => setActiveTab("report")}>
-              Write Your Report &rarr;
-            </Button>
-          </div>
-        </div>
-      )}
+            {/* What did you find? */}
+            <Card>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">
+                What did you find?
+              </h3>
+              <p className="text-xs text-gray-500 mb-3">
+                Describe your observations for this step before revealing the
+                expected findings.
+              </p>
+              <textarea
+                value={stepFindings[stepNumber] ?? ""}
+                onChange={(e) =>
+                  setStepFindings((prev) => ({
+                    ...prev,
+                    [stepNumber]: e.target.value,
+                  }))
+                }
+                rows={3}
+                placeholder="Type your observations here..."
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:border-ucla-blue focus:ring-1 focus:ring-ucla-blue/50"
+              />
 
-      {activeTab === "report" && (
-        <div className="space-y-6">
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
-              Findings
-            </h3>
-            <p className="text-xs text-gray-400 mb-3">
-              Describe what you see in each structure, organized by the search
-              pattern steps.
-            </p>
-            <textarea
-              value={findings}
-              onChange={(e) => setFindings(e.target.value)}
-              rows={10}
-              disabled={submitted}
-              placeholder={"BONES AND MARROW:\n...\n\nCARTILAGE:\n...\n\nMENISCI:\n...\n\nLIGAMENTS:\n...\n\nEXTENSOR MECHANISM:\n...\n\nSYNOVIUM/BURSAE:\n..."}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:border-ucla-blue focus:ring-1 focus:ring-ucla-blue/50 disabled:bg-gray-50 disabled:text-gray-400"
-            />
-          </Card>
+              {/* Reveal button */}
+              {!isRevealed && expected && (
+                <div className="mt-3 flex justify-end">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => revealFindings(stepNumber)}
+                  >
+                    Reveal Findings
+                  </Button>
+                </div>
+              )}
 
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
-              Impression
-            </h3>
-            <p className="text-xs text-gray-400 mb-3">
-              Summarize the key diagnoses and their significance.
-            </p>
-            <textarea
-              value={impression}
-              onChange={(e) => setImpression(e.target.value)}
-              rows={5}
-              disabled={submitted}
-              placeholder={"1. \n2. \n3. "}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:border-ucla-blue focus:ring-1 focus:ring-ucla-blue/50 disabled:bg-gray-50 disabled:text-gray-400"
-            />
-          </Card>
+              {/* Revealed expected findings */}
+              {isRevealed && expected && (
+                <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4">
+                  <p className="text-xs font-semibold text-green-700 uppercase tracking-wide mb-2">
+                    Expected Findings for Step {expected.step}: {expected.stepName}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {expected.expectedFindings.map((finding, i) => {
+                      const userText = stepFindings[stepNumber] ?? "";
+                      const matched =
+                        userText.trim().length > 0 && mentionsFinding(userText, finding);
 
-          {!submitted ? (
+                      return (
+                        <li
+                          key={i}
+                          className={`flex items-start gap-2 text-sm ${
+                            matched ? "text-green-700" : "text-amber-700"
+                          }`}
+                        >
+                          {matched ? (
+                            <span className="mt-0.5 text-green-500 shrink-0">
+                              <CheckIcon className="h-4 w-4" />
+                            </span>
+                          ) : (
+                            <span className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-amber-200 text-amber-700 text-xs font-bold">
+                              !
+                            </span>
+                          )}
+                          {finding}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  {(() => {
+                    const userText = stepFindings[stepNumber] ?? "";
+                    const hasText = userText.trim().length > 0;
+                    const allMatched =
+                      hasText &&
+                      expected.expectedFindings.every((f) => mentionsFinding(userText, f));
+                    const someMatched =
+                      hasText &&
+                      expected.expectedFindings.some((f) => mentionsFinding(userText, f));
+
+                    if (allMatched) {
+                      return (
+                        <p className="mt-3 text-sm font-medium text-green-700">
+                          You mentioned terms related to every expected finding -- now
+                          compare your read against each one above to confirm.
+                        </p>
+                      );
+                    }
+                    if (someMatched) {
+                      return (
+                        <p className="mt-3 text-sm font-medium text-amber-700">
+                          Good start! Check the amber items above -- these are findings
+                          your notes didn't clearly mention.
+                        </p>
+                      );
+                    }
+                    if (!hasText) {
+                      return (
+                        <p className="mt-3 text-sm text-gray-500">
+                          Compare these expected findings with your own
+                          observations.
+                        </p>
+                      );
+                    }
+                    return (
+                      <p className="mt-3 text-sm font-medium text-amber-700">
+                        Take another look at the images for this step and
+                        compare with the expected findings above.
+                      </p>
+                    );
+                  })()}
+                </div>
+              )}
+
+              {/* No expected findings for this step */}
+              {isRevealed && !expected && (
+                <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+                  <p className="text-sm text-gray-500">
+                    No specific expected findings are listed for this step in
+                    this case.
+                  </p>
+                </div>
+              )}
+            </Card>
+
+            {/* Navigation */}
             <div className="flex items-center justify-between">
               <Button
                 variant="secondary"
-                onClick={() => setActiveTab("search-pattern")}
+                onClick={() => goToStep(currentStep - 1)}
               >
-                &larr; Back to Search Pattern
+                &larr; Back
               </Button>
-              <Button
-                size="lg"
-                onClick={handleSubmit}
-                disabled={
-                  submitting || (!findings.trim() && !impression.trim())
-                }
-              >
-                {submitting ? "Submitting..." : "Submit Report"}
+              <Button onClick={advanceStep}>
+                {currentStep === searchPatternSteps.length ? "View Answer Key" : "Next Step"} &rarr;
               </Button>
             </div>
-          ) : (
-            <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-center">
-              <p className="text-sm font-medium text-green-700">
-                Report submitted successfully. View the Answer Key to compare
-                your report with the model answer.
-              </p>
-              <Button
-                className="mt-3"
-                size="sm"
-                onClick={() => setActiveTab("answer-key")}
-              >
-                View Answer Key
+          </div>
+        );
+      })()}
+
+      {/* ---- Answer Key & Review ---- */}
+      {currentStep === reviewStep && (
+        <div className="space-y-6">
+          {submitError && (
+            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-center justify-between gap-3">
+              <span>{submitError}</span>
+              <Button size="sm" onClick={submitCase} disabled={submitting}>
+                Retry
               </Button>
             </div>
           )}
-        </div>
-      )}
 
-      {activeTab === "answer-key" && submitted && (
-        <div className="space-y-6">
           <div className="rounded-xl border border-amber-200 bg-amber-50 px-5 py-4">
             <p className="text-sm text-amber-700">
-              Compare your report with the model answer below. Focus on
-              identifying findings you may have missed and how the impression is
-              structured.
+              Review the answer key below. Compare your observations from each
+              search pattern step with the expected findings and model report.
             </p>
           </div>
 
@@ -387,53 +837,234 @@ export default function CasePage() {
             </ul>
           </Card>
 
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Model Findings
-            </h3>
-            <p className="text-sm text-gray-600 whitespace-pre-wrap leading-relaxed">
-              Model findings will be available when full case content is loaded.
-              For now, review the key diagnoses above and compare with your
-              report.
-            </p>
-          </Card>
+          {caseItem.modelReport && (
+            <>
+              <Card>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Model Findings
+                </h3>
+                <p className="text-sm text-gray-600 whitespace-pre-wrap leading-relaxed">
+                  {caseItem.modelReport.findings}
+                </p>
+              </Card>
 
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Model Impression
-            </h3>
-            <p className="text-sm text-gray-600 whitespace-pre-wrap leading-relaxed">
-              Model impression will be available when full case content is
-              loaded. Use the key diagnoses as a reference for what should appear
-              in your impression.
-            </p>
-          </Card>
+              <Card>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Model Impression
+                </h3>
+                <p className="text-sm text-gray-600 whitespace-pre-wrap leading-relaxed">
+                  {caseItem.modelReport.impression}
+                </p>
+              </Card>
+            </>
+          )}
 
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Your Report (Submitted)
-            </h3>
-            <div className="rounded-lg bg-gray-50 p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                Findings
+          {caseItem.teachingPoints && caseItem.teachingPoints.length > 0 && (
+            <Card>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                Teaching Points
+              </h3>
+              <ul className="space-y-3">
+                {caseItem.teachingPoints.map((point, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm text-gray-700"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 text-xs font-bold">
+                      !
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+
+          {/* Scrollable MRI Stacks */}
+          {caseItem.teachingStacks && caseItem.teachingStacks.length > 0 && (
+            <Card>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                Scrollable MRI Stacks
+              </h3>
+              <p className="mb-4 text-xs text-gray-500">
+                Scroll the wheel, drag, or use arrow keys to move through slices.
               </p>
-              <p className="text-sm text-gray-600 whitespace-pre-wrap mb-4">
-                {findings || "(No findings entered)"}
-              </p>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                Impression
-              </p>
-              <p className="text-sm text-gray-600 whitespace-pre-wrap">
-                {impression || "(No impression entered)"}
-              </p>
-            </div>
-          </Card>
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                {caseItem.teachingStacks.map((stack) => (
+                  <MriStackViewer
+                    key={stack.id}
+                    slices={stack.slices}
+                    title={stack.title}
+                    plane={stack.plane}
+                    caption={stack.caption}
+                    attribution={stack.attribution}
+                    sourceUrl={stack.sourceUrl}
+                  />
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {/* Teaching Images */}
+          {caseItem.teachingImages && caseItem.teachingImages.length > 0 && (
+            <Card>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Teaching Images
+              </h3>
+              {(() => {
+                // Group images by search pattern step
+                const grouped = new Map<number, TeachingImage[]>();
+                const ungrouped: TeachingImage[] = [];
+                for (const img of caseItem.teachingImages!) {
+                  if (img.step != null) {
+                    if (!grouped.has(img.step)) grouped.set(img.step, []);
+                    grouped.get(img.step)!.push(img);
+                  } else {
+                    ungrouped.push(img);
+                  }
+                }
+                const stepNames = Object.fromEntries(
+                  searchPatternSteps.map((step) => [step.number, step.name])
+                ) as Record<number, string>;
+                const sortedSteps = Array.from(grouped.keys()).sort((a, b) => a - b);
+
+                return (
+                  <div className="space-y-6">
+                    {sortedSteps.map((stepNum) => (
+                      <div key={stepNum}>
+                        <h4 className="text-sm font-semibold text-ucla-blue mb-3">
+                          Step {stepNum}: {stepNames[stepNum] ?? `Step ${stepNum}`}
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {grouped.get(stepNum)!.map((img, i) => (
+                            <button
+                              key={i}
+                              type="button"
+                              onClick={() => setExpandedImage(img)}
+                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-ucla-blue/40 hover:shadow-md transition-all"
+                            >
+                              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                                <img
+                                  src={img.src}
+                                  alt={img.alt}
+                                  className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-200"
+                                  loading="lazy"
+                                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                />
+                              </div>
+                              <div className="p-3">
+                                <p className="text-sm text-gray-700 leading-snug">
+                                  {img.caption}
+                                </p>
+                                <p className="mt-1 text-xs text-gray-500 leading-tight">
+                                  {img.attribution}
+                                </p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    {ungrouped.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-600 mb-3">
+                          Additional Images
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {ungrouped.map((img, i) => (
+                            <button
+                              key={i}
+                              type="button"
+                              onClick={() => setExpandedImage(img)}
+                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-ucla-blue/40 hover:shadow-md transition-all"
+                            >
+                              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                                <img
+                                  src={img.src}
+                                  alt={img.alt}
+                                  className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-200"
+                                  loading="lazy"
+                                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                />
+                              </div>
+                              <div className="p-3">
+                                <p className="text-sm text-gray-700 leading-snug">
+                                  {img.caption}
+                                </p>
+                                <p className="mt-1 text-xs text-gray-500 leading-tight">
+                                  {img.attribution}
+                                </p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+            </Card>
+          )}
+
+          {/* Per-step comparison: fellow findings vs expected */}
+          {caseItem.searchPatternFindings &&
+            caseItem.searchPatternFindings.length > 0 && (
+              <Card>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Search Pattern Findings: Your Notes vs Expected
+                </h3>
+                <div className="space-y-5">
+                  {caseItem.searchPatternFindings.map((spf) => (
+                    <div key={spf.step}>
+                      <h4 className="text-sm font-semibold text-ucla-blue mb-2">
+                        Step {spf.step}: {spf.stepName}
+                      </h4>
+
+                      {/* Fellow's observations */}
+                      <div className="mb-2 rounded-lg bg-gray-50 p-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                          Your Notes
+                        </p>
+                        <p className="text-sm text-gray-600 whitespace-pre-wrap">
+                          {stepFindings[spf.step]?.trim() ||
+                            "(No observations recorded)"}
+                        </p>
+                      </div>
+
+                      {/* Expected findings */}
+                      <ul className="ml-4 space-y-1">
+                        {spf.expectedFindings.map((finding, i) => (
+                          <li
+                            key={i}
+                            className="text-sm text-gray-600 flex items-start gap-2"
+                          >
+                            <span className="text-green-500 mt-0.5">
+                              <CheckIcon className="h-4 w-4" />
+                            </span>
+                            {finding}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            )}
+
+          <div className="flex justify-center">
+            <Button
+              variant="secondary"
+              onClick={() => setShowTryAgain(true)}
+            >
+              Try Again
+            </Button>
+          </div>
         </div>
       )}
 
       {/* Bottom Navigation */}
       <div className="mt-10 pt-6 border-t border-gray-200">
-        <Link to="/cases">
+        <Link to={coursePath(activeCourse, "/cases")}>
           <Button variant="secondary" size="sm">
             &larr; Back to Cases
           </Button>
