@@ -4,11 +4,10 @@ import { getPearlsForRegion } from "@/content/daily-pearls";
 import { moduleQuizzes } from "@/content/quizzes/module-quizzes";
 import { moduleContentById } from "@/content/modules/content-by-id";
 import { caseContentById } from "@/content/cases/content-by-id";
-import { measurementSections } from "@/components/ui/MeasurementsCard";
-import { shoulderAnatomySections, shoulderMeasurementSections } from "@/content/shoulder/reference";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
 import { coursePath, getVisibleCoreCases, getVisibleAdvancedCases, type CourseDefinition } from "@/content/courses";
+import { moduleTopicSearchRoute, referenceSectionsForCourse } from "@/lib/course-search";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -119,7 +118,7 @@ function buildIndex(role: string | null, course: CourseDefinition): SearchItem[]
         title: topic,
         body: `${topic} ${tc?.content ?? ""} ${tc?.pearl ?? ""}`,
         category: "module",
-        route: coursePath(course, `/modules/${mod.id}`),
+        route: moduleTopicSearchRoute(course, mod.id, idx),
       });
     });
   });
@@ -164,17 +163,14 @@ function buildIndex(role: string | null, course: CourseDefinition): SearchItem[]
         title: q.stem.length > 80 ? q.stem.slice(0, 80) + "..." : q.stem,
         body: `${q.stem} ${optionTexts} ${q.explanation}`,
         category: "quiz",
-        route: coursePath(course, `/modules/${moduleId}`),
+        route: moduleTopicSearchRoute(course, moduleId, q.topicIndex),
       });
     });
   });
 
   // Measurement / reference items — course-appropriate dataset and route
   if (course.features.reference) {
-    const refSections =
-      course.bodyRegion === "shoulder"
-        ? [...shoulderAnatomySections, ...shoulderMeasurementSections]
-        : measurementSections;
+    const refSections = referenceSectionsForCourse(course);
     refSections.forEach((section) => {
       section.items.forEach((item) => {
         items.push({

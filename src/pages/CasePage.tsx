@@ -125,6 +125,27 @@ export default function CasePage() {
 
   // Try-again confirmation dialog
   const [showTryAgain, setShowTryAgain] = useState(false);
+  const tryAgainCancelRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!showTryAgain) return;
+    tryAgainCancelRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowTryAgain(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showTryAgain]);
+
+  useEffect(() => {
+    const modalOpen = !!expandedImage || showTryAgain;
+    if (!modalOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [expandedImage, showTryAgain]);
 
   const handleTryAgain = useCallback(() => {
     setCurrentStep(0);
@@ -274,17 +295,22 @@ export default function CasePage() {
     <div>
       {/* Try Again Confirmation Dialog */}
       {showTryAgain && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="mx-4 w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div
+            className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="try-again-title"
+          >
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Start this case over?
+              <span id="try-again-title">Start this case over?</span>
             </h3>
             <p className="text-sm text-gray-600 mb-5">
               Your previous submission is saved. This will reset all your notes
               and progress for this case so you can try again from the beginning.
             </p>
             <div className="flex justify-end gap-3">
-              <Button variant="secondary" size="sm" onClick={() => setShowTryAgain(false)}>
+              <Button ref={tryAgainCancelRef} variant="secondary" size="sm" onClick={() => setShowTryAgain(false)}>
                 Cancel
               </Button>
               <Button size="sm" onClick={handleTryAgain}>
@@ -322,7 +348,7 @@ export default function CasePage() {
               <img
                 src={expandedImage.src}
                 alt={expandedImage.alt}
-                className="max-h-[75vh] w-auto object-contain"
+                className="max-h-[75vh] max-w-full object-contain"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
             </div>
