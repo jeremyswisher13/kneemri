@@ -1,4 +1,11 @@
-import { GoogleAuthProvider, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getRedirectResult,
+  signInWithPopup,
+  signInWithRedirect,
+  signOut as firebaseSignOut,
+  type User,
+} from "firebase/auth";
 import { auth } from "./firebase";
 import { logAuditEvent } from "./audit";
 
@@ -15,10 +22,7 @@ const ADMIN_EMAILS = [
   "jswisher@mednet.ucla.edu",
 ];
 
-export async function signInWithGoogle() {
-  const result = await signInWithPopup(auth, googleProvider);
-  const user = result.user;
-
+async function finishGoogleSignIn(user: User) {
   const isAdmin = ADMIN_EMAILS.some(
     (email) => user.email?.toLowerCase() === email.toLowerCase()
   );
@@ -53,6 +57,21 @@ export async function signInWithGoogle() {
   await logAuditEvent(user.uid, user.email || "", "login", {});
   const finalRole = isAdmin ? "admin" : (userSnap.exists() ? userSnap.data()?.role || null : null);
   return { user, role: finalRole };
+}
+
+export async function signInWithGoogle() {
+  const result = await signInWithPopup(auth, googleProvider);
+  return finishGoogleSignIn(result.user);
+}
+
+export async function signInWithGoogleRedirect() {
+  await signInWithRedirect(auth, googleProvider);
+}
+
+export async function completeGoogleRedirectSignIn() {
+  const result = await getRedirectResult(auth);
+  if (!result) return null;
+  return finishGoogleSignIn(result.user);
 }
 
 export async function signOutUser() {

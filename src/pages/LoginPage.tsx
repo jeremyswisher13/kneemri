@@ -1,36 +1,101 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { signInWithGoogle } from "@/lib/auth";
+import {
+  completeGoogleRedirectSignIn,
+  signInWithGoogle,
+  signInWithGoogleRedirect,
+} from "@/lib/auth";
+import {
+  consumeReturnPath,
+  rememberReturnPath,
+  returnPathFromState,
+} from "@/lib/login-return";
 import { useEffect, useState } from "react";
+
+function shouldUseRedirectFallback(err: unknown): boolean {
+  const code = (err as { code?: string } | null)?.code;
+  return (
+    code === "auth/popup-blocked" ||
+    code === "auth/cancelled-popup-request" ||
+    code === "auth/operation-not-supported-in-this-environment"
+  );
+}
 
 export default function LoginPage() {
   const { user, loading, setRole } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const returnTo = returnPathFromState(location.state);
   const [error, setError] = useState<string | null>(null);
   const [signingIn, setSigningIn] = useState(false);
+  const [checkingRedirect, setCheckingRedirect] = useState(true);
 
   useEffect(() => {
-    if (!loading && user) {
-      navigate("/", { replace: true });
+    let cancelled = false;
+    async function completeRedirect() {
+      try {
+        const result = await completeGoogleRedirectSignIn();
+        if (!result || cancelled) return;
+        setRole(result.role);
+        navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
+      } catch (err: unknown) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Failed to finish sign-in");
+        }
+      } finally {
+        if (!cancelled) setCheckingRedirect(false);
+      }
     }
-  }, [user, loading, navigate]);
+    completeRedirect();
+    return () => {
+      cancelled = true;
+    };
+  }, [navigate, returnTo, setRole]);
+
+  useEffect(() => {
+    if (!checkingRedirect && !loading && user) {
+      navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
+    }
+  }, [checkingRedirect, user, loading, navigate, returnTo]);
 
   async function handleGoogleSignIn() {
     setError(null);
     setSigningIn(true);
+    rememberReturnPath(sessionStorage, returnTo);
     try {
       const { role } = await signInWithGoogle();
       // Set the role directly — avoids race with onAuthStateChanged
       setRole(role);
-      navigate("/", { replace: true });
+      navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Failed to sign in");
+      if (shouldUseRedirectFallback(err)) {
+        try {
+          await signInWithGoogleRedirect();
+          return;
+        } catch (redirectErr: unknown) {
+          setError(redirectErr instanceof Error ? redirectErr.message : "Failed to sign in");
+        }
+      } else {
+        setError(err instanceof Error ? err.message : "Failed to sign in");
+      }
     } finally {
       setSigningIn(false);
     }
   }
 
-  if (loading) {
+  async function handleRedirectSignIn() {
+    setError(null);
+    setSigningIn(true);
+    rememberReturnPath(sessionStorage, returnTo);
+    try {
+      await signInWithGoogleRedirect();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign in");
+      setSigningIn(false);
+    }
+  }
+
+  if (loading || checkingRedirect) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
@@ -77,6 +142,16 @@ export default function LoginPage() {
           <p className="mt-4 text-center text-xs text-gray-500">
             Sign in with your Google account to access the courses.
           </p>
+
+          {error && (
+            <button
+              onClick={handleRedirectSignIn}
+              disabled={signingIn}
+              className="mt-4 w-full rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-2 text-sm font-medium text-ucla-dark hover:bg-ucla-light/70 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            >
+              Continue with full-page sign-in
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import RoleSelection from "@/components/ui/RoleSelection";
 import SpecialtySelection from "@/components/ui/SpecialtySelection";
@@ -10,6 +10,7 @@ interface ProtectedRouteProps {
 
 export default function ProtectedRoute({ requireAdmin = false, children }: ProtectedRouteProps) {
   const { user, role, specialty, loading, setRole, setSpecialty, setShowSurgical } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -20,7 +21,7 @@ export default function ProtectedRoute({ requireAdmin = false, children }: Prote
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   if (requireAdmin && role !== "admin") {
