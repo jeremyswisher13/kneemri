@@ -9,6 +9,7 @@ import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
 import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
 import ExploreChecklist from "@/components/normal/ExploreChecklist";
+import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
 import {
   normalKneeLearn,
   advancedChallenge,
@@ -212,21 +213,7 @@ export default function NormalKneeMriPage() {
         ))}
       </div>
 
-      {/* Mode switcher */}
-      <div className="mt-4 inline-flex flex-wrap rounded-lg border border-gray-200 bg-white p-0.5">
-        {visibleModes.map((m) => (
-          <button
-            key={m.id}
-            type="button"
-            onClick={() => setMode(m.id)}
-            className={`rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors ${
-              mode === m.id ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
-            }`}
-          >
-            {m.label}
-          </button>
-        ))}
-      </div>
+      <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={setMode} />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (
