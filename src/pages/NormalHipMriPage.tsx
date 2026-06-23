@@ -157,8 +157,8 @@ export default function NormalHipMriPage() {
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Interactive Normal Hip MRI</h1>
       <p className="mt-1 text-gray-500">
-        A real, de-identified normal hip MRI — scroll through it like a workstation to
-        anchor your sense of &ldquo;normal&rdquo; before you read pathology.
+        A real, de-identified normal hip MRI for anchoring the femoral head, acetabular rim,
+        labrum, tendons, and marrow before pathology.
       </p>
 
       {/* Series / plane selector */}
@@ -219,7 +219,7 @@ export default function NormalHipMriPage() {
               title="Normal Hip"
               plane={series.plane}
               startIndex={series.startIndex}
-              caption="Scroll the wheel, drag up/down, or use the arrow keys to move through the stack."
+              caption="Normal hip reference stack for comparing the femoral head, acetabular rim, labrum, tendons, and marrow across slices."
               attribution="De-identified normal hip MRI · UCLA Sports Medicine teaching collection"
             />
           </div>

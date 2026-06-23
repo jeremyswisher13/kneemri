@@ -909,12 +909,9 @@ export default function CasePage() {
           {/* Scrollable MRI Stacks */}
           {caseItem.teachingStacks && caseItem.teachingStacks.length > 0 && (
             <Card>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 Scrollable MRI Stacks
               </h3>
-              <p className="mb-4 text-xs text-gray-500">
-                Scroll the wheel, drag, or use arrow keys to move through slices.
-              </p>
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {caseItem.teachingStacks.map((stack) => (
                   <MriStackViewer

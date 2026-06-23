@@ -183,8 +183,8 @@ export default function NormalShoulderMriPage() {
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Interactive Normal Shoulder MRI</h1>
       <p className="mt-1 text-gray-500">
-        A real, de-identified normal shoulder MRI — scroll through it like a workstation to
-        anchor your sense of &ldquo;normal&rdquo; before you read pathology.
+        A real, de-identified normal shoulder MRI for anchoring cuff, labrum, biceps,
+        cartilage, and marrow before pathology.
       </p>
 
       {/* Series / plane selector */}
@@ -245,7 +245,7 @@ export default function NormalShoulderMriPage() {
               title="Normal Shoulder"
               plane={series.plane}
               startIndex={series.startIndex}
-              caption="Scroll the wheel, drag up/down, or use the arrow keys to move through the stack."
+              caption="Normal shoulder reference stack for comparing cuff, labrum, biceps, cartilage, and bone marrow across slices."
               attribution="De-identified normal shoulder MRI · UCLA Sports Medicine teaching collection"
             />
           </div>

@@ -385,6 +385,8 @@ export default function MriStackViewer({
         {zoomed && (
           <button
             type="button"
+            aria-label="Reset zoom"
+            title="Reset zoom"
             onClick={() => {
               setZoom(1);
               setPan({ x: 0, y: 0 });
@@ -397,7 +399,7 @@ export default function MriStackViewer({
       </div>
 
       {/* Slider + controls */}
-      <div className="flex items-center gap-2 border-t border-gray-100 bg-gray-50 px-3 py-2 sm:gap-3 sm:px-4">
+      <div className="flex flex-wrap items-center gap-2 border-t border-gray-100 bg-gray-50 px-3 py-2 sm:flex-nowrap sm:gap-3 sm:px-4">
         <button
           type="button"
           onClick={() => setShowAdjust((v) => !v)}
@@ -446,7 +448,7 @@ export default function MriStackViewer({
             <path d="M12.79 5.23a.75.75 0 0 1 0 1.06L9.06 10l3.73 3.71a.75.75 0 1 1-1.06 1.06l-4.25-4.24a.75.75 0 0 1 0-1.06l4.25-4.24a.75.75 0 0 1 1.06 0z" />
           </svg>
         </button>
-        <div className="relative flex flex-1 items-center">
+        <div className="relative order-last flex w-full flex-none items-center sm:order-none sm:flex-1">
           <input
             type="range"
             min={0}
@@ -455,6 +457,7 @@ export default function MriStackViewer({
             onChange={(e) => setIndex(Number(e.target.value))}
             className="relative z-10 w-full accent-ucla-blue py-4 sm:py-0"
             aria-label="Slice position"
+            aria-valuetext={`Slice ${safeIndex + 1} of ${total}`}
           />
         </div>
         <button
@@ -547,13 +550,6 @@ export default function MriStackViewer({
               )}
             </p>
           )}
-        </div>
-      )}
-
-      {/* Keyboard hint */}
-      {total > 1 && (
-        <div className="border-t border-gray-100 bg-blue-50/60 px-4 py-1.5 text-[10px] text-gray-500">
-          Scroll, drag, or arrow keys to move slices · pinch or double-tap to zoom · Space to play/pause · ◑ to adjust window/level
         </div>
       )}
     </div>
