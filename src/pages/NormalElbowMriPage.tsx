@@ -11,6 +11,7 @@ import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
+import NormalSeriesSelector from "@/components/normal/NormalSeriesSelector";
 import {
   normalElbowLearn,
   structureElbowPearl,
@@ -159,38 +160,12 @@ export default function NormalElbowMriPage() {
         nerves, and marrow before pathology.
       </p>
 
-      {/* Series / plane selector */}
-      <div className="mt-5 flex flex-wrap items-center gap-2">
-        {SERIES.map((s) => {
-          const active = s.id === series.id;
-          return (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => setActiveId(s.id)}
-              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                active
-                  ? "border-ucla-blue bg-ucla-blue text-white"
-                  : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              {s.label}
-            </button>
-          );
-        })}
-        {COMING_SOON.map((label) => (
-          <span
-            key={label}
-            className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-gray-300 bg-gray-50 px-3.5 py-1.5 text-sm font-medium text-gray-500"
-            title="Coming soon"
-          >
-            {label}
-            <span className="rounded-full bg-gray-200 px-1.5 text-[10px] font-semibold uppercase tracking-wide text-gray-500">
-              soon
-            </span>
-          </span>
-        ))}
-      </div>
+      <NormalSeriesSelector
+        series={SERIES}
+        activeId={activeId}
+        onSeriesChange={setActiveId}
+        comingSoon={COMING_SOON}
+      />
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={setMode} />
 
@@ -302,7 +277,7 @@ export default function NormalElbowMriPage() {
       {mode === "caq" && (
         <div className="mt-5">
           <p className="mb-4 text-sm text-gray-500">
-            Board-style questions read off the real MRI — scroll the stack, then commit to your answer.{" "}
+            Board-style questions anchored to the real MRI — review the image stack, then commit to your answer.{" "}
             <span className="text-gray-500">Misses return in your spaced review.</span>
           </p>
           <ImageCaq questions={elbowImageCaq} onMiss={handleMiss} />
@@ -334,8 +309,8 @@ function ComingSoonForPlane({ label, kind }: { label: string; kind: string }) {
   return (
     <Card>
       <p className="py-8 text-center text-sm text-gray-500">
-        The {kind} for the <strong>{label}</strong> plane is coming soon. For now, use{" "}
-        <strong>Explore</strong> to scroll the stack.
+        The {kind} for the <strong>{label}</strong> plane is coming soon.{" "}
+        <strong>Explore</strong> has the reference stack.
       </p>
     </Card>
   );
