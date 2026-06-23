@@ -13,6 +13,8 @@ import {
 
 const knee = getCourseById('knee-mri')
 const shoulder = getCourseById('shoulder-mri')
+const hip = getCourseById('hip-mri')
+const elbow = getCourseById('elbow-mri')
 
 describe('course registry invariants', () => {
   it('knee is the default course (registry[0])', () => {
@@ -30,6 +32,8 @@ describe('getCourseById', () => {
   it('resolves known ids', () => {
     expect(getCourseById('knee-mri').id).toBe('knee-mri')
     expect(getCourseById('shoulder-mri').id).toBe('shoulder-mri')
+    expect(getCourseById('hip-mri').id).toBe('hip-mri')
+    expect(getCourseById('elbow-mri').id).toBe('elbow-mri')
   })
   it('falls back to the default course for unknown / undefined', () => {
     expect(getCourseById('does-not-exist').id).toBe(defaultCourse.id)
@@ -43,6 +47,8 @@ describe('getCourseBasePath', () => {
     // home page at /, so knee no longer occupies the bare root paths.
     expect(getCourseBasePath(knee)).toBe('/courses/knee-mri')
     expect(getCourseBasePath(shoulder)).toBe('/courses/shoulder-mri')
+    expect(getCourseBasePath(hip)).toBe('/courses/hip-mri')
+    expect(getCourseBasePath(elbow)).toBe('/courses/elbow-mri')
   })
 })
 
@@ -57,6 +63,8 @@ describe('coursePath', () => {
     expect(coursePath(shoulder, '/')).toBe('/courses/shoulder-mri')
     expect(coursePath(shoulder, '/modules')).toBe('/courses/shoulder-mri/modules')
     expect(coursePath(shoulder, '/normal-shoulder-mri')).toBe('/courses/shoulder-mri/normal-shoulder-mri')
+    expect(coursePath(hip, '/normal-hip-mri')).toBe('/courses/hip-mri/normal-hip-mri')
+    expect(coursePath(elbow, '/normal-elbow-mri')).toBe('/courses/elbow-mri/normal-elbow-mri')
   })
   it('normalizes a path missing its leading slash', () => {
     expect(coursePath(shoulder, 'modules')).toBe('/courses/shoulder-mri/modules')

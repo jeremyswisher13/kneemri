@@ -44,8 +44,6 @@ export default function NeedsAttentionPanel({
   postQuizTotal,
   onSelectLearner,
 }: NeedsAttentionPanelProps) {
-  const isKnee = course.bodyRegion === "knee";
-
   const groups = useMemo<AttentionGroup[]>(() => {
     const readyForCert: AttentionEntry[] = [];
     const belowBar: AttentionEntry[] = [];
@@ -57,7 +55,7 @@ export default function NeedsAttentionPanel({
         f,
         totalModules,
         totalCasesForRole(course, f.role),
-        isKnee,
+        course,
         postQuizTotal,
       );
       const name = fellowName(f);
@@ -116,7 +114,7 @@ export default function NeedsAttentionPanel({
     ];
 
     return built.filter((g) => g.entries.length > 0);
-  }, [fellows, course, totalModules, postQuizTotal, isKnee]);
+  }, [fellows, course, totalModules, postQuizTotal]);
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">

@@ -119,18 +119,18 @@ export function buildStepData(course: CourseDefinition): WelcomeStep[] {
     title: "Post-Assessment",
     description: isKnee
       ? "After the Normal Knee MRI and the modules, the post-assessment unlocks so you can measure your improvement."
-      : "After completing all modules and cases, the post-assessment unlocks so you can measure your improvement.",
+      : `After completing the Normal ${regionTitle} MRI, all modules, and cases, the post-assessment unlocks so you can measure your improvement.`,
     link: coursePath(course, "/post-assessment"),
     linkLabel: "View Post-Assessment",
   };
 
-  // The Normal-MRI workstation is the primary focus, placed before the modules —
-  // but only courses whose bodyRegion has a workstation (knee, shoulder) include
-  // it. Knee: cases are optional (omitted). Shoulder/hip: cases are required.
+  // The Normal-MRI workstation is the primary focus, placed before the modules.
+  // Knee: cases are optional (omitted). Shoulder/hip/elbow: cases are required.
   const hasWorkstation =
     course.bodyRegion === "knee" ||
     course.bodyRegion === "shoulder" ||
-    course.bodyRegion === "hip";
+    course.bodyRegion === "hip" ||
+    course.bodyRegion === "elbow";
   const steps: WelcomeStep[] = [pre];
   if (hasWorkstation) steps.push(normal);
   steps.push(modules);

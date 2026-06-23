@@ -4,10 +4,11 @@
 // uses. Drift tests (module-metas.test.ts / case-metas.test.ts) enforce sync.
 //
 //   npm run gen:metas
-import { execSync } from "node:child_process";
 import { writeFileSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+import { build } from "vite";
 
 const tmp = mkdtempSync(join(tmpdir(), "metas-"));
 const entry = join(tmp, "entry.ts");
@@ -23,15 +24,30 @@ import { elbowModuleRegistry } from '@/content/elbow/modules';
 import { elbowCaseRegistry } from '@/content/elbow/cases';
 const m = (x) => ({ id: x.id, number: x.number, title: x.title, subtitle: x.subtitle, estimatedMinutes: x.estimatedMinutes, topics: x.topics });
 const c = (x) => ({ id: x.id, title: x.title, difficulty: x.difficulty, tier: x.tier, residentVisible: x.residentVisible, clinicalScenario: x.clinicalScenario, keyDiagnoses: x.keyDiagnoses, tags: x.tags });
-console.log(JSON.stringify({ kneeM: moduleRegistry.map(m), shldM: shoulderModuleRegistry.map(m), hipM: hipModuleRegistry.map(m), elbowM: elbowModuleRegistry.map(m), kneeC: caseRegistry.map(c), shldC: shoulderCaseRegistry.map(c), hipC: hipCaseRegistry.map(c), elbowC: elbowCaseRegistry.map(c) }));
+export default { kneeM: moduleRegistry.map(m), shldM: shoulderModuleRegistry.map(m), hipM: hipModuleRegistry.map(m), elbowM: elbowModuleRegistry.map(m), kneeC: caseRegistry.map(c), shldC: shoulderCaseRegistry.map(c), hipC: hipCaseRegistry.map(c), elbowC: elbowCaseRegistry.map(c) };
 `,
 );
-const outFile = join(tmp, "entry.mjs");
-execSync(
-  `npx esbuild ${entry} --bundle --format=esm --platform=node --alias:@=./src --log-level=error --outfile=${outFile}`,
-  { stdio: "inherit" },
-);
-const d = JSON.parse(execSync(`node ${outFile}`).toString());
+const outDir = join(tmp, "out");
+const outFile = join(outDir, "entry.mjs");
+await build({
+  configFile: false,
+  copyPublicDir: false,
+  logLevel: "error",
+  resolve: { alias: { "@": resolve("src") } },
+  build: {
+    ssr: entry,
+    outDir,
+    emptyOutDir: true,
+    minify: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: "entry.mjs",
+        chunkFileNames: "chunk-[name].mjs",
+      },
+    },
+  },
+});
+const d = (await import(pathToFileURL(outFile).href)).default;
 const arr = (x) => JSON.stringify(x, null, 2);
 
 writeFileSync(

@@ -4,6 +4,7 @@ import {
 import { db } from "./db";
 import { logAuditEvent } from "./audit";
 import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
+import { certificateFieldsForCourse } from "@/lib/course-certificate";
 import { defaultCourse, getCourseById, LEGACY_DEFAULT_COURSE_ID, type CourseDefinition, type CourseId } from "@/content/courses";
 import type {
   CaseAttemptItem,
@@ -20,11 +21,8 @@ import type {
 export const NORMAL_KNEE_PLANE_IDS = ["sag-pdfs", "cor-pdfs", "axi-t2fs", "sag-t1"];
 export const NORMAL_SHOULDER_PLANE_IDS = ["sh-sag-t2fs", "sh-cor-t2fs", "sh-axi-t2fs", "sh-sag-t1"];
 // Hip workstation plane passes are stored as `hip-${seriesId}` (see
-// NormalHipMriPage.handleCheckComplete). Like shoulder, passing every plane is
-// required for the client-side "course complete" / post-assessment unlock; the
-// certificate Cloud Function treats non-knee normal-MRI as not-gating
-// (meetsCompletion: normalOk = isKnee ? normalDone : true), so the two stay in
-// sync without a function change.
+// NormalHipMriPage.handleCheckComplete). Passing every plane is required for
+// course completion and certificate eligibility for every workstation course.
 export const NORMAL_HIP_PLANE_IDS = ["hip-cor-t2fs", "hip-axi", "hip-sag"];
 export const NORMAL_ELBOW_PLANE_IDS = ["elbow-cor-t2fs", "elbow-axi-t2fs", "elbow-sag-ir"];
 export const NORMAL_KNEE_PASS_PCT = 0.7;
@@ -424,6 +422,7 @@ export async function getAllFellows(course: CourseDefinition = defaultCourse) {
   // Fetch both fellows and residents (exclude admins with no learner role).
   // Progress is computed for the supplied course so the admin dashboard can
   // switch between cohorts (knee / shoulder).
+  const certificateFields = certificateFieldsForCourse(course.id);
   const fellowSnap = await getDocs(query(collection(db, "users"), where("role", "==", "fellow")));
   const residentSnap = await getDocs(query(collection(db, "users"), where("role", "==", "resident")));
   const allDocs = [...fellowSnap.docs, ...residentSnap.docs];
@@ -435,6 +434,8 @@ export async function getAllFellows(course: CourseDefinition = defaultCourse) {
         id: userDoc.id,
         ...userData,
         ...progress,
+        certificateSent: userData[certificateFields.sentField] === true,
+        certificateSentAt: userData[certificateFields.sentAtField] ?? null,
       };
     }),
   );

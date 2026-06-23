@@ -32,8 +32,6 @@ export default function StatusFunnel({
   active,
   onSelect,
 }: StatusFunnelProps) {
-  const isKnee = course.bodyRegion === "knee";
-
   const counts = useMemo(() => {
     const tally: Record<FellowStatus, number> = {
       Complete: 0,
@@ -46,13 +44,13 @@ export default function StatusFunnel({
         f,
         totalModules,
         totalCasesForRole(course, f.role),
-        isKnee,
+        course,
         postQuizTotal,
       );
       tally[status] += 1;
     }
     return tally;
-  }, [fellows, course, totalModules, postQuizTotal, isKnee]);
+  }, [fellows, course, totalModules, postQuizTotal]);
 
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">

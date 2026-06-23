@@ -69,7 +69,7 @@ export default function FellowLayout() {
       modules: "Modules", cases: "Cases", review: "Spaced Review",
       reference: "Reference", certificate: "Certificate", "search-pattern": "Search Pattern",
       "normal-knee-mri": "Normal Knee MRI", "normal-shoulder-mri": "Normal Shoulder MRI",
-      "normal-hip-mri": "Normal Hip MRI",
+      "normal-hip-mri": "Normal Hip MRI", "normal-elbow-mri": "Normal Elbow MRI",
     };
     const page = isCourseRoot
       ? "Dashboard"
@@ -142,8 +142,8 @@ export default function FellowLayout() {
       }
     : null;
 
-  // Both the knee and shoulder workstations now track plane completion; a course
-  // is "completed" once every plane's knowledge check is passed.
+  // Workstation courses track plane completion; a course is "completed" once
+  // every plane's knowledge check is passed.
   const workstationComplete =
     isWorkstationCourse && !!progress?.normalMriComplete && (progress?.totalNormalPlanes ?? 0) > 0;
 

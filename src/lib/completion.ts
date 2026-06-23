@@ -31,7 +31,7 @@ export function meetsPassThreshold(p: UserProgress, course: CourseDefinition): b
  * All activity requirements, WITHOUT the post-assessment pass threshold.
  *
  * Required: pre-assessment (quiz + survey) · all modules · the Interactive
- * Normal MRI workstation (EVERY course that has one — knee, shoulder, hip) ·
+ * Normal MRI workstation (EVERY course that has one — knee, shoulder, hip, elbow) ·
  * post-assessment (quiz + survey). Cases are OPTIONAL on the knee course and
  * required on the others.
  *

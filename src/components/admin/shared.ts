@@ -70,23 +70,30 @@ export function totalCasesForRole(course: CourseDefinition, role?: string | null
   return role === "resident" ? residentCoreCaseCount : course.coreCases.length;
 }
 
+export function hasNormalMriWorkstation(course: CourseDefinition): boolean {
+  return ["knee", "shoulder", "hip", "elbow"].includes(course.bodyRegion);
+}
+
 export function fellowStatus(
   f: Fellow,
   totalModules: number,
   totalCases: number,
-  isKnee: boolean,
+  course: CourseDefinition,
   postQuizTotal: number,
 ): FellowStatus {
-  // Knee: the Normal Knee MRI is required and cases are optional.
-  // Other courses: core cases remain required.
-  const learningDone = isKnee ? !!f.normalMriComplete : f.casesCompleted >= totalCases;
+  // Knee: cases are optional. Every current course requires its Normal MRI
+  // workstation before the learner is certificate-ready.
+  const isKnee = course.bodyRegion === "knee";
+  const casesDone = isKnee ? true : f.casesCompleted >= totalCases;
+  const normalDone = !hasNormalMriWorkstation(course) || !!f.normalMriComplete;
   const hasAll =
     f.preQuizScore !== null &&
     f.postQuizScore !== null &&
     f.preSurveyCompleted &&
     f.postSurveyCompleted &&
     f.modulesCompleted >= totalModules &&
-    learningDone;
+    casesDone &&
+    normalDone;
   if (hasAll) {
     // "Complete" means certificate-eligible: the Cloud Functions refuse to send
     // below the pass threshold, so the admin view must not offer Send Cert there.
@@ -98,7 +105,7 @@ export function fellowStatus(
     f.preSurveyCompleted ||
     f.modulesCompleted > 0 ||
     f.casesCompleted > 0 ||
-    (isKnee && !!f.normalMriComplete);
+    !!f.normalMriComplete;
   return hasAny ? "In Progress" : "Not Started";
 }
 

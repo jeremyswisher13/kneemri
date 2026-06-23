@@ -70,7 +70,7 @@ export default function DashboardPage() {
           ? "/images/teaching/stacks/normal-elbow-coronal/slice_13.jpg"
           : "/images/teaching/stacks/normal-knee-sagittal/slice_14.jpg";
   // firestore already returns true for genuinely workstation-less courses, so
-  // this is course-correct for knee, shoulder, AND hip (all track plane passes).
+  // this is course-correct for knee, shoulder, hip, and elbow (all track plane passes).
   const normalMriComplete = !!progress?.normalMriComplete;
   const normalPlanesPassed = progress?.normalPlanesPassed ?? 0;
   const totalNormalPlanes = progress?.totalNormalPlanes ?? 4;

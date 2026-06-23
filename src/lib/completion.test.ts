@@ -11,9 +11,8 @@ import type { UserProgress } from "@/types/progress";
 
 // The completion predicates are the gates that decide whether a fellow's work is
 // recorded as done and whether a certificate is earned — so the cross-course
-// rules (knee = cases optional + workstation required; shoulder/hip = cases
-// required, and completion.ts does NOT gate non-knee on the workstation because
-// the post-quiz unlock already enforces it transitively) are pinned here.
+// rules (knee = cases optional + workstation required; shoulder/hip/elbow = cases
+// required + workstation required) are pinned here.
 
 const knee = getCourseById("knee-mri");
 const hip = getCourseById("hip-mri");

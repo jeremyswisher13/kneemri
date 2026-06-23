@@ -39,8 +39,6 @@ function daysLabel(days: number | null): string {
 }
 
 export default function EngagementPanel({ fellows, course, totalModules, postQuizTotal }: EngagementPanelProps) {
-  const isKnee = course.bodyRegion === "knee";
-
   const { buckets, stale } = useMemo(() => {
     let active7 = 0;
     let d8to14 = 0;
@@ -55,7 +53,7 @@ export default function EngagementPanel({ fellows, course, totalModules, postQui
       else if (days !== null && days <= 30) d15to30++;
       else d31plus++;
 
-      const status = fellowStatus(f, totalModules, totalCasesForRole(course, f.role), isKnee, postQuizTotal);
+      const status = fellowStatus(f, totalModules, totalCasesForRole(course, f.role), course, postQuizTotal);
       if (status !== "Complete" && (days === null || days >= INACTIVE_THRESHOLD_DAYS)) {
         staleList.push({ id: f.id, name: fellowName(f), status, days });
       }
@@ -72,7 +70,7 @@ export default function EngagementPanel({ fellows, course, totalModules, postQui
       ],
       stale: staleList,
     };
-  }, [fellows, course, totalModules, postQuizTotal, isKnee]);
+  }, [fellows, course, totalModules, postQuizTotal]);
 
   const shown = stale.slice(0, 10);
   const overflow = stale.length - shown.length;

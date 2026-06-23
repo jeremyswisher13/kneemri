@@ -36,8 +36,8 @@ const MODES: { id: Mode; label: string }[] = [
 
 /**
  * Interactive Normal Elbow MRI — a "mini-workstation" of a real, de-identified
- * normal elbow. Built on the same region-agnostic components as the knee/
- * shoulder/hip. Coronal, axial, and sagittal stacks are loaded.
+ * normal elbow. Built on the same region-agnostic components as the other
+ * Normal MRI workstations. Coronal, axial, and sagittal stacks are loaded.
  */
 interface ElbowSeries {
   id: string;

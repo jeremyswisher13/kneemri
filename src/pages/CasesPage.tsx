@@ -45,6 +45,8 @@ export default function CasesPage() {
   const totalVisible = visibleCoreCases.length + visibleAdvancedCases.length;
 
   const allCoreDone = visibleCoreCases.length > 0 && visibleCoreCases.every((c) => isCaseCompleted(c.id));
+  const regionTitle = activeCourse.bodyRegion.charAt(0).toUpperCase() + activeCourse.bodyRegion.slice(1);
+  const normalMriPath = coursePath(activeCourse, `/normal-${activeCourse.bodyRegion}-mri`);
 
   return (
     <div>
@@ -57,45 +59,23 @@ export default function CasesPage() {
         </span>
       </p>
 
-      {/* Recommended-first: master the normal knee (knee course) */}
-      {activeCourse.bodyRegion === "knee" && (
-        <Link to={coursePath(activeCourse, "/normal-knee-mri")} className="mt-4 block">
-          <div className="flex items-center gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70">
-            <svg className="h-5 w-5 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-            </svg>
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-[#003B5C]">Recommended first: master the normal knee</p>
-              <p className="text-xs text-gray-600">
-                You'll catch far more pathology once normal is second nature — run the Normal Knee tour &amp; check before these cases.
-              </p>
-            </div>
-            <svg className="h-4 w-4 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
+      {/* Recommended-first: master the normal MRI before pathology cases */}
+      <Link to={normalMriPath} className="mt-4 block">
+        <div className="flex items-center gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70">
+          <svg className="h-5 w-5 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+          </svg>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-[#003B5C]">Recommended first: master the normal {activeCourse.bodyRegion}</p>
+            <p className="text-xs text-gray-600">
+              You'll catch far more pathology once normal is second nature — run the Normal {regionTitle} tour &amp; check before these cases.
+            </p>
           </div>
-        </Link>
-      )}
-
-      {/* Recommended-first: master the normal shoulder (shoulder course) */}
-      {activeCourse.bodyRegion === "shoulder" && (
-        <Link to={coursePath(activeCourse, "/normal-shoulder-mri")} className="mt-4 block">
-          <div className="flex items-center gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70">
-            <svg className="h-5 w-5 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-            </svg>
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-[#003B5C]">Recommended first: master the normal shoulder</p>
-              <p className="text-xs text-gray-600">
-                You'll catch far more pathology once normal is second nature — run the Normal Shoulder tour &amp; check before these cases.
-              </p>
-            </div>
-            <svg className="h-4 w-4 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </div>
-        </Link>
-      )}
+          <svg className="h-4 w-4 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </div>
+      </Link>
 
       {/* Milestone encouragement banners */}
       {coreCompletedCount > 0 && !allCoreDone && (

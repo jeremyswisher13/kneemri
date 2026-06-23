@@ -10,6 +10,8 @@ import {
 
 const knee = getCourseById('knee-mri')
 const shoulder = getCourseById('shoulder-mri')
+const hip = getCourseById('hip-mri')
+const elbow = getCourseById('elbow-mri')
 
 function progress(overrides: Partial<WelcomeGuideProgress> = {}): WelcomeGuideProgress {
   return {
@@ -38,6 +40,22 @@ describe('buildStepData order', () => {
       'post',
     ])
   })
+  it('hip and elbow include their normal-MRI workstations', () => {
+    expect(buildStepData(hip).map((s) => s.kind)).toEqual([
+      'pre',
+      'normal',
+      'modules',
+      'cases',
+      'post',
+    ])
+    expect(buildStepData(elbow).map((s) => s.kind)).toEqual([
+      'pre',
+      'normal',
+      'modules',
+      'cases',
+      'post',
+    ])
+  })
 })
 
 describe('buildStepData links are course-scoped', () => {
@@ -54,6 +72,10 @@ describe('buildStepData links are course-scoped', () => {
     expect(byKind.normal).toBe('/courses/shoulder-mri/normal-shoulder-mri')
     expect(byKind.modules).toBe('/courses/shoulder-mri/modules')
     expect(byKind.cases).toBe('/courses/shoulder-mri/cases')
+  })
+  it('elbow workstation link uses the elbow route, not the shoulder fallback', () => {
+    const byKind = Object.fromEntries(buildStepData(elbow).map((s) => [s.kind, s.link]))
+    expect(byKind.normal).toBe('/courses/elbow-mri/normal-elbow-mri')
   })
 })
 

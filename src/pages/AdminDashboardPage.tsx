@@ -102,7 +102,7 @@ function exportCSV(fellows: Fellow[], course: CourseDefinition) {
       postConf !== null ? postConf.toFixed(1) : "",
       `${f.modulesCompleted}/${totalModules}`,
       `${f.casesCompleted}/${csvTotalCases(f, course)}`,
-      fellowStatus(f, totalModules, csvTotalCases(f, course), course.bodyRegion === "knee", POST_QUIZ_TOTAL),
+      fellowStatus(f, totalModules, csvTotalCases(f, course), course, POST_QUIZ_TOTAL),
     ];
   });
 
@@ -247,7 +247,7 @@ function exportDetailedCSV(fellows: Fellow[], course: CourseDefinition) {
       fellowName(f),
       f.email || "",
       f.role || "",
-      fellowStatus(f, totalModules, totalCases, course.bodyRegion === "knee", postQuizTotal),
+      fellowStatus(f, totalModules, totalCases, course, postQuizTotal),
       isoDate(f.lastLoginAt),
       isoDate(f.lastActive),
       f.certificateSent ? "Yes" : "No",
@@ -466,7 +466,6 @@ export default function AdminDashboardPage() {
 
   const totalModules = selectedCourse.modules.length;
   const totalCases = selectedCourse.coreCases.length;
-  const isKnee = selectedCourse.bodyRegion === "knee";
 
   const totalCasesForFellow = useCallback((f: Fellow): number => {
     return f.role === "resident" ? residentCoreCaseCount : totalCases;
@@ -536,11 +535,11 @@ export default function AdminDashboardPage() {
         ? Math.round((withPostConf.reduce((s, f) => s + avgConfidence(f.postSurveyResponses)!, 0) / withPostConf.length) * 10) / 10
         : null;
 
-    const completedCount = filteredFellows.filter((f) => fellowStatus(f, totalModules, totalCasesForFellow(f), selectedCourse.bodyRegion === "knee", POST_QUIZ_TOTAL) === "Complete").length;
+    const completedCount = filteredFellows.filter((f) => fellowStatus(f, totalModules, totalCasesForFellow(f), selectedCourse, POST_QUIZ_TOTAL) === "Complete").length;
     const completionRate = filteredFellows.length > 0 ? Math.round((completedCount / filteredFellows.length) * 100) : 0;
 
     return { avgPre, avgPost, avgImprovement, avgPreConf, avgPostConf, completionRate };
-  }, [filteredFellows, totalModules, totalCasesForFellow, PRE_QUIZ_TOTAL, POST_QUIZ_TOTAL, selectedCourse.bodyRegion]);
+  }, [filteredFellows, totalModules, totalCasesForFellow, PRE_QUIZ_TOTAL, POST_QUIZ_TOTAL, selectedCourse]);
 
   /* ── Score comparison data (sorted by improvement desc) ── */
   const scoreComparison = useMemo(() => {
@@ -560,9 +559,9 @@ export default function AdminDashboardPage() {
   const displayedFellows = useMemo(() => {
     if (!statusFilter) return filteredFellows;
     return filteredFellows.filter(
-      (f) => fellowStatus(f, totalModules, totalCasesForFellow(f), isKnee, POST_QUIZ_TOTAL) === statusFilter,
+      (f) => fellowStatus(f, totalModules, totalCasesForFellow(f), selectedCourse, POST_QUIZ_TOTAL) === statusFilter,
     );
-  }, [filteredFellows, statusFilter, totalModules, totalCasesForFellow, isKnee, POST_QUIZ_TOTAL]);
+  }, [filteredFellows, statusFilter, totalModules, totalCasesForFellow, selectedCourse, POST_QUIZ_TOTAL]);
 
   const handleExport = useCallback(() => {
     exportCSV(filteredFellows, selectedCourse);
@@ -831,7 +830,7 @@ export default function AdminDashboardPage() {
                       const postPct = f.postQuizScore !== null ? pct(f.postQuizScore, f.postQuizTotal ?? POST_QUIZ_TOTAL) : null;
                       const improvement = prePct !== null && postPct !== null ? postPct - prePct : null;
                       const isExpanded = expandedFellow === f.id;
-                      const status = fellowStatus(f, totalModules, userTotalCases, selectedCourse.bodyRegion === "knee", POST_QUIZ_TOTAL);
+                      const status = fellowStatus(f, totalModules, userTotalCases, selectedCourse, POST_QUIZ_TOTAL);
 
                       return (
                         <Fragment key={f.id}>

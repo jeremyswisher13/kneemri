@@ -1,6 +1,6 @@
 /**
  * Interactive "master normal first" content for the Normal Elbow MRI workstation.
- * Mirrors knee/shoulder/hip: each plane (keyed by its SERIES id in
+ * Mirrors the other Normal MRI workstations: each plane (keyed by its SERIES id in
  * NormalElbowMriPage) has a Guided Tour, a Knowledge Check, "watch for" pearls,
  * reading points, and an anatomy + ultrasound correlate.
  *

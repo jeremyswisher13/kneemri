@@ -25,9 +25,9 @@ import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
 
-// The workstation route (/normal-shoulder-mri) is global, so case links must be
-// explicitly scoped to the shoulder course (otherwise CasePage resolves them
-// against the default/knee course and the case isn't found).
+// Case links from the workstation must be explicitly scoped to the shoulder
+// course (otherwise CasePage resolves them against the default/knee course and
+// the case isn't found).
 const SHOULDER_CASE_BASE = coursePath(getCourseById("shoulder-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";

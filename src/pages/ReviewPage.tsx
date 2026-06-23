@@ -29,6 +29,7 @@ function intervalLabel(days: number): string {
 export default function ReviewPage() {
   const { user } = useAuth();
   const activeCourse = useActiveCourse();
+  const workstationPath = coursePath(activeCourse, `/normal-${activeCourse.bodyRegion}-mri`);
 
   const [dueCards, setDueCards] = useState<ReviewCard[]>([]);
   const [loading, setLoading] = useState(true);
@@ -144,7 +145,7 @@ export default function ReviewPage() {
               <Link to={coursePath(activeCourse, "/modules")}>
                 <Button variant="secondary" size="sm">Go to Modules</Button>
               </Link>
-              <Link to={coursePath(activeCourse, activeCourse.bodyRegion === "knee" ? "/normal-knee-mri" : "/normal-shoulder-mri")}>
+              <Link to={workstationPath}>
                 <Button variant="secondary" size="sm">Open the workstation</Button>
               </Link>
             </div>
