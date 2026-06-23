@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-06-23",
+  "courses": {
+    "knee-mri": {
+      "title": "UCLA Knee MRI Interpretation Course",
+      "modules": 9,
+      "cases": 13,
+      "prePostQuizItems": 28,
+      "normalPlanes": 4,
+      "normalPlaneQuizItems": 45,
+      "advancedItems": 36,
+      "imageCaqItems": 6,
+      "redFlags": 5,
+      "reviewItems": 1319,
+      "highRiskItems": 555,
+      "sourceCheckItems": 654,
+      "diagnostics": 0
+    },
+    "shoulder-mri": {
+      "title": "Shoulder MRI for Primary Care Sports Medicine",
+      "modules": 6,
+      "cases": 8,
+      "prePostQuizItems": 22,
+      "normalPlanes": 4,
+      "normalPlaneQuizItems": 46,
+      "advancedItems": 34,
+      "imageCaqItems": 6,
+      "redFlags": 5,
+      "reviewItems": 541,
+      "highRiskItems": 182,
+      "sourceCheckItems": 239,
+      "diagnostics": 0
+    },
+    "hip-mri": {
+      "title": "Hip MRI for Primary Care Sports Medicine",
+      "modules": 8,
+      "cases": 8,
+      "prePostQuizItems": 24,
+      "normalPlanes": 3,
+      "normalPlaneQuizItems": 22,
+      "advancedItems": 12,
+      "imageCaqItems": 6,
+      "redFlags": 5,
+      "reviewItems": 483,
+      "highRiskItems": 299,
+      "sourceCheckItems": 338,
+      "diagnostics": 0
+    },
+    "elbow-mri": {
+      "title": "Elbow MRI for Primary Care Sports Medicine",
+      "modules": 8,
+      "cases": 8,
+      "prePostQuizItems": 24,
+      "normalPlanes": 3,
+      "normalPlaneQuizItems": 7,
+      "advancedItems": 10,
+      "imageCaqItems": 6,
+      "redFlags": 5,
+      "reviewItems": 371,
+      "highRiskItems": 301,
+      "sourceCheckItems": 326,
+      "diagnostics": 0
+    }
+  },
+  "totals": {
+    "reviewItems": 2714,
+    "highRiskItems": 1337,
+    "sourceCheckItems": 1557,
+    "diagnostics": 0,
+    "diagnosticErrors": 0,
+    "diagnosticWarnings": 0
+  },
+  "diagnostics": []
+}
