@@ -47,7 +47,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 19,
         markers: [{ x: 75, y: 39, label: "Sourcil" }],
         title: "Acetabulum & sourcil",
-        note: "The acetabulum is the cup of subchondral bone roofing the head; the sourcil is its dense superior weight-bearing roof, seen here as the low-signal subchondral plate over the head. Check that the sourcil marrow is dark and uniform and that the roof gives the head normal lateral coverage (lateral center-edge angle) — undercoverage suggests dysplasia, while excessive/retroverted over-coverage suggests pincer-type FAI.",
+        note: "The acetabulum is the cup of subchondral bone roofing the head; the sourcil is its dense superior weight-bearing roof, seen here as the low-signal subchondral plate over the head. Check that the sourcil marrow is dark and uniform and that the roof gives the head normal lateral coverage (lateral center-edge angle) — undercoverage suggests dysplasia, while excessive/retroverted over-coverage suggests pincer morphology that needs symptom and chondrolabral correlation.",
       },
       {
         sliceIndex: 19,
@@ -209,7 +209,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 23,
         markers: [{ x: 42, y: 45, label: "Femoral head" }],
         title: "Femoral head",
-        note: "On axial T2 FS the femoral head is the round, spherical ball seated in the acetabular socket — check its sphericity and confirm uniformly dark (fat-suppressed) marrow with no bright edema. It is the screening target for AVN (subchondral edema, later a serpiginous double-line) and for a non-spherical anterior contour bump that drives cam-type FAI.",
+        note: "On axial T2 FS the femoral head is the round, spherical ball seated in the acetabular socket — check its sphericity and confirm uniformly dark (fat-suppressed) marrow with no bright edema. It is the screening target for AVN (subchondral edema, later a serpiginous double-line) and for a non-spherical anterior contour bump that can create cam morphology when symptoms and chondrolabral injury fit.",
       },
       {
         sliceIndex: 23,
@@ -487,7 +487,7 @@ export const structureHipPearl: Record<string, string> = {
 export const structureHipReading: Record<string, StructureReading> = {
   "Femoral head": {
     measure:
-      "Quantify anterosuperior asphericity as the alpha angle (cam if >55°), measured on oblique-axial-along-the-neck or radial images, never a straight axial/coronal.",
+      "Quantify anterosuperior asphericity as the alpha angle, measured on oblique-axial-along-the-neck or radial images, never a straight axial/coronal. >55° is commonly used and ~60° may be more specific, but cam morphology is not the same thing as symptomatic FAI.",
   },
   "Acetabulum & sourcil": {
     variant:
@@ -659,7 +659,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 0,
     explanation:
-      "Cam FAI is an aspherical anterior/anterolateral head-neck junction (loss of the normal head-neck offset) that levers against the acetabulum in flexion/internal rotation. The alpha angle is measured on oblique-axial images aligned to the femoral neck axis, or on radial reformats, because these planes display the anterosuperior 'bump' where cam lesions predominate; standard coronal images underestimate the anterior deformity and miss the lesion, which is why coronal-only measurement is wrong. Lesser-trochanter axial images assess version, not the alpha angle.",
+      "Cam morphology is an aspherical anterior/anterolateral head-neck junction (loss of the normal head-neck offset) that can lever against the acetabulum in flexion/internal rotation when symptoms and labral/cartilage injury fit. The alpha angle is measured on oblique-axial images aligned to the femoral neck axis, or on radial reformats, because these planes display the anterosuperior 'bump' where cam lesions predominate; standard coronal images underestimate the anterior deformity and miss the lesion, which is why coronal-only measurement is wrong. Lesser-trochanter axial images assess version, not the alpha angle.",
   },
   {
     id: "hadv-2",
@@ -674,7 +674,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 2,
     explanation:
-      "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — the hallmark of pincer FAI, in which an over-covering acetabular rim contacts a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
+      "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — a pincer morphology pattern in which an over-covering acetabular rim can contact a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
   },
   {
     id: "hadv-3",
@@ -923,7 +923,7 @@ export const hipImageCaq: ImageCaqQ[] = [
     ],
     answer: 0,
     explanation:
-      "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER FAI (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity.",
+      "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology, while ~60° may be more specific; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER morphology (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity. Morphology still needs clinical and chondrolabral correlation before calling symptomatic FAI.",
   },
   {
     id: "hicaq-6",

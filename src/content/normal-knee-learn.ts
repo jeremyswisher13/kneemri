@@ -89,7 +89,8 @@ export const structureReading: Record<string, StructureReading> = {
       "A subchondral lucency in the SUPEROLATERAL quadrant with intact overlying cartilage is the benign dorsal defect of the patella — don't call it an osteochondral lesion or infection.",
   },
   "Femoral trochlea": {
-    measure: "Trochlear dysplasia, the dislocation risk factor, travels with a TT-TG distance >20 mm on axial MRI.",
+    measure:
+      "Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic abnormal cutoff, but MRI values vary with landmarks, slice choice, and knee position — do not use one number as a standalone surgical rule.",
   },
   "Trochlear groove": {
     measure:
@@ -97,7 +98,7 @@ export const structureReading: Record<string, StructureReading> = {
   },
   "MPFL / medial retinaculum": {
     measure:
-      "Screen for the predisposing anatomy: patella alta (Insall-Salvati >1.2) and a TT-TG distance >20 mm on axial.",
+      "Screen for predisposing anatomy: patella alta (Insall-Salvati >1.2) and elevated TT-TG. The classic >20 mm TT-TG cutoff is a risk marker, but MRI technique and landmarks can shift the value by a few millimeters.",
   },
   "Bone marrow — T1's job": {
     variant:
@@ -135,7 +136,7 @@ export const structurePearl: Record<string, string> = {
   "Posterior cruciate ligament": "Loss of the smooth PCL arc or a buckled contour points to anterior tibial translation from an ACL tear.",
   "Popliteal vessels": "Don't mistake flow-related signal for thrombus; a Baker's cyst sits medially, between the medial gastrocnemius and semimembranosus.",
   "Tibial spines (intercondylar eminence)": "Use the spines as your landmark for the true mid-joint slice and the cruciate origins.",
-  "Menisci — the wedges": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin flags a root tear.",
+  "Menisci — the wedges": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin is significant and should prompt a deliberate root/cartilage search; extrusion alone is not a root tear.",
   "Weight-bearing cartilage": "Compare medial vs lateral cartilage thickness directly — coronal makes early, subtle loss obvious.",
   "Medial collateral ligament": "Grade by depth (superficial vs deep) and note the level — proximal/femoral injuries scar; distal (Stener-like) may not.",
   "Lateral collateral ligament (LCL)": "The posterolateral corner is commonly missed — trace the LCL, popliteus tendon, and popliteofibular ligament on the more posterior slices.",
@@ -724,9 +725,9 @@ export const advancedChallenge: AdvancedQ[] = [
     id: "menisci-2",
     topic: "Menisci",
     prompt: "A 58-year-old has acute medial knee pain. Coronal MRI shows the posterior root signal disrupted with the meniscal body displaced 4 mm beyond the tibial margin. Regarding the 3 mm extrusion threshold for a medial meniscal posterior root tear, which statement is most accurate?",
-    options: ["The 3 mm threshold is highly specific but relatively insensitive, so extrusion <3 mm does not exclude a root tear", "The 3 mm threshold is both highly sensitive and highly specific for root tears", "Extrusion is best and most reproducibly measured on sagittal rather than coronal images", "Meniscal extrusion of this degree is a normal finding and requires no root evaluation"],
+    options: ["The 3 mm threshold is a useful high-specificity clue but relatively insensitive, so extrusion <3 mm does not exclude a root tear", "The 3 mm threshold is both highly sensitive and highly specific for root tears", "Extrusion is best and most reproducibly measured on sagittal rather than coronal images", "Meniscal extrusion of this degree is a normal finding and requires no root evaluation"],
     answer: 0,
-    explanation: "Coronal medial meniscal extrusion >=3 mm is highly specific (~98%) but only modestly sensitive (~50-55%) for root tears, so sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.",
+    explanation: "Coronal medial meniscal extrusion >=3 mm is a significant clue in many root-tear studies, but it is only modestly sensitive and should not be treated as diagnostic by itself. Sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.",
   },
   {
     id: "menisci-3",
@@ -774,7 +775,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A sports-medicine fellow measures a tibial tubercle–trochlear groove (TT-TG) distance of 22 mm on an axial MRI in a patient with recurrent lateral patellar instability. Above which commonly cited threshold does the TT-TG distance become a recognized risk factor for patellar instability and an indication potentially favoring tibial tubercle medialization?",
     options: ["8 mm", "12 mm", "20 mm", "30 mm"],
     answer: 2,
-    explanation: "A TT-TG distance ≥20 mm is the classic abnormal threshold associated with patellar instability and is often used as a surgical indication for tubercle medialization; MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements.",
+    explanation: "A TT-TG distance >=20 mm is the classic abnormal threshold associated with patellar instability, but it is a risk marker rather than a standalone surgical rule. MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements, so landmarks and clinical context matter.",
   },
   {
     id: "patellofemoral-2",
@@ -1094,7 +1095,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         options: ["Coronal", "Axial", "A different sagittal slice", "Extrusion can't be measured on MRI"],
         answer: 0,
         explanation:
-          "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin suggests a root tear. Build the habit of correlating planes.",
+          "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin is significant and should trigger a deliberate posterior-root search. Build the habit of correlating planes.",
       },
     ],
   },
@@ -1142,7 +1143,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
           { x: 69, y: 55, label: "Lateral meniscus (body)" },
         ],
         title: "Menisci — the wedges",
-        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is pathologic and suggests a root tear.",
+        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself.",
       },
       {
         sliceIndex: 7,
@@ -1249,10 +1250,10 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         id: "cor-q10",
         sliceIndex: 7,
         marker: { x: 27, y: 56 },
-        prompt: "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic?",
+        prompt: "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
         options: [">3 mm", ">1 mm", ">8 mm", "Any extrusion at all"],
         answer: 0,
-        explanation: "Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal root tear.",
+        explanation: "Medial meniscal extrusion >3 mm beyond the tibial margin is significant and should make you inspect the posterior root, but extrusion alone does not prove a root tear.",
       },
       {
         id: "cor-q11",
@@ -1649,15 +1650,15 @@ export const kneeImageCaq: ImageCaqQ[] = [
   },
   {
     id: "icaq-3",
-    topic: "Meniscal extrusion threshold for root tear",
+    topic: "Meniscal extrusion threshold prompting root search",
     dir: "/images/teaching/stacks/normal-knee-coronal",
     count: 19,
     startIndex: 7,
     plane: "Coronal PD-FS",
-    vignette: "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?",
+    vignette: "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?",
     options: ["3 mm", "1 mm", "8 mm", "Any visible extrusion"],
     answer: 0,
-    explanation: "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is the accepted threshold that is highly specific for a posterior root tear. A 1 mm cutoff would overcall normal physiologic positioning, and requiring 8 mm would miss many true root tears, so 3 mm is the validated balance.",
+    explanation: "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is a significant clue that should send you to the posterior root, especially with a compatible history. It is not diagnostic by itself: a 1 mm cutoff would overcall normal positioning, and requiring 8 mm would miss many clinically important root injuries.",
   },
   {
     id: "icaq-4",

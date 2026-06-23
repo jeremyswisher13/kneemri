@@ -82,7 +82,7 @@ const SERIES: KneeSeries[] = [
     startIndex: 7, // opens at the mid-joint (tibial spines / cruciate origins)
     checklist: [
       "Medial & lateral menisci — triangular body & free edge",
-      "Meniscal extrusion — medial body past the tibial margin (>3 mm is pathologic)",
+      "Meniscal extrusion — medial body past the tibial margin (>3 mm is significant; inspect the roots)",
       "MCL — superficial & deep (meniscofemoral/meniscotibial) layers",
       "LCL & popliteus — the lateral corner",
       "Tibial spines / eminence & the cruciate origins (intercondylar)",

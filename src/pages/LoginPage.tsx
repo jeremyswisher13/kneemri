@@ -7,8 +7,9 @@ import {
 } from "@/lib/auth";
 import {
   consumeReturnPath,
+  localLoginUrlForLocalAuthHost,
   rememberReturnPath,
-  returnPathFromState,
+  returnPathFromLocation,
 } from "@/lib/login-return";
 import { useEffect, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
@@ -26,10 +27,22 @@ export default function LoginPage() {
   const { user, loading, setRole } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const returnTo = returnPathFromState(location.state);
+  const returnTo = returnPathFromLocation(location.state, location.search);
   const [error, setError] = useState<string | null>(null);
   const [signingIn, setSigningIn] = useState(false);
   const [checkingRedirect, setCheckingRedirect] = useState(true);
+  const [canonicalizingLocalHost, setCanonicalizingLocalHost] = useState(false);
+
+  useEffect(() => {
+    const targetUrl =
+      typeof window === "undefined"
+        ? null
+        : localLoginUrlForLocalAuthHost(window.location.href, returnTo);
+    if (!targetUrl) return;
+
+    setCanonicalizingLocalHost(true);
+    window.location.replace(targetUrl);
+  }, [returnTo]);
 
   useEffect(() => {
     let cancelled = false;
@@ -96,7 +109,7 @@ export default function LoginPage() {
     }
   }
 
-  if (loading || checkingRedirect) {
+  if (canonicalizingLocalHost || loading || checkingRedirect) {
     return <PageLoader fullHeight label="Preparing sign-in..." />;
   }
 

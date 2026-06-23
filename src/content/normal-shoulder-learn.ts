@@ -82,7 +82,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 43, y: 19, label: "Acromion" }],
         title: "Acromion",
-        note: "The bony arch over the cuff. On sagittal you judge acromial morphology (flat I, curved II, hooked III), a down-sloping acromion, and an os acromiale — all impingement drivers.",
+        note: "The bony arch over the cuff. On sagittal you judge acromial morphology (flat I, curved II, hooked III), down-sloping, and os acromiale as outlet-narrowing risk factors — not as a standalone diagnosis of impingement.",
       },
       {
         sliceIndex: 11,
@@ -141,10 +141,10 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         id: "ssag-q6",
         sliceIndex: 11,
         marker: { x: 43, y: 19 },
-        prompt: "A hooked or down-sloping shape of THIS structure narrows the supraspinatus outlet (impingement). What is it?",
+        prompt: "A hooked or down-sloping shape of which structure can narrow the supraspinatus outlet?",
         options: ["Acromion", "Coracoid", "Greater tuberosity", "Clavicle"],
         answer: 0,
-        explanation: "The acromion — a hooked (type III) or down-sloping acromion, or an os acromiale, narrows the subacromial outlet, the classic external-impingement driver.",
+        explanation: "The acromion can narrow the subacromial outlet when hooked, down-sloping, or unfused as an os acromiale. Treat that morphology as a risk factor to correlate with symptoms, dynamic exam, bursal change, and cuff findings.",
       },
       {
         id: "ssag-q7",
@@ -252,7 +252,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 45, y: 19, label: "Acromion / AC joint" }],
         title: "Acromion & AC joint",
-        note: "The acromion overhangs the cuff; the AC joint sits between it and the distal clavicle. A down-sloping acromion or inferior AC osteophytes narrow the subacromial space (impingement).",
+        note: "The acromion overhangs the cuff; the AC joint sits between it and the distal clavicle. Down-sloping morphology or inferior AC osteophytes can narrow the subacromial space, but do not diagnose impingement from morphology alone.",
       },
       {
         sliceIndex: 11,
@@ -581,7 +581,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 14,
         markers: [{ x: 45, y: 18, label: "Acromion" }],
         title: "Acromion",
-        note: "The acromion caps the supraspinatus outlet superiorly, with the AC joint and distal clavicle just anteromedial. A hooked or down-sloping acromion narrows the outlet.",
+        note: "The acromion caps the supraspinatus outlet superiorly, with the AC joint and distal clavicle just anteromedial. A hooked or down-sloping acromion can narrow the outlet, but correlate it with symptoms and cuff/bursal findings.",
       },
     ],
     quiz: [
@@ -756,8 +756,8 @@ export const structureShoulderPearl: Record<string, string> = {
   "Biceps & rotator interval": "A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.",
   "Humeral head": "Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.",
   "Supraspinatus tendon": "Scrutinize the 'critical zone' ~1 cm from the footprint — and the articular surface for a PASTA (partial articular-sided) tear.",
-  Acromion: "A hooked (type III) or down-sloping acromion and an os acromiale narrow the outlet — outlet impingement.",
-  "Acromion & AC joint": "Inferior AC osteophytes and a down-sloping acromion narrow the subacromial space; correlate with cuff signal.",
+  Acromion: "A hooked (type III) or down-sloping acromion and an os acromiale can narrow the outlet; correlate morphology with symptoms, bursal change, and cuff findings.",
+  "Acromion & AC joint": "Inferior AC osteophytes and a down-sloping acromion can narrow the subacromial space; morphology alone does not prove impingement.",
   "Greater tuberosity": "A subcortical cyst or marrow edema at the footprint is a soft sign of an adjacent cuff tear.",
   "Subacromial–subdeltoid bursa": "Fluid in the SASD bursa AND the joint together strongly suggests a full-thickness cuff tear.",
   "Axillary recess": "Thickening/edema of the axillary recess and rotator interval is the MRI signature of adhesive capsulitis.",
@@ -784,8 +784,8 @@ export const structureShoulderCase: Record<string, { caseId: string; label: stri
   "Glenoid & labrum": { caseId: "shoulder-anterior-instability-bankart", label: "Bankart + Hill-Sachs" },
   "Humeral head": { caseId: "shoulder-anterior-instability-bankart", label: "Hill-Sachs impaction" },
   "Subacromial–subdeltoid bursa": { caseId: "shoulder-cuff-tendinosis-bursitis", label: "Tendinosis + SASD bursitis" },
-  Acromion: { caseId: "shoulder-cuff-tendinosis-bursitis", label: "Impingement → bursitis" },
-  "Acromion & AC joint": { caseId: "shoulder-cuff-tendinosis-bursitis", label: "Impingement → bursitis" },
+  Acromion: { caseId: "shoulder-cuff-tendinosis-bursitis", label: "Outlet narrowing + bursitis" },
+  "Acromion & AC joint": { caseId: "shoulder-cuff-tendinosis-bursitis", label: "Outlet narrowing + bursitis" },
   "Axillary recess": { caseId: "shoulder-adhesive-capsulitis", label: "Adhesive capsulitis" },
   "Bony glenoid": { caseId: "shoulder-anterior-instability-bankart", label: "Bony Bankart + Hill-Sachs" },
   "Anterior labrum": { caseId: "shoulder-anterior-instability-bankart", label: "Bankart lesion" },
@@ -1177,7 +1177,7 @@ export const shoulderCrossPlane: CorrelationItem[] = [
     id: "sxp-acromion",
     prompt: "The acromion roofs the outlet on the sagittal. Find the acromion / AC joint on the coronal.",
     explanation:
-      "The acromion and AC joint form the roof of the supraspinatus outlet; a hooked acromion or inferior AC osteophytes narrow it and cause impingement.",
+      "The acromion and AC joint form the roof of the supraspinatus outlet; a hooked acromion or inferior AC osteophytes can narrow it, but impingement remains a clinical-imaging correlation rather than a shape diagnosis.",
     from: { plane: "Sagittal T2-FS", dir: SAG, sliceIndex: 11, x: 43, y: 19, label: "Acromion" },
     to: {
       plane: "Coronal T2-FS",
@@ -1296,7 +1296,7 @@ export const shoulderCrossPlane: CorrelationItem[] = [
     prompt:
       "This is the acromion on the coronal T2-FS, roofing the cuff. Find the same acromion on the sagittal-Y outlet view, capping the supraspinatus from above.",
     explanation:
-      "The sag-Y IS the outlet view: the acromion roofs it and the supraspinatus passes directly beneath. A hooked Bigliani type III acromion or inferior AC osteophytes narrow the outlet and drive impingement -- read acromial shape there, not on coronal.",
+      "The sag-Y IS the outlet view: the acromion roofs it and the supraspinatus passes directly beneath. A hooked Bigliani type III acromion or inferior AC osteophytes can narrow the outlet, but correlate with symptoms, bursal change, and cuff findings -- read acromial shape there, not on coronal.",
     from: { plane: "Coronal T2-FS", dir: COR, sliceIndex: 11, x: 45, y: 19, label: "Acromion / AC joint" },
     to: {
       plane: "Sagittal T2-FS",

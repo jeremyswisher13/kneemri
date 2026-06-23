@@ -87,7 +87,7 @@ const SERIES: ShoulderSeries[] = [
       "Humeral head, articular cartilage & glenohumeral alignment",
       "Glenoid and the superior/inferior labrum",
       "Subacromial–subdeltoid bursa — should be a thin fat/fluid plane",
-      "Acromion shape & the AC joint (impingement)",
+      "Acromion shape & the AC joint (outlet narrowing risk)",
       "Deltoid and the axillary recess (inferior capsule)",
     ],
   },

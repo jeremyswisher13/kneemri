@@ -1,4 +1,5 @@
 export const LOGIN_RETURN_TO_KEY = "loginReturnTo";
+export const LOGIN_RETURN_TO_PARAM = "returnTo";
 
 export type LoginLocationState = {
   from?: {
@@ -21,6 +22,32 @@ export function returnPathFromState(state: unknown): string {
   const from = (state as LoginLocationState | null)?.from;
   if (!from?.pathname) return "/";
   return safeInternalPath(`${from.pathname}${from.search ?? ""}${from.hash ?? ""}`);
+}
+
+export function returnPathFromSearch(search: string): string {
+  const params = new URLSearchParams(search);
+  return safeInternalPath(params.get(LOGIN_RETURN_TO_PARAM));
+}
+
+export function returnPathFromLocation(state: unknown, search: string): string {
+  const fromState = returnPathFromState(state);
+  return fromState === "/" ? returnPathFromSearch(search) : fromState;
+}
+
+export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): string | null {
+  const url = new URL(href);
+  if (url.hostname !== "127.0.0.1") return null;
+
+  url.hostname = "localhost";
+  url.pathname = "/login";
+  url.search = "";
+  url.hash = "";
+
+  const safeReturnTo = safeInternalPath(returnTo);
+  if (safeReturnTo !== "/") {
+    url.searchParams.set(LOGIN_RETURN_TO_PARAM, safeReturnTo);
+  }
+  return url.toString();
 }
 
 export function rememberReturnPath(storage: ReturnPathStorage, path: string) {

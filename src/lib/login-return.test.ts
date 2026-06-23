@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   LOGIN_RETURN_TO_KEY,
+  localLoginUrlForLocalAuthHost,
   consumeReturnPath,
   rememberReturnPath,
+  returnPathFromLocation,
+  returnPathFromSearch,
   returnPathFromState,
   safeInternalPath,
 } from "@/lib/login-return";
@@ -33,6 +36,22 @@ describe("login return paths", () => {
     ).toBe("/courses/hip-mri/modules?from=smoke#target");
   });
 
+  it("reads a safe return target from the login query string", () => {
+    expect(returnPathFromSearch("?returnTo=%2Fnormal-knee-mri%3Fslice%3D4%23acl")).toBe(
+      "/normal-knee-mri?slice=4#acl",
+    );
+    expect(returnPathFromSearch("?returnTo=https%3A%2F%2Fexample.com")).toBe("/");
+  });
+
+  it("prefers router state over a return target query parameter", () => {
+    expect(
+      returnPathFromLocation(
+        { from: { pathname: "/normal-shoulder-mri", search: "?tour=guided" } },
+        "?returnTo=%2Fnormal-knee-mri",
+      ),
+    ).toBe("/normal-shoulder-mri?tour=guided");
+  });
+
   it("rejects external, protocol-relative, empty, and login paths", () => {
     expect(safeInternalPath("https://example.com/courses/hip-mri")).toBe("/");
     expect(safeInternalPath("//example.com/courses/hip-mri")).toBe("/");
@@ -55,5 +74,21 @@ describe("login return paths", () => {
 
     rememberReturnPath(storage, "//example.com");
     expect(consumeReturnPath(storage, "/courses/knee-mri")).toBe("/courses/knee-mri");
+  });
+
+  it("canonicalizes local 127 login URLs to localhost while preserving the intended route", () => {
+    expect(
+      localLoginUrlForLocalAuthHost(
+        "http://127.0.0.1:4174/login",
+        "/normal-elbow-mri?panel=tour#ulnar-collateral-ligament",
+      ),
+    ).toBe(
+      "http://localhost:4174/login?returnTo=%2Fnormal-elbow-mri%3Fpanel%3Dtour%23ulnar-collateral-ligament",
+    );
+  });
+
+  it("leaves production and localhost login URLs alone", () => {
+    expect(localLoginUrlForLocalAuthHost("https://ucla-knee-mri.firebaseapp.com/login", "/")).toBeNull();
+    expect(localLoginUrlForLocalAuthHost("http://localhost:4174/login", "/")).toBeNull();
   });
 });
