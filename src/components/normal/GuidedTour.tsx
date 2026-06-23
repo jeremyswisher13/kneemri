@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnnotatedSlice from "./AnnotatedSlice";
 import Button from "@/components/ui/Button";
+import { findFocusedTourStepIndex, focusTargetKey, type TourFocusTarget } from "./guided-tour-focus";
 import type { TourStep, StructureCorrelate, StructureReading } from "@/content/normal-mri-types";
 
 /** Stepped, labeled walkthrough of the normal structures on one plane. */
@@ -14,6 +15,7 @@ export default function GuidedTour({
   structureCorrelate = {},
   caseImageById = {},
   caseBasePath = "/cases",
+  focusTarget,
 }: {
   dir: string;
   steps: TourStep[];
@@ -29,6 +31,8 @@ export default function GuidedTour({
   caseImageById?: Record<string, { src: string; caption: string }>;
   /** Course-scoped base path for case links (e.g. "/courses/shoulder-mri/cases"). */
   caseBasePath?: string;
+  /** Missed knowledge-check item to open directly in the tour. */
+  focusTarget?: TourFocusTarget | null;
 }) {
   const [i, setI] = useState(0);
   const [compareOpen, setCompareOpen] = useState(false);
@@ -38,6 +42,7 @@ export default function GuidedTour({
   // (keyed on the stable per-plane `dir`) rather than in an effect, so the new
   // plane never renders for a frame against a stale step index.
   const [prevDir, setPrevDir] = useState(dir);
+  const [prevFocusKey, setPrevFocusKey] = useState("");
   // Tracks the active step's title so we can collapse the abnormal-comparison
   // panel whenever the step changes (declared up here so the hook order is
   // stable — `step` itself is computed after the empty-steps early return).
@@ -45,6 +50,18 @@ export default function GuidedTour({
   if (dir !== prevDir) {
     setPrevDir(dir);
     setI(0);
+    setPrevFocusKey("");
+  }
+
+  const activeFocusKey = focusTargetKey(focusTarget);
+  if (activeFocusKey !== prevFocusKey) {
+    setPrevFocusKey(activeFocusKey);
+    if (focusTarget && steps.length) {
+      setI(findFocusedTourStepIndex(steps, focusTarget));
+      setCompareOpen(false);
+      setCorrelateOpen(false);
+      setReadingOpen(false);
+    }
   }
 
   if (!steps.length) return null;

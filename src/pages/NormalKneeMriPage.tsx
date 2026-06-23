@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import MriStackViewer from "@/components/ui/MriStackViewer";
 import Card from "@/components/ui/Card";
 import GuidedTour from "@/components/normal/GuidedTour";
-import KnowledgeCheck from "@/components/normal/KnowledgeCheck";
+import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/KnowledgeCheck";
 import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
@@ -130,6 +130,7 @@ export default function NormalKneeMriPage() {
   const isAdminView = useIsAdminView();
   const [activeId, setActiveId] = useState(SERIES[0].id);
   const [mode, setMode] = useState<Mode>("explore");
+  const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalKneeLearn[series.id];
   const baseModes: { id: Mode; label: string }[] = [
@@ -162,7 +163,18 @@ export default function NormalKneeMriPage() {
   // "Show me in Learn mode" from a missed Knowledge-Check item: switch to the
   // Guided Tour (Learn) on the item's plane. The check already runs on the
   // active plane, so the slice/structure the fellow missed is on this tour.
-  function handleShowInLearn() {
+  function handleSeriesChange(id: string) {
+    setActiveId(id);
+    setTourTarget(null);
+  }
+
+  function handleModeChange(nextMode: Mode) {
+    setTourTarget(null);
+    setMode(nextMode);
+  }
+
+  function handleShowInLearn(args: ShowInLearnArgs) {
+    setTourTarget(args);
     setMode("tour");
   }
 
@@ -186,11 +198,11 @@ export default function NormalKneeMriPage() {
       <NormalSeriesSelector
         series={SERIES}
         activeId={activeId}
-        onSeriesChange={setActiveId}
+        onSeriesChange={handleSeriesChange}
         comingSoon={COMING_SOON}
       />
 
-      <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={setMode} />
+      <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (
@@ -233,6 +245,7 @@ export default function NormalKneeMriPage() {
               structureCorrelate={structureCorrelate}
               caseImageById={caseTeachingImageById}
               caseBasePath={KNEE_CASE_BASE}
+              focusTarget={tourTarget}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />

@@ -9,6 +9,7 @@ import type { Marker, QuizItem } from "@/content/normal-mri-types";
 export interface ShowInLearnArgs {
   itemId: string;
   sliceIndex: number;
+  marker: Marker;
   /** The correct structure name (the answer text), for highlighting in Learn mode. */
   structure: string;
 }
@@ -258,7 +259,7 @@ export default function KnowledgeCheck({
                 <button
                   type="button"
                   onClick={() =>
-                    onShowInLearn({ itemId: q.id, sliceIndex: q.sliceIndex, structure })
+                    onShowInLearn({ itemId: q.id, sliceIndex: q.sliceIndex, marker: q.marker, structure })
                   }
                   className="mt-2 flex items-center gap-1 text-xs font-semibold text-ucla-blue hover:underline"
                 >

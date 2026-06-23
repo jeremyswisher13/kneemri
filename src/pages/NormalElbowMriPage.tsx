@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import MriStackViewer from "@/components/ui/MriStackViewer";
 import Card from "@/components/ui/Card";
 import GuidedTour from "@/components/normal/GuidedTour";
-import KnowledgeCheck from "@/components/normal/KnowledgeCheck";
+import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/KnowledgeCheck";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
 import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
@@ -112,6 +112,7 @@ export default function NormalElbowMriPage() {
   const isAdminView = useIsAdminView();
   const [activeId, setActiveId] = useState(SERIES[0].id);
   const [mode, setMode] = useState<Mode>("explore");
+  const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalElbowLearn[series.id];
 
@@ -130,7 +131,18 @@ export default function NormalElbowMriPage() {
       .catch(() => {});
   }
 
-  function handleShowInLearn() {
+  function handleSeriesChange(id: string) {
+    setActiveId(id);
+    setTourTarget(null);
+  }
+
+  function handleModeChange(nextMode: Mode) {
+    setTourTarget(null);
+    setMode(nextMode);
+  }
+
+  function handleShowInLearn(args: ShowInLearnArgs) {
+    setTourTarget(args);
     setMode("tour");
   }
 
@@ -165,11 +177,11 @@ export default function NormalElbowMriPage() {
       <NormalSeriesSelector
         series={SERIES}
         activeId={activeId}
-        onSeriesChange={setActiveId}
+        onSeriesChange={handleSeriesChange}
         comingSoon={COMING_SOON}
       />
 
-      <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={setMode} />
+      <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (
@@ -211,6 +223,7 @@ export default function NormalElbowMriPage() {
               structureCorrelate={elbowStructureCorrelate}
               caseImageById={caseTeachingImageById}
               caseBasePath={ELBOW_CASE_BASE}
+              focusTarget={tourTarget}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />
