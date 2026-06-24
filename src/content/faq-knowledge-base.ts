@@ -450,7 +450,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['extrusion', 'meniscal extrusion', 'measure extrusion', 'how much extrusion', '3mm'],
     question: 'What is meniscal extrusion and how do I measure it?',
     answer:
-      'Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is pathologic and suggests a root tear or extensive degeneration. Greater than 5 mm suggests severe extrusion with major loss of meniscal function. Always search for a root tear when you see significant extrusion.',
+      'Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is clinically significant and should prompt a deliberate search for a root tear, radial tear, or advanced cartilage/degenerative change; extrusion alone is not diagnostic of a root tear. Greater than 5 mm suggests severe extrusion with major loss of meniscal function.',
     relatedModule: '/modules/menisci',
     category: 'menisci',
   },
@@ -654,7 +654,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['OCD', 'osteochondral', 'osteochondritis dissecans', 'OCD stability', 'loose body'],
     question: 'What is an OCD and how do I assess stability?',
     answer:
-      'Osteochondritis dissecans (OCD) is an osteochondral lesion most commonly affecting the lateral aspect of the medial femoral condyle in adolescents. MRI stability assessment looks for: (1) a high-signal rim surrounding the fragment on T2 suggesting fluid undermining, (2) cysts beneath the lesion, (3) a high-signal line through the articular cartilage, and (4) loose body formation. Unstable lesions require surgical intervention.',
+      'Osteochondritis dissecans (OCD) is an osteochondral lesion most commonly affecting the lateral aspect of the medial femoral condyle in adolescents. MRI stability assessment looks for: (1) a fluid-bright rim fully undercutting the fragment on T2, (2) multiple or large cysts beneath the lesion, (3) a high-signal line through the articular cartilage, and (4) loose body formation. Unstable lesions should prompt orthopedic referral because fixation or fragment treatment is often needed.',
     relatedModule: '/modules/menisci',
     category: 'bones',
   },
