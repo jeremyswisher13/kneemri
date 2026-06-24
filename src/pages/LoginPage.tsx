@@ -12,6 +12,7 @@ import {
   returnPathFromLocation,
   shouldUseRedirectSignIn,
 } from "@/lib/login-return";
+import { enableLocalPreviewAuth, isLocalPreviewHost } from "@/lib/local-preview-auth";
 import { useEffect, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
 
@@ -33,6 +34,8 @@ export default function LoginPage() {
   const [signingIn, setSigningIn] = useState(false);
   const [checkingRedirect, setCheckingRedirect] = useState(true);
   const [canonicalizingLocalHost, setCanonicalizingLocalHost] = useState(false);
+  const localPreviewAvailable =
+    typeof window !== "undefined" && isLocalPreviewHost(window.location.href);
 
   useEffect(() => {
     const targetUrl =
@@ -115,6 +118,13 @@ export default function LoginPage() {
     }
   }
 
+  function handleLocalPreviewSignIn() {
+    setError(null);
+    setSigningIn(true);
+    enableLocalPreviewAuth(sessionStorage);
+    window.location.assign(returnTo);
+  }
+
   if (canonicalizingLocalHost || loading || checkingRedirect) {
     return <PageLoader fullHeight label="Preparing sign-in..." />;
   }
@@ -158,6 +168,16 @@ export default function LoginPage() {
           <p className="mt-4 text-center text-xs text-gray-500">
             Sign in with your Google account to access the courses.
           </p>
+
+          {localPreviewAvailable && (
+            <button
+              onClick={handleLocalPreviewSignIn}
+              disabled={signingIn}
+              className="mt-4 w-full rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-2 text-sm font-medium text-ucla-dark hover:bg-ucla-light/70 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            >
+              Continue in local preview
+            </button>
+          )}
 
           {error && (
             <button

@@ -1,4 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
+import { isLocalPreviewSession } from "@/lib/local-preview-auth";
 
 /**
  * True when the current viewer is the course director — either signed in as an
@@ -10,6 +11,7 @@ import { useAuth } from "@/contexts/AuthContext";
 export function useIsAdminView(): boolean {
   const { role } = useAuth();
   if (role === "admin") return true;
+  if (isLocalPreviewSession()) return true;
   try {
     return !!sessionStorage.getItem("adminPreviewRole");
   } catch {

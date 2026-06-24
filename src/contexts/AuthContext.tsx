@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getUserProfile, ensureAdminRole } from "@/lib/auth";
+import { createLocalPreviewUser, isLocalPreviewSession } from "@/lib/local-preview-auth";
 
 type Specialty = "sports-med" | "ortho" | null;
 
@@ -31,13 +32,27 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [role, setRole] = useState<string | null>(null);
-  const [specialty, setSpecialty] = useState<Specialty>(null);
+  const [user, setUser] = useState<User | null>(() =>
+    isLocalPreviewSession() ? createLocalPreviewUser() : null,
+  );
+  const [role, setRole] = useState<string | null>(() =>
+    isLocalPreviewSession() ? "fellow" : null,
+  );
+  const [specialty, setSpecialty] = useState<Specialty>(() =>
+    isLocalPreviewSession() ? "sports-med" : null,
+  );
   const [showSurgical, setShowSurgical] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => !isLocalPreviewSession());
 
   const refreshRole = async () => {
+    if (isLocalPreviewSession()) {
+      setUser(createLocalPreviewUser());
+      setRole("fellow");
+      setSpecialty("sports-med");
+      setShowSurgical(false);
+      return;
+    }
+
     // Use auth.currentUser directly to avoid stale closure over user state
     const currentUser = auth.currentUser;
     if (currentUser) {
@@ -52,6 +67,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // A fresh page load exits any admin "preview as fellow/resident" mode, so the
     // resolved role and the UI (banner, Admin Panel link, useIsAdminView) agree.
     sessionStorage.removeItem("adminPreviewRole");
+
+    if (isLocalPreviewSession()) {
+      return () => {};
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
       if (firebaseUser) {

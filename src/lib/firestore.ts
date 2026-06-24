@@ -12,6 +12,7 @@ import {
   type MedicalQaReviewRecord,
   type MedicalQaReviewTarget,
 } from "@/lib/medical-qa-review";
+import { isLocalPreviewSession } from "@/lib/local-preview-auth";
 import type {
   CaseAttemptItem,
   ModuleProgressItem,
@@ -45,7 +46,7 @@ export function normalPlaneIdsFor(bodyRegion: string): string[] {
 // --- Admin Preview Guard ---
 function isAdminPreview(): boolean {
   try {
-    return !!sessionStorage.getItem('adminPreviewRole');
+    return !!sessionStorage.getItem("adminPreviewRole") || isLocalPreviewSession();
   } catch {
     return false;
   }
@@ -53,6 +54,7 @@ function isAdminPreview(): boolean {
 
 // --- Specialty + surgical-correlate preference ---
 export async function setUserSpecialty(uid: string, specialty: "sports-med" | "ortho"): Promise<void> {
+  if (isAdminPreview()) return;
   const userRef = doc(db, "users", uid);
   // Default the surgical-correlate toggle from specialty (ortho → on); the learner
   // can flip it anytime via setShowSurgical.
@@ -60,18 +62,21 @@ export async function setUserSpecialty(uid: string, specialty: "sports-med" | "o
 }
 
 export async function setShowSurgical(uid: string, showSurgical: boolean): Promise<void> {
+  if (isAdminPreview()) return;
   const userRef = doc(db, "users", uid);
   await setDoc(userRef, { showSurgical }, { merge: true });
 }
 
 // --- Touch Last Active ---
 async function touchLastActive(uid: string) {
+  if (isAdminPreview()) return;
   const userRef = doc(db, "users", uid);
   await setDoc(userRef, { lastActive: serverTimestamp() }, { merge: true });
 }
 
 // --- User Role ---
 export async function setUserRole(uid: string, role: 'fellow' | 'resident'): Promise<void> {
+  if (isAdminPreview()) return;
   const userRef = doc(db, "users", uid);
   await setDoc(userRef, { role }, { merge: true });
 }

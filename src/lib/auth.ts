@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { logAuditEvent } from "./audit";
+import { disableLocalPreviewAuth } from "./local-preview-auth";
 
 // Firestore (`firebase/firestore` + `db`) is dynamically imported inside each
 // function that needs it, so the large firestore SDK never lands in the eager
@@ -79,7 +80,8 @@ export async function signOutUser() {
   if (user) {
     await logAuditEvent(user.uid, user.email || "", "logout", {});
   }
-  sessionStorage.removeItem('adminPreviewRole');
+  sessionStorage.removeItem("adminPreviewRole");
+  disableLocalPreviewAuth(sessionStorage);
   return firebaseSignOut(auth);
 }
 
