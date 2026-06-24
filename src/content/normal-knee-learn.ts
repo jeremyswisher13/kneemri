@@ -82,7 +82,7 @@ export const structureReading: Record<string, StructureReading> = {
   },
   Meniscus: {
     variant:
-      "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch).",
+      "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch). At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.",
   },
   Patella: {
     variant:
@@ -129,8 +129,8 @@ export const structurePearl: Record<string, string> = {
   "Extensor mechanism — top": "The quadriceps tendon is trilaminar — partial tears hide in the DEEP (vastus intermedius) layer with intact superficial fibers.",
   "Patellar tendon": "Normally a few mm thick and uniformly dark; focal thickening = tendinopathy (usually proximal), a fluid-filled gap = rupture.",
   "Hoffa's fat pad": "Edema in the superolateral fat pad is the clue to anterior (Hoffa) impingement — easy to overlook.",
-  "Meniscus — the dark bow-ties": "Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.",
-  Meniscus: "Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.",
+  "Meniscus — the dark bow-ties": "Count the bow-ties on the body slices, then trace the lateral transverse/meniscofemoral/popliteal-hiatus relationships before calling a tear.",
+  Meniscus: "Count the bow-ties on the body slices, then inspect the lateral popliteal hiatus so a normal fascicle/hiatus does not become a false-positive tear.",
   "Cartilage & joint fluid": "A small effusion is physiologic; the cartilage surface should be smooth and uniform — follow it slice to slice.",
   "Anterior cruciate ligament": "A normal ACL parallels Blumensaat's line; if the fibers bow, sag below the roof, or go wavy/edematous, suspect a tear. Secondary signs — a deep lateral notch sign, anterior tibial translation, and pivot-shift contusions — clinch it.",
   "Posterior cruciate ligament": "Loss of the smooth PCL arc or a buckled contour points to anterior tibial translation from an ACL tear.",
@@ -959,7 +959,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
           { x: 66.6, y: 59.2, label: "Posterior horn (meniscus)" },
         ],
         title: "Meniscus — the dark bow-ties",
-        note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Any bright signal reaching the surface = a tear. Two normal ligaments mimic tears at the LATERAL meniscus: the transverse (intermeniscal) ligament at the anterior horn and the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn. Each is a discrete round band crossing the joint — the cleft where it meets the meniscus is a pseudotear, so trace it to the ligament before calling a tear.",
+        note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Any bright signal reaching the surface = a tear. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
       },
       {
         sliceIndex: 7,
@@ -1143,7 +1143,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
           { x: 69, y: 55, label: "Lateral meniscus (body)" },
         ],
         title: "Menisci — the wedges",
-        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself.",
+        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself. Laterally, do not mistake the normal popliteus hiatus/popliteomeniscal fascicle region for a peripheral tear.",
       },
       {
         sliceIndex: 7,
@@ -1695,5 +1695,22 @@ export const kneeImageCaq: ImageCaqQ[] = [
     options: ["Posterior cruciate ligament", "Medial collateral ligament", "Anterior cruciate ligament alone", "Transverse intermeniscal ligament"],
     answer: 0,
     explanation: "This is the lateral (fibular) collateral ligament; injury here with a fibular styloid avulsion (arcuate sign) signals posterolateral corner disruption, which carries a high rate of associated PCL injury. The MCL is a medial-side structure on the opposite compartment and is not mechanically coupled to this lateral corner injury.",
+  },
+  {
+    id: "icaq-7",
+    topic: "Lateral meniscus - normal pseudotears",
+    dir: "/images/teaching/stacks/normal-knee-sagittal",
+    count: 29,
+    startIndex: 8,
+    plane: "Sagittal PD-FS",
+    vignette: "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
+    options: [
+      "Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then require surface-reaching tear signal or abnormal fascicle disruption",
+      "Call any cleft near the lateral meniscus a tear because normal ligaments do not contact the meniscus",
+      "Ignore the finding entirely because lateral meniscal tears cannot occur at the posterior horn",
+      "Measure medial meniscal extrusion; if it is under 3 mm, the lateral cleft is normal by definition",
+    ],
+    answer: 0,
+    explanation: "The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across slices and call a tear only when the signal behaves like a true surface-reaching tear or the fascicles/meniscocapsular support are disrupted.",
   },
 ];

@@ -228,7 +228,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 7,
         markers: [{ x: 35, y: 33, label: "Supraspinatus tendon" }],
         title: "Supraspinatus tendon",
-        note: "Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear.",
+        note: "Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear. Also recognize the cable/crescent model: the thicker rotator cable sits just medial to the thinner distal crescent at the footprint, and cable disruption can make a small-appearing tear functionally important.",
       },
       {
         sliceIndex: 7,
@@ -366,6 +366,21 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         options: ["Tendon gap / retraction (Patte stage)", "Which cuff tendons are torn", "Fatty muscle atrophy (Goutallier)", "Labral integrity"],
         answer: 0,
         explanation: "Coronal measures the tendon GAP and retraction (Patte); the sagittal-Y shows WHICH tendons are torn and T1 shows fatty atrophy (Goutallier).",
+      },
+      {
+        id: "scor-q13",
+        sliceIndex: 7,
+        marker: { x: 35, y: 33 },
+        prompt: "On the distal supraspinatus, why does the rotator cable/crescent concept matter?",
+        options: [
+          "An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important",
+          "The cable is a normal labral variant and should not affect cuff interpretation",
+          "The crescent is the biceps pulley, so crescent injury predicts medial biceps dislocation",
+          "The cable is assessed only on axial images and is unrelated to the supraspinatus footprint",
+        ],
+        answer: 0,
+        explanation:
+          "The rotator cable is the thicker articular-sided bundle just medial to the thinner distal cuff crescent. Crescent tears are common near the footprint, but an intact cable can help preserve force transmission; cable disruption, especially anteriorly, makes the tear more clinically important.",
       },
     ],
   },
@@ -711,7 +726,7 @@ export const structureShoulderReading: Record<string, StructureReading> = {
     variant:
       "Distal-supraspinatus intermediate signal that vanishes on T2 is magic angle (tendon curving ~55° to B0 on short-TE T1/PD), not a tear.",
     measure:
-      "Partial tear is low-grade <50% vs high-grade >50% of thickness; stage retraction by Patte (1 = footprint, 2 = humeral head, 3 = glenoid).",
+      "Partial tear is low-grade <50% vs high-grade >50% of thickness; stage retraction by Patte (1 = footprint, 2 = humeral head, 3 = glenoid). Also report cable involvement: the cable is the thicker load-sharing band just medial to the thin cuff crescent at the footprint.",
   },
   "Glenoid & labrum": {
     variant:
@@ -755,7 +770,7 @@ export const structureShoulderPearl: Record<string, string> = {
   "Glenoid & labrum": "Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears.",
   "Biceps & rotator interval": "A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.",
   "Humeral head": "Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.",
-  "Supraspinatus tendon": "Scrutinize the 'critical zone' ~1 cm from the footprint — and the articular surface for a PASTA (partial articular-sided) tear.",
+  "Supraspinatus tendon": "Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact.",
   Acromion: "A hooked (type III) or down-sloping acromion and an os acromiale can narrow the outlet; correlate morphology with symptoms, bursal change, and cuff findings.",
   "Acromion & AC joint": "Inferior AC osteophytes and a down-sloping acromion can narrow the subacromial space; morphology alone does not prove impingement.",
   "Greater tuberosity": "A subcortical cyst or marrow edema at the footprint is a soft sign of an adjacent cuff tear.",
@@ -1385,6 +1400,23 @@ export const shoulderImageCaq: ImageCaqQ[] = [
     options: ["High-grade fatty infiltration here predicts an irreparable tear", "Bright marrow signal here on T1 indicates marrow edema", "This slice is best for measuring the acromiohumeral interval", "This T1 slice best demonstrates a SLAP tear of the biceps anchor"],
     answer: 0,
     explanation: "The supraspinatus fills the supraspinous fossa, and T1 (fat bright, unsuppressed) is the sequence to grade Goutallier-Fuchs fatty infiltration; high-grade fatty atrophy of the supraspinatus predicts an irreparable tear and changes surgical planning. Bright signal in MUSCLE on T1 reflects fatty infiltration, not marrow edema (which is DARK on T1); the acromiohumeral interval is a radiographic/coronal measurement, and a SLAP tear is a labral lesion best shown on fluid-sensitive or arthrographic sequences, not this T1 muscle slice.",
+  },
+  {
+    id: "sh-icaq-7",
+    topic: "Rotator cuff - cable/crescent",
+    dir: "/images/teaching/stacks/normal-shoulder-coronal",
+    count: 24,
+    startIndex: 7,
+    plane: "Coronal T2-FS",
+    vignette: "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?",
+    options: [
+      "Cable integrity helps determine functional importance; an intact cable may preserve load transfer, while cable disruption makes a small-appearing tear more consequential",
+      "The cable is the same structure as the superior labrum, so its injury is reported as a SLAP tear",
+      "A crescent tear is diagnosed only on axial imaging because the coronal cannot show the footprint",
+      "The cable/crescent distinction applies only after surgery and should be ignored on the initial MRI",
+    ],
+    answer: 0,
+    explanation: "The rotator cable/crescent model matters because the cable is a load-sharing band just medial to the thin distal cuff crescent. A limited crescent tear with an intact cable can behave differently from a tear that disrupts the cable, especially anteriorly, so the report should not describe only the footprint gap and retraction.",
   },
 ];
 

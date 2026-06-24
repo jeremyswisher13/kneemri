@@ -94,6 +94,7 @@ const SERIES: ElbowSeries[] = [
     startIndex: 14, // opens through the trochlea/capitellum and coronoid/olecranon
     checklist: [
       "Trochlea / capitellum articular contour (read OCD with the coronal)",
+      "Posterolateral radiocapitellar plica/synovial fold — normal thin fold vs symptomatic thickening",
       "Coronoid process anteriorly (the anteromedial-facet keystone)",
       "Olecranon & the triceps insertion posteriorly",
       "Anterior fat pad (seen) vs posterior fat pad (normally hidden)",

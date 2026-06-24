@@ -67,7 +67,7 @@ const SERIES: KneeSeries[] = [
     checklist: [
       "PCL — smooth, continuous low-signal posterior arc",
       "ACL — taut band parallel to Blumensaat's line (lateral slices)",
-      "Menisci — anterior & posterior horns; “bow-tie” on body slices",
+      "Menisci — anterior & posterior horns; “bow-tie” on body slices; lateral pseudotears",
       "Articular cartilage — femoral condyle & tibial plateau",
       "Extensor mechanism — quadriceps & patellar tendons",
       "Hoffa's fat pad and the joint recesses",
@@ -84,7 +84,7 @@ const SERIES: KneeSeries[] = [
       "Medial & lateral menisci — triangular body & free edge",
       "Meniscal extrusion — medial body past the tibial margin (>3 mm is significant; inspect the roots)",
       "MCL — superficial & deep (meniscofemoral/meniscotibial) layers",
-      "LCL & popliteus — the lateral corner",
+      "LCL, popliteus tendon/hiatus & popliteomeniscal fascicles — the lateral corner",
       "Tibial spines / eminence & the cruciate origins (intercondylar)",
       "Weight-bearing femoral condyle & tibial plateau cartilage",
     ],

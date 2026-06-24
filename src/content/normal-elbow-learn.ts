@@ -201,7 +201,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 14,
         markers: [{ x: 55, y: 49, label: "Trochlea / capitellum" }],
         title: "Trochlea / capitellum (articular surface)",
-        note: "The distal-humeral articular surface curves through this slice, capped by its hyaline cartilage. Trace the contour as smooth; read a capitellar OCD here together with the coronal face to judge the lesion's anterior-to-posterior extent and the overlying cartilage.",
+        note: "The distal-humeral articular surface curves through this slice, capped by its hyaline cartilage. Trace the contour as smooth; read a capitellar OCD here together with the coronal face to judge the lesion's anterior-to-posterior extent and the overlying cartilage. A thin posterolateral radiocapitellar plica/synovial fold can be normal; it becomes clinically relevant when thickened, edematous, or tied to snapping/catching.",
       },
       {
         sliceIndex: 14,
@@ -249,6 +249,21 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         explanation:
           "The anteromedial coronoid facet fracture looks small on radiographs but implies varus posteromedial rotatory instability (VPMRI) and is surgical — 'small does not mean stable' at the coronoid. The sublime tubercle (medial) is the UCL's distal attachment.",
       },
+      {
+        id: "ec-sag-q3",
+        sliceIndex: 14,
+        marker: { x: 55, y: 49 },
+        prompt: "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how?",
+        options: [
+          "A normal plica/fold unless thickened, edematous, or associated with snapping/catching",
+          "A displaced loose body until proven otherwise",
+          "A capitellar OCD instability sign by itself",
+          "A UCL T-sign seen on the wrong plane",
+        ],
+        answer: 0,
+        explanation:
+          "A posterolateral radiocapitellar plica/synovial fold can be a normal thin fold in the radiocapitellar recess. Do not call it a loose body or OCD instability sign by itself; worry when it is thickened/edematous or matches mechanical snapping/catching.",
+      },
     ],
   },
 };
@@ -273,6 +288,8 @@ export const structureElbowPearl: Record<string, string> = {
     "Watch the anteromedial coronoid facet — a small-looking fracture implies varus posteromedial rotatory instability and is surgical; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion).",
   "Olecranon & triceps insertion":
     "Watch the posteromedial olecranon in the thrower for a valgus-extension-overload osteophyte and a posterior loose body — and remember debriding the osteophyte without addressing UCL laxity can unmask valgus instability.",
+  "Trochlea / capitellum (articular surface)":
+    "Watch for a posterolateral radiocapitellar plica: a thin fold can be normal, but thickened/edematous plica with snapping/catching can mimic a loose body or OCD symptoms.",
   "Fat pads (coronoid & olecranon fossae)":
     "A visible posterior fat pad after adult elbow trauma is a fracture until proven otherwise — radial head first.",
   "Brachialis & distal biceps (anterior)":
@@ -300,6 +317,12 @@ export const structureElbowReading: Record<string, StructureReading> = {
   "Ulnar nerve (cubital tunnel)": {
     variant:
       "Mild ulnar-nerve T2 hyperintensity occurs in asymptomatic elbows; there is no universal cross-sectional-area cutoff — compare to the median nerve and the contralateral side.",
+  },
+  "Trochlea / capitellum (articular surface)": {
+    variant:
+      "A thin low-signal posterolateral radiocapitellar synovial plica/fold may be normal. It should not be mistaken for a loose body or an unstable OCD fragment unless it is thickened/edematous, trapped in the joint, or matches mechanical symptoms.",
+    measure:
+      "When symptoms are mechanical, a thickened posterolateral plica on the order of >3 mm with concordant snapping/catching is the clinically relevant pattern; do not use thickness alone without symptoms.",
   },
   "Brachialis & distal biceps (anterior)": {
     variant:
@@ -612,6 +635,23 @@ export const elbowImageCaq: ImageCaqQ[] = [
     ],
     "answer": 2,
     "explanation": "Key: loose bodies migrate to the dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) and are most conspicuous against bright joint fluid on sagittal fluid-sensitive images; the anterior fat pad is NORMALLY seen, but the posterior fat pad is normally HIDDEN in the olecranon fossa, so a visible/elevated posterior fat pad after trauma means an effusion/hemarthrosis and an occult intra-articular fracture until proven otherwise. The first distractor reverses the fat-pad rule (the anterior pad is normal; the posterior pad being visible is the abnormal sign). Loose bodies are best seen on sagittal against bright fluid, not on coronal against dark cortex. And fluid in the olecranon fossa is an effusion, not itself a loose body — the radiocapitellar recess is in fact one of the classic niches that DOES harbor bodies."
+  },
+  {
+    "id": "elb-caq-7",
+    "topic": "Radiocapitellar plica - normal fold vs mechanical symptoms",
+    "dir": "/images/teaching/stacks/normal-elbow-sagittal",
+    "count": 30,
+    "startIndex": 14,
+    "plane": "Sagittal IR/STIR",
+    "vignette": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is safest?",
+    "options": [
+      "A thin posterolateral radiocapitellar plica/fold can be normal; call it clinically relevant only if thickened, edematous, trapped, or matching snapping/catching symptoms",
+      "Any synovial fold at the radiocapitellar joint is a displaced loose body and should be reported as mechanical",
+      "The fold is a capitellar OCD instability sign even when the cartilage and subchondral interface are smooth",
+      "The fold is the distal UCL T-sign and should be evaluated only on coronal MR arthrography"
+    ],
+    "answer": 0,
+    "explanation": "A posterolateral radiocapitellar plica/synovial fold is a recognized normal structure when thin and smooth. It becomes a potential pain generator when thickened or edematous and when it matches lateral snapping/catching. A loose body should be a discrete intra-articular fragment, and OCD instability depends on the capitellar cartilage/subchondral interface, not a thin synovial fold."
   }
 ];
 

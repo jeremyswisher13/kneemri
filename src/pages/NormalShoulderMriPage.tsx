@@ -82,7 +82,7 @@ const SERIES: ShoulderSeries[] = [
     count: 24,
     startIndex: 11, // opens at the mid-glenohumeral joint
     checklist: [
-      "Supraspinatus tendon — uniform low signal to its footprint; the critical zone",
+      "Supraspinatus tendon — uniform low signal to its footprint; critical zone and rotator cable/crescent",
       "Greater tuberosity footprint — marrow & cortical surface",
       "Humeral head, articular cartilage & glenohumeral alignment",
       "Glenoid and the superior/inferior labrum",
