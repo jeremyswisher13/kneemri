@@ -10,6 +10,7 @@ import {
   localLoginUrlForLocalAuthHost,
   rememberReturnPath,
   returnPathFromLocation,
+  shouldUseRedirectSignIn,
 } from "@/lib/login-return";
 import { useEffect, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
@@ -77,6 +78,11 @@ export default function LoginPage() {
     setSigningIn(true);
     rememberReturnPath(sessionStorage, returnTo);
     try {
+      if (typeof window !== "undefined" && shouldUseRedirectSignIn(window.location.href)) {
+        await signInWithGoogleRedirect();
+        return;
+      }
+
       const { role } = await signInWithGoogle();
       // Set the role directly — avoids race with onAuthStateChanged
       setRole(role);

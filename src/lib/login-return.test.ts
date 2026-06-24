@@ -8,6 +8,7 @@ import {
   returnPathFromSearch,
   returnPathFromState,
   safeInternalPath,
+  shouldUseRedirectSignIn,
 } from "@/lib/login-return";
 
 function memoryStorage() {
@@ -90,5 +91,11 @@ describe("login return paths", () => {
   it("leaves production and localhost login URLs alone", () => {
     expect(localLoginUrlForLocalAuthHost("https://ucla-knee-mri.firebaseapp.com/login", "/")).toBeNull();
     expect(localLoginUrlForLocalAuthHost("http://localhost:4174/login", "/")).toBeNull();
+  });
+
+  it("uses full-page redirect sign-in on local preview hosts", () => {
+    expect(shouldUseRedirectSignIn("http://localhost:4174/login")).toBe(true);
+    expect(shouldUseRedirectSignIn("http://127.0.0.1:4174/login")).toBe(true);
+    expect(shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login")).toBe(false);
   });
 });

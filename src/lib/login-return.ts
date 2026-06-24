@@ -50,6 +50,11 @@ export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): s
   return url.toString();
 }
 
+export function shouldUseRedirectSignIn(href: string): boolean {
+  const url = new URL(href);
+  return url.hostname === "localhost" || url.hostname === "127.0.0.1";
+}
+
 export function rememberReturnPath(storage: ReturnPathStorage, path: string) {
   storage.setItem(LOGIN_RETURN_TO_KEY, safeInternalPath(path));
 }
