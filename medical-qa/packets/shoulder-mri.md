@@ -1,5 +1,5 @@
 # Medical QA Packet: Shoulder MRI for Primary Care Sports Medicine
-Generated: 2026-06-23
+Generated: 2026-06-28
 Course ID: `shoulder-mri`  
 Body region: `shoulder`  
 Audience: Primary care sports medicine fellows
@@ -15,9 +15,9 @@ Audience: Primary care sports medicine fellows
 
 ## Automated QA Summary
 
-- Review queue items: 541
-- High-risk keyword items: 182
-- Numeric threshold / named-criterion items: 75
+- Review queue items: 552
+- High-risk keyword items: 187
+- Numeric threshold / named-criterion items: 77
 - Diagnostics: 0
 
 ## Course Overview
@@ -1344,7 +1344,7 @@ Teaching media:
 ### Plane: sag-t2fs
 
 Guided tour:
-- **1. Get oriented** (slice 11) Oblique sagittal T2 fat-sat — cut PERPENDICULAR to the supraspinatus. The key plane for rotator-cuff muscle bulk/atrophy and acromial shape. Superior is up; anterior and posterior are across the image (confirm which side is anterior). Fluid is bright, fat suppressed. Scroll medial → lateral.
+- **1. Get oriented** (slice 11) Oblique sagittal T2 fat-sat — cut PERPENDICULAR to the supraspinatus. The key plane for rotator-cuff muscle bulk/atrophy and acromial shape. Superior is up; on this right shoulder, anterior is image-left and posterior is image-right. Fluid is bright, fat suppressed. Scroll medial → lateral.
 - **2. Rotator-cuff muscles (medial slice)** (slice 5) On the medial sagittal slices the four cuff muscle BELLIES are seen in cross-section around the scapula — supraspinatus on top (in the fossa above the spine), subscapularis anterior, infraspinatus and teres minor posterior. This is THE view to grade muscle bulk and fatty atrophy (Goutallier–Fuchs).
   - Supraspinatus muscle @ x=45, y=28
 - **3. Subscapularis** (slice 5) The anterior cuff muscle and the largest of the four; its tendon inserts on the lesser tuberosity. Tears often pair with medial subluxation of the biceps tendon.
@@ -1359,10 +1359,13 @@ Guided tour:
   - Humeral head @ x=43, y=52
 - **8. Supraspinatus tendon** (slice 11) The cuff tendon draped over the SUPERIOR humeral head toward its greater-tuberosity footprint — uniform low signal. Supraspinatus sits at the top of the cuff on sagittal.
   - Supraspinatus tendon @ x=44, y=28
-- **9. Acromion** (slice 11) The bony arch over the cuff. On sagittal you judge acromial morphology (flat I, curved II, hooked III), a down-sloping acromion, and an os acromiale — all impingement drivers.
+- **9. Acromion** (slice 11) The bony arch over the cuff. On sagittal you judge acromial morphology (flat I, curved II, hooked III), down-sloping, and os acromiale as outlet-narrowing risk factors — not as a standalone diagnosis of impingement.
   - Acromion @ x=43, y=19
 - **10. Deltoid** (slice 11) The large superficial muscle wrapping the shoulder, separated from the cuff by the subacromial–subdeltoid fat plane.
   - Deltoid @ x=20, y=48
+- **11. Do-not-overcall checkpoint** (slice 11) Before leaving the sagittal stack, pause on the common traps: a single short-TE bright cuff focus is not tendinosis until it persists on fluid-sensitive/orthogonal images; the rotator cable is a normal load-sharing band, not automatically retracted torn fibers; and acromion shape or AC arthrosis is a risk modifier, not a standalone impingement diagnosis.
+  - Supraspinatus / cable region @ x=44, y=28
+  - Acromion @ x=43, y=19
 
 Knowledge check:
 - **ssag-q1:** What is the marked structure? (slice 17)
@@ -1395,12 +1398,12 @@ Knowledge check:
   - C. Axillary recess
   - D. Quadrilateral space
     Explanation: The rotator interval (between supraspinatus and subscapularis) contains the long head of biceps and the coracohumeral/superior glenohumeral ligament pulley.
-- **ssag-q6:** A hooked or down-sloping shape of THIS structure narrows the supraspinatus outlet (impingement). What is it? (slice 11)
+- **ssag-q6:** A hooked or down-sloping shape of which structure can narrow the supraspinatus outlet? (slice 11)
   - A. Acromion [CORRECT]
   - B. Coracoid
   - C. Greater tuberosity
   - D. Clavicle
-    Explanation: The acromion — a hooked (type III) or down-sloping acromion, or an os acromiale, narrows the subacromial outlet, the classic external-impingement driver.
+    Explanation: The acromion can narrow the subacromial outlet when hooked, down-sloping, or unfused as an os acromiale. Treat that morphology as a risk factor to correlate with symptoms, dynamic exam, bursal change, and cuff findings.
 - **ssag-q7:** What is the marked structure? (slice 9)
   - A. Glenoid & labrum [CORRECT]
   - B. Humeral head
@@ -1441,10 +1444,10 @@ Knowledge check:
 ### Plane: cor-t2fs
 
 Guided tour:
-- **1. Get oriented** (slice 11) Oblique coronal T2 fat-sat — cut PARALLEL to the supraspinatus, so you can follow the cuff tendon along its length to the greater-tuberosity footprint. Superior is up. On this right shoulder the greater tuberosity/humeral head appear to the LEFT and the glenoid to the RIGHT — confirm. Scroll anterior → posterior.
+- **1. Get oriented** (slice 11) Oblique coronal T2 fat-sat — cut PARALLEL to the supraspinatus, so you can follow the cuff tendon along its length to the greater-tuberosity footprint. Superior is up. On this right shoulder the greater tuberosity/humeral head are image-left/lateral and the glenoid is image-right/medial. Scroll anterior → posterior.
 - **2. Humeral head** (slice 11) The rounded proximal humerus — bright fatty marrow, smooth low-signal cortex, even articular cartilage over the surface.
   - Humeral head @ x=34, y=58
-- **3. Supraspinatus tendon** (slice 7) Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear.
+- **3. Supraspinatus tendon** (slice 7) Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear. Also recognize the cable/crescent model: the thicker rotator cable sits just medial to the thinner distal crescent at the footprint, and cable disruption can make a small-appearing tear functionally important.
   - Supraspinatus tendon @ x=35, y=33
 - **4. Greater tuberosity** (slice 7) The lateral bony footprint of supraspinatus/infraspinatus. A subcortical cyst or marrow edema here is a clue to cuff pathology.
   - Greater tuberosity (footprint) @ x=24, y=45
@@ -1452,12 +1455,16 @@ Guided tour:
   - Glenoid & labrum @ x=53, y=57
 - **6. Subacromial–subdeltoid bursa** (slice 11) The thin fat/fluid plane between the cuff and the overlying acromion/deltoid. A trace of fluid is normal; a distended bursa suggests bursitis or a full-thickness cuff tear.
   - Subacromial–subdeltoid bursa @ x=33, y=32
-- **7. Acromion & AC joint** (slice 11) The acromion overhangs the cuff; the AC joint sits between it and the distal clavicle. A down-sloping acromion or inferior AC osteophytes narrow the subacromial space (impingement).
+- **7. Acromion & AC joint** (slice 11) The acromion overhangs the cuff; the AC joint sits between it and the distal clavicle. Down-sloping morphology or inferior AC osteophytes can narrow the subacromial space, but do not diagnose impingement from morphology alone.
   - Acromion / AC joint @ x=45, y=19
 - **8. Deltoid** (slice 11) The superficial muscle wrapping the lateral shoulder, separated from the cuff by the subacromial–subdeltoid fat.
   - Deltoid @ x=16, y=52
-- **9. Axillary recess** (slice 11) The dependent inferior pouch of the joint capsule (inferior glenohumeral ligament complex) below the humeral head — thickened/edematous in adhesive capsulitis.
+- **9. Axillary recess** (slice 11) The dependent inferior U-shaped pouch of the joint capsule (inferior glenohumeral ligament complex) below the humeral head — thickened/edematous in adhesive capsulitis, and too small/patulous in some instability patterns.
   - Axillary recess @ x=38, y=82
+- **10. Do-not-overcall checkpoint** (slice 11) Coronal shoulder false positives cluster here: the rotator cable is a normal band just medial to the thin crescent; a smooth superior sublabral recess should not be called a SLAP tear; trace isolated bursal fluid is nonspecific; and axillary-pouch thickening supports adhesive capsulitis only with the right clinical stiffness pattern and rotator-interval findings.
+  - Supraspinatus / cable @ x=35, y=33
+  - Superior labrum region @ x=53, y=57
+  - Axillary pouch @ x=38, y=82
 
 Knowledge check:
 - **shcor-sid-1:** What is the marked dependent inferior pouch of the joint capsule below the humeral head? (slice 11)
@@ -1513,7 +1520,7 @@ Knowledge check:
   - B. Isolated subacromial bursitis
   - C. Adhesive capsulitis
   - D. Normal finding
-    Explanation: Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid alone implies only bursitis.
+    Explanation: Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear by itself.
 - **scor-q11:** A subcortical cyst or marrow edema at the marked greater-tuberosity footprint is a soft sign of what? (slice 7)
   - A. Adjacent rotator cuff tear [CORRECT]
   - B. AC joint arthrosis
@@ -1526,6 +1533,12 @@ Knowledge check:
   - C. Fatty muscle atrophy (Goutallier)
   - D. Labral integrity
     Explanation: Coronal measures the tendon GAP and retraction (Patte); the sagittal-Y shows WHICH tendons are torn and T1 shows fatty atrophy (Goutallier).
+- **scor-q13:** On the distal supraspinatus, why does the rotator cable/crescent concept matter? (slice 7)
+  - A. An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important [CORRECT]
+  - B. The cable is a normal labral variant and should not affect cuff interpretation
+  - C. The crescent is the biceps pulley, so crescent injury predicts medial biceps dislocation
+  - D. The cable is assessed only on axial images and is unrelated to the supraspinatus footprint
+    Explanation: The rotator cable is the thicker articular-sided bundle just medial to the thinner distal cuff crescent. Crescent tears are common near the footprint, but an intact cable can help preserve force transmission; cable disruption, especially anteriorly, makes the tear more clinically important.
 
 ### Plane: axi-t2fs
 
@@ -1545,6 +1558,10 @@ Guided tour:
   - Subscapularis @ x=39, y=33
 - **8. Coracoid process** (slice 8) The coracoid is the anteromedial bony hook — origin of the conjoint tendon and anchor for the coracoacromial and coracoclavicular ligaments. A handy anterior landmark on the higher slices.
   - Coracoid process @ x=48, y=30
+- **9. Do-not-overcall checkpoint** (slice 13) On axial, do the variant check before diagnosing instability: smooth 1-3 o'clock anterosuperior separation may be a sublabral foramen, and absent anterosuperior labrum with a cord-like MGHL is a Buford complex. But do not dismiss an irregular detachment, stripped periosteum, bony Bankart, or matching Hill-Sachs as a variant. Biceps-groove fluid alone can be normal; an empty or medialized groove is the real pulley/subscapularis alarm.
+  - Anterior labrum @ x=50, y=49
+  - Biceps in groove @ x=44, y=40
+  - Posterior labrum @ x=49, y=63
 
 Knowledge check:
 - **shaxi-sid-1:** What is the marked anteromedial bony process of the scapula on this axial slice? (slice 8)
@@ -1631,8 +1648,12 @@ Guided tour:
   - Glenoid & labrum @ x=42, y=50
 - **6. Humeral head** (slice 16) The humeral head fills the lateral slices with uniformly BRIGHT fatty marrow. T1 is your marrow sequence — a focal DARK area is the abnormal finding (edema, fracture, or a lesion).
   - Humeral head @ x=40, y=48
-- **7. Acromion** (slice 14) The acromion caps the supraspinatus outlet superiorly, with the AC joint and distal clavicle just anteromedial. A hooked or down-sloping acromion narrows the outlet.
+- **7. Acromion** (slice 14) The acromion caps the supraspinatus outlet superiorly, with the AC joint and distal clavicle just anteromedial. A hooked or down-sloping acromion can narrow the outlet, but correlate it with symptoms and cuff/bursal findings.
   - Acromion @ x=45, y=18
+- **8. Do-not-overcall checkpoint** (slice 4) On T1, grade muscle and marrow deliberately: fatty streaks inside a wasted cuff muscle change reparability; residual red marrow should follow fat on non-fat-sat sequences; and focal T1-dark marrow is the finding that deserves explanation. Do not use this T1 muscle slice to diagnose a SLAP tear or full-thickness cuff gap.
+  - Supraspinatus bulk @ x=40, y=28
+  - Infraspinatus bulk @ x=57, y=56
+  - Teres minor bulk @ x=56, y=76
 
 Knowledge check:
 - **shsagt1-sid-1:** What is the marked bony shelf that separates the supraspinatus above from the infraspinatus below on this scapular-Y slice? (slice 4)
@@ -1716,27 +1737,32 @@ Knowledge check:
 - **Glenoid & labrum:** Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears.
 - **Biceps & rotator interval:** A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.
 - **Humeral head:** Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.
-- **Supraspinatus tendon:** Scrutinize the 'critical zone' ~1 cm from the footprint — and the articular surface for a PASTA (partial articular-sided) tear.
-- **Acromion:** A hooked (type III) or down-sloping acromion and an os acromiale narrow the outlet — outlet impingement.
-- **Acromion & AC joint:** Inferior AC osteophytes and a down-sloping acromion narrow the subacromial space; correlate with cuff signal.
+- **Supraspinatus tendon:** Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact.
+- **Acromion:** A hooked (type III) or down-sloping acromion and an os acromiale can narrow the outlet; correlate morphology with symptoms, bursal change, and cuff findings.
+- **Acromion & AC joint:** Inferior AC osteophytes and a down-sloping acromion can narrow the subacromial space; morphology alone does not prove impingement.
 - **Greater tuberosity:** A subcortical cyst or marrow edema at the footprint is a soft sign of an adjacent cuff tear.
 - **Subacromial–subdeltoid bursa:** Fluid in the SASD bursa AND the joint together strongly suggests a full-thickness cuff tear.
 - **Axillary recess:** Thickening/edema of the axillary recess and rotator interval is the MRI signature of adhesive capsulitis.
 - **Deltoid:** The deltoid is spared in cuff disease and is the prime mover a reverse total shoulder arthroplasty depends on — confirm its bulk and integrity before reverse-arthroplasty planning.
-- **Bony glenoid:** Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; >20–25% glenoid bone loss favors a Latarjet over a soft-tissue repair.
+- **Bony glenoid:** Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; substantial bone loss (often ~20–25%, with lower subcritical ranges relevant in contact athletes) supports considering bony augmentation such as Latarjet, especially with an off-track Hill-Sachs.
 - **Anterior labrum:** Walk the labral clock-face: the anteroinferior labrum (3–6 o'clock) is the Bankart zone. Don't overcall the normal sublabral foramen (1–3 o'clock) or a Buford complex (absent anterosuperior labrum + cord-like middle glenohumeral ligament).
 - **Posterior labrum:** A blunted or torn posterior labrum — paired with a reverse Hill-Sachs on the anteromedial head — is the signature of posterior instability, classically after a seizure or electric shock.
 - **Biceps in the bicipital groove:** An empty bicipital groove means the long head is torn or medially dislocated — and medial dislocation implies a torn subscapularis/pulley. Fluid in the groove alone, communicating with the joint, can be normal.
-- **Coracoid process:** The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) suggests subcoracoid impingement of the subscapularis.
+- **Coracoid process:** The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) can support subcoracoid impingement of the subscapularis in the right clinical/imaging context.
 - **Rotator-cuff muscles (medial slice) reading:** measure: Grade fatty infiltration on the oblique-sagittal 'Y' at the scapular spine (Goutallier 0–4); grade ≥3 = fat ≥ muscle.
-- **Supraspinatus tendon reading:** variant: Distal-supraspinatus intermediate signal that vanishes on T2 is magic angle (tendon curving ~55° to B0 on short-TE T1/PD), not a tear. | measure: Partial tear is low-grade <50% vs high-grade >50% of thickness; stage retraction by Patte (1 = footprint, 2 = humeral head, 3 = glenoid).
+- **Supraspinatus tendon reading:** variant: Distal-supraspinatus intermediate signal that vanishes on T2 is magic angle (tendon curving ~55° to B0 on short-TE T1/PD), not a tear. | measure: Partial tear is low-grade <50% vs high-grade >50% of thickness; stage retraction by Patte (1 = footprint, 2 = humeral head, 3 = glenoid). Also report cable involvement: the cable is the thicker load-sharing band just medial to the thin cuff crescent at the footprint.
 - **Glenoid & labrum reading:** variant: A smooth cleft under the SUPERIOR labrum that parallels the glenoid and stops at the biceps anchor is a sublabral recess — a SLAP curves laterally into the labrum with irregular margins.
+- **Biceps & rotator interval reading:** variant: Mild interval signal or fluid is nonspecific. A pulley lesion needs loss/defect of the SGHL/CHL sling, medial biceps subluxation, or a matching upper-subscapularis tear pattern. | measure: In adhesive capsulitis, rotator-interval capsule thickness ≥7 mm and coracohumeral-ligament thickness ≥4 mm are relatively specific but not sensitive; use them with axillary-pouch findings and the clinical stiffness pattern.
 - **Humeral head reading:** variant: Patchy intermediate-signal residual red marrow that follows fat on non-fat-sat sequences is normal — a FOCAL T1-dark area is the worrisome finding (edema, fracture, lesion).
+- **Acromion reading:** variant: Bigliani type/acromial slope and os acromiale are associations with outlet narrowing, not diagnoses by themselves; correlate with symptoms, bursal change, cuff findings, and radiographs when morphology is central.
 - **Acromion & AC joint reading:** variant: AC osteophytes are common and usually incidental — focal marrow edema on BOTH sides of the joint, not the osteophytes alone, is what makes the AC joint a pain generator.
-- **Greater tuberosity reading:** measure: Acromiohumeral interval (head to acromial undersurface) on coronal: normal >7 mm; <7 mm = cuff insufficiency; <5 mm = massive tear / cuff-tear arthropathy.
+- **Greater tuberosity reading:** measure: Acromiohumeral interval ≤7 mm supports chronic cuff insufficiency/superior migration, especially on radiographs; MRI-based AHI is supportive but not interchangeable with a properly positioned radiographic measurement.
 - **Subacromial–subdeltoid bursa reading:** variant: Bursal fluid with a focal calcific deposit that stays LOW on T1 AND T2 explains an inflamed bursa from calcific tendinitis without any structural cuff tear.
 - **Bony glenoid reading:** measure: Quantify anteroinferior glenoid bone loss on CT (often 3D, humeral head subtracted) — MRI/MRA underestimates it.
+- **Anterior labrum reading:** variant: Normal anterosuperior variants live around 1-3 o'clock: a sublabral foramen is a smooth anterior-superior cleft, and a Buford complex is absent anterosuperior labrum with a cord-like MGHL. Irregular detachment, periosteal stripping, or bony injury is not a variant.
 - **Posterior labrum reading:** variant: Don't overcall age-related posterior labral fraying as a traumatic tear — reserve a 'reverse Bankart' read for a discrete detachment.
+- **Biceps in the bicipital groove reading:** variant: A thin rim of sheath fluid may communicate with the joint and be normal. The red flags are an empty groove, medial subluxation/dislocation, split tendon, or pulley/subscapularis injury.
+- **Axillary recess reading:** variant: Prominent synovial folds in the U-shaped pouch can mimic loose bodies; trace them as attached folds across slices before calling a free body. | measure: Routine MRI axillary-pouch/IGHL thickness >4 mm supports adhesive capsulitis; MRA thresholds near >3 mm have been used. Treat the number as supportive, not diagnostic in isolation.
 - **Rotator-cuff muscles (medial slice) correlate:** ultrasound: seen: true | appearance: US shows the cuff muscle bellies as hypoechoic muscle with hyperechoic perimysial striations, and can grossly suggest atrophy by bulk loss and increased echogenicity (fatty change). But Goutallier fatty-grading and the deep supraspinatus-fossa belly are an MRI/T1 job — US gives only a coarse impression. | tip: Probe over the scapular spine and the supraspinatus/infraspinatus fossae, comparing bulk and echogenicity side-to-side.
 - **Subscapularis correlate:** ultrasound: seen: true | appearance: A superficial, well-seen anterior cuff tendon; in external rotation its multipennate fibrillar bundles fan across the lesser tuberosity. Dynamic internal/external rotation unmasks tears, and remember a torn subscapularis is the lesion that lets the long head of biceps subluxate medially out of the groove — always check the two together. | tip: Transverse over the lesser tuberosity, then externally rotate the arm to elongate and uncover the tendon; keep the probe perpendicular, as anisotropy at the curving insertion fakes a hypoechoic tear. | image: src: /images/teaching/us/subscapularis.jpg | caption: Normal subscapularis tendon at the lesser tuberosity, deep to the deltoid (long-axis, arm externally rotated). | attribution: Selame et al., Cureus 2021 (CC BY)
 - **Infraspinatus & teres minor correlate:** ultrasound: seen: true | appearance: Both posterior cuff tendons are superficial and well-seen, converging on the greater tuberosity with a fibrillar fan; teres minor sits more inferiorly with a trapezoidal belly. The posterior glenohumeral recess just deep to infraspinatus is the best US window for a joint effusion and the standard posterior injection target, while the spinoglenoid notch is where you chase a paralabral cyst causing isolated infraspinatus atrophy — though the deep notch itself is better resolved on MRI. | tip: Posterior approach with the patient's hand on the opposite shoulder, scanning transverse below the scapular spine; toe-heel to stay perpendicular and defeat anisotropy. | image: src: /images/teaching/us/infraspinatus.jpg | caption: Normal infraspinatus tendon over the posterior humeral head (long-axis, posterior approach). | attribution: Selame et al., Cureus 2021 (CC BY)
@@ -1793,11 +1819,11 @@ Explanation: Contrast with an irregular, laterally curved contour that extends l
 
 A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk?
 
-- A. Coracoid transfer (Latarjet) with glenoid bone grafting [CORRECT]
+- A. Bony augmentation such as a coracoid transfer (Latarjet) [CORRECT]
 - B. Isolated arthroscopic Bankart soft-tissue repair
 - C. Capsular plication without bony augmentation
 - D. Physical therapy with activity modification
-Explanation: With critical glenoid bone loss (~20-25% or greater) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as a Latarjet (or Bankart plus remplissage for the Hill-Sachs) is favored to restore the glenoid track and lower recurrence. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.
+Explanation: With substantial/critical glenoid bone loss (often ~20-25%, with lower subcritical thresholds relevant in high-risk contact athletes) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as Latarjet is favored to restore the glenoid track and lower recurrence; remplissage may be added depending on the humeral defect strategy. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.
 
 #### Advanced: sh-caq-5 · Instability - ALPSA vs Bankart
 
@@ -1887,7 +1913,7 @@ On glenoid bone-loss assessment, an en-face sagittal-oblique 'best-fit circle' i
 - B. Trivial loss (<10%), arthroscopic Bankart repair alone is reliably sufficient
 - C. Critical loss (>40%), mandating total shoulder arthroplasty
 - D. No measurable loss; the defect represents the normal bare area of the glenoid
-Explanation: Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' threshold (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. (Shaha showed even 'subcritical' loss >13.5% worsens outcomes.)
+Explanation: Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' range (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. Lower 'subcritical' loss can still matter in contact athletes, so the number is a management risk marker, not a stand-alone rule.
 
 #### Advanced: labrum-3 · Labrum & instability
 
@@ -1967,7 +1993,7 @@ On a true AP radiograph of the shoulder, the acromiohumeral interval (AHI) measu
 - B. It indicates an os acromiale until proven otherwise
 - C. It is narrowed and suggests a chronic full-thickness/massive rotator cuff tear with superior humeral migration [CORRECT]
 - D. It reflects subcoracoid impingement of the subscapularis
-Explanation: The normal acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) indicates superior humeral head migration from a chronic massive/full-thickness supraspinatus tear and predicts poor reparability.
+Explanation: The normal radiographic acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) suggests superior humeral head migration from chronic full-thickness/massive cuff insufficiency and predicts poorer reparability. Correlate with cuff continuity and remember MRI-based AHI is supportive, not interchangeable with a properly positioned radiograph.
 
 #### Advanced: impingement-4 · Impingement & acromion
 
@@ -2145,7 +2171,7 @@ Plane: Coronal T2-FS · Stack: /images/teaching/stacks/normal-shoulder-coronal �
 - B. Isolated distension here is diagnostic of adhesive capsulitis
 - C. Fluid here indicates a SLAP tear at the biceps anchor
 - D. Fluid here localizes a quadrilateral-space syndrome
-Explanation: This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid implies only bursitis, not frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.
+Explanation: This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear or frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.
 
 #### Image CAQ: sh-icaq-5 · Adhesive capsulitis
 
@@ -2170,6 +2196,18 @@ Plane: Sagittal T1 · Stack: /images/teaching/stacks/normal-shoulder-sagittal-t1
 - C. This slice is best for measuring the acromiohumeral interval
 - D. This T1 slice best demonstrates a SLAP tear of the biceps anchor
 Explanation: The supraspinatus fills the supraspinous fossa, and T1 (fat bright, unsuppressed) is the sequence to grade Goutallier-Fuchs fatty infiltration; high-grade fatty atrophy of the supraspinatus predicts an irreparable tear and changes surgical planning. Bright signal in MUSCLE on T1 reflects fatty infiltration, not marrow edema (which is DARK on T1); the acromiohumeral interval is a radiographic/coronal measurement, and a SLAP tear is a labral lesion best shown on fluid-sensitive or arthrographic sequences, not this T1 muscle slice.
+
+#### Image CAQ: sh-icaq-7 · Rotator cuff - cable/crescent
+
+A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?
+
+Plane: Coronal T2-FS · Stack: /images/teaching/stacks/normal-shoulder-coronal · startIndex: 7
+
+- A. Cable integrity helps determine functional importance; an intact cable may preserve load transfer, while cable disruption makes a small-appearing tear more consequential [CORRECT]
+- B. The cable is the same structure as the superior labrum, so its injury is reported as a SLAP tear
+- C. A crescent tear is diagnosed only on axial imaging because the coronal cannot show the footprint
+- D. The cable/crescent distinction applies only after surgery and should be ignored on the initial MRI
+Explanation: The rotator cable/crescent model matters because the cable is a load-sharing band just medial to the thin distal cuff crescent. A limited crescent tear with an intact cable can behave differently from a tear that disrupts the cable, especially anteriorly, so the report should not describe only the footprint gap and retraction.
 
 #### Cross-plane: sxp-humeral-head
 
@@ -2205,7 +2243,7 @@ The glenoid is the shallow socket; on the coronal it carries the superior and in
 
 The acromion roofs the outlet on the sagittal. Find the acromion / AC joint on the coronal.
 
-The acromion and AC joint form the roof of the supraspinatus outlet; a hooked acromion or inferior AC osteophytes narrow it and cause impingement.
+The acromion and AC joint form the roof of the supraspinatus outlet; a hooked acromion or inferior AC osteophytes can narrow it, but impingement remains a clinical-imaging correlation rather than a shape diagnosis.
 
 #### Cross-plane: sxp-infraspinatus
 
@@ -2241,7 +2279,7 @@ Coronal measures gap and retraction; the sag-Y shows WHICH cuff tendons are invo
 
 This is the acromion on the coronal T2-FS, roofing the cuff. Find the same acromion on the sagittal-Y outlet view, capping the supraspinatus from above.
 
-The sag-Y IS the outlet view: the acromion roofs it and the supraspinatus passes directly beneath. A hooked Bigliani type III acromion or inferior AC osteophytes narrow the outlet and drive impingement -- read acromial shape there, not on coronal.
+The sag-Y IS the outlet view: the acromion roofs it and the supraspinatus passes directly beneath. A hooked Bigliani type III acromion or inferior AC osteophytes can narrow the outlet, but correlate with symptoms, bursal change, and cuff findings -- read acromial shape there, not on coronal.
 
 ## Assessments
 

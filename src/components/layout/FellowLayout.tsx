@@ -10,6 +10,7 @@ const GlobalSearch = lazy(() => import("@/components/ui/GlobalSearch"));
 const FAQChatbot = lazy(() => import("@/components/ui/FAQChatbot"));
 import { useProgress } from "@/hooks/useProgress";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { saveLearnerResume } from "@/lib/learner-resume";
 import {
   coursePath,
   courseRegistry,
@@ -18,6 +19,7 @@ import {
   interactiveNormalMriTitle,
   normalMriPath,
 } from "@/content/courses";
+import { pageTitleForRouteSegment } from "@/components/layout/fellow-route-title";
 
 const assessmentItems = [
   { label: "Pre-Assessment", path: "/pre-assessment" },
@@ -70,19 +72,22 @@ export default function FellowLayout() {
     const parts = location.pathname.split("/").filter(Boolean);
     const last = parts[parts.length - 1] || "";
     const isCourseRoot = parts[0] === "courses" && parts.length === 2;
-    const known: Record<string, string> = {
-      "pre-assessment": "Pre-Assessment", "post-assessment": "Post-Assessment",
-      "pre-survey": "Pre-Survey", "post-survey": "Post-Survey",
-      modules: "Modules", cases: "Cases", review: "Spaced Review",
-      reference: "Reference", certificate: "Certificate", "search-pattern": "Search Pattern",
-      "normal-knee-mri": "Normal Knee MRI", "normal-shoulder-mri": "Normal Shoulder MRI",
-      "normal-hip-mri": "Normal Hip MRI", "normal-elbow-mri": "Normal Elbow MRI",
-    };
-    const page = isCourseRoot
-      ? "Dashboard"
-      : known[last] || last.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) || "Dashboard";
+    const page = pageTitleForRouteSegment(last, activeCourse, isCourseRoot);
     document.title = `${page} · ${activeCourse.title} · UCLA`;
-  }, [location.pathname, activeCourse.title]);
+  }, [location.pathname, activeCourse]);
+
+  useEffect(() => {
+    if (location.pathname === "/" || /\/normal-(knee|shoulder|hip|elbow)-mri/.test(location.pathname)) {
+      return;
+    }
+    const page = document.title.split(" · ")[0] || activeCourse.shortTitle;
+    saveLearnerResume({
+      path: `${location.pathname}${location.search}${location.hash}`,
+      title: page === "Dashboard" ? `${activeCourse.shortTitle} Dashboard` : page,
+      courseId: activeCourse.id,
+      courseTitle: activeCourse.shortTitle,
+    });
+  }, [activeCourse.id, activeCourse.shortTitle, location.hash, location.pathname, location.search]);
 
   // A present-but-unknown :courseId (e.g. a mistyped/stale URL) should redirect
   // home rather than silently render the default (knee) course.
@@ -271,7 +276,8 @@ export default function FellowLayout() {
         </span>
         <button
           onClick={() => setSearchOpen(true)}
-          className="ml-auto flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          aria-label="Open search"
+          className="ml-auto flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:bg-gray-100 sm:min-h-0 sm:min-w-0 sm:justify-start sm:py-1.5"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -283,7 +289,7 @@ export default function FellowLayout() {
         </button>
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex min-h-0 flex-1 overflow-hidden">
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div
@@ -301,7 +307,7 @@ export default function FellowLayout() {
         aria-label="Course navigation"
         role={sidebarOpen ? "dialog" : undefined}
         aria-modal={sidebarOpen ? true : undefined}
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-white border-r border-gray-200 pt-12 outline-none transition-transform lg:static lg:z-auto lg:pt-0 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-white border-r border-gray-200 pt-[calc(3rem+env(safe-area-inset-top))] outline-none transition-transform lg:static lg:z-auto lg:pt-0 lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -572,7 +578,7 @@ export default function FellowLayout() {
       </aside>
 
       {/* Main content */}
-      <main id="main-content" tabIndex={-1} className="flex-1 overflow-auto outline-none">
+      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 overflow-auto overscroll-contain outline-none">
         <div className="mx-auto max-w-5xl px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-6 lg:px-8 lg:pb-6">
           <Suspense fallback={<PageLoader />}>
             <Outlet />

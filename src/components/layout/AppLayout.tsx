@@ -1,15 +1,24 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import OfflineStatusBanner from "@/components/ui/OfflineStatusBanner";
+import InstallPrompt from "@/components/ui/InstallPrompt";
 
 export default function AppLayout() {
+  const location = useLocation();
+  const showHeaderInstallPrompt = location.pathname !== "/";
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="bg-ucla-dark px-6 py-3 text-white">
-        <h1 className="text-lg font-bold">UCLA Sports MRI Courses</h1>
+    <div className="flex min-h-screen min-h-[100dvh] flex-col">
+      <header className="bg-ucla-dark px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] text-white sm:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
+          <h1 className="min-w-0 truncate text-lg font-bold">UCLA Sports MRI Courses</h1>
+          {showHeaderInstallPrompt && <InstallPrompt variant="header" />}
+        </div>
       </header>
-      <main className="flex-1 flex flex-col">
+      <OfflineStatusBanner />
+      <main className="flex min-h-0 flex-1 flex-col">
         <Outlet />
       </main>
-      <footer className="bg-white border-t border-gray-200 px-6 py-4 text-center text-sm text-gray-500">
+      <footer className="bg-white border-t border-gray-200 px-6 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 text-center text-sm text-gray-500">
         <div className="flex flex-wrap items-center justify-between gap-2 max-w-5xl mx-auto">
           <span>Created by Jeremy Swisher, MD | UCLA Division of Sports Medicine</span>
           <span>© 2026 UCLA Health</span>

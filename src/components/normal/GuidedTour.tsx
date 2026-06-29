@@ -67,6 +67,8 @@ export default function GuidedTour({
   if (!steps.length) return null;
   const step = steps[Math.min(i, steps.length - 1)];
   const atEnd = i >= steps.length - 1;
+  const focusedStepIndex = focusTarget ? findFocusedTourStepIndex(steps, focusTarget) : -1;
+  const isShowingFocusedStep = Boolean(focusTarget) && i === focusedStepIndex;
 
   // Collapse the abnormal-comparison panel whenever the step changes, so a new
   // structure never opens onto a stale pathology image.
@@ -87,19 +89,34 @@ export default function GuidedTour({
       <div className="flex flex-col gap-3">
         <AnnotatedSlice dir={dir} sliceIndex={step.sliceIndex} markers={step.markers} showLabels pulse />
         {abnormal && compareOpen && (
-          <figure className="overflow-hidden rounded-xl border-2 border-rose-300 bg-rose-50">
-            <div className="flex items-center gap-1.5 bg-rose-100 px-3 py-1.5 text-xs font-semibold text-rose-700">
-              <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Abnormal — {bridge.label}
+          <figure className="overflow-hidden rounded-xl border border-rose-200 bg-white shadow-sm">
+            <div className="border-b border-rose-100 bg-rose-50 px-3 py-2">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-700">
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Normal-to-pathology compare
+              </div>
+              <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                <div className="rounded-lg border border-white bg-white/80 px-2.5 py-2">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-500">Normal anchor</p>
+                  <p className="mt-0.5 text-xs font-semibold text-gray-900">{step.title}</p>
+                </div>
+                <div className="rounded-lg border border-rose-100 bg-white/80 px-2.5 py-2">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-rose-500">Injury pattern</p>
+                  <p className="mt-0.5 text-xs font-semibold text-rose-800">{bridge.label}</p>
+                </div>
+              </div>
             </div>
-            <img src={abnormal.src} alt={abnormal.caption} className="w-full" loading="lazy" />
-            <figcaption className="px-3 py-2 text-xs leading-relaxed text-rose-800">{abnormal.caption}</figcaption>
+            <img src={abnormal.src} alt={abnormal.caption} className="w-full border-b border-rose-100" loading="lazy" />
+            <figcaption className="px-3 py-2 text-xs leading-relaxed text-rose-800">
+              <span className="font-semibold">Pathology contrast: </span>
+              {abnormal.caption}
+            </figcaption>
           </figure>
         )}
         {correlate && correlateOpen && (
@@ -172,6 +189,16 @@ export default function GuidedTour({
         </div>
 
         <h3 className="mt-3 text-lg font-semibold text-gray-900">{step.title}</h3>
+        {isShowingFocusedStep && focusTarget && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-3 rounded-lg border border-ucla-blue/20 bg-ucla-light/60 px-3 py-2 text-xs leading-relaxed text-[#003B5C]"
+          >
+            <span className="font-semibold">Reviewing missed item: </span>
+            {focusTarget.structure}. This is the closest guided-tour match; use Back/Next to review nearby anatomy.
+          </div>
+        )}
         <p className="mt-2 text-sm leading-relaxed text-gray-600">{step.note}</p>
 
         {structurePearl[step.title] && (
@@ -263,6 +290,7 @@ export default function GuidedTour({
                 type="button"
                 onClick={() => setCompareOpen((v) => !v)}
                 aria-pressed={compareOpen}
+                aria-label={`${compareOpen ? "Hide" : "Show"} normal-to-pathology comparison for ${bridge.label}`}
                 className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
                   compareOpen
                     ? "border-rose-300 bg-rose-100 text-rose-700 hover:bg-rose-200"
@@ -273,11 +301,12 @@ export default function GuidedTour({
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5h7.5M3 12h7.5M3 16.5h7.5M21 7.5h-4.5M21 12h-4.5M21 16.5h-4.5" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5v15" />
                 </svg>
-                {compareOpen ? "Hide abnormal" : "Compare with abnormal"}
+                {compareOpen ? "Hide comparison" : "Compare normal vs injury"}
               </button>
             )}
             <Link
               to={`${caseBasePath}/${bridge.caseId}`}
+              aria-label={`Open injured case: ${bridge.label}`}
               className="inline-flex items-center gap-1.5 rounded-lg border border-ucla-gold/60 bg-ucla-gold/10 px-3 py-1.5 text-xs font-semibold text-[#7a5d00] transition-colors hover:bg-ucla-gold/20"
             >
               See it injured: {bridge.label}
@@ -315,17 +344,19 @@ export default function GuidedTour({
               Restart tour
             </Button>
           )}
-          <span className="ml-auto flex lg:gap-1">
+          <span role="group" aria-label="Guided tour steps" className="ml-auto flex lg:gap-1">
             {steps.map((_, n) => (
               <button
                 key={n}
-                aria-label={`Go to step ${n + 1}`}
+                type="button"
+                aria-label={`Go to step ${n + 1}: ${steps[n].title}`}
+                aria-current={n === i ? "step" : undefined}
                 onClick={() => setI(n)}
-                className="grid h-11 w-5 place-items-center lg:h-2 lg:w-2"
+                className="grid h-11 w-6 place-items-center rounded-full lg:h-7 lg:w-5"
               >
                 <span
-                  className={`block h-2 w-2 rounded-full transition-colors ${
-                    n === i ? "bg-ucla-blue" : "bg-gray-300 hover:bg-gray-400"
+                  className={`block rounded-full transition-colors ${
+                    n === i ? "h-3 w-3 bg-ucla-blue ring-2 ring-ucla-blue/20" : "h-2 w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               </button>

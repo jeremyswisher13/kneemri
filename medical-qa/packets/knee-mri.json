@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23",
+  "generatedAt": "2026-06-28",
   "course": {
     "id": "knee-mri",
     "title": "UCLA Knee MRI Interpretation Course",
@@ -2696,7 +2696,7 @@
               }
             ],
             "title": "Meniscus — the dark bow-ties",
-            "note": "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Any bright signal reaching the surface = a tear. Two normal ligaments mimic tears at the LATERAL meniscus: the transverse (intermeniscal) ligament at the anterior horn and the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn. Each is a discrete round band crossing the joint — the cleft where it meets the meniscus is a pseudotear, so trace it to the ligament before calling a tear."
+            "note": "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear."
           },
           {
             "sliceIndex": 7,
@@ -2950,7 +2950,7 @@
               "Extrusion can't be measured on MRI"
             ],
             "answer": 0,
-            "explanation": "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin suggests a root tear. Build the habit of correlating planes."
+            "explanation": "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin is significant and should trigger a deliberate posterior-root search. Build the habit of correlating planes."
           }
         ]
       },
@@ -3025,7 +3025,7 @@
               }
             ],
             "title": "Menisci — the wedges",
-            "note": "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is pathologic and suggests a root tear."
+            "note": "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself. Laterally, do not mistake the normal popliteus hiatus/popliteomeniscal fascicle region for a peripheral tear."
           },
           {
             "sliceIndex": 7,
@@ -3225,7 +3225,7 @@
               "x": 27,
               "y": 56
             },
-            "prompt": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic?",
+            "prompt": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
             "options": [
               ">3 mm",
               ">1 mm",
@@ -3233,7 +3233,7 @@
               "Any extrusion at all"
             ],
             "answer": 0,
-            "explanation": "Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal root tear."
+            "explanation": "Medial meniscal extrusion >3 mm beyond the tibial margin is significant and should make you inspect the posterior root, but extrusion alone does not prove a root tear."
           },
           {
             "id": "cor-q11",
@@ -3878,14 +3878,14 @@
       "Extensor mechanism — top": "The quadriceps tendon is trilaminar — partial tears hide in the DEEP (vastus intermedius) layer with intact superficial fibers.",
       "Patellar tendon": "Normally a few mm thick and uniformly dark; focal thickening = tendinopathy (usually proximal), a fluid-filled gap = rupture.",
       "Hoffa's fat pad": "Edema in the superolateral fat pad is the clue to anterior (Hoffa) impingement — easy to overlook.",
-      "Meniscus — the dark bow-ties": "Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.",
-      "Meniscus": "Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.",
+      "Meniscus — the dark bow-ties": "Count the bow-ties on the body slices, then trace the lateral transverse/meniscofemoral/popliteal-hiatus relationships before calling a tear.",
+      "Meniscus": "Count the bow-ties on the body slices, then inspect the lateral popliteal hiatus so a normal fascicle/hiatus does not become a false-positive tear.",
       "Cartilage & joint fluid": "A small effusion is physiologic; the cartilage surface should be smooth and uniform — follow it slice to slice.",
       "Anterior cruciate ligament": "A normal ACL parallels Blumensaat's line; if the fibers bow, sag below the roof, or go wavy/edematous, suspect a tear. Secondary signs — a deep lateral notch sign, anterior tibial translation, and pivot-shift contusions — clinch it.",
       "Posterior cruciate ligament": "Loss of the smooth PCL arc or a buckled contour points to anterior tibial translation from an ACL tear.",
       "Popliteal vessels": "Don't mistake flow-related signal for thrombus; a Baker's cyst sits medially, between the medial gastrocnemius and semimembranosus.",
       "Tibial spines (intercondylar eminence)": "Use the spines as your landmark for the true mid-joint slice and the cruciate origins.",
-      "Menisci — the wedges": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin flags a root tear.",
+      "Menisci — the wedges": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin is significant and should prompt a deliberate root/cartilage search; extrusion alone is not a root tear.",
       "Weight-bearing cartilage": "Compare medial vs lateral cartilage thickness directly — coronal makes early, subtle loss obvious.",
       "Medial collateral ligament": "Grade by depth (superficial vs deep) and note the level — proximal/femoral injuries scar; distal (Stener-like) may not.",
       "Lateral collateral ligament (LCL)": "The posterolateral corner is commonly missed — trace the LCL, popliteus tendon, and popliteofibular ligament on the more posterior slices.",
@@ -3911,19 +3911,19 @@
         "measure": "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal."
       },
       "Meniscus": {
-        "variant": "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch)."
+        "variant": "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch). At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal."
       },
       "Patella": {
         "variant": "A subchondral lucency in the SUPEROLATERAL quadrant with intact overlying cartilage is the benign dorsal defect of the patella — don't call it an osteochondral lesion or infection."
       },
       "Femoral trochlea": {
-        "measure": "Trochlear dysplasia, the dislocation risk factor, travels with a TT-TG distance >20 mm on axial MRI."
+        "measure": "Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic abnormal cutoff, but MRI values vary with landmarks, slice choice, and knee position — do not use one number as a standalone surgical rule."
       },
       "Trochlear groove": {
         "measure": "Read the crossing sign on the sagittal/lateral view — the trochlear-floor line crossing the anterior cortex of the lateral femoral condyle marks a flat (dysplastic) groove."
       },
       "MPFL / medial retinaculum": {
-        "measure": "Screen for the predisposing anatomy: patella alta (Insall-Salvati >1.2) and a TT-TG distance >20 mm on axial."
+        "measure": "Screen for predisposing anatomy: patella alta (Insall-Salvati >1.2) and elevated TT-TG. The classic >20 mm TT-TG cutoff is a risk marker, but MRI technique and landmarks can shift the value by a few millimeters."
       },
       "Bone marrow — T1's job": {
         "variant": "Patchy marrow that stays BRIGHTER than muscle and disc on T1, is symmetric, and spares the epiphyses is benign red-marrow reconversion — signal at/below muscle is the red flag for infiltration."
@@ -4834,13 +4834,13 @@
         "topic": "Menisci",
         "prompt": "A 58-year-old has acute medial knee pain. Coronal MRI shows the posterior root signal disrupted with the meniscal body displaced 4 mm beyond the tibial margin. Regarding the 3 mm extrusion threshold for a medial meniscal posterior root tear, which statement is most accurate?",
         "options": [
-          "The 3 mm threshold is highly specific but relatively insensitive, so extrusion <3 mm does not exclude a root tear",
+          "The 3 mm threshold is a useful high-specificity clue but relatively insensitive, so extrusion <3 mm does not exclude a root tear",
           "The 3 mm threshold is both highly sensitive and highly specific for root tears",
           "Extrusion is best and most reproducibly measured on sagittal rather than coronal images",
           "Meniscal extrusion of this degree is a normal finding and requires no root evaluation"
         ],
         "answer": 0,
-        "explanation": "Coronal medial meniscal extrusion >=3 mm is highly specific (~98%) but only modestly sensitive (~50-55%) for root tears, so sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought."
+        "explanation": "Coronal medial meniscal extrusion >=3 mm is a significant clue in many root-tear studies, but it is only modestly sensitive and should not be treated as diagnostic by itself. Sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought."
       },
       {
         "id": "menisci-3",
@@ -4918,7 +4918,7 @@
           "30 mm"
         ],
         "answer": 2,
-        "explanation": "A TT-TG distance ≥20 mm is the classic abnormal threshold associated with patellar instability and is often used as a surgical indication for tubercle medialization; MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements."
+        "explanation": "A TT-TG distance >=20 mm is the classic abnormal threshold associated with patellar instability, but it is a risk marker rather than a standalone surgical rule. MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements, so landmarks and clinical context matter."
       },
       {
         "id": "patellofemoral-2",
@@ -5166,12 +5166,12 @@
       },
       {
         "id": "icaq-3",
-        "topic": "Meniscal extrusion threshold for root tear",
+        "topic": "Meniscal extrusion threshold prompting root search",
         "dir": "/images/teaching/stacks/normal-knee-coronal",
         "count": 19,
         "startIndex": 7,
         "plane": "Coronal PD-FS",
-        "vignette": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?",
+        "vignette": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?",
         "options": [
           "3 mm",
           "1 mm",
@@ -5179,7 +5179,7 @@
           "Any visible extrusion"
         ],
         "answer": 0,
-        "explanation": "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is the accepted threshold that is highly specific for a posterior root tear. A 1 mm cutoff would overcall normal physiologic positioning, and requiring 8 mm would miss many true root tears, so 3 mm is the validated balance."
+        "explanation": "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is a significant clue that should send you to the posterior root, especially with a compatible history. It is not diagnostic by itself: a 1 mm cutoff would overcall normal positioning, and requiring 8 mm would miss many clinically important root injuries."
       },
       {
         "id": "icaq-4",
@@ -5231,6 +5231,23 @@
         ],
         "answer": 0,
         "explanation": "This is the lateral (fibular) collateral ligament; injury here with a fibular styloid avulsion (arcuate sign) signals posterolateral corner disruption, which carries a high rate of associated PCL injury. The MCL is a medial-side structure on the opposite compartment and is not mechanically coupled to this lateral corner injury."
+      },
+      {
+        "id": "icaq-7",
+        "topic": "Lateral meniscus - normal pseudotears",
+        "dir": "/images/teaching/stacks/normal-knee-sagittal",
+        "count": 29,
+        "startIndex": 8,
+        "plane": "Sagittal PD-FS",
+        "vignette": "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
+        "options": [
+          "Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then require surface-reaching tear signal or abnormal fascicle disruption",
+          "Call any cleft near the lateral meniscus a tear because normal ligaments do not contact the meniscus",
+          "Ignore the finding entirely because lateral meniscal tears cannot occur at the posterior horn",
+          "Measure medial meniscal extrusion; if it is under 3 mm, the lateral cleft is normal by definition"
+        ],
+        "answer": 0,
+        "explanation": "The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across slices and call a tear only when the signal behaves like a true surface-reaching tear or the fascicles/meniscocapsular support are disrupted."
       }
     ]
   },
@@ -10908,7 +10925,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin suggests a root tear. Build the habit of correlating planes.",
+      "explanation": "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin is significant and should trigger a deliberate posterior-root search. Build the habit of correlating planes.",
       "source": "Knee MRI · Sagittal",
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal",
@@ -11188,7 +11205,7 @@
       }
     },
     "knee-mri::cor-q10": {
-      "stem": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic?",
+      "stem": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
       "options": [
         {
           "key": "A",
@@ -11208,7 +11225,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal root tear.",
+      "explanation": "Medial meniscal extrusion >3 mm beyond the tibial margin is significant and should make you inspect the posterior root, but extrusion alone does not prove a root tear.",
       "source": "Knee MRI · Coronal",
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-coronal",
@@ -12058,7 +12075,7 @@
       }
     },
     "shoulder-mri::ssag-q6": {
-      "stem": "A hooked or down-sloping shape of THIS structure narrows the supraspinatus outlet (impingement). What is it?",
+      "stem": "A hooked or down-sloping shape of which structure can narrow the supraspinatus outlet?",
       "options": [
         {
           "key": "A",
@@ -12078,7 +12095,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "The acromion — a hooked (type III) or down-sloping acromion, or an os acromiale, narrows the subacromial outlet, the classic external-impingement driver.",
+      "explanation": "The acromion can narrow the subacromial outlet when hooked, down-sloping, or unfused as an os acromiale. Treat that morphology as a risk factor to correlate with symptoms, dynamic exam, bursal change, and cuff findings.",
       "source": "Shoulder MRI · Sagittal",
       "image": {
         "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
@@ -12528,7 +12545,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid alone implies only bursitis.",
+      "explanation": "Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear by itself.",
       "source": "Shoulder MRI · Coronal",
       "image": {
         "dir": "/images/teaching/stacks/normal-shoulder-coronal",
@@ -12589,6 +12606,36 @@
       ],
       "correctAnswer": "A",
       "explanation": "Coronal measures the tendon GAP and retraction (Patte); the sagittal-Y shows WHICH tendons are torn and T1 shows fatty atrophy (Goutallier).",
+      "source": "Shoulder MRI · Coronal",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 35,
+        "y": 33
+      }
+    },
+    "shoulder-mri::scor-q13": {
+      "stem": "On the distal supraspinatus, why does the rotator cable/crescent concept matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important"
+        },
+        {
+          "key": "B",
+          "text": "The cable is a normal labral variant and should not affect cuff interpretation"
+        },
+        {
+          "key": "C",
+          "text": "The crescent is the biceps pulley, so crescent injury predicts medial biceps dislocation"
+        },
+        {
+          "key": "D",
+          "text": "The cable is assessed only on axial images and is unrelated to the supraspinatus footprint"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator cable is the thicker articular-sided bundle just medial to the thinner distal cuff crescent. Crescent tears are common near the footprint, but an intact cable can help preserve force transmission; cable disruption, especially anteriorly, makes the tear more clinically important.",
       "source": "Shoulder MRI · Coronal",
       "image": {
         "dir": "/images/teaching/stacks/normal-shoulder-coronal",
@@ -13308,13 +13355,13 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and SIFK. The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
+      "explanation": "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and subchondral insufficiency fracture of the femoral head (SIFH). The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
       "source": "Hip MRI · Coronal",
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 19,
         "x": 72,
-        "y": 53
+        "y": 55
       }
     },
     "hip-mri::hc-q2": {
@@ -13343,8 +13390,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 19,
-        "x": 75,
-        "y": 39
+        "x": 70.5,
+        "y": 46
       }
     },
     "hip-mri::hc-q3": {
@@ -13373,8 +13420,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 19,
-        "x": 82,
-        "y": 43
+        "x": 77,
+        "y": 47
       }
     },
     "hip-mri::hc-q4": {
@@ -13403,8 +13450,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 19,
-        "x": 70,
-        "y": 47
+        "x": 69.5,
+        "y": 50
       }
     },
     "hip-mri::hc-q5": {
@@ -13553,8 +13600,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 19,
-        "x": 91,
-        "y": 63
+        "x": 85.5,
+        "y": 62
       }
     },
     "hip-mri::ha-q1": {
@@ -13998,7 +14045,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The anterior bundle of the UCL is the primary valgus restraint, inserting on the sublime tubercle — where the thrower's undersurface (T-sign) tear occurs. The LUCL is the lateral restraint to posterolateral rotatory instability.",
+      "explanation": "The anterior bundle of the UCL is the primary valgus restraint, inserting on the sublime tubercle — where the thrower's undersurface (T-sign) tear classically occurs. The LUCL is the lateral restraint to posterolateral rotatory instability.",
       "source": "Elbow MRI · Coronal",
       "image": {
         "dir": "/images/teaching/stacks/normal-elbow-coronal",
@@ -14058,7 +14105,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The ulnar nerve in the cubital tunnel can show mild T2 brightness normally, so anchor the call to nerve enlargement PLUS FCU/ulnar-intrinsic denervation PLUS clinical correlation — and look for a structural cause (subluxation, accessory muscle) that changes the operation.",
+      "explanation": "The ulnar nerve in the cubital tunnel can show mild T2 brightness normally, so anchor the call to nerve enlargement PLUS FCU/ulnar-intrinsic denervation PLUS clinical correlation — and look for a structural cause (subluxation, accessory muscle) that can change operative planning.",
       "source": "Elbow MRI · Axial",
       "image": {
         "dir": "/images/teaching/stacks/normal-elbow-axial",
@@ -14123,8 +14170,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-elbow-sagittal",
         "sliceIndex": 14,
-        "x": 47,
-        "y": 38
+        "x": 62,
+        "y": 40
       }
     },
     "elbow-mri::ec-sag-q2": {
@@ -14148,13 +14195,43 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The anteromedial coronoid facet fracture looks small on radiographs but implies varus posteromedial rotatory instability (VPMRI) and is surgical — 'small does not mean stable' at the coronoid. The sublime tubercle (medial) is the UCL's distal attachment.",
+      "explanation": "An anteromedial coronoid facet fracture may look small on radiographs but can imply varus posteromedial rotatory instability (VPMRI) and needs instability-focused surgical review — 'small does not mean stable' at the coronoid. The sublime tubercle (medial) is the UCL's distal attachment.",
       "source": "Elbow MRI · Sagittal",
       "image": {
         "dir": "/images/teaching/stacks/normal-elbow-sagittal",
         "sliceIndex": 14,
         "x": 45,
         "y": 60
+      }
+    },
+    "elbow-mri::ec-sag-q3": {
+      "stem": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A normal plica/fold unless thickened, edematous, or associated with snapping/catching"
+        },
+        {
+          "key": "B",
+          "text": "A displaced loose body until proven otherwise"
+        },
+        {
+          "key": "C",
+          "text": "A capitellar OCD instability sign by itself"
+        },
+        {
+          "key": "D",
+          "text": "A UCL T-sign seen on the wrong plane"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A posterolateral radiocapitellar plica/synovial fold can be a normal thin fold in the radiocapitellar recess. Do not call it a loose body or OCD instability sign by itself; worry when it is thickened/edematous or matches mechanical snapping/catching.",
+      "source": "Elbow MRI · Sagittal",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-elbow-sagittal",
+        "sliceIndex": 14,
+        "x": 55,
+        "y": 49
       }
     },
     "knee-mri::caq-1": {
@@ -14474,7 +14551,7 @@
       "options": [
         {
           "key": "A",
-          "text": "The 3 mm threshold is highly specific but relatively insensitive, so extrusion <3 mm does not exclude a root tear"
+          "text": "The 3 mm threshold is a useful high-specificity clue but relatively insensitive, so extrusion <3 mm does not exclude a root tear"
         },
         {
           "key": "B",
@@ -14490,7 +14567,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Coronal medial meniscal extrusion >=3 mm is highly specific (~98%) but only modestly sensitive (~50-55%) for root tears, so sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.",
+      "explanation": "Coronal medial meniscal extrusion >=3 mm is a significant clue in many root-tear studies, but it is only modestly sensitive and should not be treated as diagnostic by itself. Sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.",
       "source": "Knee MRI · Advanced"
     },
     "knee-mri::menisci-3": {
@@ -14634,7 +14711,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "A TT-TG distance ≥20 mm is the classic abnormal threshold associated with patellar instability and is often used as a surgical indication for tubercle medialization; MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements.",
+      "explanation": "A TT-TG distance >=20 mm is the classic abnormal threshold associated with patellar instability, but it is a risk marker rather than a standalone surgical rule. MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements, so landmarks and clinical context matter.",
       "source": "Knee MRI · Advanced"
     },
     "knee-mri::patellofemoral-2": {
@@ -15098,7 +15175,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Coracoid transfer (Latarjet) with glenoid bone grafting"
+          "text": "Bony augmentation such as a coracoid transfer (Latarjet)"
         },
         {
           "key": "B",
@@ -15114,7 +15191,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "With critical glenoid bone loss (~20-25% or greater) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as a Latarjet (or Bankart plus remplissage for the Hill-Sachs) is favored to restore the glenoid track and lower recurrence. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.",
+      "explanation": "With substantial/critical glenoid bone loss (often ~20-25%, with lower subcritical thresholds relevant in high-risk contact athletes) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as Latarjet is favored to restore the glenoid track and lower recurrence; remplissage may be added depending on the humeral defect strategy. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.",
       "source": "Shoulder MRI · Advanced"
     },
     "shoulder-mri::sh-caq-5": {
@@ -15330,7 +15407,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' threshold (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. (Shaha showed even 'subcritical' loss >13.5% worsens outcomes.)",
+      "explanation": "Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' range (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. Lower 'subcritical' loss can still matter in contact athletes, so the number is a management risk marker, not a stand-alone rule.",
       "source": "Shoulder MRI · Advanced"
     },
     "shoulder-mri::labrum-3": {
@@ -15522,7 +15599,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "The normal acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) indicates superior humeral head migration from a chronic massive/full-thickness supraspinatus tear and predicts poor reparability.",
+      "explanation": "The normal radiographic acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) suggests superior humeral head migration from chronic full-thickness/massive cuff insufficiency and predicts poorer reparability. Correlate with cuff continuity and remember MRI-based AHI is supportive, not interchangeable with a properly positioned radiograph.",
       "source": "Shoulder MRI · Advanced"
     },
     "shoulder-mri::impingement-4": {
@@ -15858,7 +15935,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Cam FAI is an aspherical anterior/anterolateral head-neck junction (loss of the normal head-neck offset) that levers against the acetabulum in flexion/internal rotation. The alpha angle is measured on oblique-axial images aligned to the femoral neck axis, or on radial reformats, because these planes display the anterosuperior 'bump' where cam lesions predominate; standard coronal images underestimate the anterior deformity and miss the lesion, which is why coronal-only measurement is wrong. Lesser-trochanter axial images assess version, not the alpha angle.",
+      "explanation": "Cam morphology is an aspherical anterior/anterolateral head-neck junction (loss of the normal head-neck offset) that can lever against the acetabulum in flexion/internal rotation when symptoms and labral/cartilage injury fit. The alpha angle is measured on oblique-axial images aligned to the femoral neck axis, or on radial reformats, because these planes display the anterosuperior 'bump' where cam lesions predominate; standard coronal images underestimate the anterior deformity and miss the lesion, which is why coronal-only measurement is wrong. Lesser-trochanter axial images assess version, not the alpha angle.",
       "source": "Hip MRI · Advanced"
     },
     "hip-mri::hadv-2": {
@@ -15882,7 +15959,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — the hallmark of pincer FAI, in which an over-covering acetabular rim contacts a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
+      "explanation": "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — a pincer morphology pattern in which an over-covering acetabular rim can contact a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
       "source": "Hip MRI · Advanced"
     },
     "hip-mri::hadv-3": {
@@ -15930,7 +16007,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and usually surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFK is a subchondral femoral-head process, not femoral-neck cortex.",
+      "explanation": "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and often surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFH is a subchondral femoral-head process, not femoral-neck cortex.",
       "source": "Hip MRI · Advanced"
     },
     "hip-mri::hadv-5": {
@@ -15954,7 +16031,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "The double-line sign (inner T2-hyperintense granulation tissue, outer hypointense sclerotic rim) is essentially pathognomonic for AVN. With a NORMAL radiograph but a positive MRI and no collapse, this is ARCO stage I. The strongest distractor, ARCO stage II, requires radiographic changes (sclerosis/lucency) without collapse — but here the radiograph is normal, so it cannot be stage II. Stage III requires subchondral fracture/collapse (crescent sign), which is absent. Transient osteoporosis shows diffuse edema without a demarcated double-line lesion.",
+      "explanation": "The double-line sign (inner T2-hyperintense granulation tissue, outer hypointense sclerotic rim) is the classic, highly specific MRI pattern for AVN. With a NORMAL radiograph but a positive MRI and no collapse, this is ARCO stage I. The strongest distractor, ARCO stage II, requires radiographic changes (sclerosis/lucency) without collapse — but here the radiograph is normal, so it cannot be stage II. Stage III requires subchondral fracture/collapse (crescent sign), which is absent. Transient osteoporosis shows diffuse edema without a demarcated double-line lesion.",
       "source": "Hip MRI · Advanced"
     },
     "hip-mri::hadv-6": {
@@ -15978,7 +16055,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines a subchondral insufficiency fracture (SIFK), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFK from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
+      "explanation": "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines subchondral insufficiency fracture of the femoral head (SIFH), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFH from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
       "source": "Hip MRI · Advanced"
     },
     "hip-mri::hadv-7": {
@@ -16170,11 +16247,11 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "A T2 fluid-bright line (matching joint fluid) completely undercutting the fragment plus a cartilage cleft reaching the fragment are reliable instability signs — stop throwing and refer for surgery. Surrounding marrow edema ALONE is not a stability sign (it occurs in stable and unstable lesions). An ISOLATED high-T2 line without a cartilage breach or cyst is indeterminate, not definitive. The '5 mm cyst' figure is De Smet's knee-derived criterion not validated for the capitellum — the teaching is 'sizeable or multiple' cysts, so invoking a 5 mm cutoff to call this stable is wrong (and a cartilage cleft is already present here).",
+      "explanation": "A T2 fluid-bright line (matching joint fluid) completely undercutting the fragment plus a cartilage cleft reaching the fragment are reliable instability signs — stop throwing and obtain sports-orthopedic/surgical evaluation. Surrounding marrow edema ALONE is not a stability sign (it occurs in stable and unstable lesions). An ISOLATED high-T2 line without a cartilage breach or cyst is indeterminate, not definitive. The '5 mm cyst' figure is De Smet's knee-derived criterion not validated for the capitellum — the teaching is 'sizeable or multiple' cysts, so invoking a 5 mm cutoff to call this stable is wrong (and a cartilage cleft is already present here).",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-3": {
-      "stem": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature confirms this is the T-sign of a partial undersurface tear rather than a normal distal synovial recess?",
+      "stem": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature best supports the T-sign pattern of a partial undersurface tear rather than a normal distal synovial recess?",
       "options": [
         {
           "key": "A",
@@ -16194,11 +16271,11 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The abnormal threshold for the T-sign is fluid/contrast tracking BEYOND the articular-cartilage edge at the sublime tubercle while proximal fibers remain attached — that defines the partial undersurface (articular-sided) distal tear. A couple of millimetres of undercutting of the most distal fibers can be a normal synovial recess, so 'any undercutting at all' overcalls it. Flexor-pronator tendinosis and mild ulnar-nerve T2 signal are associated valgus-overload findings but do not define the T-sign. MR arthrography is the most sensitive study for this lesion.",
+      "explanation": "The abnormal threshold for the T-sign pattern is fluid/contrast tracking BEYOND the articular-cartilage edge at the sublime tubercle while proximal fibers remain attached — that supports a partial undersurface (articular-sided) distal tear in the right clinical setting. A couple of millimetres of undercutting of the most distal fibers can be a normal synovial recess, so 'any undercutting at all' overcalls it. Flexor-pronator tendinosis and mild ulnar-nerve T2 signal are associated valgus-overload findings but do not define the T-sign. MR arthrography is the most sensitive study for this lesion.",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-4": {
-      "stem": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why is this a surgical lesion?",
+      "stem": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why does this pattern deserve urgent instability-focused surgical review?",
       "options": [
         {
           "key": "A",
@@ -16218,7 +16295,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "An anteromedial coronoid facet fracture plus LUCL injury defines varus posteromedial rotatory instability (VPMRI) — a distinct instability mechanism from PLRI. The fragment looks small on radiographs but is highly unstable and surgical, and untreated VPMRI drives early arthrosis (classify with the O'Driscoll anteromedial-facet system). Regan–Morrey classifies coronoid HEIGHT, not this facet, and 'always nonoperative' is false. The terrible triad requires a radial head fracture, which is absent here. 'Small means stable' at the coronoid is exactly the trap this teaches against.",
+      "explanation": "An anteromedial coronoid facet fracture plus LUCL injury defines varus posteromedial rotatory instability (VPMRI) — a distinct instability mechanism from PLRI. The fragment can look small on radiographs but be unstable and treatment-changing; untreated VPMRI can drive early arthrosis (classify with the O'Driscoll anteromedial-facet system). Regan–Morrey classifies coronoid HEIGHT, not this facet, and 'always nonoperative' is false. The terrible triad requires a radial head fracture, which is absent here. 'Small means stable' at the coronoid is exactly the trap this teaches against.",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-5": {
@@ -16230,7 +16307,7 @@
         },
         {
           "key": "B",
-          "text": "A complete tear with an intact lacertus fibrosus tethering the stump — still a surgical repair"
+          "text": "A complete tear with an intact lacertus fibrosus tethering the stump — still an anatomic repair consideration in the right patient"
         },
         {
           "key": "C",
@@ -16242,7 +16319,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "Full discontinuity at the tuberosity is a complete tear; an INTACT lacertus fibrosus tethers it so it does not retract and can mimic a partial tear clinically and on imaging — the classic missed complete tear. It is still a surgical/anatomic repair, so calling it partial or tendinosis undercalls it. Report complete-vs-partial AND lacertus integrity with retraction in cm. There is no hard 2-4-week deadline: earlier repair is technically easier and chronic irreducible tears need a graft, but many primary repairs succeed out to ~4-6 weeks and beyond — a fixed deadline is a teaching error.",
+      "explanation": "Full discontinuity at the tuberosity is a complete tear; an INTACT lacertus fibrosus tethers it so it does not retract and can mimic a partial tear clinically and on imaging — the classic missed complete tear. In an active/medically fit patient it remains an anatomic repair consideration, so calling it partial or tendinosis undercalls it. Report complete-vs-partial AND lacertus integrity with retraction in cm. There is no hard 2-4-week deadline: earlier repair is technically easier and chronic irreducible tears need a graft, but many primary repairs succeed out to ~4-6 weeks and beyond — a fixed deadline is a teaching error.",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-6": {
@@ -16266,7 +16343,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, or ANY tear with extension weakness against resistance) are repaired, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor.",
+      "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor.",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-7": {
@@ -16294,7 +16371,7 @@
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-8": {
-      "stem": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes the operation?",
+      "stem": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes operative planning?",
       "options": [
         {
           "key": "A",
@@ -16306,7 +16383,7 @@
         },
         {
           "key": "C",
-          "text": "Dynamic nerve subluxation with a co-existing snapping triceps — the triceps must be addressed, not just the nerve"
+          "text": "Dynamic nerve subluxation with a co-existing snapping triceps — the triceps may need to be addressed, not just the nerve"
         },
         {
           "key": "D",
@@ -16314,7 +16391,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "Dynamic ulnar-nerve subluxation favors transposition over in-situ decompression, and a co-existing snapping triceps (the medial triceps head subluxing with the nerve) means the triceps must be addressed, not just the nerve transposed — that is the operation-changing finding. Mild ulnar-nerve T2 brightness occurs in asymptomatic elbows, so signal alone does not diagnose entrapment; anchor to caliber change + denervation + clinical correlation. Compare caliber/signal to BOTH the contralateral side and the ipsilateral median nerve. Denervation shows no MRI change for ~2-4 weeks, then SUBACUTE edema — it is not a first-few-days finding.",
+      "explanation": "Dynamic ulnar-nerve subluxation may favor transposition over in-situ decompression, and a co-existing snapping triceps (the medial triceps head subluxing with the nerve) can require addressing the triceps mechanism rather than treating the nerve alone — that is the operative-planning finding. Mild ulnar-nerve T2 brightness occurs in asymptomatic elbows, so signal alone does not diagnose entrapment; anchor to caliber change + denervation + clinical correlation. Compare caliber/signal to BOTH the contralateral side and the ipsilateral median nerve. Denervation shows no MRI change for ~2-4 weeks, then SUBACUTE edema — it is not a first-few-days finding.",
       "source": "Elbow MRI · Advanced"
     },
     "elbow-mri::elb-adv-9": {
@@ -16414,7 +16491,7 @@
       "source": "Knee MRI · Image CAQ"
     },
     "knee-mri::icaq-3": {
-      "stem": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?",
+      "stem": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?",
       "options": [
         {
           "key": "A",
@@ -16434,7 +16511,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is the accepted threshold that is highly specific for a posterior root tear. A 1 mm cutoff would overcall normal physiologic positioning, and requiring 8 mm would miss many true root tears, so 3 mm is the validated balance.",
+      "explanation": "Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is a significant clue that should send you to the posterior root, especially with a compatible history. It is not diagnostic by itself: a 1 mm cutoff would overcall normal positioning, and requiring 8 mm would miss many clinically important root injuries.",
       "source": "Knee MRI · Image CAQ"
     },
     "knee-mri::icaq-4": {
@@ -16507,6 +16584,30 @@
       ],
       "correctAnswer": "A",
       "explanation": "This is the lateral (fibular) collateral ligament; injury here with a fibular styloid avulsion (arcuate sign) signals posterolateral corner disruption, which carries a high rate of associated PCL injury. The MCL is a medial-side structure on the opposite compartment and is not mechanically coupled to this lateral corner injury.",
+      "source": "Knee MRI · Image CAQ"
+    },
+    "knee-mri::icaq-7": {
+      "stem": "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then require surface-reaching tear signal or abnormal fascicle disruption"
+        },
+        {
+          "key": "B",
+          "text": "Call any cleft near the lateral meniscus a tear because normal ligaments do not contact the meniscus"
+        },
+        {
+          "key": "C",
+          "text": "Ignore the finding entirely because lateral meniscal tears cannot occur at the posterior horn"
+        },
+        {
+          "key": "D",
+          "text": "Measure medial meniscal extrusion; if it is under 3 mm, the lateral cleft is normal by definition"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across slices and call a tear only when the signal behaves like a true surface-reaching tear or the fascicles/meniscocapsular support are disrupted.",
       "source": "Knee MRI · Image CAQ"
     },
     "shoulder-mri::sh-icaq-1": {
@@ -16602,7 +16703,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid implies only bursitis, not frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.",
+      "explanation": "This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear or frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.",
       "source": "Shoulder MRI · Image CAQ"
     },
     "shoulder-mri::sh-icaq-5": {
@@ -16653,12 +16754,36 @@
       "explanation": "The supraspinatus fills the supraspinous fossa, and T1 (fat bright, unsuppressed) is the sequence to grade Goutallier-Fuchs fatty infiltration; high-grade fatty atrophy of the supraspinatus predicts an irreparable tear and changes surgical planning. Bright signal in MUSCLE on T1 reflects fatty infiltration, not marrow edema (which is DARK on T1); the acromiohumeral interval is a radiographic/coronal measurement, and a SLAP tear is a labral lesion best shown on fluid-sensitive or arthrographic sequences, not this T1 muscle slice.",
       "source": "Shoulder MRI · Image CAQ"
     },
+    "shoulder-mri::sh-icaq-7": {
+      "stem": "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cable integrity helps determine functional importance; an intact cable may preserve load transfer, while cable disruption makes a small-appearing tear more consequential"
+        },
+        {
+          "key": "B",
+          "text": "The cable is the same structure as the superior labrum, so its injury is reported as a SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "A crescent tear is diagnosed only on axial imaging because the coronal cannot show the footprint"
+        },
+        {
+          "key": "D",
+          "text": "The cable/crescent distinction applies only after surgery and should be ignored on the initial MRI"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator cable/crescent model matters because the cable is a load-sharing band just medial to the thin distal cuff crescent. A limited crescent tear with an intact cable can behave differently from a tear that disrupts the cable, especially anteriorly, so the report should not describe only the footprint gap and retraction.",
+      "source": "Shoulder MRI · Image CAQ"
+    },
     "hip-mri::hicaq-1": {
       "stem": "On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids has 6 weeks of groin pain; radiographs are normal. If this femoral head marrow instead showed a serpentine subchondral line with the classic 'double-line sign' (T2-bright inner / T2-dark outer rim) and NO sclerosis on radiograph, what is the most appropriate staging and management?",
       "options": [
         {
           "key": "A",
-          "text": "ARCO stage I osteonecrosis (MRI-positive, radiograph-negative) — joint-preserving management/core decompression candidate before collapse"
+          "text": "ARCO stage I osteonecrosis (MRI-positive, radiograph-negative) — joint-preserving management may be considered before collapse"
         },
         {
           "key": "B",
@@ -16674,7 +16799,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Key: a double-line sign with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, the hip is potentially joint-preservable (e.g., core decompression). Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a double-line sign and is self-limited. SIFK is wrong because it is a subchondral fracture line without the necrotic double-line and is not staged by ARCO.",
+      "explanation": "Key: a classic double-line AVN pattern with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, joint-preserving management may be considered before collapse. Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a demarcated double-line lesion and is self-limited. SIFH is wrong because it is a subchondral fracture line without the necrotic double-line pattern and is not staged by ARCO.",
       "source": "Hip MRI · Image CAQ"
     },
     "hip-mri::hicaq-2": {
@@ -16770,7 +16895,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER FAI (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity.",
+      "explanation": "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology, while ~60° may be more specific; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER morphology (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity. Morphology still needs clinical and chondrolabral correlation before calling symptomatic FAI.",
       "source": "Hip MRI · Image CAQ"
     },
     "hip-mri::hicaq-6": {
@@ -16818,7 +16943,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Key: the T-sign is fluid/contrast undermining the distal/sublime-tubercle attachment BEYOND the articular-cartilage edge while the proximal fibers remain attached — an articular-sided partial tear — and MR arthrography is the most sensitive study for it. The strongest distractor (any 1–2 mm undercutting = full-thickness) is wrong because a couple of millimetres of undercutting can be a normal synovial recess; the abnormal threshold is fluid extending past the cartilage margin, and undersurface tracking is partial, not full-thickness. Proximal thickening with intermediate signal describes chronic sprain/tendinosis, not the T-sign. The posterior bundle is the cubital-tunnel floor and contributes little to valgus restraint — the T-sign is a distal anterior-bundle phenomenon.",
+      "explanation": "Key: the T-sign pattern is fluid/contrast undermining the distal/sublime-tubercle attachment BEYOND the articular-cartilage edge while the proximal fibers remain attached — supporting an articular-sided partial tear in the right clinical setting — and MR arthrography is the most sensitive study for it. The strongest distractor (any 1–2 mm undercutting = full-thickness) is wrong because a couple of millimetres of undercutting can be a normal synovial recess; the abnormal threshold is fluid extending past the cartilage margin, and undersurface tracking is partial, not full-thickness. Proximal thickening with intermediate signal describes chronic sprain/tendinosis, not the T-sign. The posterior bundle is the cubital-tunnel floor and contributes little to valgus restraint — the T-sign is a distal anterior-bundle phenomenon.",
       "source": "Elbow MRI · Image CAQ"
     },
     "elbow-mri::elb-caq-2": {
@@ -16939,6 +17064,30 @@
       ],
       "correctAnswer": "C",
       "explanation": "Key: loose bodies migrate to the dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) and are most conspicuous against bright joint fluid on sagittal fluid-sensitive images; the anterior fat pad is NORMALLY seen, but the posterior fat pad is normally HIDDEN in the olecranon fossa, so a visible/elevated posterior fat pad after trauma means an effusion/hemarthrosis and an occult intra-articular fracture until proven otherwise. The first distractor reverses the fat-pad rule (the anterior pad is normal; the posterior pad being visible is the abnormal sign). Loose bodies are best seen on sagittal against bright fluid, not on coronal against dark cortex. And fluid in the olecranon fossa is an effusion, not itself a loose body — the radiocapitellar recess is in fact one of the classic niches that DOES harbor bodies.",
+      "source": "Elbow MRI · Image CAQ"
+    },
+    "elbow-mri::elb-caq-7": {
+      "stem": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is safest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A thin posterolateral radiocapitellar plica/fold can be normal; call it clinically relevant only if thickened, edematous, trapped, or matching snapping/catching symptoms"
+        },
+        {
+          "key": "B",
+          "text": "Any synovial fold at the radiocapitellar joint is a displaced loose body and should be reported as mechanical"
+        },
+        {
+          "key": "C",
+          "text": "The fold is a capitellar OCD instability sign even when the cartilage and subchondral interface are smooth"
+        },
+        {
+          "key": "D",
+          "text": "The fold is the distal UCL T-sign and should be evaluated only on coronal MR arthrography"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A posterolateral radiocapitellar plica/synovial fold is a recognized normal structure when thin and smooth. It becomes a potential pain generator when thickened or edematous and when it matches lateral snapping/catching. A loose body should be a discrete intra-articular fragment, and OCD instability depends on the capitellar cartilage/subchondral interface, not a thin synovial fold.",
       "source": "Elbow MRI · Image CAQ"
     },
     "fc-mri-basics-t0-1": {

@@ -213,7 +213,13 @@ export default function DashboardPage() {
         {courseRegistry.map((course) => {
           const selected = course.id === activeCourse.id;
           return (
-            <Link key={course.id} to={coursePath(course, "/")} className="block">
+            <Link
+              key={course.id}
+              to={coursePath(course, "/")}
+              aria-label={`Open ${course.dashboardTitle}`}
+              aria-current={selected ? "page" : undefined}
+              className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+            >
               <div
                 className={`rounded-lg border px-4 py-3 transition-colors ${
                   selected
@@ -276,10 +282,14 @@ export default function DashboardPage() {
         }
 
         return (
-          <Link to={ctaLink} className="mt-6 block">
-            <div className="rounded-lg bg-[#2774AE] px-6 py-4 text-white shadow-md transition-shadow hover:shadow-lg flex items-center justify-between">
-              <span className="text-lg font-semibold">{ctaText}</span>
-              <svg className="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <Link
+            to={ctaLink}
+            aria-label={ctaText}
+            className="mt-6 block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+          >
+            <div className="flex min-h-14 flex-col gap-3 rounded-lg bg-[#2774AE] px-5 py-4 text-white shadow-md transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:px-6">
+              <span className="block min-w-0 text-base font-semibold leading-snug sm:text-lg">{ctaText}</span>
+              <svg className="h-6 w-6 shrink-0 self-end sm:self-center" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </div>

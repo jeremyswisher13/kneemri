@@ -39,25 +39,25 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 19,
-        markers: [{ x: 72, y: 53, label: "Femoral head" }],
+        markers: [{ x: 72, y: 55, label: "Femoral head" }],
         title: "Femoral head",
         note: "On this coronal T2 FS Dixon the femoral head is the rounded epiphysis seated in the acetabulum; on the water (fat-suppressed) image its normal fatty marrow is uniformly dark because the marrow fat signal has been nulled. Confirm the head is spherical and that the marrow stays homogeneously low — coronal is your screening plane for the subchondral abnormalities of AVN and subchondral insufficiency fracture.",
       },
       {
         sliceIndex: 19,
-        markers: [{ x: 75, y: 39, label: "Sourcil" }],
+        markers: [{ x: 70.5, y: 46, label: "Sourcil" }],
         title: "Acetabulum & sourcil",
         note: "The acetabulum is the cup of subchondral bone roofing the head; the sourcil is its dense superior weight-bearing roof, seen here as the low-signal subchondral plate over the head. Check that the sourcil marrow is dark and uniform and that the roof gives the head normal lateral coverage (lateral center-edge angle) — undercoverage suggests dysplasia, while excessive/retroverted over-coverage suggests pincer morphology that needs symptom and chondrolabral correlation.",
       },
       {
         sliceIndex: 19,
-        markers: [{ x: 82, y: 43, label: "Labrum" }],
+        markers: [{ x: 77, y: 47, label: "Labrum" }],
         title: "Acetabular labrum",
         note: "On coronal images the labrum is the small triangular low-signal fibrocartilage capping the superolateral acetabular rim, hugging the femoral head. Normally it is uniformly dark with a sharp triangular apex — but remember the tear-prone zone is anterosuperior, so coronal undersamples it and a true labral workup needs the radial/oblique-axial planes and ideally MR arthrography.",
       },
       {
         sliceIndex: 19,
-        markers: [{ x: 70, y: 47, label: "Cartilage" }],
+        markers: [{ x: 69.5, y: 50, label: "Cartilage" }],
         title: "Articular cartilage",
         note: "The hyaline articular cartilage is the thin intermediate-signal layer between the dark subchondral cortex of the head and the acetabulum; at the hip the femoral and acetabular layers are usually inseparable as a single stripe. Trace it as smooth and uniform over the weight-bearing dome — the coronal plane lets you compare the superior joint-space cartilage side to side for focal loss.",
       },
@@ -75,7 +75,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 19,
-        markers: [{ x: 91, y: 63, label: "Gr. trochanter" }],
+        markers: [{ x: 85.5, y: 62, label: "Gr. trochanter" }],
         title: "Greater trochanter & trochanteric bursa",
         note: "On the coronal T2 FS Dixon, the greater trochanter is the lateral bony prominence of the proximal femur that serves as the footprint for the gluteus medius and minimus tendons (the hip's abductor 'rotator cuff'), with the trochanteric and subgluteus bursae normally collapsed and imperceptible just superficial to those tendons. You check it because this is the GTPS hot spot: peritrochanteric edema plus a footprint tendon defect distinguishes true abductor tendinopathy/tear from the loose label of 'trochanteric bursitis.'",
       },
@@ -91,22 +91,33 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         title: "Sacrum & SI joint",
         note: "On the posterior coronal slices the sacrum sits in the midline with the sacroiliac joints articulating against the iliac bones bilaterally. Confirm symmetric, dark subchondral marrow across both SI joints and sacral alae — this is your screening plane for sacroiliitis and for the sacral/parasymphyseal insufficiency fractures that mimic hip or groin pain.",
       },
+      {
+        sliceIndex: 19,
+        markers: [
+          { x: 77, y: 47, label: "Labrum" },
+          { x: 71, y: 63, label: "Femoral neck" },
+          { x: 85.5, y: 62, label: "Trochanter / abductors" },
+          { x: 48, y: 77, label: "Symphysis" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "Before leaving the coronal stack, pause on the traps: cam or pincer morphology is not symptomatic FAI without concordant pain plus labral/cartilage injury; GTPS is usually abductor tendon disease, not bursal fluid alone; pubic marrow or aponeurotic signal can be seen in asymptomatic athletes; and any hip marrow edema deserves a deliberate AVN, femoral-neck stress, and subchondral-insufficiency screen.",
+      },
     ],
     quiz: [
       {
         id: "hc-q1",
         sliceIndex: 19,
-        marker: { x: 72, y: 53 },
+        marker: { x: 72, y: 55 },
         prompt: "On this coronal T2 FS Dixon image, what is the marked structure seated within the acetabulum?",
         options: ["Femoral head", "Greater trochanter", "Acetabular roof (sourcil)", "Femoral neck"],
         answer: 0,
         explanation:
-          "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and SIFK. The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
+          "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and subchondral insufficiency fracture of the femoral head (SIFH). The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
       },
       {
         id: "hc-q2",
         sliceIndex: 19,
-        marker: { x: 75, y: 39 },
+        marker: { x: 70.5, y: 46 },
         prompt: "The dense subchondral weight-bearing roof of the acetabulum marked here is best termed the:",
         options: ["Triradiate cartilage", "Sourcil (acetabular roof)", "Acetabular labrum", "Fovea capitis"],
         answer: 1,
@@ -116,7 +127,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       {
         id: "hc-q3",
         sliceIndex: 19,
-        marker: { x: 82, y: 43 },
+        marker: { x: 77, y: 47 },
         prompt: "The small triangular low-signal structure capping the superolateral acetabular rim is the:",
         options: ["Ligamentum teres", "Transverse acetabular ligament", "Acetabular labrum", "Zona orbicularis"],
         answer: 2,
@@ -126,7 +137,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       {
         id: "hc-q4",
         sliceIndex: 19,
-        marker: { x: 70, y: 47 },
+        marker: { x: 69.5, y: 50 },
         prompt: "The thin intermediate-signal layer marked between the femoral head cortex and the acetabular cortex represents the:",
         options: ["Joint effusion", "Hyaline articular cartilage", "Acetabular labrum", "Subchondral marrow"],
         answer: 1,
@@ -181,7 +192,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       {
         id: "hc-q9",
         sliceIndex: 19,
-        marker: { x: 91, y: 63 },
+        marker: { x: 85.5, y: 62 },
         prompt: "On this coronal T2 FS Dixon image, the marked lateral bony prominence of the proximal femur — the footprint of the gluteus medius and minimus tendons — is which structure?",
         options: ["Greater trochanter", "Lesser trochanter", "Femoral head", "Iliac crest"],
         answer: 0,
@@ -240,6 +251,16 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         markers: [{ x: 42, y: 66, label: "Sciatic n." }],
         title: "Sciatic nerve",
         note: "On axial T2 FS the sciatic nerve is the rounded, fascicular soft-tissue structure posterior to the hip, lying just posterior to the ischium between the ischial tuberosity and greater trochanter, deep to gluteus maximus. Normal: smooth fascicular nerve, not enlarged or hyperintense, with preserved surrounding fat.",
+      },
+      {
+        sliceIndex: 23,
+        markers: [
+          { x: 32, y: 35, label: "Labrum" },
+          { x: 26, y: 30, label: "Iliopsoas" },
+          { x: 42, y: 66, label: "Sciatic nerve" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "On axial, do not call every labral-base cleft a tear: posteroinferior sublabral sulci/perilabral sulci and labral-shape variation are common pitfalls. Iliopsoas bursal fluid may communicate with the joint, so it can be secondary. Sciatic-neuralgia imaging needs nerve enlargement or T2 hyperintensity with clinical localization, not just seeing the nerve.",
       },
     ],
     quiz: [
@@ -334,7 +355,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 43, y: 60, label: "Femoral head" }],
         title: "Femoral head",
-        note: "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is perfectly spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an intact subchondral cortex — sphericity feeds your cam/asphericity read, and the marrow is your AVN and subchondral insufficiency (SIFK) screen.",
+        note: "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is perfectly spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an intact subchondral cortex — sphericity feeds your cam/asphericity read, and the marrow is your AVN and subchondral insufficiency fracture of the femoral head (SIFH) screen.",
       },
       {
         sliceIndex: 11,
@@ -371,6 +392,16 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         markers: [{ x: 30, y: 51, label: "Capsule / IFL" }],
         title: "Joint capsule & iliofemoral ligament",
         note: "On the sagittal PD FS, the anterior fibrous joint capsule — reinforced by the iliofemoral (Y) ligament of Bigelow — drapes over the anterior femoral head-neck as the low-signal roof of the anterior synovial recess, normally thin and closely apposed to the bone. You check it because distension of this anterior recess by bright fluid is the sign of an effusion/synovitis, and the capsule is the landmark targeted for image-guided hip aspiration and intra-articular injection.",
+      },
+      {
+        sliceIndex: 11,
+        markers: [
+          { x: 36, y: 70, label: "Head-neck junction" },
+          { x: 44, y: 46, label: "Labrum" },
+          { x: 33, y: 57, label: "Anterior recess" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "Sagittal is a profile view, not the whole FAI answer. Use it to notice head-neck asphericity and the chondrolabral junction, but measure alpha angle on oblique-axial/radial images when available. A thin anterior recess can be normal; convex distension is effusion. A bright labral-adjacent cleft needs shape, displacement, cartilage injury, and orthogonal confirmation before you call a tear.",
       },
     ],
     quiz: [
@@ -456,7 +487,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
 /** title → "Watch for" teaching pearl (keyed by tour-step title). */
 export const structureHipPearl: Record<string, string> = {
   "Femoral head":
-    "Watch for a serpiginous subchondral double-line (AVN) or a focal wedge/band of subchondral edema (SIFK) — both appear before the head loses its sphericity, and the bright fluid-sensitive signal is what gives them away on the water image.",
+    "Watch for a serpiginous subchondral double-line (AVN) or a focal subchondral low-signal fracture band with surrounding edema (SIFH) — both can appear before the head loses its sphericity, and the water image is where the edema becomes obvious.",
   "Acetabulum & sourcil":
     "Watch for sourcil subchondral edema or a thin bright line beneath it on the water image — early stress response or insufficiency fracture in the weight-bearing roof, not just degenerative sclerosis.",
   "Acetabular labrum":
@@ -468,7 +499,7 @@ export const structureHipPearl: Record<string, string> = {
   "Gluteus medius & minimus (abductors)":
     "Watch for fluid signal at the trochanteric footprint or T2-bright tendinosis with peritrochanteric edema — abductor tendinopathy/tear is the true cause of most 'trochanteric bursitis'/GTPS.",
   "Adductors & pubic symphysis":
-    "Watch for the 'secondary cleft sign' (fluid tracking inferolaterally from the symphysis) and edema at the rectus-adductor aponeurosis — the marker of athletic pubalgia, not simple osteitis pubis.",
+    "Watch for the 'secondary cleft sign' (fluid tracking inferolaterally from the symphysis) and edema at the rectus-adductor aponeurosis — this supports athletic pubalgia/core-muscle injury in the right clinical context, not simple osteitis pubis.",
   "Sacrum & SI joint":
     "Watch for unilateral periarticular SI marrow edema (inflammatory sacroiliitis) or an H-/butterfly-shaped (Honda sign) sacral edema pattern — the insufficiency fracture that masquerades as 'hip' pain in runners and older patients.",
   "Iliopsoas tendon & bursa":
@@ -486,18 +517,18 @@ export const structureHipPearl: Record<string, string> = {
 /** title → inline "reading point" (variant + measurement) woven into the tour. */
 export const structureHipReading: Record<string, StructureReading> = {
   "Femoral head": {
-    measure:
-      "Quantify anterosuperior asphericity as the alpha angle, measured on oblique-axial-along-the-neck or radial images, never a straight axial/coronal. >55° is commonly used and ~60° may be more specific, but cam morphology is not the same thing as symptomatic FAI.",
+    variant:
+      "Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line.",
   },
   "Acetabulum & sourcil": {
     variant:
       "A corticated os acetabuli with smooth margins at the anterosuperior rim is a chronic rim variant/fragment, not an acute fracture (sharp margins + marrow edema).",
     measure:
-      "Read coverage by the lateral center-edge angle: <~20–25° = dysplasia/undercoverage, ~25–40° = normal, >~40° = overcoverage/pincer.",
+      "Read coverage by the lateral center-edge angle on radiographs: <20° = dysplasia/undercoverage, 20–25° = borderline, roughly 26–40° = normal, and >40° supports overcoverage/pincer morphology. Landmark choice and symptoms matter.",
   },
   "Acetabular labrum": {
     variant:
-      "A smooth-walled cleft paralleling the labral base with no displacement or paralabral cyst is a sublabral sulcus, not a tear; an anterosuperior location alone never makes a cleft normal.",
+      "A smooth-walled cleft paralleling the labral base with no displacement, cartilage injury, or paralabral cyst can be a sublabral/perilabral sulcus, especially posteroinferiorly. Anterosuperior clefts deserve extra scrutiny, but location alone does not prove a tear.",
   },
   "Articular cartilage": {
     variant:
@@ -509,15 +540,39 @@ export const structureHipReading: Record<string, StructureReading> = {
     variant:
       "A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate.",
     measure:
-      "Estimate the percent of neck width the low-signal line crosses; a tension-side line beyond ~50% is the high-risk, non-weight-bearing pattern.",
+      "For stress injury, estimate the percent of neck width crossed by the low-signal line; a superolateral/tension-side line beyond ~50% is high-risk. For cam morphology, measure alpha angle on oblique-axial-along-the-neck or radial images: >55° is widely used and ~60° may be more specific, but morphology is not symptomatic FAI by itself.",
+  },
+  "Gluteus medius & minimus (abductors)": {
+    variant:
+      "GTPS should not be reduced to 'trochanteric bursitis.' Look for gluteus medius/minimus tendinosis, footprint partial tearing, retraction, fatty atrophy, and peritrochanteric edema; isolated tiny bursal fluid is nonspecific.",
+  },
+  "Greater trochanter & trochanteric bursa": {
+    variant:
+      "Trochanteric and subgluteus bursae are normally collapsed. Distended bursal fluid can accompany abductor disease, but bursal fluid alone is not the primary diagnosis when the footprint is abnormal.",
+  },
+  "Adductors & pubic symphysis": {
+    variant:
+      "Symphyseal marrow edema and adductor-aponeurotic signal can be present in asymptomatic athletes. Athletic pubalgia is supported by the right pain pattern plus aponeurotic injury/secondary cleft, not by isolated symphyseal signal alone.",
+  },
+  "Sacrum & SI joint": {
+    variant:
+      "Bilateral symmetric tiny SI-margin signal or degenerative change is not automatically inflammatory sacroiliitis. Confirm true periarticular marrow edema/erosions and keep sacral-ala insufficiency fracture in the differential for buttock or groin pain.",
   },
   "Iliopsoas tendon & bursa": {
     variant:
       "A small iliopsoas bursa can be normal, and because it communicates with the joint in ~15%, a distended bursa can simply flag intra-articular pathology rather than primary bursitis.",
   },
+  "Sciatic nerve": {
+    variant:
+      "Seeing the sciatic nerve is normal. Deep-gluteal entrapment needs a clinical posterior-pain pattern plus nerve enlargement, T2 hyperintensity, fat-plane loss, or a compressive lesion.",
+  },
   "Anterior joint recess": {
     measure:
       "On the US correlate, an anterior capsule-to-bone distance >~7 mm at the head-neck junction (or >1 mm side-to-side asymmetry) indicates effusion/synovitis.",
+  },
+  "Joint capsule & iliofemoral ligament": {
+    variant:
+      "A thin, concave anterior capsular margin is normal. Convex distension supports effusion/synovitis; capsular thickening or laxity should be interpreted with symptoms and surgical/instability history.",
   },
 };
 
@@ -704,7 +759,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and usually surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFK is a subchondral femoral-head process, not femoral-neck cortex.",
+      "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and often surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFH is a subchondral femoral-head process, not femoral-neck cortex.",
   },
   {
     id: "hadv-5",
@@ -719,11 +774,11 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 0,
     explanation:
-      "The double-line sign (inner T2-hyperintense granulation tissue, outer hypointense sclerotic rim) is essentially pathognomonic for AVN. With a NORMAL radiograph but a positive MRI and no collapse, this is ARCO stage I. The strongest distractor, ARCO stage II, requires radiographic changes (sclerosis/lucency) without collapse — but here the radiograph is normal, so it cannot be stage II. Stage III requires subchondral fracture/collapse (crescent sign), which is absent. Transient osteoporosis shows diffuse edema without a demarcated double-line lesion.",
+      "The double-line sign (inner T2-hyperintense granulation tissue, outer hypointense sclerotic rim) is the classic, highly specific MRI pattern for AVN. With a NORMAL radiograph but a positive MRI and no collapse, this is ARCO stage I. The strongest distractor, ARCO stage II, requires radiographic changes (sclerosis/lucency) without collapse — but here the radiograph is normal, so it cannot be stage II. Stage III requires subchondral fracture/collapse (crescent sign), which is absent. Transient osteoporosis shows diffuse edema without a demarcated double-line lesion.",
   },
   {
     id: "hadv-6",
-    topic: "Transient bone-marrow-edema syndrome vs SIFK",
+    topic: "Transient bone-marrow-edema syndrome vs SIFH",
     prompt:
       "A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amount of adjacent subchondral hyperintensity. Which diagnosis is most likely, and why does it matter?",
     options: [
@@ -734,7 +789,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines a subchondral insufficiency fracture (SIFK), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFK from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
+      "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines subchondral insufficiency fracture of the femoral head (SIFH), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFH from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
   },
   {
     id: "hadv-7",
@@ -832,7 +887,7 @@ export const hipAdvanced: AdvancedQ[] = [
 export const hipImageCaq: ImageCaqQ[] = [
   {
     id: "hicaq-1",
-    topic: "AVN vs subchondral insufficiency fracture (SIFK) of the femoral head",
+    topic: "AVN vs subchondral insufficiency fracture (SIFH) of the femoral head",
     dir: "/images/teaching/stacks/normal-hip-coronal",
     count: 34,
     startIndex: 19,
@@ -840,14 +895,14 @@ export const hipImageCaq: ImageCaqQ[] = [
     vignette:
       "On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids has 6 weeks of groin pain; radiographs are normal. If this femoral head marrow instead showed a serpentine subchondral line with the classic 'double-line sign' (T2-bright inner / T2-dark outer rim) and NO sclerosis on radiograph, what is the most appropriate staging and management?",
     options: [
-      "ARCO stage I osteonecrosis (MRI-positive, radiograph-negative) — joint-preserving management/core decompression candidate before collapse",
+      "ARCO stage I osteonecrosis (MRI-positive, radiograph-negative) — joint-preserving management may be considered before collapse",
       "ARCO stage III osteonecrosis — subchondral collapse already present, proceed to arthroplasty",
       "Transient bone-marrow-edema syndrome — reassure, protected weight-bearing, expect self-resolution",
       "Subchondral insufficiency fracture — restricted weight-bearing for a stress-type fracture with no necrosis",
     ],
     answer: 0,
     explanation:
-      "Key: a double-line sign with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, the hip is potentially joint-preservable (e.g., core decompression). Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a double-line sign and is self-limited. SIFK is wrong because it is a subchondral fracture line without the necrotic double-line and is not staged by ARCO.",
+      "Key: a classic double-line AVN pattern with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, joint-preserving management may be considered before collapse. Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a demarcated double-line lesion and is self-limited. SIFH is wrong because it is a subchondral fracture line without the necrotic double-line pattern and is not staged by ARCO.",
   },
   {
     id: "hicaq-2",
@@ -963,7 +1018,7 @@ export const hipCrossPlane: CorrelationItem[] = [
     prompt: "This is the femoral head on the coronal — the ball seated in the socket. Find the same femoral head on the axial.",
     explanation:
       "The round ball filling the acetabular cup is the femoral head on both planes. On axial it sits centrally with the iliopsoas tendon ANTERIOR and the sciatic nerve POSTERIOR — don't grab a muscle or the nerve.",
-    from: { plane: "Coronal T2-FS", dir: HIP_COR, sliceIndex: 19, x: 72, y: 53, label: "Femoral head" },
+    from: { plane: "Coronal T2-FS", dir: HIP_COR, sliceIndex: 19, x: 72, y: 55, label: "Femoral head" },
     to: {
       plane: "Axial T2-FS",
       dir: HIP_AXI,
@@ -1026,9 +1081,9 @@ export const hipCrossPlane: CorrelationItem[] = [
       dir: HIP_COR,
       sliceIndex: 19,
       candidates: [
-        { x: 82, y: 43 }, // labrum ✓
-        { x: 75, y: 39 }, // sourcil
-        { x: 72, y: 53 }, // femoral head
+        { x: 77, y: 47 }, // labrum ✓
+        { x: 70.5, y: 46 }, // sourcil
+        { x: 72, y: 55 }, // femoral head
         { x: 71, y: 63 }, // femoral neck
       ],
       answer: 0,
@@ -1046,8 +1101,8 @@ export const hipCrossPlane: CorrelationItem[] = [
       sliceIndex: 19,
       candidates: [
         { x: 71, y: 63 }, // femoral neck ✓
-        { x: 72, y: 53 }, // femoral head
-        { x: 75, y: 39 }, // sourcil
+        { x: 72, y: 55 }, // femoral head
+        { x: 70.5, y: 46 }, // sourcil
         { x: 48, y: 77 }, // pubic symphysis
       ],
       answer: 0,

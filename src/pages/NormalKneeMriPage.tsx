@@ -10,6 +10,7 @@ import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
 import ExploreChecklist from "@/components/normal/ExploreChecklist";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
+import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
 import NormalSeriesSelector from "@/components/normal/NormalSeriesSelector";
 import {
   normalKneeLearn,
@@ -21,16 +22,24 @@ import {
   structureReading,
   structureCorrelate,
 } from "@/content/normal-knee-learn";
+import { normalKneeSeries as SERIES } from "@/content/normal-workstation-series";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { useNormalMriResume } from "@/hooks/useNormalMriResume";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
+import {
+  NORMAL_MRI_MODE_PARAM,
+  NORMAL_MRI_SERIES_PARAM,
+  readNormalParam,
+} from "@/lib/normal-workstation-url";
 
 const KNEE_CASE_BASE = coursePath(getCourseById("knee-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";
+const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "compare", "advanced", "caq"];
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
@@ -46,81 +55,6 @@ const MODES: { id: Mode; label: string }[] = [
  * sequence as the stacks are captured (coronal, axial, T1, etc.).
  */
 
-interface KneeSeries {
-  id: string;
-  label: string; // selector chip label
-  plane: string; // viewer plane badge, e.g. "Sagittal PD FS"
-  dir: string; // folder under /public holding slice_01.jpg, slice_02.jpg, ...
-  count: number; // number of slices in the folder
-  startIndex?: number; // 0-based slice to open on (e.g. the intercondylar notch)
-  checklist: string[]; // high-yield structures to identify on this plane
-}
-
-const SERIES: KneeSeries[] = [
-  {
-    id: "sag-pdfs",
-    label: "Sagittal PD-FS",
-    plane: "Sagittal PD FS",
-    dir: "/images/teaching/stacks/normal-knee-sagittal",
-    count: 29,
-    startIndex: 13, // opens at the intercondylar notch
-    checklist: [
-      "PCL — smooth, continuous low-signal posterior arc",
-      "ACL — taut band parallel to Blumensaat's line (lateral slices)",
-      "Menisci — anterior & posterior horns; “bow-tie” on body slices; lateral pseudotears",
-      "Articular cartilage — femoral condyle & tibial plateau",
-      "Extensor mechanism — quadriceps & patellar tendons",
-      "Hoffa's fat pad and the joint recesses",
-    ],
-  },
-  {
-    id: "cor-pdfs",
-    label: "Coronal PD-FS",
-    plane: "Coronal PD FS",
-    dir: "/images/teaching/stacks/normal-knee-coronal",
-    count: 19,
-    startIndex: 7, // opens at the mid-joint (tibial spines / cruciate origins)
-    checklist: [
-      "Medial & lateral menisci — triangular body & free edge",
-      "Meniscal extrusion — medial body past the tibial margin (>3 mm is significant; inspect the roots)",
-      "MCL — superficial & deep (meniscofemoral/meniscotibial) layers",
-      "LCL, popliteus tendon/hiatus & popliteomeniscal fascicles — the lateral corner",
-      "Tibial spines / eminence & the cruciate origins (intercondylar)",
-      "Weight-bearing femoral condyle & tibial plateau cartilage",
-    ],
-  },
-  {
-    id: "axi-t2fs",
-    label: "Axial T2-FS",
-    plane: "Axial T2 FS",
-    dir: "/images/teaching/stacks/normal-knee-axial",
-    count: 28,
-    startIndex: 13, // opens at the patellofemoral joint (patella + trochlea)
-    checklist: [
-      "Patella & trochlea — facets and the trochlear groove (dysplasia)",
-      "Patellar & trochlear articular cartilage",
-      "MPFL — medial, coursing toward the adductor tubercle",
-      "Medial & lateral retinacula; patellar tilt / translation",
-      "Cruciates in cross-section (intercondylar notch)",
-      "Popliteal vessels and the popliteal fossa",
-    ],
-  },
-  {
-    id: "sag-t1",
-    label: "Sagittal T1",
-    plane: "Sagittal T1",
-    dir: "/images/teaching/stacks/normal-knee-sagittal-t1",
-    count: 29,
-    startIndex: 13, // opens at the intercondylar notch (same level as the PD-FS)
-    checklist: [
-      "Bone marrow — normal bright fatty marrow (a fracture line or lesion is dark)",
-      "Anatomy & fat planes — high detail, no fat suppression",
-      "Cruciates, menisci & cartilage — morphology",
-      "Compare at the same level: T1 for anatomy/marrow, PD-FS for fluid & edema",
-    ],
-  },
-];
-
 // Planes/sequences not yet loaded — shown as disabled chips to signal what's coming.
 const COMING_SOON: string[] = [];
 
@@ -128,8 +62,13 @@ export default function NormalKneeMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
   const isAdminView = useIsAdminView();
-  const [activeId, setActiveId] = useState(SERIES[0].id);
-  const [mode, setMode] = useState<Mode>("explore");
+  const initialSearch = typeof window === "undefined" ? "" : window.location.search;
+  const [activeId, setActiveId] = useState(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_SERIES_PARAM, SERIES.map((s) => s.id), SERIES[0].id),
+  );
+  const [mode, setMode] = useState<Mode>(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_MODE_PARAM, RESTORABLE_MODES, "explore"),
+  );
   const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalKneeLearn[series.id];
@@ -141,6 +80,15 @@ export default function NormalKneeMriPage() {
   const visibleModes = isAdmin
     ? [...baseModes, { id: "adjust" as Mode, label: "Adjust (admin)" }]
     : baseModes;
+  const modeLabel = visibleModes.find((item) => item.id === mode)?.label ?? "Explore";
+  useNormalMriResume({
+    courseId: "knee-mri",
+    title: "Interactive Normal Knee MRI",
+    modeId: mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+  });
 
   // Passing a plane's Knowledge Check (70%+) records it toward completing the
   // Interactive Normal Knee MRI — a required part of the course.
@@ -204,6 +152,14 @@ export default function NormalKneeMriPage() {
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
+      <NormalMriMasteryPanel
+        courseId="knee-mri"
+        activeMode={mode}
+        activeModeLabel={modeLabel}
+        seriesLabel={series.label}
+        availableModes={visibleModes}
+      />
+
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (
         <div className="mt-4 grid gap-5 lg:grid-cols-3">
@@ -261,7 +217,7 @@ export default function NormalKneeMriPage() {
               <p className="mb-4 text-sm text-gray-500">
                 Identify each marked structure on this normal {series.label} knee.{" "}
                 <span className="text-gray-500">
-                  Score 70%+ on all four planes to complete the Normal Knee MRI — a required part of the course.
+                  Score 70%+ on all four loaded knee series to complete the Normal Knee MRI — a required part of the course.
                 </span>
               </p>
               <KnowledgeCheck

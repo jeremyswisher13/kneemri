@@ -11,6 +11,7 @@ import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
+import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
 import NormalSeriesSelector from "@/components/normal/NormalSeriesSelector";
 import {
   normalHipLearn,
@@ -22,15 +23,23 @@ import {
   hipImageCaq,
   hipCrossPlane,
 } from "@/content/normal-hip-learn";
+import { normalHipSeries as SERIES } from "@/content/normal-workstation-series";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { useNormalMriResume } from "@/hooks/useNormalMriResume";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
+import {
+  NORMAL_MRI_MODE_PARAM,
+  NORMAL_MRI_SERIES_PARAM,
+  readNormalParam,
+} from "@/lib/normal-workstation-url";
 
 const HIP_CASE_BASE = coursePath(getCourseById("hip-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";
+const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "compare", "advanced", "caq"];
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
@@ -42,70 +51,6 @@ const MODES: { id: Mode; label: string }[] = [
  * normal hip. Built on the same region-agnostic components as the knee/shoulder.
  * Add a SERIES entry per plane/sequence as the stacks are captured.
  */
-interface HipSeries {
-  id: string;
-  label: string;
-  plane: string;
-  dir: string;
-  count: number;
-  startIndex?: number;
-  checklist: string[];
-}
-
-const SERIES: HipSeries[] = [
-  {
-    id: "cor-t2fs",
-    label: "Coronal T2-FS",
-    plane: "Coronal T2 FS Dixon",
-    dir: "/images/teaching/stacks/normal-hip-coronal",
-    count: 34,
-    startIndex: 16, // opens at the mid-coronal femoral heads / acetabula
-    checklist: [
-      "Femoral heads — spherical, congruent; marrow signal symmetric",
-      "Acetabular roof (sourcil) & the joint space",
-      "Acetabular labrum — the superolateral triangle",
-      "Abductors — gluteus medius & minimus toward the greater trochanter",
-      "Greater trochanter & the peritrochanteric soft tissue (GTPS)",
-      "Femoral neck cortex & marrow (stress fracture / AVN screen)",
-      "SI joints, sacrum & the symphysis on the mid/posterior slices",
-    ],
-  },
-  {
-    id: "axi",
-    label: "Axial T2-FS",
-    plane: "Axial T2 FS",
-    dir: "/images/teaching/stacks/normal-hip-axial",
-    count: 44,
-    startIndex: 22, // opens through the femoral head / hip joint
-    checklist: [
-      "Femoral head & the anterior/posterior acetabular rim",
-      "Acetabular labrum — anterior & posterior (the instability/tear plane)",
-      "Iliopsoas tendon & muscle anterior to the joint",
-      "Sciatic nerve posterior to the joint / ischium",
-      "Gluteal muscles & the greater trochanter",
-      "Rectus femoris & sartorius anteriorly",
-      "Femoral neck version & the head-neck junction (cam contour)",
-    ],
-  },
-  {
-    id: "sag",
-    label: "Sagittal PD-FS",
-    plane: "Sagittal PD FS",
-    dir: "/images/teaching/stacks/normal-hip-sagittal",
-    count: 24,
-    startIndex: 12, // opens through the femoral head / hip joint
-    checklist: [
-      "Femoral head & neck — the anterior head-neck junction (cam contour)",
-      "Acetabulum & the anterior/posterior labrum",
-      "Iliopsoas tendon anterior to the joint",
-      "Rectus femoris origin near the AIIS",
-      "Gluteal muscles posteriorly",
-      "Hamstring origin at the ischial tuberosity",
-      "Anterior & posterior joint recesses",
-    ],
-  },
-];
-
 // Coronal, axial, and sagittal are loaded; a dedicated T1 sequence could be added later.
 const COMING_SOON: string[] = [];
 
@@ -113,8 +58,13 @@ export default function NormalHipMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
   const isAdminView = useIsAdminView();
-  const [activeId, setActiveId] = useState(SERIES[0].id);
-  const [mode, setMode] = useState<Mode>("explore");
+  const initialSearch = typeof window === "undefined" ? "" : window.location.search;
+  const [activeId, setActiveId] = useState(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_SERIES_PARAM, SERIES.map((s) => s.id), SERIES[0].id),
+  );
+  const [mode, setMode] = useState<Mode>(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_MODE_PARAM, RESTORABLE_MODES, "explore"),
+  );
   const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalHipLearn[series.id];
@@ -159,6 +109,15 @@ export default function NormalHipMriPage() {
   const visibleModes = isAdmin
     ? [...baseModes, { id: "adjust" as Mode, label: "Adjust (admin)" }]
     : baseModes;
+  const modeLabel = visibleModes.find((item) => item.id === mode)?.label ?? "Explore";
+  useNormalMriResume({
+    courseId: "hip-mri",
+    title: "Interactive Normal Hip MRI",
+    modeId: mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+  });
 
   const slices = useMemo(
     () =>
@@ -185,6 +144,14 @@ export default function NormalHipMriPage() {
       />
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
+
+      <NormalMriMasteryPanel
+        courseId="hip-mri"
+        activeMode={mode}
+        activeModeLabel={modeLabel}
+        seriesLabel={series.label}
+        availableModes={visibleModes}
+      />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

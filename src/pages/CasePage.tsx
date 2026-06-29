@@ -227,6 +227,25 @@ export default function CasePage() {
   const teachingStacks = caseItem.teachingStacks ?? [];
   const previewImages = teachingImages.slice(0, 4);
   const hasEmbeddedReferences = teachingImages.length > 0 || teachingStacks.length > 0;
+  const readoutDiagnoses = caseItem.keyDiagnoses.slice(0, 3);
+  const allReadoutFindingSteps = caseItem.searchPatternFindings ?? [];
+  const pathologyReadoutFindingSteps = allReadoutFindingSteps.filter((findingStep) => findingStep.step > 1);
+  const readoutFindings = (pathologyReadoutFindingSteps.length > 0 ? pathologyReadoutFindingSteps : allReadoutFindingSteps)
+    .flatMap((findingStep) =>
+      findingStep.expectedFindings.slice(0, 2).map((finding) => ({
+        step: findingStep.step,
+        stepName: findingStep.stepName,
+        finding,
+      })),
+    )
+    .slice(0, 4);
+  const clinicalHinges = (caseItem.teachingPoints ?? []).slice(0, 3);
+  const externalCaseLinkLabel = hasEmbeddedReferences
+    ? "Open the full scrollable MRI on Radiopaedia"
+    : "Open external scrollable MRI examples";
+  const externalCaseLinkCaption = hasEmbeddedReferences
+    ? `${caseItem.radiopaediaTitle} — scroll through every slice like a workstation`
+    : `${caseItem.radiopaediaTitle} — use after committing to the local search pattern`;
 
   /* ---- Helpers ---- */
 
@@ -313,11 +332,11 @@ export default function CasePage() {
               Your previous submission is saved. This will reset all your notes
               and progress for this case so you can try again from the beginning.
             </p>
-            <div className="flex justify-end gap-3">
-              <Button ref={tryAgainCancelRef} variant="secondary" size="sm" onClick={() => setShowTryAgain(false)}>
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <Button ref={tryAgainCancelRef} variant="secondary" size="sm" className="min-h-11 w-full sm:min-h-0 sm:w-auto" onClick={() => setShowTryAgain(false)}>
                 Cancel
               </Button>
-              <Button size="sm" onClick={handleTryAgain}>
+              <Button size="sm" className="min-h-11 w-full sm:min-h-0 sm:w-auto" onClick={handleTryAgain}>
                 Start Over
               </Button>
             </div>
@@ -365,19 +384,19 @@ export default function CasePage() {
       )}
 
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500">
         <Link to={coursePath(activeCourse, "/cases")} className="hover:text-ucla-blue transition-colors">
           Cases
         </Link>
         <span>/</span>
-        <span className="text-gray-600 line-clamp-1">
+        <span className="min-w-0 flex-1 text-gray-600 line-clamp-1">
           {currentStep === reviewStep ? caseItem.title : `Case: ${diff.label}`}
         </span>
       </nav>
 
       {/* Header */}
       <div className="mb-6">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="mb-2 flex flex-wrap items-center gap-3">
           <span
             className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${diff.bg} ${diff.text}`}
           >
@@ -408,46 +427,48 @@ export default function CasePage() {
       {/* ============================================================ */}
       {/*  STEPPER                                                      */}
       {/* ============================================================ */}
-      <div
-        ref={stepperRef}
-        className="mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide"
-      >
-        <div className="flex items-center gap-1 min-w-max pb-2">
-          {stepperLabels.map((s, idx) => {
-            const isCurrent = idx === currentStep;
-            const completed = isStepComplete(idx);
-            const reachable = idx <= highestStep;
+      <div className="mb-8 max-w-full overflow-hidden">
+        <div
+          ref={stepperRef}
+          className="max-w-full overflow-x-auto pb-2 scrollbar-hide [-webkit-overflow-scrolling:touch]"
+        >
+          <div className="flex w-max max-w-none items-center gap-1">
+            {stepperLabels.map((s, idx) => {
+              const isCurrent = idx === currentStep;
+              const completed = isStepComplete(idx);
+              const reachable = idx <= highestStep;
 
-            return (
-              <div key={idx} className="flex items-center">
-                {idx > 0 && (
-                  <div
-                    className={`w-4 h-0.5 mx-0.5 ${
-                      idx <= highestStep ? "bg-ucla-blue" : "bg-gray-200"
+              return (
+                <div key={idx} className="flex items-center">
+                  {idx > 0 && (
+                    <div
+                      className={`w-4 h-0.5 mx-0.5 ${
+                        idx <= highestStep ? "bg-ucla-blue" : "bg-gray-200"
+                      }`}
+                    />
+                  )}
+                  <button
+                    {...(isCurrent ? { "data-active-step": true } : {})}
+                    onClick={() => goToStep(idx)}
+                    disabled={!reachable}
+                    className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                      isCurrent
+                        ? "bg-ucla-blue text-white shadow-sm"
+                        : completed
+                        ? "bg-green-100 text-green-700 hover:bg-green-200"
+                        : reachable
+                        ? "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        : "bg-gray-50 text-gray-300 cursor-not-allowed"
                     }`}
-                  />
-                )}
-                <button
-                  {...(isCurrent ? { "data-active-step": true } : {})}
-                  onClick={() => goToStep(idx)}
-                  disabled={!reachable}
-                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                    isCurrent
-                      ? "bg-ucla-blue text-white shadow-sm"
-                      : completed
-                      ? "bg-green-100 text-green-700 hover:bg-green-200"
-                      : reachable
-                      ? "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                      : "bg-gray-50 text-gray-300 cursor-not-allowed"
-                  }`}
-                >
-                  {completed && <CheckIcon className="h-3 w-3" />}
-                  <span className="hidden sm:inline">{s.label}</span>
-                  <span className="sm:hidden">{s.short}</span>
-                </button>
-              </div>
-            );
-          })}
+                  >
+                    {completed && <CheckIcon className="h-3 w-3" />}
+                    <span className="hidden sm:inline">{s.label}</span>
+                    <span className="sm:hidden">{s.short}</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -469,14 +490,35 @@ export default function CasePage() {
 
           <Card>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Embedded Teaching Images
+              Case Reading Mindset
+            </h3>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                ["1", "Anchor normal", `Start from the normal ${activeCourse.bodyRegion} MRI pattern before chasing pathology.`],
+                ["2", "Commit findings", "Write the key positives and negatives for each search step before revealing the answer."],
+                ["3", "Clinical hinge", "On review, link the imaging findings to the diagnosis and sports medicine decision point."],
+              ].map(([number, title, copy]) => (
+                <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                  <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
+                    {number}
+                  </div>
+                  <p className="text-sm font-semibold text-gray-900">{title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-gray-600">{copy}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              Case Image Review
             </h3>
             {hasEmbeddedReferences ? (
               <div className="space-y-4">
                 <p className="text-sm text-gray-600">
-                  Review the local teaching images first, then work through the
-                  search pattern. These images stay inside the course so the
-                  case does not depend on an external tab.
+                  Review the local teaching images and anatomy correlates first,
+                  then work through the search pattern. Use the external scroll
+                  only after you have committed to the case findings.
                 </p>
 
                 {previewImages.length > 0 && (
@@ -540,19 +582,38 @@ export default function CasePage() {
                 )}
               </div>
             ) : (
-              <p className="text-sm text-gray-600">
-                Embedded teaching images are still being added for this case.
-                Use the clinical scenario, search-pattern walkthrough, and
-                model findings here; the external source remains available for
-                faculty review.
-              </p>
+              <div className="space-y-3">
+                <p className="text-sm text-gray-600">
+                  Work the local case stem and search-pattern findings first,
+                  then use the linked external scrollable MRI examples for
+                  optional image review.
+                </p>
+                {readoutFindings.length > 0 && (
+                  <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      Image review focus
+                    </p>
+                    <ul className="mt-2 space-y-2">
+                      {readoutFindings.map((finding, index) => (
+                        <li key={`${finding.step}-${index}`} className="text-xs leading-relaxed text-gray-600">
+                          <span className="font-semibold text-gray-800">
+                            Step {finding.step}: {finding.stepName}
+                          </span>
+                          {" — "}
+                          {finding.finding}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             )}
             {caseItem.radiopaediaUrl && (
               <a
                 href={caseItem.radiopaediaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10"
+                className="mt-4 flex flex-col items-start gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10 sm:flex-row sm:items-center sm:justify-between"
               >
                 <span className="flex items-center gap-3">
                   <svg className="h-6 w-6 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
@@ -561,14 +622,14 @@ export default function CasePage() {
                   </svg>
                   <span>
                     <span className="block text-sm font-semibold text-ucla-dark">
-                      Open the full scrollable MRI on Radiopaedia
+                      {externalCaseLinkLabel}
                     </span>
                     <span className="block text-xs text-gray-500">
-                      {caseItem.radiopaediaTitle} — scroll through every slice like a workstation
+                      {externalCaseLinkCaption}
                     </span>
                   </span>
                 </span>
-                <span className="shrink-0 text-ucla-blue" aria-hidden>&#8599;</span>
+                <span className="self-end shrink-0 text-ucla-blue sm:self-center" aria-hidden>&#8599;</span>
               </a>
             )}
           </Card>
@@ -588,7 +649,7 @@ export default function CasePage() {
           </Card>
 
           <div className="flex justify-end">
-            <Button size="lg" onClick={advanceStep}>
+            <Button size="lg" className="w-full sm:w-auto" onClick={advanceStep}>
               Begin Case Walkthrough &rarr;
             </Button>
           </div>
@@ -608,7 +669,7 @@ export default function CasePage() {
         return (
           <div className="space-y-6">
             {/* Progress indicator */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium text-gray-500">
                 Step {stepNumber} of {searchPatternSteps.length}
               </p>
@@ -630,7 +691,7 @@ export default function CasePage() {
 
             {/* Step card with checklist */}
             <Card>
-              <div className="flex items-center gap-3 mb-1">
+              <div className="mb-2 flex items-start gap-3">
                 <div
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                     allChecked
@@ -644,11 +705,11 @@ export default function CasePage() {
                   {step.name}
                 </h3>
               </div>
-              <p className="text-sm text-gray-500 mb-4 pl-12">
+              <p className="mb-4 text-sm text-gray-500 sm:pl-12">
                 {step.description}
               </p>
 
-              <div className="space-y-2 pl-12">
+              <div className="space-y-3 sm:pl-12">
                 {step.checklistItems.map((item, i) => (
                   <label
                     key={i}
@@ -675,7 +736,7 @@ export default function CasePage() {
 
               {/* Pearls */}
               {step.pearls.length > 0 && (
-                <div className="mt-4 pl-12">
+                <div className="mt-4 sm:pl-12">
                   <div className="rounded-lg bg-amber-50 border border-amber-200 p-3">
                     <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">
                       Pearl{step.pearls.length > 1 ? "s" : ""}
@@ -718,6 +779,7 @@ export default function CasePage() {
                   <Button
                     variant="secondary"
                     size="sm"
+                    className="min-h-11 w-full sm:min-h-0 sm:w-auto"
                     onClick={() => revealFindings(stepNumber)}
                   >
                     Reveal Findings
@@ -814,14 +876,15 @@ export default function CasePage() {
             </Card>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
               <Button
                 variant="secondary"
+                className="min-h-11 w-full sm:w-auto"
                 onClick={() => goToStep(currentStep - 1)}
               >
                 &larr; Back
               </Button>
-              <Button onClick={advanceStep}>
+              <Button className="min-h-11 w-full sm:w-auto" onClick={advanceStep}>
                 {currentStep === searchPatternSteps.length ? "View Answer Key" : "Next Step"} &rarr;
               </Button>
             </div>
@@ -833,9 +896,9 @@ export default function CasePage() {
       {currentStep === reviewStep && (
         <div className="space-y-6">
           {submitError && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-center justify-between gap-3">
+            <div className="flex flex-col gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 sm:flex-row sm:items-center sm:justify-between">
               <span>{submitError}</span>
-              <Button size="sm" onClick={submitCase} disabled={submitting}>
+              <Button size="sm" className="min-h-11 w-full sm:min-h-0 sm:w-auto" onClick={submitCase} disabled={submitting}>
                 Retry
               </Button>
             </div>
@@ -865,6 +928,65 @@ export default function CasePage() {
                 </li>
               ))}
             </ul>
+          </Card>
+
+          <Card className="border-ucla-blue/20 bg-ucla-light/40">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              Sports Medicine Read-Out
+            </h3>
+            <div className="grid gap-4 lg:grid-cols-3">
+              <section className="rounded-lg border border-white/70 bg-white/80 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                  Call it
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {readoutDiagnoses.map((diagnosis, i) => (
+                    <li key={i} className="text-sm leading-relaxed text-gray-700">
+                      {diagnosis}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="rounded-lg border border-white/70 bg-white/80 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                  Prove it on MRI
+                </p>
+                {readoutFindings.length > 0 ? (
+                  <ul className="mt-3 space-y-2">
+                    {readoutFindings.map((finding, i) => (
+                      <li key={`${finding.step}-${i}`} className="text-sm leading-relaxed text-gray-700">
+                        <span className="font-semibold text-gray-900">Step {finding.step}, {finding.stepName}: </span>
+                        {finding.finding}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    Compare the model report against your stepwise observations.
+                  </p>
+                )}
+              </section>
+
+              <section className="rounded-lg border border-white/70 bg-white/80 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                  Clinical hinge
+                </p>
+                {clinicalHinges.length > 0 ? (
+                  <ul className="mt-3 space-y-2">
+                    {clinicalHinges.map((point, i) => (
+                      <li key={i} className="text-sm leading-relaxed text-gray-700">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    Tie the imaging pattern back to the presenting scenario.
+                  </p>
+                )}
+              </section>
+            </div>
           </Card>
 
           {caseItem.modelReport && (
@@ -1081,6 +1203,7 @@ export default function CasePage() {
           <div className="flex justify-center">
             <Button
               variant="secondary"
+              className="min-h-11 w-full sm:w-auto"
               onClick={() => setShowTryAgain(true)}
             >
               Try Again
@@ -1092,7 +1215,7 @@ export default function CasePage() {
       {/* Bottom Navigation */}
       <div className="mt-10 pt-6 border-t border-gray-200">
         <Link to={coursePath(activeCourse, "/cases")}>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" className="min-h-11 w-full sm:min-h-0 sm:w-auto">
             &larr; Back to Cases
           </Button>
         </Link>

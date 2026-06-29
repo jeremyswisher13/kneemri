@@ -364,7 +364,7 @@
     "itemType": "normal-advanced-question",
     "itemId": "elb-adv-3",
     "section": "normal-mri",
-    "title": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature confirms this is the T-sign of a partial undersurface tear rather than a normal distal synovial recess?",
+    "title": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature best supports the T-sign pattern of a partial undersurface tear rather than a normal distal synovial recess?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -381,7 +381,7 @@
     "itemType": "normal-advanced-question",
     "itemId": "elb-adv-4",
     "section": "normal-mri",
-    "title": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why is this a surgical lesion?",
+    "title": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why does this pattern deserve urgent instability-focused surgical review?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -447,7 +447,7 @@
     "itemType": "normal-advanced-question",
     "itemId": "elb-adv-8",
     "section": "normal-mri",
-    "title": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes the operation?",
+    "title": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes operative planning?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -455,7 +455,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Ulnar / cubital tunnel — anchoring the diagnosis and what changes the operation | A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps s..."
+    "textPreview": "Ulnar / cubital tunnel — anchoring the diagnosis and what changes operative planning | A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the tric..."
   },
   {
     "courseId": "elbow-mri",
@@ -579,6 +579,24 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-image-caq",
+    "itemId": "elb-caq-7",
+    "section": "normal-mri",
+    "title": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is safest?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "image-anchored",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Radiocapitellar plica - normal fold vs mechanical symptoms | On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wond..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-plane-quiz",
     "itemId": "axi-t2fs:ec-axi-q1",
     "section": "normal-mri",
@@ -643,6 +661,24 @@
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
     "textPreview": "The marked anterior beak of the proximal ulna is the keystone of post-traumatic stability. A small fracture of which part implies varus posteromedial rotatory instability? | The olecranon tip | The anteromedial coronoid facet | The radial styloid | The sublime tubercle only | ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q3",
+    "section": "normal-mri",
+    "title": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how? | A normal plica/fold unless thickened, edematous, or associated with snapping/catching | A displaced loose body until proven otherwise | A capitellar OCD instability sign b..."
   },
   {
     "courseId": "elbow-mri",
@@ -1738,7 +1774,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "Transient bone-marrow-edema syndrome vs SIFK | A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amou..."
+    "textPreview": "Transient bone-marrow-edema syndrome vs SIFH | A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amou..."
   },
   {
     "courseId": "hip-mri",
@@ -1805,7 +1841,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "AVN vs subchondral insufficiency fracture (SIFK) of the femoral head | On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids..."
+    "textPreview": "AVN vs subchondral insufficiency fracture (SIFH) of the femoral head | On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids..."
   },
   {
     "courseId": "hip-mri",
@@ -5200,6 +5236,22 @@
     "courseId": "knee-mri",
     "courseTitle": "UCLA Knee MRI Interpretation Course",
     "itemType": "review-registry-question",
+    "itemId": "shoulder-mri::scor-q13",
+    "section": "spaced-review-registry",
+    "title": "On the distal supraspinatus, why does the rotator cable/crescent concept matter?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On the distal supraspinatus, why does the rotator cable/crescent concept matter? | A. An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important | B. The cable is a normal labral variant and should..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "review-registry-question",
     "itemId": "shoulder-mri::axi-q8",
     "section": "spaced-review-registry",
     "title": "If the marked bicipital groove were EMPTY, what would that imply?",
@@ -5436,6 +5488,23 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "The marked anterior beak of the proximal ulna is the keystone of post-traumatic stability. A small fracture of which part implies varus posteromedial rotatory instability? | A. The olecranon tip | B. The anteromedial coronoid facet | C. The radial styloid | D. The sublime tube..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q3",
+    "section": "spaced-review-registry",
+    "title": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how? | A. A normal plica/fold unless thickened, edematous, or associated with snapping/catching | B. A displaced loose body until proven otherwise | C. A capitellar OCD instabili..."
   },
   {
     "courseId": "knee-mri",
@@ -5764,7 +5833,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk? | A. Coracoid transfer (Latarjet) with glenoid bone grafting |..."
+    "textPreview": "A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk? | A. Bony augmentation such as a coracoid transfer (Latarjet) ..."
   },
   {
     "courseId": "knee-mri",
@@ -6049,7 +6118,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::elb-adv-3",
     "section": "spaced-review-registry",
-    "title": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature confirms this is the T-sign of a partial undersurface tear rather than a normal distal synovial recess?",
+    "title": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature best supports the T-sign pattern of a partial undersurface tear rather than a normal distal synovial recess?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -6058,7 +6127,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature confirms this is the..."
+    "textPreview": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature best supports the T-..."
   },
   {
     "courseId": "knee-mri",
@@ -6066,7 +6135,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::elb-adv-4",
     "section": "spaced-review-registry",
-    "title": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why is this a surgical lesion?",
+    "title": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why does this pattern deserve urgent instability-focused surgical review?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -6075,7 +6144,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why is this a ..."
+    "textPreview": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why does this ..."
   },
   {
     "courseId": "knee-mri",
@@ -6132,7 +6201,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::elb-adv-8",
     "section": "spaced-review-registry",
-    "title": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes the operation?",
+    "title": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes operative planning?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -6308,6 +6377,22 @@
     "courseId": "knee-mri",
     "courseTitle": "UCLA Knee MRI Interpretation Course",
     "itemType": "review-registry-question",
+    "itemId": "shoulder-mri::sh-icaq-7",
+    "section": "spaced-review-registry",
+    "title": "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction m..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "review-registry-question",
     "itemId": "hip-mri::hicaq-1",
     "section": "spaced-review-registry",
     "title": "On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids has 6 weeks of groin pain; radiographs are normal. If this femoral head marrow instead showed a serpentine subchondral line with the classic 'double-line sign' (T2-bright inner / T2-dark outer rim) and NO sclerosis on radiograph, what is the most appropriate staging and management?",
@@ -6449,6 +6534,23 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "On this sagittal IR/STIR image, find the anterior fat pad (normally seen, hugging the coronoid fossa) and the posterior fat pad in the olecranon fossa, and sweep the coronoid fossa, olecranon fossa, and radiocapitellar recess. A 40-year-old laborer has elbow locking and catchi..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-caq-7",
+    "section": "spaced-review-registry",
+    "title": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is safest?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is saf..."
   },
   {
     "courseId": "knee-mri",
@@ -8662,7 +8764,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "Instability - glenoid bone loss | A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk? | Coracoid transfer (Latarje..."
+    "textPreview": "Instability - glenoid bone loss | A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk? | Bony augmentation such as ..."
   },
   {
     "courseId": "shoulder-mri",
@@ -8896,6 +8998,23 @@
   {
     "courseId": "shoulder-mri",
     "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-image-caq",
+    "itemId": "sh-icaq-7",
+    "section": "normal-mri",
+    "title": "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "image-anchored",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "Rotator cuff - cable/crescent | A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to..."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
     "itemType": "normal-plane-quiz",
     "itemId": "sag-t2fs:ssag-q12",
     "section": "normal-mri",
@@ -8926,6 +9045,23 @@
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
     "textPreview": "A subcortical cyst or marrow edema at the marked greater-tuberosity footprint is a soft sign of what? | Adjacent rotator cuff tear | AC joint arthrosis | Acute fracture | Normal apophysis | Correct: Adjacent rotator cuff tear | A subcortical cyst or marrow edema at the greater..."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:scor-q13",
+    "section": "normal-mri",
+    "title": "On the distal supraspinatus, why does the rotator cable/crescent concept matter?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "On the distal supraspinatus, why does the rotator cable/crescent concept matter? | An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important | The cable is a normal labral variant and should not a..."
   },
   {
     "courseId": "shoulder-mri",
@@ -12270,6 +12406,22 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-cross-plane",
+    "itemId": "exp-flexor-cor-axi",
+    "section": "normal-mri",
+    "title": "This is the common flexor-pronator origin on the coronal medial epicondyle. Find the same flexor-pronator mass in cross-section on axial.",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "This is the common flexor-pronator origin on the coronal medial epicondyle. Find the same flexor-pronator mass in cross-section on axial. | The flexor-pronator origin is medial and superficial to the UCL. On axial it sits anteromedial to the cubital tunnel, with the ulnar nerv..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-correlate",
     "itemId": "Common flexor-pronator origin",
     "section": "normal-mri",
@@ -12310,7 +12462,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "ultrasound: seen: true | appearance: The distal biceps is superficial in the antecubital fossa on US; a complete tear shows a retracted balled-up stump, while an intact lacertus tethers it — US is a quick first-line confirmation, though FABS MRI better profiles the footprint. ..."
+    "textPreview": "ultrasound: seen: true | appearance: The distal biceps is superficial in the antecubital fossa on US; a complete tear may show a retracted balled-up stump, while an intact lacertus can tether it — US can provide quick confirmation, though MRI and selected FABS imaging better p..."
   },
   {
     "courseId": "elbow-mri",
@@ -12386,22 +12538,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Watch for a structural cause that changes the operation — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps favor transposition over in-situ decompression."
-  },
-  {
-    "courseId": "elbow-mri",
-    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
-    "itemType": "normal-structure-pearl",
-    "itemId": "Triceps",
-    "section": "normal-mri",
-    "title": "Triceps",
-    "risk": "high",
-    "requiresSourceCheck": true,
-    "flags": [
-      "high-risk-keyword"
-    ],
-    "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Watch the deep central triceps fibers — they tear first while the superficial expansion stays intact, so a 'partial' triceps tear with extension weakness against resistance is still a surgical repair."
+    "textPreview": "Watch for a structural cause that can change operative planning — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps may favor transposition over in-situ decompression."
   },
   {
     "courseId": "elbow-mri",
@@ -12416,7 +12553,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Watch the anteromedial coronoid facet — a small-looking fracture implies varus posteromedial rotatory instability and is surgical; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion)."
+    "textPreview": "Watch the anteromedial coronoid facet — a small-looking fracture can imply varus posteromedial rotatory instability and should trigger surgical review; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion)."
   },
   {
     "courseId": "elbow-mri",
@@ -12437,6 +12574,21 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-pearl",
+    "itemId": "Trochlea / capitellum (articular surface)",
+    "section": "normal-mri",
+    "title": "Trochlea / capitellum (articular surface)",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Watch for a posterolateral radiocapitellar plica: a thin fold can be normal, but thickened/edematous plica with snapping/catching can mimic a loose body or OCD symptoms."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-pearl",
     "itemId": "Fat pads (coronoid & olecranon fossae)",
     "section": "normal-mri",
     "title": "Fat pads (coronoid & olecranon fossae)",
@@ -12447,6 +12599,22 @@
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
     "textPreview": "A visible posterior fat pad after adult elbow trauma is a fracture until proven otherwise — radial head first."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Ulnar collateral ligament (anterior bundle)",
+    "section": "normal-mri",
+    "title": "Ulnar collateral ligament (anterior bundle)",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "variant: A small synovial recess at the distal UCL is normal — the T-sign threshold is fluid tracking BEYOND the articular-cartilage edge, not any sliver of fluid at the attachment, and it should be interpreted with symptoms/laxity rather than as an automatic surgical indicati..."
   },
   {
     "courseId": "elbow-mri",
@@ -12478,6 +12646,22 @@
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
     "textPreview": "variant: Mild ulnar-nerve T2 hyperintensity occurs in asymptomatic elbows; there is no universal cross-sectional-area cutoff — compare to the median nerve and the contralateral side."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Trochlea / capitellum (articular surface)",
+    "section": "normal-mri",
+    "title": "Trochlea / capitellum (articular surface)",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "variant: A thin low-signal posterolateral radiocapitellar synovial plica/fold may be normal. It should not be mistaken for a loose body or an unstable OCD fragment unless it is thickened/edematous, trapped in the joint, or matches mechanical symptoms. | measure: When symptoms ..."
   },
   {
     "courseId": "elbow-mri",
@@ -12594,6 +12778,22 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-tour-step",
+    "itemId": "axi-t2fs:tour:5",
+    "section": "normal-mri",
+    "title": "Brachialis",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The brachialis is the broad anterior muscle that inserts on the coronoid/ulnar tuberosity — the primary elbow flexor, lying behind the biceps. The distal biceps tendon runs through the antecubital fossa toward its radial-tuberosity footprint; a dedicated FABS view can help whe..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
     "itemId": "axi-t2fs:tour:6",
     "section": "normal-mri",
     "title": "Triceps",
@@ -12610,6 +12810,22 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-tour-step",
+    "itemId": "axi-t2fs:tour:7",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "On axial elbow MRI, do not diagnose cubital tunnel syndrome from a bright ulnar nerve alone. Compare nerve size and signal with the median nerve and the other side, then look for denervation or a structural cause such as subluxation, an accessory anconeus epitrochlearis, a gan..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
     "itemId": "sag-ir:tour:3",
     "section": "normal-mri",
     "title": "Coronoid process",
@@ -12620,7 +12836,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "The coronoid is the anterior beak of the proximal ulna and the keystone of post-traumatic stability — the anteromedial facet fracture (small on radiographs) implies varus posteromedial rotatory instability and is surgical. The sublime tubercle on its medial aspect is the UCL's..."
+    "textPreview": "The coronoid is the anterior beak of the proximal ulna and the keystone of post-traumatic stability — an anteromedial facet fracture can look small on radiographs yet imply varus posteromedial rotatory instability, so it deserves instability-focused surgical review. The sublim..."
   },
   {
     "courseId": "elbow-mri",
@@ -12652,7 +12868,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "The anterior fat pad sits in the coronoid fossa and is normally visible; the posterior fat pad hides in the olecranon fossa and is normally NOT seen. After trauma, a displaced/elevated posterior fat pad ('sail sign' on radiograph) signals a hemarthrosis from an occult fracture..."
+    "textPreview": "The anterior fat pad sits in the coronoid fossa and is normally visible; the posterior fat pad hides in the olecranon fossa and is normally NOT seen. After trauma, an elevated anterior fat pad or any visible posterior fat pad signals an effusion/hemarthrosis from an occult fra..."
   },
   {
     "courseId": "elbow-mri",
@@ -15585,7 +15801,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "Watch for a serpiginous subchondral double-line (AVN) or a focal wedge/band of subchondral edema (SIFK) — both appear before the head loses its sphericity, and the bright fluid-sensitive signal is what gives them away on the water image."
+    "textPreview": "Watch for a serpiginous subchondral double-line (AVN) or a focal subchondral low-signal fracture band with surrounding edema (SIFH) — both can appear before the head loses its sphericity, and the water image is where the edema becomes obvious."
   },
   {
     "courseId": "hip-mri",
@@ -15651,6 +15867,21 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-reading",
+    "itemId": "Femoral head",
+    "section": "normal-mri",
+    "title": "Femoral head",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "variant: Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
     "itemId": "Acetabulum & sourcil",
     "section": "normal-mri",
     "title": "Acetabulum & sourcil",
@@ -15661,7 +15892,52 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "variant: A corticated os acetabuli with smooth margins at the anterosuperior rim is a chronic rim variant/fragment, not an acute fracture (sharp margins + marrow edema). | measure: Read coverage by the lateral center-edge angle: <~20–25° = dysplasia/undercoverage, ~25–40° = no..."
+    "textPreview": "variant: A corticated os acetabuli with smooth margins at the anterosuperior rim is a chronic rim variant/fragment, not an acute fracture (sharp margins + marrow edema). | measure: Read coverage by the lateral center-edge angle on radiographs: <20° = dysplasia/undercoverage, 2..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Sacrum & SI joint",
+    "section": "normal-mri",
+    "title": "Sacrum & SI joint",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "variant: Bilateral symmetric tiny SI-margin signal or degenerative change is not automatically inflammatory sacroiliitis. Confirm true periarticular marrow edema/erosions and keep sacral-ala insufficiency fracture in the differential for buttock or groin pain."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Sciatic nerve",
+    "section": "normal-mri",
+    "title": "Sciatic nerve",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "variant: Seeing the sciatic nerve is normal. Deep-gluteal entrapment needs a clinical posterior-pain pattern plus nerve enlargement, T2 hyperintensity, fat-plane loss, or a compressive lesion."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Joint capsule & iliofemoral ligament",
+    "section": "normal-mri",
+    "title": "Joint capsule & iliofemoral ligament",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "variant: A thin, concave anterior capsular margin is normal. Convex distension supports effusion/synovitis; capsular thickening or laxity should be interpreted with symptoms and surgical/instability history."
   },
   {
     "courseId": "hip-mri",
@@ -15694,6 +15970,22 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "The femoral neck connects head to trochanters; on this coronal slice assess the marrow signal and both cortices and follow the head-neck contour up to the junction. The tension (superolateral) side of the neck is the high-stakes location — it is where the dangerous stress frac..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
+    "itemId": "cor-t2fs:tour:11",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Before leaving the coronal stack, pause on the traps: cam or pincer morphology is not symptomatic FAI without concordant pain plus labral/cartilage injury; GTPS is usually abductor tendon disease, not bursal fluid alone; pubic marrow or aponeurotic signal can be seen in asympt..."
   },
   {
     "courseId": "hip-mri",
@@ -15742,6 +16034,22 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "On axial T2 FS the sciatic nerve is the rounded, fascicular soft-tissue structure posterior to the hip, lying just posterior to the ischium between the ischial tuberosity and greater trochanter, deep to gluteus maximus. Normal: smooth fascicular nerve, not enlarged or hyperint..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
+    "itemId": "axi:tour:8",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "On axial, do not call every labral-base cleft a tear: posteroinferior sublabral sulci/perilabral sulci and labral-shape variation are common pitfalls. Iliopsoas bursal fluid may communicate with the joint, so it can be secondary. Sciatic-neuralgia imaging needs nerve enlargeme..."
   },
   {
     "courseId": "hip-mri",
@@ -17414,7 +17722,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What is an OCD and how do I assess stability? | Osteochondritis dissecans (OCD) is an osteochondral lesion most commonly affecting the lateral aspect of the medial femoral condyle in adolescents. MRI stability assessment looks for: (1) a high-signal rim surrounding the fragmen..."
+    "textPreview": "What is an OCD and how do I assess stability? | Osteochondritis dissecans (OCD) is an osteochondral lesion most commonly affecting the lateral aspect of the medial femoral condyle in adolescents. MRI stability assessment looks for: (1) a fluid-bright rim fully undercutting the..."
   },
   {
     "courseId": "knee-mri",
@@ -19362,7 +19670,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "measure: Trochlear dysplasia, the dislocation risk factor, travels with a TT-TG distance >20 mm on axial MRI."
+    "textPreview": "measure: Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic abnormal cutoff, but MRI values vary with landmarks, slice choice, and knee position — do not use one number as a standalone surgical rule."
   },
   {
     "courseId": "knee-mri",
@@ -20813,6 +21121,36 @@
   {
     "courseId": "shoulder-mri",
     "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Anterior labrum",
+    "section": "normal-mri",
+    "title": "Anterior labrum",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "variant: Normal anterosuperior variants live around 1-3 o'clock: a sublabral foramen is a smooth anterior-superior cleft, and a Buford complex is absent anterosuperior labrum with a cord-like MGHL. Irregular detachment, periosteal stripping, or bony injury is not a variant."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Biceps in the bicipital groove",
+    "section": "normal-mri",
+    "title": "Biceps in the bicipital groove",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "variant: A thin rim of sheath fluid may communicate with the joint and be normal. The red flags are an empty groove, medial subluxation/dislocation, split tendon, or pulley/subscapularis injury."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
     "itemType": "normal-tour-step",
     "itemId": "sag-t2fs:tour:4",
     "section": "normal-mri",
@@ -20825,6 +21163,22 @@
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
     "textPreview": "The posterior cuff — infraspinatus superior, teres minor inferior. Isolated teres-minor fatty atrophy points to a quadrilateral-space / axillary-nerve problem. | Infraspinatus / teres minor"
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
+    "itemId": "axi-t2fs:tour:9",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "On axial, do the variant check before diagnosing instability: smooth 1-3 o'clock anterosuperior separation may be a sublabral foramen, and absent anterosuperior labrum with a cord-like MGHL is a Buford complex. But do not dismiss an irregular detachment, stripped periosteum, b..."
   },
   {
     "courseId": "shoulder-mri",
@@ -21656,7 +22010,7 @@
     "itemType": "normal-image-caq",
     "itemId": "icaq-3",
     "section": "normal-mri",
-    "title": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?",
+    "title": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -21665,7 +22019,24 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "Meniscal extrusion threshold for root tear | A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly sugges..."
+    "textPreview": "Meniscal extrusion threshold prompting root search | A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should stron..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "normal-image-caq",
+    "itemId": "icaq-7",
+    "section": "normal-mri",
+    "title": "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "image-anchored",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-knee-learn.ts",
+    "textPreview": "Lateral meniscus - normal pseudotears | On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis? | Sagi..."
   },
   {
     "courseId": "knee-mri",
@@ -21690,7 +22061,7 @@
     "itemType": "normal-plane-quiz",
     "itemId": "cor-pdfs:cor-q10",
     "section": "normal-mri",
-    "title": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic?",
+    "title": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -21699,7 +22070,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic? | >3 mm | >1 mm | >8 mm | Any extrusion at all | Correct: >3 mm | Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal roo..."
+    "textPreview": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search? | >3 mm | >1 mm | >8 mm | Any extrusion at all | Correct: >3 mm | Medial meniscal extrusion >3 mm beyond the tibial margin is significant a..."
   },
   {
     "courseId": "knee-mri",
@@ -21803,7 +22174,7 @@
     "itemType": "review-registry-question",
     "itemId": "knee-mri::cor-q10",
     "section": "spaced-review-registry",
-    "title": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic?",
+    "title": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -21811,7 +22182,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic? | A. >3 mm | B. >1 mm | C. >8 mm | D. Any extrusion at all | A | Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal root..."
+    "textPreview": "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search? | A. >3 mm | B. >1 mm | C. >8 mm | D. Any extrusion at all | A | Medial meniscal extrusion >3 mm beyond the tibial margin is significant an..."
   },
   {
     "courseId": "knee-mri",
@@ -22203,7 +22574,7 @@
     "itemType": "review-registry-question",
     "itemId": "knee-mri::icaq-3",
     "section": "spaced-review-registry",
-    "title": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?",
+    "title": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -22211,7 +22582,23 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear? | A. 3 m..."
+    "textPreview": "A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search? | A. 3 mm | B. 1 ..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "review-registry-question",
+    "itemId": "knee-mri::icaq-7",
+    "section": "spaced-review-registry",
+    "title": "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis? | A. Trace the popliteal hiatus/popliteomenisc..."
   },
   {
     "courseId": "knee-mri",
@@ -23071,6 +23458,22 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-cross-plane",
+    "itemId": "exp-coronoid-sag-cor",
+    "section": "normal-mri",
+    "title": "This is the coronoid process on sagittal. On the coronal image, find the medial coronoid/sublime-tubercle region where the anterior UCL inserts.",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "This is the coronoid process on sagittal. On the coronal image, find the medial coronoid/sublime-tubercle region where the anterior UCL inserts. | The coronoid is the anterior proximal-ulnar buttress. Its medial sublime tubercle is the distal attachment of the anterior UCL; th..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-pearl",
     "itemId": "Ulnar collateral ligament (anterior bundle)",
     "section": "normal-mri",
@@ -23081,7 +23484,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Watch for the T-sign — fluid undercutting the distal UCL beyond the articular-cartilage edge — the thrower's partial undersurface tear that is occult on static exam; MR arthrography is the most sensitive study."
+    "textPreview": "Watch for the T-sign — fluid undercutting the distal UCL beyond the articular-cartilage edge — which supports a thrower's partial undersurface tear in the right clinical setting; MR arthrography is the most sensitive study, but symptoms and laxity still matter."
   },
   {
     "courseId": "elbow-mri",
@@ -23101,21 +23504,6 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
-    "itemType": "normal-structure-reading",
-    "itemId": "Ulnar collateral ligament (anterior bundle)",
-    "section": "normal-mri",
-    "title": "Ulnar collateral ligament (anterior bundle)",
-    "risk": "medium",
-    "requiresSourceCheck": true,
-    "flags": [
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "variant: A small synovial recess at the distal UCL is normal — the abnormal T-sign threshold is fluid tracking BEYOND the articular-cartilage edge, not any sliver of fluid at the attachment. | measure: On dynamic valgus-stress ultrasound, a side-to-side medial gapping differen..."
-  },
-  {
-    "courseId": "elbow-mri",
-    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-tour-step",
     "itemId": "cor-t2fs:tour:5",
     "section": "normal-mri",
@@ -23127,7 +23515,23 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "The anterior bundle of the UCL is the primary valgus restraint, running from the anteroinferior medial epicondyle to the sublime tubercle of the coronoid. Normal = a thin, taut, uniformly dark band to its distal attachment. The thrower's partial undersurface tear — the T-sign ..."
+    "textPreview": "The anterior bundle of the UCL is the primary valgus restraint, running from the anteroinferior medial epicondyle to the sublime tubercle of the coronoid. Normal = a thin, taut, uniformly dark band to its distal attachment. The thrower's partial undersurface tear can produce a..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
+    "itemId": "cor-t2fs:tour:8",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Before leaving the coronal stack, pause on the normal variants: the posterolateral capitellar pseudodefect is a posterior non-articular bare-area groove, not OCD by itself; a tiny distal UCL recess is not automatically a T-sign; and mild signal near the common extensor/LCL ori..."
   },
   {
     "courseId": "elbow-mri",
@@ -23463,21 +23867,6 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-reading",
-    "itemId": "Femoral head",
-    "section": "normal-mri",
-    "title": "Femoral head",
-    "risk": "medium",
-    "requiresSourceCheck": true,
-    "flags": [
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "measure: Quantify anterosuperior asphericity as the alpha angle (cam if >55°), measured on oblique-axial-along-the-neck or radial images, never a straight axial/coronal."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "normal-structure-reading",
     "itemId": "Articular cartilage",
     "section": "normal-mri",
     "title": "Articular cartilage",
@@ -23502,7 +23891,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "variant: A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate. | measure: Estimate the percent of neck width the low-signal line crosses; a tension-side line beyon..."
+    "textPreview": "variant: A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate. | measure: For stress injury, estimate the percent of neck width crossed by the low-signal line; a s..."
   },
   {
     "courseId": "hip-mri",
@@ -23518,6 +23907,22 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "measure: On the US correlate, an anterior capsule-to-bone distance >~7 mm at the head-neck junction (or >1 mm side-to-side asymmetry) indicates effusion/synovitis."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-tour-step",
+    "itemId": "sag:tour:9",
+    "section": "normal-mri",
+    "title": "Do-not-overcall checkpoint",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Sagittal is a profile view, not the whole FAI answer. Use it to notice head-neck asphericity and the chondrolabral junction, but measure alpha angle on oblique-axial/radial images when available. A thin anterior recess can be normal; convex distension is effusion. A bright lab..."
   },
   {
     "courseId": "hip-mri",
@@ -23668,7 +24073,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What is meniscal extrusion and how do I measure it? | Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is pathologic and suggests a root tear or extensive degeneration. Gre..."
+    "textPreview": "What is meniscal extrusion and how do I measure it? | Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is clinically significant and should prompt a deliberate search for a..."
   },
   {
     "courseId": "knee-mri",
@@ -23939,7 +24344,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin flags a root tear."
+    "textPreview": "Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin is significant and should prompt a deliberate root/cartilage search; extrusion alone is not a root tear."
   },
   {
     "courseId": "knee-mri",
@@ -23999,7 +24404,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "measure: Screen for the predisposing anatomy: patella alta (Insall-Salvati >1.2) and a TT-TG distance >20 mm on axial."
+    "textPreview": "measure: Screen for predisposing anatomy: patella alta (Insall-Salvati >1.2) and elevated TT-TG. The classic >20 mm TT-TG cutoff is a risk marker, but MRI technique and landmarks can shift the value by a few millimeters."
   },
   {
     "courseId": "knee-mri",
@@ -24015,7 +24420,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is pathologic and suggests a root tear. | Medial meniscus (body) | Lateral meniscus (body)"
+    "textPreview": "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself. Laterally, do not m..."
   },
   {
     "courseId": "knee-mri",
@@ -24319,7 +24724,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "Scrutinize the 'critical zone' ~1 cm from the footprint — and the articular surface for a PASTA (partial articular-sided) tear."
+    "textPreview": "Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact."
   },
   {
     "courseId": "shoulder-mri",
@@ -24334,7 +24739,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; >20–25% glenoid bone loss favors a Latarjet over a soft-tissue repair."
+    "textPreview": "Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; substantial bone loss (often ~20–25%, with lower subcritical ranges relevant in contact athletes) supports considering bony augmentation such as Latarjet, espe..."
   },
   {
     "courseId": "shoulder-mri",
@@ -24349,7 +24754,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) suggests subcoracoid impingement of the subscapularis."
+    "textPreview": "The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) can support subcoracoid impingement of the subscapularis in the right clinical/imaging context."
   },
   {
     "courseId": "shoulder-mri",
@@ -24385,6 +24790,21 @@
     "courseId": "shoulder-mri",
     "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-reading",
+    "itemId": "Biceps & rotator interval",
+    "section": "normal-mri",
+    "title": "Biceps & rotator interval",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "variant: Mild interval signal or fluid is nonspecific. A pulley lesion needs loss/defect of the SGHL/CHL sling, medial biceps subluxation, or a matching upper-subscapularis tear pattern. | measure: In adhesive capsulitis, rotator-interval capsule thickness ≥7 mm and coracohume..."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
     "itemId": "Greater tuberosity",
     "section": "normal-mri",
     "title": "Greater tuberosity",
@@ -24394,7 +24814,22 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "measure: Acromiohumeral interval (head to acromial undersurface) on coronal: normal >7 mm; <7 mm = cuff insufficiency; <5 mm = massive tear / cuff-tear arthropathy."
+    "textPreview": "measure: Acromiohumeral interval ≤7 mm supports chronic cuff insufficiency/superior migration, especially on radiographs; MRI-based AHI is supportive but not interchangeable with a properly positioned radiographic measurement."
+  },
+  {
+    "courseId": "shoulder-mri",
+    "courseTitle": "Shoulder MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Axillary recess",
+    "section": "normal-mri",
+    "title": "Axillary recess",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-shoulder-learn.ts",
+    "textPreview": "variant: Prominent synovial folds in the U-shaped pouch can mimic loose bodies; trace them as attached folds across slices before calling a free body. | measure: Routine MRI axillary-pouch/IGHL thickness >4 mm supports adhesive capsulitis; MRA thresholds near >3 mm have been u..."
   },
   {
     "courseId": "shoulder-mri",
@@ -24426,7 +24861,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-shoulder-learn.ts",
-    "textPreview": "Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear. | Supraspinatus tendon"
+    "textPreview": "Followed along its length to the footprint — uniform low signal. Watch the hypovascular 'critical zone' ~1 cm from the footprint, where degenerative tears begin; a bright fluid gap = a tear. Also recognize the cable/crescent model: the thicker rotator cable sits just medial to..."
   },
   {
     "courseId": "shoulder-mri",

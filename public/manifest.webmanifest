@@ -1,0 +1,83 @@
+{
+  "name": "UCLA Sports MRI Courses",
+  "short_name": "UCLA MRI",
+  "description": "Interactive sports medicine MRI teaching workstations, cases, quizzes, and spaced review.",
+  "id": "/",
+  "start_url": "/?source=homescreen",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "background_color": "#F5F5F5",
+  "theme_color": "#005587",
+  "orientation": "portrait",
+  "categories": ["education", "medical"],
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa-maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Normal Knee MRI",
+      "short_name": "Knee",
+      "description": "Open the interactive normal knee MRI workstation.",
+      "url": "/courses/knee-mri/normal-knee-mri",
+      "icons": [{ "src": "/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Normal Shoulder MRI",
+      "short_name": "Shoulder",
+      "description": "Open the interactive normal shoulder MRI workstation.",
+      "url": "/courses/shoulder-mri/normal-shoulder-mri",
+      "icons": [{ "src": "/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Normal Hip MRI",
+      "short_name": "Hip",
+      "description": "Open the interactive normal hip MRI workstation.",
+      "url": "/courses/hip-mri/normal-hip-mri",
+      "icons": [{ "src": "/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Normal Elbow MRI",
+      "short_name": "Elbow",
+      "description": "Open the interactive normal elbow MRI workstation.",
+      "url": "/courses/elbow-mri/normal-elbow-mri",
+      "icons": [{ "src": "/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Spaced Review",
+      "short_name": "Review",
+      "description": "Open the knee MRI spaced review queue.",
+      "url": "/courses/knee-mri/review",
+      "icons": [{ "src": "/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

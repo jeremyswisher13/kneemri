@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
 
 // Only firebase/app + firebase/auth load here. Auth is needed immediately (login),
 // so this module is in the eager graph (AuthContext imports it). Firestore and
@@ -16,4 +16,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const authPersistenceReady = setPersistence(auth, browserLocalPersistence).catch((err) => {
+  console.warn("Firebase auth persistence unavailable; using the browser default.", err);
+});
 export default app;

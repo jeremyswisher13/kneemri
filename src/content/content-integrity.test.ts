@@ -270,6 +270,7 @@ describe.each([
   ['knee', crossPlane],
   ['shoulder', shoulderCrossPlane],
   ['hip', hipCrossPlane],
+  ['elbow', elbowCrossPlane],
 ])('%s cross-plane drill', (_label, drill) => {
   it('each item has valid answer index, candidates, coords, and slice bounds', () => {
     for (const x of drill) {

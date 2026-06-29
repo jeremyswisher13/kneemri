@@ -1,0 +1,250 @@
+export interface NormalWorkstationSeries {
+  id: string;
+  label: string;
+  plane: string;
+  dir: string;
+  count: number;
+  startIndex?: number;
+  checklist: string[];
+}
+
+export const normalKneeSeries: NormalWorkstationSeries[] = [
+  {
+    id: "sag-pdfs",
+    label: "Sagittal PD-FS",
+    plane: "Sagittal PD FS",
+    dir: "/images/teaching/stacks/normal-knee-sagittal",
+    count: 29,
+    startIndex: 13,
+    checklist: [
+      "PCL — smooth, continuous low-signal posterior arc",
+      "ACL — taut band parallel to Blumensaat's line (lateral slices)",
+      "Menisci — anterior & posterior horns; “bow-tie” on body slices; lateral pseudotears",
+      "Articular cartilage — femoral condyle & tibial plateau",
+      "Extensor mechanism — quadriceps & patellar tendons",
+      "Hoffa's fat pad and the joint recesses",
+    ],
+  },
+  {
+    id: "cor-pdfs",
+    label: "Coronal PD-FS",
+    plane: "Coronal PD FS",
+    dir: "/images/teaching/stacks/normal-knee-coronal",
+    count: 19,
+    startIndex: 7,
+    checklist: [
+      "Medial & lateral menisci — triangular body & free edge",
+      "Meniscal extrusion — medial body past the tibial margin (>3 mm is significant; inspect the roots)",
+      "MCL — superficial & deep (meniscofemoral/meniscotibial) layers",
+      "LCL, popliteus tendon/hiatus & popliteomeniscal fascicles — the lateral corner",
+      "Tibial spines / eminence & the cruciate origins (intercondylar)",
+      "Weight-bearing femoral condyle & tibial plateau cartilage",
+    ],
+  },
+  {
+    id: "axi-t2fs",
+    label: "Axial T2-FS",
+    plane: "Axial T2 FS",
+    dir: "/images/teaching/stacks/normal-knee-axial",
+    count: 28,
+    startIndex: 13,
+    checklist: [
+      "Patella & trochlea — facets and the trochlear groove (dysplasia)",
+      "Patellar & trochlear articular cartilage",
+      "MPFL — medial, coursing toward the adductor tubercle",
+      "Medial & lateral retinacula; patellar tilt / translation",
+      "Cruciates in cross-section (intercondylar notch)",
+      "Popliteal vessels and the popliteal fossa",
+    ],
+  },
+  {
+    id: "sag-t1",
+    label: "Sagittal T1",
+    plane: "Sagittal T1",
+    dir: "/images/teaching/stacks/normal-knee-sagittal-t1",
+    count: 29,
+    startIndex: 13,
+    checklist: [
+      "Bone marrow — normal bright fatty marrow (a fracture line or lesion is dark)",
+      "Anatomy & fat planes — high detail, no fat suppression",
+      "Cruciates, menisci & cartilage — morphology",
+      "Compare at the same level: T1 for anatomy/marrow, PD-FS for fluid & edema",
+    ],
+  },
+];
+
+export const normalShoulderSeries: NormalWorkstationSeries[] = [
+  {
+    id: "sag-t2fs",
+    label: "Sagittal T2-FS",
+    plane: "Oblique Sagittal T2 FS",
+    dir: "/images/teaching/stacks/normal-shoulder-sagittal",
+    count: 28,
+    startIndex: 11,
+    checklist: [
+      "Rotator-cuff muscles en face — supraspinatus, infraspinatus, subscapularis, teres minor (bulk & fatty atrophy)",
+      "Supraspinatus tendon capping the superior humeral head",
+      "Acromial morphology (type I–III) & os acromiale",
+      "Humeral head & articular cartilage",
+      "Glenoid and the labrum",
+      "Coracoid & the rotator interval (biceps + coracohumeral ligament)",
+      "Deltoid and the subacromial–subdeltoid fat plane",
+    ],
+  },
+  {
+    id: "cor-t2fs",
+    label: "Coronal T2-FS",
+    plane: "Oblique Coronal T2 FS",
+    dir: "/images/teaching/stacks/normal-shoulder-coronal",
+    count: 24,
+    startIndex: 11,
+    checklist: [
+      "Supraspinatus tendon — uniform low signal to its footprint; critical zone and rotator cable/crescent",
+      "Greater tuberosity footprint — marrow & cortical surface",
+      "Humeral head, articular cartilage & glenohumeral alignment",
+      "Glenoid and the superior/inferior labrum",
+      "Subacromial–subdeltoid bursa — should be a thin fat/fluid plane",
+      "Acromion shape & the AC joint (outlet narrowing risk)",
+      "Deltoid and the axillary recess (inferior capsule)",
+    ],
+  },
+  {
+    id: "axi-t2fs",
+    label: "Axial PD-FS",
+    plane: "Axial PD FS",
+    dir: "/images/teaching/stacks/normal-shoulder-axial",
+    count: 30,
+    startIndex: 14,
+    checklist: [
+      "Subscapularis tendon anteriorly; infraspinatus & teres minor posteriorly",
+      "Long head of biceps tendon seated in the bicipital groove",
+      "Anterior & posterior glenoid labrum — the plane for Bankart / instability",
+      "Bony glenoid and glenohumeral congruence",
+      "Posterolateral humeral head contour (the Hill-Sachs location)",
+      "Coracoid process anteromedially",
+      "Deltoid and the rotator interval superiorly",
+    ],
+  },
+  {
+    id: "sag-t1",
+    label: "Sagittal T1",
+    plane: "Oblique Sagittal T1",
+    dir: "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+    count: 28,
+    startIndex: 4,
+    checklist: [
+      "Rotator-cuff muscle bulk & fatty atrophy (Goutallier–Fuchs) on the scapular 'Y'",
+      "Supraspinatus, infraspinatus, subscapularis, teres minor — the four bellies",
+      "Humeral-head & glenoid marrow — T1's strength (a focal dark area is the finding)",
+      "Glenoid and the labral rim",
+      "Coracoid and the anterior landmarks",
+      "Acromion morphology & the AC joint",
+    ],
+  },
+];
+
+export const normalHipSeries: NormalWorkstationSeries[] = [
+  {
+    id: "cor-t2fs",
+    label: "Coronal T2-FS",
+    plane: "Coronal T2 FS Dixon",
+    dir: "/images/teaching/stacks/normal-hip-coronal",
+    count: 34,
+    startIndex: 16,
+    checklist: [
+      "Femoral heads — spherical, congruent; marrow signal symmetric",
+      "Acetabular roof (sourcil) & the joint space",
+      "Acetabular labrum — the superolateral triangle",
+      "Abductors — gluteus medius & minimus toward the greater trochanter",
+      "Greater trochanter & the peritrochanteric soft tissue (GTPS)",
+      "Femoral neck cortex & marrow (stress fracture / AVN screen)",
+      "SI joints, sacrum & the symphysis on the mid/posterior slices",
+    ],
+  },
+  {
+    id: "axi",
+    label: "Axial T2-FS",
+    plane: "Axial T2 FS",
+    dir: "/images/teaching/stacks/normal-hip-axial",
+    count: 44,
+    startIndex: 22,
+    checklist: [
+      "Femoral head & the anterior/posterior acetabular rim",
+      "Acetabular labrum — anterior & posterior (the instability/tear plane)",
+      "Iliopsoas tendon & muscle anterior to the joint",
+      "Sciatic nerve posterior to the joint / ischium",
+      "Gluteal muscles & the greater trochanter",
+      "Rectus femoris & sartorius anteriorly",
+      "Femoral neck version & the head-neck junction (cam contour)",
+    ],
+  },
+  {
+    id: "sag",
+    label: "Sagittal PD-FS",
+    plane: "Sagittal PD FS",
+    dir: "/images/teaching/stacks/normal-hip-sagittal",
+    count: 24,
+    startIndex: 12,
+    checklist: [
+      "Femoral head & neck — the anterior head-neck junction (cam contour)",
+      "Acetabulum & the anterior/posterior labrum",
+      "Iliopsoas tendon anterior to the joint",
+      "Rectus femoris origin near the AIIS",
+      "Gluteal muscles posteriorly",
+      "Hamstring origin at the ischial tuberosity",
+      "Anterior & posterior joint recesses",
+    ],
+  },
+];
+
+export const normalElbowSeries: NormalWorkstationSeries[] = [
+  {
+    id: "cor-t2fs",
+    label: "Coronal T2-FS",
+    plane: "Coronal T2 FS",
+    dir: "/images/teaching/stacks/normal-elbow-coronal",
+    count: 25,
+    startIndex: 12,
+    checklist: [
+      "Capitellum & trochlea — smooth subchondral cortex (the OCD face)",
+      "Radial head — round disc articulating with the capitellum (LATERAL)",
+      "UCL anterior bundle — medial epicondyle to the sublime tubercle",
+      "Common flexor-pronator origin off the medial epicondyle",
+      "Common extensor origin off the lateral epicondyle — trace the LUCL deep to it",
+      "Marrow signal of the distal humerus, radius, and ulna",
+    ],
+  },
+  {
+    id: "axi-t2fs",
+    label: "Axial T2-FS",
+    plane: "Axial T2 FS",
+    dir: "/images/teaching/stacks/normal-elbow-axial",
+    count: 34,
+    startIndex: 16,
+    checklist: [
+      "Ulnar nerve in the cubital tunnel (vs the median nerve / other side)",
+      "Common flexor-pronator origin (medial) in cross-section",
+      "Common extensor origin (lateral) in cross-section",
+      "Radial nerve / PIN at the radiocapitellar level",
+      "Brachialis & the distal biceps tendon anteriorly",
+      "Triceps posteriorly; the annular ligament around the radial neck",
+    ],
+  },
+  {
+    id: "sag-ir",
+    label: "Sagittal IR",
+    plane: "Sagittal IR/STIR",
+    dir: "/images/teaching/stacks/normal-elbow-sagittal",
+    count: 30,
+    startIndex: 14,
+    checklist: [
+      "Trochlea / capitellum articular contour (read OCD with the coronal)",
+      "Posterolateral radiocapitellar plica/synovial fold — normal thin fold vs symptomatic thickening",
+      "Coronoid process anteriorly (the anteromedial-facet keystone)",
+      "Olecranon & the triceps insertion posteriorly",
+      "Anterior fat pad (seen) vs posterior fat pad (normally hidden)",
+      "Brachialis & distal biceps anteriorly",
+      "Coronoid & olecranon fossae — sweep for loose bodies",
+    ],
+  },
+];

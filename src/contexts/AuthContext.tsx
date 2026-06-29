@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { onAuthStateChanged, type User } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth, authPersistenceReady } from "@/lib/firebase";
 import { getUserProfile, ensureAdminRole } from "@/lib/auth";
 import { createLocalPreviewUser, isLocalPreviewSession } from "@/lib/local-preview-auth";
 
@@ -72,30 +72,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return () => {};
     }
 
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      setUser(firebaseUser);
-      if (firebaseUser) {
-        try {
-          // Ensure admin role is set in Firestore if email is in admin list
-          await ensureAdminRole(firebaseUser);
-          const p = await getUserProfile(firebaseUser.uid);
-          setRole(p.role);
-          setSpecialty(p.specialty);
-          setShowSurgical(p.showSurgical);
-        } catch (err) {
-          console.error("Failed to load user profile:", err);
+    let unsubscribe: (() => void) | undefined;
+    let cancelled = false;
+
+    authPersistenceReady.finally(() => {
+      if (cancelled) return;
+      unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        if (cancelled) return;
+        setUser(firebaseUser);
+        if (firebaseUser) {
+          try {
+            // Ensure admin role is set in Firestore if email is in admin list
+            await ensureAdminRole(firebaseUser);
+            const p = await getUserProfile(firebaseUser.uid);
+            if (cancelled) return;
+            setRole(p.role);
+            setSpecialty(p.specialty);
+            setShowSurgical(p.showSurgical);
+          } catch (err) {
+            if (cancelled) return;
+            console.error("Failed to load user profile:", err);
+            setRole(null);
+            setSpecialty(null);
+            setShowSurgical(false);
+          }
+        } else {
           setRole(null);
           setSpecialty(null);
           setShowSurgical(false);
         }
-      } else {
-        setRole(null);
-        setSpecialty(null);
-        setShowSurgical(false);
-      }
-      setLoading(false);
+        setLoading(false);
+      });
     });
-    return unsubscribe;
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   return (

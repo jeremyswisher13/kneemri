@@ -1,5 +1,5 @@
 # Medical QA Packet: UCLA Knee MRI Interpretation Course
-Generated: 2026-06-23
+Generated: 2026-06-28
 Course ID: `knee-mri`  
 Body region: `knee`  
 Audience: Sports medicine fellows and orthopaedic residents
@@ -15,9 +15,9 @@ Audience: Sports medicine fellows and orthopaedic residents
 
 ## Automated QA Summary
 
-- Review queue items: 1319
-- High-risk keyword items: 555
-- Numeric threshold / named-criterion items: 207
+- Review queue items: 1325
+- High-risk keyword items: 559
+- Numeric threshold / named-criterion items: 211
 - Diagnostics: 0
 
 ## Course Overview
@@ -3192,7 +3192,7 @@ Guided tour:
   - Patellar tendon @ x=20, y=68
 - **6. Hoffa's fat pad** (slice 13) The fat behind the patellar tendon and in front of the joint. Normally homogeneous; edema here is a clue to anterior impingement.
   - Hoffa's (infrapatellar) fat pad @ x=24, y=60
-- **7. Meniscus — the dark bow-ties** (slice 8) On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Any bright signal reaching the surface = a tear. Two normal ligaments mimic tears at the LATERAL meniscus: the transverse (intermeniscal) ligament at the anterior horn and the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn. Each is a discrete round band crossing the joint — the cleft where it meets the meniscus is a pseudotear, so trace it to the ligament before calling a tear.
+- **7. Meniscus — the dark bow-ties** (slice 8) On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.
   - Anterior horn (meniscus) @ x=40, y=61
   - Posterior horn (meniscus) @ x=66.6, y=59.2
 - **8. Cartilage & joint fluid** (slice 7) Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal.
@@ -3276,7 +3276,7 @@ Knowledge check:
   - B. Axial
   - C. A different sagittal slice
   - D. Extrusion can't be measured on MRI
-    Explanation: Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin suggests a root tear. Build the habit of correlating planes.
+    Explanation: Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin is significant and should trigger a deliberate posterior-root search. Build the habit of correlating planes.
 
 ### Plane: cor-pdfs
 
@@ -3290,7 +3290,7 @@ Guided tour:
   - Tibial plateau @ x=40, y=61.5
 - **5. Tibial spines (intercondylar eminence)** (slice 7) The central bony peaks (intercondylar eminence) — your landmark for the true mid-joint coronal slice. The cruciates anchor in the intercondylar areas just beside the spines, not on the peaks themselves.
   - Tibial spines / eminence @ x=48, y=49
-- **6. Menisci — the wedges** (slice 7) Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is pathologic and suggests a root tear.
+- **6. Menisci — the wedges** (slice 7) Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself. Laterally, do not mistake the normal popliteus hiatus/popliteomeniscal fascicle region for a peripheral tear.
   - Medial meniscus (body) @ x=27, y=56
   - Lateral meniscus (body) @ x=69, y=55
 - **7. Weight-bearing cartilage** (slice 7) The smooth intermediate-signal layer on the condyle and plateau, outlined by a thin bright rim of joint fluid. Compare medial vs lateral for symmetry.
@@ -3355,12 +3355,12 @@ Knowledge check:
   - C. Subchondral cyst
   - D. Meniscal tear
     Explanation: Smooth cartilage over the bone ends, outlined by a thin bright fluid rim, is the normal articular surface.
-- **cor-q10:** This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered pathologic? (slice 7)
+- **cor-q10:** This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search? (slice 7)
   - A. >3 mm [CORRECT]
   - B. >1 mm
   - C. >8 mm
   - D. Any extrusion at all
-    Explanation: Medial meniscal extrusion >3 mm beyond the tibial margin is pathologic and strongly suggests a meniscal root tear.
+    Explanation: Medial meniscal extrusion >3 mm beyond the tibial margin is significant and should make you inspect the posterior root, but extrusion alone does not prove a root tear.
 - **cor-q11:** The cruciate ligaments arise near these central tibial spines. On which plane do you actually trace the ACL along Blumensaat's line? (slice 7)
   - A. Sagittal [CORRECT]
   - B. Coronal
@@ -3558,14 +3558,14 @@ Knowledge check:
 - **Extensor mechanism — top:** The quadriceps tendon is trilaminar — partial tears hide in the DEEP (vastus intermedius) layer with intact superficial fibers.
 - **Patellar tendon:** Normally a few mm thick and uniformly dark; focal thickening = tendinopathy (usually proximal), a fluid-filled gap = rupture.
 - **Hoffa's fat pad:** Edema in the superolateral fat pad is the clue to anterior (Hoffa) impingement — easy to overlook.
-- **Meniscus — the dark bow-ties:** Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.
-- **Meniscus:** Count the bow-ties on the body slices — fewer than two consecutive = absent bow-tie = bucket-handle until proven otherwise.
+- **Meniscus — the dark bow-ties:** Count the bow-ties on the body slices, then trace the lateral transverse/meniscofemoral/popliteal-hiatus relationships before calling a tear.
+- **Meniscus:** Count the bow-ties on the body slices, then inspect the lateral popliteal hiatus so a normal fascicle/hiatus does not become a false-positive tear.
 - **Cartilage & joint fluid:** A small effusion is physiologic; the cartilage surface should be smooth and uniform — follow it slice to slice.
 - **Anterior cruciate ligament:** A normal ACL parallels Blumensaat's line; if the fibers bow, sag below the roof, or go wavy/edematous, suspect a tear. Secondary signs — a deep lateral notch sign, anterior tibial translation, and pivot-shift contusions — clinch it.
 - **Posterior cruciate ligament:** Loss of the smooth PCL arc or a buckled contour points to anterior tibial translation from an ACL tear.
 - **Popliteal vessels:** Don't mistake flow-related signal for thrombus; a Baker's cyst sits medially, between the medial gastrocnemius and semimembranosus.
 - **Tibial spines (intercondylar eminence):** Use the spines as your landmark for the true mid-joint slice and the cruciate origins.
-- **Menisci — the wedges:** Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin flags a root tear.
+- **Menisci — the wedges:** Measure medial extrusion at the mid-body — >3 mm beyond the tibial margin is significant and should prompt a deliberate root/cartilage search; extrusion alone is not a root tear.
 - **Weight-bearing cartilage:** Compare medial vs lateral cartilage thickness directly — coronal makes early, subtle loss obvious.
 - **Medial collateral ligament:** Grade by depth (superficial vs deep) and note the level — proximal/femoral injuries scar; distal (Stener-like) may not.
 - **Lateral collateral ligament (LCL):** The posterolateral corner is commonly missed — trace the LCL, popliteus tendon, and popliteofibular ligament on the more posterior slices.
@@ -3579,11 +3579,11 @@ Knowledge check:
 - **Posterior cruciate ligament reading:** variant: A PCL that is thickened with diffusely increased signal but keeps its general contour is a partial/interstitial tear, not simple contusion — correlate with the posterior drawer.
 - **Medial collateral ligament reading:** measure: The superficial MCL runs from the medial femoral epicondyle to ~5–7 cm below the joint line on the tibia — trace its full length on coronal before calling it intact.
 - **Meniscus — the dark bow-ties reading:** measure: Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal.
-- **Meniscus reading:** variant: Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch).
+- **Meniscus reading:** variant: Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch). At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.
 - **Patella reading:** variant: A subchondral lucency in the SUPEROLATERAL quadrant with intact overlying cartilage is the benign dorsal defect of the patella — don't call it an osteochondral lesion or infection.
-- **Femoral trochlea reading:** measure: Trochlear dysplasia, the dislocation risk factor, travels with a TT-TG distance >20 mm on axial MRI.
+- **Femoral trochlea reading:** measure: Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic abnormal cutoff, but MRI values vary with landmarks, slice choice, and knee position — do not use one number as a standalone surgical rule.
 - **Trochlear groove reading:** measure: Read the crossing sign on the sagittal/lateral view — the trochlear-floor line crossing the anterior cortex of the lateral femoral condyle marks a flat (dysplastic) groove.
-- **MPFL / medial retinaculum reading:** measure: Screen for the predisposing anatomy: patella alta (Insall-Salvati >1.2) and a TT-TG distance >20 mm on axial.
+- **MPFL / medial retinaculum reading:** measure: Screen for predisposing anatomy: patella alta (Insall-Salvati >1.2) and elevated TT-TG. The classic >20 mm TT-TG cutoff is a risk marker, but MRI technique and landmarks can shift the value by a few millimeters.
 - **Bone marrow — T1's job reading:** variant: Patchy marrow that stays BRIGHTER than muscle and disc on T1, is symmetric, and spares the epiphyses is benign red-marrow reconversion — signal at/below muscle is the red flag for infiltration.
 - **Femoral condyle reading:** variant: An OCD interface line only as bright as cartilage (not fluid), especially in a skeletally immature knee, suggests granulation tissue and a STABLE fragment; a fluid-bright (T2) rim fully undercutting it means unstable.
 - **Cartilage & joint fluid reading:** variant: Focal meniscal/cartilage signal near 55° to B0 (e.g., posterior horn lateral meniscus by the popliteal hiatus) that brightens on short-TE PD but fades on T2 is magic-angle artifact — don't call it a tear.
@@ -3744,11 +3744,11 @@ Explanation: A normal meniscus shows the contiguous 'bow-tie' body on at most 2 
 
 A 58-year-old has acute medial knee pain. Coronal MRI shows the posterior root signal disrupted with the meniscal body displaced 4 mm beyond the tibial margin. Regarding the 3 mm extrusion threshold for a medial meniscal posterior root tear, which statement is most accurate?
 
-- A. The 3 mm threshold is highly specific but relatively insensitive, so extrusion <3 mm does not exclude a root tear [CORRECT]
+- A. The 3 mm threshold is a useful high-specificity clue but relatively insensitive, so extrusion <3 mm does not exclude a root tear [CORRECT]
 - B. The 3 mm threshold is both highly sensitive and highly specific for root tears
 - C. Extrusion is best and most reproducibly measured on sagittal rather than coronal images
 - D. Meniscal extrusion of this degree is a normal finding and requires no root evaluation
-Explanation: Coronal medial meniscal extrusion >=3 mm is highly specific (~98%) but only modestly sensitive (~50-55%) for root tears, so sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.
+Explanation: Coronal medial meniscal extrusion >=3 mm is a significant clue in many root-tear studies, but it is only modestly sensitive and should not be treated as diagnostic by itself. Sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.
 
 #### Advanced: menisci-3 · Menisci
 
@@ -3808,7 +3808,7 @@ A sports-medicine fellow measures a tibial tubercle–trochlear groove (TT-TG) d
 - B. 12 mm
 - C. 20 mm [CORRECT]
 - D. 30 mm
-Explanation: A TT-TG distance ≥20 mm is the classic abnormal threshold associated with patellar instability and is often used as a surgical indication for tubercle medialization; MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements.
+Explanation: A TT-TG distance >=20 mm is the classic abnormal threshold associated with patellar instability, but it is a risk marker rather than a standalone surgical rule. MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements, so landmarks and clinical context matter.
 
 #### Advanced: patellofemoral-2 · Patellofemoral & extensor
 
@@ -3994,9 +3994,9 @@ Plane: Sagittal PD-FS · Stack: /images/teaching/stacks/normal-knee-sagittal · 
 - D. A normal variant requiring no further evaluation
 Explanation: This band is the PCL; an intact but abnormally buckled PCL arc is a recognized secondary sign of anterior tibial translation caused by an ACL tear, not a PCL injury itself. An acute PCL tear would instead show discontinuity or increased intrasubstance signal.
 
-#### Image CAQ: icaq-3 · Meniscal extrusion threshold for root tear
+#### Image CAQ: icaq-3 · Meniscal extrusion threshold prompting root search
 
-A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body most strongly suggests an associated meniscal root tear?
+A 58-year-old felt a pop rising from a squat. On this mid-joint coronal slice, locate the medial meniscus body at the tibial margin. Measuring extrusion from the tibial cortex, beyond what amount at the mid-body should strongly prompt a posterior-root search?
 
 Plane: Coronal PD-FS · Stack: /images/teaching/stacks/normal-knee-coronal · startIndex: 7
 
@@ -4004,7 +4004,7 @@ Plane: Coronal PD-FS · Stack: /images/teaching/stacks/normal-knee-coronal · st
 - B. 1 mm
 - C. 8 mm
 - D. Any visible extrusion
-Explanation: Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is the accepted threshold that is highly specific for a posterior root tear. A 1 mm cutoff would overcall normal physiologic positioning, and requiring 8 mm would miss many true root tears, so 3 mm is the validated balance.
+Explanation: Coronal medial meniscal extrusion of 3 mm or more beyond the tibial margin is a significant clue that should send you to the posterior root, especially with a compatible history. It is not diagnostic by itself: a 1 mm cutoff would overcall normal positioning, and requiring 8 mm would miss many clinically important root injuries.
 
 #### Image CAQ: icaq-4 · MPFL tear — patellar dislocation bruise pattern
 
@@ -4041,6 +4041,18 @@ Plane: Coronal PD-FS · Stack: /images/teaching/stacks/normal-knee-coronal · st
 - C. Anterior cruciate ligament alone
 - D. Transverse intermeniscal ligament
 Explanation: This is the lateral (fibular) collateral ligament; injury here with a fibular styloid avulsion (arcuate sign) signals posterolateral corner disruption, which carries a high rate of associated PCL injury. The MCL is a medial-side structure on the opposite compartment and is not mechanically coupled to this lateral corner injury.
+
+#### Image CAQ: icaq-7 · Lateral meniscus - normal pseudotears
+
+On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?
+
+Plane: Sagittal PD-FS · Stack: /images/teaching/stacks/normal-knee-sagittal · startIndex: 8
+
+- A. Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then require surface-reaching tear signal or abnormal fascicle disruption [CORRECT]
+- B. Call any cleft near the lateral meniscus a tear because normal ligaments do not contact the meniscus
+- C. Ignore the finding entirely because lateral meniscal tears cannot occur at the posterior horn
+- D. Measure medial meniscal extrusion; if it is under 3 mm, the lateral cleft is normal by definition
+Explanation: The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across slices and call a tear only when the signal behaves like a true surface-reaching tear or the fascicles/meniscocapsular support are disrupted.
 
 #### Cross-plane: xp-meniscus
 

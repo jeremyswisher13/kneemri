@@ -13,6 +13,18 @@ import {
   type MedicalQaReviewTarget,
 } from "@/lib/medical-qa-review";
 import { isLocalPreviewSession } from "@/lib/local-preview-auth";
+import {
+  addLocalPreviewWrongAnswerToReview,
+  getLocalPreviewProgress,
+  getLocalPreviewReviewCards,
+  recordLocalPreviewCaseAttempt,
+  recordLocalPreviewModule,
+  recordLocalPreviewNormalPlane,
+  recordLocalPreviewQuiz,
+  recordLocalPreviewSurvey,
+  saveLocalPreviewReviewCard,
+} from "@/lib/local-preview-progress";
+import { normalPlaneIdsFor } from "@/lib/normal-plane-ids";
 import type {
   CaseAttemptItem,
   ModuleProgressItem,
@@ -20,28 +32,6 @@ import type {
   SurveyAttempt,
   UserProgress,
 } from "@/types/progress";
-
-// Interactive Normal MRI — the plane Knowledge Checks a fellow must pass for the
-// workstation to count as "complete". Plane passes are stored in the per-user
-// "normalKnee" subcollection keyed by these (course-disambiguated) ids; the
-// shoulder ids carry an "sh-" prefix so the two courses never collide.
-export const NORMAL_KNEE_PLANE_IDS = ["sag-pdfs", "cor-pdfs", "axi-t2fs", "sag-t1"];
-export const NORMAL_SHOULDER_PLANE_IDS = ["sh-sag-t2fs", "sh-cor-t2fs", "sh-axi-t2fs", "sh-sag-t1"];
-// Hip workstation plane passes are stored as `hip-${seriesId}` (see
-// NormalHipMriPage.handleCheckComplete). Passing every plane is required for
-// course completion and certificate eligibility for every workstation course.
-export const NORMAL_HIP_PLANE_IDS = ["hip-cor-t2fs", "hip-axi", "hip-sag"];
-export const NORMAL_ELBOW_PLANE_IDS = ["elbow-cor-t2fs", "elbow-axi-t2fs", "elbow-sag-ir"];
-export const NORMAL_KNEE_PASS_PCT = 0.7;
-
-/** The workstation plane ids for a course's bodyRegion (empty if no workstation). */
-export function normalPlaneIdsFor(bodyRegion: string): string[] {
-  if (bodyRegion === "knee") return NORMAL_KNEE_PLANE_IDS;
-  if (bodyRegion === "shoulder") return NORMAL_SHOULDER_PLANE_IDS;
-  if (bodyRegion === "hip") return NORMAL_HIP_PLANE_IDS;
-  if (bodyRegion === "elbow") return NORMAL_ELBOW_PLANE_IDS;
-  return [];
-}
 
 // --- Admin Preview Guard ---
 function isAdminPreview(): boolean {
@@ -114,6 +104,11 @@ export async function submitQuiz(
   });
 
   // Admin preview / admin-view: return real scoring without writing anything.
+  if (isLocalPreviewSession() && !skipWrite) {
+    recordLocalPreviewQuiz(quizType, answers, score, questions.length, courseId);
+    return { score, totalQuestions: questions.length, results, attemptId: "local-preview" };
+  }
+
   if (isAdminPreview() || skipWrite) {
     return { score, totalQuestions: questions.length, results, attemptId: "preview" };
   }
@@ -147,6 +142,11 @@ export async function submitSurvey(
   // When true (admin viewing directly), skip the write so test runs don't pollute data.
   skipWrite = false
 ) {
+  if (isLocalPreviewSession() && !skipWrite) {
+    recordLocalPreviewSurvey(surveyType, responses, courseId, retroResponses);
+    return { success: true };
+  }
+
   if (isAdminPreview() || skipWrite) return { success: true };
   await addDoc(collection(db, "users", userId, "surveyResponses"), {
     courseId,
@@ -189,6 +189,11 @@ export async function completeModule(
   quizTotal?: number,
   courseId: CourseId = defaultCourse.id
 ) {
+  if (isLocalPreviewSession()) {
+    recordLocalPreviewModule(moduleId, quizScore ?? null, quizTotal ?? null, courseId);
+    return { success: true };
+  }
+
   if (isAdminPreview()) return { success: true };
   const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);
   await setDoc(moduleRef, {
@@ -220,6 +225,11 @@ export async function markNormalPlanePassed(
   score: number,
   total: number,
 ) {
+  if (isLocalPreviewSession()) {
+    recordLocalPreviewNormalPlane(planeId, score, total);
+    return { success: true };
+  }
+
   if (isAdminPreview()) return { success: true };
   const ref = doc(db, "users", userId, "normalKnee", planeId);
   await setDoc(ref, {
@@ -242,6 +252,11 @@ export async function submitCaseAttempt(
   report: string,
   courseId: CourseId = defaultCourse.id
 ) {
+  if (isLocalPreviewSession()) {
+    recordLocalPreviewCaseAttempt(caseId, searchPatternChecklist, report, courseId);
+    return { success: true, attemptId: "local-preview" };
+  }
+
   if (isAdminPreview()) return { success: true, attemptId: "preview" };
   const ref = await addDoc(collection(db, "users", userId, "caseAttempts"), {
     courseId,
@@ -460,6 +475,8 @@ export async function getAllFellows(course: CourseDefinition = defaultCourse) {
 // fresh (no long-lived staleness after a progress-writing mutation).
 const progressInFlight = new Map<string, Promise<UserProgress>>();
 export function loadProgress(userId: string, course: CourseDefinition = defaultCourse): Promise<UserProgress> {
+  if (isLocalPreviewSession()) return Promise.resolve(getLocalPreviewProgress(course));
+
   const key = `${userId}:${course.id}`;
   const existing = progressInFlight.get(key);
   if (existing) return existing;
@@ -551,6 +568,8 @@ export async function saveMedicalQaReview(
 // collection read; cleared once settled so later navigations still refetch.
 let reviewCardsInFlight: { uid: string; p: Promise<ReviewCard[]> } | null = null;
 export async function getReviewCards(userId: string): Promise<ReviewCard[]> {
+  if (isLocalPreviewSession()) return getLocalPreviewReviewCards();
+  if (isAdminPreview()) return [];
   if (reviewCardsInFlight && reviewCardsInFlight.uid === userId) return reviewCardsInFlight.p;
   const p = (async () => {
     const snap = await getDocs(collection(db, "users", userId, "reviewCards"));
@@ -564,6 +583,11 @@ export async function getReviewCards(userId: string): Promise<ReviewCard[]> {
 }
 
 export async function saveReviewCard(userId: string, card: ReviewCard): Promise<void> {
+  if (isLocalPreviewSession()) {
+    saveLocalPreviewReviewCard(card);
+    return;
+  }
+
   if (isAdminPreview()) return;
   const cardRef = doc(db, "users", userId, "reviewCards", card.questionId);
   await setDoc(cardRef, {
@@ -612,6 +636,11 @@ export async function addWrongAnswerToReview(
   moduleId: string,
   courseId: CourseId = defaultCourse.id,
 ): Promise<void> {
+  if (isLocalPreviewSession()) {
+    addLocalPreviewWrongAnswerToReview(questionId, moduleId, courseId);
+    return;
+  }
+
   if (isAdminPreview()) return;
   // Check if card already exists — don't overwrite an existing card's scheduling
   // if it's not yet due (nextReviewDate is in the future).

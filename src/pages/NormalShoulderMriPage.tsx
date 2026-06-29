@@ -11,6 +11,7 @@ import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
+import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
 import NormalSeriesSelector from "@/components/normal/NormalSeriesSelector";
 import {
   normalShoulderLearn,
@@ -22,11 +23,18 @@ import {
   shoulderImageCaq,
   shoulderCrossPlane,
 } from "@/content/normal-shoulder-learn";
+import { normalShoulderSeries as SERIES } from "@/content/normal-workstation-series";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { useNormalMriResume } from "@/hooks/useNormalMriResume";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
+import {
+  NORMAL_MRI_MODE_PARAM,
+  NORMAL_MRI_SERIES_PARAM,
+  readNormalParam,
+} from "@/lib/normal-workstation-url";
 
 // Case links from the workstation must be explicitly scoped to the shoulder
 // course (otherwise CasePage resolves them against the default/knee course and
@@ -34,6 +42,7 @@ import { caseTeachingImageById } from "@/content/case-preview-images";
 const SHOULDER_CASE_BASE = coursePath(getCourseById("shoulder-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";
+const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "compare", "advanced", "caq"];
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
@@ -46,86 +55,6 @@ const MODES: { id: Mode; label: string }[] = [
  * Add a SERIES entry per plane/sequence as the stacks are captured.
  */
 
-interface ShoulderSeries {
-  id: string;
-  label: string;
-  plane: string;
-  dir: string;
-  count: number;
-  startIndex?: number;
-  checklist: string[];
-}
-
-const SERIES: ShoulderSeries[] = [
-  {
-    id: "sag-t2fs",
-    label: "Sagittal T2-FS",
-    plane: "Oblique Sagittal T2 FS",
-    dir: "/images/teaching/stacks/normal-shoulder-sagittal",
-    count: 28,
-    startIndex: 11, // opens mid-humeral-head
-    checklist: [
-      "Rotator-cuff muscles en face — supraspinatus, infraspinatus, subscapularis, teres minor (bulk & fatty atrophy)",
-      "Supraspinatus tendon capping the superior humeral head",
-      "Acromial morphology (type I–III) & os acromiale",
-      "Humeral head & articular cartilage",
-      "Glenoid and the labrum",
-      "Coracoid & the rotator interval (biceps + coracohumeral ligament)",
-      "Deltoid and the subacromial–subdeltoid fat plane",
-    ],
-  },
-  {
-    id: "cor-t2fs",
-    label: "Coronal T2-FS",
-    plane: "Oblique Coronal T2 FS",
-    dir: "/images/teaching/stacks/normal-shoulder-coronal",
-    count: 24,
-    startIndex: 11, // opens at the mid-glenohumeral joint
-    checklist: [
-      "Supraspinatus tendon — uniform low signal to its footprint; critical zone and rotator cable/crescent",
-      "Greater tuberosity footprint — marrow & cortical surface",
-      "Humeral head, articular cartilage & glenohumeral alignment",
-      "Glenoid and the superior/inferior labrum",
-      "Subacromial–subdeltoid bursa — should be a thin fat/fluid plane",
-      "Acromion shape & the AC joint (outlet narrowing risk)",
-      "Deltoid and the axillary recess (inferior capsule)",
-    ],
-  },
-  {
-    id: "axi-t2fs",
-    label: "Axial PD-FS",
-    plane: "Axial PD FS",
-    dir: "/images/teaching/stacks/normal-shoulder-axial",
-    count: 30,
-    startIndex: 14, // opens at the mid-glenohumeral joint (glenoid, labrum, biceps groove)
-    checklist: [
-      "Subscapularis tendon anteriorly; infraspinatus & teres minor posteriorly",
-      "Long head of biceps tendon seated in the bicipital groove",
-      "Anterior & posterior glenoid labrum — the plane for Bankart / instability",
-      "Bony glenoid and glenohumeral congruence",
-      "Posterolateral humeral head contour (the Hill-Sachs location)",
-      "Coracoid process anteromedially",
-      "Deltoid and the rotator interval superiorly",
-    ],
-  },
-  {
-    id: "sag-t1",
-    label: "Sagittal T1",
-    plane: "Oblique Sagittal T1",
-    dir: "/images/teaching/stacks/normal-shoulder-sagittal-t1",
-    count: 28,
-    startIndex: 4, // opens on the scapular "Y" / cuff-muscle slice (Goutallier)
-    checklist: [
-      "Rotator-cuff muscle bulk & fatty atrophy (Goutallier–Fuchs) on the scapular 'Y'",
-      "Supraspinatus, infraspinatus, subscapularis, teres minor — the four bellies",
-      "Humeral-head & glenoid marrow — T1's strength (a focal dark area is the finding)",
-      "Glenoid and the labral rim",
-      "Coracoid and the anterior landmarks",
-      "Acromion morphology & the AC joint",
-    ],
-  },
-];
-
 // All four planes are loaded.
 const COMING_SOON: string[] = [];
 
@@ -133,8 +62,13 @@ export default function NormalShoulderMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
   const isAdminView = useIsAdminView();
-  const [activeId, setActiveId] = useState(SERIES[0].id);
-  const [mode, setMode] = useState<Mode>("explore");
+  const initialSearch = typeof window === "undefined" ? "" : window.location.search;
+  const [activeId, setActiveId] = useState(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_SERIES_PARAM, SERIES.map((s) => s.id), SERIES[0].id),
+  );
+  const [mode, setMode] = useState<Mode>(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_MODE_PARAM, RESTORABLE_MODES, "explore"),
+  );
   const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalShoulderLearn[series.id];
@@ -185,6 +119,15 @@ export default function NormalShoulderMriPage() {
   const visibleModes = isAdmin
     ? [...baseModes, { id: "adjust" as Mode, label: "Adjust (admin)" }]
     : baseModes;
+  const modeLabel = visibleModes.find((item) => item.id === mode)?.label ?? "Explore";
+  useNormalMriResume({
+    courseId: "shoulder-mri",
+    title: "Interactive Normal Shoulder MRI",
+    modeId: mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+  });
 
   const slices = useMemo(
     () =>
@@ -211,6 +154,14 @@ export default function NormalShoulderMriPage() {
       />
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
+
+      <NormalMriMasteryPanel
+        courseId="shoulder-mri"
+        activeMode={mode}
+        activeModeLabel={modeLabel}
+        seriesLabel={series.label}
+        availableModes={visibleModes}
+      />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

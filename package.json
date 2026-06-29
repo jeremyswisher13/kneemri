@@ -11,6 +11,7 @@
     "test": "tsc --noEmit -p tsconfig.test.json && vitest run",
     "test:watch": "vitest",
     "test:types": "tsc --noEmit -p tsconfig.test.json",
+    "test:normal": "vitest run src/content/normal-workstation-regression.test.ts src/components/normal",
     "gen:metas": "node scripts/gen-content-metas.mjs",
     "qa:medical": "node scripts/export-medical-qa.mjs"
   },

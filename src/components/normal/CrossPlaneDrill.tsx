@@ -24,6 +24,17 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+function sourceLabelClass(point: { x: number; y: number }) {
+  const vertical = point.y > 75 ? "bottom-5" : "top-5";
+  const horizontal =
+    point.x < 25
+      ? "left-0 translate-x-0 text-left"
+      : point.x > 75
+        ? "right-0 translate-x-0 text-right"
+        : "left-1/2 -translate-x-1/2 text-center";
+  return `${vertical} ${horizontal}`;
+}
+
 /**
  * Cross-plane correlation drill — a structure is labeled on one plane (FROM) and
  * the learner finds the SAME structure on a different plane (TO). Two difficulties:
@@ -139,6 +150,18 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     (diff === "mc"
       ? pickedIdx === item.to.answer
       : clickPct !== null && nearestCandidate(clickPct.x, clickPct.y) === item.to.answer);
+  const answerDisplayPos = order.indexOf(item.to.answer);
+  const pickedDisplayPos = pickedIdx === null ? -1 : order.indexOf(pickedIdx);
+  const answerLetter = answerDisplayPos >= 0 ? LETTERS[answerDisplayPos] : "?";
+  const pickedLetter = pickedDisplayPos >= 0 ? LETTERS[pickedDisplayPos] : "?";
+  const responseSummary =
+    diff === "mc"
+      ? correct
+        ? `You chose option ${answerLetter}.`
+        : `You chose option ${pickedLetter}; correct is option ${answerLetter}.`
+      : correct
+        ? "Your click landed in the target region."
+        : "Green ring marks the target; red dot marks your click.";
 
   function commit(isRight: boolean) {
     setAnswered(true);
@@ -177,16 +200,28 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     return "bg-white/40 text-gray-500 ring-white/60";
   }
 
+  function candPanelClass(candIdx: number) {
+    if (!answered) return "border-ucla-blue/25 bg-white text-ucla-blue shadow-sm";
+    if (candIdx === item.to.answer) return "border-green-400 bg-green-50 text-green-800";
+    if (candIdx === pickedIdx) return "border-red-400 bg-red-50 text-red-800";
+    return "border-gray-200 bg-gray-50 text-gray-500";
+  }
+
   return (
     <div>
       {/* difficulty toggle + progress */}
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <div className="inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-xs">
+        <div
+          role="group"
+          aria-label="Cross-plane difficulty"
+          className="inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-xs"
+        >
           {(coarse ? (["mc"] as Diff[]) : (["mc", "free"] as Diff[])).map((d) => (
             <button
               key={d}
               type="button"
               onClick={() => changeDiff(d)}
+              aria-pressed={diff === d}
               className={`min-h-9 rounded-md px-3 py-1.5 font-medium transition-colors lg:min-h-0 lg:px-2.5 lg:py-1 ${
                 diff === d ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
               }`}
@@ -206,6 +241,15 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
         />
       </span>
 
+      <div className="mt-3 rounded-lg border border-ucla-blue/15 bg-ucla-light/50 px-3 py-2 text-sm">
+        <p className="font-semibold text-[#003B5C]">Track the labeled structure across planes</p>
+        <p className="mt-0.5 text-xs leading-relaxed text-gray-600">
+          Find <span className="font-semibold text-gray-800">{item.from.label}</span> on{" "}
+          <span className="font-semibold text-gray-800">{item.to.plane}</span>. Use the source marker as
+          your 3-D anchor, then pick the matching target on the paired image.
+        </p>
+      </div>
+
       <div className="mt-4 grid gap-5 lg:grid-cols-2">
         {/* FROM — labeled structure */}
         <div>
@@ -224,7 +268,11 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               style={{ left: `${item.from.x}%`, top: `${item.from.y}%` }}
             >
               <span className="block h-3.5 w-3.5 animate-pulse rounded-full bg-ucla-gold ring-2 ring-white shadow" />
-              <span className="absolute left-1/2 top-5 -translate-x-1/2 whitespace-nowrap rounded bg-ucla-gold px-1.5 py-0.5 text-[10px] font-semibold text-[#3a2d00] shadow">
+              <span
+                className={`absolute max-w-44 rounded bg-ucla-gold px-1.5 py-0.5 text-[10px] font-semibold leading-tight text-[#3a2d00] shadow ${sourceLabelClass(
+                  item.from,
+                )}`}
+              >
                 {item.from.label}
               </span>
             </span>
@@ -250,28 +298,43 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               draggable={false}
             />
 
-            {/* Multiple-choice candidates */}
+            {/* Multiple-choice candidates. On phones, the image letters are visual anchors only;
+                the separate answer row below avoids overlapping thumb targets on tight anatomy. */}
             {diff === "mc" &&
               order.map((candIdx, pos) => {
                 const c = item.to.candidates[candIdx];
                 return (
-                  <button
-                    key={candIdx}
-                    type="button"
-                    disabled={answered}
-                    onClick={() => chooseMc(candIdx)}
-                    aria-label={`Option ${LETTERS[pos]}`}
-                    className="absolute grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center lg:h-7 lg:w-7"
-                    style={{ left: `${c.x}%`, top: `${c.y}%` }}
-                  >
+                  <span key={candIdx}>
                     <span
-                      className={`grid h-7 w-7 place-items-center rounded-full text-xs font-bold shadow ring-2 transition-transform ${candClass(
-                        candIdx,
-                      )}`}
+                      aria-hidden="true"
+                      className="pointer-events-none absolute grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center lg:hidden"
+                      style={{ left: `${c.x}%`, top: `${c.y}%` }}
                     >
-                      {LETTERS[pos]}
+                      <span
+                        className={`grid h-7 w-7 place-items-center rounded-full text-xs font-bold shadow ring-2 transition-transform ${candClass(
+                          candIdx,
+                        )}`}
+                      >
+                        {LETTERS[pos]}
+                      </span>
                     </span>
-                  </button>
+                    <button
+                      type="button"
+                      disabled={answered}
+                      onClick={() => chooseMc(candIdx)}
+                      aria-label={`Option ${LETTERS[pos]} on ${item.to.plane}`}
+                      className="absolute hidden h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center lg:grid"
+                      style={{ left: `${c.x}%`, top: `${c.y}%` }}
+                    >
+                      <span
+                        className={`grid h-7 w-7 place-items-center rounded-full text-xs font-bold shadow ring-2 transition-transform ${candClass(
+                          candIdx,
+                        )}`}
+                      >
+                        {LETTERS[pos]}
+                      </span>
+                    </button>
+                  </span>
                 );
               })}
 
@@ -293,6 +356,29 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               </>
             )}
           </div>
+          {diff === "mc" && (
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:hidden">
+              {order.map((candIdx, pos) => (
+                <button
+                  key={candIdx}
+                  type="button"
+                  disabled={answered}
+                  onClick={() => chooseMc(candIdx)}
+                  aria-label={`Choose option ${LETTERS[pos]} on ${item.to.plane}`}
+                  className={`min-h-11 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors disabled:cursor-default ${candPanelClass(
+                    candIdx,
+                  )}`}
+                >
+                  Option {LETTERS[pos]}
+                </button>
+              ))}
+            </div>
+          )}
+          {diff === "mc" && !answered && (
+            <p className="mt-1.5 text-xs text-gray-500">
+              Pick the letter sitting over the same normal structure.
+            </p>
+          )}
           {diff === "free" && !answered && (
             <p className="mt-1.5 text-xs text-gray-500">No labels — click where the structure is.</p>
           )}
@@ -312,6 +398,7 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               ? "Correct — same structure, different plane."
               : `Not quite — the correct structure is highlighted in green.`}
           </p>
+          <p className="mt-1 text-xs font-medium text-gray-500">{responseSummary}</p>
           <p className="mt-1 text-sm text-gray-600">{item.explanation}</p>
         </div>
       )}

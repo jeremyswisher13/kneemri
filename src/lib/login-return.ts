@@ -1,3 +1,5 @@
+import { isLikelyIosDevice, type RedirectSignInHints } from "@/lib/pwa";
+
 export const LOGIN_RETURN_TO_KEY = "loginReturnTo";
 export const LOGIN_RETURN_TO_PARAM = "returnTo";
 
@@ -34,6 +36,12 @@ export function returnPathFromLocation(state: unknown, search: string): string {
   return fromState === "/" ? returnPathFromSearch(search) : fromState;
 }
 
+export function loginPathForReturnTo(path: string): string {
+  const safeReturnTo = safeInternalPath(path);
+  if (safeReturnTo === "/") return "/login";
+  return `/login?${LOGIN_RETURN_TO_PARAM}=${encodeURIComponent(safeReturnTo)}`;
+}
+
 export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): string | null {
   const url = new URL(href);
   if (url.hostname !== "127.0.0.1") return null;
@@ -50,9 +58,14 @@ export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): s
   return url.toString();
 }
 
-export function shouldUseRedirectSignIn(href: string): boolean {
+export function shouldUseRedirectSignIn(href: string, hints: RedirectSignInHints = {}): boolean {
   const url = new URL(href);
-  return url.hostname === "localhost" || url.hostname === "127.0.0.1";
+  return (
+    url.hostname === "localhost" ||
+    url.hostname === "127.0.0.1" ||
+    hints.standalone === true ||
+    isLikelyIosDevice(hints)
+  );
 }
 
 export function rememberReturnPath(storage: ReturnPathStorage, path: string) {

@@ -3,6 +3,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import RoleSelection from "@/components/ui/RoleSelection";
 import SpecialtySelection from "@/components/ui/SpecialtySelection";
 import PageLoader from "@/components/ui/PageLoader";
+import { loginPathForReturnTo } from "@/lib/login-return";
 
 interface ProtectedRouteProps {
   requireAdmin?: boolean;
@@ -18,7 +19,13 @@ export default function ProtectedRoute({ requireAdmin = false, children }: Prote
   }
 
   if (!user) {
-    return <Navigate to="/login" replace state={{ from: location }} />;
+    return (
+      <Navigate
+        to={loginPathForReturnTo(`${location.pathname}${location.search}${location.hash}`)}
+        replace
+        state={{ from: location }}
+      />
+    );
   }
 
   if (requireAdmin && role !== "admin") {

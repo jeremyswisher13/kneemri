@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23",
+  "generatedAt": "2026-06-28",
   "courses": {
     "knee-mri": {
       "title": "UCLA Knee MRI Interpretation Course",
@@ -9,11 +9,11 @@
       "normalPlanes": 4,
       "normalPlaneQuizItems": 45,
       "advancedItems": 36,
-      "imageCaqItems": 6,
+      "imageCaqItems": 7,
       "redFlags": 5,
-      "reviewItems": 1319,
-      "highRiskItems": 555,
-      "sourceCheckItems": 654,
+      "reviewItems": 1325,
+      "highRiskItems": 559,
+      "sourceCheckItems": 660,
       "diagnostics": 0
     },
     "shoulder-mri": {
@@ -22,13 +22,13 @@
       "cases": 8,
       "prePostQuizItems": 22,
       "normalPlanes": 4,
-      "normalPlaneQuizItems": 46,
+      "normalPlaneQuizItems": 47,
       "advancedItems": 34,
-      "imageCaqItems": 6,
+      "imageCaqItems": 7,
       "redFlags": 5,
-      "reviewItems": 541,
-      "highRiskItems": 182,
-      "sourceCheckItems": 239,
+      "reviewItems": 552,
+      "highRiskItems": 187,
+      "sourceCheckItems": 246,
       "diagnostics": 0
     },
     "hip-mri": {
@@ -41,9 +41,9 @@
       "advancedItems": 12,
       "imageCaqItems": 6,
       "redFlags": 5,
-      "reviewItems": 483,
-      "highRiskItems": 299,
-      "sourceCheckItems": 338,
+      "reviewItems": 492,
+      "highRiskItems": 305,
+      "sourceCheckItems": 344,
       "diagnostics": 0
     },
     "elbow-mri": {
@@ -52,20 +52,20 @@
       "cases": 8,
       "prePostQuizItems": 24,
       "normalPlanes": 3,
-      "normalPlaneQuizItems": 7,
+      "normalPlaneQuizItems": 8,
       "advancedItems": 10,
-      "imageCaqItems": 6,
+      "imageCaqItems": 7,
       "redFlags": 5,
-      "reviewItems": 371,
-      "highRiskItems": 301,
-      "sourceCheckItems": 326,
+      "reviewItems": 385,
+      "highRiskItems": 308,
+      "sourceCheckItems": 334,
       "diagnostics": 0
     }
   },
   "totals": {
-    "reviewItems": 2714,
-    "highRiskItems": 1337,
-    "sourceCheckItems": 1557,
+    "reviewItems": 2754,
+    "highRiskItems": 1359,
+    "sourceCheckItems": 1584,
     "diagnostics": 0,
     "diagnosticErrors": 0,
     "diagnosticWarnings": 0

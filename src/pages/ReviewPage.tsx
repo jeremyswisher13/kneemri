@@ -37,6 +37,7 @@ export default function ReviewPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [nextReviewDate, setNextReviewDate] = useState<string | null>(null);
@@ -44,6 +45,7 @@ export default function ReviewPage() {
 
   useEffect(() => {
     if (!user) return;
+    let cancelled = false;
     setLoading(true);
     setSessionComplete(false);
     setCurrentIndex(0);
@@ -51,15 +53,28 @@ export default function ReviewPage() {
     setShowFeedback(false);
     setReviewedCards([]);
     setNextReviewDate(null);
+    setLoadError(null);
     setSaveError(null);
     getDueCards(user.uid, activeCourse)
       .then((cards) => {
+        if (cancelled) return;
         // Drop cards whose question no longer exists in any bank.
         const valid = cards.filter((c) => reviewQuestionById[c.questionId]);
         setDueCards(valid);
         if (valid.length === 0) setSessionComplete(true);
       })
-      .finally(() => setLoading(false));
+      .catch(() => {
+        if (cancelled) return;
+        setDueCards([]);
+        setSessionComplete(true);
+        setLoadError("Review cards could not be loaded. Check your connection and try again.");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [user, activeCourse]);
 
   const currentCard = dueCards[currentIndex] ?? null;
@@ -136,11 +151,19 @@ export default function ReviewPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">No review cards yet</h3>
-            <p className="mx-auto mt-2 max-w-md text-sm text-gray-500">
-              Anything you miss — on a module quiz, a Normal MRI Knowledge Check, or an Advanced
-              question — lands here and comes back on a spaced schedule so it sticks.
-            </p>
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              {loadError ? "Review is temporarily unavailable" : "No review cards yet"}
+            </h3>
+            {loadError ? (
+              <p role="alert" className="mx-auto mt-2 max-w-md text-sm text-gray-500">
+                {loadError}
+              </p>
+            ) : (
+              <p className="mx-auto mt-2 max-w-md text-sm text-gray-500">
+                Anything you miss — on a module quiz, a Normal MRI Knowledge Check, or an Advanced
+                question — lands here and comes back on a spaced schedule so it sticks.
+              </p>
+            )}
             <div className="mt-6 flex justify-center gap-2">
               <Link to={coursePath(activeCourse, "/modules")}>
                 <Button variant="secondary" size="sm">Go to Modules</Button>

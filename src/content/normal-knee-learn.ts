@@ -959,7 +959,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
           { x: 66.6, y: 59.2, label: "Posterior horn (meniscus)" },
         ],
         title: "Meniscus — the dark bow-ties",
-        note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Any bright signal reaching the surface = a tear. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
+        note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
       },
       {
         sliceIndex: 7,

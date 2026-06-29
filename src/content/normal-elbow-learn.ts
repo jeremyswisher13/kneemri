@@ -65,7 +65,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 12,
         markers: [{ x: 37, y: 56, label: "UCL (anterior bundle)" }],
         title: "Ulnar collateral ligament (anterior bundle)",
-        note: "The anterior bundle of the UCL is the primary valgus restraint, running from the anteroinferior medial epicondyle to the sublime tubercle of the coronoid. Normal = a thin, taut, uniformly dark band to its distal attachment. The thrower's partial undersurface tear — the T-sign — is fluid undercutting these distal fibers beyond the articular-cartilage edge.",
+        note: "The anterior bundle of the UCL is the primary valgus restraint, running from the anteroinferior medial epicondyle to the sublime tubercle of the coronoid. Normal = a thin, taut, uniformly dark band to its distal attachment. The thrower's partial undersurface tear can produce a T-sign: fluid undercutting these distal fibers beyond the articular-cartilage edge.",
       },
       {
         sliceIndex: 12,
@@ -78,6 +78,12 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         markers: [{ x: 69, y: 44, label: "Common extensor origin" }],
         title: "Common extensor origin",
         note: "The common extensor tendon (ECRB) arises off the lateral epicondyle — the site of lateral epicondylitis (tennis elbow). The LUCL/RCL origin lies deep to it, so always trace the LUCL to the supinator crest: a deep extensor tear that takes the LUCL implies posterolateral rotatory instability.",
+      },
+      {
+        sliceIndex: 12,
+        markers: [],
+        title: "Do-not-overcall checkpoint",
+        note: "Before leaving the coronal stack, pause on the normal variants: the posterolateral capitellar pseudodefect is a posterior non-articular bare-area groove, not OCD by itself; a tiny distal UCL recess is not automatically a T-sign; and mild signal near the common extensor/LCL origin needs a real tear pattern before you call instability. Orthogonal confirmation is the habit.",
       },
     ],
     quiz: [
@@ -99,7 +105,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         options: ["Lateral ulnar collateral ligament", "Anterior bundle of the UCL", "Annular ligament", "Common extensor tendon"],
         answer: 1,
         explanation:
-          "The anterior bundle of the UCL is the primary valgus restraint, inserting on the sublime tubercle — where the thrower's undersurface (T-sign) tear occurs. The LUCL is the lateral restraint to posterolateral rotatory instability.",
+          "The anterior bundle of the UCL is the primary valgus restraint, inserting on the sublime tubercle — where the thrower's undersurface (T-sign) tear classically occurs. The LUCL is the lateral restraint to posterolateral rotatory instability.",
       },
       {
         id: "ec-cor-q3",
@@ -132,7 +138,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 16,
         markers: [{ x: 20, y: 61, label: "Ulnar nerve (cubital tunnel)" }],
         title: "Ulnar nerve (cubital tunnel)",
-        note: "The ulnar nerve sits in the cubital tunnel posterior to the medial epicondyle, beneath Osborne's retinaculum. Normal = an ovoid nerve of caliber and signal similar to the median nerve and the contralateral side. Assess for flexion subluxation, an anconeus epitrochlearis, or a ganglion — a structural cause that tips surgery from in-situ decompression toward transposition. (Mild T2 brightness alone can be normal.)",
+        note: "The ulnar nerve sits in the cubital tunnel posterior to the medial epicondyle, beneath Osborne's retinaculum. Normal = an ovoid nerve of caliber and signal similar to the median nerve and the contralateral side. Assess for flexion subluxation, an anconeus epitrochlearis, or a ganglion — a structural cause can shift operative planning from in-situ decompression toward transposition. (Mild T2 brightness alone can be normal.)",
       },
       {
         sliceIndex: 16,
@@ -150,13 +156,19 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 16,
         markers: [{ x: 45, y: 33, label: "Brachialis" }],
         title: "Brachialis",
-        note: "The brachialis is the broad anterior muscle that inserts on the coronoid/ulnar tuberosity — the primary elbow flexor, lying behind the biceps. The distal biceps tendon runs through the antecubital fossa toward its radial-tuberosity footprint (best profiled on a dedicated FABS view).",
+        note: "The brachialis is the broad anterior muscle that inserts on the coronoid/ulnar tuberosity — the primary elbow flexor, lying behind the biceps. The distal biceps tendon runs through the antecubital fossa toward its radial-tuberosity footprint; a dedicated FABS view can help when routine axial/sagittal images leave partial-vs-complete tear status uncertain.",
       },
       {
         sliceIndex: 16,
         markers: [{ x: 50, y: 82, label: "Triceps" }],
         title: "Triceps",
         note: "The triceps occupies the posterior compartment and inserts broadly on the olecranon. Its deep central fibers can tear first while the superficial expansion stays intact — so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head subluxing with the ulnar nerve (snapping triceps).",
+      },
+      {
+        sliceIndex: 16,
+        markers: [],
+        title: "Do-not-overcall checkpoint",
+        note: "On axial elbow MRI, do not diagnose cubital tunnel syndrome from a bright ulnar nerve alone. Compare nerve size and signal with the median nerve and the other side, then look for denervation or a structural cause such as subluxation, an accessory anconeus epitrochlearis, a ganglion, or snapping triceps. For distal biceps, routine axial images matter, and FABS is a problem-solving view rather than a replacement.",
       },
     ],
     quiz: [
@@ -168,7 +180,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         options: ["T2 signal alone", "Caliber change + muscle denervation + clinical correlation", "Any anterior position of the nerve", "The presence of a normal Osborne retinaculum"],
         answer: 1,
         explanation:
-          "The ulnar nerve in the cubital tunnel can show mild T2 brightness normally, so anchor the call to nerve enlargement PLUS FCU/ulnar-intrinsic denervation PLUS clinical correlation — and look for a structural cause (subluxation, accessory muscle) that changes the operation.",
+          "The ulnar nerve in the cubital tunnel can show mild T2 brightness normally, so anchor the call to nerve enlargement PLUS FCU/ulnar-intrinsic denervation PLUS clinical correlation — and look for a structural cause (subluxation, accessory muscle) that can change operative planning.",
       },
       {
         id: "ec-axi-q2",
@@ -207,7 +219,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 14,
         markers: [{ x: 45, y: 60, label: "Coronoid process" }],
         title: "Coronoid process",
-        note: "The coronoid is the anterior beak of the proximal ulna and the keystone of post-traumatic stability — the anteromedial facet fracture (small on radiographs) implies varus posteromedial rotatory instability and is surgical. The sublime tubercle on its medial aspect is the UCL's distal attachment.",
+        note: "The coronoid is the anterior beak of the proximal ulna and the keystone of post-traumatic stability — an anteromedial facet fracture can look small on radiographs yet imply varus posteromedial rotatory instability, so it deserves instability-focused surgical review. The sublime tubercle on its medial aspect is the UCL's distal attachment.",
       },
       {
         sliceIndex: 14,
@@ -217,9 +229,12 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 14,
-        markers: [{ x: 47, y: 38, label: "Anterior fat pad" }],
+        markers: [
+          { x: 47, y: 38, label: "Anterior fat pad" },
+          { x: 62, y: 40, label: "Olecranon fossa / posterior fat-pad location" },
+        ],
         title: "Fat pads (coronoid & olecranon fossae)",
-        note: "The anterior fat pad sits in the coronoid fossa and is normally visible; the posterior fat pad hides in the olecranon fossa and is normally NOT seen. After trauma, a displaced/elevated posterior fat pad ('sail sign' on radiograph) signals a hemarthrosis from an occult fracture until proven otherwise.",
+        note: "The anterior fat pad sits in the coronoid fossa and is normally visible; the posterior fat pad hides in the olecranon fossa and is normally NOT seen. After trauma, an elevated anterior fat pad or any visible posterior fat pad signals an effusion/hemarthrosis from an occult fracture until proven otherwise.",
       },
       {
         sliceIndex: 14,
@@ -227,12 +242,18 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         title: "Brachialis & distal biceps (anterior)",
         note: "Anteriorly, the brachialis fills the antecubital fossa and the distal biceps tendon dives toward its radial-tuberosity footprint. A complete biceps tear retracts UNLESS an intact lacertus fibrosus tethers it — so on a dedicated FABS view, report partial-vs-complete, the retraction distance, and the lacertus.",
       },
+      {
+        sliceIndex: 14,
+        markers: [],
+        title: "Do-not-overcall checkpoint",
+        note: "On sagittal images, a thin posterolateral radiocapitellar plica can be normal, and a capitellar contour finding still needs the coronal face before you call OCD. A visible posterior fat pad after trauma is abnormal, but a normally seen anterior fat pad is not. For distal biceps/triceps tears, describe continuity, gap/retraction, and functional-grade clues rather than relying on one plane.",
+      },
     ],
     quiz: [
       {
         id: "ec-sag-q1",
         sliceIndex: 14,
-        marker: { x: 47, y: 38 },
+        marker: { x: 62, y: 40 },
         prompt: "After elbow trauma with a normal radiograph, which fat-pad finding signals an occult fracture until proven otherwise?",
         options: ["A visible anterior fat pad", "A displaced/elevated POSTERIOR fat pad", "Absence of the anterior fat pad", "A small joint effusion alone"],
         answer: 1,
@@ -247,7 +268,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         options: ["The olecranon tip", "The anteromedial coronoid facet", "The radial styloid", "The sublime tubercle only"],
         answer: 1,
         explanation:
-          "The anteromedial coronoid facet fracture looks small on radiographs but implies varus posteromedial rotatory instability (VPMRI) and is surgical — 'small does not mean stable' at the coronoid. The sublime tubercle (medial) is the UCL's distal attachment.",
+          "An anteromedial coronoid facet fracture may look small on radiographs but can imply varus posteromedial rotatory instability (VPMRI) and needs instability-focused surgical review — 'small does not mean stable' at the coronoid. The sublime tubercle (medial) is the UCL's distal attachment.",
       },
       {
         id: "ec-sag-q3",
@@ -275,17 +296,17 @@ export const structureElbowPearl: Record<string, string> = {
   "Radial head":
     "Watch for an occult radial-head fracture after a fall — a marrow-edema line with a displaced posterior fat pad; the surgical trigger is a mechanical block to forearm rotation or comminution (Mason III), not the 2 mm number alone.",
   "Ulnar collateral ligament (anterior bundle)":
-    "Watch for the T-sign — fluid undercutting the distal UCL beyond the articular-cartilage edge — the thrower's partial undersurface tear that is occult on static exam; MR arthrography is the most sensitive study.",
+    "Watch for the T-sign — fluid undercutting the distal UCL beyond the articular-cartilage edge — which supports a thrower's partial undersurface tear in the right clinical setting; MR arthrography is the most sensitive study, but symptoms and laxity still matter.",
   "Common flexor-pronator origin":
     "Watch the medial 'valgus triad' together: the flexor-pronator origin, the UCL to the sublime tubercle, and the ulnar nerve just posterior — valgus overload injures all three.",
   "Common extensor origin":
     "Watch the LUCL deep to the extensor origin: a deep common-extensor tear that takes the LUCL implies posterolateral rotatory instability — a ligament-reconstruction problem, not a debridement, and a classic post-injection/post-release complication.",
   "Ulnar nerve (cubital tunnel)":
-    "Watch for a structural cause that changes the operation — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps favor transposition over in-situ decompression.",
+    "Watch for a structural cause that can change operative planning — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps may favor transposition over in-situ decompression.",
   "Triceps":
-    "Watch the deep central triceps fibers — they tear first while the superficial expansion stays intact, so a 'partial' triceps tear with extension weakness against resistance is still a surgical repair.",
+    "Watch the deep central triceps fibers — they tear first while the superficial expansion stays intact, so a 'partial' triceps tear with extension weakness against resistance should still trigger high-grade tear/repair consideration.",
   "Coronoid process":
-    "Watch the anteromedial coronoid facet — a small-looking fracture implies varus posteromedial rotatory instability and is surgical; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion).",
+    "Watch the anteromedial coronoid facet — a small-looking fracture can imply varus posteromedial rotatory instability and should trigger surgical review; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion).",
   "Olecranon & triceps insertion":
     "Watch the posteromedial olecranon in the thrower for a valgus-extension-overload osteophyte and a posterior loose body — and remember debriding the osteophyte without addressing UCL laxity can unmask valgus instability.",
   "Trochlea / capitellum (articular surface)":
@@ -306,7 +327,7 @@ export const structureElbowReading: Record<string, StructureReading> = {
   },
   "Ulnar collateral ligament (anterior bundle)": {
     variant:
-      "A small synovial recess at the distal UCL is normal — the abnormal T-sign threshold is fluid tracking BEYOND the articular-cartilage edge, not any sliver of fluid at the attachment.",
+      "A small synovial recess at the distal UCL is normal — the T-sign threshold is fluid tracking BEYOND the articular-cartilage edge, not any sliver of fluid at the attachment, and it should be interpreted with symptoms/laxity rather than as an automatic surgical indication.",
     measure:
       "On dynamic valgus-stress ultrasound, a side-to-side medial gapping difference on the order of ~1–2 mm (thresholds vary by study) is the commonly cited functional-instability range.",
   },
@@ -384,7 +405,7 @@ export const elbowStructureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: true,
       appearance:
-        "The distal biceps is superficial in the antecubital fossa on US; a complete tear shows a retracted balled-up stump, while an intact lacertus tethers it — US is a quick first-line confirmation, though FABS MRI better profiles the footprint.",
+        "The distal biceps is superficial in the antecubital fossa on US; a complete tear may show a retracted balled-up stump, while an intact lacertus can tether it — US can provide quick confirmation, though MRI and selected FABS imaging better profile the footprint and retraction.",
       image: { src: "/images/teaching/us/elbow-distal-biceps.jpg", caption: "Long-axis US of the distal biceps tendon in the antecubital fossa toward the radial tuberosity (RT).", attribution: "Daoukas S, Galanis D. Ultrasound 2025. CC BY 4.0." },
     },
   },
@@ -425,12 +446,12 @@ export const elbowAdvanced: AdvancedQ[] = [
       "The fragment is stable because no subchondral cyst exceeds the 5 mm threshold"
     ],
     "answer": 0,
-    "explanation": "A T2 fluid-bright line (matching joint fluid) completely undercutting the fragment plus a cartilage cleft reaching the fragment are reliable instability signs — stop throwing and refer for surgery. Surrounding marrow edema ALONE is not a stability sign (it occurs in stable and unstable lesions). An ISOLATED high-T2 line without a cartilage breach or cyst is indeterminate, not definitive. The '5 mm cyst' figure is De Smet's knee-derived criterion not validated for the capitellum — the teaching is 'sizeable or multiple' cysts, so invoking a 5 mm cutoff to call this stable is wrong (and a cartilage cleft is already present here)."
+    "explanation": "A T2 fluid-bright line (matching joint fluid) completely undercutting the fragment plus a cartilage cleft reaching the fragment are reliable instability signs — stop throwing and obtain sports-orthopedic/surgical evaluation. Surrounding marrow edema ALONE is not a stability sign (it occurs in stable and unstable lesions). An ISOLATED high-T2 line without a cartilage breach or cyst is indeterminate, not definitive. The '5 mm cyst' figure is De Smet's knee-derived criterion not validated for the capitellum — the teaching is 'sizeable or multiple' cysts, so invoking a 5 mm cutoff to call this stable is wrong (and a cartilage cleft is already present here)."
   },
   {
     "id": "elb-adv-3",
     "topic": "UCL T-sign — partial undersurface tear vs the normal distal recess",
-    "prompt": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature confirms this is the T-sign of a partial undersurface tear rather than a normal distal synovial recess?",
+    "prompt": "A 20-year-old collegiate pitcher has medial elbow pain and a positive moving-valgus test. On coronal MR arthrography, contrast tracks medially along the sublime tubercle under the distal UCL attachment while the proximal fibers stay attached. Which feature best supports the T-sign pattern of a partial undersurface tear rather than a normal distal synovial recess?",
     "options": [
       "Any undercutting of the most distal fibers at all, regardless of how far it extends",
       "Contrast/fluid extending BEYOND the edge of the articular cartilage at the sublime tubercle",
@@ -438,12 +459,12 @@ export const elbowAdvanced: AdvancedQ[] = [
       "Mild T2 hyperintensity within the ulnar nerve in the adjacent cubital tunnel"
     ],
     "answer": 1,
-    "explanation": "The abnormal threshold for the T-sign is fluid/contrast tracking BEYOND the articular-cartilage edge at the sublime tubercle while proximal fibers remain attached — that defines the partial undersurface (articular-sided) distal tear. A couple of millimetres of undercutting of the most distal fibers can be a normal synovial recess, so 'any undercutting at all' overcalls it. Flexor-pronator tendinosis and mild ulnar-nerve T2 signal are associated valgus-overload findings but do not define the T-sign. MR arthrography is the most sensitive study for this lesion."
+    "explanation": "The abnormal threshold for the T-sign pattern is fluid/contrast tracking BEYOND the articular-cartilage edge at the sublime tubercle while proximal fibers remain attached — that supports a partial undersurface (articular-sided) distal tear in the right clinical setting. A couple of millimetres of undercutting of the most distal fibers can be a normal synovial recess, so 'any undercutting at all' overcalls it. Flexor-pronator tendinosis and mild ulnar-nerve T2 signal are associated valgus-overload findings but do not define the T-sign. MR arthrography is the most sensitive study for this lesion.",
   },
   {
     "id": "elb-adv-4",
     "topic": "LCL/PLRI & the coronoid — the anteromedial facet fracture",
-    "prompt": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why is this a surgical lesion?",
+    "prompt": "A 34-year-old falls and sustains a transient elbow subluxation. CT and MRI show a small anteromedial coronoid facet fracture together with an LUCL injury; the radial head and the rest of the coronoid are intact. Despite the fragment looking small on radiographs, why does this pattern deserve urgent instability-focused surgical review?",
     "options": [
       "It is a Regan–Morrey type I coronoid-tip avulsion, which is always managed nonoperatively",
       "It implies varus posteromedial rotatory instability (VPMRI) and untreated drives early arthrosis",
@@ -451,7 +472,7 @@ export const elbowAdvanced: AdvancedQ[] = [
       "Small coronoid fragments are inherently stable, so the LUCL injury alone drives treatment"
     ],
     "answer": 1,
-    "explanation": "An anteromedial coronoid facet fracture plus LUCL injury defines varus posteromedial rotatory instability (VPMRI) — a distinct instability mechanism from PLRI. The fragment looks small on radiographs but is highly unstable and surgical, and untreated VPMRI drives early arthrosis (classify with the O'Driscoll anteromedial-facet system). Regan–Morrey classifies coronoid HEIGHT, not this facet, and 'always nonoperative' is false. The terrible triad requires a radial head fracture, which is absent here. 'Small means stable' at the coronoid is exactly the trap this teaches against."
+    "explanation": "An anteromedial coronoid facet fracture plus LUCL injury defines varus posteromedial rotatory instability (VPMRI) — a distinct instability mechanism from PLRI. The fragment can look small on radiographs but be unstable and treatment-changing; untreated VPMRI can drive early arthrosis (classify with the O'Driscoll anteromedial-facet system). Regan–Morrey classifies coronoid HEIGHT, not this facet, and 'always nonoperative' is false. The terrible triad requires a radial head fracture, which is absent here. 'Small means stable' at the coronoid is exactly the trap this teaches against."
   },
   {
     "id": "elb-adv-5",
@@ -459,12 +480,12 @@ export const elbowAdvanced: AdvancedQ[] = [
     "prompt": "A 47-year-old man felt a tearing sensation lifting a heavy box with the elbow flexed; he has antecubital ecchymosis and weak supination. MRI shows full discontinuity of the distal biceps at the radial tuberosity, but the stump sits near the radial neck with little retraction. How should this be characterized and managed?",
     "options": [
       "A partial tear, because the limited retraction indicates some fibers still reach the tuberosity",
-      "A complete tear with an intact lacertus fibrosus tethering the stump — still a surgical repair",
+      "A complete tear with an intact lacertus fibrosus tethering the stump — still an anatomic repair consideration in the right patient",
       "Tendinosis, since a balled-up stump is absent and retraction is minimal",
       "A complete tear that must be grafted because it is already beyond the 2-week repair deadline"
     ],
     "answer": 1,
-    "explanation": "Full discontinuity at the tuberosity is a complete tear; an INTACT lacertus fibrosus tethers it so it does not retract and can mimic a partial tear clinically and on imaging — the classic missed complete tear. It is still a surgical/anatomic repair, so calling it partial or tendinosis undercalls it. Report complete-vs-partial AND lacertus integrity with retraction in cm. There is no hard 2-4-week deadline: earlier repair is technically easier and chronic irreducible tears need a graft, but many primary repairs succeed out to ~4-6 weeks and beyond — a fixed deadline is a teaching error."
+    "explanation": "Full discontinuity at the tuberosity is a complete tear; an INTACT lacertus fibrosus tethers it so it does not retract and can mimic a partial tear clinically and on imaging — the classic missed complete tear. In an active/medically fit patient it remains an anatomic repair consideration, so calling it partial or tendinosis undercalls it. Report complete-vs-partial AND lacertus integrity with retraction in cm. There is no hard 2-4-week deadline: earlier repair is technically easier and chronic irreducible tears need a graft, but many primary repairs succeed out to ~4-6 weeks and beyond — a fixed deadline is a teaching error."
   },
   {
     "id": "elb-adv-6",
@@ -477,7 +498,7 @@ export const elbowAdvanced: AdvancedQ[] = [
       "Triceps tears never displace an olecranon flake, so the radiographic finding is incidental"
     ],
     "answer": 1,
-    "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, or ANY tear with extension weakness against resistance) are repaired, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor."
+    "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor."
   },
   {
     "id": "elb-adv-7",
@@ -494,16 +515,16 @@ export const elbowAdvanced: AdvancedQ[] = [
   },
   {
     "id": "elb-adv-8",
-    "topic": "Ulnar / cubital tunnel — anchoring the diagnosis and what changes the operation",
-    "prompt": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes the operation?",
+    "topic": "Ulnar / cubital tunnel — anchoring the diagnosis and what changes operative planning",
+    "prompt": "A 38-year-old has numbness in the ulnar two digits worse with elbow flexion. On axial images the ulnar nerve subluxates over the medial epicondyle in flexion, and the medial head of the triceps subluxates with it; there is FCU denervation edema. Beyond confirming neuritis, which finding most changes operative planning?",
     "options": [
       "Mild ulnar-nerve T2 hyperintensity alone, which is sufficient to diagnose entrapment",
       "Comparing the ulnar nerve only to the median nerve, since side-to-side comparison is unhelpful",
-      "Dynamic nerve subluxation with a co-existing snapping triceps — the triceps must be addressed, not just the nerve",
+      "Dynamic nerve subluxation with a co-existing snapping triceps — the triceps may need to be addressed, not just the nerve",
       "Subacute FCU denervation edema, which appears within the first few days of injury"
     ],
     "answer": 2,
-    "explanation": "Dynamic ulnar-nerve subluxation favors transposition over in-situ decompression, and a co-existing snapping triceps (the medial triceps head subluxing with the nerve) means the triceps must be addressed, not just the nerve transposed — that is the operation-changing finding. Mild ulnar-nerve T2 brightness occurs in asymptomatic elbows, so signal alone does not diagnose entrapment; anchor to caliber change + denervation + clinical correlation. Compare caliber/signal to BOTH the contralateral side and the ipsilateral median nerve. Denervation shows no MRI change for ~2-4 weeks, then SUBACUTE edema — it is not a first-few-days finding."
+    "explanation": "Dynamic ulnar-nerve subluxation may favor transposition over in-situ decompression, and a co-existing snapping triceps (the medial triceps head subluxing with the nerve) can require addressing the triceps mechanism rather than treating the nerve alone — that is the operative-planning finding. Mild ulnar-nerve T2 brightness occurs in asymptomatic elbows, so signal alone does not diagnose entrapment; anchor to caliber change + denervation + clinical correlation. Compare caliber/signal to BOTH the contralateral side and the ipsilateral median nerve. Denervation shows no MRI change for ~2-4 weeks, then SUBACUTE edema — it is not a first-few-days finding."
   },
   {
     "id": "elb-adv-9",
@@ -549,7 +570,7 @@ export const elbowImageCaq: ImageCaqQ[] = [
       "Fluid tracking along the posterior bundle in the cubital tunnel floor; CT arthrography is the most sensitive study"
     ],
     "answer": 0,
-    "explanation": "Key: the T-sign is fluid/contrast undermining the distal/sublime-tubercle attachment BEYOND the articular-cartilage edge while the proximal fibers remain attached — an articular-sided partial tear — and MR arthrography is the most sensitive study for it. The strongest distractor (any 1–2 mm undercutting = full-thickness) is wrong because a couple of millimetres of undercutting can be a normal synovial recess; the abnormal threshold is fluid extending past the cartilage margin, and undersurface tracking is partial, not full-thickness. Proximal thickening with intermediate signal describes chronic sprain/tendinosis, not the T-sign. The posterior bundle is the cubital-tunnel floor and contributes little to valgus restraint — the T-sign is a distal anterior-bundle phenomenon."
+    "explanation": "Key: the T-sign pattern is fluid/contrast undermining the distal/sublime-tubercle attachment BEYOND the articular-cartilage edge while the proximal fibers remain attached — supporting an articular-sided partial tear in the right clinical setting — and MR arthrography is the most sensitive study for it. The strongest distractor (any 1–2 mm undercutting = full-thickness) is wrong because a couple of millimetres of undercutting can be a normal synovial recess; the abnormal threshold is fluid extending past the cartilage margin, and undersurface tracking is partial, not full-thickness. Proximal thickening with intermediate signal describes chronic sprain/tendinosis, not the T-sign. The posterior bundle is the cubital-tunnel floor and contributes little to valgus restraint — the T-sign is a distal anterior-bundle phenomenon.",
   },
   {
     "id": "elb-caq-2",
@@ -655,4 +676,151 @@ export const elbowImageCaq: ImageCaqQ[] = [
   }
 ];
 
-export const elbowCrossPlane: CorrelationItem[] = [];
+const ELBOW_COR = "/images/teaching/stacks/normal-elbow-coronal";
+const ELBOW_AXI = "/images/teaching/stacks/normal-elbow-axial";
+const ELBOW_SAG = "/images/teaching/stacks/normal-elbow-sagittal";
+
+// Cross-plane correlation drill. Each item uses structures already anchored in
+// the elbow workstation, keeping the first elbow bank conservative and visual.
+export const elbowCrossPlane: CorrelationItem[] = [
+  {
+    id: "exp-radial-head-cor-axi",
+    prompt:
+      "This is the radial head on the coronal image, articulating with the capitellum laterally. Find the same radial head on the axial stack.",
+    explanation:
+      "The radial head is the lateral round proximal-radius structure. Coronal shows it under the capitellum; axial shows the radial head as the lateral round bone. Do not confuse it with the medial ulna/coronoid side.",
+    from: { plane: "Coronal T2-FS", dir: ELBOW_COR, sliceIndex: 12, x: 65, y: 64, label: "Radial head" },
+    to: {
+      plane: "Axial T2-FS",
+      dir: ELBOW_AXI,
+      sliceIndex: 20,
+      candidates: [
+        { x: 61, y: 54 }, // radial head
+        { x: 39, y: 61 }, // proximal ulna/coronoid side
+        { x: 30, y: 50 }, // flexor-pronator mass
+        { x: 74, y: 43 }, // lateral extensor compartment
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-capitellum-sag-cor",
+    prompt:
+      "This sagittal slice profiles the distal-humeral articular surface. Find the capitellum on the coronal image - the lateral OCD face.",
+    explanation:
+      "Capitellar OCD is a two-plane read: coronal shows the radiocapitellar face, and sagittal shows the anterior-to-posterior extent. A posterolateral pseudodefect/plica region is common, so a contour finding needs sagittal correlation and marrow/cartilage context.",
+    from: { plane: "Sagittal IR/STIR", dir: ELBOW_SAG, sliceIndex: 14, x: 55, y: 49, label: "Capitellum/trochlea surface" },
+    to: {
+      plane: "Coronal T2-FS",
+      dir: ELBOW_COR,
+      sliceIndex: 12,
+      candidates: [
+        { x: 62, y: 50 }, // capitellum
+        { x: 46, y: 50 }, // trochlea
+        { x: 65, y: 64 }, // radial head
+        { x: 69, y: 44 }, // common extensor origin
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-coronoid-sag-cor",
+    prompt:
+      "This is the coronoid process on sagittal. On the coronal image, find the medial coronoid/sublime-tubercle region where the anterior UCL inserts.",
+    explanation:
+      "The coronoid is the anterior proximal-ulnar buttress. Its medial sublime tubercle is the distal attachment of the anterior UCL; that is where the thrower's distal undersurface/T-sign tear classically occurs. This is a region to correlate, not a sagittal-only call.",
+    from: { plane: "Sagittal IR/STIR", dir: ELBOW_SAG, sliceIndex: 14, x: 45, y: 60, label: "Coronoid process" },
+    to: {
+      plane: "Coronal T2-FS",
+      dir: ELBOW_COR,
+      sliceIndex: 12,
+      candidates: [
+        { x: 37, y: 56 }, // UCL distal/sublime tubercle region
+        { x: 65, y: 64 }, // radial head
+        { x: 62, y: 50 }, // capitellum
+        { x: 69, y: 44 }, // common extensor origin
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-flexor-cor-axi",
+    prompt:
+      "This is the common flexor-pronator origin on the coronal medial epicondyle. Find the same flexor-pronator mass in cross-section on axial.",
+    explanation:
+      "The flexor-pronator origin is medial and superficial to the UCL. On axial it sits anteromedial to the cubital tunnel, with the ulnar nerve just posterior - the reason medial epicondylitis and ulnar neuritis travel together.",
+    from: { plane: "Coronal T2-FS", dir: ELBOW_COR, sliceIndex: 12, x: 34, y: 44, label: "Common flexor-pronator" },
+    to: {
+      plane: "Axial T2-FS",
+      dir: ELBOW_AXI,
+      sliceIndex: 16,
+      candidates: [
+        { x: 30, y: 55 }, // common flexor-pronator
+        { x: 20, y: 61 }, // ulnar nerve
+        { x: 72, y: 42 }, // common extensor origin
+        { x: 45, y: 33 }, // brachialis
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-extensor-cor-axi",
+    prompt:
+      "This is the common extensor origin on the coronal lateral epicondyle. Find it in cross-section on axial.",
+    explanation:
+      "The common extensor origin is lateral. In lateral epicondylitis, a deep tear can involve the LUCL/RCL origin underneath it and imply posterolateral rotatory instability - so lateral tendon and lateral ligament are read together.",
+    from: { plane: "Coronal T2-FS", dir: ELBOW_COR, sliceIndex: 12, x: 69, y: 44, label: "Common extensor origin" },
+    to: {
+      plane: "Axial T2-FS",
+      dir: ELBOW_AXI,
+      sliceIndex: 16,
+      candidates: [
+        { x: 72, y: 42 }, // common extensor origin
+        { x: 30, y: 55 }, // common flexor-pronator
+        { x: 20, y: 61 }, // ulnar nerve
+        { x: 50, y: 82 }, // triceps
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-brachialis-biceps-sag-axi",
+    prompt:
+      "This anterior sagittal marker is the brachialis/distal-biceps corridor. Find the anterior flexor compartment on axial.",
+    explanation:
+      "Brachialis fills the anterior elbow and the distal biceps dives toward the radial tuberosity. Axial and sagittal views both matter for partial-vs-complete distal biceps tears; a FABS view can help when the footprint is subtle.",
+    from: { plane: "Sagittal IR/STIR", dir: ELBOW_SAG, sliceIndex: 14, x: 33, y: 55, label: "Brachialis / distal biceps" },
+    to: {
+      plane: "Axial T2-FS",
+      dir: ELBOW_AXI,
+      sliceIndex: 16,
+      candidates: [
+        { x: 45, y: 33 }, // brachialis/anterior flexor compartment
+        { x: 50, y: 82 }, // triceps
+        { x: 72, y: 42 }, // common extensor origin
+        { x: 20, y: 61 }, // ulnar nerve
+      ],
+      answer: 0,
+    },
+  },
+  {
+    id: "exp-triceps-axi-sag",
+    prompt:
+      "This is the posterior triceps compartment on axial. Find its olecranon/triceps-insertion region on sagittal.",
+    explanation:
+      "Triceps is posterior on axial and inserts broadly on the olecranon on sagittal. Deep central fibers may tear while superficial expansion remains intact, so a 'partial-looking' tear can still be clinically important when extension is weak.",
+    from: { plane: "Axial T2-FS", dir: ELBOW_AXI, sliceIndex: 16, x: 50, y: 82, label: "Triceps" },
+    to: {
+      plane: "Sagittal IR/STIR",
+      dir: ELBOW_SAG,
+      sliceIndex: 14,
+      candidates: [
+        { x: 63, y: 60 }, // olecranon/triceps insertion region
+        { x: 45, y: 60 }, // coronoid
+        { x: 47, y: 38 }, // anterior fat pad
+        { x: 33, y: 55 }, // brachialis/distal biceps
+      ],
+      answer: 0,
+    },
+  },
+];

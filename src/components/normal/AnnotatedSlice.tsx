@@ -1,5 +1,16 @@
 import type { Marker } from "@/content/normal-mri-types";
 
+function labelClass(marker: Marker) {
+  const vertical = marker.y > 75 ? "bottom-[140%]" : "top-[140%]";
+  const horizontal =
+    marker.x < 25
+      ? "left-0 translate-x-0 text-left"
+      : marker.x > 75
+        ? "right-0 translate-x-0 text-right"
+        : "left-1/2 -translate-x-1/2 text-center";
+  return `${vertical} ${horizontal}`;
+}
+
 /**
  * A single MRI slice with markers overlaid at percentage coordinates.
  * Used by both the Guided Tour (labels shown) and the Knowledge Check
@@ -42,7 +53,11 @@ export default function AnnotatedSlice({
           {/* Center dot */}
           <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
           {showLabels && m.label && (
-            <span className="absolute left-1/2 top-[140%] -translate-x-1/2 whitespace-nowrap rounded bg-black/80 px-2 py-0.5 text-[11px] font-semibold text-white">
+            <span
+              className={`absolute max-w-44 rounded bg-black/80 px-2 py-0.5 text-[11px] font-semibold leading-tight text-white ${labelClass(
+                m,
+              )}`}
+            >
               {m.label}
             </span>
           )}

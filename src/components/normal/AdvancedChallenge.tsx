@@ -3,6 +3,13 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import type { AdvancedQ } from "@/content/normal-mri-types";
 
+const LETTERS = ["A", "B", "C", "D", "E", "F"];
+
+type RunItem = {
+  question: AdvancedQ;
+  optionOrder: number[];
+};
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -10,6 +17,10 @@ function shuffle<T>(arr: T[]): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+function questionCountLabel(count: number) {
+  return `${count} ${count === 1 ? "question" : "questions"}`;
 }
 
 /**
@@ -31,41 +42,36 @@ export default function AdvancedChallenge({
   );
   const countFor = (t: string) => questions.filter((q) => q.topic === t).length;
 
-  const [run, setRun] = useState<AdvancedQ[] | null>(null);
+  const [run, setRun] = useState<RunItem[] | null>(null);
   const [qi, setQi] = useState(0);
-  const [order, setOrder] = useState<number[]>([]);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
-
-  // Reshuffle options + clear selection whenever the active question changes.
-  // Adjusted during render (keyed on the run reference + qi, matching the prior
-  // effect deps) so each question renders with a fresh shuffle and no empty frame.
-  const [prevKey, setPrevKey] = useState<{ run: AdvancedQ[] | null; qi: number }>({
-    run: null,
-    qi: 0,
-  });
-  if (prevKey.run !== run || prevKey.qi !== qi) {
-    setPrevKey({ run, qi });
-    if (run && run[qi]) {
-      setOrder(shuffle(run[qi].options.map((_, i) => i)));
-      setPicked(null);
-    }
-  }
+  const [missedIds, setMissedIds] = useState<string[]>([]);
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
   function start(topic: string | null) {
     const pool = topic ? questions.filter((q) => q.topic === topic) : questions;
     if (!pool.length) return;
-    setRun(shuffle(pool));
+    setActiveTopic(topic);
+    setRun(
+      shuffle(pool).map((question) => ({
+        question,
+        optionOrder: shuffle(question.options.map((_, i) => i)),
+      })),
+    );
     setQi(0);
     setPicked(null);
     setScore(0);
     setDone(false);
+    setMissedIds([]);
   }
 
   function quit() {
     setRun(null);
+    setActiveTopic(null);
     setDone(false);
+    setMissedIds([]);
   }
 
   if (questions.length === 0) {
@@ -83,8 +89,11 @@ export default function AdvancedChallenge({
     return (
       <Card>
         <div className="flex items-start gap-3">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ucla-gold/20 text-lg">
-            🏆
+          <span
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ucla-gold/20 text-xs font-bold tracking-wide text-[#7a5d00]"
+            aria-hidden="true"
+          >
+            ADV
           </span>
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Advanced challenge</h2>
@@ -100,6 +109,9 @@ export default function AdvancedChallenge({
           <button
             type="button"
             onClick={() => start(null)}
+            aria-label={`Start advanced challenge with all topics, ${questionCountLabel(
+              questions.length,
+            )}`}
             className="flex items-center justify-between rounded-xl border border-ucla-blue/30 bg-ucla-light/60 px-4 py-3 text-left transition-colors hover:bg-ucla-light"
           >
             <span className="text-sm font-semibold text-[#003B5C]">All topics</span>
@@ -112,6 +124,7 @@ export default function AdvancedChallenge({
               key={t}
               type="button"
               onClick={() => start(t)}
+              aria-label={`Start advanced challenge topic ${t}, ${questionCountLabel(countFor(t))}`}
               className="flex items-center justify-between rounded-xl border border-gray-200 px-4 py-3 text-left transition-colors hover:border-gray-300 hover:bg-gray-50"
             >
               <span className="text-sm font-medium text-gray-800">{t}</span>
@@ -128,6 +141,7 @@ export default function AdvancedChallenge({
   // ── Results ───────────────────────────────────────────────────────────────
   if (done) {
     const pct = Math.round((score / run.length) * 100);
+    const missedCount = missedIds.length;
     return (
       <Card>
         <div className="py-8 text-center">
@@ -142,8 +156,14 @@ export default function AdvancedChallenge({
                 ? "Solid. Review the misses and run it again to lock them in."
                 : "These are hard. Re-read the explanations and try again — that's how they stick."}
           </p>
+          {missedCount > 0 && (
+            <p className="mx-auto mt-2 max-w-md text-xs font-medium text-gray-500">
+              {missedCount} missed {missedCount === 1 ? "item was" : "items were"} added to spaced
+              review.
+            </p>
+          )}
           <div className="mt-5 flex justify-center gap-3">
-            <Button size="sm" onClick={() => start(run.length ? run[0].topic : null)}>
+            <Button size="sm" onClick={() => start(activeTopic)}>
               Retry this set
             </Button>
             <Button size="sm" variant="secondary" onClick={quit}>
@@ -156,19 +176,32 @@ export default function AdvancedChallenge({
   }
 
   // ── Active question ───────────────────────────────────────────────────────
-  const q = run[qi];
+  const active = run[qi];
+  const q = active.question;
+  const order = active.optionOrder;
   const answered = picked !== null;
+  const correct = picked === q.answer;
+  const answerDisplayPos = order.indexOf(q.answer);
+  const pickedDisplayPos = picked === null ? -1 : order.indexOf(picked);
+  const answerLetter = answerDisplayPos >= 0 ? LETTERS[answerDisplayPos] : "?";
+  const pickedLetter = pickedDisplayPos >= 0 ? LETTERS[pickedDisplayPos] : "?";
 
   function choose(optIdx: number) {
     if (picked !== null) return;
     setPicked(optIdx);
     if (optIdx === q.answer) setScore((s) => s + 1);
-    else onMiss?.(q.id);
+    else {
+      setMissedIds((ids) => [...ids, q.id]);
+      onMiss?.(q.id);
+    }
   }
 
   function next() {
     if (qi >= run!.length - 1) setDone(true);
-    else setQi((n) => n + 1);
+    else {
+      setQi((n) => n + 1);
+      setPicked(null);
+    }
   }
 
   function optClass(optIdx: number) {
@@ -203,45 +236,73 @@ export default function AdvancedChallenge({
         </span>
         <p className="mt-2 text-[15px] font-medium leading-relaxed text-gray-900">{q.prompt}</p>
 
-        <div className="mt-4 space-y-2">
-          {order.map((optIdx) => (
-            <button
-              key={optIdx}
-              type="button"
-              disabled={answered}
-              onClick={() => choose(optIdx)}
-              className={`flex w-full items-start gap-2.5 rounded-lg border px-3.5 py-2.5 text-left text-sm transition-colors ${optClass(
-                optIdx,
-              )}`}
-            >
-              <span
-                className={`mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full border text-[10px] font-bold ${
-                  answered && optIdx === q.answer
-                    ? "border-green-500 bg-green-500 text-white"
-                    : answered && optIdx === picked
-                      ? "border-red-500 bg-red-500 text-white"
-                      : "border-gray-300 text-gray-500"
-                }`}
+        <div
+          className="mt-4 space-y-2"
+          role="radiogroup"
+          aria-label="Advanced challenge answer choices"
+        >
+          {order.map((optIdx, displayPos) => {
+            const letter = LETTERS[displayPos] ?? `${displayPos + 1}`;
+            const isCorrectAnswer = answered && optIdx === q.answer;
+            const isPickedWrong = answered && optIdx === picked && optIdx !== q.answer;
+            return (
+              <button
+                key={optIdx}
+                type="button"
+                disabled={answered}
+                onClick={() => choose(optIdx)}
+                aria-label={`Option ${letter}: ${q.options[optIdx]}`}
+                aria-checked={picked === optIdx}
+                role="radio"
+                className={`flex w-full items-start gap-2.5 rounded-lg border px-3.5 py-2.5 text-left text-sm transition-colors ${optClass(
+                  optIdx,
+                )}`}
               >
-                {answered && optIdx === q.answer ? "✓" : answered && optIdx === picked ? "✕" : ""}
-              </span>
-              <span className="text-gray-800">{q.options[optIdx]}</span>
-            </button>
-          ))}
+                <span
+                  className={`mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full border text-[10px] font-bold ${
+                    isCorrectAnswer
+                      ? "border-green-500 bg-green-500 text-white"
+                      : isPickedWrong
+                        ? "border-red-500 bg-red-500 text-white"
+                        : "border-gray-300 text-gray-500"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {letter}
+                </span>
+                <span className="min-w-0 flex-1 text-gray-800">{q.options[optIdx]}</span>
+                {isCorrectAnswer && (
+                  <span className="ml-auto shrink-0 text-xs font-semibold text-green-700">
+                    Correct
+                  </span>
+                )}
+                {isPickedWrong && (
+                  <span className="ml-auto shrink-0 text-xs font-semibold text-red-700">
+                    Your pick
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {answered && (
           <div
             className={`mt-4 rounded-lg border px-4 py-3 ${
-              picked === q.answer ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
+              correct ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
             }`}
           >
             <p
               className={`text-sm font-semibold ${
-                picked === q.answer ? "text-green-800" : "text-red-800"
+                correct ? "text-green-800" : "text-red-800"
               }`}
             >
-              {picked === q.answer ? "Correct" : "Not quite"}
+              {correct ? "Correct" : "Not quite"}
+            </p>
+            <p className="mt-1 text-xs font-medium text-gray-500">
+              {correct
+                ? `You chose option ${answerLetter}.`
+                : `You chose option ${pickedLetter}; correct is option ${answerLetter}.`}
             </p>
             <p className="mt-1 text-sm text-gray-600">{q.explanation}</p>
           </div>

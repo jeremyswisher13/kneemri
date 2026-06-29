@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import AnnotatedSlice from "./AnnotatedSlice";
 import Button from "@/components/ui/Button";
 import type { Marker, QuizItem } from "@/content/normal-mri-types";
@@ -62,6 +62,7 @@ export default function KnowledgeCheck({
   const [picked, setPicked] = useState<number | null>(null);
   const [guess, setGuess] = useState<{ x: number; y: number } | null>(null);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const [done, setDone] = useState(false);
 
   // Reset when the plane OR the mode changes.
@@ -69,13 +70,14 @@ export default function KnowledgeCheck({
     setIdx(0);
     setPicked(null);
     setGuess(null);
+    scoreRef.current = 0;
     setScore(0);
     setDone(false);
   }, [dir, items, mode]);
 
   // Report the result to the parent when the check is finished.
   useEffect(() => {
-    if (done) onComplete?.(score, qs.length);
+    if (done) onComplete?.(scoreRef.current, qs.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [done]);
 
@@ -84,6 +86,7 @@ export default function KnowledgeCheck({
     setIdx(0);
     setPicked(null);
     setGuess(null);
+    scoreRef.current = 0;
     setScore(0);
     setDone(false);
   }
@@ -127,7 +130,7 @@ export default function KnowledgeCheck({
   function pickIdentify(pos: number) {
     if (answered) return;
     setPicked(pos);
-    if (pos === q.correctPos) setScore((s) => s + 1);
+    if (pos === q.correctPos) recordCorrectAnswer();
     else onMiss?.(q.id);
   }
 
@@ -135,8 +138,14 @@ export default function KnowledgeCheck({
     if (answered) return;
     const c = { x, y };
     setGuess(c);
-    if (dist(c, q.marker) <= HIT_TOLERANCE) setScore((s) => s + 1);
+    if (dist(c, q.marker) <= HIT_TOLERANCE) recordCorrectAnswer();
     else onMiss?.(q.id);
+  }
+
+  function recordCorrectAnswer() {
+    const nextScore = scoreRef.current + 1;
+    scoreRef.current = nextScore;
+    setScore(nextScore);
   }
 
   function next() {
@@ -152,7 +161,11 @@ export default function KnowledgeCheck({
   return (
     <div className="space-y-4">
       {/* Mode toggle */}
-      <div className="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5 text-xs font-semibold">
+      <div
+        role="group"
+        aria-label="Knowledge check mode"
+        className="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5 text-xs font-semibold"
+      >
         {(["identify", "locate"] as Mode[]).map((m) => (
           <button
             key={m}
@@ -197,7 +210,7 @@ export default function KnowledgeCheck({
           {mode === "identify" ? (
             <>
               <h3 className="mt-3 text-base font-semibold text-gray-900">{q.prompt}</h3>
-              <div className="mt-3 space-y-2">
+              <div role="radiogroup" aria-label={q.prompt} className="mt-3 space-y-2">
                 {q.optOrder.map((origIdx, pos) => {
                   const optIsCorrect = pos === q.correctPos;
                   const isPicked = pos === picked;
@@ -209,6 +222,8 @@ export default function KnowledgeCheck({
                     <button
                       key={pos}
                       type="button"
+                      role="radio"
+                      aria-checked={isPicked}
                       disabled={answered}
                       onClick={() => pickIdentify(pos)}
                       className={`flex min-h-11 w-full items-center gap-2 rounded-lg border-2 px-4 py-3 text-left text-sm font-medium transition-colors disabled:cursor-default lg:min-h-0 lg:py-2.5 ${cls}`}
@@ -251,7 +266,7 @@ export default function KnowledgeCheck({
                 {isCorrect
                   ? "Correct. "
                   : mode === "locate"
-                    ? `Not quite — that's the ${structure}. `
+                    ? `Not quite — the gold ring marks the ${structure}. `
                     : "Not quite. "}
               </span>
               {q.explanation}

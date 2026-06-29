@@ -6,6 +6,11 @@ import {
   signInWithGoogleRedirect,
 } from "@/lib/auth";
 import {
+  browserRedirectSignInHints,
+  isStandaloneDisplayMode,
+  installInstructionsForUserAgent,
+} from "@/lib/pwa";
+import {
   consumeReturnPath,
   localLoginUrlForLocalAuthHost,
   rememberReturnPath,
@@ -34,8 +39,13 @@ export default function LoginPage() {
   const [signingIn, setSigningIn] = useState(false);
   const [checkingRedirect, setCheckingRedirect] = useState(true);
   const [canonicalizingLocalHost, setCanonicalizingLocalHost] = useState(false);
+  const [standaloneMode] = useState(() => isStandaloneDisplayMode());
   const localPreviewAvailable =
     typeof window !== "undefined" && isLocalPreviewHost(window.location.href);
+  const installInstructions =
+    typeof navigator === "undefined"
+      ? ""
+      : installInstructionsForUserAgent(navigator.userAgent, navigator.platform);
 
   useEffect(() => {
     const targetUrl =
@@ -81,7 +91,10 @@ export default function LoginPage() {
     setSigningIn(true);
     rememberReturnPath(sessionStorage, returnTo);
     try {
-      if (typeof window !== "undefined" && shouldUseRedirectSignIn(window.location.href)) {
+      if (
+        typeof window !== "undefined" &&
+        shouldUseRedirectSignIn(window.location.href, browserRedirectSignInHints())
+      ) {
         await signInWithGoogleRedirect();
         return;
       }
@@ -166,8 +179,15 @@ export default function LoginPage() {
           </button>
 
           <p className="mt-4 text-center text-xs text-gray-500">
-            Sign in with your Google account to access the courses.
+          Sign in with your Google account to access the courses.
           </p>
+
+          {standaloneMode && (
+            <div className="mt-4 rounded-lg border border-ucla-blue/20 bg-ucla-light/50 px-4 py-3 text-xs text-gray-600">
+              Home-screen mode uses full-page Google sign-in so your return path is preserved.
+              <span className="mt-1 block font-medium text-[#003B5C]">{installInstructions}</span>
+            </div>
+          )}
 
           {localPreviewAvailable && (
             <button

@@ -3,6 +3,7 @@ import {
   LOGIN_RETURN_TO_KEY,
   localLoginUrlForLocalAuthHost,
   consumeReturnPath,
+  loginPathForReturnTo,
   rememberReturnPath,
   returnPathFromLocation,
   returnPathFromSearch,
@@ -61,6 +62,14 @@ describe("login return paths", () => {
     expect(safeInternalPath("/login?next=/admin")).toBe("/");
   });
 
+  it("builds login URLs with durable return targets for full-page reloads", () => {
+    expect(loginPathForReturnTo("/courses/elbow-mri/normal-elbow-mri?mode=tour#ucl")).toBe(
+      "/login?returnTo=%2Fcourses%2Felbow-mri%2Fnormal-elbow-mri%3Fmode%3Dtour%23ucl",
+    );
+    expect(loginPathForReturnTo("/login?returnTo=/admin")).toBe("/login");
+    expect(loginPathForReturnTo("https://example.com")).toBe("/login");
+  });
+
   it("uses and clears a stored redirect target after full-page auth", () => {
     const storage = memoryStorage();
     rememberReturnPath(storage, "/courses/elbow-mri/cases");
@@ -97,5 +106,14 @@ describe("login return paths", () => {
     expect(shouldUseRedirectSignIn("http://localhost:4174/login")).toBe(true);
     expect(shouldUseRedirectSignIn("http://127.0.0.1:4174/login")).toBe(true);
     expect(shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login")).toBe(false);
+    expect(shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", { standalone: true })).toBe(
+      true,
+    );
+    expect(
+      shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", {
+        platform: "iPhone",
+        userAgent: "Mozilla/5.0",
+      }),
+    ).toBe(true);
   });
 });

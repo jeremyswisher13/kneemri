@@ -11,6 +11,7 @@ import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
+import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
 import NormalSeriesSelector from "@/components/normal/NormalSeriesSelector";
 import {
   normalElbowLearn,
@@ -22,15 +23,23 @@ import {
   elbowImageCaq,
   elbowCrossPlane,
 } from "@/content/normal-elbow-learn";
+import { normalElbowSeries as SERIES } from "@/content/normal-workstation-series";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { useNormalMriResume } from "@/hooks/useNormalMriResume";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
+import {
+  NORMAL_MRI_MODE_PARAM,
+  NORMAL_MRI_SERIES_PARAM,
+  readNormalParam,
+} from "@/lib/normal-workstation-url";
 
 const ELBOW_CASE_BASE = coursePath(getCourseById("elbow-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";
+const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "compare", "advanced", "caq"];
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
@@ -42,68 +51,6 @@ const MODES: { id: Mode; label: string }[] = [
  * normal elbow. Built on the same region-agnostic components as the other
  * Normal MRI workstations. Coronal, axial, and sagittal stacks are loaded.
  */
-interface ElbowSeries {
-  id: string;
-  label: string;
-  plane: string;
-  dir: string;
-  count: number;
-  startIndex?: number;
-  checklist: string[];
-}
-
-const SERIES: ElbowSeries[] = [
-  {
-    id: "cor-t2fs",
-    label: "Coronal T2-FS",
-    plane: "Coronal T2 FS",
-    dir: "/images/teaching/stacks/normal-elbow-coronal",
-    count: 25,
-    startIndex: 12, // opens through the radiocapitellar / ulnotrochlear joint
-    checklist: [
-      "Capitellum & trochlea — smooth subchondral cortex (the OCD face)",
-      "Radial head — round disc articulating with the capitellum (LATERAL)",
-      "UCL anterior bundle — medial epicondyle to the sublime tubercle",
-      "Common flexor-pronator origin off the medial epicondyle",
-      "Common extensor origin off the lateral epicondyle — trace the LUCL deep to it",
-      "Marrow signal of the distal humerus, radius, and ulna",
-    ],
-  },
-  {
-    id: "axi-t2fs",
-    label: "Axial T2-FS",
-    plane: "Axial T2 FS",
-    dir: "/images/teaching/stacks/normal-elbow-axial",
-    count: 34,
-    startIndex: 16, // opens at the cubital-tunnel / epicondyle level
-    checklist: [
-      "Ulnar nerve in the cubital tunnel (vs the median nerve / other side)",
-      "Common flexor-pronator origin (medial) in cross-section",
-      "Common extensor origin (lateral) in cross-section",
-      "Radial nerve / PIN at the radiocapitellar level",
-      "Brachialis & the distal biceps tendon anteriorly",
-      "Triceps posteriorly; the annular ligament around the radial neck",
-    ],
-  },
-  {
-    id: "sag-ir",
-    label: "Sagittal IR",
-    plane: "Sagittal IR/STIR",
-    dir: "/images/teaching/stacks/normal-elbow-sagittal",
-    count: 30,
-    startIndex: 14, // opens through the trochlea/capitellum and coronoid/olecranon
-    checklist: [
-      "Trochlea / capitellum articular contour (read OCD with the coronal)",
-      "Posterolateral radiocapitellar plica/synovial fold — normal thin fold vs symptomatic thickening",
-      "Coronoid process anteriorly (the anteromedial-facet keystone)",
-      "Olecranon & the triceps insertion posteriorly",
-      "Anterior fat pad (seen) vs posterior fat pad (normally hidden)",
-      "Brachialis & distal biceps anteriorly",
-      "Coronoid & olecranon fossae — sweep for loose bodies",
-    ],
-  },
-];
-
 // Coronal, axial, and sagittal are loaded; arthrographic / FABS sequences could be added later.
 const COMING_SOON: string[] = [];
 
@@ -111,8 +58,13 @@ export default function NormalElbowMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
   const isAdminView = useIsAdminView();
-  const [activeId, setActiveId] = useState(SERIES[0].id);
-  const [mode, setMode] = useState<Mode>("explore");
+  const initialSearch = typeof window === "undefined" ? "" : window.location.search;
+  const [activeId, setActiveId] = useState(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_SERIES_PARAM, SERIES.map((s) => s.id), SERIES[0].id),
+  );
+  const [mode, setMode] = useState<Mode>(() =>
+    readNormalParam(initialSearch, NORMAL_MRI_MODE_PARAM, RESTORABLE_MODES, "explore"),
+  );
   const [tourTarget, setTourTarget] = useState<ShowInLearnArgs | null>(null);
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalElbowLearn[series.id];
@@ -157,6 +109,15 @@ export default function NormalElbowMriPage() {
   const visibleModes = isAdmin
     ? [...baseModes, { id: "adjust" as Mode, label: "Adjust (admin)" }]
     : baseModes;
+  const modeLabel = visibleModes.find((item) => item.id === mode)?.label ?? "Explore";
+  useNormalMriResume({
+    courseId: "elbow-mri",
+    title: "Interactive Normal Elbow MRI",
+    modeId: mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+  });
 
   const slices = useMemo(
     () =>
@@ -183,6 +144,14 @@ export default function NormalElbowMriPage() {
       />
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
+
+      <NormalMriMasteryPanel
+        courseId="elbow-mri"
+        activeMode={mode}
+        activeModeLabel={modeLabel}
+        seriesLabel={series.label}
+        availableModes={visibleModes}
+      />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

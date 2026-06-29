@@ -34,7 +34,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [],
         title: "Get oriented",
-        note: "Oblique sagittal T2 fat-sat — cut PERPENDICULAR to the supraspinatus. The key plane for rotator-cuff muscle bulk/atrophy and acromial shape. Superior is up; anterior and posterior are across the image (confirm which side is anterior). Fluid is bright, fat suppressed. Scroll medial → lateral.",
+        note: "Oblique sagittal T2 fat-sat — cut PERPENDICULAR to the supraspinatus. The key plane for rotator-cuff muscle bulk/atrophy and acromial shape. Superior is up; on this right shoulder, anterior is image-left and posterior is image-right. Fluid is bright, fat suppressed. Scroll medial → lateral.",
       },
       {
         sliceIndex: 5,
@@ -89,6 +89,15 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         markers: [{ x: 20, y: 48, label: "Deltoid" }],
         title: "Deltoid",
         note: "The large superficial muscle wrapping the shoulder, separated from the cuff by the subacromial–subdeltoid fat plane.",
+      },
+      {
+        sliceIndex: 11,
+        markers: [
+          { x: 44, y: 28, label: "Supraspinatus / cable region" },
+          { x: 43, y: 19, label: "Acromion" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "Before leaving the sagittal stack, pause on the common traps: a single short-TE bright cuff focus is not tendinosis until it persists on fluid-sensitive/orthogonal images; the rotator cable is a normal load-sharing band, not automatically retracted torn fibers; and acromion shape or AC arthrosis is a risk modifier, not a standalone impingement diagnosis.",
       },
     ],
     quiz: [
@@ -216,7 +225,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [],
         title: "Get oriented",
-        note: "Oblique coronal T2 fat-sat — cut PARALLEL to the supraspinatus, so you can follow the cuff tendon along its length to the greater-tuberosity footprint. Superior is up. On this right shoulder the greater tuberosity/humeral head appear to the LEFT and the glenoid to the RIGHT — confirm. Scroll anterior → posterior.",
+        note: "Oblique coronal T2 fat-sat — cut PARALLEL to the supraspinatus, so you can follow the cuff tendon along its length to the greater-tuberosity footprint. Superior is up. On this right shoulder the greater tuberosity/humeral head are image-left/lateral and the glenoid is image-right/medial. Scroll anterior → posterior.",
       },
       {
         sliceIndex: 11,
@@ -264,7 +273,17 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 38, y: 82, label: "Axillary recess" }],
         title: "Axillary recess",
-        note: "The dependent inferior pouch of the joint capsule (inferior glenohumeral ligament complex) below the humeral head — thickened/edematous in adhesive capsulitis.",
+        note: "The dependent inferior U-shaped pouch of the joint capsule (inferior glenohumeral ligament complex) below the humeral head — thickened/edematous in adhesive capsulitis, and too small/patulous in some instability patterns.",
+      },
+      {
+        sliceIndex: 11,
+        markers: [
+          { x: 35, y: 33, label: "Supraspinatus / cable" },
+          { x: 53, y: 57, label: "Superior labrum region" },
+          { x: 38, y: 82, label: "Axillary pouch" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "Coronal shoulder false positives cluster here: the rotator cable is a normal band just medial to the thin crescent; a smooth superior sublabral recess should not be called a SLAP tear; trace isolated bursal fluid is nonspecific; and axillary-pouch thickening supports adhesive capsulitis only with the right clinical stiffness pattern and rotator-interval findings.",
       },
     ],
     quiz: [
@@ -347,7 +366,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         prompt: "Fluid in the marked subacromial-subdeltoid bursa AND the glenohumeral joint together most strongly suggests what?",
         options: ["Full-thickness rotator cuff tear", "Isolated subacromial bursitis", "Adhesive capsulitis", "Normal finding"],
         answer: 0,
-        explanation: "Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid alone implies only bursitis.",
+        explanation: "Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear by itself.",
       },
       {
         id: "scor-q11",
@@ -439,6 +458,16 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         markers: [{ x: 48, y: 30, label: "Coracoid process" }],
         title: "Coracoid process",
         note: "The coracoid is the anteromedial bony hook — origin of the conjoint tendon and anchor for the coracoacromial and coracoclavicular ligaments. A handy anterior landmark on the higher slices.",
+      },
+      {
+        sliceIndex: 13,
+        markers: [
+          { x: 50, y: 49, label: "Anterior labrum" },
+          { x: 44, y: 40, label: "Biceps in groove" },
+          { x: 49, y: 63, label: "Posterior labrum" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "On axial, do the variant check before diagnosing instability: smooth 1-3 o'clock anterosuperior separation may be a sublabral foramen, and absent anterosuperior labrum with a cord-like MGHL is a Buford complex. But do not dismiss an irregular detachment, stripped periosteum, bony Bankart, or matching Hill-Sachs as a variant. Biceps-groove fluid alone can be normal; an empty or medialized groove is the real pulley/subscapularis alarm.",
       },
     ],
     quiz: [
@@ -598,6 +627,16 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         title: "Acromion",
         note: "The acromion caps the supraspinatus outlet superiorly, with the AC joint and distal clavicle just anteromedial. A hooked or down-sloping acromion can narrow the outlet, but correlate it with symptoms and cuff/bursal findings.",
       },
+      {
+        sliceIndex: 4,
+        markers: [
+          { x: 40, y: 28, label: "Supraspinatus bulk" },
+          { x: 57, y: 56, label: "Infraspinatus bulk" },
+          { x: 56, y: 76, label: "Teres minor bulk" },
+        ],
+        title: "Do-not-overcall checkpoint",
+        note: "On T1, grade muscle and marrow deliberately: fatty streaks inside a wasted cuff muscle change reparability; residual red marrow should follow fat on non-fat-sat sequences; and focal T1-dark marrow is the finding that deserves explanation. Do not use this T1 muscle slice to diagnose a SLAP tear or full-thickness cuff gap.",
+      },
     ],
     quiz: [
       {
@@ -732,9 +771,19 @@ export const structureShoulderReading: Record<string, StructureReading> = {
     variant:
       "A smooth cleft under the SUPERIOR labrum that parallels the glenoid and stops at the biceps anchor is a sublabral recess — a SLAP curves laterally into the labrum with irregular margins.",
   },
+  "Biceps & rotator interval": {
+    variant:
+      "Mild interval signal or fluid is nonspecific. A pulley lesion needs loss/defect of the SGHL/CHL sling, medial biceps subluxation, or a matching upper-subscapularis tear pattern.",
+    measure:
+      "In adhesive capsulitis, rotator-interval capsule thickness ≥7 mm and coracohumeral-ligament thickness ≥4 mm are relatively specific but not sensitive; use them with axillary-pouch findings and the clinical stiffness pattern.",
+  },
   "Humeral head": {
     variant:
       "Patchy intermediate-signal residual red marrow that follows fat on non-fat-sat sequences is normal — a FOCAL T1-dark area is the worrisome finding (edema, fracture, lesion).",
+  },
+  Acromion: {
+    variant:
+      "Bigliani type/acromial slope and os acromiale are associations with outlet narrowing, not diagnoses by themselves; correlate with symptoms, bursal change, cuff findings, and radiographs when morphology is central.",
   },
   "Acromion & AC joint": {
     variant:
@@ -742,7 +791,7 @@ export const structureShoulderReading: Record<string, StructureReading> = {
   },
   "Greater tuberosity": {
     measure:
-      "Acromiohumeral interval (head to acromial undersurface) on coronal: normal >7 mm; <7 mm = cuff insufficiency; <5 mm = massive tear / cuff-tear arthropathy.",
+      "Acromiohumeral interval ≤7 mm supports chronic cuff insufficiency/superior migration, especially on radiographs; MRI-based AHI is supportive but not interchangeable with a properly positioned radiographic measurement.",
   },
   "Subacromial–subdeltoid bursa": {
     variant:
@@ -752,9 +801,23 @@ export const structureShoulderReading: Record<string, StructureReading> = {
     measure:
       "Quantify anteroinferior glenoid bone loss on CT (often 3D, humeral head subtracted) — MRI/MRA underestimates it.",
   },
+  "Anterior labrum": {
+    variant:
+      "Normal anterosuperior variants live around 1-3 o'clock: a sublabral foramen is a smooth anterior-superior cleft, and a Buford complex is absent anterosuperior labrum with a cord-like MGHL. Irregular detachment, periosteal stripping, or bony injury is not a variant.",
+  },
   "Posterior labrum": {
     variant:
       "Don't overcall age-related posterior labral fraying as a traumatic tear — reserve a 'reverse Bankart' read for a discrete detachment.",
+  },
+  "Biceps in the bicipital groove": {
+    variant:
+      "A thin rim of sheath fluid may communicate with the joint and be normal. The red flags are an empty groove, medial subluxation/dislocation, split tendon, or pulley/subscapularis injury.",
+  },
+  "Axillary recess": {
+    variant:
+      "Prominent synovial folds in the U-shaped pouch can mimic loose bodies; trace them as attached folds across slices before calling a free body.",
+    measure:
+      "Routine MRI axillary-pouch/IGHL thickness >4 mm supports adhesive capsulitis; MRA thresholds near >3 mm have been used. Treat the number as supportive, not diagnostic in isolation.",
   },
 };
 
@@ -777,11 +840,11 @@ export const structureShoulderPearl: Record<string, string> = {
   "Subacromial–subdeltoid bursa": "Fluid in the SASD bursa AND the joint together strongly suggests a full-thickness cuff tear.",
   "Axillary recess": "Thickening/edema of the axillary recess and rotator interval is the MRI signature of adhesive capsulitis.",
   Deltoid: "The deltoid is spared in cuff disease and is the prime mover a reverse total shoulder arthroplasty depends on — confirm its bulk and integrity before reverse-arthroplasty planning.",
-  "Bony glenoid": "Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; >20–25% glenoid bone loss favors a Latarjet over a soft-tissue repair.",
+  "Bony glenoid": "Read the bony rim on the axial — an anteroinferior bony Bankart (osseous fragment or blunted rim) changes management; substantial bone loss (often ~20–25%, with lower subcritical ranges relevant in contact athletes) supports considering bony augmentation such as Latarjet, especially with an off-track Hill-Sachs.",
   "Anterior labrum": "Walk the labral clock-face: the anteroinferior labrum (3–6 o'clock) is the Bankart zone. Don't overcall the normal sublabral foramen (1–3 o'clock) or a Buford complex (absent anterosuperior labrum + cord-like middle glenohumeral ligament).",
   "Posterior labrum": "A blunted or torn posterior labrum — paired with a reverse Hill-Sachs on the anteromedial head — is the signature of posterior instability, classically after a seizure or electric shock.",
   "Biceps in the bicipital groove": "An empty bicipital groove means the long head is torn or medially dislocated — and medial dislocation implies a torn subscapularis/pulley. Fluid in the groove alone, communicating with the joint, can be normal.",
-  "Coracoid process": "The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) suggests subcoracoid impingement of the subscapularis.",
+  "Coracoid process": "The coracoid anchors the conjoint tendon and the coracoclavicular ligaments; a short coracohumeral distance (<6 mm) can support subcoracoid impingement of the subscapularis in the right clinical/imaging context.",
 };
 
 /**
@@ -841,9 +904,9 @@ export const shoulderAdvanced: AdvancedQ[] = [
     id: "sh-caq-4",
     topic: "Instability - glenoid bone loss",
     prompt: "A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk?",
-    options: ["Coracoid transfer (Latarjet) with glenoid bone grafting", "Isolated arthroscopic Bankart soft-tissue repair", "Capsular plication without bony augmentation", "Physical therapy with activity modification"],
+    options: ["Bony augmentation such as a coracoid transfer (Latarjet)", "Isolated arthroscopic Bankart soft-tissue repair", "Capsular plication without bony augmentation", "Physical therapy with activity modification"],
     answer: 0,
-    explanation: "With critical glenoid bone loss (~20-25% or greater) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as a Latarjet (or Bankart plus remplissage for the Hill-Sachs) is favored to restore the glenoid track and lower recurrence. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.",
+    explanation: "With substantial/critical glenoid bone loss (often ~20-25%, with lower subcritical thresholds relevant in high-risk contact athletes) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as Latarjet is favored to restore the glenoid track and lower recurrence; remplissage may be added depending on the humeral defect strategy. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.",
   },
   {
     id: "sh-caq-5",
@@ -915,7 +978,7 @@ export const shoulderAdvanced: AdvancedQ[] = [
     prompt: "On glenoid bone-loss assessment, an en-face sagittal-oblique 'best-fit circle' is drawn on the inferior glenoid. The width of the bare anterior bone defect measures 7 mm and the maximum diameter of the circle is 28 mm. According to the glenoid track concept and contemporary surgical thresholds, this degree of bone loss is MOST appropriately classified as:",
     options: ["Critical/significant loss (~25%), favoring consideration of bony augmentation (e.g., Latarjet)", "Trivial loss (<10%), arthroscopic Bankart repair alone is reliably sufficient", "Critical loss (>40%), mandating total shoulder arthroplasty", "No measurable loss; the defect represents the normal bare area of the glenoid"],
     answer: 0,
-    explanation: "Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' threshold (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. (Shaha showed even 'subcritical' loss >13.5% worsens outcomes.)",
+    explanation: "Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' range (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. Lower 'subcritical' loss can still matter in contact athletes, so the number is a management risk marker, not a stand-alone rule.",
   },
   {
     id: "labrum-3",
@@ -979,7 +1042,7 @@ export const shoulderAdvanced: AdvancedQ[] = [
     prompt: "On a true AP radiograph of the shoulder, the acromiohumeral interval (AHI) measures 5 mm. Which interpretation is most appropriate?",
     options: ["This is within the normal range and excludes significant rotator cuff disease", "It indicates an os acromiale until proven otherwise", "It is narrowed and suggests a chronic full-thickness/massive rotator cuff tear with superior humeral migration", "It reflects subcoracoid impingement of the subscapularis"],
     answer: 2,
-    explanation: "The normal acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) indicates superior humeral head migration from a chronic massive/full-thickness supraspinatus tear and predicts poor reparability.",
+    explanation: "The normal radiographic acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) suggests superior humeral head migration from chronic full-thickness/massive cuff insufficiency and predicts poorer reparability. Correlate with cuff continuity and remember MRI-based AHI is supportive, not interchangeable with a properly positioned radiograph.",
   },
   {
     id: "impingement-4",
@@ -1375,7 +1438,7 @@ export const shoulderImageCaq: ImageCaqQ[] = [
     vignette: "A 55-year-old has chronic shoulder pain and weakness. On this coronal slice, the thin plane between the rotator cuff and the overlying acromion/deltoid is the subacromial-subdeltoid bursa.",
     options: ["Combined with joint fluid, distension of this bursa suggests a full-thickness cuff tear", "Isolated distension here is diagnostic of adhesive capsulitis", "Fluid here indicates a SLAP tear at the biceps anchor", "Fluid here localizes a quadrilateral-space syndrome"],
     answer: 0,
-    explanation: "This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid implies only bursitis, not frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.",
+    explanation: "This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear or frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.",
   },
   {
     id: "sh-icaq-5",

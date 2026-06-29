@@ -1,7 +1,21 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { courseRegistry, coursePath, type CourseDefinition } from "@/content/courses";
+import {
+  courseRegistry,
+  coursePath,
+  normalMriPath,
+  type CourseDefinition,
+} from "@/content/courses";
 import { courseRegionAccent } from "@/lib/course-visuals";
+import {
+  readLearnerResume,
+  shouldResumeHomeScreenLaunch,
+  suggestedNextStep,
+  type LearnerResumeState,
+} from "@/lib/learner-resume";
+import InstallPrompt from "@/components/ui/InstallPrompt";
+import PageLoader from "@/components/ui/PageLoader";
 
 /**
  * Landing / course-picker shown on first open (the app's `/` index, rendered
@@ -10,7 +24,23 @@ import { courseRegionAccent } from "@/lib/course-visuals";
  */
 export default function HomePage() {
   const { user } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const firstName = user?.displayName?.split(" ")[0];
+  const [resume] = useState<LearnerResumeState | null>(() =>
+    typeof localStorage === "undefined" ? null : readLearnerResume(),
+  );
+  const shouldAutoResume = shouldResumeHomeScreenLaunch(location.search, resume);
+
+  useEffect(() => {
+    if (shouldAutoResume && resume) {
+      navigate(resume.path, { replace: true });
+    }
+  }, [navigate, resume, shouldAutoResume]);
+
+  if (shouldAutoResume) {
+    return <PageLoader fullHeight label="Opening your last MRI course..." />;
+  }
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
@@ -19,6 +49,15 @@ export default function HomePage() {
           {firstName ? `Welcome back, ${firstName}` : "Welcome"}
         </h1>
         <p className="mt-2 text-gray-500">Choose a course to begin — pick up right where you left off.</p>
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+        <ResumePanel resume={resume} />
+        <RecommendedPath />
+      </div>
+
+      <div className="mb-8">
+        <InstallPrompt />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -31,6 +70,64 @@ export default function HomePage() {
         UCLA Division of Sports Medicine · MSK MRI Interpretation
       </p>
     </div>
+  );
+}
+
+function ResumePanel({ resume }: { resume: LearnerResumeState | null }) {
+  if (!resume) {
+    const firstCourse = courseRegistry[0];
+    return (
+      <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Recommended start</p>
+        <h2 className="mt-2 text-lg font-bold text-gray-900">Master normal first</h2>
+        <p className="mt-1 text-sm text-gray-600">
+          Begin with an interactive normal MRI workstation before cases and pathology.
+        </p>
+        <Link
+          to={normalMriPath(firstCourse)}
+          className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:w-auto"
+        >
+          Start normal knee MRI
+        </Link>
+      </section>
+    );
+  }
+
+  return (
+    <section className="rounded-xl border border-ucla-blue/20 bg-white p-5 shadow-sm">
+      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Resume</p>
+      <h2 className="mt-2 text-lg font-bold text-gray-900">{resume.title}</h2>
+      <p className="mt-1 text-sm text-gray-600">
+        {[resume.courseTitle, resume.modeLabel, resume.seriesLabel].filter(Boolean).join(" · ")}
+      </p>
+      <p className="mt-2 text-xs font-medium text-gray-500">{suggestedNextStep(resume.modeLabel)}</p>
+      <Link
+        to={resume.path}
+        className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:w-auto"
+      >
+        Continue learning
+      </Link>
+    </section>
+  );
+}
+
+function RecommendedPath() {
+  const steps = ["Explore", "Guided Tour", "Knowledge Check", "Cross-Plane", "Image CAQ"];
+  return (
+    <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+      <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Suggested sequence</p>
+      <h2 className="mt-2 text-lg font-bold text-gray-900">A simple path through each workstation</h2>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {steps.map((step, index) => (
+          <span
+            key={step}
+            className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-700"
+          >
+            {index + 1}. {step}
+          </span>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -50,6 +147,7 @@ function CourseCard({ course }: { course: CourseDefinition }) {
   return (
     <Link
       to={coursePath(course, "/")}
+      aria-label={`Open ${course.dashboardTitle}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-ucla-blue/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
     >
       <div className={`relative h-24 bg-gradient-to-br ${courseRegionAccent(course.bodyRegion)}`}>
@@ -69,9 +167,9 @@ function CourseCard({ course }: { course: CourseDefinition }) {
           </svg>
           {course.modules.length} modules{duration ? ` · ${duration}` : ""}
         </p>
-        <div className="mt-4 inline-flex items-center text-sm font-semibold text-ucla-blue">
-          Open course
-          <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+        <div className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-ucla-blue">
+          Open {course.shortTitle}
+          <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
         </div>

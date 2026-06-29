@@ -77,6 +77,26 @@ export default function CasesPage() {
         </div>
       </Link>
 
+      <div className="mt-4 grid gap-2 sm:grid-cols-3">
+        {[
+          ["1", "Normal baseline", "Anchor the exam against expected anatomy before naming pathology."],
+          ["2", "Structured search", "Work region by region so subtle secondary signs are not skipped."],
+          ["3", "Report comparison", "Compare your read with the model findings and teaching points."],
+        ].map(([number, title, copy]) => (
+          <div key={title} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+            <div className="flex items-start gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
+                {number}
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900">{title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-gray-500">{copy}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Milestone encouragement banners */}
       {coreCompletedCount > 0 && !allCoreDone && (
         <div className="mt-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
@@ -140,17 +160,30 @@ function renderCaseCard(
     <Link
       key={caseItem.id}
       to={coursePath(activeCourse, `/cases/${caseItem.id}`)}
-      className="block"
+      aria-label={
+        completed
+          ? `Review case: ${caseItem.title}`
+          : `Start case ${caseNumber}: ${diff.label} ${activeCourse.shortTitle} case`
+      }
+      className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
     >
-      <Card className="relative h-full transition-shadow hover:shadow-md hover:border-ucla-blue/30">
-        {/* Completion badge */}
-        {completed && (
-          <div className="absolute top-4 right-4">
+      <Card className="flex h-full flex-col transition-shadow hover:border-ucla-blue/30 hover:shadow-md">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Difficulty badge */}
+          <span
+            className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${diff.bg} ${diff.text}`}
+          >
+            {diff.label}
+          </span>
+
+          {/* Completion badge */}
+          {completed && (
             <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
               <svg
                 className="h-3.5 w-3.5"
                 fill="currentColor"
                 viewBox="0 0 20 20"
+                aria-hidden="true"
               >
                 <path
                   fillRule="evenodd"
@@ -160,18 +193,11 @@ function renderCaseCard(
               </svg>
               Completed
             </span>
-          </div>
-        )}
-
-        {/* Difficulty badge */}
-        <span
-          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${diff.bg} ${diff.text}`}
-        >
-          {diff.label}
-        </span>
+          )}
+        </div>
 
         {/* Title */}
-        <h3 className="mt-3 text-lg font-semibold text-gray-900 pr-20">
+        <h3 className="mt-3 text-lg font-semibold text-gray-900">
           {completed
             ? caseItem.title
             : `Case ${caseNumber}: ${diff.label}`}
@@ -183,7 +209,7 @@ function renderCaseCard(
         </p>
 
         {/* Tags (non-spoiling) or Diagnoses (after completion) */}
-        <div className="mt-4">
+        <div className="mt-4 flex-1">
           {completed ? (
             <>
               <span className="text-[10px] font-medium uppercase tracking-wide text-gray-500">Diagnoses</span>
@@ -210,6 +236,13 @@ function renderCaseCard(
               ))}
             </div>
           )}
+        </div>
+
+        <div className="mt-5 inline-flex min-h-10 items-center text-sm font-semibold text-ucla-blue">
+          {completed ? "Review case" : "Start case"}
+          <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
         </div>
       </Card>
     </Link>
