@@ -71,7 +71,10 @@ async function staleWhileRevalidate(request) {
       return response;
     })
     .catch(() => undefined);
-  return cached || network || caches.match("/offline.html");
+  // `network` is a promise; it must be awaited before the `||` chain, otherwise
+  // a cache-miss returns the pending promise and the offline fallback is skipped
+  // when the network request ultimately fails.
+  return cached || (await network) || caches.match("/offline.html");
 }
 
 async function navigationFirst(request) {

@@ -31,7 +31,7 @@ import {
   enableLocalPreviewAuth,
   isLocalPreviewHost,
 } from "@/lib/local-preview-auth";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
 
 const providerLabels: Record<SignInProvider, string> = {
@@ -87,6 +87,16 @@ export default function LoginPage() {
     window.location.replace(targetUrl);
   }, [returnTo]);
 
+  // Both the redirect-completion effect and the "already signed in" effect below
+  // can navigate away from /login; this guard ensures the navigation (and the
+  // consumeReturnPath side effect) happens exactly once.
+  const hasNavigatedRef = useRef(false);
+  const navigateToReturn = useCallback(() => {
+    if (hasNavigatedRef.current) return;
+    hasNavigatedRef.current = true;
+    navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
+  }, [navigate, returnTo]);
+
   useEffect(() => {
     let cancelled = false;
     async function completeRedirect() {
@@ -94,7 +104,7 @@ export default function LoginPage() {
         const result = await completeRedirectSignIn();
         if (!result || cancelled) return;
         setRole(result.role);
-        navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
+        navigateToReturn();
       } catch (err: unknown) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to finish sign-in");
@@ -107,13 +117,13 @@ export default function LoginPage() {
     return () => {
       cancelled = true;
     };
-  }, [navigate, returnTo, setRole]);
+  }, [navigate, returnTo, setRole, navigateToReturn]);
 
   useEffect(() => {
     if (!checkingRedirect && !loading && user) {
-      navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
+      navigateToReturn();
     }
-  }, [checkingRedirect, user, loading, navigate, returnTo]);
+  }, [checkingRedirect, user, loading, navigate, returnTo, navigateToReturn]);
 
   async function handleProviderSignIn(provider: SignInProvider) {
     setError(null);

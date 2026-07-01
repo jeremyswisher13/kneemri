@@ -15,6 +15,23 @@ import { submitCaseAttempt } from "@/lib/firestore";
 /*  Constants & helpers                                                */
 /* ------------------------------------------------------------------ */
 
+// On a teaching-image load failure, hide the broken <img> and drop a neutral
+// "Image unavailable" placeholder into its container — otherwise the fixed-ratio
+// wrapper is left as an empty gray box.
+function handleTeachingImageError(e: { currentTarget: HTMLImageElement }) {
+  const img = e.currentTarget;
+  img.style.display = "none";
+  const parent = img.parentElement;
+  if (parent && !parent.querySelector("[data-img-fallback]")) {
+    const fb = document.createElement("div");
+    fb.setAttribute("data-img-fallback", "");
+    fb.className =
+      "flex h-full w-full items-center justify-center p-3 text-center text-[11px] text-gray-400";
+    fb.textContent = "Image unavailable";
+    parent.appendChild(fb);
+  }
+}
+
 // Generic connective / locational / descriptor words that appear across many
 // findings — matching one of these should never credit a finding.
 const FINDING_STOPWORDS = new Set([
@@ -372,7 +389,7 @@ export default function CasePage() {
                 src={expandedImage.src}
                 alt={expandedImage.alt}
                 className="max-h-[75vh] max-w-full object-contain"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                onError={handleTeachingImageError}
               />
             </div>
             <div className="p-4">
@@ -536,7 +553,7 @@ export default function CasePage() {
                             alt={image.alt}
                             loading="lazy"
                             className="h-full w-full object-contain"
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                            onError={handleTeachingImageError}
                           />
                         </div>
                         <div className="p-2">
@@ -1098,7 +1115,7 @@ export default function CasePage() {
                                   alt={img.alt}
                                   className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-200"
                                   loading="lazy"
-                                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                  onError={handleTeachingImageError}
                                 />
                               </div>
                               <div className="p-3">
@@ -1133,7 +1150,7 @@ export default function CasePage() {
                                   alt={img.alt}
                                   className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-200"
                                   loading="lazy"
-                                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                  onError={handleTeachingImageError}
                                 />
                               </div>
                               <div className="p-3">
