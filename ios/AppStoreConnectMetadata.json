@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "bundleId": "com.jeremyswisher.uclasportsmri",
+  "sku": "ucla-sports-mri-ios",
+  "platform": "iOS",
+  "version": "1.0",
+  "build": "1",
+  "name": "UCLA Sports MRI",
+  "subtitle": "Sports medicine MRI learning",
+  "primaryLanguage": "English (U.S.)",
+  "primaryCategory": "Education",
+  "secondaryCategory": "Medical",
+  "price": "Free",
+  "ageRatingRecommendation": "17+",
+  "copyright": "2026 Jeremy Swisher, MD",
+  "supportUrl": "https://ucla-knee-mri.firebaseapp.com/support",
+  "privacyPolicyUrl": "https://ucla-knee-mri.firebaseapp.com/privacy",
+  "keywords": [
+    "MRI",
+    "sports medicine",
+    "musculoskeletal",
+    "MSK",
+    "radiology",
+    "knee",
+    "shoulder",
+    "hip",
+    "elbow",
+    "fellowship",
+    "education"
+  ],
+  "description": "UCLA Sports MRI is an interactive sports medicine MRI education app for fellows and advanced learners. Work through normal MRI workstations for knee, shoulder, hip, and elbow, practice guided tours and cross-plane correlation, answer image-based knowledge checks, review cases, and reinforce missed concepts with spaced review.\n\nThe app is designed for education and training. It is not a diagnostic device, treatment tool, or substitute for professional clinical judgment.",
+  "promotionalText": "Interactive normal MRI workstations, cases, guided tours, knowledge checks, and spaced review for sports medicine MRI learning.",
+  "whatsNew": "Initial App Store release.",
+  "reviewNotes": "UCLA Sports MRI is a medical education app for sports medicine MRI interpretation. It is not intended to diagnose, treat, or guide patient-specific care. The app teaches normal anatomy, MRI search patterns, guided landmark recognition, cross-plane correlation, cases, quizzes, and spaced review.\n\nThe app currently requires sign-in to save learner progress. Google sign-in and Sign in with Apple are available in the app. TestFlight/App Review builds also expose a Continue in App Review demo button on the login screen so reviewers can inspect all courses without a live fellow account. Backend services are live through Firebase Hosting/Auth/Firestore.\n\nNo in-app purchases, ads, tracking, HealthKit, location, camera, contacts, or push notifications are used.",
+  "reviewAccess": {
+    "demoMode": "Continue in App Review demo",
+    "demoModeAvailability": "Debug, TestFlight, and App Review builds launch with reviewerDemo=1.",
+    "demoModeStorage": "Local-only demo fellow progress; no reviewer account is required for curriculum inspection."
+  },
+  "privacy": {
+    "tracking": false,
+    "trackingDomains": [],
+    "dataLinkedToUser": [
+      "Name",
+      "Email Address",
+      "User ID",
+      "Product Interaction"
+    ],
+    "purposes": [
+      "App Functionality"
+    ],
+    "notUsed": [
+      "Third-party advertising",
+      "Cross-app tracking",
+      "IDFA",
+      "HealthKit",
+      "Location",
+      "Camera",
+      "Contacts",
+      "Push notifications"
+    ]
+  },
+  "submissionChecklist": [
+    "Enable Sign in with Apple for com.jeremyswisher.uclasportsmri in Apple Developer.",
+    "Configure Firebase Authentication apple.com provider with Apple service ID, team ID, key ID, private key, and redirect URL.",
+    "Deploy the current Firebase Hosting build after auth provider setup is verified.",
+    "Archive UCLASportsMRI in Xcode and upload to TestFlight.",
+    "Verify Google sign-in, Sign in with Apple, App Review demo, privacy/support URLs, and account deletion request on a real device.",
+    "Capture iPhone 6.9-inch and iPad 13-inch screenshots from the TestFlight build.",
+    "Submit App Store version 1.0 for review."
+  ]
+}

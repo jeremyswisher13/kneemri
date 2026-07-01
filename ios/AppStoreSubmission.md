@@ -29,6 +29,8 @@ For command-line export/upload after an Xcode archive, use `ios/ExportOptions.pl
 
 ## App Store Connect metadata draft
 
+Structured copy lives in `ios/AppStoreConnectMetadata.json`.
+
 - Name: `UCLA Sports MRI`
 - Subtitle: `Sports medicine MRI learning`
 - Primary category: Education
@@ -103,7 +105,9 @@ The web app now exposes a Sign in with Apple button through Firebase Auth's `app
 
 ## Screenshots needed
 
-Apple requires at least one screenshot per platform/device-family submission. Recommended screenshot set:
+The route-by-route capture plan lives in `ios/ScreenshotPlan.md`. Apple currently accepts 1 to 10 screenshots per device set in `.jpeg`, `.jpg`, or `.png`; because this binary targets iPhone and iPad, capture both the iPhone 6.9-inch and iPad 13-inch sets after TestFlight auth is confirmed.
+
+Recommended screenshot set:
 
 1. Course dashboard
 2. Normal MRI workstation

@@ -59,6 +59,8 @@ assertFile("Entitlements exist", "ios", "UCLASportsMRI", "UCLASportsMRI.entitlem
 assertFile("Native shell exists", "ios", "UCLASportsMRI", "WebShellView.swift");
 assertFile("Export options template exists", "ios", "ExportOptions.plist");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
+assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
+assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("iOS README exists", "ios", "README.md");
 
 const project = readText("ios", "project.yml");
@@ -96,8 +98,60 @@ const appStoreSubmission = readText("ios", "AppStoreSubmission.md");
 assertIncludes("Privacy URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/privacy");
 assertIncludes("Support URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/support");
 assertIncludes("Reviewer demo documented", appStoreSubmission, "Continue in App Review demo");
+assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConnectMetadata.json");
+assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
+
+const metadata = JSON.parse(readText("ios", "AppStoreConnectMetadata.json"));
+if (metadata.bundleId === "com.jeremyswisher.uclasportsmri") {
+  pass("Metadata bundle ID matches native bundle");
+} else {
+  fail("Metadata bundle ID matches native bundle", metadata.bundleId ?? "missing");
+}
+if (metadata.name === "UCLA Sports MRI") {
+  pass("Metadata app name is ready");
+} else {
+  fail("Metadata app name is ready", metadata.name ?? "missing");
+}
+if (metadata.subtitle === "Sports medicine MRI learning") {
+  pass("Metadata subtitle is ready");
+} else {
+  fail("Metadata subtitle is ready", metadata.subtitle ?? "missing");
+}
+if (metadata.supportUrl === "https://ucla-knee-mri.firebaseapp.com/support") {
+  pass("Metadata support URL matches app route");
+} else {
+  fail("Metadata support URL matches app route", metadata.supportUrl ?? "missing");
+}
+if (metadata.privacyPolicyUrl === "https://ucla-knee-mri.firebaseapp.com/privacy") {
+  pass("Metadata privacy URL matches app route");
+} else {
+  fail("Metadata privacy URL matches app route", metadata.privacyPolicyUrl ?? "missing");
+}
+if (Array.isArray(metadata.keywords) && metadata.keywords.includes("MRI") && metadata.keywords.includes("sports medicine")) {
+  pass("Metadata keywords include core search terms");
+} else {
+  fail("Metadata keywords include core search terms");
+}
+if (metadata.reviewNotes?.includes("Continue in App Review demo") && metadata.reviewNotes?.includes("not intended to diagnose")) {
+  pass("Metadata review notes include demo access and medical disclaimer");
+} else {
+  fail("Metadata review notes include demo access and medical disclaimer");
+}
+if (metadata.privacy?.tracking === false && metadata.privacy?.dataLinkedToUser?.includes("Product Interaction")) {
+  pass("Metadata privacy summary matches manifest");
+} else {
+  fail("Metadata privacy summary matches manifest");
+}
+
+const screenshotPlan = readText("ios", "ScreenshotPlan.md");
+assertIncludes("Screenshot plan covers iPhone 6.9-inch", screenshotPlan, "iPhone 6.9-inch");
+assertIncludes("Screenshot plan covers iPad 13-inch", screenshotPlan, "iPad 13-inch");
+assertIncludes("Screenshot plan covers guided tour route", screenshotPlan, "normal-knee-mri?mode=tour");
+assertIncludes("Screenshot plan covers knowledge check route", screenshotPlan, "normal-knee-mri?mode=check");
+assertIncludes("Screenshot plan covers cross-plane route", screenshotPlan, "normal-shoulder-mri?mode=correlate");
+assertIncludes("Screenshot plan excludes PHI", screenshotPlan, "No protected health information");
 
 const exportOptions = readText("ios", "ExportOptions.plist");
 assertIncludes("Export destination uploads to App Store Connect", exportOptions, "<string>upload</string>");
