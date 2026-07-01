@@ -32,6 +32,7 @@ describe("iOS evidence audit", () => {
     }
 
     expect(auditScript).toContain("App Store export signing ready");
+    expect(auditScript).toContain("readyPattern: /^App Store export signing ready: yes$/m");
     expect(auditScript).toContain("App Store Connect access for Team X578T4K65B");
     expect(auditScript).toContain("Apple/Firebase auth gates");
     expect(auditScript).toContain("Real-device/account-deletion gates");

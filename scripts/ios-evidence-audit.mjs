@@ -11,7 +11,7 @@ const commands = [
     label: "Archive/export signing",
     command: "node",
     args: ["scripts/ios-archive.mjs", "--signing"],
-    readyPattern: /App Store export signing ready: yes/,
+    readyPattern: /^App Store export signing ready: yes$/m,
     readyLabel: "App Store export signing ready",
   },
   {
