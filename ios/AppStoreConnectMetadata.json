@@ -104,6 +104,7 @@
   },
   "submissionChecklist": [
     "Enable Sign in with Apple for com.jeremyswisher.uclasportsmri in Apple Developer.",
+    "Create the Apple Services ID com.jeremyswisher.uclasportsmri.web for Firebase Auth web redirects.",
     "Configure the Apple Service ID Return URL as https://ucla-knee-mri.firebaseapp.com/__/auth/handler.",
     "Configure Firebase Authentication apple.com provider with Apple service ID, team ID, key ID, private key, OAuth code-flow settings, and authorized domains ucla-knee-mri.firebaseapp.com plus ucla-knee-mri.web.app.",
     "Deploy the current Firebase Hosting build after auth provider setup is verified.",

@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const FIREBASE_APP_AUTH_HANDLER = "https://ucla-knee-mri.firebaseapp.com/__/auth/handler";
 const WEB_APP_AUTH_HANDLER = "https://ucla-knee-mri.web.app/__/auth/handler";
+const APPLE_SERVICE_ID = "com.jeremyswisher.uclasportsmri.web";
 
 describe("iOS Sign in with Apple readiness", () => {
   const setupDoc = readFileSync("ios/AppleFirebaseAuthSetup.md", "utf8");
@@ -12,6 +13,7 @@ describe("iOS Sign in with Apple readiness", () => {
   const evidence = JSON.parse(readFileSync("ios/AppleFirebaseAuthEvidence.json", "utf8")) as {
     appleDeveloper: { bundleId: string };
     firebaseAuth: {
+      serviceId: string;
       primaryReturnUrl: string;
       secondaryAuthHandler: string;
       authorizedDomains: string[];
@@ -27,6 +29,10 @@ describe("iOS Sign in with Apple readiness", () => {
     expect(handoff).toContain(FIREBASE_APP_AUTH_HANDLER);
     expect(metadata).toContain(FIREBASE_APP_AUTH_HANDLER);
     expect(evidence.firebaseAuth.primaryReturnUrl).toBe(FIREBASE_APP_AUTH_HANDLER);
+    expect(setupDoc).toContain(APPLE_SERVICE_ID);
+    expect(handoff).toContain(APPLE_SERVICE_ID);
+    expect(metadata).toContain(APPLE_SERVICE_ID);
+    expect(evidence.firebaseAuth.serviceId).toBe(APPLE_SERVICE_ID);
   });
 
   it("keeps Firebase authorized domains explicit for Apple provider setup", () => {
@@ -62,6 +68,7 @@ describe("iOS Sign in with Apple readiness", () => {
     expect(evidenceScript).toContain("com.apple.developer.applesignin");
     expect(evidenceScript).toContain('OAuthProvider("apple.com")');
     expect(evidenceScript).toContain("firebase.firebaseProjectId === expected.firebaseProjectId");
+    expect(evidenceScript).toContain("firebase.serviceId === expected.serviceId");
     expect(evidenceScript).toContain("Submission Gate Alignment");
     expect(evidenceScript).toContain("PRIVATE KEY");
   });
@@ -75,6 +82,7 @@ describe("iOS Sign in with Apple readiness", () => {
     expect(output).toContain("Source Checks");
     expect(output).toContain("Native Sign in with Apple entitlement is wired");
     expect(output).toContain("Web app exposes Firebase apple.com provider");
+    expect(output).toContain(`Apple Service ID: ${APPLE_SERVICE_ID}`);
     expect(output).toContain("Submission Gate Alignment");
     expect(output).toContain("Ready Apple/Firebase auth gates:");
   });

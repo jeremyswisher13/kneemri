@@ -17,6 +17,7 @@
     "redirectUrlVerifiedInAppleAndFirebase": false,
     "authorizedDomainsIncludeFirebaseHosting": false,
     "firebaseProjectId": "ucla-knee-mri",
+    "serviceId": "com.jeremyswisher.uclasportsmri.web",
     "primaryReturnUrl": "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
     "secondaryAuthHandler": "https://ucla-knee-mri.web.app/__/auth/handler",
     "authorizedDomains": [

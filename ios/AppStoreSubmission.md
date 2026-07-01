@@ -232,6 +232,7 @@ The web app now exposes a Sign in with Apple button through Firebase Auth's `app
 
 1. In Apple Developer, enable **Sign in with Apple** for the app identifier associated with `com.jeremyswisher.uclasportsmri`.
 2. Create the web/service identifier required by Firebase Auth for Apple provider redirects.
+   Use Services ID `com.jeremyswisher.uclasportsmri.web`.
 3. Configure the Apple Service ID Return URL exactly:
 
 ```text

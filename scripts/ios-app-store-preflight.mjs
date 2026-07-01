@@ -167,6 +167,7 @@ assertIncludes("Export checklist documents upload-capable roles", appStoreExport
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
+assertIncludes("Apple setup doc names Apple Services ID", authSetup, "com.jeremyswisher.uclasportsmri.web");
 assertIncludes("Apple setup doc lists Firebase provider", authSetup, "Firebase Authentication");
 assertIncludes("Apple setup doc gives exact return URL", authSetup, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Apple setup doc gives secondary auth handler", authSetup, "https://ucla-knee-mri.web.app/__/auth/handler");
@@ -183,6 +184,7 @@ assertIncludes("Auth evidence verifies Firebase authorized domains gate", authEv
 assertIncludes("Auth evidence validates native Apple entitlement", authEvidence, "com.apple.developer.applesignin");
 assertIncludes("Auth evidence validates web Apple provider", authEvidence, 'OAuthProvider("apple.com")');
 assertIncludes("Auth evidence validates Firebase project", authEvidence, "firebase.firebaseProjectId === expected.firebaseProjectId");
+assertIncludes("Auth evidence validates Apple Services ID", authEvidence, "firebase.serviceId === expected.serviceId");
 assertIncludes("Auth evidence reports submission gate alignment", authEvidence, "Submission Gate Alignment");
 assertIncludes("Auth evidence rejects private keys", authEvidence, "PRIVATE KEY");
 
@@ -340,6 +342,7 @@ if (metadata.reviewNotes?.includes("Continue in App Review demo") && metadata.re
 }
 if (
   Array.isArray(metadata.submissionChecklist) &&
+  metadata.submissionChecklist.some((item) => item.includes("com.jeremyswisher.uclasportsmri.web")) &&
   metadata.submissionChecklist.some((item) => item.includes("https://ucla-knee-mri.firebaseapp.com/__/auth/handler")) &&
   metadata.submissionChecklist.some((item) => item.includes("ucla-knee-mri.web.app"))
 ) {

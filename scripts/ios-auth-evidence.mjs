@@ -19,6 +19,7 @@ const loginPage = readFileSync(loginPagePath, "utf8");
 const expected = {
   bundleId: "com.jeremyswisher.uclasportsmri",
   firebaseProjectId: "ucla-knee-mri",
+  serviceId: "com.jeremyswisher.uclasportsmri.web",
   primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
   secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
   authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],
@@ -66,6 +67,7 @@ const items = [
     ready:
       firebase.appleProviderConfigured === true &&
       firebase.firebaseProjectId === expected.firebaseProjectId &&
+      firebase.serviceId === expected.serviceId &&
       text(firebase.confirmedAt) &&
       text(firebase.confirmedBy),
     next: "Enable the Apple provider in Firebase Authentication and record Firebase confirmation evidence.",
@@ -77,6 +79,7 @@ const items = [
     ready:
       firebase.appleServiceIdCreated === true &&
       firebase.firebaseProjectId === expected.firebaseProjectId &&
+      firebase.serviceId === expected.serviceId &&
       firebase.primaryReturnUrl === expected.primaryReturnUrl &&
       text(firebase.confirmedAt) &&
       text(firebase.confirmedBy),
@@ -89,6 +92,7 @@ const items = [
     ready:
       firebase.applePrivateKeyConfigured === true &&
       firebase.firebaseProjectId === expected.firebaseProjectId &&
+      firebase.serviceId === expected.serviceId &&
       text(firebase.confirmedAt) &&
       text(firebase.confirmedBy),
     next: "Enter Team ID, Key ID, Service ID, and private key in Firebase Console only. Do not commit secrets.",
@@ -100,6 +104,7 @@ const items = [
     ready:
       firebase.redirectUrlVerifiedInAppleAndFirebase === true &&
       firebase.firebaseProjectId === expected.firebaseProjectId &&
+      firebase.serviceId === expected.serviceId &&
       firebase.primaryReturnUrl === expected.primaryReturnUrl &&
       firebase.secondaryAuthHandler === expected.secondaryAuthHandler &&
       text(firebase.confirmedAt) &&
@@ -113,6 +118,7 @@ const items = [
     ready:
       firebase.authorizedDomainsIncludeFirebaseHosting === true &&
       firebase.firebaseProjectId === expected.firebaseProjectId &&
+      firebase.serviceId === expected.serviceId &&
       includesAll(firebase.authorizedDomains, expected.authorizedDomains) &&
       text(firebase.confirmedAt) &&
       text(firebase.confirmedBy),
@@ -135,6 +141,11 @@ const sourceChecks = [
     label: "Firebase evidence targets the expected project",
     ok: firebase.firebaseProjectId === expected.firebaseProjectId,
     detail: firebase.firebaseProjectId ?? "missing",
+  },
+  {
+    label: "Firebase evidence targets the expected Apple Service ID",
+    ok: firebase.serviceId === expected.serviceId,
+    detail: firebase.serviceId ?? "missing",
   },
   {
     label: "Apple evidence targets the expected bundle ID",
@@ -180,6 +191,7 @@ console.log("");
 console.log("## Expected Values");
 console.log(`Bundle ID: ${expected.bundleId}`);
 console.log(`Firebase project: ${expected.firebaseProjectId}`);
+console.log(`Apple Service ID: ${expected.serviceId}`);
 console.log(`Primary Apple Service ID Return URL: ${expected.primaryReturnUrl}`);
 console.log(`Secondary Firebase Auth handler: ${expected.secondaryAuthHandler}`);
 console.log(`Authorized domains: ${expected.authorizedDomains.join(", ")}`);

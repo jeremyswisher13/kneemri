@@ -37,21 +37,35 @@ com.jeremyswisher.uclasportsmri
 3. Enable **Sign in with Apple** for that App ID.
 4. Create the web/service identifier required by Firebase Auth for Apple web
    redirects.
-5. Configure the service identifier's return URL to exactly:
+5. Use this Services ID identifier:
+
+```text
+com.jeremyswisher.uclasportsmri.web
+```
+
+6. Configure the Services ID Sign in with Apple settings with:
+
+```text
+Primary App ID: com.jeremyswisher.uclasportsmri
+Domain/subdomain: ucla-knee-mri.firebaseapp.com
+Return URL: https://ucla-knee-mri.firebaseapp.com/__/auth/handler
+```
+
+7. Configure the service identifier's return URL to exactly:
 
 ```text
 https://ucla-knee-mri.firebaseapp.com/__/auth/handler
 ```
 
-6. Create or select a Sign in with Apple private key.
-7. Record the Team ID, Key ID, Service ID, and private key only in the secure
+8. Create or select a Sign in with Apple private key.
+9. Record the Team ID, Key ID, Service ID, and private key only in the secure
    Firebase console flow. Do not commit those values to this repo.
 
 ## Firebase Authentication
 
 1. Open Firebase Console > Authentication > Sign-in method.
 2. Enable Apple provider.
-3. Enter the Apple Team ID, Key ID, Service ID, private key, and return/callback
+3. Enter the Apple Team ID, Key ID, Service ID (`com.jeremyswisher.uclasportsmri.web`), private key, and return/callback
    configuration required by Firebase.
 4. Confirm authorized domains include:
 
