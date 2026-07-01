@@ -99,6 +99,15 @@ function firstUsefulFailure(output) {
   return lines.find((line) => line.startsWith("FAIL ") || line.startsWith("TODO ")) ?? lines.at(-1) ?? "No verifier output.";
 }
 
+function printPortalField(label, value, countLabel) {
+  const body = String(value ?? "").trim();
+  console.log(`${label} (${countLabel}):`);
+  console.log(`-----BEGIN ${label}-----`);
+  console.log(body);
+  console.log(`-----END ${label}-----`);
+  console.log("");
+}
+
 const keywords = Array.isArray(metadata.keywords) ? metadata.keywords.join(", ") : "";
 const metadataChecks = [
   {
@@ -432,8 +441,22 @@ console.log(`Keywords (${keywords.length}/${limits.keywordsMax}): ${keywords}`);
 console.log(`Support URL: ${metadata.supportUrl}`);
 console.log(`Privacy Policy URL: ${metadata.privacyPolicyUrl}`);
 console.log(`Accessibility URL: ${metadata.accessibilityUrl}`);
-console.log(`Review notes: ios/AppStoreConnectMetadata.json#reviewNotes (${byteLength(metadata.reviewNotes)} bytes)`);
-console.log("What's New: initial 1.0 release; only paste if App Store Connect asks for it.");
+console.log(`Description: ${metadata.description.length}/${limits.descriptionMax} characters`);
+console.log(`Promotional text: ${metadata.promotionalText.length}/${limits.promotionalTextMax} characters`);
+console.log(`Review notes: ${byteLength(metadata.reviewNotes)}/${limits.reviewNotesMaxBytes} bytes`);
+console.log(`What's New: ${metadata.whatsNew.length}/${limits.whatsNewMax} characters; only paste if App Store Connect asks for it.`);
+console.log("");
+
+console.log("## Portal Text Fields");
+printPortalField("Description", metadata.description, `${metadata.description.length}/${limits.descriptionMax} characters`);
+printPortalField("Promotional Text", metadata.promotionalText, `${metadata.promotionalText.length}/${limits.promotionalTextMax} characters`);
+printPortalField("What's New", metadata.whatsNew, `${metadata.whatsNew.length}/${limits.whatsNewMax} characters`);
+printPortalField("App Review Notes", metadata.reviewNotes, `${byteLength(metadata.reviewNotes)}/${limits.reviewNotesMaxBytes} bytes`);
+console.log("## Privacy Label Answers");
+console.log(`Tracking: ${metadata.privacy?.tracking === true ? "Yes" : "No"}`);
+console.log(`Data linked to user: ${metadata.privacy?.dataLinkedToUser?.join(", ") ?? ""}`);
+console.log(`Purpose: ${metadata.privacy?.purposes?.join(", ") ?? ""}`);
+console.log(`Not used: ${metadata.privacy?.notUsed?.join(", ") ?? ""}`);
 console.log("");
 
 console.log("## Screenshot Upload Packet");

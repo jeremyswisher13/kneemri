@@ -69,7 +69,7 @@ npm run store:ios:evidence
 
 `npm run evidence:ios` is the consolidated non-failing audit for signing, Apple/Firebase auth evidence, release verification evidence, screenshots, App Store Connect evidence, the final submission gate, and post-submission App Store release evidence.
 `npm run release:ios:evidence` reports the real-device/TestFlight auth and account-deletion evidence still missing from `ios/ReleaseVerificationEvidence.json`.
-`npm run asc:ios:evidence` validates `ios/AppStoreConnectMetadata.json`, prints the App Store Connect copy-paste packet, and reports which external App Store Connect confirmations still need to be recorded in `ios/AppStoreConnectEvidence.json`.
+`npm run asc:ios:evidence` validates `ios/AppStoreConnectMetadata.json`, prints the App Store Connect copy-paste packet with the full Description, Promotional Text, What's New, App Review Notes, privacy-label answers, and screenshot file list, then reports which external App Store Connect confirmations still need to be recorded in `ios/AppStoreConnectEvidence.json`.
 `npm run store:ios:evidence` reports the post-submission evidence in `ios/AppStoreReleaseEvidence.json`; `npm run store:ios:evidence:verify` is the final goal gate after App Review approval and public App Store availability.
 
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.

@@ -29,10 +29,14 @@ type Metadata = {
     commonTaskBasis: string[];
   };
   keywords: string[];
+  description: string;
+  promotionalText: string;
+  whatsNew: string;
   reviewNotes: string;
   privacy: {
     tracking: boolean;
     dataLinkedToUser: string[];
+    purposes: string[];
   };
 };
 
@@ -169,6 +173,19 @@ describe("iOS App Store Connect readiness", () => {
     expect(output).toContain("Screenshot Source Verification");
     expect(output).toContain("Screenshot evidence verifier:");
     expect(output).toContain("Copy-Paste Packet");
+    expect(output).toContain("Portal Text Fields");
+    expect(output).toContain("Privacy Label Answers");
+    expect(output).toContain("-----BEGIN Description-----");
+    expect(output).toContain(metadata.description);
+    expect(output).toContain("-----BEGIN Promotional Text-----");
+    expect(output).toContain(metadata.promotionalText);
+    expect(output).toContain("-----BEGIN What's New-----");
+    expect(output).toContain(metadata.whatsNew);
+    expect(output).toContain("-----BEGIN App Review Notes-----");
+    expect(output).toContain(metadata.reviewNotes);
+    expect(output).toContain(`Tracking: ${metadata.privacy.tracking ? "Yes" : "No"}`);
+    expect(output).toContain(`Data linked to user: ${metadata.privacy.dataLinkedToUser.join(", ")}`);
+    expect(output).toContain(`Purpose: ${metadata.privacy.purposes.join(", ")}`);
     expect(output).toContain("Screenshot Upload Packet");
     expect(output).toContain("iPhone 6.9-inch folder: ios/screenshots/iphone-6-9");
     expect(output).toContain("iPad 13-inch folder: ios/screenshots/ipad-13");

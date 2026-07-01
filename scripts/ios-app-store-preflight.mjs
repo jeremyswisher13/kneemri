@@ -220,6 +220,9 @@ assertIncludes("App Store Connect evidence reports ready gates", appStoreConnect
 assertIncludes("App Store Connect evidence prints role prerequisites", appStoreConnectEvidenceScript, "Account Holder, App Manager, or Admin");
 assertIncludes("App Store Connect evidence prints primary language", appStoreConnectEvidenceScript, "Primary language");
 assertIncludes("App Store Connect evidence prints user access", appStoreConnectEvidenceScript, "Full Access");
+assertIncludes("App Store Connect evidence prints full portal text fields", appStoreConnectEvidenceScript, "Portal Text Fields");
+assertIncludes("App Store Connect evidence prints review-note field", appStoreConnectEvidenceScript, 'printPortalField("App Review Notes"');
+assertIncludes("App Store Connect evidence prints privacy-label answers", appStoreConnectEvidenceScript, "Privacy Label Answers");
 
 const appStoreReleaseEvidenceScript = readText("scripts", "ios-app-store-release-evidence.mjs");
 assertIncludes("App Store release evidence verifies submission gate", appStoreReleaseEvidenceScript, "appStoreRelease.submittedForReview");
