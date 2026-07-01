@@ -111,7 +111,7 @@ npm run archive:ios:only
 npm run export:ios
 ```
 
-`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account and an App Store distribution provisioning profile for Team `X578T4K65B`. If export fails, the helper now reads Xcode's distribution log and prints the exact account/profile next action.
+`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account and an App Store distribution provisioning profile for Team `X578T4K65B`. The Xcode-signed-in Apple ID must have an App Store Connect upload-capable role for this team/app: Account Holder, Admin, App Manager, or Developer. If export fails, the helper now reads Xcode's distribution log and prints the exact account/profile next action.
 Only set `archiveExport.appStoreExportSigningReady` and `archiveExport.appStoreConnectAccountAccessVerified` in `ios/AppStoreSubmissionGate.json` after the matching command evidence exists.
 
 When Apple Developer signing is configured, command-line archive/export is available:

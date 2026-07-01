@@ -163,6 +163,7 @@ assertIncludes("Export checklist documents Xcode account access", appStoreExport
 assertIncludes("Export checklist includes signing command", appStoreExportReadiness, "npm run archive:ios:signing");
 assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
 assertIncludes("Export checklist covers keychain visibility caveat", appStoreExportReadiness, "zero code-signing identities");
+assertIncludes("Export checklist documents upload-capable roles", appStoreExportReadiness, "Account Holder, Admin, App Manager, or Developer");
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
@@ -392,6 +393,7 @@ assertIncludes("Archive helper supports export retry mode", archiveHelper, "--ex
 assertIncludes("Archive helper diagnoses export failures", archiveHelper, "diagnoseExportFailure");
 assertIncludes("Archive helper reads distribution logs", archiveHelper, "IDEDistribution.standard.log");
 assertIncludes("Archive helper explains account access failures", archiveHelper, "App Store Connect access");
+assertIncludes("Archive helper explains upload-capable roles", archiveHelper, "Account Holder, Admin, App Manager, or Developer");
 assertIncludes("Archive helper explains missing App Store profiles", archiveHelper, "No profiles for");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
 assertIncludes("Archive helper auto-detects Xcode teams", archiveHelper, "detectXcodeTeams");

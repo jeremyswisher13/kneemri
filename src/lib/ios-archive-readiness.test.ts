@@ -68,6 +68,7 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("diagnoseExportFailure");
     expect(archiveHelper).toContain("IDEDistribution.standard.log");
     expect(archiveHelper).toContain("Failed to find an account with App Store Connect access");
+    expect(archiveHelper).toContain("Account Holder, Admin, App Manager, or Developer");
     expect(archiveHelper).toContain("No profiles for");
     expect(archiveHelper).toContain("until App Store export signing ready: yes");
     expect(archiveHelper).toContain("from an Xcode account with App Store Connect access");
@@ -76,6 +77,7 @@ describe("iOS archive readiness", () => {
     expect(handoff).toContain("0 matching App Store distribution profiles");
     expect(handoff).toContain("Failed to find an account with App Store Connect access");
     expect(handoff).toContain("current blocker is App Store Connect-capable Xcode account access");
+    expect(handoff).toContain("Account Holder, Admin, App Manager, or Developer");
     expect(readme).toContain("X578T4K65B");
   });
 
@@ -85,6 +87,8 @@ describe("iOS archive readiness", () => {
     expect(exportReadiness).toContain("App Store distribution provisioning profile");
     expect(exportReadiness).toContain("Two independent Apple-side blockers remain");
     expect(exportReadiness).toContain("App Store Connect access for Team `X578T4K65B`");
+    expect(exportReadiness).toContain("Account Holder, Admin, App Manager, or Developer");
+    expect(exportReadiness).toContain("manage-builds/upload-builds");
     expect(exportReadiness).toContain("Account Holder or Admin");
     expect(exportReadiness).toContain("create-an-app-store-provisioning-profile");
     expect(exportReadiness).toContain("role-permissions");

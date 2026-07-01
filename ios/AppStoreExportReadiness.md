@@ -22,6 +22,8 @@ Two independent Apple-side blockers remain:
 1. Xcode must be signed in with an Apple ID that has App Store Connect access for Team `X578T4K65B`.
 2. An App Store distribution provisioning profile must exist for `com.jeremyswisher.uclasportsmri` and be installed locally.
 
+For the Xcode export/upload path, the Apple ID in Xcode must have an App Store Connect role that can upload builds for this team/app: Account Holder, Admin, App Manager, or Developer.
+
 `npm run archive:ios:signing` must show:
 
 ```text
@@ -57,6 +59,7 @@ UCLA Sports MRI App Store Connect
 Official references:
 
 - Apple Developer: https://developer.apple.com/help/account/provisioning-profiles/create-an-app-store-provisioning-profile
+- Apple App Store Connect build uploads: https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds
 - App Store Connect role permissions: https://developer.apple.com/help/app-store-connect/reference/account-management/role-permissions
 
 ## Verify

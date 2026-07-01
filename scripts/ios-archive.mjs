@@ -85,6 +85,7 @@ function diagnoseExportFailure(output) {
   }
   if (combined.includes("Failed to find an account with App Store Connect access")) {
     console.error("Next: open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team X578T4K65B.");
+    console.error("Required upload role: Account Holder, Admin, App Manager, or Developer in App Store Connect for Team X578T4K65B.");
   }
   if (combined.includes("No profiles for")) {
     console.error("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
