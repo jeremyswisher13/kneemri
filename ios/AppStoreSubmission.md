@@ -22,6 +22,7 @@ Last updated: July 1, 2026
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
 - Native iOS shell sign-in URLs use Firebase full-page redirect auth (`source=ios-app`) to avoid fragile popup behavior inside `WKWebView`.
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
+- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, and Sign in with Apple entitlements; it currently reports Development Team as missing until an Apple Team ID is selected or passed through `IOS_DEVELOPMENT_TEAM`.
 - `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
@@ -33,6 +34,7 @@ Run this before every TestFlight archive/upload:
 npm run build
 npm run preflight:ios
 npm run archive:ios:check
+npm run archive:ios:signing
 plutil -lint ios/ExportOptions.plist ios/UCLASportsMRI/UCLASportsMRI.entitlements ios/UCLASportsMRI/PrivacyInfo.xcprivacy ios/UCLASportsMRI/Info.plist
 ```
 
@@ -77,6 +79,8 @@ When Apple Developer signing is configured, command-line archive/export is avail
 ```sh
 IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 ```
+
+Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, and whether a Development Team is resolved.
 
 ## App Store Connect metadata draft
 

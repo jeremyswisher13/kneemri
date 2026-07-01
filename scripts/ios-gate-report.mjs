@@ -206,6 +206,7 @@ if (missing.length > 0) {
   console.log("- npm run preflight:ios");
   console.log("- npm run preflight:ios:live");
   console.log("- npm run preflight:ios:submit");
+  console.log("- npm run archive:ios:signing");
   console.log("- npm run screenshots:ios:check");
   console.log("- npm run screenshots:ios:evidence");
   console.log("");

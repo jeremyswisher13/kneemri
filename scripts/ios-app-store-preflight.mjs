@@ -121,6 +121,7 @@ assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucl
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
+assertIncludes("Archive signing report documented", appStoreSubmission, "npm run archive:ios:signing");
 assertIncludes("Archive command documented", appStoreSubmission, "npm run archive:ios");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
@@ -223,6 +224,9 @@ assertIncludes("Archive helper targets Release", archiveHelper, '"Release"');
 assertIncludes("Archive helper targets generic iOS", archiveHelper, "generic/platform=iOS");
 assertIncludes("Archive helper uses export options", archiveHelper, "ExportOptions.plist");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
+assertIncludes("Archive helper uses workspace DerivedData", archiveHelper, "IOS_DERIVED_DATA_PATH");
+assertIncludes("Archive helper reports signing settings", archiveHelper, "--signing");
+assertIncludes("Archive helper checks development team", archiveHelper, "DEVELOPMENT_TEAM");
 
 const firestoreRules = readText("firestore.rules");
 assertIncludes("Deletion request rules exist", firestoreRules, "match /accountDeletionRequests/{userId}");

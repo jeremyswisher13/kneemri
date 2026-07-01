@@ -46,6 +46,7 @@ Before archiving, run the local submission preflight:
 npm run build
 npm run preflight:ios
 npm run archive:ios:check
+npm run archive:ios:signing
 ```
 
 After deploying Firebase Hosting, verify the live web bundle before archiving:
@@ -69,6 +70,7 @@ IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 ```
 
 The archive helper writes to `ios/build/`, which is ignored by git.
+`npm run archive:ios:signing` reports the Release signing settings and whether a Development Team is resolved before you attempt the archive.
 
 ## Reviewer access
 

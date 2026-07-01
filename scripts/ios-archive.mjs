@@ -8,7 +8,12 @@ const projectPath = join(root, "ios", "UCLASportsMRI.xcodeproj");
 const exportOptionsPath = join(root, "ios", "ExportOptions.plist");
 const archivePath = process.env.IOS_ARCHIVE_PATH || join(root, "ios", "build", "UCLASportsMRI.xcarchive");
 const exportPath = process.env.IOS_EXPORT_PATH || join(root, "ios", "build", "export");
-const mode = process.argv.includes("--archive") ? "archive" : "check";
+const derivedDataPath = process.env.IOS_DERIVED_DATA_PATH || join(root, "ios", "build", "DerivedData");
+const mode = process.argv.includes("--archive")
+  ? "archive"
+  : process.argv.includes("--signing")
+    ? "signing"
+    : "check";
 
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
@@ -42,6 +47,15 @@ function runCaptured(command, args) {
   return result.stdout;
 }
 
+function parseBuildSettings(output) {
+  const settings = new Map();
+  for (const line of output.split(/\r?\n/)) {
+    const match = line.match(/^\s*([^=]+?)\s=\s(.*)$/);
+    if (match) settings.set(match[1].trim(), match[2].trim());
+  }
+  return settings;
+}
+
 function ensureFile(label, filePath) {
   if (!existsSync(filePath)) {
     console.error(`Missing ${label}: ${filePath}`);
@@ -63,6 +77,8 @@ function baseArchiveArgs() {
     "generic/platform=iOS",
     "-archivePath",
     archivePath,
+    "-derivedDataPath",
+    derivedDataPath,
     "-allowProvisioningUpdates",
   ];
 
@@ -70,6 +86,61 @@ function baseArchiveArgs() {
     args.push(`DEVELOPMENT_TEAM=${process.env.IOS_DEVELOPMENT_TEAM}`);
   }
   return args;
+}
+
+function buildSettingsArgs() {
+  const args = [
+    "-showBuildSettings",
+    "-project",
+    projectPath,
+    "-scheme",
+    "UCLASportsMRI",
+    "-configuration",
+    "Release",
+    "-destination",
+    "generic/platform=iOS",
+    "-derivedDataPath",
+    derivedDataPath,
+  ];
+
+  if (process.env.IOS_DEVELOPMENT_TEAM) {
+    args.push(`DEVELOPMENT_TEAM=${process.env.IOS_DEVELOPMENT_TEAM}`);
+  }
+  return args;
+}
+
+function printSigningReport() {
+  console.log("\nChecking Release signing settings...");
+  mkdirSync(derivedDataPath, { recursive: true });
+  const settings = parseBuildSettings(runCaptured("xcodebuild", buildSettingsArgs()));
+  const developmentTeam = settings.get("DEVELOPMENT_TEAM") || process.env.IOS_DEVELOPMENT_TEAM || "";
+  const rows = [
+    ["Bundle ID", settings.get("PRODUCT_BUNDLE_IDENTIFIER")],
+    ["Version", settings.get("MARKETING_VERSION")],
+    ["Build", settings.get("CURRENT_PROJECT_VERSION")],
+    ["Code signing style", settings.get("CODE_SIGN_STYLE")],
+    ["Code signing identity", settings.get("CODE_SIGN_IDENTITY")],
+    ["Development team", developmentTeam || "missing"],
+    ["Provisioning required", settings.get("PROVISIONING_PROFILE_REQUIRED")],
+    ["Entitlements", settings.get("CODE_SIGN_ENTITLEMENTS")],
+    ["DerivedData path", derivedDataPath],
+  ];
+
+  for (const [label, value] of rows) {
+    console.log(`${label}: ${value || "missing"}`);
+  }
+
+  const archiveReady =
+    settings.get("PRODUCT_BUNDLE_IDENTIFIER") === "com.jeremyswisher.uclasportsmri" &&
+    settings.get("CODE_SIGN_STYLE") === "Automatic" &&
+    settings.get("CODE_SIGN_ENTITLEMENTS") === "UCLASportsMRI/UCLASportsMRI.entitlements" &&
+    !!developmentTeam;
+
+  console.log(`\nCommand-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
+  if (!developmentTeam) {
+    console.log("Next: set IOS_DEVELOPMENT_TEAM=<Apple Team ID> or select the Apple Developer Team in Xcode before archiving.");
+  }
+  console.log("Run npm run archive:ios after Apple Developer signing is configured.");
 }
 
 ensureFile("Xcode project", projectPath);
@@ -87,14 +158,22 @@ if (!projectList.includes("UCLASportsMRI")) {
 }
 console.log("PASS UCLASportsMRI scheme is visible to xcodebuild.");
 
+if (mode === "signing") {
+  printSigningReport();
+  process.exit(0);
+}
+
 if (mode === "check") {
   console.log("\nArchive command is configured.");
+  console.log(`DerivedData will be written to: ${derivedDataPath}`);
   console.log("Set IOS_DEVELOPMENT_TEAM=<Apple Team ID> if automatic signing needs an explicit team.");
+  console.log("Run npm run archive:ios:signing to inspect Release signing settings.");
   console.log("Run npm run archive:ios after Apple Developer signing is configured.");
   process.exit(0);
 }
 
 mkdirSync(dirname(archivePath), { recursive: true });
+mkdirSync(derivedDataPath, { recursive: true });
 rmSync(archivePath, { recursive: true, force: true });
 rmSync(exportPath, { recursive: true, force: true });
 
