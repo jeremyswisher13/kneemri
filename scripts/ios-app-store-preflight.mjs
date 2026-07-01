@@ -62,6 +62,7 @@ assertFile("App Store export readiness checklist exists", "ios", "AppStoreExport
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
 assertFile("App Store Connect evidence JSON exists", "ios", "AppStoreConnectEvidence.json");
+assertFile("App Store release evidence JSON exists", "ios", "AppStoreReleaseEvidence.json");
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("Screenshot evidence JSON exists", "ios", "ScreenshotEvidence.json");
 assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
@@ -76,6 +77,7 @@ assertFile("Evidence audit script exists", "scripts", "ios-evidence-audit.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
 assertFile("App Store Connect evidence script exists", "scripts", "ios-app-store-connect-evidence.mjs");
+assertFile("App Store release evidence script exists", "scripts", "ios-app-store-release-evidence.mjs");
 assertFile("Release evidence script exists", "scripts", "ios-release-evidence.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
@@ -132,6 +134,7 @@ assertIncludes("Screenshot evidence documented", appStoreSubmission, "npm run sc
 assertIncludes("Screenshot capture documented", appStoreSubmission, "npm run screenshots:ios:capture");
 assertIncludes("Apple/Firebase auth evidence documented", appStoreSubmission, "npm run auth:ios:evidence:verify");
 assertIncludes("App Store Connect evidence documented", appStoreSubmission, "npm run asc:ios:evidence:verify");
+assertIncludes("App Store release evidence documented", appStoreSubmission, "npm run store:ios:evidence:verify");
 assertIncludes("Release evidence documented", appStoreSubmission, "npm run release:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
@@ -184,6 +187,12 @@ assertIncludes("App Store Connect evidence verifies screenshot upload gate", app
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
 assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
 
+const appStoreReleaseEvidenceScript = readText("scripts", "ios-app-store-release-evidence.mjs");
+assertIncludes("App Store release evidence verifies submission gate", appStoreReleaseEvidenceScript, "appStoreRelease.submittedForReview");
+assertIncludes("App Store release evidence verifies approval gate", appStoreReleaseEvidenceScript, "appStoreRelease.approvedForRelease");
+assertIncludes("App Store release evidence verifies public listing gate", appStoreReleaseEvidenceScript, "appStoreRelease.publicStorePageVerified");
+assertIncludes("App Store release evidence reports ready gates", appStoreReleaseEvidenceScript, "Ready App Store release gates");
+
 const releaseEvidenceScript = readText("scripts", "ios-release-evidence.mjs");
 assertIncludes("Release evidence verifies Google native auth gate", releaseEvidenceScript, "realDeviceAuth.googleSignInPassedInNativeShell");
 assertIncludes("Release evidence verifies Apple native auth gate", releaseEvidenceScript, "realDeviceAuth.appleSignInPassedInNativeShell");
@@ -195,6 +204,7 @@ assertIncludes("Evidence audit runs archive signing", evidenceAuditScript, "scri
 assertIncludes("Evidence audit runs auth evidence", evidenceAuditScript, "scripts/ios-auth-evidence.mjs");
 assertIncludes("Evidence audit runs release evidence", evidenceAuditScript, "scripts/ios-release-evidence.mjs");
 assertIncludes("Evidence audit runs App Store Connect evidence", evidenceAuditScript, "scripts/ios-app-store-connect-evidence.mjs");
+assertIncludes("Evidence audit runs App Store release evidence", evidenceAuditScript, "scripts/ios-app-store-release-evidence.mjs");
 assertIncludes("Evidence audit runs submission gate report", evidenceAuditScript, "scripts/ios-gate-report.mjs");
 
 const submissionGateScript = readText("scripts", "ios-submission-gate.mjs");

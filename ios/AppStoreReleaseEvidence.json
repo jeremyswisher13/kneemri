@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "Track post-submission App Review and public App Store release evidence for version 1.0. Set booleans to true only after the matching App Store Connect or public App Store evidence exists.",
+  "doNotStoreSecrets": "Do not enter App Store Connect API keys, issuer IDs, app-specific passwords, private keys, Apple account credentials, reviewer personal data, or real learner data in this file.",
+  "submission": {
+    "submittedForReview": false,
+    "version": "1.0",
+    "build": "1",
+    "submittedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "review": {
+    "approvedForRelease": false,
+    "status": "",
+    "approvedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "availability": {
+    "releasedToAppStore": false,
+    "publicStorePageVerified": false,
+    "appStoreUrl": "",
+    "version": "1.0",
+    "checkedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  }
+}

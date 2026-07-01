@@ -27,6 +27,7 @@ describe("iOS evidence audit", () => {
       "scripts/ios-screenshot-evidence.mjs",
       "scripts/ios-app-store-connect-evidence.mjs",
       "scripts/ios-gate-report.mjs",
+      "scripts/ios-app-store-release-evidence.mjs",
     ]) {
       expect(auditScript).toContain(script);
     }
@@ -39,6 +40,7 @@ describe("iOS evidence audit", () => {
     expect(auditScript).toContain("Ready screenshot gates");
     expect(auditScript).toContain("Ready App Store Connect gates");
     expect(auditScript).toContain("Ready for App Review submission");
+    expect(auditScript).toContain("Ready App Store release gates");
   });
 
   it("can print a non-failing consolidated readiness report", () => {
@@ -51,6 +53,7 @@ describe("iOS evidence audit", () => {
     expect(output).toContain("Apple/Firebase auth evidence");
     expect(output).toContain("Real-device/account-deletion evidence");
     expect(output).toContain("App Store Connect evidence");
+    expect(output).toContain("App Store release evidence");
     expect(output).toContain("Suggested Order");
     expect(output).toContain("Audited groups ready:");
   });

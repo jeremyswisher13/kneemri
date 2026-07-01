@@ -26,6 +26,8 @@
     "evidence:ios:verify": "node scripts/ios-evidence-audit.mjs --verify",
     "release:ios:evidence": "node scripts/ios-release-evidence.mjs",
     "release:ios:evidence:verify": "node scripts/ios-release-evidence.mjs --verify",
+    "store:ios:evidence": "node scripts/ios-app-store-release-evidence.mjs",
+    "store:ios:evidence:verify": "node scripts/ios-app-store-release-evidence.mjs --verify",
     "screenshots:ios:capture": "node scripts/ios-capture-screenshots.mjs",
     "screenshots:ios:check": "node scripts/ios-screenshot-check.mjs",
     "screenshots:ios:evidence": "node scripts/ios-screenshot-evidence.mjs",

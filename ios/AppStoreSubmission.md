@@ -62,13 +62,23 @@ npm run asc:ios:evidence
 npm run asc:ios:evidence:verify
 npm run preflight:ios:report
 npm run preflight:ios:submit
+npm run store:ios:evidence
 ```
 
 `npm run preflight:ios:report` prints a grouped PASS/TODO summary with next actions and does not fail while external gates are still open. Use it as the handoff/status view. `npm run preflight:ios:submit` remains the hard gate. After every submission-gate boolean is true, it also runs the detailed evidence verifiers and checks the live archive-signing report for `App Store export signing ready: yes` before saying the app is ready for App Review.
 
 This command is expected to fail until Apple Developer setup, Firebase Auth setup, TestFlight/real-device auth, account deletion handling, and App Store Connect fields are all verified.
 
-`npm run evidence:ios` is the consolidated non-failing audit. It runs the archive-signing report plus Apple/Firebase auth, release verification, screenshot, App Store Connect, and submission-gate evidence reports, then prints the suggested order of remaining work. `npm run evidence:ios:verify` is useful only when all evidence should be complete.
+`npm run evidence:ios` is the consolidated non-failing audit. It runs the archive-signing report plus Apple/Firebase auth, release verification, screenshot, App Store Connect, submission-gate, and final App Store release evidence reports, then prints the suggested order of remaining work. `npm run evidence:ios:verify` is useful only when all evidence should be complete.
+
+After the app is submitted, approved, and publicly available, record the final App Store release evidence in `ios/AppStoreReleaseEvidence.json`, then run:
+
+```sh
+npm run store:ios:evidence
+npm run store:ios:evidence:verify
+```
+
+`npm run store:ios:evidence:verify` is the final proof gate for this thread's goal. It fails until version `1.0 (1)` is recorded as submitted for App Review, approved or ready for sale, and publicly visible on an `apps.apple.com` or `itunes.apple.com` listing.
 
 `npm run release:ios:evidence` reports the real-device/TestFlight auth checks and account-deletion checks that still need external evidence. `npm run release:ios:evidence:verify` is the hard evidence gate for the three real-device auth items and two account-deletion items. It uses `ios/ReleaseVerificationEvidence.json`, which stores only non-identifying confirmation metadata and must never store Apple credentials, Firebase credentials, service-account paths, test-user emails, full Firebase UIDs, PHI, or real learner data.
 

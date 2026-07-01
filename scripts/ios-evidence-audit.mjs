@@ -54,6 +54,14 @@ const commands = [
     readyPattern: /Ready for App Review submission: yes/,
     readyLabel: "Ready for App Review submission",
   },
+  {
+    key: "appStoreRelease",
+    label: "App Store release evidence",
+    command: "node",
+    args: ["scripts/ios-app-store-release-evidence.mjs"],
+    readyPattern: /Ready App Store release gates: (\d+)\/(\d+)/,
+    readyLabel: "App Store release gates",
+  },
 ];
 
 function runCommand(command) {
@@ -143,8 +151,11 @@ if (failures.some((result) => result.key === "appStoreConnect")) {
 if (failures.some((result) => result.key === "submissionGate")) {
   suggestedActions.push("Update ios/AppStoreSubmissionGate.json only after matching evidence is ready, then rerun npm run preflight:ios:submit.");
 }
+if (failures.some((result) => result.key === "appStoreRelease")) {
+  suggestedActions.push("After App Review submission, approval, and public listing are complete, update ios/AppStoreReleaseEvidence.json and rerun npm run store:ios:evidence:verify.");
+}
 if (suggestedActions.length === 0) {
-  console.log("All audited evidence is ready. Run npm run preflight:ios:submit and submit in App Store Connect.");
+  console.log("All audited evidence is ready. The app is recorded as submitted, approved, and publicly available on the App Store.");
 } else {
   suggestedActions.forEach((action, index) => {
     console.log(`${index + 1}. ${action}`);
