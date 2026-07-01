@@ -28,6 +28,7 @@ describe("iOS App Store gate report", () => {
   const handoff = readFileSync("ios/AppStoreSubmission.md", "utf8");
   const submissionGateScript = readFileSync("scripts/ios-submission-gate.mjs", "utf8");
   const gateReportScript = readFileSync("scripts/ios-gate-report.mjs", "utf8");
+  const submissionPacketScript = readFileSync("scripts/ios-submission-packet.mjs", "utf8");
   const gate = readJson<Record<string, unknown>>("ios/AppStoreSubmissionGate.json");
   const requiredKeys = Array.from(submissionGateScript.matchAll(/\["([^"]+)"/g), (match) => match[1]);
   const verifiedCount = requiredKeys.filter((key) => valueForPath(gate, key) === true).length;
@@ -35,7 +36,9 @@ describe("iOS App Store gate report", () => {
 
   it("exposes and documents the readable report command", () => {
     expect(packageJson).toContain('"preflight:ios:report": "node scripts/ios-gate-report.mjs"');
+    expect(packageJson).toContain('"submit:ios:packet": "node scripts/ios-submission-packet.mjs"');
     expect(handoff).toContain("npm run preflight:ios:report");
+    expect(handoff).toContain("npm run submit:ios:packet");
     expect(handoff).toContain("does not fail while external gates are still open");
   });
 
@@ -75,6 +78,34 @@ describe("iOS App Store gate report", () => {
     expect(output).toContain(`Create Apple Services ID ${APPLE_SERVICE_ID}`);
     expect(output).toContain(`set Primary App ID ${BUNDLE_ID}`);
     expect(output).toContain(`Firebase Authentication project ${FIREBASE_PROJECT_ID}`);
+  });
+
+  it("prints an ordered submission packet for portal work", () => {
+    const output = execFileSync(process.execPath, ["scripts/ios-submission-packet.mjs"], {
+      encoding: "utf8",
+    });
+
+    expect(submissionPacketScript).toContain("Locked Portal Values");
+    expect(submissionPacketScript).toContain("Ordered Portal Tasks");
+    expect(submissionPacketScript).toContain("Screenshot Upload Packet");
+    expect(output).toContain(`Submission gate: ${verifiedCount}/${requiredKeys.length} verified, ${missingCount} missing`);
+    expect(output).toContain("Apple Developer and Firebase Auth");
+    expect(output).toContain("Archive Export and TestFlight Upload Access");
+    expect(output).toContain("Real-Device and Account Deletion Verification");
+    expect(output).toContain("App Store Connect Entry");
+    expect(output).toContain("ios/AppStoreReleaseEvidence.json");
+
+    for (const value of [
+      BUNDLE_ID,
+      APPLE_TEAM_ID,
+      FIREBASE_PROJECT_ID,
+      APPLE_SERVICE_ID,
+      PRIMARY_RETURN_URL,
+      SECONDARY_AUTH_HANDLER,
+      ...AUTHORIZED_DOMAINS,
+    ]) {
+      expect(output).toContain(value);
+    }
   });
 
   it("keeps the hard submission gate tied to detailed evidence verifiers", () => {

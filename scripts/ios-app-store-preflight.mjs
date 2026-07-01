@@ -73,6 +73,7 @@ assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 assertFile("Submission gate report script exists", "scripts", "ios-gate-report.mjs");
+assertFile("Submission packet script exists", "scripts", "ios-submission-packet.mjs");
 assertFile("Evidence audit script exists", "scripts", "ios-evidence-audit.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
@@ -85,6 +86,9 @@ assertFile("Screenshot evidence script exists", "scripts", "ios-screenshot-evide
 assertFile("Screenshot capture script exists", "scripts", "ios-capture-screenshots.mjs");
 
 const project = readText("ios", "project.yml");
+const packageJson = readText("package.json");
+assertIncludes("Submission packet command exists", packageJson, '"submit:ios:packet": "node scripts/ios-submission-packet.mjs"');
+
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
 assertIncludes("iPhone and iPad enabled", project, 'TARGETED_DEVICE_FAMILY: "1,2"');
 assertIncludes("App icon catalog configured", project, "ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon");
@@ -142,6 +146,7 @@ assertIncludes("Live readiness handoff includes install assets", appStoreSubmiss
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
+assertIncludes("Submission packet documented", appStoreSubmission, "npm run submit:ios:packet");
 assertIncludes("Submission gate evidence verifier behavior documented", appStoreSubmission, "runs the detailed evidence verifiers");
 assertIncludes("Submission gate live readiness behavior documented", appStoreSubmission, "reruns the live Firebase Hosting readiness check");
 assertIncludes("Submission gate archive-signing behavior documented", appStoreSubmission, "App Store export signing ready: yes");
@@ -233,6 +238,15 @@ assertIncludes("Evidence audit runs release evidence", evidenceAuditScript, "scr
 assertIncludes("Evidence audit runs App Store Connect evidence", evidenceAuditScript, "scripts/ios-app-store-connect-evidence.mjs");
 assertIncludes("Evidence audit runs App Store release evidence", evidenceAuditScript, "scripts/ios-app-store-release-evidence.mjs");
 assertIncludes("Evidence audit runs submission gate report", evidenceAuditScript, "scripts/ios-gate-report.mjs");
+
+const submissionPacketScript = readText("scripts", "ios-submission-packet.mjs");
+assertIncludes("Submission packet prints locked values", submissionPacketScript, "Locked Portal Values");
+assertIncludes("Submission packet prints ordered portal tasks", submissionPacketScript, "Ordered Portal Tasks");
+assertIncludes("Submission packet prints screenshot upload packet", submissionPacketScript, "Screenshot Upload Packet");
+assertIncludes("Submission packet includes Apple Service ID", submissionPacketScript, "com.jeremyswisher.uclasportsmri.web");
+assertIncludes("Submission packet includes Apple return URL", submissionPacketScript, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
+assertIncludes("Submission packet includes final release evidence", submissionPacketScript, "ios/AppStoreReleaseEvidence.json");
+assertIncludes("Submission packet tells user to rerun itself", submissionPacketScript, "npm run submit:ios:packet");
 
 const submissionGateScript = readText("scripts", "ios-submission-gate.mjs");
 assertIncludes("Hard gate requires App Store export signing evidence", submissionGateScript, "archiveExport.appStoreExportSigningReady");

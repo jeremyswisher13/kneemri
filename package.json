@@ -36,6 +36,7 @@
     "preflight:ios:live": "node scripts/ios-live-readiness.mjs",
     "preflight:ios:report": "node scripts/ios-gate-report.mjs",
     "preflight:ios:submit": "node scripts/ios-submission-gate.mjs",
+    "submit:ios:packet": "node scripts/ios-submission-packet.mjs",
     "gen:metas": "node scripts/gen-content-metas.mjs",
     "qa:medical": "node scripts/export-medical-qa.mjs"
   },

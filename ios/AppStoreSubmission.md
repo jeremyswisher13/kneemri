@@ -60,12 +60,15 @@ npm run release:ios:evidence
 npm run release:ios:evidence:verify
 npm run asc:ios:evidence
 npm run asc:ios:evidence:verify
+npm run submit:ios:packet
 npm run preflight:ios:report
 npm run preflight:ios:submit
 npm run store:ios:evidence
 ```
 
 `npm run preflight:ios:report` prints a grouped PASS/TODO summary with next actions and does not fail while external gates are still open. Use it as the handoff/status view. `npm run preflight:ios:submit` remains the hard gate. After every submission-gate boolean is true, it also reruns the live Firebase Hosting readiness check, runs the detailed evidence verifiers, and checks the archive-signing report for `App Store export signing ready: yes` before saying the app is ready for App Review.
+
+`npm run submit:ios:packet` prints the ordered Apple Developer, Firebase, App Store Connect, screenshot-upload, TestFlight, and final release packet with the exact locked portal values. Use it before and after each console session so the external evidence files are updated only after the matching real-world screen or device test is verified.
 
 This command is expected to fail until Apple Developer setup, Firebase Auth setup, TestFlight/real-device auth, account deletion handling, and App Store Connect fields are all verified.
 
