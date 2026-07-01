@@ -29,7 +29,7 @@
   "accountDeletion": {
     "requestFlowVerified": false,
     "adminDeletionProcessReady": false,
-    "evidence": "Signed-in test user can submit an in-app deletion request, and the backend/admin process can honor it."
+    "evidence": "The app has an in-app request path, deployed Firestore rules for accountDeletionRequests, and scripts/process-account-deletion.mjs for admin fulfillment. Keep false until a signed-in test user submits a request and the admin dry-run/fulfillment process is verified."
   },
   "screenshots": {
     "iphone69Captured": false,

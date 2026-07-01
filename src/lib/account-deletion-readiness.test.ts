@@ -1,0 +1,36 @@
+import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+
+describe("account deletion App Store readiness", () => {
+  const auth = readFileSync("src/lib/auth.ts", "utf8");
+  const accountPage = readFileSync("src/pages/AccountPage.tsx", "utf8");
+  const rules = readFileSync("firestore.rules", "utf8");
+  const processor = readFileSync("scripts/process-account-deletion.mjs", "utf8");
+  const packageJson = readFileSync("package.json", "utf8");
+
+  it("keeps the in-app request path wired to the rules-backed collection", () => {
+    expect(accountPage).toContain("requestAccountDeletion");
+    expect(auth).toContain('doc(db, "accountDeletionRequests", user.uid)');
+    expect(auth).toContain('status: "requested"');
+    expect(auth).toContain('source: "in-app"');
+  });
+
+  it("allows signed-in users to create only their own deletion request", () => {
+    expect(rules).toContain("match /accountDeletionRequests/{userId}");
+    expect(rules).toContain("allow create: if isOwner(userId) && isValidAccountDeletionRequest(userId)");
+    expect(rules).toContain("request.resource.data.userId == userId");
+    expect(rules).toContain("request.resource.data.status == 'requested'");
+    expect(rules).toContain("request.resource.data.source == 'in-app'");
+    expect(rules).toContain("request.resource.data.requestedAt == request.time");
+  });
+
+  it("keeps account deletion fulfillment as an explicit admin operation", () => {
+    expect(rules).toContain("allow delete: if isAdmin()");
+    expect(processor).toContain("getAuth().deleteUser");
+    expect(processor).toContain("deleteDocumentTree(userRef)");
+    expect(processor).toContain('db.collection("auditLog").where("userId", "==", uid)');
+    expect(processor).toContain('status: "fulfilled"');
+    expect(processor).toContain("--confirm");
+    expect(packageJson).toContain('"account:deletion": "node scripts/process-account-deletion.mjs"');
+  });
+});

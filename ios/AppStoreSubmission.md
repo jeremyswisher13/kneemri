@@ -19,6 +19,7 @@ Last updated: July 1, 2026
 - `npm run preflight:ios:live` passes 20 checks against `https://ucla-knee-mri.firebaseapp.com`.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
 - `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
+- Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
 ## Local preflight
 
@@ -121,6 +122,30 @@ Not used for tracking:
 3. App Review demo mode is implemented locally for TestFlight/App Review builds. Verify it after the next Firebase Hosting deploy and on a real device/TestFlight build.
 4. Account deletion must be available in app. The app now has an in-app deletion request path at `/account`; the backend/admin deletion process must actually honor those requests before public release.
 5. Because this is medical education, keep the in-app disclaimer and review notes clear that the app is educational and not for diagnosis/treatment.
+
+## Account deletion operations
+
+The app writes signed-in user requests to `accountDeletionRequests/{uid}`. Firestore rules allow a learner to create/update only their own request, and admins can review/process requests. The account-deletion rules were deployed to Firebase on July 1, 2026.
+
+After a test user submits `/account` > **Request deletion**, list pending requests with:
+
+```sh
+npm run account:deletion -- --list
+```
+
+Dry-run a specific request before deleting anything:
+
+```sh
+npm run account:deletion -- --uid <firebase-uid>
+```
+
+Fulfill the request only after reviewing the dry-run counts:
+
+```sh
+npm run account:deletion -- --uid <firebase-uid> --confirm --operator <admin-email>
+```
+
+The processor deletes the Firebase Auth user, recursively removes the learner's Firestore `users/{uid}` tree, de-identifies matching audit-log entries, and keeps a scrubbed fulfilled request record. It uses Firebase Admin credentials via `GOOGLE_APPLICATION_CREDENTIALS` or application-default credentials.
 
 ## Sign in with Apple setup
 

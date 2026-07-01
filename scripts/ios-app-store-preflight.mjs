@@ -67,6 +67,7 @@ assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
+assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -195,6 +196,19 @@ assertIncludes("Archive helper targets Release", archiveHelper, '"Release"');
 assertIncludes("Archive helper targets generic iOS", archiveHelper, "generic/platform=iOS");
 assertIncludes("Archive helper uses export options", archiveHelper, "ExportOptions.plist");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
+
+const firestoreRules = readText("firestore.rules");
+assertIncludes("Deletion request rules exist", firestoreRules, "match /accountDeletionRequests/{userId}");
+assertIncludes("Learners can create own deletion request", firestoreRules, "allow create: if isOwner(userId)");
+assertIncludes("Deletion request owner field is enforced", firestoreRules, "request.resource.data.userId == userId");
+assertIncludes("Deletion request uses server timestamp", firestoreRules, "request.resource.data.requestedAt == request.time");
+assertIncludes("Deletion request admin delete is restricted", firestoreRules, "allow delete: if isAdmin()");
+
+const deletionProcessor = readText("scripts", "process-account-deletion.mjs");
+assertIncludes("Deletion processor deletes Firebase Auth user", deletionProcessor, "getAuth().deleteUser");
+assertIncludes("Deletion processor recursively removes learner data", deletionProcessor, "deleteDocumentTree(userRef)");
+assertIncludes("Deletion processor de-identifies audit logs", deletionProcessor, "deidentifyAuditLogs");
+assertIncludes("Deletion processor requires explicit confirmation", deletionProcessor, "--confirm");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

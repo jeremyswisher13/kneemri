@@ -21,6 +21,31 @@ service cloud.firestore {
         ];
     }
 
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function isStringOrNull(value) {
+      return value == null || value is string;
+    }
+
+    function isValidAccountDeletionRequest(userId) {
+      return request.resource.data.keys().hasOnly([
+          'userId',
+          'email',
+          'displayName',
+          'requestedAt',
+          'status',
+          'source'
+        ])
+        && request.resource.data.userId == userId
+        && request.resource.data.status == 'requested'
+        && request.resource.data.source == 'in-app'
+        && request.resource.data.requestedAt == request.time
+        && isStringOrNull(request.resource.data.email)
+        && isStringOrNull(request.resource.data.displayName);
+    }
+
     match /users/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
       // On create, a client may set role only to a non-privileged value (or none).
@@ -77,6 +102,17 @@ service cloud.firestore {
           && subcollection != 'quizAttempts'
         );
       }
+    }
+
+    match /accountDeletionRequests/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow create: if isOwner(userId) && isValidAccountDeletionRequest(userId);
+      allow update: if isAdmin() || (
+        isOwner(userId)
+        && resource.data.status == 'requested'
+        && isValidAccountDeletionRequest(userId)
+      );
+      allow delete: if isAdmin();
     }
 
     match /settings/{doc} {
