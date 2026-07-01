@@ -418,7 +418,8 @@ function printSigningReport() {
   } else if (!distributionIdentityReady) {
     console.log("Next: open Xcode > Settings > Accounts > Jeremy Swisher > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.");
   } else if (!matchingProfileReady || !appStoreProfileReady) {
-    console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B, then rerun npm run export:ios.");
+    console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B, then rerun npm run archive:ios:signing until App Store export signing ready: yes.");
+    console.log("After that, rerun npm run export:ios from an Xcode account with App Store Connect access for Team X578T4K65B.");
   }
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
 }

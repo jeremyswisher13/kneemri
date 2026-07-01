@@ -66,6 +66,8 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("IDEDistribution.standard.log");
     expect(archiveHelper).toContain("Failed to find an account with App Store Connect access");
     expect(archiveHelper).toContain("No profiles for");
+    expect(archiveHelper).toContain("until App Store export signing ready: yes");
+    expect(archiveHelper).toContain("from an Xcode account with App Store Connect access");
     expect(handoff).toContain("X578T4K65B");
     expect(handoff).toContain("1 Apple Distribution identity");
     expect(handoff).toContain("0 matching App Store distribution profiles");
@@ -78,6 +80,8 @@ describe("iOS archive readiness", () => {
     expect(exportReadiness).toContain("com.jeremyswisher.uclasportsmri");
     expect(exportReadiness).toContain("X578T4K65B");
     expect(exportReadiness).toContain("App Store distribution provisioning profile");
+    expect(exportReadiness).toContain("Two independent Apple-side blockers remain");
+    expect(exportReadiness).toContain("App Store Connect access for Team `X578T4K65B`");
     expect(exportReadiness).toContain("Account Holder or Admin");
     expect(exportReadiness).toContain("create-an-app-store-provisioning-profile");
     expect(exportReadiness).toContain("role-permissions");

@@ -15,7 +15,12 @@ This checklist tracks the remaining signing/upload step between a successful loc
 - Matching development provisioning profile: present
 - Matching App Store distribution provisioning profile: missing
 - `npm run archive:ios:only`: succeeds
-- `npm run export:ios`: fails until App Store export signing is ready
+- `npm run export:ios`: fails because Xcode cannot find an App Store Connect-capable account for Team `X578T4K65B`
+
+Two independent Apple-side blockers remain:
+
+1. Xcode must be signed in with an Apple ID that has App Store Connect access for Team `X578T4K65B`.
+2. An App Store distribution provisioning profile must exist for `com.jeremyswisher.uclasportsmri` and be installed locally.
 
 `npm run archive:ios:signing` must show:
 
@@ -63,6 +68,7 @@ npm run archive:ios:signing
 npm run export:ios
 ```
 
+If `archive:ios:signing` still shows `Matching App Store profiles: 0`, the App Store distribution profile is not installed or does not match the bundle ID/team.
 If `export:ios` still fails with account access, open Xcode > Settings > Accounts and refresh/sign in to the Apple ID that has App Store Connect access for Team `X578T4K65B`.
 The export helper reads Xcode's `IDEDistribution.standard.log` and prints the exact account/profile next action when export fails.
 

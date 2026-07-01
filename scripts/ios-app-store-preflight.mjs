@@ -153,6 +153,8 @@ const appStoreExportReadiness = readText("ios", "AppStoreExportReadiness.md");
 assertIncludes("Export checklist names bundle ID", appStoreExportReadiness, "com.jeremyswisher.uclasportsmri");
 assertIncludes("Export checklist names Apple team", appStoreExportReadiness, "X578T4K65B");
 assertIncludes("Export checklist names App Store profile type", appStoreExportReadiness, "App Store distribution provisioning profile");
+assertIncludes("Export checklist separates independent blockers", appStoreExportReadiness, "Two independent Apple-side blockers remain");
+assertIncludes("Export checklist documents Xcode account access", appStoreExportReadiness, "App Store Connect access for Team `X578T4K65B`");
 assertIncludes("Export checklist includes signing command", appStoreExportReadiness, "npm run archive:ios:signing");
 assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
 
@@ -372,6 +374,8 @@ assertIncludes("Archive helper reports matching profiles", archiveHelper, "Match
 assertIncludes("Archive helper reports App Store profiles", archiveHelper, "Matching App Store profiles");
 assertIncludes("Archive helper reports archive signing assets", archiveHelper, "Local archive signing assets ready");
 assertIncludes("Archive helper reports App Store export signing", archiveHelper, "App Store export signing ready");
+assertIncludes("Archive helper tells user to recheck export signing", archiveHelper, "until App Store export signing ready: yes");
+assertIncludes("Archive helper tells user to recheck App Store Connect account", archiveHelper, "from an Xcode account with App Store Connect access");
 
 const firestoreRules = readText("firestore.rules");
 assertIncludes("Deletion request rules exist", firestoreRules, "match /accountDeletionRequests/{userId}");
