@@ -7,6 +7,24 @@ binary already includes the Sign in with Apple entitlement, and the web app
 already exposes the `apple.com` Firebase provider path. These console steps must
 still be completed before App Store submission.
 
+Firebase uses the project auth domain as the OAuth redirect mechanism. For this
+project, register this exact Return URL in the Apple Service ID:
+
+```text
+https://ucla-knee-mri.firebaseapp.com/__/auth/handler
+```
+
+The secondary Firebase Hosting domain also serves the auth handler and should
+remain in Firebase authorized domains:
+
+```text
+https://ucla-knee-mri.web.app/__/auth/handler
+```
+
+Reference: Firebase's web Apple-auth setup uses
+`https://YOUR_FIREBASE_PROJECT_ID.firebaseapp.com/__/auth/handler` as the Apple
+Service ID Return URL.
+
 ## Apple Developer
 
 1. Open Apple Developer > Certificates, Identifiers & Profiles.
@@ -19,8 +37,12 @@ com.jeremyswisher.uclasportsmri
 3. Enable **Sign in with Apple** for that App ID.
 4. Create the web/service identifier required by Firebase Auth for Apple web
    redirects.
-5. Configure the service identifier's return URL to exactly match the callback
-   URL shown by Firebase Authentication's Apple provider setup.
+5. Configure the service identifier's return URL to exactly:
+
+```text
+https://ucla-knee-mri.firebaseapp.com/__/auth/handler
+```
+
 6. Create or select a Sign in with Apple private key.
 7. Record the Team ID, Key ID, Service ID, and private key only in the secure
    Firebase console flow. Do not commit those values to this repo.
@@ -39,6 +61,19 @@ ucla-knee-mri.web.app
 ```
 
 5. Keep Google provider enabled.
+
+## Public callback checks
+
+`npm run preflight:ios:live` verifies these public Firebase Auth helper pages are
+reachable:
+
+```text
+https://ucla-knee-mri.firebaseapp.com/__/auth/handler
+https://ucla-knee-mri.web.app/__/auth/handler
+```
+
+Those checks do not prove the Apple provider is fully configured; they only prove
+the redirect URLs that Apple/Firebase must use are live.
 
 ## Deploy and Verify
 

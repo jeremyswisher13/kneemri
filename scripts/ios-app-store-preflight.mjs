@@ -112,6 +112,7 @@ assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConn
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run screenshots:ios:check");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
+assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
 assertIncludes("Archive command documented", appStoreSubmission, "npm run archive:ios");
@@ -121,6 +122,10 @@ assertIncludes("Account deletion risk documented", appStoreSubmission, "Account 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
 assertIncludes("Apple setup doc lists Firebase provider", authSetup, "Firebase Authentication");
+assertIncludes("Apple setup doc gives exact return URL", authSetup, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
+assertIncludes("Apple setup doc gives secondary auth handler", authSetup, "https://ucla-knee-mri.web.app/__/auth/handler");
+assertIncludes("Apple setup doc names Firebase auth domain", authSetup, "ucla-knee-mri.firebaseapp.com");
+assertIncludes("Apple setup doc names Firebase web.app domain", authSetup, "ucla-knee-mri.web.app");
 assertIncludes("Apple setup doc warns against committing secrets", authSetup, "Do not commit");
 assertIncludes("Apple setup doc includes submission gate command", authSetup, "npm run preflight:ios:submit");
 
@@ -177,6 +182,15 @@ if (metadata.reviewNotes?.includes("Continue in App Review demo") && metadata.re
 } else {
   fail("Metadata review notes include demo access and medical disclaimer");
 }
+if (
+  Array.isArray(metadata.submissionChecklist) &&
+  metadata.submissionChecklist.some((item) => item.includes("https://ucla-knee-mri.firebaseapp.com/__/auth/handler")) &&
+  metadata.submissionChecklist.some((item) => item.includes("ucla-knee-mri.web.app"))
+) {
+  pass("Metadata checklist includes exact Apple/Firebase auth values");
+} else {
+  fail("Metadata checklist includes exact Apple/Firebase auth values");
+}
 if (metadata.privacy?.tracking === false && metadata.privacy?.dataLinkedToUser?.includes("Product Interaction")) {
   pass("Metadata privacy summary matches manifest");
 } else {
@@ -223,6 +237,11 @@ assertIncludes("Screenshot checker validates iPhone 6.9 size", screenshotChecker
 assertIncludes("Screenshot checker validates iPad 13 size", screenshotChecker, "2048, 2732");
 assertIncludes("Screenshot checker enforces screenshot count", screenshotChecker, "screenshot count is 1-10");
 assertIncludes("Screenshot checker covers App Store stem", screenshotChecker, "04-cross-plane");
+
+const liveReadiness = readText("scripts", "ios-live-readiness.mjs");
+assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
+assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "https://ucla-knee-mri.web.app/__/auth/handler");
+assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

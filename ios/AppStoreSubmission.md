@@ -16,7 +16,7 @@ Last updated: July 1, 2026
 ## Current verified status
 
 - Firebase Hosting was deployed on July 1, 2026.
-- `npm run preflight:ios:live` passes 20 checks against `https://ucla-knee-mri.firebaseapp.com`.
+- `npm run preflight:ios:live` passes live checks against `https://ucla-knee-mri.firebaseapp.com`, including the Firebase Auth callback endpoints.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
 - The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
 - `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
@@ -164,12 +164,26 @@ The web app now exposes a Sign in with Apple button through Firebase Auth's `app
 
 1. In Apple Developer, enable **Sign in with Apple** for the app identifier associated with `com.jeremyswisher.uclasportsmri`.
 2. Create the web/service identifier required by Firebase Auth for Apple provider redirects.
-3. Configure the Apple private key, team ID, key ID, service ID, and return URL in Firebase Authentication > Sign-in method > Apple.
-4. Confirm Apple sign-in works on:
+3. Configure the Apple Service ID Return URL exactly:
+
+```text
+https://ucla-knee-mri.firebaseapp.com/__/auth/handler
+```
+
+4. Configure the Apple private key, team ID, key ID, Service ID, and OAuth code-flow settings in Firebase Authentication > Sign-in method > Apple.
+5. Confirm Firebase authorized domains include:
+
+```text
+ucla-knee-mri.firebaseapp.com
+ucla-knee-mri.web.app
+```
+
+6. Run `npm run preflight:ios:live` and confirm the Firebase Auth handler checks pass.
+7. Confirm Apple sign-in works on:
    - Safari/mobile web
    - Home-screen PWA
    - Native iOS `WKWebView` shell
-5. Add any required associated domains/redirect domains to Firebase and Apple if the provider setup requests them.
+8. Add any required associated domains/redirect domains to Firebase and Apple if the provider setup requests them.
 
 ## Screenshots needed
 

@@ -1,4 +1,8 @@
 const baseUrl = (process.env.LIVE_APP_BASE_URL || "https://ucla-knee-mri.firebaseapp.com").replace(/\/$/, "");
+const authHandlerUrls = [
+  "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
+  "https://ucla-knee-mri.web.app/__/auth/handler",
+];
 
 const checks = [];
 
@@ -74,6 +78,11 @@ async function main() {
   assertBodyIncludes("Live bundle includes Sign in with Apple", bundleText, "Sign in with Apple");
   assertBodyIncludes("Live bundle includes App Review demo", bundleText, "Continue in App Review demo");
   assertBodyIncludes("Live bundle includes medical disclaimer", bundleText, "Educational training only");
+
+  for (const authHandlerUrl of authHandlerUrls) {
+    const handler = await fetchText(authHandlerUrl);
+    assertBodyIncludes(`Firebase Auth handler is live at ${authHandlerUrl}`, handler.text, "firebase-auth-helper");
+  }
 
   const failures = checks.filter((check) => !check.ok);
   for (const check of checks) {
