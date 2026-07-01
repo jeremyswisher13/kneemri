@@ -116,4 +116,15 @@ describe("login return paths", () => {
       }),
     ).toBe(true);
   });
+
+  it("uses full-page redirect sign-in in the native iOS shell", () => {
+    expect(
+      shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login?source=ios-app"),
+    ).toBe(true);
+    expect(
+      shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", {
+        userAgent: "Mozilla/5.0 UCLASportsMRIiOS",
+      }),
+    ).toBe(true);
+  });
 });

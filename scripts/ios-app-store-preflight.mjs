@@ -242,6 +242,7 @@ const liveReadiness = readText("scripts", "ios-live-readiness.mjs");
 assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "https://ucla-knee-mri.web.app/__/auth/handler");
 assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
+assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCLASportsMRIiOS");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));
@@ -287,6 +288,10 @@ const login = readText("src", "pages", "LoginPage.tsx");
 assertIncludes("Sign in with Apple button exists", login, "Sign in with Apple");
 assertIncludes("App Review demo button exists", login, "Continue in App Review demo");
 assertIncludes("Medical disclaimer present on login", login, "Educational training only");
+
+const loginReturn = readText("src", "lib", "login-return.ts");
+assertIncludes("Native iOS shell auth uses redirect flow", loginReturn, "isNativeIosAppShell(url.search, hints.userAgent)");
+assertIncludes("Native shell auth keeps return path", login, "rememberReturnPath(sessionStorage, returnTo)");
 
 const authErrorMessages = readText("src", "lib", "auth-error-message.ts");
 assertIncludes("Apple auth setup error is user-friendly", authErrorMessages, "Sign in with Apple is not fully configured yet");

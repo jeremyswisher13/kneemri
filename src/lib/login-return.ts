@@ -1,4 +1,4 @@
-import { isLikelyIosDevice, type RedirectSignInHints } from "@/lib/pwa";
+import { isLikelyIosDevice, isNativeIosAppShell, type RedirectSignInHints } from "@/lib/pwa";
 
 export const LOGIN_RETURN_TO_KEY = "loginReturnTo";
 export const LOGIN_RETURN_TO_PARAM = "returnTo";
@@ -63,6 +63,7 @@ export function shouldUseRedirectSignIn(href: string, hints: RedirectSignInHints
   return (
     url.hostname === "localhost" ||
     url.hostname === "127.0.0.1" ||
+    isNativeIosAppShell(url.search, hints.userAgent) ||
     hints.standalone === true ||
     isLikelyIosDevice(hints)
   );

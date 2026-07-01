@@ -78,6 +78,7 @@ async function main() {
   assertBodyIncludes("Live bundle includes Sign in with Apple", bundleText, "Sign in with Apple");
   assertBodyIncludes("Live bundle includes App Review demo", bundleText, "Continue in App Review demo");
   assertBodyIncludes("Live bundle includes medical disclaimer", bundleText, "Educational training only");
+  assertBodyIncludes("Live bundle includes native iOS shell marker", bundleText, "UCLASportsMRIiOS");
 
   for (const authHandlerUrl of authHandlerUrls) {
     const handler = await fetchText(authHandlerUrl);

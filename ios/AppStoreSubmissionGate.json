@@ -18,7 +18,7 @@
   "hosting": {
     "currentBuildDeployed": true,
     "livePreflightPassed": true,
-    "evidence": "Firebase Hosting deploy completed on 2026-07-01; npm run preflight:ios:live passed 24 checks against https://ucla-knee-mri.firebaseapp.com, including both Firebase Auth handler endpoints."
+    "evidence": "Firebase Hosting deploy completed on 2026-07-01; npm run preflight:ios:live passed 25 checks against https://ucla-knee-mri.firebaseapp.com, including the native iOS shell marker and both Firebase Auth handler endpoints."
   },
   "realDeviceAuth": {
     "googleSignInPassedInNativeShell": false,
