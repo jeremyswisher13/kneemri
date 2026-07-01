@@ -20,6 +20,12 @@ import {
   shouldUseRedirectSignIn,
 } from "@/lib/login-return";
 import {
+  authErrorCode,
+  redirectSignInErrorMessage,
+  signInErrorMessage,
+  type SignInProvider,
+} from "@/lib/auth-error-message";
+import {
   canEnableAppReviewDemo,
   enableAppReviewDemoAuth,
   enableLocalPreviewAuth,
@@ -28,15 +34,13 @@ import {
 import { useEffect, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
 
-type SignInProvider = "google" | "apple";
-
 const providerLabels: Record<SignInProvider, string> = {
   google: "Google",
   apple: "Apple",
 };
 
 function shouldUseRedirectFallback(err: unknown): boolean {
-  const code = (err as { code?: string } | null)?.code;
+  const code = authErrorCode(err);
   return (
     code === "auth/popup-blocked" ||
     code === "auth/cancelled-popup-request" ||
@@ -132,10 +136,10 @@ export default function LoginPage() {
           await signInWithProviderRedirect(provider);
           return;
         } catch (redirectErr: unknown) {
-          setError(redirectErr instanceof Error ? redirectErr.message : "Failed to sign in");
+          setError(redirectSignInErrorMessage(redirectErr, provider));
         }
       } else {
-        setError(err instanceof Error ? err.message : "Failed to sign in");
+        setError(signInErrorMessage(err, provider));
       }
     } finally {
       setSigningIn(false);
@@ -159,7 +163,7 @@ export default function LoginPage() {
     try {
       await signInWithProviderRedirect(fallbackProvider);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Failed to sign in");
+      setError(redirectSignInErrorMessage(err, fallbackProvider));
       setSigningIn(false);
       setActiveProvider(null);
     }

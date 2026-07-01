@@ -62,6 +62,7 @@ assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("iOS README exists", "ios", "README.md");
+assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -100,6 +101,7 @@ assertIncludes("Support URL documented", appStoreSubmission, "https://ucla-knee-
 assertIncludes("Reviewer demo documented", appStoreSubmission, "Continue in App Review demo");
 assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConnectMetadata.json");
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
+assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
 
@@ -202,6 +204,10 @@ const login = readText("src", "pages", "LoginPage.tsx");
 assertIncludes("Sign in with Apple button exists", login, "Sign in with Apple");
 assertIncludes("App Review demo button exists", login, "Continue in App Review demo");
 assertIncludes("Medical disclaimer present on login", login, "Educational training only");
+
+const authErrorMessages = readText("src", "lib", "auth-error-message.ts");
+assertIncludes("Apple auth setup error is user-friendly", authErrorMessages, "Sign in with Apple is not fully configured yet");
+assertIncludes("Apple redirect setup hint exists", authErrorMessages, "Configure the Apple provider");
 
 const firebase = readText("firebase.json");
 assertIncludes("Firebase Hosting serves dist", firebase, '"public": "dist"');

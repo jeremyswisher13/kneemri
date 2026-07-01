@@ -47,6 +47,12 @@ npm run build
 npm run preflight:ios
 ```
 
+After deploying Firebase Hosting, verify the live web bundle before archiving:
+
+```sh
+npm run preflight:ios:live
+```
+
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
 
 ## Reviewer access

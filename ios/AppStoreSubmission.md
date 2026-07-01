@@ -25,6 +25,14 @@ plutil -lint ios/ExportOptions.plist ios/UCLASportsMRI/UCLASportsMRI.entitlement
 
 `npm run preflight:ios` checks the native bundle metadata, privacy manifest, Sign in with Apple entitlement, app icons, reviewer demo path, required public URLs, login/disclaimer routes, Firebase Hosting configuration, and built `dist/index.html`.
 
+After Firebase Hosting is deployed, run:
+
+```sh
+npm run preflight:ios:live
+```
+
+The live preflight checks that the deployed app serves the required public routes and includes the App Store login affordances expected by the native shell. It is expected to fail before the current build is deployed.
+
 For command-line export/upload after an Xcode archive, use `ios/ExportOptions.plist` as the export options template. Xcode Organizer upload is still the easiest first TestFlight path.
 
 ## App Store Connect metadata draft
