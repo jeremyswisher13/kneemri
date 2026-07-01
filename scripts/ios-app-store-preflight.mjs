@@ -338,6 +338,10 @@ assertIncludes("Archive helper targets generic iOS", archiveHelper, "generic/pla
 assertIncludes("Archive helper uses export options", archiveHelper, "ExportOptions.plist");
 assertIncludes("Archive helper supports archive-only mode", archiveHelper, "--archive-only");
 assertIncludes("Archive helper supports export retry mode", archiveHelper, "--export");
+assertIncludes("Archive helper diagnoses export failures", archiveHelper, "diagnoseExportFailure");
+assertIncludes("Archive helper reads distribution logs", archiveHelper, "IDEDistribution.standard.log");
+assertIncludes("Archive helper explains account access failures", archiveHelper, "App Store Connect access");
+assertIncludes("Archive helper explains missing App Store profiles", archiveHelper, "No profiles for");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
 assertIncludes("Archive helper auto-detects Xcode teams", archiveHelper, "detectXcodeTeams");
 assertIncludes("Archive helper uses workspace DerivedData", archiveHelper, "IOS_DERIVED_DATA_PATH");

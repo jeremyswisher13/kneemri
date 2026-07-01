@@ -64,5 +64,6 @@ npm run export:ios
 ```
 
 If `export:ios` still fails with account access, open Xcode > Settings > Accounts and refresh/sign in to the Apple ID that has App Store Connect access for Team `X578T4K65B`.
+The export helper reads Xcode's `IDEDistribution.standard.log` and prints the exact account/profile next action when export fails.
 
 Only after export/upload succeeds should the App Store Connect build evidence be recorded in `ios/AppStoreConnectEvidence.json`.

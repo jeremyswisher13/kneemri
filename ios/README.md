@@ -82,6 +82,8 @@ npm run export:ios
 
 `archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`.
 `export:ios` retries App Store Connect export/upload from the existing archive.
+If export fails, the helper reads Xcode's distribution log and prints the exact
+account/profile next action.
 If export fails with App Store Connect account access, open Xcode > Settings >
 Accounts and confirm the signed-in Apple ID has App Store Connect access for
 Team `X578T4K65B`. If `npm run archive:ios:signing` reports

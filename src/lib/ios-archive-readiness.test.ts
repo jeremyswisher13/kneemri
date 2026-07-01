@@ -62,6 +62,10 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("appStoreProfileReady");
     expect(archiveHelper).toContain("archiveBuild");
     expect(archiveHelper).toContain("exportArchive");
+    expect(archiveHelper).toContain("diagnoseExportFailure");
+    expect(archiveHelper).toContain("IDEDistribution.standard.log");
+    expect(archiveHelper).toContain("Failed to find an account with App Store Connect access");
+    expect(archiveHelper).toContain("No profiles for");
     expect(handoff).toContain("X578T4K65B");
     expect(handoff).toContain("1 Apple Distribution identity");
     expect(handoff).toContain("0 matching App Store distribution profiles");

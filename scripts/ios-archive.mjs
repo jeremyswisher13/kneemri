@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -62,6 +62,54 @@ function runCapturedOptional(command, args) {
     status: result.status ?? 1,
     output: `${result.stdout ?? ""}${result.stderr ?? ""}`,
   };
+}
+
+function diagnoseExportFailure(output) {
+  const distributionLogPath = output.match(/Created bundle at path "([^"]+\.xcdistributionlogs)"/)?.[1];
+  const standardLogPath = distributionLogPath ? join(distributionLogPath, "IDEDistribution.standard.log") : "";
+  const standardLog = standardLogPath && existsSync(standardLogPath) ? readFileSync(standardLogPath, "utf8") : "";
+  const combined = `${output}\n${standardLog}`;
+  const actionableLine = combined
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .find(
+      (line) =>
+        line.includes("Failed to find an account with App Store Connect access") ||
+        line.includes("No profiles for") ||
+        line.includes("No Accounts"),
+    );
+
+  console.error("\nExport diagnosis:");
+  if (actionableLine) {
+    console.error(actionableLine);
+  }
+  if (combined.includes("Failed to find an account with App Store Connect access")) {
+    console.error("Next: open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team X578T4K65B.");
+  }
+  if (combined.includes("No profiles for")) {
+    console.error("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
+  }
+  console.error("Then rerun npm run archive:ios:signing and npm run export:ios.");
+  if (standardLogPath) {
+    console.error(`Xcode distribution log: ${standardLogPath}`);
+  }
+}
+
+function runExport(args) {
+  const result = spawnSync("xcodebuild", args, {
+    cwd: root,
+    encoding: "utf8",
+  });
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
+  if (result.error) {
+    console.error(result.error.message);
+    process.exit(1);
+  }
+  if (result.status !== 0) {
+    diagnoseExportFailure(`${result.stdout ?? ""}${result.stderr ?? ""}`);
+    process.exit(result.status ?? 1);
+  }
 }
 
 function parseBuildSettings(output) {
@@ -280,7 +328,7 @@ function exportArchive() {
   rmSync(exportPath, { recursive: true, force: true });
 
   console.log("\nExporting archive for App Store Connect upload...");
-  run("xcodebuild", [
+  runExport([
     "-exportArchive",
     "-archivePath",
     archivePath,
