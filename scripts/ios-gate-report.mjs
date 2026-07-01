@@ -203,6 +203,7 @@ for (const group of groups) {
 
 if (missing.length > 0) {
   console.log("## Next Commands");
+  console.log("- npm run evidence:ios");
   console.log("- npm run preflight:ios");
   console.log("- npm run preflight:ios:live");
   console.log("- npm run preflight:ios:submit");

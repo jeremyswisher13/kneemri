@@ -58,6 +58,7 @@ npm run preflight:ios:live
 Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` with verified external evidence and run:
 
 ```sh
+npm run evidence:ios
 npm run release:ios:evidence
 npm run release:ios:evidence:verify
 npm run asc:ios:evidence
@@ -65,6 +66,7 @@ npm run asc:ios:evidence:verify
 npm run preflight:ios:submit
 ```
 
+`npm run evidence:ios` is the consolidated non-failing audit for signing, Apple/Firebase auth evidence, release verification evidence, screenshots, App Store Connect evidence, and the final submission gate.
 `npm run release:ios:evidence` reports the real-device/TestFlight auth and account-deletion evidence still missing from `ios/ReleaseVerificationEvidence.json`.
 `npm run asc:ios:evidence` validates `ios/AppStoreConnectMetadata.json`, prints the App Store Connect copy-paste packet, and reports which external App Store Connect confirmations still need to be recorded in `ios/AppStoreConnectEvidence.json`.
 

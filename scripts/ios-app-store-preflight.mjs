@@ -71,6 +71,7 @@ assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 assertFile("Submission gate report script exists", "scripts", "ios-gate-report.mjs");
+assertFile("Evidence audit script exists", "scripts", "ios-evidence-audit.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
 assertFile("App Store Connect evidence script exists", "scripts", "ios-app-store-connect-evidence.mjs");
@@ -134,6 +135,7 @@ assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflig
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
+assertIncludes("Evidence audit documented", appStoreSubmission, "npm run evidence:ios");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
 assertIncludes("Archive signing report documented", appStoreSubmission, "npm run archive:ios:signing");
 assertIncludes("Archive command documented", appStoreSubmission, "npm run archive:ios");
@@ -168,6 +170,13 @@ assertIncludes("Release evidence verifies Google native auth gate", releaseEvide
 assertIncludes("Release evidence verifies Apple native auth gate", releaseEvidenceScript, "realDeviceAuth.appleSignInPassedInNativeShell");
 assertIncludes("Release evidence verifies account deletion gate", releaseEvidenceScript, "accountDeletion.requestFlowVerified");
 assertIncludes("Release evidence reports ready gates", releaseEvidenceScript, "Ready real-device/account-deletion gates");
+
+const evidenceAuditScript = readText("scripts", "ios-evidence-audit.mjs");
+assertIncludes("Evidence audit runs archive signing", evidenceAuditScript, "scripts/ios-archive.mjs");
+assertIncludes("Evidence audit runs auth evidence", evidenceAuditScript, "scripts/ios-auth-evidence.mjs");
+assertIncludes("Evidence audit runs release evidence", evidenceAuditScript, "scripts/ios-release-evidence.mjs");
+assertIncludes("Evidence audit runs App Store Connect evidence", evidenceAuditScript, "scripts/ios-app-store-connect-evidence.mjs");
+assertIncludes("Evidence audit runs submission gate report", evidenceAuditScript, "scripts/ios-gate-report.mjs");
 
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
 if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
@@ -317,6 +326,7 @@ assertIncludes("Gate report includes final submission flag", gateReport, "appSto
 assertIncludes("Gate report includes real-device Apple auth gate", gateReport, "realDeviceAuth.appleSignInPassedInNativeShell");
 assertIncludes("Gate report includes App Store Connect evidence command", gateReport, "npm run asc:ios:evidence");
 assertIncludes("Gate report includes release evidence command", gateReport, "npm run release:ios:evidence");
+assertIncludes("Gate report includes evidence audit command", gateReport, "npm run evidence:ios");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));
