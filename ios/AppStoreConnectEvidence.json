@@ -35,7 +35,8 @@
   },
   "ageRating": {
     "completed": false,
-    "recommendation": "17+",
+    "recommendation": "16+",
+    "basis": "Frequent medical or treatment information",
     "completedAt": "",
     "confirmedBy": "",
     "evidenceNote": ""

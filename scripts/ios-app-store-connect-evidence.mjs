@@ -101,6 +101,13 @@ const metadataChecks = [
     detail: `${metadata.version ?? "missing"} (${metadata.build ?? "missing"})`,
   },
   {
+    label: "Age rating recommendation matches Apple medical category",
+    ok:
+      metadata.ageRatingRecommendation === "16+" &&
+      metadata.ageRatingBasis?.appleAnswer === "Frequent medical or treatment information",
+    detail: `${metadata.ageRatingRecommendation ?? "missing"}; ${metadata.ageRatingBasis?.appleAnswer ?? "missing"}`,
+  },
+  {
     label: "Support URL is HTTPS",
     ok: metadata.supportUrl === expected.supportUrl && httpsUrl(metadata.supportUrl),
     detail: metadata.supportUrl ?? "missing",
@@ -221,7 +228,7 @@ const items = [
       ageRating.recommendation === metadata.ageRatingRecommendation &&
       text(ageRating.completedAt) &&
       text(ageRating.confirmedBy),
-    next: "Complete the age-rating questionnaire; use 17+ as the recorded recommendation for advanced medical education.",
+    next: "Complete the age-rating questionnaire; use 16+ for frequent medical or treatment information in advanced medical education.",
   },
   {
     group: "App Store Connect",
@@ -330,6 +337,7 @@ console.log(`Bundle ID: ${metadata.bundleId}`);
 console.log(`Version/build: ${metadata.version} (${metadata.build})`);
 console.log(`Categories: ${metadata.primaryCategory}; ${metadata.secondaryCategory}`);
 console.log(`Price: ${metadata.price}`);
+console.log(`Age rating: ${metadata.ageRatingRecommendation} (${metadata.ageRatingBasis?.appleAnswer ?? "medical education"})`);
 console.log(`Keywords (${keywords.length}/${limits.keywordsMax}): ${keywords}`);
 console.log(`Support URL: ${metadata.supportUrl}`);
 console.log(`Privacy Policy URL: ${metadata.privacyPolicyUrl}`);

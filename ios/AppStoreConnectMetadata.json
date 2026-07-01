@@ -12,7 +12,12 @@
   "primaryCategory": "Education",
   "secondaryCategory": "Medical",
   "price": "Free",
-  "ageRatingRecommendation": "17+",
+  "ageRatingRecommendation": "16+",
+  "ageRatingBasis": {
+    "appleCategory": "Medical or Wellness",
+    "appleAnswer": "Frequent medical or treatment information",
+    "rationale": "Advanced sports medicine MRI education for clinicians and fellows; educational only, not diagnosis or treatment."
+  },
   "copyright": "2026 Jeremy Swisher, MD",
   "supportUrl": "https://ucla-knee-mri.firebaseapp.com/support",
   "privacyPolicyUrl": "https://ucla-knee-mri.firebaseapp.com/privacy",

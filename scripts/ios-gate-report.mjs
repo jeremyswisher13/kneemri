@@ -145,7 +145,7 @@ const groups = [
       {
         key: "appStoreConnect.ageRatingCompleted",
         value: gate.appStoreConnect?.ageRatingCompleted,
-        next: "Complete App Store Connect age rating, recommended 17+ for advanced medical education, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
+        next: "Complete App Store Connect age rating, recommended 16+ for frequent medical or treatment information in advanced medical education, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.exportComplianceCompleted",

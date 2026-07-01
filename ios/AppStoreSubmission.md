@@ -109,7 +109,7 @@ External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEv
 - Subtitle: `Sports medicine MRI learning`
 - Primary category: Education
 - Secondary category: Medical
-- Age rating: 17+ recommended because the content is advanced medical education for clinicians/fellows.
+- Age rating: 16+ recommended because Apple's current age-rating reference maps frequent medical/treatment information to 16+; this app is advanced medical education for clinicians/fellows and is not for diagnosis or treatment.
 - Price: Free
 - In-app purchases: None
 - Tracking: No

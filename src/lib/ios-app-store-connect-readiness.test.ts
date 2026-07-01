@@ -9,6 +9,11 @@ type Metadata = {
   build: string;
   name: string;
   subtitle: string;
+  ageRatingRecommendation: string;
+  ageRatingBasis: {
+    appleCategory: string;
+    appleAnswer: string;
+  };
   supportUrl: string;
   privacyPolicyUrl: string;
   keywords: string[];
@@ -23,7 +28,7 @@ type Evidence = {
   appRecord: { bundleId: string; sku: string; platform: string };
   metadata: { source: string };
   privacyLabels: { tracking: boolean; dataLinkedToUser: string[] };
-  ageRating: { recommendation: string };
+  ageRating: { recommendation: string; basis: string };
   exportCompliance: { usesNonExemptEncryption: boolean; infoPlistKey: string };
   build: { version: string; build: string };
   reviewNotes: { source: string };
@@ -60,6 +65,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(metadata.name.length).toBeGreaterThanOrEqual(2);
     expect(metadata.name.length).toBeLessThanOrEqual(30);
     expect(metadata.subtitle.length).toBeLessThanOrEqual(30);
+    expect(metadata.ageRatingRecommendation).toBe("16+");
+    expect(metadata.ageRatingBasis.appleCategory).toBe("Medical or Wellness");
+    expect(metadata.ageRatingBasis.appleAnswer).toBe("Frequent medical or treatment information");
     expect(keywords.length).toBeLessThanOrEqual(100);
     expect(metadata.supportUrl).toBe("https://ucla-knee-mri.firebaseapp.com/support");
     expect(metadata.privacyPolicyUrl).toBe("https://ucla-knee-mri.firebaseapp.com/privacy");
@@ -90,7 +98,8 @@ describe("iOS App Store Connect readiness", () => {
     expect(evidence.metadata.source).toBe("ios/AppStoreConnectMetadata.json");
     expect(evidence.privacyLabels.tracking).toBe(false);
     expect(evidence.privacyLabels.dataLinkedToUser).toEqual(expect.arrayContaining(metadata.privacy.dataLinkedToUser));
-    expect(evidence.ageRating.recommendation).toBe("17+");
+    expect(evidence.ageRating.recommendation).toBe(metadata.ageRatingRecommendation);
+    expect(evidence.ageRating.basis).toBe(metadata.ageRatingBasis.appleAnswer);
     expect(evidence.exportCompliance.usesNonExemptEncryption).toBe(false);
     expect(evidence.exportCompliance.infoPlistKey).toBe("ITSAppUsesNonExemptEncryption");
     expect(evidence.build.version).toBe(metadata.version);

@@ -212,6 +212,14 @@ if (metadata.subtitle === "Sports medicine MRI learning") {
 } else {
   fail("Metadata subtitle is ready", metadata.subtitle ?? "missing");
 }
+if (
+  metadata.ageRatingRecommendation === "16+" &&
+  metadata.ageRatingBasis?.appleAnswer === "Frequent medical or treatment information"
+) {
+  pass("Metadata age rating matches current Apple medical category");
+} else {
+  fail("Metadata age rating matches current Apple medical category", metadata.ageRatingRecommendation ?? "missing");
+}
 if (metadata.supportUrl === "https://ucla-knee-mri.firebaseapp.com/support") {
   pass("Metadata support URL matches app route");
 } else {
