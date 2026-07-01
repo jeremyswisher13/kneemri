@@ -22,8 +22,8 @@ Last updated: July 1, 2026
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
 - Native iOS shell sign-in URLs use Firebase full-page redirect auth (`source=ios-app`) to avoid fragile popup behavior inside `WKWebView`.
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
-- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, and Apple Developer Team `X578T4K65B` (`Jeremy Swisher`) pinned in the Xcode project. Xcode has downloaded a matching bundle-specific provisioning profile for `com.jeremyswisher.uclasportsmri / X578T4K65B`; local signing is still not ready because this Mac currently has 0 valid Apple code-signing identities and 0 Apple Distribution identities.
-- A command-line archive attempt with `X578T4K65B` on July 1, 2026 reached Xcode provisioning and failed at the local Apple account/signing layer. The bundle-specific provisioning profile has since been downloaded; the current local blocker is the missing Apple Distribution signing identity/private key.
+- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, Apple Developer Team `X578T4K65B` (`Jeremy Swisher`), 1 matching provisioning profile, 1 Apple Development identity, and 1 Apple Distribution identity.
+- `npm run archive:ios:only` created `ios/build/UCLASportsMRI.xcarchive` on July 1, 2026. The archive step succeeds; `npm run export:ios` fails with `Failed to find an account with App Store Connect access for team X578T4K65B`. The current blocker is App Store Connect access in Xcode for the Jeremy Swisher team, not local certificates or provisioning profiles.
 - `npm run preflight:ios:submit` still intentionally fails on unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission/compliance fields.
 - iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
@@ -92,13 +92,22 @@ After the command passes and the app is submitted, set `appStoreConnect.submitte
 
 For command-line export/upload after an Xcode archive, use `ios/ExportOptions.plist` as the export options template. Xcode Organizer upload is still the easiest first TestFlight path.
 
+To split archive and upload retries:
+
+```sh
+npm run archive:ios:only
+npm run export:ios
+```
+
+`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account for Team `X578T4K65B`.
+
 When Apple Developer signing is configured, command-line archive/export is available:
 
 ```sh
 IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 ```
 
-The Xcode project now pins `DEVELOPMENT_TEAM = X578T4K65B`, so the environment variable is optional once Xcode account credentials and signing assets are valid. Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, resolved Development Team, Apple Development/Distribution identity counts, decoded provisioning profile count, and exact matching provisioning profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`. If it reports `Local signing assets ready: no` because the Apple Distribution identity count is 0, open Xcode > Settings > Accounts > `Jeremy Swisher` > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.
+The Xcode project now pins `DEVELOPMENT_TEAM = X578T4K65B`, so the environment variable is optional. Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, resolved Development Team, Apple Development/Distribution identity counts, decoded provisioning profile count, and exact matching provisioning profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`. If `npm run export:ios` fails with App Store Connect account access, open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team `X578T4K65B`, then retry the export/upload.
 
 ## App Store Connect metadata draft
 

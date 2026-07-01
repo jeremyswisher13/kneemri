@@ -12,9 +12,13 @@ const exportPath = process.env.IOS_EXPORT_PATH || join(root, "ios", "build", "ex
 const derivedDataPath = process.env.IOS_DERIVED_DATA_PATH || join(root, "ios", "build", "DerivedData");
 const mode = process.argv.includes("--archive")
   ? "archive"
-  : process.argv.includes("--signing")
-    ? "signing"
-    : "check";
+  : process.argv.includes("--archive-only")
+    ? "archive-only"
+    : process.argv.includes("--export")
+      ? "export"
+      : process.argv.includes("--signing")
+        ? "signing"
+        : "check";
 const xcodeProvisioningProfilesPath = join(homedir(), "Library", "Developer", "Xcode", "UserData", "Provisioning Profiles");
 
 function run(command, args, options = {}) {
@@ -247,6 +251,36 @@ function buildSettingsArgs() {
   return args;
 }
 
+function archiveBuild() {
+  mkdirSync(dirname(archivePath), { recursive: true });
+  mkdirSync(derivedDataPath, { recursive: true });
+  rmSync(archivePath, { recursive: true, force: true });
+
+  console.log("\nArchiving Release build for iOS...");
+  run("xcodebuild", baseArchiveArgs());
+  console.log(`\nArchive complete: ${archivePath}`);
+}
+
+function exportArchive() {
+  ensureFile("archive metadata", join(archivePath, "Info.plist"));
+  mkdirSync(dirname(exportPath), { recursive: true });
+  rmSync(exportPath, { recursive: true, force: true });
+
+  console.log("\nExporting archive for App Store Connect upload...");
+  run("xcodebuild", [
+    "-exportArchive",
+    "-archivePath",
+    archivePath,
+    "-exportOptionsPlist",
+    exportOptionsPath,
+    "-exportPath",
+    exportPath,
+    "-allowProvisioningUpdates",
+  ]);
+
+  console.log(`\nExport output: ${exportPath}`);
+}
+
 function printSigningReport() {
   console.log("\nChecking Release signing settings...");
   mkdirSync(derivedDataPath, { recursive: true });
@@ -347,29 +381,22 @@ if (mode === "check") {
     console.log("Set IOS_DEVELOPMENT_TEAM=<Apple Team ID> if automatic signing needs an explicit team.");
   }
   console.log("Run npm run archive:ios:signing to inspect Release signing settings.");
+  console.log("Run npm run archive:ios:only to create or refresh the local .xcarchive.");
+  console.log("Run npm run export:ios to retry App Store Connect export/upload from the existing archive.");
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
   process.exit(0);
 }
 
-mkdirSync(dirname(archivePath), { recursive: true });
-mkdirSync(derivedDataPath, { recursive: true });
-rmSync(archivePath, { recursive: true, force: true });
-rmSync(exportPath, { recursive: true, force: true });
+if (mode === "archive-only") {
+  archiveBuild();
+  console.log("Run npm run export:ios after Xcode has an App Store Connect account for Team X578T4K65B.");
+  process.exit(0);
+}
 
-console.log("\nArchiving Release build for iOS...");
-run("xcodebuild", baseArchiveArgs());
+if (mode === "export") {
+  exportArchive();
+  process.exit(0);
+}
 
-console.log("\nExporting archive for App Store Connect upload...");
-run("xcodebuild", [
-  "-exportArchive",
-  "-archivePath",
-  archivePath,
-  "-exportOptionsPlist",
-  exportOptionsPath,
-  "-exportPath",
-  exportPath,
-  "-allowProvisioningUpdates",
-]);
-
-console.log(`\nArchive complete: ${archivePath}`);
-console.log(`Export output: ${exportPath}`);
+archiveBuild();
+exportArchive();

@@ -11,8 +11,14 @@ describe("iOS archive readiness", () => {
 
   it("exposes and documents the Release signing report", () => {
     expect(packageJson).toContain('"archive:ios:signing": "node scripts/ios-archive.mjs --signing"');
+    expect(packageJson).toContain('"archive:ios:only": "node scripts/ios-archive.mjs --archive-only"');
+    expect(packageJson).toContain('"export:ios": "node scripts/ios-archive.mjs --export"');
     expect(handoff).toContain("npm run archive:ios:signing");
+    expect(handoff).toContain("npm run archive:ios:only");
+    expect(handoff).toContain("npm run export:ios");
     expect(readme).toContain("npm run archive:ios:signing");
+    expect(readme).toContain("npm run archive:ios:only");
+    expect(readme).toContain("npm run export:ios");
   });
 
   it("keeps command-line archives in local ignored build output", () => {
@@ -48,11 +54,12 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("application-identifier");
     expect(archiveHelper).toContain("Local signing assets ready");
     expect(archiveHelper).toContain("distributionIdentityReady");
+    expect(archiveHelper).toContain("archiveBuild");
+    expect(archiveHelper).toContain("exportArchive");
     expect(handoff).toContain("X578T4K65B");
-    expect(handoff).toContain("matching bundle-specific provisioning profile");
-    expect(handoff).toContain("0 Apple Distribution identities");
-    expect(handoff).toContain("Manage Certificates");
-    expect(handoff).toContain("missing Apple Distribution signing identity");
+    expect(handoff).toContain("1 Apple Distribution identity");
+    expect(handoff).toContain("Failed to find an account with App Store Connect access");
+    expect(handoff).toContain("current blocker is App Store Connect access");
     expect(readme).toContain("X578T4K65B");
   });
 

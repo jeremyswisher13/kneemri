@@ -72,6 +72,19 @@ npm run preflight:ios:submit
 
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
 
+To keep archive creation separate from App Store Connect upload retries:
+
+```sh
+npm run archive:ios:only
+npm run export:ios
+```
+
+`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`.
+`export:ios` retries App Store Connect export/upload from the existing archive.
+If export fails with App Store Connect account access, open Xcode > Settings >
+Accounts and confirm the signed-in Apple ID has App Store Connect access for
+Team `X578T4K65B`.
+
 Once Apple Developer signing is configured, archive/export with:
 
 ```sh

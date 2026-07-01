@@ -125,23 +125,28 @@ for (const result of results) {
 }
 
 console.log("## Suggested Order");
+const suggestedActions = [];
 if (failures.some((result) => result.key === "archiveSigning")) {
-  console.log("1. Fix Xcode account credentials/signing assets, then rerun npm run archive:ios:signing.");
+  suggestedActions.push("Fix Xcode account credentials/signing assets, then rerun npm run archive:ios:signing.");
 }
 if (failures.some((result) => result.key === "appleFirebaseAuth")) {
-  console.log("2. Complete Apple Developer Sign in with Apple and Firebase apple.com provider setup, then rerun npm run auth:ios:evidence:verify.");
+  suggestedActions.push("Complete Apple Developer Sign in with Apple and Firebase apple.com provider setup, then rerun npm run auth:ios:evidence:verify.");
 }
 if (failures.some((result) => result.key === "releaseVerification")) {
-  console.log("3. Upload/install the native build, verify real-device auth and account deletion, then rerun npm run release:ios:evidence:verify.");
+  suggestedActions.push("Upload/install the native build, verify real-device auth and account deletion, then rerun npm run release:ios:evidence:verify.");
 }
 if (failures.some((result) => result.key === "appStoreConnect")) {
-  console.log("4. Enter App Store Connect metadata/privacy/age-rating/regulated-device/build/screenshot evidence, then rerun npm run asc:ios:evidence:verify.");
+  suggestedActions.push("Enter App Store Connect metadata/privacy/age-rating/regulated-device/build/screenshot evidence, then rerun npm run asc:ios:evidence:verify.");
 }
 if (failures.some((result) => result.key === "submissionGate")) {
-  console.log("5. Update ios/AppStoreSubmissionGate.json only after matching evidence is ready, then rerun npm run preflight:ios:submit.");
+  suggestedActions.push("Update ios/AppStoreSubmissionGate.json only after matching evidence is ready, then rerun npm run preflight:ios:submit.");
 }
-if (failures.length === 0) {
+if (suggestedActions.length === 0) {
   console.log("All audited evidence is ready. Run npm run preflight:ios:submit and submit in App Store Connect.");
+} else {
+  suggestedActions.forEach((action, index) => {
+    console.log(`${index + 1}. ${action}`);
+  });
 }
 console.log("");
 
