@@ -28,8 +28,11 @@ For the Xcode export/upload path, the Apple ID in Xcode must have an App Store C
 
 ```text
 App Store export signing ready: yes
-Matching App Store profiles: 1 for com.jeremyswisher.uclasportsmri / X578T4K65B
 ```
+
+The `Matching App Store profiles:` count should be `1` or higher for
+`com.jeremyswisher.uclasportsmri / X578T4K65B`; more than one installed matching
+App Store profile is acceptable as long as the export-signing line is `yes`.
 
 ## Required Apple Steps
 

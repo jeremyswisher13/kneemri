@@ -158,6 +158,8 @@ const appStoreExportReadiness = readText("ios", "AppStoreExportReadiness.md");
 assertIncludes("Export checklist names bundle ID", appStoreExportReadiness, "com.jeremyswisher.uclasportsmri");
 assertIncludes("Export checklist names Apple team", appStoreExportReadiness, "X578T4K65B");
 assertIncludes("Export checklist names App Store profile type", appStoreExportReadiness, "App Store distribution provisioning profile");
+assertIncludes("Export checklist accepts one or more App Store profiles", appStoreExportReadiness, "1` or higher");
+assertIncludes("Export checklist tolerates duplicate matching profiles", appStoreExportReadiness, "more than one installed matching");
 assertIncludes("Export checklist separates independent blockers", appStoreExportReadiness, "Two independent Apple-side blockers remain");
 assertIncludes("Export checklist documents Xcode account access", appStoreExportReadiness, "App Store Connect access for Team `X578T4K65B`");
 assertIncludes("Export checklist includes signing command", appStoreExportReadiness, "npm run archive:ios:signing");

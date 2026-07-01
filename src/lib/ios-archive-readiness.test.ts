@@ -85,6 +85,8 @@ describe("iOS archive readiness", () => {
     expect(exportReadiness).toContain("com.jeremyswisher.uclasportsmri");
     expect(exportReadiness).toContain("X578T4K65B");
     expect(exportReadiness).toContain("App Store distribution provisioning profile");
+    expect(exportReadiness).toContain("1` or higher");
+    expect(exportReadiness).toContain("more than one installed matching");
     expect(exportReadiness).toContain("Two independent Apple-side blockers remain");
     expect(exportReadiness).toContain("App Store Connect access for Team `X578T4K65B`");
     expect(exportReadiness).toContain("Account Holder, Admin, App Manager, or Developer");
