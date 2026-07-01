@@ -24,7 +24,7 @@ Last updated: July 1, 2026
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
 - `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, Apple Developer Team `X578T4K65B` (`Jeremy Swisher`), 1 Apple Development identity, and 1 Apple Distribution identity. It also reports 1 matching development provisioning profile but 0 matching App Store distribution profiles, so App Store export signing is not ready yet.
 - `npm run archive:ios:only` created `ios/build/UCLASportsMRI.xcarchive` on July 1, 2026. The archive step succeeds; `npm run export:ios` fails with `Failed to find an account with App Store Connect access for team X578T4K65B`. A local `destination=export` retry also fails because no App Store distribution provisioning profile is installed for `com.jeremyswisher.uclasportsmri`. The current blocker is App Store Connect-capable Xcode account access plus an App Store distribution provisioning profile for Team `X578T4K65B`.
-- `npm run preflight:ios:submit` still intentionally fails on unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission/compliance fields.
+- `npm run preflight:ios:submit` still intentionally fails on unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, archive/export signing, real-device/TestFlight auth, account deletion operations, and App Store Connect submission/compliance fields.
 - iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
@@ -101,6 +101,7 @@ npm run export:ios
 ```
 
 `archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account and an App Store distribution provisioning profile for Team `X578T4K65B`. If export fails, the helper now reads Xcode's distribution log and prints the exact account/profile next action.
+Only set `archiveExport.appStoreExportSigningReady` and `archiveExport.appStoreConnectAccountAccessVerified` in `ios/AppStoreSubmissionGate.json` after the matching command evidence exists.
 
 When Apple Developer signing is configured, command-line archive/export is available:
 

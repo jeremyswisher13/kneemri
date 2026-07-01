@@ -20,6 +20,11 @@
     "livePreflightPassed": true,
     "evidence": "Firebase Hosting deploy completed on 2026-07-01 after the accessibility URL addition; npm run preflight:ios:live passed 27 checks against https://ucla-knee-mri.firebaseapp.com, including public privacy/support/accessibility routes, Sign in with Apple, App Review demo, the native iOS shell marker, and both Firebase Auth handler endpoints."
   },
+  "archiveExport": {
+    "appStoreExportSigningReady": false,
+    "appStoreConnectAccountAccessVerified": false,
+    "evidence": "npm run archive:ios:signing shows App Store export signing ready: yes, and npm run export:ios or Xcode Organizer can access App Store Connect for Team X578T4K65B. Keep false until the App Store distribution provisioning profile exists and export/upload no longer fails with account access."
+  },
   "realDeviceAuth": {
     "googleSignInPassedInNativeShell": false,
     "appleSignInPassedInNativeShell": false,

@@ -145,6 +145,7 @@ assertIncludes("Archive-only command documented", appStoreSubmission, "npm run a
 assertIncludes("Export retry command documented", appStoreSubmission, "npm run export:ios");
 assertIncludes("App Store Connect account blocker documented", appStoreSubmission, "App Store Connect access");
 assertIncludes("App Store export checklist documented", appStoreSubmission, "ios/AppStoreExportReadiness.md");
+assertIncludes("Archive export gate documented", appStoreSubmission, "archiveExport.appStoreExportSigningReady");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
 
@@ -192,6 +193,14 @@ assertIncludes("Evidence audit runs release evidence", evidenceAuditScript, "scr
 assertIncludes("Evidence audit runs App Store Connect evidence", evidenceAuditScript, "scripts/ios-app-store-connect-evidence.mjs");
 assertIncludes("Evidence audit runs submission gate report", evidenceAuditScript, "scripts/ios-gate-report.mjs");
 
+const submissionGateScript = readText("scripts", "ios-submission-gate.mjs");
+assertIncludes("Hard gate requires App Store export signing evidence", submissionGateScript, "archiveExport.appStoreExportSigningReady");
+assertIncludes(
+  "Hard gate requires App Store Connect account evidence",
+  submissionGateScript,
+  "archiveExport.appStoreConnectAccountAccessVerified",
+);
+
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
 if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
   pass("Submission gate bundle ID matches native bundle");
@@ -202,6 +211,16 @@ if (submissionGate.firebaseAuth?.appleProviderConfigured === false) {
   pass("Submission gate tracks Firebase Apple provider as external");
 } else {
   fail("Submission gate tracks Firebase Apple provider as external");
+}
+if (submissionGate.archiveExport?.appStoreExportSigningReady === false) {
+  pass("Submission gate tracks App Store export signing as external");
+} else {
+  fail("Submission gate tracks App Store export signing as external");
+}
+if (submissionGate.archiveExport?.appStoreConnectAccountAccessVerified === false) {
+  pass("Submission gate tracks App Store Connect account access as external");
+} else {
+  fail("Submission gate tracks App Store Connect account access as external");
 }
 if (submissionGate.appStoreConnect?.submittedForReview === false) {
   pass("Submission gate prevents accidental App Review completion claim");
@@ -391,6 +410,15 @@ assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCL
 const gateReport = readText("scripts", "ios-gate-report.mjs");
 assertIncludes("Gate report summarizes App Review readiness", gateReport, "Ready for App Review submission");
 assertIncludes("Gate report includes final submission flag", gateReport, "appStoreConnect.submittedForReview");
+assertIncludes("Gate report includes archive export signing group", gateReport, "Archive / Export Signing");
+assertIncludes("Gate report includes App Store export signing gate", gateReport, "archiveExport.appStoreExportSigningReady");
+assertIncludes(
+  "Gate report includes App Store Connect account gate",
+  gateReport,
+  "archiveExport.appStoreConnectAccountAccessVerified",
+);
+assertIncludes("Gate report includes export signing command", gateReport, "npm run archive:ios:signing");
+assertIncludes("Gate report includes export retry command", gateReport, "npm run export:ios");
 assertIncludes("Gate report includes real-device Apple auth gate", gateReport, "realDeviceAuth.appleSignInPassedInNativeShell");
 assertIncludes("Gate report includes App Store Connect evidence command", gateReport, "npm run asc:ios:evidence");
 assertIncludes("Gate report includes release evidence command", gateReport, "npm run release:ios:evidence");

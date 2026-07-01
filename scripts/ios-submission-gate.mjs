@@ -15,6 +15,8 @@ const required = [
   ["firebaseAuth.authorizedDomainsIncludeFirebaseHosting", gate.firebaseAuth?.authorizedDomainsIncludeFirebaseHosting],
   ["hosting.currentBuildDeployed", gate.hosting?.currentBuildDeployed],
   ["hosting.livePreflightPassed", gate.hosting?.livePreflightPassed],
+  ["archiveExport.appStoreExportSigningReady", gate.archiveExport?.appStoreExportSigningReady],
+  ["archiveExport.appStoreConnectAccountAccessVerified", gate.archiveExport?.appStoreConnectAccountAccessVerified],
   ["realDeviceAuth.googleSignInPassedInNativeShell", gate.realDeviceAuth?.googleSignInPassedInNativeShell],
   ["realDeviceAuth.appleSignInPassedInNativeShell", gate.realDeviceAuth?.appleSignInPassedInNativeShell],
   ["realDeviceAuth.appReviewDemoPassedInNativeShell", gate.realDeviceAuth?.appReviewDemoPassedInNativeShell],

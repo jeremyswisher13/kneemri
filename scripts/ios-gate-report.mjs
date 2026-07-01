@@ -66,6 +66,22 @@ const groups = [
     ],
   },
   {
+    title: "Archive / Export Signing",
+    evidence: gate.archiveExport?.evidence,
+    items: [
+      {
+        key: "archiveExport.appStoreExportSigningReady",
+        value: gate.archiveExport?.appStoreExportSigningReady,
+        next: "Create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri, then run npm run archive:ios:signing and confirm App Store export signing ready: yes.",
+      },
+      {
+        key: "archiveExport.appStoreConnectAccountAccessVerified",
+        value: gate.archiveExport?.appStoreConnectAccountAccessVerified,
+        next: "Confirm Xcode can access App Store Connect for Team X578T4K65B by rerunning npm run export:ios or uploading through Xcode Organizer.",
+      },
+    ],
+  },
+  {
     title: "Real Device / TestFlight Auth",
     evidence: gate.realDeviceAuth?.evidence,
     items: [

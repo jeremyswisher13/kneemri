@@ -32,10 +32,15 @@ describe("iOS App Store gate report", () => {
   });
 
   it("covers every required hard submission gate", () => {
-    expect(requiredKeys).toHaveLength(26);
+    expect(requiredKeys).toHaveLength(28);
     for (const key of requiredKeys) {
       expect(gateReportScript).toContain(key);
     }
+    expect(gateReportScript).toContain("Archive / Export Signing");
+    expect(gateReportScript).toContain("archiveExport.appStoreExportSigningReady");
+    expect(gateReportScript).toContain("archiveExport.appStoreConnectAccountAccessVerified");
+    expect(gateReportScript).toContain("npm run archive:ios:signing");
+    expect(gateReportScript).toContain("npm run export:ios");
     expect(gateReportScript).toContain("Ready for App Review submission");
     expect(gateReportScript).toContain("appStoreConnect.submittedForReview");
     expect(gateReportScript).not.toContain("process.exit(1)");
