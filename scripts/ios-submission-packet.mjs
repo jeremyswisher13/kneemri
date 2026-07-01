@@ -82,24 +82,28 @@ const gateGroups = [
     title: "Apple Developer and Firebase Auth",
     evidenceFile: "ios/AppleFirebaseAuthEvidence.json",
     verifyCommand: "npm run auth:ios:evidence:verify",
+    nextAction: `Enable Sign in with Apple for App ID ${expected.bundleId}, create Services ID ${expected.serviceId}, set Return URL ${expected.primaryReturnUrl}, configure Firebase project ${expected.firebaseProjectId} Apple provider, and confirm authorized domains ${expected.authorizedDomains.join(" plus ")}.`,
     keys: authKeys,
   },
   {
     title: "Archive Export and TestFlight Upload Access",
     evidenceFile: "ios/AppStoreSubmissionGate.json",
     verifyCommand: "npm run archive:ios:signing && npm run export:ios",
+    nextAction: `Create/download an App Store distribution provisioning profile for ${expected.bundleId} on Team ${expected.appleTeamId}, then confirm Xcode has App Store Connect upload access for that team.`,
     keys: archiveExportKeys,
   },
   {
     title: "App Store Connect Entry",
     evidenceFile: "ios/AppStoreConnectEvidence.json",
     verifyCommand: "npm run asc:ios:evidence:verify",
+    nextAction: `Create the App Store Connect app record for ${expected.bundleId}, paste the metadata from ios/AppStoreConnectMetadata.json, upload the verified screenshots, complete privacy/age-rating/regulated-device/export-compliance fields, upload build ${metadata.version} (${metadata.build}), and select it for version ${metadata.version}.`,
     keys: appStoreConnectKeys,
   },
   {
     title: "Real-Device and Account Deletion Verification",
     evidenceFile: "ios/ReleaseVerificationEvidence.json",
     verifyCommand: "npm run release:ios:evidence:verify",
+    nextAction: "After TestFlight/native install, verify Google sign-in, Sign in with Apple, App Review demo mode, and the full account-deletion request plus admin dry-run/fulfillment path with non-identifying test evidence.",
     keys: realDeviceAndDeletionKeys,
   },
 ];
@@ -158,6 +162,7 @@ for (const [index, group] of gateGroups.entries()) {
   console.log(`Status: ${status.label}`);
   console.log(`Evidence file: ${group.evidenceFile}`);
   console.log(`Verify with: ${group.verifyCommand}`);
+  if (status.label !== "PASS") console.log(`Next action: ${group.nextAction}`);
   printGateList(group.keys, gate);
   console.log("");
 }

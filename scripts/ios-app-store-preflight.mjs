@@ -242,9 +242,11 @@ assertIncludes("Evidence audit runs submission gate report", evidenceAuditScript
 const submissionPacketScript = readText("scripts", "ios-submission-packet.mjs");
 assertIncludes("Submission packet prints locked values", submissionPacketScript, "Locked Portal Values");
 assertIncludes("Submission packet prints ordered portal tasks", submissionPacketScript, "Ordered Portal Tasks");
+assertIncludes("Submission packet prints next actions", submissionPacketScript, "Next action:");
 assertIncludes("Submission packet prints screenshot upload packet", submissionPacketScript, "Screenshot Upload Packet");
 assertIncludes("Submission packet includes Apple Service ID", submissionPacketScript, "com.jeremyswisher.uclasportsmri.web");
 assertIncludes("Submission packet includes Apple return URL", submissionPacketScript, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
+assertIncludes("Submission packet includes App Store profile next action", submissionPacketScript, "App Store distribution provisioning profile");
 assertIncludes("Submission packet includes final release evidence", submissionPacketScript, "ios/AppStoreReleaseEvidence.json");
 assertIncludes("Submission packet tells user to rerun itself", submissionPacketScript, "npm run submit:ios:packet");
 

@@ -93,6 +93,10 @@ describe("iOS App Store gate report", () => {
     expect(output).toContain("Archive Export and TestFlight Upload Access");
     expect(output).toContain("Real-Device and Account Deletion Verification");
     expect(output).toContain("App Store Connect Entry");
+    expect(output).toContain("Next action:");
+    expect(output).toContain(`Enable Sign in with Apple for App ID ${BUNDLE_ID}`);
+    expect(output).toContain(`Create/download an App Store distribution provisioning profile for ${BUNDLE_ID}`);
+    expect(output).toContain(`Create the App Store Connect app record for ${BUNDLE_ID}`);
     expect(output).toContain("ios/AppStoreReleaseEvidence.json");
 
     for (const value of [
