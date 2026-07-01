@@ -104,6 +104,7 @@ assertIncludes("External links open outside shell", webShell, "UIApplication.sha
 assertIncludes("Native load retry increments reload token", webShell, "self.reloadToken += 1");
 assertIncludes("Native web view observes reload token", webShell, "context.coordinator.reloadToken != reloadToken");
 assertIncludes("Native retry reloads initial URL", webShell, "loadInitialURL(in: webView, url: url)");
+assertIncludes("Native shell avoids stale cached app loads", webShell, ".reloadIgnoringLocalCacheData");
 
 const appStoreSubmission = readText("ios", "AppStoreSubmission.md");
 assertIncludes("Privacy URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/privacy");
@@ -299,6 +300,11 @@ assertIncludes("Medical disclaimer present on login", login, "Educational traini
 const loginReturn = readText("src", "lib", "login-return.ts");
 assertIncludes("Native iOS shell auth uses redirect flow", loginReturn, "isNativeIosAppShell(url.search, hints.userAgent)");
 assertIncludes("Native shell auth keeps return path", login, "rememberReturnPath(sessionStorage, returnTo)");
+
+const pwaHelpers = readText("src", "lib", "pwa.ts");
+assertIncludes("Native iOS shell skips service worker registration", pwaHelpers, "clearNativeIosShellServiceWorkerState");
+assertIncludes("Native iOS shell unregisters stale service workers", pwaHelpers, "navigator.serviceWorker");
+assertIncludes("Native iOS shell clears stale app caches", pwaHelpers, "window.caches.delete");
 
 const authErrorMessages = readText("src", "lib", "auth-error-message.ts");
 assertIncludes("Apple auth setup error is user-friendly", authErrorMessages, "Sign in with Apple is not fully configured yet");

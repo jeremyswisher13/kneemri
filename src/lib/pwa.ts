@@ -60,8 +60,28 @@ export function installInstructionsForUserAgent(userAgent: string, platform = ""
   return "Use your browser menu to install this app or add it to your home screen.";
 }
 
+function clearNativeIosShellServiceWorkerState() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
+      .catch(() => {});
+  }
+
+  if ("caches" in window) {
+    window.caches
+      .keys()
+      .then((keys) => Promise.all(keys.map((key) => window.caches.delete(key))))
+      .catch(() => {});
+  }
+}
+
 export function registerServiceWorker() {
   if (typeof window === "undefined") return;
+  if (isNativeIosAppShell(window.location.search, navigator.userAgent)) {
+    clearNativeIosShellServiceWorkerState();
+    return;
+  }
   if (!("serviceWorker" in navigator)) return;
   const meta = import.meta as ImportMeta & { env?: { PROD?: boolean } };
   if (meta.env && !meta.env.PROD) return;

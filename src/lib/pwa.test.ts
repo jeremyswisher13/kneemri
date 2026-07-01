@@ -1,7 +1,17 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { installInstructionsForUserAgent, isLikelyIosDevice, isNativeIosAppShell } from "@/lib/pwa";
+import {
+  installInstructionsForUserAgent,
+  isLikelyIosDevice,
+  isNativeIosAppShell,
+  registerServiceWorker,
+} from "@/lib/pwa";
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.restoreAllMocks();
+});
 
 describe("pwa helpers", () => {
   it("detects modern iPadOS devices that report as MacIntel", () => {
@@ -36,6 +46,33 @@ describe("pwa helpers", () => {
     expect(isNativeIosAppShell("?source=ios-app", "")).toBe(true);
     expect(isNativeIosAppShell("", "Mozilla/5.0 UCLASportsMRIiOS")).toBe(true);
     expect(isNativeIosAppShell("?source=homescreen", "Mozilla/5.0 Safari/605.1.15")).toBe(false);
+  });
+
+  it("keeps stale PWA service-worker caches out of the native iOS shell", async () => {
+    const unregister = vi.fn().mockResolvedValue(true);
+    const getRegistrations = vi.fn().mockResolvedValue([{ unregister }]);
+    const register = vi.fn();
+    const keys = vi.fn().mockResolvedValue(["ucla-sports-mri-v4"]);
+    const deleteCache = vi.fn().mockResolvedValue(true);
+
+    vi.stubGlobal("window", {
+      location: { search: "?source=ios-app" },
+      caches: { keys, delete: deleteCache },
+    });
+    vi.stubGlobal("navigator", {
+      userAgent: "Mozilla/5.0 UCLASportsMRIiOS",
+      serviceWorker: { getRegistrations, register },
+    });
+
+    registerServiceWorker();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(register).not.toHaveBeenCalled();
+    expect(getRegistrations).toHaveBeenCalled();
+    expect(unregister).toHaveBeenCalled();
+    expect(keys).toHaveBeenCalled();
+    expect(deleteCache).toHaveBeenCalledWith("ucla-sports-mri-v4");
   });
 
   it("offers home-screen shortcuts for every normal MRI workstation", () => {

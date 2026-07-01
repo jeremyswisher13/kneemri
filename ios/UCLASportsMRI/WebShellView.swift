@@ -183,7 +183,7 @@ struct WebAppView: UIViewRepresentable {
         }
 
         func loadInitialURL(in webView: WKWebView, url: URL) {
-            webView.load(URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30))
+            webView.load(URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30))
         }
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
