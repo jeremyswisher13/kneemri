@@ -35,6 +35,10 @@ audit-output/
 # Local Xcode archive/export output
 ios/build/
 
+# Local Xcode user state
+ios/UCLASportsMRI.xcodeproj/project.xcworkspace/xcuserdata/
+ios/UCLASportsMRI.xcodeproj/xcuserdata/
+
 # Environment files (secrets / Firebase web config). *.local already covers
 # .env.local; this also catches a bare .env in the repo root or functions/.
 .env

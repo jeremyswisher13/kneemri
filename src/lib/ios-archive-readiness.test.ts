@@ -47,10 +47,12 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("Matching provisioning profiles");
     expect(archiveHelper).toContain("application-identifier");
     expect(archiveHelper).toContain("Local signing assets ready");
+    expect(archiveHelper).toContain("distributionIdentityReady");
     expect(handoff).toContain("X578T4K65B");
-    expect(handoff).toContain("0 matching provisioning profiles");
-    expect(handoff).toContain("Local signing assets ready: no");
-    expect(handoff).toContain("No Accounts");
+    expect(handoff).toContain("matching bundle-specific provisioning profile");
+    expect(handoff).toContain("0 Apple Distribution identities");
+    expect(handoff).toContain("Manage Certificates");
+    expect(handoff).toContain("missing Apple Distribution signing identity");
     expect(readme).toContain("X578T4K65B");
   });
 

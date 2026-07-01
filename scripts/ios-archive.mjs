@@ -289,7 +289,9 @@ function printSigningReport() {
     settings.get("CODE_SIGN_STYLE") === "Automatic" &&
     settings.get("CODE_SIGN_ENTITLEMENTS") === "UCLASportsMRI/UCLASportsMRI.entitlements" &&
     !!developmentTeam;
-  const localSigningAssetsReady = identitySummary.validCount > 0 && profileSummary.matching.length > 0;
+  const distributionIdentityReady = identitySummary.distributionCount > 0;
+  const matchingProfileReady = profileSummary.matching.length > 0;
+  const localSigningAssetsReady = distributionIdentityReady && matchingProfileReady;
   const archiveReady = archiveSettingsReady && localSigningAssetsReady;
 
   console.log(`\nCommand-line archive settings ready: ${archiveSettingsReady ? "yes" : "no"}`);
@@ -305,8 +307,12 @@ function printSigningReport() {
   }
   if (!developmentTeam) {
     console.log("Next: set IOS_DEVELOPMENT_TEAM=<Apple Team ID> or select the Apple Developer Team in Xcode before archiving.");
-  } else if (!localSigningAssetsReady) {
+  } else if (!distributionIdentityReady && !matchingProfileReady) {
     console.log("Next: open Xcode > Settings > Accounts, sign in or refresh Jeremy Swisher, then let Xcode create/download signing certificates and provisioning profiles for com.jeremyswisher.uclasportsmri.");
+  } else if (!distributionIdentityReady) {
+    console.log("Next: open Xcode > Settings > Accounts > Jeremy Swisher > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.");
+  } else if (!matchingProfileReady) {
+    console.log("Next: let Xcode create/download a provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
   }
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
 }
