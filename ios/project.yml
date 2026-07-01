@@ -21,6 +21,7 @@ targets:
         PRODUCT_NAME: UCLA Sports MRI
         INFOPLIST_FILE: UCLASportsMRI/Info.plist
         CODE_SIGN_ENTITLEMENTS: UCLASportsMRI/UCLASportsMRI.entitlements
+        DEVELOPMENT_TEAM: X578T4K65B
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: "1,2"
         CODE_SIGN_STYLE: Automatic

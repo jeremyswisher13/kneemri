@@ -86,6 +86,7 @@ assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.
 assertIncludes("iPhone and iPad enabled", project, 'TARGETED_DEVICE_FAMILY: "1,2"');
 assertIncludes("App icon catalog configured", project, "ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon");
 assertIncludes("Sign in with Apple entitlement wired", project, "CODE_SIGN_ENTITLEMENTS");
+assertIncludes("Apple Developer Team pinned in XcodeGen spec", project, "DEVELOPMENT_TEAM: X578T4K65B");
 
 const info = readText("ios", "UCLASportsMRI", "Info.plist");
 assertIncludes("Display name configured", info, "<string>UCLA Sports MRI</string>");
@@ -274,6 +275,14 @@ const exportOptions = readText("ios", "ExportOptions.plist");
 assertIncludes("Export destination uploads to App Store Connect", exportOptions, "<string>upload</string>");
 assertIncludes("Export method targets App Store Connect", exportOptions, "<string>app-store-connect</string>");
 assertIncludes("Automatic signing export configured", exportOptions, "<string>automatic</string>");
+
+const xcodeProject = readText("ios", "UCLASportsMRI.xcodeproj", "project.pbxproj");
+const xcodeTeamMatches = xcodeProject.match(/DEVELOPMENT_TEAM = X578T4K65B;/g) ?? [];
+if (xcodeTeamMatches.length === 2) {
+  pass("Apple Developer Team pinned in generated Xcode project", "Debug and Release");
+} else {
+  fail("Apple Developer Team pinned in generated Xcode project", `${xcodeTeamMatches.length}/2 matches`);
+}
 
 const archiveHelper = readText("scripts", "ios-archive.mjs");
 assertIncludes("Archive helper targets Release", archiveHelper, '"Release"');

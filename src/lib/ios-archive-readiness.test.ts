@@ -6,6 +6,8 @@ describe("iOS archive readiness", () => {
   const archiveHelper = readFileSync("scripts/ios-archive.mjs", "utf8");
   const handoff = readFileSync("ios/AppStoreSubmission.md", "utf8");
   const readme = readFileSync("ios/README.md", "utf8");
+  const projectSpec = readFileSync("ios/project.yml", "utf8");
+  const xcodeProject = readFileSync("ios/UCLASportsMRI.xcodeproj/project.pbxproj", "utf8");
 
   it("exposes and documents the Release signing report", () => {
     expect(packageJson).toContain('"archive:ios:signing": "node scripts/ios-archive.mjs --signing"');
@@ -44,5 +46,11 @@ describe("iOS archive readiness", () => {
     expect(handoff).toContain("Local signing assets ready: no");
     expect(handoff).toContain("No Accounts");
     expect(readme).toContain("X578T4K65B");
+  });
+
+  it("pins the Apple Developer Team in both XcodeGen and generated project settings", () => {
+    expect(projectSpec).toContain("DEVELOPMENT_TEAM: X578T4K65B");
+    expect(xcodeProject.match(/DEVELOPMENT_TEAM = X578T4K65B;/g)).toHaveLength(2);
+    expect(handoff).toContain("DEVELOPMENT_TEAM = X578T4K65B");
   });
 });
