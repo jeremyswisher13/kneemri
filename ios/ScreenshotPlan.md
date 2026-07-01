@@ -14,7 +14,7 @@ Last checked against Apple App Store Connect Help on July 1, 2026:
 
 ## Capture Conditions
 
-Use the TestFlight/native iOS app after Firebase Hosting is deployed with the current web build.
+Use the native iOS simulator capture path or the TestFlight/native iOS app after Firebase Hosting is deployed with the current web build.
 
 Required before final screenshots:
 
@@ -30,6 +30,23 @@ Preferred access path:
 1. Launch TestFlight build.
 2. Tap **Continue in App Review demo**.
 3. Capture the screens below using the demo fellow state.
+
+Repeatable simulator capture path:
+
+1. Build and install a Debug simulator build of `UCLA Sports MRI.app`.
+2. Capture the iPhone 6.9-inch set from the booted iPhone simulator:
+
+   ```sh
+   npm run screenshots:ios:capture -- --set iphone-6-9 --device booted --app "<path-to-UCLA Sports MRI.app>"
+   ```
+
+3. Capture the iPad 13-inch set from an iPad Pro/Air 13-inch simulator:
+
+   ```sh
+   npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-UCLA Sports MRI.app>"
+   ```
+
+The capture command relaunches the native `WKWebView` shell for each planned route with Debug-only launch arguments, pre-enables the local App Review demo state, and writes the final App Store filenames into the folders below. Treat the generated screenshots as final evidence only after the no-PHI/local-debug/clipped-text review is complete.
 
 ## Screenshot Set
 
@@ -83,7 +100,7 @@ npm run screenshots:ios:evidence:verify
 
 The checker validates the two screenshot folders, planned filenames, accepted `.png` / `.jpg` / `.jpeg` formats, 1-10 screenshots per device set, and the Apple-accepted pixel dimensions listed above.
 
-`npm run screenshots:ios:evidence` prints the current screenshot evidence status without failing. `npm run screenshots:ios:evidence:verify` is the hard gate: it fails until both native/TestFlight device sets are captured, the files pass `npm run screenshots:ios:check`, and `ios/ScreenshotEvidence.json` records the no-PHI review.
+`npm run screenshots:ios:evidence` prints the current screenshot evidence status without failing. `npm run screenshots:ios:evidence:verify` is the hard gate: it fails until both native simulator or TestFlight device sets are captured, the files pass `npm run screenshots:ios:check`, and `ios/ScreenshotEvidence.json` records the no-PHI review.
 
 ## Final QA Before Upload
 
@@ -91,4 +108,4 @@ The checker validates the two screenshot folders, planned filenames, accepted `.
 - MRI image area is visible in screenshots 02-04.
 - No protected health information or real learner data appears.
 - The login screen is not part of the primary screenshot set.
-- Screenshots show the native app or TestFlight app, not a desktop browser or local preview.
+- Screenshots show the native simulator app or TestFlight app, not a desktop browser or local preview.

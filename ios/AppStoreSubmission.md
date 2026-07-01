@@ -61,15 +61,18 @@ npm run preflight:ios:submit
 
 This command is expected to fail until Apple Developer setup, Firebase Auth setup, live deploy, TestFlight/real-device auth, screenshots, account deletion handling, and App Store Connect fields are all verified.
 
-After final TestFlight/native screenshots are captured, run:
+After final native simulator or TestFlight screenshots are captured, run:
 
 ```sh
+npm run screenshots:ios:capture -- --set iphone-6-9 --device <iphone-simulator-udid-or-booted> --app "<path-to-UCLA Sports MRI.app>"
+npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-UCLA Sports MRI.app>"
 npm run screenshots:ios:check
 npm run screenshots:ios:evidence
 npm run screenshots:ios:evidence:verify
 ```
 
 These commands verify the iPhone 6.9-inch and iPad 13-inch screenshot folders, filenames, file formats, screenshot count, and accepted Apple pixel dimensions before App Store Connect upload.
+The capture command uses a Debug simulator build and native `WKWebView` launch arguments to open each planned App Review demo route without browser chrome.
 The evidence commands use `ios/ScreenshotEvidence.json` to keep device/build/source/no-PHI review evidence aligned with the three screenshot gates in `ios/AppStoreSubmissionGate.json`.
 
 After the command passes and the app is submitted, set `appStoreConnect.submittedForReview` to `true` in `ios/AppStoreSubmissionGate.json` as final submission evidence.
@@ -203,7 +206,9 @@ ucla-knee-mri.web.app
 
 ## Screenshots needed
 
-The route-by-route capture plan lives in `ios/ScreenshotPlan.md`. Apple currently accepts 1 to 10 screenshots per device set in `.jpeg`, `.jpg`, or `.png`; because this binary targets iPhone and iPad, capture both the iPhone 6.9-inch and iPad 13-inch sets after TestFlight auth is confirmed.
+The route-by-route capture plan lives in `ios/ScreenshotPlan.md`. Apple currently accepts 1 to 10 screenshots per device set in `.jpeg`, `.jpg`, or `.png`; because this binary targets iPhone and iPad, capture both the iPhone 6.9-inch and iPad 13-inch sets from the native simulator capture path or after TestFlight auth is confirmed.
+
+For repeatable simulator captures from an installed Debug build, use `npm run screenshots:ios:capture` with the simulator UDID, then review the output before treating it as final App Store evidence.
 
 Before uploading the screenshots, run `npm run screenshots:ios:check` to confirm filenames and pixel dimensions match the accepted Apple sizes.
 

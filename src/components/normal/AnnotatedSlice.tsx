@@ -34,7 +34,10 @@ export default function AnnotatedSlice({
   const src = `${dir}/slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`;
   const imageAlt = alt ?? `MRI slice ${sliceIndex + 1} with educational annotation markers`;
   return (
-    <div className="relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:max-h-none lg:w-full lg:max-w-[560px]">
+    <div
+      data-screenshot-anchor="mri-viewer"
+      className="relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:max-h-none lg:w-full lg:max-w-[560px]"
+    >
       <img
         src={src}
         alt={imageAlt}

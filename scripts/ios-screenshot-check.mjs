@@ -171,7 +171,7 @@ for (const check of checks) {
 const failures = checks.filter((check) => !check.ok);
 if (failures.length > 0) {
   console.error(`\n${failures.length} iOS screenshot check(s) failed.`);
-  console.error("Capture the final TestFlight/native screenshots from ios/ScreenshotPlan.md, then rerun this command.");
+  console.error("Capture the final native simulator or TestFlight screenshots from ios/ScreenshotPlan.md, then rerun this command.");
   process.exit(1);
 }
 

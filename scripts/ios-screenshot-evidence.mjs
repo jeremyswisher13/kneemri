@@ -35,6 +35,8 @@ const devices = [
   },
 ];
 
+const acceptedSources = ["TestFlight/native iOS app", "Native iOS simulator Debug build"];
+
 function text(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -87,7 +89,7 @@ for (const device of devices) {
   const folderExists = existsSync(join(root, device.folder));
   const manifestComplete =
     item.captured === true &&
-    item.source === "TestFlight/native iOS app" &&
+    acceptedSources.includes(item.source) &&
     text(item.capturedAt) &&
     text(item.device) &&
     text(item.appBuild) &&
@@ -106,8 +108,8 @@ for (const device of devices) {
   if (!sameSet(item.files, expected)) {
     console.log(`Next: Keep files exactly in sync with ios/ScreenshotPlan.md for ${device.label}.`);
   }
-  if (item.source !== "TestFlight/native iOS app") {
-    console.log('Next: Record source as "TestFlight/native iOS app" after final capture.');
+  if (!acceptedSources.includes(item.source)) {
+    console.log('Next: Record source as "TestFlight/native iOS app" or "Native iOS simulator Debug build" after final capture.');
   }
   if (!ready) {
     console.log("Next: Capture final native screenshots, run npm run screenshots:ios:check, then update this evidence block.");

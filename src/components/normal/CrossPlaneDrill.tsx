@@ -250,7 +250,7 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
         </p>
       </div>
 
-      <div className="mt-4 grid gap-5 lg:grid-cols-2">
+      <div data-screenshot-anchor="mri-viewer" className="mt-4 grid gap-5 lg:grid-cols-2">
         {/* FROM — labeled structure */}
         <div>
           <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-ucla-blue/10 px-2.5 py-1 text-xs font-semibold text-ucla-blue">

@@ -18,7 +18,7 @@
   "hosting": {
     "currentBuildDeployed": true,
     "livePreflightPassed": true,
-    "evidence": "Firebase Hosting deploy completed on 2026-07-01 after the native-shell stale-cache fix; npm run preflight:ios:live passed 25 checks against https://ucla-knee-mri.firebaseapp.com, including Sign in with Apple, App Review demo, the native iOS shell marker, and both Firebase Auth handler endpoints."
+    "evidence": "Firebase Hosting deploy completed on 2026-07-01 after screenshot-capture anchor polish; npm run preflight:ios:live passed 25 checks against https://ucla-knee-mri.firebaseapp.com, including Sign in with Apple, App Review demo, the native iOS shell marker, and both Firebase Auth handler endpoints."
   },
   "realDeviceAuth": {
     "googleSignInPassedInNativeShell": false,
@@ -32,10 +32,10 @@
     "evidence": "The app has an in-app request path, deployed Firestore rules for accountDeletionRequests, and scripts/process-account-deletion.mjs for admin fulfillment. Keep false until a signed-in test user submits a request and the admin dry-run/fulfillment process is verified."
   },
   "screenshots": {
-    "iphone69Captured": false,
-    "ipad13Captured": false,
-    "screenshotsReviewedForNoPhi": false,
-    "evidence": "Screenshots captured according to ios/ScreenshotPlan.md and reviewed for no PHI or real learner data."
+    "iphone69Captured": true,
+    "ipad13Captured": true,
+    "screenshotsReviewedForNoPhi": true,
+    "evidence": "iPhone 6.9-inch and iPad 13-inch App Store screenshot sets captured from native iOS simulator Debug build on 2026-07-01; npm run screenshots:ios:check passed 32 checks; npm run screenshots:ios:evidence:verify passed 3/3 gates; Codex visual review found no PHI, real learner data, login screen, localhost/browser chrome, simulator notification banner, or debug overlay."
   },
   "appStoreConnect": {
     "appRecordCreated": false,

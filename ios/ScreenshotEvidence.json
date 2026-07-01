@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "lastUpdated": "2026-07-01",
-  "purpose": "Track final App Store screenshot evidence. Set captured/reviewed values to true only after the matching final native/TestFlight screenshot evidence exists.",
+  "purpose": "Track final App Store screenshot evidence. Set captured/reviewed values to true only after the matching final native/TestFlight or native simulator screenshot evidence exists.",
   "iphone69": {
-    "captured": false,
-    "source": "",
-    "capturedAt": "",
-    "device": "",
-    "appBuild": "",
+    "captured": true,
+    "source": "Native iOS simulator Debug build",
+    "capturedAt": "2026-07-01T06:38:01Z",
+    "device": "iPhone 17 Pro Max simulator, iOS 26.5",
+    "appBuild": "UCLA Sports MRI 1.0 (1), Debug iphonesimulator",
     "files": [
       "iphone-6-9-01-dashboard.png",
       "iphone-6-9-02-normal-guided-tour.png",
@@ -19,11 +19,11 @@
     ]
   },
   "ipad13": {
-    "captured": false,
-    "source": "",
-    "capturedAt": "",
-    "device": "",
-    "appBuild": "",
+    "captured": true,
+    "source": "Native iOS simulator Debug build",
+    "capturedAt": "2026-07-01T06:38:01Z",
+    "device": "iPad Pro 13-inch (M5) simulator, iOS 26.5",
+    "appBuild": "UCLA Sports MRI 1.0 (1), Debug iphonesimulator",
     "files": [
       "ipad-13-01-dashboard.png",
       "ipad-13-02-normal-guided-tour.png",
@@ -35,10 +35,10 @@
     ]
   },
   "phiReview": {
-    "reviewed": false,
-    "noPhiConfirmed": false,
-    "reviewedAt": "",
-    "reviewer": "",
-    "notes": ""
+    "reviewed": true,
+    "noPhiConfirmed": true,
+    "reviewedAt": "2026-07-01T06:38:01Z",
+    "reviewer": "Codex visual review",
+    "notes": "Reviewed all fourteen generated App Store screenshots via contact sheet and spot checks. No PHI, real learner identity, localhost/browser chrome, login screen, simulator notification banner, or debug overlay visible. MRI image areas are visible on screenshots 02-04."
   }
 }
