@@ -22,7 +22,8 @@ Last updated: July 1, 2026
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
 - Native iOS shell sign-in URLs use Firebase full-page redirect auth (`source=ios-app`) to avoid fragile popup behavior inside `WKWebView`.
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
-- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, and Sign in with Apple entitlements; it currently reports Development Team as missing until an Apple Team ID is selected or passed through `IOS_DEVELOPMENT_TEAM`.
+- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, and Sign in with Apple entitlements. It now auto-detects Apple Developer Team `X578T4K65B` (`Jeremy Swisher`) from Xcode Accounts, but local signing assets are not ready until Xcode account credentials are refreshed and valid signing certificates/provisioning profiles exist.
+- A command-line archive attempt with `X578T4K65B` on July 1, 2026 reached Xcode provisioning and failed with `No Accounts` / invalid Xcode account credentials plus no matching provisioning profile for `com.jeremyswisher.uclasportsmri`.
 - `npm run preflight:ios:submit` still intentionally fails on 20 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission fields.
 - iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
@@ -94,7 +95,7 @@ When Apple Developer signing is configured, command-line archive/export is avail
 IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 ```
 
-Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, and whether a Development Team is resolved.
+This Mac currently auto-detects `X578T4K65B`, so the environment variable is optional once Xcode account credentials and signing assets are valid. Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, resolved Development Team, valid code-signing identity count, and provisioning profile count. If it reports `Local signing assets ready: no`, open Xcode > Settings > Accounts, sign in or refresh `Jeremy Swisher`, then let Xcode create/download signing certificates and provisioning profiles for `com.jeremyswisher.uclasportsmri`.
 
 ## App Store Connect metadata draft
 

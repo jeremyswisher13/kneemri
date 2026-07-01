@@ -32,4 +32,17 @@ describe("iOS archive readiness", () => {
       expect(archiveHelper).toContain(requiredValue);
     }
   });
+
+  it("auto-detects Xcode team metadata and reports local signing assets", () => {
+    expect(archiveHelper).toContain("detectXcodeTeams");
+    expect(archiveHelper).toContain("IDEProvisioningTeamByIdentifier");
+    expect(archiveHelper).toContain("Detected Xcode team");
+    expect(archiveHelper).toContain("Valid code signing identities");
+    expect(archiveHelper).toContain("Provisioning profiles");
+    expect(archiveHelper).toContain("Local signing assets ready");
+    expect(handoff).toContain("X578T4K65B");
+    expect(handoff).toContain("Local signing assets ready: no");
+    expect(handoff).toContain("No Accounts");
+    expect(readme).toContain("X578T4K65B");
+  });
 });

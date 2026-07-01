@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
+import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -14,6 +15,7 @@ const mode = process.argv.includes("--archive")
   : process.argv.includes("--signing")
     ? "signing"
     : "check";
+const xcodeProvisioningProfilesPath = join(homedir(), "Library", "Developer", "Xcode", "UserData", "Provisioning Profiles");
 
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
@@ -47,6 +49,17 @@ function runCaptured(command, args) {
   return result.stdout;
 }
 
+function runCapturedOptional(command, args) {
+  const result = spawnSync(command, args, {
+    cwd: root,
+    encoding: "utf8",
+  });
+  return {
+    status: result.status ?? 1,
+    output: `${result.stdout ?? ""}${result.stderr ?? ""}`,
+  };
+}
+
 function parseBuildSettings(output) {
   const settings = new Map();
   for (const line of output.split(/\r?\n/)) {
@@ -54,6 +67,67 @@ function parseBuildSettings(output) {
     if (match) settings.set(match[1].trim(), match[2].trim());
   }
   return settings;
+}
+
+function parseXcodeTeams(output) {
+  const teams = [];
+  const blocks = output.split(/\n\s*\}\s*\n/);
+  for (const block of blocks) {
+    const teamID = block.match(/teamID = ([A-Z0-9]+);/)?.[1];
+    if (!teamID) continue;
+    teams.push({
+      teamID,
+      teamName: block.match(/teamName = "?([^";]+)"?;/)?.[1] ?? "unknown",
+      teamType: block.match(/teamType = "?([^";]+)"?;/)?.[1] ?? "unknown",
+      isFreeProvisioningTeam: block.match(/isFreeProvisioningTeam = ([01]);/)?.[1] === "1",
+    });
+  }
+  return teams;
+}
+
+function detectXcodeTeams() {
+  const result = runCapturedOptional("defaults", ["read", "com.apple.dt.Xcode", "IDEProvisioningTeamByIdentifier"]);
+  if (result.status !== 0) return [];
+  return parseXcodeTeams(result.output);
+}
+
+function detectedDevelopmentTeam() {
+  if (process.env.IOS_DEVELOPMENT_TEAM) {
+    return {
+      teamID: process.env.IOS_DEVELOPMENT_TEAM,
+      teamName: "from IOS_DEVELOPMENT_TEAM",
+      teamType: "environment",
+      isFreeProvisioningTeam: false,
+      source: "environment",
+    };
+  }
+
+  const paidTeams = detectXcodeTeams().filter((team) => !team.isFreeProvisioningTeam);
+  if (paidTeams.length !== 1) return null;
+  return { ...paidTeams[0], source: "Xcode Accounts defaults" };
+}
+
+function signingIdentitySummary() {
+  const result = runCapturedOptional("security", ["find-identity", "-v", "-p", "codesigning"]);
+  const validCount = Number(result.output.match(/(\d+) valid identities found/)?.[1] ?? 0);
+  return {
+    validCount,
+    available: result.status === 0,
+  };
+}
+
+function provisioningProfileSummary() {
+  if (!existsSync(xcodeProvisioningProfilesPath)) {
+    return {
+      count: 0,
+      path: xcodeProvisioningProfilesPath,
+    };
+  }
+
+  return {
+    count: readdirSync(xcodeProvisioningProfilesPath).filter((filename) => filename.endsWith(".mobileprovision")).length,
+    path: xcodeProvisioningProfilesPath,
+  };
 }
 
 function ensureFile(label, filePath) {
@@ -65,6 +139,7 @@ function ensureFile(label, filePath) {
 }
 
 function baseArchiveArgs() {
+  const team = detectedDevelopmentTeam();
   const args = [
     "archive",
     "-project",
@@ -82,13 +157,14 @@ function baseArchiveArgs() {
     "-allowProvisioningUpdates",
   ];
 
-  if (process.env.IOS_DEVELOPMENT_TEAM) {
-    args.push(`DEVELOPMENT_TEAM=${process.env.IOS_DEVELOPMENT_TEAM}`);
+  if (team?.teamID) {
+    args.push(`DEVELOPMENT_TEAM=${team.teamID}`);
   }
   return args;
 }
 
 function buildSettingsArgs() {
+  const team = detectedDevelopmentTeam();
   const args = [
     "-showBuildSettings",
     "-project",
@@ -103,8 +179,8 @@ function buildSettingsArgs() {
     derivedDataPath,
   ];
 
-  if (process.env.IOS_DEVELOPMENT_TEAM) {
-    args.push(`DEVELOPMENT_TEAM=${process.env.IOS_DEVELOPMENT_TEAM}`);
+  if (team?.teamID) {
+    args.push(`DEVELOPMENT_TEAM=${team.teamID}`);
   }
   return args;
 }
@@ -112,8 +188,11 @@ function buildSettingsArgs() {
 function printSigningReport() {
   console.log("\nChecking Release signing settings...");
   mkdirSync(derivedDataPath, { recursive: true });
+  const detectedTeam = detectedDevelopmentTeam();
+  const identitySummary = signingIdentitySummary();
+  const profileSummary = provisioningProfileSummary();
   const settings = parseBuildSettings(runCaptured("xcodebuild", buildSettingsArgs()));
-  const developmentTeam = settings.get("DEVELOPMENT_TEAM") || process.env.IOS_DEVELOPMENT_TEAM || "";
+  const developmentTeam = settings.get("DEVELOPMENT_TEAM") || detectedTeam?.teamID || "";
   const rows = [
     ["Bundle ID", settings.get("PRODUCT_BUNDLE_IDENTIFIER")],
     ["Version", settings.get("MARKETING_VERSION")],
@@ -121,6 +200,14 @@ function printSigningReport() {
     ["Code signing style", settings.get("CODE_SIGN_STYLE")],
     ["Code signing identity", settings.get("CODE_SIGN_IDENTITY")],
     ["Development team", developmentTeam || "missing"],
+    [
+      "Detected Xcode team",
+      detectedTeam
+        ? `${detectedTeam.teamName} (${detectedTeam.teamID}, ${detectedTeam.teamType}; ${detectedTeam.source})`
+        : "missing",
+    ],
+    ["Valid code signing identities", identitySummary.available ? String(identitySummary.validCount) : "unavailable"],
+    ["Provisioning profiles", `${profileSummary.count} at ${profileSummary.path}`],
     ["Provisioning required", settings.get("PROVISIONING_PROFILE_REQUIRED")],
     ["Entitlements", settings.get("CODE_SIGN_ENTITLEMENTS")],
     ["DerivedData path", derivedDataPath],
@@ -130,17 +217,23 @@ function printSigningReport() {
     console.log(`${label}: ${value || "missing"}`);
   }
 
-  const archiveReady =
+  const archiveSettingsReady =
     settings.get("PRODUCT_BUNDLE_IDENTIFIER") === "com.jeremyswisher.uclasportsmri" &&
     settings.get("CODE_SIGN_STYLE") === "Automatic" &&
     settings.get("CODE_SIGN_ENTITLEMENTS") === "UCLASportsMRI/UCLASportsMRI.entitlements" &&
     !!developmentTeam;
+  const localSigningAssetsReady = identitySummary.validCount > 0 && profileSummary.count > 0;
+  const archiveReady = archiveSettingsReady && localSigningAssetsReady;
 
-  console.log(`\nCommand-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
+  console.log(`\nCommand-line archive settings ready: ${archiveSettingsReady ? "yes" : "no"}`);
+  console.log(`Local signing assets ready: ${localSigningAssetsReady ? "yes" : "no"}`);
+  console.log(`Command-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
   if (!developmentTeam) {
     console.log("Next: set IOS_DEVELOPMENT_TEAM=<Apple Team ID> or select the Apple Developer Team in Xcode before archiving.");
+  } else if (!localSigningAssetsReady) {
+    console.log("Next: open Xcode > Settings > Accounts, sign in or refresh Jeremy Swisher, then let Xcode create/download signing certificates and provisioning profiles for com.jeremyswisher.uclasportsmri.");
   }
-  console.log("Run npm run archive:ios after Apple Developer signing is configured.");
+  console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
 }
 
 ensureFile("Xcode project", projectPath);
@@ -166,9 +259,14 @@ if (mode === "signing") {
 if (mode === "check") {
   console.log("\nArchive command is configured.");
   console.log(`DerivedData will be written to: ${derivedDataPath}`);
-  console.log("Set IOS_DEVELOPMENT_TEAM=<Apple Team ID> if automatic signing needs an explicit team.");
+  const detectedTeam = detectedDevelopmentTeam();
+  if (detectedTeam?.teamID) {
+    console.log(`Detected Apple Developer Team: ${detectedTeam.teamName} (${detectedTeam.teamID}) from ${detectedTeam.source}.`);
+  } else {
+    console.log("Set IOS_DEVELOPMENT_TEAM=<Apple Team ID> if automatic signing needs an explicit team.");
+  }
   console.log("Run npm run archive:ios:signing to inspect Release signing settings.");
-  console.log("Run npm run archive:ios after Apple Developer signing is configured.");
+  console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
   process.exit(0);
 }
 

@@ -271,9 +271,11 @@ assertIncludes("Archive helper targets Release", archiveHelper, '"Release"');
 assertIncludes("Archive helper targets generic iOS", archiveHelper, "generic/platform=iOS");
 assertIncludes("Archive helper uses export options", archiveHelper, "ExportOptions.plist");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
+assertIncludes("Archive helper auto-detects Xcode teams", archiveHelper, "detectXcodeTeams");
 assertIncludes("Archive helper uses workspace DerivedData", archiveHelper, "IOS_DERIVED_DATA_PATH");
 assertIncludes("Archive helper reports signing settings", archiveHelper, "--signing");
 assertIncludes("Archive helper checks development team", archiveHelper, "DEVELOPMENT_TEAM");
+assertIncludes("Archive helper reports local signing assets", archiveHelper, "Local signing assets ready");
 
 const firestoreRules = readText("firestore.rules");
 assertIncludes("Deletion request rules exist", firestoreRules, "match /accountDeletionRequests/{userId}");
