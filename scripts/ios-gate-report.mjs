@@ -72,17 +72,17 @@ const groups = [
       {
         key: "realDeviceAuth.googleSignInPassedInNativeShell",
         value: gate.realDeviceAuth?.googleSignInPassedInNativeShell,
-        next: "Verify Google sign-in inside the TestFlight/native shell on a real iPhone.",
+        next: "Verify Google sign-in inside the TestFlight/native shell on a real iPhone, update ios/ReleaseVerificationEvidence.json, and run npm run release:ios:evidence:verify.",
       },
       {
         key: "realDeviceAuth.appleSignInPassedInNativeShell",
         value: gate.realDeviceAuth?.appleSignInPassedInNativeShell,
-        next: "Verify Sign in with Apple inside the TestFlight/native shell on a real iPhone.",
+        next: "Verify Sign in with Apple inside the TestFlight/native shell on a real iPhone, update ios/ReleaseVerificationEvidence.json, and run npm run release:ios:evidence:verify.",
       },
       {
         key: "realDeviceAuth.appReviewDemoPassedInNativeShell",
         value: gate.realDeviceAuth?.appReviewDemoPassedInNativeShell,
-        next: "Verify Continue in App Review demo opens the curriculum in the TestFlight/native shell.",
+        next: "Verify Continue in App Review demo opens the curriculum in the TestFlight/native shell, update ios/ReleaseVerificationEvidence.json, and run npm run release:ios:evidence:verify.",
       },
     ],
   },
@@ -93,12 +93,12 @@ const groups = [
       {
         key: "accountDeletion.requestFlowVerified",
         value: gate.accountDeletion?.requestFlowVerified,
-        next: "Submit a deletion request from /account as a signed-in test user.",
+        next: "Submit a deletion request from /account as a signed-in test user, update ios/ReleaseVerificationEvidence.json, and run npm run release:ios:evidence:verify.",
       },
       {
         key: "accountDeletion.adminDeletionProcessReady",
         value: gate.accountDeletion?.adminDeletionProcessReady,
-        next: "Run npm run account:deletion -- --uid <firebase-uid> as a dry run, then confirm fulfillment for the test user.",
+        next: "Run npm run account:deletion -- --uid <firebase-uid> as a dry run, confirm fulfillment for the test user, update ios/ReleaseVerificationEvidence.json, and run npm run release:ios:evidence:verify.",
       },
     ],
   },
@@ -208,6 +208,7 @@ if (missing.length > 0) {
   console.log("- npm run preflight:ios:submit");
   console.log("- npm run auth:ios:evidence");
   console.log("- npm run asc:ios:evidence");
+  console.log("- npm run release:ios:evidence");
   console.log("- npm run archive:ios:signing");
   console.log("- npm run screenshots:ios:check");
   console.log("- npm run screenshots:ios:evidence");

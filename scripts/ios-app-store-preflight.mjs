@@ -65,6 +65,7 @@ assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("Screenshot evidence JSON exists", "ios", "ScreenshotEvidence.json");
 assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
 assertFile("Apple/Firebase auth evidence JSON exists", "ios", "AppleFirebaseAuthEvidence.json");
+assertFile("Release verification evidence JSON exists", "ios", "ReleaseVerificationEvidence.json");
 assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
@@ -73,6 +74,7 @@ assertFile("Submission gate report script exists", "scripts", "ios-gate-report.m
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
 assertFile("App Store Connect evidence script exists", "scripts", "ios-app-store-connect-evidence.mjs");
+assertFile("Release evidence script exists", "scripts", "ios-release-evidence.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
 assertFile("Screenshot evidence script exists", "scripts", "ios-screenshot-evidence.mjs");
@@ -127,6 +129,7 @@ assertIncludes("Screenshot evidence documented", appStoreSubmission, "npm run sc
 assertIncludes("Screenshot capture documented", appStoreSubmission, "npm run screenshots:ios:capture");
 assertIncludes("Apple/Firebase auth evidence documented", appStoreSubmission, "npm run auth:ios:evidence:verify");
 assertIncludes("App Store Connect evidence documented", appStoreSubmission, "npm run asc:ios:evidence:verify");
+assertIncludes("Release evidence documented", appStoreSubmission, "npm run release:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
@@ -159,6 +162,12 @@ assertIncludes("App Store Connect evidence verifies metadata gate", appStoreConn
 assertIncludes("App Store Connect evidence verifies screenshot upload gate", appStoreConnectEvidenceScript, "appStoreConnect.screenshotsUploaded");
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
 assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
+
+const releaseEvidenceScript = readText("scripts", "ios-release-evidence.mjs");
+assertIncludes("Release evidence verifies Google native auth gate", releaseEvidenceScript, "realDeviceAuth.googleSignInPassedInNativeShell");
+assertIncludes("Release evidence verifies Apple native auth gate", releaseEvidenceScript, "realDeviceAuth.appleSignInPassedInNativeShell");
+assertIncludes("Release evidence verifies account deletion gate", releaseEvidenceScript, "accountDeletion.requestFlowVerified");
+assertIncludes("Release evidence reports ready gates", releaseEvidenceScript, "Ready real-device/account-deletion gates");
 
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
 if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
@@ -305,6 +314,7 @@ assertIncludes("Gate report summarizes App Review readiness", gateReport, "Ready
 assertIncludes("Gate report includes final submission flag", gateReport, "appStoreConnect.submittedForReview");
 assertIncludes("Gate report includes real-device Apple auth gate", gateReport, "realDeviceAuth.appleSignInPassedInNativeShell");
 assertIncludes("Gate report includes App Store Connect evidence command", gateReport, "npm run asc:ios:evidence");
+assertIncludes("Gate report includes release evidence command", gateReport, "npm run release:ios:evidence");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "Track external real-device/TestFlight and account-deletion evidence for App Store submission. Set booleans to true only after the matching real-device or admin-operation evidence exists.",
+  "doNotStoreSecretsOrPersonalData": "Do not enter Apple credentials, Firebase credentials, service-account paths, test-user emails, full Firebase UIDs, private keys, API keys, passwords, PHI, or real learner data in this file.",
+  "testEnvironment": {
+    "source": "",
+    "acceptedSources": [
+      "TestFlight/native iOS app",
+      "Real device Debug native iOS app"
+    ],
+    "version": "1.0",
+    "build": "1",
+    "device": "",
+    "iosVersion": "",
+    "testedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "realDeviceAuth": {
+    "googleSignInPassedInNativeShell": false,
+    "appleSignInPassedInNativeShell": false,
+    "appReviewDemoPassedInNativeShell": false,
+    "googleSignInNote": "",
+    "appleSignInNote": "",
+    "appReviewDemoNote": "",
+    "confirmedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "accountDeletion": {
+    "requestFlowVerified": false,
+    "confirmationNoticeVerified": false,
+    "requestDocumentObserved": false,
+    "statusRequestedObserved": false,
+    "sourceInAppObserved": false,
+    "adminDeletionProcessReady": false,
+    "adminDryRunCompleted": false,
+    "adminFulfillmentConfirmed": false,
+    "authUserDeletedConfirmed": false,
+    "firestoreUserTreeRemovedConfirmed": false,
+    "auditLogsDeidentifiedConfirmed": false,
+    "fulfilledRequestRecordScrubbed": false,
+    "testUserReference": "",
+    "requestedAt": "",
+    "fulfilledAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  }
+}

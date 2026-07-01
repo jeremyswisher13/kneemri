@@ -20,6 +20,8 @@
     "asc:ios:evidence": "node scripts/ios-app-store-connect-evidence.mjs",
     "asc:ios:evidence:verify": "node scripts/ios-app-store-connect-evidence.mjs --verify",
     "account:deletion": "node scripts/process-account-deletion.mjs",
+    "release:ios:evidence": "node scripts/ios-release-evidence.mjs",
+    "release:ios:evidence:verify": "node scripts/ios-release-evidence.mjs --verify",
     "screenshots:ios:capture": "node scripts/ios-capture-screenshots.mjs",
     "screenshots:ios:check": "node scripts/ios-screenshot-check.mjs",
     "screenshots:ios:evidence": "node scripts/ios-screenshot-evidence.mjs",

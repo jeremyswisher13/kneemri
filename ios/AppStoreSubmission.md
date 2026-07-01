@@ -54,6 +54,8 @@ Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only f
 ```sh
 npm run auth:ios:evidence
 npm run auth:ios:evidence:verify
+npm run release:ios:evidence
+npm run release:ios:evidence:verify
 npm run asc:ios:evidence
 npm run asc:ios:evidence:verify
 npm run preflight:ios:report
@@ -63,6 +65,8 @@ npm run preflight:ios:submit
 `npm run preflight:ios:report` prints a grouped PASS/TODO summary with next actions and does not fail while external gates are still open. Use it as the handoff/status view. `npm run preflight:ios:submit` remains the hard gate.
 
 This command is expected to fail until Apple Developer setup, Firebase Auth setup, TestFlight/real-device auth, account deletion handling, and App Store Connect fields are all verified.
+
+`npm run release:ios:evidence` reports the real-device/TestFlight auth checks and account-deletion checks that still need external evidence. `npm run release:ios:evidence:verify` is the hard evidence gate for the three real-device auth items and two account-deletion items. It uses `ios/ReleaseVerificationEvidence.json`, which stores only non-identifying confirmation metadata and must never store Apple credentials, Firebase credentials, service-account paths, test-user emails, full Firebase UIDs, PHI, or real learner data.
 
 `npm run asc:ios:evidence` validates the local App Store Connect metadata draft, prints a copy-paste packet for App Store Connect, and reports which external App Store Connect confirmations are still missing. `npm run asc:ios:evidence:verify` is the hard evidence gate for the nine App Store Connect items. It uses `ios/AppStoreConnectEvidence.json`, which stores only confirmation metadata and must never store App Store Connect API keys, app-specific passwords, issuer IDs, or Apple account credentials.
 
@@ -159,6 +163,8 @@ Not used for tracking:
 ## Account deletion operations
 
 The app writes signed-in user requests to `accountDeletionRequests/{uid}`. Firestore rules allow a learner to create/update only their own request, and admins can review/process requests. The account-deletion rules were deployed to Firebase on July 1, 2026. After request submission, the app signs the learner out and shows the success notice on `/login`.
+
+External account-deletion verification evidence lives in `ios/ReleaseVerificationEvidence.json`. Use a non-identifying test user reference in that file rather than a real email address, full Firebase UID, or any learner data.
 
 After a test user submits `/account` > **Request deletion**, list pending requests with:
 
