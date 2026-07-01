@@ -44,6 +44,9 @@ describe("iOS evidence audit", () => {
     expect(auditScript).toContain("no code-signing identities were visible to this process");
     expect(auditScript).toContain("with full keychain access");
     expect(auditScript).toContain("Xcode App Store Connect upload access for Team");
+    expect(auditScript).toContain("IOS_ASC_API_KEY_PATH");
+    expect(auditScript).toContain("IOS_ASC_API_KEY_ID");
+    expect(auditScript).toContain("IOS_ASC_API_ISSUER_ID");
     expect(auditScript).toContain("Apple/Firebase auth gates");
     expect(auditScript).toContain("Real-device/account-deletion gates");
     expect(auditScript).toContain("Ready screenshot gates");
@@ -83,6 +86,7 @@ describe("iOS evidence audit", () => {
     expect(output).toContain("Suggested Order");
     expect(output).toContain("Audited groups ready:");
     expect(output).toContain("full keychain access");
+    expect(output).toContain("IOS_ASC_API_KEY_PATH");
     expect(output).not.toContain("Manage Certificates");
   });
 });

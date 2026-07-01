@@ -96,6 +96,7 @@ describe("iOS App Store gate report", () => {
     expect(output).toContain("Next action:");
     expect(output).toContain(`Enable Sign in with Apple for App ID ${BUNDLE_ID}`);
     expect(output).toContain(`Create/download an App Store distribution provisioning profile for ${BUNDLE_ID}`);
+    expect(output).toContain("IOS_ASC_API_KEY_PATH");
     expect(output).toContain(`Create the App Store Connect app record for ${BUNDLE_ID}`);
     expect(output).toContain("ios/AppStoreReleaseEvidence.json");
 

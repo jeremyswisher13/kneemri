@@ -89,7 +89,7 @@ const gateGroups = [
     title: "Archive Export and TestFlight Upload Access",
     evidenceFile: "ios/AppStoreSubmissionGate.json",
     verifyCommand: "npm run archive:ios:signing && npm run export:ios",
-    nextAction: `Create/download an App Store distribution provisioning profile for ${expected.bundleId} on Team ${expected.appleTeamId}, then confirm Xcode has App Store Connect upload access for that team.`,
+    nextAction: `Create/download an App Store distribution provisioning profile for ${expected.bundleId} on Team ${expected.appleTeamId}, then confirm Xcode has App Store Connect upload access for that team or set IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID locally for an App Store Connect API key.`,
     keys: archiveExportKeys,
   },
   {

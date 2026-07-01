@@ -174,6 +174,8 @@ assertIncludes("Export checklist includes signing command", appStoreExportReadin
 assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
 assertIncludes("Export checklist covers keychain visibility caveat", appStoreExportReadiness, "zero code-signing identities");
 assertIncludes("Export checklist documents upload-capable roles", appStoreExportReadiness, "Account Holder, Admin, App Manager, or Developer");
+assertIncludes("Export checklist documents App Store Connect API key env vars", appStoreExportReadiness, "IOS_ASC_API_KEY_PATH");
+assertIncludes("Export checklist forbids committing ASC secrets", appStoreExportReadiness, "must never be committed");
 
 const submissionGateText = readText("ios", "AppStoreSubmissionGate.json");
 assertIncludes("Submission gate hosting evidence includes live check count", submissionGateText, "105 live checks");
@@ -427,6 +429,11 @@ assertIncludes("Archive helper diagnoses export failures", archiveHelper, "diagn
 assertIncludes("Archive helper reads distribution logs", archiveHelper, "IDEDistribution.standard.log");
 assertIncludes("Archive helper explains account access failures", archiveHelper, "App Store Connect access");
 assertIncludes("Archive helper explains upload-capable roles", archiveHelper, "Account Holder, Admin, App Manager, or Developer");
+assertIncludes("Archive helper supports App Store Connect API key path", archiveHelper, "IOS_ASC_API_KEY_PATH");
+assertIncludes("Archive helper supports App Store Connect API key ID", archiveHelper, "IOS_ASC_API_KEY_ID");
+assertIncludes("Archive helper supports App Store Connect API issuer ID", archiveHelper, "IOS_ASC_API_ISSUER_ID");
+assertIncludes("Archive helper passes authentication key path to xcodebuild", archiveHelper, "-authenticationKeyPath");
+assertIncludes("Archive helper reports App Store Connect API key auth", archiveHelper, "App Store Connect API key auth");
 assertIncludes("Archive helper explains missing App Store profiles", archiveHelper, "No profiles for");
 assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
 assertIncludes("Archive helper auto-detects Xcode teams", archiveHelper, "detectXcodeTeams");

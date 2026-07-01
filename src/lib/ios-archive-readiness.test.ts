@@ -69,16 +69,26 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("IDEDistribution.standard.log");
     expect(archiveHelper).toContain("Failed to find an account with App Store Connect access");
     expect(archiveHelper).toContain("Account Holder, Admin, App Manager, or Developer");
+    expect(archiveHelper).toContain("IOS_ASC_API_KEY_PATH");
+    expect(archiveHelper).toContain("IOS_ASC_API_KEY_ID");
+    expect(archiveHelper).toContain("IOS_ASC_API_ISSUER_ID");
+    expect(archiveHelper).toContain("-authenticationKeyPath");
+    expect(archiveHelper).toContain("App Store Connect API key auth");
     expect(archiveHelper).toContain("No profiles for");
     expect(archiveHelper).toContain("until App Store export signing ready: yes");
     expect(archiveHelper).toContain("from an Xcode account with App Store Connect access");
+    expect(archiveHelper).toContain("or with IOS_ASC_API_KEY_PATH");
     expect(handoff).toContain("X578T4K65B");
     expect(handoff).toContain("1 Apple Distribution identity");
     expect(handoff).toContain("0 matching App Store distribution profiles");
     expect(handoff).toContain("Failed to find an account with App Store Connect access");
     expect(handoff).toContain("current blocker is App Store Connect-capable Xcode account access");
     expect(handoff).toContain("Account Holder, Admin, App Manager, or Developer");
+    expect(handoff).toContain("IOS_ASC_API_KEY_PATH");
+    expect(handoff).toContain("out of git and out of evidence JSON files");
     expect(readme).toContain("X578T4K65B");
+    expect(readme).toContain("IOS_ASC_API_KEY_PATH");
+    expect(readme).toContain("out of git and out of evidence JSON files");
   });
 
   it("keeps an exact App Store distribution profile checklist", () => {
@@ -90,6 +100,10 @@ describe("iOS archive readiness", () => {
     expect(exportReadiness).toContain("Two independent Apple-side blockers remain");
     expect(exportReadiness).toContain("App Store Connect access for Team `X578T4K65B`");
     expect(exportReadiness).toContain("Account Holder, Admin, App Manager, or Developer");
+    expect(exportReadiness).toContain("IOS_ASC_API_KEY_PATH");
+    expect(exportReadiness).toContain("IOS_ASC_API_KEY_ID");
+    expect(exportReadiness).toContain("IOS_ASC_API_ISSUER_ID");
+    expect(exportReadiness).toContain("must never be committed");
     expect(exportReadiness).toContain("manage-builds/upload-builds");
     expect(exportReadiness).toContain("Account Holder or Admin");
     expect(exportReadiness).toContain("create-an-app-store-provisioning-profile");

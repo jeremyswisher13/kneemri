@@ -21,6 +21,53 @@ const mode = process.argv.includes("--archive")
         : "check";
 const xcodeProvisioningProfilesPath = join(homedir(), "Library", "Developer", "Xcode", "UserData", "Provisioning Profiles");
 
+function envValue(names) {
+  for (const name of names) {
+    const value = process.env[name];
+    if (typeof value === "string" && value.trim().length > 0) return value.trim();
+  }
+  return "";
+}
+
+function appStoreConnectAuthentication() {
+  const keyPath = envValue(["IOS_ASC_API_KEY_PATH", "APP_STORE_CONNECT_API_KEY_PATH"]);
+  const keyID = envValue(["IOS_ASC_API_KEY_ID", "APP_STORE_CONNECT_API_KEY_ID"]);
+  const issuerID = envValue(["IOS_ASC_API_ISSUER_ID", "APP_STORE_CONNECT_API_KEY_ISSUER_ID"]);
+  const missing = [];
+  if (!keyPath) missing.push("IOS_ASC_API_KEY_PATH");
+  if (!keyID) missing.push("IOS_ASC_API_KEY_ID");
+  if (!issuerID) missing.push("IOS_ASC_API_ISSUER_ID");
+
+  return {
+    keyPath,
+    keyID,
+    issuerID,
+    configured: missing.length === 0,
+    partial: missing.length > 0 && missing.length < 3,
+    missing,
+  };
+}
+
+function appStoreConnectAuthenticationArgs() {
+  const auth = appStoreConnectAuthentication();
+  if (!auth.configured) return [];
+  return [
+    "-authenticationKeyPath",
+    auth.keyPath,
+    "-authenticationKeyID",
+    auth.keyID,
+    "-authenticationKeyIssuerID",
+    auth.issuerID,
+  ];
+}
+
+function appStoreConnectAuthenticationSummary() {
+  const auth = appStoreConnectAuthentication();
+  if (auth.configured) return "configured via env";
+  if (auth.partial) return `partial env configuration; missing ${auth.missing.join(", ")}`;
+  return "not configured; using Xcode account session";
+}
+
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
     cwd: root,
@@ -86,6 +133,7 @@ function diagnoseExportFailure(output) {
   if (combined.includes("Failed to find an account with App Store Connect access")) {
     console.error("Next: open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team X578T4K65B.");
     console.error("Required upload role: Account Holder, Admin, App Manager, or Developer in App Store Connect for Team X578T4K65B.");
+    console.error("Alternative: set IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID for an App Store Connect API key with app/team access, then rerun npm run export:ios.");
   }
   if (combined.includes("No profiles for")) {
     console.error("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
@@ -296,6 +344,7 @@ function baseArchiveArgs() {
     "-derivedDataPath",
     derivedDataPath,
     "-allowProvisioningUpdates",
+    ...appStoreConnectAuthenticationArgs(),
   ];
 
   if (team?.teamID) {
@@ -351,6 +400,7 @@ function exportArchive() {
     "-exportPath",
     exportPath,
     "-allowProvisioningUpdates",
+    ...appStoreConnectAuthenticationArgs(),
   ]);
 
   console.log(`\nExport output: ${exportPath}`);
@@ -382,6 +432,7 @@ function printSigningReport() {
     ["Apple Distribution identities", identitySummary.available ? String(identitySummary.distributionCount) : "unavailable"],
     ["Apple Development identities", identitySummary.available ? String(identitySummary.developmentCount) : "unavailable"],
     ["Provisioning profiles", `${profileSummary.count} at ${profileSummary.path}`],
+    ["App Store Connect API key auth", appStoreConnectAuthenticationSummary()],
     ["Decoded provisioning profiles", `${profileSummary.decodedCount}/${profileSummary.count}`],
     ["Matching provisioning profiles", `${profileSummary.matching.length} for ${bundleId || "missing"}${developmentTeam ? ` / ${developmentTeam}` : ""}`],
     ["Matching App Store profiles", `${profileSummary.matchingAppStore.length} for ${bundleId || "missing"}${developmentTeam ? ` / ${developmentTeam}` : ""}`],
@@ -434,7 +485,7 @@ function printSigningReport() {
     console.log("Next: open Xcode > Settings > Accounts > Jeremy Swisher > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.");
   } else if (!matchingProfileReady || !appStoreProfileReady) {
     console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B, then rerun npm run archive:ios:signing until App Store export signing ready: yes.");
-    console.log("After that, rerun npm run export:ios from an Xcode account with App Store Connect access for Team X578T4K65B.");
+    console.log("After that, rerun npm run export:ios from an Xcode account with App Store Connect access for Team X578T4K65B, or with IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID set for an App Store Connect API key.");
   }
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
 }
@@ -468,6 +519,7 @@ if (mode === "check") {
   } else {
     console.log("Set IOS_DEVELOPMENT_TEAM=<Apple Team ID> if automatic signing needs an explicit team.");
   }
+  console.log(`App Store Connect API key auth: ${appStoreConnectAuthenticationSummary()}.`);
   console.log("Run npm run archive:ios:signing to inspect Release signing settings.");
   console.log("Run npm run archive:ios:only to create or refresh the local .xcarchive.");
   console.log("Run npm run export:ios to retry App Store Connect export/upload from the existing archive.");

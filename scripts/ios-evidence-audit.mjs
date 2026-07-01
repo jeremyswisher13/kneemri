@@ -110,7 +110,7 @@ function firstActionableLine(result) {
     result.key === "archiveSigning" &&
     result.output.includes("no code-signing identities were visible to this process")
   ) {
-    return `Next: rerun npm run archive:ios:signing with full keychain access, then create/download the App Store distribution provisioning profile for ${expected.bundleId} and confirm Xcode App Store Connect upload access for Team ${expected.appleTeamId}.`;
+    return `Next: rerun npm run archive:ios:signing with full keychain access, then create/download the App Store distribution provisioning profile for ${expected.bundleId} and confirm Xcode App Store Connect upload access for Team ${expected.appleTeamId}, or configure IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID for an App Store Connect API key.`;
   }
 
   if (result.key === "appleFirebaseAuth") {
@@ -158,7 +158,7 @@ console.log("## Suggested Order");
 const suggestedActions = [];
 if (failures.some((result) => result.key === "archiveSigning")) {
   suggestedActions.push(
-    `Create/download an App Store distribution provisioning profile for ${expected.bundleId}, confirm Xcode has App Store Connect access for Team ${expected.appleTeamId}, then rerun npm run archive:ios:signing and npm run export:ios.`,
+    `Create/download an App Store distribution provisioning profile for ${expected.bundleId}, confirm Xcode has App Store Connect access for Team ${expected.appleTeamId} or configure IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID, then rerun npm run archive:ios:signing and npm run export:ios.`,
   );
 }
 if (failures.some((result) => result.key === "appleFirebaseAuth")) {

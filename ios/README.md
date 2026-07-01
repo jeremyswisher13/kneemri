@@ -92,6 +92,10 @@ Team `X578T4K65B`. If `npm run archive:ios:signing` reports
 `App Store export signing ready: no`, create/download an App Store distribution
 provisioning profile for `com.jeremyswisher.uclasportsmri` before retrying
 export/upload.
+If Xcode account access is flaky, `npm run export:ios` can also use a local App
+Store Connect API key when `IOS_ASC_API_KEY_PATH`, `IOS_ASC_API_KEY_ID`, and
+`IOS_ASC_API_ISSUER_ID` are set. Keep the `.p8` file, key ID, issuer ID, and any
+Apple credentials out of git and out of evidence JSON files.
 
 Once Apple Developer signing is configured, archive/export with:
 
