@@ -68,6 +68,7 @@ assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
+assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -109,6 +110,7 @@ assertIncludes("Support URL documented", appStoreSubmission, "https://ucla-knee-
 assertIncludes("Reviewer demo documented", appStoreSubmission, "Continue in App Review demo");
 assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConnectMetadata.json");
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
+assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run screenshots:ios:check");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
@@ -187,6 +189,7 @@ assertIncludes("Screenshot plan covers iPad 13-inch", screenshotPlan, "iPad 13-i
 assertIncludes("Screenshot plan covers guided tour route", screenshotPlan, "normal-knee-mri?mode=tour");
 assertIncludes("Screenshot plan covers knowledge check route", screenshotPlan, "normal-knee-mri?mode=check");
 assertIncludes("Screenshot plan covers cross-plane route", screenshotPlan, "normal-shoulder-mri?mode=correlate");
+assertIncludes("Screenshot plan includes checker command", screenshotPlan, "npm run screenshots:ios:check");
 assertIncludes("Screenshot plan excludes PHI", screenshotPlan, "No protected health information");
 
 const exportOptions = readText("ios", "ExportOptions.plist");
@@ -212,6 +215,14 @@ assertIncludes("Deletion processor deletes Firebase Auth user", deletionProcesso
 assertIncludes("Deletion processor recursively removes learner data", deletionProcessor, "deleteDocumentTree(userRef)");
 assertIncludes("Deletion processor de-identifies audit logs", deletionProcessor, "deidentifyAuditLogs");
 assertIncludes("Deletion processor requires explicit confirmation", deletionProcessor, "--confirm");
+
+const screenshotChecker = readText("scripts", "ios-screenshot-check.mjs");
+assertIncludes("Screenshot checker validates iPhone folder", screenshotChecker, 'join("ios", "screenshots", "iphone-6-9")');
+assertIncludes("Screenshot checker validates iPad folder", screenshotChecker, 'join("ios", "screenshots", "ipad-13")');
+assertIncludes("Screenshot checker validates iPhone 6.9 size", screenshotChecker, "1320, 2868");
+assertIncludes("Screenshot checker validates iPad 13 size", screenshotChecker, "2048, 2732");
+assertIncludes("Screenshot checker enforces screenshot count", screenshotChecker, "screenshot count is 1-10");
+assertIncludes("Screenshot checker covers App Store stem", screenshotChecker, "04-cross-plane");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

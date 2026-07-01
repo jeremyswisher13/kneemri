@@ -73,6 +73,14 @@ ipad-13-06-spaced-review.png
 ipad-13-07-progress.png
 ```
 
+Before uploading to App Store Connect, verify every file with:
+
+```sh
+npm run screenshots:ios:check
+```
+
+The checker validates the two screenshot folders, planned filenames, accepted `.png` / `.jpg` / `.jpeg` formats, 1-10 screenshots per device set, and the Apple-accepted pixel dimensions listed above.
+
 ## Final QA Before Upload
 
 - Text is legible and not clipped.
