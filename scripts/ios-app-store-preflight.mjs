@@ -428,6 +428,12 @@ assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, 
 assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "https://ucla-knee-mri.web.app/__/auth/handler");
 assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
 assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCLASportsMRIiOS");
+assertIncludes("Live readiness fetches lazy chunks", liveReadiness, "Live JS bundle and lazy chunks fetched");
+assertIncludes("Live readiness normalizes Vite asset references", liveReadiness, 'assetPath.startsWith("assets/")');
+assertIncludes("Live readiness rejects rewritten JS chunks", liveReadiness, "Live JS asset did not rewrite to HTML shell");
+assertIncludes("Live readiness checks account route", liveReadiness, 'fetchText("/account")');
+assertIncludes("Live readiness validates account deletion UI", liveReadiness, "Request account deletion");
+assertIncludes("Live readiness validates deletion confirmation", liveReadiness, "Confirm deletion request");
 
 const gateReport = readText("scripts", "ios-gate-report.mjs");
 assertIncludes("Gate report summarizes App Review readiness", gateReport, "Ready for App Review submission");

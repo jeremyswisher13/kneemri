@@ -5,6 +5,7 @@ const authHandlerUrls = [
 ];
 
 const checks = [];
+const maxBundleAssets = Number(process.env.LIVE_BUNDLE_ASSET_LIMIT || 120);
 
 function pass(label, detail = "") {
   checks.push({ ok: true, label, detail });
@@ -32,24 +33,81 @@ async function fetchText(pathname) {
 }
 
 async function fetchBundleText(html) {
+  const initialAssetPaths = discoverHtmlJsAssets(html);
+  if (initialAssetPaths.size === 0) {
+    fail("Live JS bundle references found", "No .js assets in index.html");
+    return "";
+  }
+  pass("Live JS bundle references found", `${initialAssetPaths.size} JS asset(s) in index.html`);
+
+  const chunks = [];
+  const pendingAssetUrls = Array.from(initialAssetPaths, (assetPath) => new URL(assetPath, baseUrl).toString());
+  const fetchedAssetUrls = new Set();
+  const allowedOrigin = new URL(baseUrl).origin;
+
+  while (pendingAssetUrls.length > 0) {
+    if (fetchedAssetUrls.size >= maxBundleAssets) {
+      fail("Live JS bundle crawl stayed under limit", `Reached ${maxBundleAssets} JS assets`);
+      break;
+    }
+
+    const assetUrl = pendingAssetUrls.shift();
+    if (!assetUrl || fetchedAssetUrls.has(assetUrl)) continue;
+    fetchedAssetUrls.add(assetUrl);
+
+    const result = await fetchText(assetUrl);
+    failIfJsAssetWasRewrittenToHtml(assetUrl, result.text);
+    chunks.push(result.text);
+
+    for (const assetPath of discoverReferencedJsAssets(result.text)) {
+      const nextUrl = resolveAssetUrl(assetPath, result.url);
+      if (new URL(nextUrl).origin !== allowedOrigin) continue;
+      if (!fetchedAssetUrls.has(nextUrl) && !pendingAssetUrls.includes(nextUrl)) {
+        pendingAssetUrls.push(nextUrl);
+      }
+    }
+  }
+
+  pass("Live JS bundle and lazy chunks fetched", `${fetchedAssetUrls.size} JS asset(s)`);
+  return chunks.join("\n");
+}
+
+function failIfJsAssetWasRewrittenToHtml(assetUrl, text) {
+  const normalized = text.trimStart().toLowerCase();
+  if (normalized.startsWith("<!doctype html") || normalized.includes('<div id="root"')) {
+    fail("Live JS asset did not rewrite to HTML shell", assetUrl);
+  }
+}
+
+function resolveAssetUrl(assetPath, fromUrl) {
+  if (assetPath.startsWith("assets/")) {
+    return new URL(`/${assetPath}`, baseUrl).toString();
+  }
+  return new URL(assetPath, fromUrl).toString();
+}
+
+function discoverHtmlJsAssets(html) {
   const assetPaths = new Set();
   for (const match of html.matchAll(/(?:src|href)="([^"]+\.js[^"]*)"/g)) {
     assetPaths.add(match[1]);
   }
+  return assetPaths;
+}
 
-  if (assetPaths.size === 0) {
-    fail("Live JS bundle references found", "No .js assets in index.html");
-    return "";
-  }
-  pass("Live JS bundle references found", `${assetPaths.size} JS asset(s)`);
+function discoverReferencedJsAssets(source) {
+  const assetPaths = new Set();
+  const patterns = [
+    /["'`](\/assets\/[^"'`]+?\.js(?:\?[^"'`]*)?)["'`]/g,
+    /["'`](assets\/[^"'`]+?\.js(?:\?[^"'`]*)?)["'`]/g,
+    /["'`](\.\/[^"'`/]+?\.js(?:\?[^"'`]*)?)["'`]/g,
+  ];
 
-  const chunks = [];
-  for (const assetPath of assetPaths) {
-    const assetUrl = new URL(assetPath, baseUrl).toString();
-    const result = await fetchText(assetUrl);
-    chunks.push(result.text);
+  for (const pattern of patterns) {
+    for (const match of source.matchAll(pattern)) {
+      assetPaths.add(match[1]);
+    }
   }
-  return chunks.join("\n");
+  return assetPaths;
 }
 
 function assertBodyIncludes(label, body, needle) {
@@ -76,12 +134,18 @@ async function main() {
   const accessibility = await fetchText("/accessibility");
   assertBodyIncludes("Live accessibility route serves app shell", accessibility.text, "root");
 
+  const account = await fetchText("/account");
+  assertBodyIncludes("Live account route serves app shell", account.text, "root");
+
   const login = await fetchText("/login?source=ios-app&reviewerDemo=1");
   assertBodyIncludes("Live login route serves app shell", login.text, "root");
   assertBodyIncludes("Live bundle includes Sign in with Apple", bundleText, "Sign in with Apple");
   assertBodyIncludes("Live bundle includes App Review demo", bundleText, "Continue in App Review demo");
   assertBodyIncludes("Live bundle includes medical disclaimer", bundleText, "Educational training only");
   assertBodyIncludes("Live bundle includes native iOS shell marker", bundleText, "UCLASportsMRIiOS");
+  assertBodyIncludes("Live bundle includes account deletion route", bundleText, "Request account deletion");
+  assertBodyIncludes("Live bundle includes account deletion confirmation", bundleText, "Confirm deletion request");
+  assertBodyIncludes("Live bundle includes account deletion notice", bundleText, "Your account deletion request has been recorded.");
 
   for (const authHandlerUrl of authHandlerUrls) {
     const handler = await fetchText(authHandlerUrl);
