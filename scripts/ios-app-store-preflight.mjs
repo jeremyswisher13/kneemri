@@ -196,6 +196,9 @@ assertIncludes("App Store Connect evidence verifies regulated medical device gat
 assertIncludes("App Store Connect evidence verifies screenshot upload gate", appStoreConnectEvidenceScript, "appStoreConnect.screenshotsUploaded");
 assertIncludes("App Store Connect evidence runs screenshot verifier", appStoreConnectEvidenceScript, "scripts/ios-screenshot-evidence.mjs");
 assertIncludes("App Store Connect evidence requires screenshot verifier pass", appStoreConnectEvidenceScript, "screenshotEvidenceVerifierPassed");
+assertIncludes("App Store Connect evidence prints screenshot upload packet", appStoreConnectEvidenceScript, "Screenshot Upload Packet");
+assertIncludes("App Store Connect evidence prints iPhone screenshot folder", appStoreConnectEvidenceScript, "ios/screenshots/iphone-6-9");
+assertIncludes("App Store Connect evidence prints iPad screenshot folder", appStoreConnectEvidenceScript, "ios/screenshots/ipad-13");
 assertIncludes("App Store Connect evidence derives native marketing version", appStoreConnectEvidenceScript, "MARKETING_VERSION");
 assertIncludes("App Store Connect evidence derives native build number", appStoreConnectEvidenceScript, "CURRENT_PROJECT_VERSION");
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");

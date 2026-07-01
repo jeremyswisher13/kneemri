@@ -53,12 +53,19 @@ type Evidence = {
   };
 };
 
+type ScreenshotEvidence = {
+  iphone69: { files: string[] };
+  ipad13: { files: string[] };
+  phiReview: { noPhiConfirmed: boolean };
+};
+
 describe("iOS App Store Connect readiness", () => {
   const packageJson = readFileSync("package.json", "utf8");
   const handoff = readFileSync("ios/AppStoreSubmission.md", "utf8");
   const readme = readFileSync("ios/README.md", "utf8");
   const metadata = JSON.parse(readFileSync("ios/AppStoreConnectMetadata.json", "utf8")) as Metadata;
   const evidence = JSON.parse(readFileSync("ios/AppStoreConnectEvidence.json", "utf8")) as Evidence;
+  const screenshotEvidence = JSON.parse(readFileSync("ios/ScreenshotEvidence.json", "utf8")) as ScreenshotEvidence;
   const evidenceScript = readFileSync("scripts/ios-app-store-connect-evidence.mjs", "utf8");
   const preflight = readFileSync("scripts/ios-app-store-preflight.mjs", "utf8");
   const gateReport = readFileSync("scripts/ios-gate-report.mjs", "utf8");
@@ -125,6 +132,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(evidenceScript).toContain("scripts/ios-screenshot-evidence.mjs");
     expect(evidenceScript).toContain("--verify");
     expect(evidenceScript).toContain("screenshotEvidenceVerifierPassed");
+    expect(evidenceScript).toContain("Screenshot Upload Packet");
+    expect(evidenceScript).toContain("ios/screenshots/iphone-6-9");
+    expect(evidenceScript).toContain("ios/screenshots/ipad-13");
     expect(evidenceScript).toContain("MARKETING_VERSION");
     expect(evidenceScript).toContain("CURRENT_PROJECT_VERSION");
     expect(evidence.appRecord.bundleId).toBe(metadata.bundleId);
@@ -159,6 +169,15 @@ describe("iOS App Store Connect readiness", () => {
     expect(output).toContain("Screenshot Source Verification");
     expect(output).toContain("Screenshot evidence verifier:");
     expect(output).toContain("Copy-Paste Packet");
+    expect(output).toContain("Screenshot Upload Packet");
+    expect(output).toContain("iPhone 6.9-inch folder: ios/screenshots/iphone-6-9");
+    expect(output).toContain("iPad 13-inch folder: ios/screenshots/ipad-13");
+    expect(output).toContain(`iPhone 6.9-inch files (${screenshotEvidence.iphone69.files.length}):`);
+    expect(output).toContain(`iPad 13-inch files (${screenshotEvidence.ipad13.files.length}):`);
+    for (const filename of [...screenshotEvidence.iphone69.files, ...screenshotEvidence.ipad13.files]) {
+      expect(output).toContain(filename);
+    }
+    expect(output).toContain(`No-PHI review: ${screenshotEvidence.phiReview.noPhiConfirmed ? "PASS" : "TODO"}`);
     expect(output).toContain("latest Paid Apps/Developer Program agreement accepted");
     expect(output).toContain("role Account Holder, App Manager, or Admin");
     expect(output).toContain("Primary language: English (U.S.)");

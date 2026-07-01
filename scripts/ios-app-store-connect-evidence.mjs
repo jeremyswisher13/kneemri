@@ -212,6 +212,18 @@ const metadataChecks = [
 
 const screenshotEvidenceVerification = runScreenshotEvidenceVerifier();
 const screenshotEvidenceVerifierPassed = screenshotEvidenceVerification.status === 0;
+const screenshotUploadTargets = [
+  {
+    label: "iPhone 6.9-inch",
+    folder: "ios/screenshots/iphone-6-9",
+    files: Array.isArray(screenshotEvidence.iphone69?.files) ? screenshotEvidence.iphone69.files : [],
+  },
+  {
+    label: "iPad 13-inch",
+    folder: "ios/screenshots/ipad-13",
+    files: Array.isArray(screenshotEvidence.ipad13?.files) ? screenshotEvidence.ipad13.files : [],
+  },
+];
 const metadataSourceReady = metadataChecks.every((check) => check.ok);
 const screenshotEvidenceReady =
   screenshotEvidenceVerifierPassed &&
@@ -422,6 +434,19 @@ console.log(`Privacy Policy URL: ${metadata.privacyPolicyUrl}`);
 console.log(`Accessibility URL: ${metadata.accessibilityUrl}`);
 console.log(`Review notes: ios/AppStoreConnectMetadata.json#reviewNotes (${byteLength(metadata.reviewNotes)} bytes)`);
 console.log("What's New: initial 1.0 release; only paste if App Store Connect asks for it.");
+console.log("");
+
+console.log("## Screenshot Upload Packet");
+console.log("Source: ios/ScreenshotEvidence.json");
+for (const target of screenshotUploadTargets) {
+  console.log(`${target.label} folder: ${target.folder}`);
+  console.log(`${target.label} files (${target.files.length}):`);
+  for (const filename of target.files) {
+    console.log(`- ${target.folder}/${filename}`);
+  }
+}
+console.log(`No-PHI review: ${screenshotEvidence.phiReview?.noPhiConfirmed === true ? "PASS" : "TODO"}`);
+console.log("Upload only these image files to the matching App Store Connect device-size screenshot sets; ignore .gitkeep files.");
 console.log("");
 
 console.log("## Optional Accessibility Nutrition Labels");
