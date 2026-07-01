@@ -13,6 +13,13 @@ Last updated: July 1, 2026
 - App URL: `https://ucla-knee-mri.firebaseapp.com/?source=ios-app`
 - Debug/TestFlight/App Review launch URL: `https://ucla-knee-mri.firebaseapp.com/login?source=ios-app&reviewerDemo=1`
 
+## Current verified status
+
+- Firebase Hosting was deployed on July 1, 2026.
+- `npm run preflight:ios:live` passes 20 checks against `https://ucla-knee-mri.firebaseapp.com`.
+- `ios/AppStoreSubmissionGate.json` has hosting marked verified.
+- `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
+
 ## Local preflight
 
 Run this before every TestFlight archive/upload:

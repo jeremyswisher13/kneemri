@@ -16,9 +16,9 @@
     "evidence": "Firebase Authentication > Sign-in method > Apple is enabled and configured; Apple service identifier return URL matches Firebase's Apple callback URL."
   },
   "hosting": {
-    "currentBuildDeployed": false,
-    "livePreflightPassed": false,
-    "evidence": "Run npm run preflight:ios:live after firebase deploy and save/pass its output."
+    "currentBuildDeployed": true,
+    "livePreflightPassed": true,
+    "evidence": "Firebase Hosting deploy completed on 2026-07-01; npm run preflight:ios:live passed 20 checks against https://ucla-knee-mri.firebaseapp.com."
   },
   "realDeviceAuth": {
     "googleSignInPassedInNativeShell": false,
