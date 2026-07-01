@@ -108,6 +108,15 @@ const metadataChecks = [
     detail: `${metadata.ageRatingRecommendation ?? "missing"}; ${metadata.ageRatingBasis?.appleAnswer ?? "missing"}`,
   },
   {
+    label: "Regulated medical device declaration is prepared",
+    ok:
+      metadata.regulatedMedicalDevice?.declarationRequired === true &&
+      metadata.regulatedMedicalDevice?.answer === "No" &&
+      text(metadata.regulatedMedicalDevice?.rationale) &&
+      metadata.regulatedMedicalDevice.rationale.includes("educational only"),
+    detail: metadata.regulatedMedicalDevice?.answer ?? "missing",
+  },
+  {
     label: "Support URL is HTTPS",
     ok: metadata.supportUrl === expected.supportUrl && httpsUrl(metadata.supportUrl),
     detail: metadata.supportUrl ?? "missing",
@@ -176,6 +185,7 @@ const appRecord = evidence.appRecord ?? {};
 const metadataEvidence = evidence.metadata ?? {};
 const privacyLabels = evidence.privacyLabels ?? {};
 const ageRating = evidence.ageRating ?? {};
+const regulatedMedicalDevice = evidence.regulatedMedicalDevice ?? {};
 const exportCompliance = evidence.exportCompliance ?? {};
 const build = evidence.build ?? {};
 const reviewNotes = evidence.reviewNotes ?? {};
@@ -229,6 +239,19 @@ const items = [
       text(ageRating.completedAt) &&
       text(ageRating.confirmedBy),
     next: "Complete the age-rating questionnaire; use 16+ for frequent medical or treatment information in advanced medical education.",
+  },
+  {
+    group: "App Store Connect",
+    key: "appStoreConnect.regulatedMedicalDeviceStatusCompleted",
+    value: regulatedMedicalDevice.completed,
+    ready:
+      regulatedMedicalDevice.completed === true &&
+      regulatedMedicalDevice.isRegulatedMedicalDevice === false &&
+      regulatedMedicalDevice.answer === metadata.regulatedMedicalDevice?.answer &&
+      regulatedMedicalDevice.source === "ios/AppStoreConnectMetadata.json#regulatedMedicalDevice" &&
+      text(regulatedMedicalDevice.completedAt) &&
+      text(regulatedMedicalDevice.confirmedBy),
+    next: "Declare Regulated Medical Device Status in App Store Connect as No for EU/EEA, UK, and US; then record completedAt and confirmedBy.",
   },
   {
     group: "App Store Connect",
@@ -338,6 +361,7 @@ console.log(`Version/build: ${metadata.version} (${metadata.build})`);
 console.log(`Categories: ${metadata.primaryCategory}; ${metadata.secondaryCategory}`);
 console.log(`Price: ${metadata.price}`);
 console.log(`Age rating: ${metadata.ageRatingRecommendation} (${metadata.ageRatingBasis?.appleAnswer ?? "medical education"})`);
+console.log(`Regulated medical device: ${metadata.regulatedMedicalDevice?.answer ?? "No"} (${metadata.regulatedMedicalDevice?.rationale ?? "educational only"})`);
 console.log(`Keywords (${keywords.length}/${limits.keywordsMax}): ${keywords}`);
 console.log(`Support URL: ${metadata.supportUrl}`);
 console.log(`Privacy Policy URL: ${metadata.privacyPolicyUrl}`);

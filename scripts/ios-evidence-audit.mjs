@@ -135,7 +135,7 @@ if (failures.some((result) => result.key === "releaseVerification")) {
   console.log("3. Upload/install the native build, verify real-device auth and account deletion, then rerun npm run release:ios:evidence:verify.");
 }
 if (failures.some((result) => result.key === "appStoreConnect")) {
-  console.log("4. Enter App Store Connect metadata/privacy/build/screenshot evidence, then rerun npm run asc:ios:evidence:verify.");
+  console.log("4. Enter App Store Connect metadata/privacy/age-rating/regulated-device/build/screenshot evidence, then rerun npm run asc:ios:evidence:verify.");
 }
 if (failures.some((result) => result.key === "submissionGate")) {
   console.log("5. Update ios/AppStoreSubmissionGate.json only after matching evidence is ready, then rerun npm run preflight:ios:submit.");

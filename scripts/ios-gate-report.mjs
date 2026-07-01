@@ -148,6 +148,11 @@ const groups = [
         next: "Complete App Store Connect age rating, recommended 16+ for frequent medical or treatment information in advanced medical education, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
+        key: "appStoreConnect.regulatedMedicalDeviceStatusCompleted",
+        value: gate.appStoreConnect?.regulatedMedicalDeviceStatusCompleted,
+        next: "Declare Regulated Medical Device Status as No in App Store Connect for EU/EEA, UK, and US, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
+      },
+      {
         key: "appStoreConnect.exportComplianceCompleted",
         value: gate.appStoreConnect?.exportComplianceCompleted,
         next: "Complete export compliance using the app's non-exempt-encryption declaration, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",

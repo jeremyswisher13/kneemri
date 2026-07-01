@@ -24,7 +24,7 @@ Last updated: July 1, 2026
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
 - `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, and Apple Developer Team `X578T4K65B` (`Jeremy Swisher`) pinned in the Xcode project. Local signing assets are not ready: the report currently shows 0 valid Apple signing identities and 0 matching provisioning profiles for `com.jeremyswisher.uclasportsmri / X578T4K65B` even though unrelated profiles are present.
 - A command-line archive attempt with `X578T4K65B` on July 1, 2026 reached Xcode provisioning and failed with `No Accounts` / invalid Xcode account credentials plus no matching provisioning profile for `com.jeremyswisher.uclasportsmri`.
-- `npm run preflight:ios:submit` still intentionally fails on 20 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission fields.
+- `npm run preflight:ios:submit` still intentionally fails on unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission/compliance fields.
 - iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
@@ -72,7 +72,7 @@ This command is expected to fail until Apple Developer setup, Firebase Auth setu
 
 `npm run release:ios:evidence` reports the real-device/TestFlight auth checks and account-deletion checks that still need external evidence. `npm run release:ios:evidence:verify` is the hard evidence gate for the three real-device auth items and two account-deletion items. It uses `ios/ReleaseVerificationEvidence.json`, which stores only non-identifying confirmation metadata and must never store Apple credentials, Firebase credentials, service-account paths, test-user emails, full Firebase UIDs, PHI, or real learner data.
 
-`npm run asc:ios:evidence` validates the local App Store Connect metadata draft, prints a copy-paste packet for App Store Connect, and reports which external App Store Connect confirmations are still missing. `npm run asc:ios:evidence:verify` is the hard evidence gate for the nine App Store Connect items. It uses `ios/AppStoreConnectEvidence.json`, which stores only confirmation metadata and must never store App Store Connect API keys, app-specific passwords, issuer IDs, or Apple account credentials.
+`npm run asc:ios:evidence` validates the local App Store Connect metadata draft, prints a copy-paste packet for App Store Connect, and reports which external App Store Connect confirmations are still missing. `npm run asc:ios:evidence:verify` is the hard evidence gate for the App Store Connect metadata, privacy, age-rating, regulated-device, build, review-note, and screenshot items. It uses `ios/AppStoreConnectEvidence.json`, which stores only confirmation metadata and must never store App Store Connect API keys, app-specific passwords, issuer IDs, or Apple account credentials.
 
 After final native simulator or TestFlight screenshots are captured, run:
 
@@ -110,6 +110,7 @@ External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEv
 - Primary category: Education
 - Secondary category: Medical
 - Age rating: 16+ recommended because Apple's current age-rating reference maps frequent medical/treatment information to 16+; this app is advanced medical education for clinicians/fellows and is not for diagnosis or treatment.
+- Regulated medical device status: No. The app is educational only; it is not intended to diagnose, prevent, monitor, or treat disease or physiological conditions, does not interface with medical device hardware, and has no FDA clearance, FDA registration, CE mark, UKCA mark, or self-certified medical-device status.
 - Price: Free
 - In-app purchases: None
 - Tracking: No

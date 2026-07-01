@@ -18,6 +18,16 @@
     "appleAnswer": "Frequent medical or treatment information",
     "rationale": "Advanced sports medicine MRI education for clinicians and fellows; educational only, not diagnosis or treatment."
   },
+  "regulatedMedicalDevice": {
+    "declarationRequired": true,
+    "answer": "No",
+    "regions": [
+      "European Union/European Economic Area",
+      "United Kingdom",
+      "United States"
+    ],
+    "rationale": "The app is educational only and provides sports medicine MRI teaching. It is not intended to diagnose, prevent, monitor, or treat disease or physiological conditions, does not interface with medical device hardware, and has no FDA clearance, FDA registration, CE mark, UKCA mark, or self-certified medical-device status."
+  },
   "copyright": "2026 Jeremy Swisher, MD",
   "supportUrl": "https://ucla-knee-mri.firebaseapp.com/support",
   "privacyPolicyUrl": "https://ucla-knee-mri.firebaseapp.com/privacy",

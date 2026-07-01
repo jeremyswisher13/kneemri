@@ -42,12 +42,13 @@
     "metadataEntered": false,
     "privacyLabelsEntered": false,
     "ageRatingCompleted": false,
+    "regulatedMedicalDeviceStatusCompleted": false,
     "exportComplianceCompleted": false,
     "buildUploaded": false,
     "buildSelectedForVersion": false,
     "reviewNotesEntered": false,
     "screenshotsUploaded": false,
     "submittedForReview": false,
-    "evidence": "App Store Connect version 1.0 has metadata, privacy, screenshots, selected TestFlight build, and review notes. Keep submittedForReview false until after the final App Review submission action is complete."
+    "evidence": "App Store Connect version 1.0 has metadata, privacy, age rating, regulated medical device status, screenshots, selected TestFlight build, and review notes. Keep submittedForReview false until after the final App Review submission action is complete."
   }
 }

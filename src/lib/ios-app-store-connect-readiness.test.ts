@@ -14,6 +14,11 @@ type Metadata = {
     appleCategory: string;
     appleAnswer: string;
   };
+  regulatedMedicalDevice: {
+    declarationRequired: boolean;
+    answer: string;
+    rationale: string;
+  };
   supportUrl: string;
   privacyPolicyUrl: string;
   keywords: string[];
@@ -29,6 +34,7 @@ type Evidence = {
   metadata: { source: string };
   privacyLabels: { tracking: boolean; dataLinkedToUser: string[] };
   ageRating: { recommendation: string; basis: string };
+  regulatedMedicalDevice: { isRegulatedMedicalDevice: boolean; answer: string; source: string };
   exportCompliance: { usesNonExemptEncryption: boolean; infoPlistKey: string };
   build: { version: string; build: string };
   reviewNotes: { source: string };
@@ -68,6 +74,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(metadata.ageRatingRecommendation).toBe("16+");
     expect(metadata.ageRatingBasis.appleCategory).toBe("Medical or Wellness");
     expect(metadata.ageRatingBasis.appleAnswer).toBe("Frequent medical or treatment information");
+    expect(metadata.regulatedMedicalDevice.declarationRequired).toBe(true);
+    expect(metadata.regulatedMedicalDevice.answer).toBe("No");
+    expect(metadata.regulatedMedicalDevice.rationale).toContain("educational only");
     expect(keywords.length).toBeLessThanOrEqual(100);
     expect(metadata.supportUrl).toBe("https://ucla-knee-mri.firebaseapp.com/support");
     expect(metadata.privacyPolicyUrl).toBe("https://ucla-knee-mri.firebaseapp.com/privacy");
@@ -82,6 +91,7 @@ describe("iOS App Store Connect readiness", () => {
       "appStoreConnect.metadataEntered",
       "appStoreConnect.privacyLabelsEntered",
       "appStoreConnect.ageRatingCompleted",
+      "appStoreConnect.regulatedMedicalDeviceStatusCompleted",
       "appStoreConnect.exportComplianceCompleted",
       "appStoreConnect.buildUploaded",
       "appStoreConnect.buildSelectedForVersion",
@@ -100,6 +110,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(evidence.privacyLabels.dataLinkedToUser).toEqual(expect.arrayContaining(metadata.privacy.dataLinkedToUser));
     expect(evidence.ageRating.recommendation).toBe(metadata.ageRatingRecommendation);
     expect(evidence.ageRating.basis).toBe(metadata.ageRatingBasis.appleAnswer);
+    expect(evidence.regulatedMedicalDevice.isRegulatedMedicalDevice).toBe(false);
+    expect(evidence.regulatedMedicalDevice.answer).toBe(metadata.regulatedMedicalDevice.answer);
+    expect(evidence.regulatedMedicalDevice.source).toBe("ios/AppStoreConnectMetadata.json#regulatedMedicalDevice");
     expect(evidence.exportCompliance.usesNonExemptEncryption).toBe(false);
     expect(evidence.exportCompliance.infoPlistKey).toBe("ITSAppUsesNonExemptEncryption");
     expect(evidence.build.version).toBe(metadata.version);

@@ -27,6 +27,7 @@ const required = [
   ["appStoreConnect.metadataEntered", gate.appStoreConnect?.metadataEntered],
   ["appStoreConnect.privacyLabelsEntered", gate.appStoreConnect?.privacyLabelsEntered],
   ["appStoreConnect.ageRatingCompleted", gate.appStoreConnect?.ageRatingCompleted],
+  ["appStoreConnect.regulatedMedicalDeviceStatusCompleted", gate.appStoreConnect?.regulatedMedicalDeviceStatusCompleted],
   ["appStoreConnect.exportComplianceCompleted", gate.appStoreConnect?.exportComplianceCompleted],
   ["appStoreConnect.buildUploaded", gate.appStoreConnect?.buildUploaded],
   ["appStoreConnect.buildSelectedForVersion", gate.appStoreConnect?.buildSelectedForVersion],

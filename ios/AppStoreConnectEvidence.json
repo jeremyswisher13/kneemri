@@ -41,6 +41,15 @@
     "confirmedBy": "",
     "evidenceNote": ""
   },
+  "regulatedMedicalDevice": {
+    "completed": false,
+    "isRegulatedMedicalDevice": false,
+    "answer": "No",
+    "source": "ios/AppStoreConnectMetadata.json#regulatedMedicalDevice",
+    "completedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
   "exportCompliance": {
     "completed": false,
     "usesNonExemptEncryption": false,

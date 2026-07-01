@@ -32,7 +32,7 @@ describe("iOS App Store gate report", () => {
   });
 
   it("covers every required hard submission gate", () => {
-    expect(requiredKeys).toHaveLength(25);
+    expect(requiredKeys).toHaveLength(26);
     for (const key of requiredKeys) {
       expect(gateReportScript).toContain(key);
     }

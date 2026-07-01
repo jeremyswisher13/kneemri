@@ -162,6 +162,7 @@ assertIncludes("Auth evidence rejects private keys", authEvidence, "PRIVATE KEY"
 
 const appStoreConnectEvidenceScript = readText("scripts", "ios-app-store-connect-evidence.mjs");
 assertIncludes("App Store Connect evidence verifies metadata gate", appStoreConnectEvidenceScript, "appStoreConnect.metadataEntered");
+assertIncludes("App Store Connect evidence verifies regulated medical device gate", appStoreConnectEvidenceScript, "appStoreConnect.regulatedMedicalDeviceStatusCompleted");
 assertIncludes("App Store Connect evidence verifies screenshot upload gate", appStoreConnectEvidenceScript, "appStoreConnect.screenshotsUploaded");
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
 assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
@@ -195,6 +196,11 @@ if (submissionGate.appStoreConnect?.submittedForReview === false) {
 } else {
   fail("Submission gate prevents accidental App Review completion claim");
 }
+if (submissionGate.appStoreConnect?.regulatedMedicalDeviceStatusCompleted === false) {
+  pass("Submission gate tracks regulated medical device status as external");
+} else {
+  fail("Submission gate tracks regulated medical device status as external");
+}
 
 const metadata = JSON.parse(readText("ios", "AppStoreConnectMetadata.json"));
 if (metadata.bundleId === "com.jeremyswisher.uclasportsmri") {
@@ -219,6 +225,15 @@ if (
   pass("Metadata age rating matches current Apple medical category");
 } else {
   fail("Metadata age rating matches current Apple medical category", metadata.ageRatingRecommendation ?? "missing");
+}
+if (
+  metadata.regulatedMedicalDevice?.declarationRequired === true &&
+  metadata.regulatedMedicalDevice?.answer === "No" &&
+  metadata.regulatedMedicalDevice?.rationale?.includes("educational only")
+) {
+  pass("Metadata regulated medical device declaration is ready");
+} else {
+  fail("Metadata regulated medical device declaration is ready", metadata.regulatedMedicalDevice?.answer ?? "missing");
 }
 if (metadata.supportUrl === "https://ucla-knee-mri.firebaseapp.com/support") {
   pass("Metadata support URL matches app route");
