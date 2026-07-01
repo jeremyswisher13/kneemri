@@ -137,6 +137,8 @@ assertIncludes("App Store Connect evidence documented", appStoreSubmission, "npm
 assertIncludes("App Store release evidence documented", appStoreSubmission, "npm run store:ios:evidence:verify");
 assertIncludes("Release evidence documented", appStoreSubmission, "npm run release:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
+assertIncludes("Live readiness handoff includes live check count", appStoreSubmission, "105 live checks");
+assertIncludes("Live readiness handoff includes install assets", appStoreSubmission, "manifest/favicon/Apple touch icon/PWA 512 icon");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
@@ -166,6 +168,10 @@ assertIncludes("Export checklist includes signing command", appStoreExportReadin
 assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
 assertIncludes("Export checklist covers keychain visibility caveat", appStoreExportReadiness, "zero code-signing identities");
 assertIncludes("Export checklist documents upload-capable roles", appStoreExportReadiness, "Account Holder, Admin, App Manager, or Developer");
+
+const submissionGateText = readText("ios", "AppStoreSubmissionGate.json");
+assertIncludes("Submission gate hosting evidence includes live check count", submissionGateText, "105 live checks");
+assertIncludes("Submission gate hosting evidence includes install assets", submissionGateText, "manifest/favicon/Apple touch icon/PWA 512 icon");
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");

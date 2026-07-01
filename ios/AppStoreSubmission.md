@@ -16,7 +16,7 @@ Last updated: July 1, 2026
 ## Current verified status
 
 - Firebase Hosting was deployed on July 1, 2026 after the accessibility URL addition.
-- `npm run preflight:ios:live` passes against `https://ucla-knee-mri.firebaseapp.com`, including public privacy/support/accessibility/account routes, lazy-loaded route chunks, account deletion UI, login/App Review demo affordances, and Firebase Auth callback endpoints.
+- `npm run preflight:ios:live` passes against `https://ucla-knee-mri.firebaseapp.com` with 105 live checks, including public privacy/support/accessibility/account routes, lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, login/App Review demo affordances, and Firebase Auth callback endpoints.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
 - The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
@@ -48,7 +48,7 @@ After Firebase Hosting is deployed, run:
 npm run preflight:ios:live
 ```
 
-The live preflight checks that the deployed app serves the required public routes and includes the App Store login affordances expected by the native shell. It is expected to fail before the current build is deployed.
+The live preflight checks that the deployed app serves the required public routes, Firebase Auth handler endpoints, lazy-loaded JS chunks, install manifest/icons, and App Store login affordances expected by the native shell. It is expected to fail before the current build is deployed.
 
 Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only for items that have external evidence, then run:
 
