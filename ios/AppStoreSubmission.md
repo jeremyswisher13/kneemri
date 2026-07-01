@@ -91,6 +91,7 @@ The evidence commands use `ios/ScreenshotEvidence.json` to keep device/build/sou
 After the command passes and the app is submitted, set `appStoreConnect.submittedForReview` to `true` in `ios/AppStoreSubmissionGate.json` as final submission evidence.
 
 For command-line export/upload after an Xcode archive, use `ios/ExportOptions.plist` as the export options template. Xcode Organizer upload is still the easiest first TestFlight path.
+The exact App Store distribution profile checklist lives in `ios/AppStoreExportReadiness.md`.
 
 To split archive and upload retries:
 

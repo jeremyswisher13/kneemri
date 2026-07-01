@@ -58,6 +58,7 @@ assertFile("Privacy manifest exists", "ios", "UCLASportsMRI", "PrivacyInfo.xcpri
 assertFile("Entitlements exist", "ios", "UCLASportsMRI", "UCLASportsMRI.entitlements");
 assertFile("Native shell exists", "ios", "UCLASportsMRI", "WebShellView.swift");
 assertFile("Export options template exists", "ios", "ExportOptions.plist");
+assertFile("App Store export readiness checklist exists", "ios", "AppStoreExportReadiness.md");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
 assertFile("App Store Connect evidence JSON exists", "ios", "AppStoreConnectEvidence.json");
@@ -143,8 +144,16 @@ assertIncludes("Archive command documented", appStoreSubmission, "npm run archiv
 assertIncludes("Archive-only command documented", appStoreSubmission, "npm run archive:ios:only");
 assertIncludes("Export retry command documented", appStoreSubmission, "npm run export:ios");
 assertIncludes("App Store Connect account blocker documented", appStoreSubmission, "App Store Connect access");
+assertIncludes("App Store export checklist documented", appStoreSubmission, "ios/AppStoreExportReadiness.md");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
+
+const appStoreExportReadiness = readText("ios", "AppStoreExportReadiness.md");
+assertIncludes("Export checklist names bundle ID", appStoreExportReadiness, "com.jeremyswisher.uclasportsmri");
+assertIncludes("Export checklist names Apple team", appStoreExportReadiness, "X578T4K65B");
+assertIncludes("Export checklist names App Store profile type", appStoreExportReadiness, "App Store distribution provisioning profile");
+assertIncludes("Export checklist includes signing command", appStoreExportReadiness, "npm run archive:ios:signing");
+assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");

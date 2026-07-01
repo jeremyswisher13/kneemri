@@ -5,6 +5,7 @@ describe("iOS archive readiness", () => {
   const packageJson = readFileSync("package.json", "utf8");
   const archiveHelper = readFileSync("scripts/ios-archive.mjs", "utf8");
   const handoff = readFileSync("ios/AppStoreSubmission.md", "utf8");
+  const exportReadiness = readFileSync("ios/AppStoreExportReadiness.md", "utf8");
   const readme = readFileSync("ios/README.md", "utf8");
   const projectSpec = readFileSync("ios/project.yml", "utf8");
   const xcodeProject = readFileSync("ios/UCLASportsMRI.xcodeproj/project.pbxproj", "utf8");
@@ -16,9 +17,11 @@ describe("iOS archive readiness", () => {
     expect(handoff).toContain("npm run archive:ios:signing");
     expect(handoff).toContain("npm run archive:ios:only");
     expect(handoff).toContain("npm run export:ios");
+    expect(handoff).toContain("ios/AppStoreExportReadiness.md");
     expect(readme).toContain("npm run archive:ios:signing");
     expect(readme).toContain("npm run archive:ios:only");
     expect(readme).toContain("npm run export:ios");
+    expect(readme).toContain("ios/AppStoreExportReadiness.md");
   });
 
   it("keeps command-line archives in local ignored build output", () => {
@@ -65,6 +68,17 @@ describe("iOS archive readiness", () => {
     expect(handoff).toContain("Failed to find an account with App Store Connect access");
     expect(handoff).toContain("current blocker is App Store Connect-capable Xcode account access");
     expect(readme).toContain("X578T4K65B");
+  });
+
+  it("keeps an exact App Store distribution profile checklist", () => {
+    expect(exportReadiness).toContain("com.jeremyswisher.uclasportsmri");
+    expect(exportReadiness).toContain("X578T4K65B");
+    expect(exportReadiness).toContain("App Store distribution provisioning profile");
+    expect(exportReadiness).toContain("Account Holder or Admin");
+    expect(exportReadiness).toContain("create-an-app-store-provisioning-profile");
+    expect(exportReadiness).toContain("role-permissions");
+    expect(exportReadiness).toContain("npm run archive:ios:signing");
+    expect(exportReadiness).toContain("npm run export:ios");
   });
 
   it("pins the Apple Developer Team in both XcodeGen and generated project settings", () => {

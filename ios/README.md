@@ -71,6 +71,7 @@ npm run preflight:ios:submit
 `npm run asc:ios:evidence` validates `ios/AppStoreConnectMetadata.json`, prints the App Store Connect copy-paste packet, and reports which external App Store Connect confirmations still need to be recorded in `ios/AppStoreConnectEvidence.json`.
 
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
+The exact App Store distribution profile checklist lives in `ios/AppStoreExportReadiness.md`.
 
 To keep archive creation separate from App Store Connect upload retries:
 
