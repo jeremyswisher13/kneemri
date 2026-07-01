@@ -66,6 +66,7 @@ assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
+assertFile("Submission gate report script exists", "scripts", "ios-gate-report.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
@@ -113,6 +114,7 @@ assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/Screenshot
 assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run screenshots:ios:check");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
+assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
 assertIncludes("Archive command documented", appStoreSubmission, "npm run archive:ios");
@@ -243,6 +245,11 @@ assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, 
 assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "https://ucla-knee-mri.web.app/__/auth/handler");
 assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
 assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCLASportsMRIiOS");
+
+const gateReport = readText("scripts", "ios-gate-report.mjs");
+assertIncludes("Gate report summarizes App Review readiness", gateReport, "Ready for App Review submission");
+assertIncludes("Gate report includes final submission flag", gateReport, "appStoreConnect.submittedForReview");
+assertIncludes("Gate report includes real-device Apple auth gate", gateReport, "realDeviceAuth.appleSignInPassedInNativeShell");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

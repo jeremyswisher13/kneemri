@@ -47,8 +47,11 @@ The live preflight checks that the deployed app serves the required public route
 Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only for items that have external evidence, then run:
 
 ```sh
+npm run preflight:ios:report
 npm run preflight:ios:submit
 ```
+
+`npm run preflight:ios:report` prints a grouped PASS/TODO summary with next actions and does not fail while external gates are still open. Use it as the handoff/status view. `npm run preflight:ios:submit` remains the hard gate.
 
 This command is expected to fail until Apple Developer setup, Firebase Auth setup, live deploy, TestFlight/real-device auth, screenshots, account deletion handling, and App Store Connect fields are all verified.
 
