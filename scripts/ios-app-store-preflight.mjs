@@ -162,6 +162,7 @@ assertIncludes("Export checklist separates independent blockers", appStoreExport
 assertIncludes("Export checklist documents Xcode account access", appStoreExportReadiness, "App Store Connect access for Team `X578T4K65B`");
 assertIncludes("Export checklist includes signing command", appStoreExportReadiness, "npm run archive:ios:signing");
 assertIncludes("Export checklist cites Apple profile workflow", appStoreExportReadiness, "create-an-app-store-provisioning-profile");
+assertIncludes("Export checklist covers keychain visibility caveat", appStoreExportReadiness, "zero code-signing identities");
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
 assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
@@ -398,6 +399,8 @@ assertIncludes("Archive helper reports Distribution identities", archiveHelper, 
 assertIncludes("Archive helper decodes provisioning profiles", archiveHelper, "Decoded provisioning profiles");
 assertIncludes("Archive helper reports matching profiles", archiveHelper, "Matching provisioning profiles");
 assertIncludes("Archive helper reports App Store profiles", archiveHelper, "Matching App Store profiles");
+assertIncludes("Archive helper warns on weak keychain visibility", archiveHelper, "no code-signing identities were visible to this process");
+assertIncludes("Archive helper asks for full keychain access", archiveHelper, "with full keychain access");
 assertIncludes("Archive helper reports archive signing assets", archiveHelper, "Local archive signing assets ready");
 assertIncludes("Archive helper reports App Store export signing", archiveHelper, "App Store export signing ready");
 assertIncludes("Archive helper tells user to recheck export signing", archiveHelper, "until App Store export signing ready: yes");

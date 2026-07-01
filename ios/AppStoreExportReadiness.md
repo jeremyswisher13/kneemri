@@ -68,6 +68,8 @@ npm run archive:ios:signing
 npm run export:ios
 ```
 
+If `archive:ios:signing` reports zero code-signing identities while Xcode shows Apple certificates in Settings > Accounts, rerun the command from a normal Terminal/Xcode session with full keychain access before creating replacement certificates. Sandboxed automation can see provisioning profiles while failing to see keychain identities; the authoritative report is the keychain-access run.
+
 If `archive:ios:signing` still shows `Matching App Store profiles: 0`, the App Store distribution profile is not installed or does not match the bundle ID/team.
 If `export:ios` still fails with account access, open Xcode > Settings > Accounts and refresh/sign in to the Apple ID that has App Store Connect access for Team `X578T4K65B`.
 The export helper reads Xcode's `IDEDistribution.standard.log` and prints the exact account/profile next action when export fails.

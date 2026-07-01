@@ -173,6 +173,19 @@ function signingIdentitySummary() {
   };
 }
 
+function printSigningIdentityVisibilityWarning(identitySummary, profileSummary) {
+  if (!identitySummary.available) {
+    console.log("Warning: the signing identity probe could not read code-signing identities from the keychain.");
+    console.log("Rerun npm run archive:ios:signing from a normal Terminal/Xcode session before creating or replacing certificates.");
+    return;
+  }
+
+  if (identitySummary.validCount === 0 && profileSummary.count > 0) {
+    console.log("Warning: no code-signing identities were visible to this process, even though provisioning profiles are installed.");
+    console.log("If Xcode shows Apple certificates, rerun npm run archive:ios:signing with full keychain access before changing certificates.");
+  }
+}
+
 function xmlValue(plist, key) {
   return plist.match(new RegExp(`<key>${key}</key>\\s*<string>([^<]+)</string>`))?.[1] ?? "";
 }
@@ -396,6 +409,7 @@ function printSigningReport() {
   console.log(`Local archive signing assets ready: ${localArchiveSigningAssetsReady ? "yes" : "no"}`);
   console.log(`App Store export signing ready: ${appStoreExportSigningReady ? "yes" : "no"}`);
   console.log(`Command-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
+  printSigningIdentityVisibilityWarning(identitySummary, profileSummary);
   if (profileSummary.decodeFailureCount > 0) {
     console.log(`Warning: ${profileSummary.decodeFailureCount} provisioning profile(s) could not be decoded.`);
   }

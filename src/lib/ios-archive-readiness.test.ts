@@ -56,6 +56,9 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("Matching provisioning profiles");
     expect(archiveHelper).toContain("Matching App Store profiles");
     expect(archiveHelper).toContain("application-identifier");
+    expect(archiveHelper).toContain("printSigningIdentityVisibilityWarning");
+    expect(archiveHelper).toContain("no code-signing identities were visible to this process");
+    expect(archiveHelper).toContain("with full keychain access");
     expect(archiveHelper).toContain("Local archive signing assets ready");
     expect(archiveHelper).toContain("App Store export signing ready");
     expect(archiveHelper).toContain("distributionIdentityReady");
@@ -87,6 +90,8 @@ describe("iOS archive readiness", () => {
     expect(exportReadiness).toContain("role-permissions");
     expect(exportReadiness).toContain("npm run archive:ios:signing");
     expect(exportReadiness).toContain("npm run export:ios");
+    expect(exportReadiness).toContain("zero code-signing identities");
+    expect(exportReadiness).toContain("full keychain access");
   });
 
   it("pins the Apple Developer Team in both XcodeGen and generated project settings", () => {
