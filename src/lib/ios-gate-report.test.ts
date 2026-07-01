@@ -2,6 +2,14 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
+const APPLE_TEAM_ID = "X578T4K65B";
+const BUNDLE_ID = "com.jeremyswisher.uclasportsmri";
+const FIREBASE_PROJECT_ID = "ucla-knee-mri";
+const APPLE_SERVICE_ID = "com.jeremyswisher.uclasportsmri.web";
+const PRIMARY_RETURN_URL = "https://ucla-knee-mri.firebaseapp.com/__/auth/handler";
+const SECONDARY_AUTH_HANDLER = "https://ucla-knee-mri.web.app/__/auth/handler";
+const AUTHORIZED_DOMAINS = ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"];
+
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf8")) as T;
 }
@@ -44,6 +52,29 @@ describe("iOS App Store gate report", () => {
     expect(gateReportScript).toContain("Ready for App Review submission");
     expect(gateReportScript).toContain("appStoreConnect.submittedForReview");
     expect(gateReportScript).not.toContain("process.exit(1)");
+  });
+
+  it("prints exact Apple/Firebase portal values in the next actions", () => {
+    const output = execFileSync(process.execPath, ["scripts/ios-gate-report.mjs"], {
+      encoding: "utf8",
+    });
+
+    for (const value of [
+      APPLE_TEAM_ID,
+      BUNDLE_ID,
+      FIREBASE_PROJECT_ID,
+      APPLE_SERVICE_ID,
+      PRIMARY_RETURN_URL,
+      SECONDARY_AUTH_HANDLER,
+      ...AUTHORIZED_DOMAINS,
+    ]) {
+      expect(gateReportScript).toContain(value);
+      expect(output).toContain(value);
+    }
+
+    expect(output).toContain(`Create Apple Services ID ${APPLE_SERVICE_ID}`);
+    expect(output).toContain(`set Primary App ID ${BUNDLE_ID}`);
+    expect(output).toContain(`Firebase Authentication project ${FIREBASE_PROJECT_ID}`);
   });
 
   it("keeps the hard submission gate tied to detailed evidence verifiers", () => {

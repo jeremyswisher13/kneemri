@@ -5,6 +5,16 @@ import { fileURLToPath } from "node:url";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const verify = process.argv.includes("--verify");
 
+const expected = {
+  appleTeamId: "X578T4K65B",
+  bundleId: "com.jeremyswisher.uclasportsmri",
+  firebaseProjectId: "ucla-knee-mri",
+  serviceId: "com.jeremyswisher.uclasportsmri.web",
+  primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
+  secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
+  authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],
+};
+
 const commands = [
   {
     key: "archiveSigning",
@@ -100,7 +110,11 @@ function firstActionableLine(result) {
     result.key === "archiveSigning" &&
     result.output.includes("no code-signing identities were visible to this process")
   ) {
-    return "Next: rerun npm run archive:ios:signing with full keychain access, then create/download the App Store distribution provisioning profile and confirm Xcode App Store Connect upload access for Team X578T4K65B.";
+    return `Next: rerun npm run archive:ios:signing with full keychain access, then create/download the App Store distribution provisioning profile for ${expected.bundleId} and confirm Xcode App Store Connect upload access for Team ${expected.appleTeamId}.`;
+  }
+
+  if (result.key === "appleFirebaseAuth") {
+    return `Next: Enable Sign in with Apple on App ID ${expected.bundleId}, create Services ID ${expected.serviceId} with Return URL ${expected.primaryReturnUrl}, configure Firebase project ${expected.firebaseProjectId} Apple provider, and rerun npm run auth:ios:evidence:verify.`;
   }
 
   const output = result.output;
@@ -144,11 +158,13 @@ console.log("## Suggested Order");
 const suggestedActions = [];
 if (failures.some((result) => result.key === "archiveSigning")) {
   suggestedActions.push(
-    "Create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri, confirm Xcode has App Store Connect access for Team X578T4K65B, then rerun npm run archive:ios:signing and npm run export:ios.",
+    `Create/download an App Store distribution provisioning profile for ${expected.bundleId}, confirm Xcode has App Store Connect access for Team ${expected.appleTeamId}, then rerun npm run archive:ios:signing and npm run export:ios.`,
   );
 }
 if (failures.some((result) => result.key === "appleFirebaseAuth")) {
-  suggestedActions.push("Complete Apple Developer Sign in with Apple and Firebase apple.com provider setup, then rerun npm run auth:ios:evidence:verify.");
+  suggestedActions.push(
+    `Complete Apple Developer Sign in with Apple for App ID ${expected.bundleId}, create Services ID ${expected.serviceId} with Return URL ${expected.primaryReturnUrl}, configure Firebase project ${expected.firebaseProjectId} with authorized domains ${expected.authorizedDomains.join(" and ")}, then rerun npm run auth:ios:evidence:verify.`,
+  );
 }
 if (failures.some((result) => result.key === "releaseVerification")) {
   suggestedActions.push("Upload/install the native build, verify real-device auth and account deletion, then rerun npm run release:ios:evidence:verify.");

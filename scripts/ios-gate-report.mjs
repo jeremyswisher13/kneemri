@@ -6,6 +6,16 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const gatePath = join(root, "ios", "AppStoreSubmissionGate.json");
 const gate = JSON.parse(readFileSync(gatePath, "utf8"));
 
+const expected = {
+  appleTeamId: "X578T4K65B",
+  bundleId: "com.jeremyswisher.uclasportsmri",
+  firebaseProjectId: "ucla-knee-mri",
+  serviceId: "com.jeremyswisher.uclasportsmri.web",
+  primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
+  secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
+  authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],
+};
+
 const groups = [
   {
     title: "Apple Developer",
@@ -14,7 +24,7 @@ const groups = [
       {
         key: "appleDeveloper.signInWithAppleEnabledForBundleId",
         value: gate.appleDeveloper?.signInWithAppleEnabledForBundleId,
-        next: "Enable Sign in with Apple on App ID com.jeremyswisher.uclasportsmri, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.",
+        next: `Enable Sign in with Apple on App ID ${expected.bundleId} for Team ${expected.appleTeamId}, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.`,
       },
     ],
   },
@@ -25,27 +35,27 @@ const groups = [
       {
         key: "firebaseAuth.appleProviderConfigured",
         value: gate.firebaseAuth?.appleProviderConfigured,
-        next: "Enable the Apple provider in Firebase Authentication, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.",
+        next: `Enable the Apple provider in Firebase Authentication project ${expected.firebaseProjectId} with Services ID ${expected.serviceId}, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.`,
       },
       {
         key: "firebaseAuth.appleServiceIdCreated",
         value: gate.firebaseAuth?.appleServiceIdCreated,
-        next: "Create and enter the Apple Service ID using https://ucla-knee-mri.firebaseapp.com/__/auth/handler.",
+        next: `Create Apple Services ID ${expected.serviceId}, set Primary App ID ${expected.bundleId}, domain ${expected.authorizedDomains[0]}, and Return URL ${expected.primaryReturnUrl}.`,
       },
       {
         key: "firebaseAuth.applePrivateKeyConfigured",
         value: gate.firebaseAuth?.applePrivateKeyConfigured,
-        next: "Enter the Apple Team ID, Key ID, and private key in Firebase's Apple provider config.",
+        next: `Enter Apple Team ID ${expected.appleTeamId}, Key ID, Services ID ${expected.serviceId}, and private key in Firebase's Apple provider config. Do not commit secrets.`,
       },
       {
         key: "firebaseAuth.redirectUrlVerifiedInAppleAndFirebase",
         value: gate.firebaseAuth?.redirectUrlVerifiedInAppleAndFirebase,
-        next: "Verify Apple and Firebase both point to the same Firebase Auth callback URL.",
+        next: `Verify Apple Services ID ${expected.serviceId} and Firebase both use ${expected.primaryReturnUrl}; keep secondary handler ${expected.secondaryAuthHandler} reachable.`,
       },
       {
         key: "firebaseAuth.authorizedDomainsIncludeFirebaseHosting",
         value: gate.firebaseAuth?.authorizedDomainsIncludeFirebaseHosting,
-        next: "Confirm Firebase authorized domains include ucla-knee-mri.firebaseapp.com and ucla-knee-mri.web.app.",
+        next: `Confirm Firebase authorized domains include ${expected.authorizedDomains.join(" and ")}.`,
       },
     ],
   },
