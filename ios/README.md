@@ -58,8 +58,12 @@ npm run preflight:ios:live
 Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` with verified external evidence and run:
 
 ```sh
+npm run asc:ios:evidence
+npm run asc:ios:evidence:verify
 npm run preflight:ios:submit
 ```
+
+`npm run asc:ios:evidence` validates `ios/AppStoreConnectMetadata.json`, prints the App Store Connect copy-paste packet, and reports which external App Store Connect confirmations still need to be recorded in `ios/AppStoreConnectEvidence.json`.
 
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
 
@@ -84,4 +88,4 @@ Production App Store builds use the regular hosted URL without the reviewer flag
 
 This shell is the fastest route to a real iOS app. Before App Store submission, configure the Apple provider in Firebase Auth and test Google/Firebase/Apple sign-in carefully inside `WKWebView` on a real device. If Google blocks embedded auth, the next step is native sign-in via `ASWebAuthenticationSession` or Firebase native auth, then passing the session into the web app.
 
-See `ios/AppStoreSubmission.md` for App Store Connect metadata, privacy-label guidance, review notes, and remaining submission risks.
+See `ios/AppStoreSubmission.md` for App Store Connect metadata, evidence tracking, privacy-label guidance, review notes, and remaining submission risks.

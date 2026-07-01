@@ -26,8 +26,7 @@
     "shoulder",
     "hip",
     "elbow",
-    "fellowship",
-    "education"
+    "fellows"
   ],
   "description": "UCLA Sports MRI is an interactive sports medicine MRI education app for fellows and advanced learners. Work through normal MRI workstations for knee, shoulder, hip, and elbow, practice guided tours and cross-plane correlation, answer image-based knowledge checks, review cases, and reinforce missed concepts with spaced review.\n\nThe app is designed for education and training. It is not a diagnostic device, treatment tool, or substitute for professional clinical judgment.",
   "promotionalText": "Interactive normal MRI workstations, cases, guided tours, knowledge checks, and spaced review for sports medicine MRI learning.",

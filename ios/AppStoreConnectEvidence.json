@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "Track external App Store Connect evidence for version 1.0. Set booleans to true only after the matching App Store Connect screen or upload evidence exists.",
+  "doNotStoreSecrets": "Do not enter App Store Connect API keys, issuer IDs, app-specific passwords, private keys, or Apple account credentials in this file.",
+  "appRecord": {
+    "created": false,
+    "bundleId": "com.jeremyswisher.uclasportsmri",
+    "sku": "ucla-sports-mri-ios",
+    "appName": "UCLA Sports MRI",
+    "platform": "iOS",
+    "confirmedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "metadata": {
+    "entered": false,
+    "source": "ios/AppStoreConnectMetadata.json",
+    "enteredAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "privacyLabels": {
+    "entered": false,
+    "tracking": false,
+    "dataLinkedToUser": [
+      "Name",
+      "Email Address",
+      "User ID",
+      "Product Interaction"
+    ],
+    "enteredAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "ageRating": {
+    "completed": false,
+    "recommendation": "17+",
+    "completedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "exportCompliance": {
+    "completed": false,
+    "usesNonExemptEncryption": false,
+    "infoPlistKey": "ITSAppUsesNonExemptEncryption",
+    "completedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "build": {
+    "uploaded": false,
+    "selectedForVersion": false,
+    "version": "1.0",
+    "build": "1",
+    "uploadedAt": "",
+    "selectedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "reviewNotes": {
+    "entered": false,
+    "source": "ios/AppStoreConnectMetadata.json#reviewNotes",
+    "enteredAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "screenshots": {
+    "uploaded": false,
+    "source": "ios/ScreenshotEvidence.json",
+    "uploadedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  }
+}

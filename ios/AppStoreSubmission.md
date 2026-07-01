@@ -23,7 +23,8 @@ Last updated: July 1, 2026
 - Native iOS shell sign-in URLs use Firebase full-page redirect auth (`source=ios-app`) to avoid fragile popup behavior inside `WKWebView`.
 - Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
 - `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, and Sign in with Apple entitlements; it currently reports Development Team as missing until an Apple Team ID is selected or passed through `IOS_DEVELOPMENT_TEAM`.
-- `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
+- `npm run preflight:ios:submit` still intentionally fails on 20 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, and App Store Connect submission fields.
+- iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
 ## Local preflight
@@ -53,13 +54,17 @@ Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only f
 ```sh
 npm run auth:ios:evidence
 npm run auth:ios:evidence:verify
+npm run asc:ios:evidence
+npm run asc:ios:evidence:verify
 npm run preflight:ios:report
 npm run preflight:ios:submit
 ```
 
 `npm run preflight:ios:report` prints a grouped PASS/TODO summary with next actions and does not fail while external gates are still open. Use it as the handoff/status view. `npm run preflight:ios:submit` remains the hard gate.
 
-This command is expected to fail until Apple Developer setup, Firebase Auth setup, live deploy, TestFlight/real-device auth, screenshots, account deletion handling, and App Store Connect fields are all verified.
+This command is expected to fail until Apple Developer setup, Firebase Auth setup, TestFlight/real-device auth, account deletion handling, and App Store Connect fields are all verified.
+
+`npm run asc:ios:evidence` validates the local App Store Connect metadata draft, prints a copy-paste packet for App Store Connect, and reports which external App Store Connect confirmations are still missing. `npm run asc:ios:evidence:verify` is the hard evidence gate for the nine App Store Connect items. It uses `ios/AppStoreConnectEvidence.json`, which stores only confirmation metadata and must never store App Store Connect API keys, app-specific passwords, issuer IDs, or Apple account credentials.
 
 After final native simulator or TestFlight screenshots are captured, run:
 
@@ -90,6 +95,7 @@ Use `npm run archive:ios:signing` first to confirm the Release bundle ID, versio
 ## App Store Connect metadata draft
 
 Structured copy lives in `ios/AppStoreConnectMetadata.json`.
+External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEvidence.json`.
 
 - Name: `UCLA Sports MRI`
 - Subtitle: `Sports medicine MRI learning`
@@ -109,7 +115,7 @@ The app is designed for education and training. It is not a diagnostic device, t
 
 ## Keywords draft
 
-MRI, sports medicine, musculoskeletal, MSK, radiology, knee, shoulder, hip, elbow, fellowship, education
+MRI, sports medicine, musculoskeletal, MSK, radiology, knee, shoulder, hip, elbow, fellows
 
 ## Review notes draft
 

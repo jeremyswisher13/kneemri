@@ -60,6 +60,7 @@ assertFile("Native shell exists", "ios", "UCLASportsMRI", "WebShellView.swift");
 assertFile("Export options template exists", "ios", "ExportOptions.plist");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
+assertFile("App Store Connect evidence JSON exists", "ios", "AppStoreConnectEvidence.json");
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("Screenshot evidence JSON exists", "ios", "ScreenshotEvidence.json");
 assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
@@ -71,6 +72,7 @@ assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs"
 assertFile("Submission gate report script exists", "scripts", "ios-gate-report.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
+assertFile("App Store Connect evidence script exists", "scripts", "ios-app-store-connect-evidence.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
 assertFile("Screenshot evidence script exists", "scripts", "ios-screenshot-evidence.mjs");
@@ -124,6 +126,7 @@ assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run scr
 assertIncludes("Screenshot evidence documented", appStoreSubmission, "npm run screenshots:ios:evidence:verify");
 assertIncludes("Screenshot capture documented", appStoreSubmission, "npm run screenshots:ios:capture");
 assertIncludes("Apple/Firebase auth evidence documented", appStoreSubmission, "npm run auth:ios:evidence:verify");
+assertIncludes("App Store Connect evidence documented", appStoreSubmission, "npm run asc:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
@@ -150,6 +153,12 @@ assertIncludes("Auth evidence verifies Apple Developer gate", authEvidence, "app
 assertIncludes("Auth evidence verifies Firebase Apple provider gate", authEvidence, "firebaseAuth.appleProviderConfigured");
 assertIncludes("Auth evidence verifies Firebase authorized domains gate", authEvidence, "firebaseAuth.authorizedDomainsIncludeFirebaseHosting");
 assertIncludes("Auth evidence rejects private keys", authEvidence, "PRIVATE KEY");
+
+const appStoreConnectEvidenceScript = readText("scripts", "ios-app-store-connect-evidence.mjs");
+assertIncludes("App Store Connect evidence verifies metadata gate", appStoreConnectEvidenceScript, "appStoreConnect.metadataEntered");
+assertIncludes("App Store Connect evidence verifies screenshot upload gate", appStoreConnectEvidenceScript, "appStoreConnect.screenshotsUploaded");
+assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
+assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
 
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
 if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
@@ -198,6 +207,12 @@ if (Array.isArray(metadata.keywords) && metadata.keywords.includes("MRI") && met
   pass("Metadata keywords include core search terms");
 } else {
   fail("Metadata keywords include core search terms");
+}
+const metadataKeywords = Array.isArray(metadata.keywords) ? metadata.keywords.join(", ") : "";
+if (metadataKeywords.length > 0 && metadataKeywords.length <= 100) {
+  pass("Metadata keywords fit App Store Connect limit", `${metadataKeywords.length}/100`);
+} else {
+  fail("Metadata keywords fit App Store Connect limit", `${metadataKeywords.length}/100`);
 }
 if (metadata.reviewNotes?.includes("Continue in App Review demo") && metadata.reviewNotes?.includes("not intended to diagnose")) {
   pass("Metadata review notes include demo access and medical disclaimer");
@@ -289,6 +304,7 @@ const gateReport = readText("scripts", "ios-gate-report.mjs");
 assertIncludes("Gate report summarizes App Review readiness", gateReport, "Ready for App Review submission");
 assertIncludes("Gate report includes final submission flag", gateReport, "appStoreConnect.submittedForReview");
 assertIncludes("Gate report includes real-device Apple auth gate", gateReport, "realDeviceAuth.appleSignInPassedInNativeShell");
+assertIncludes("Gate report includes App Store Connect evidence command", gateReport, "npm run asc:ios:evidence");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

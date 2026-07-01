@@ -130,47 +130,47 @@ const groups = [
       {
         key: "appStoreConnect.appRecordCreated",
         value: gate.appStoreConnect?.appRecordCreated,
-        next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.uclasportsmri.",
+        next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.uclasportsmri, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.metadataEntered",
         value: gate.appStoreConnect?.metadataEntered,
-        next: "Enter the metadata from ios/AppStoreConnectMetadata.json.",
+        next: "Enter the metadata from ios/AppStoreConnectMetadata.json, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.privacyLabelsEntered",
         value: gate.appStoreConnect?.privacyLabelsEntered,
-        next: "Enter privacy labels matching ios/AppStoreSubmission.md.",
+        next: "Enter privacy labels matching ios/AppStoreSubmission.md, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.ageRatingCompleted",
         value: gate.appStoreConnect?.ageRatingCompleted,
-        next: "Complete App Store Connect age rating, recommended 17+ for advanced medical education.",
+        next: "Complete App Store Connect age rating, recommended 17+ for advanced medical education, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.exportComplianceCompleted",
         value: gate.appStoreConnect?.exportComplianceCompleted,
-        next: "Complete export compliance using the app's non-exempt-encryption declaration.",
+        next: "Complete export compliance using the app's non-exempt-encryption declaration, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.buildUploaded",
         value: gate.appStoreConnect?.buildUploaded,
-        next: "Archive and upload the iOS build to App Store Connect/TestFlight.",
+        next: "Archive and upload the iOS build to App Store Connect/TestFlight, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.buildSelectedForVersion",
         value: gate.appStoreConnect?.buildSelectedForVersion,
-        next: "Select the uploaded build for version 1.0.",
+        next: "Select the uploaded build for version 1.0, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.reviewNotesEntered",
         value: gate.appStoreConnect?.reviewNotesEntered,
-        next: "Enter review notes including demo access and medical disclaimer.",
+        next: "Enter review notes including demo access and medical disclaimer, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.screenshotsUploaded",
         value: gate.appStoreConnect?.screenshotsUploaded,
-        next: "Upload the verified iPhone and iPad screenshot sets.",
+        next: "Upload the verified iPhone and iPad screenshot sets, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
     ],
   },
@@ -207,6 +207,7 @@ if (missing.length > 0) {
   console.log("- npm run preflight:ios:live");
   console.log("- npm run preflight:ios:submit");
   console.log("- npm run auth:ios:evidence");
+  console.log("- npm run asc:ios:evidence");
   console.log("- npm run archive:ios:signing");
   console.log("- npm run screenshots:ios:check");
   console.log("- npm run screenshots:ios:evidence");
