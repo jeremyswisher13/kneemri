@@ -178,6 +178,10 @@ const authEvidence = readText("scripts", "ios-auth-evidence.mjs");
 assertIncludes("Auth evidence verifies Apple Developer gate", authEvidence, "appleDeveloper.signInWithAppleEnabledForBundleId");
 assertIncludes("Auth evidence verifies Firebase Apple provider gate", authEvidence, "firebaseAuth.appleProviderConfigured");
 assertIncludes("Auth evidence verifies Firebase authorized domains gate", authEvidence, "firebaseAuth.authorizedDomainsIncludeFirebaseHosting");
+assertIncludes("Auth evidence validates native Apple entitlement", authEvidence, "com.apple.developer.applesignin");
+assertIncludes("Auth evidence validates web Apple provider", authEvidence, 'OAuthProvider("apple.com")');
+assertIncludes("Auth evidence validates Firebase project", authEvidence, "firebase.firebaseProjectId === expected.firebaseProjectId");
+assertIncludes("Auth evidence reports submission gate alignment", authEvidence, "Submission Gate Alignment");
 assertIncludes("Auth evidence rejects private keys", authEvidence, "PRIVATE KEY");
 
 const appStoreConnectEvidenceScript = readText("scripts", "ios-app-store-connect-evidence.mjs");

@@ -59,6 +59,10 @@ describe("iOS Sign in with Apple readiness", () => {
     expect(evidenceScript).toContain("appleDeveloper.signInWithAppleEnabledForBundleId");
     expect(evidenceScript).toContain("firebaseAuth.appleProviderConfigured");
     expect(evidenceScript).toContain("firebaseAuth.authorizedDomainsIncludeFirebaseHosting");
+    expect(evidenceScript).toContain("com.apple.developer.applesignin");
+    expect(evidenceScript).toContain('OAuthProvider("apple.com")');
+    expect(evidenceScript).toContain("firebase.firebaseProjectId === expected.firebaseProjectId");
+    expect(evidenceScript).toContain("Submission Gate Alignment");
     expect(evidenceScript).toContain("PRIVATE KEY");
   });
 
@@ -68,6 +72,10 @@ describe("iOS Sign in with Apple readiness", () => {
     });
 
     expect(output).toContain("iOS Apple/Firebase Auth Evidence Report");
+    expect(output).toContain("Source Checks");
+    expect(output).toContain("Native Sign in with Apple entitlement is wired");
+    expect(output).toContain("Web app exposes Firebase apple.com provider");
+    expect(output).toContain("Submission Gate Alignment");
     expect(output).toContain("Ready Apple/Firebase auth gates:");
   });
 });

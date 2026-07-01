@@ -98,6 +98,9 @@ is the hard gate: it fails until Sign in with Apple is enabled for the app ID,
 the Apple Service ID/return URL is configured, the Firebase Apple provider is
 configured, the Firebase authorized domains are confirmed, and no private key or
 `.p8` material has been committed.
+The report also confirms the native Sign in with Apple entitlement, the web
+`apple.com` Firebase provider wiring, the expected Firebase project ID, and the
+matching `ios/AppStoreSubmissionGate.json` booleans.
 
 Then archive/upload a TestFlight build and verify on a real iPhone:
 
