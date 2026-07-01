@@ -1,4 +1,4 @@
-import { isLikelyIosDevice, isNativeIosAppShell, type RedirectSignInHints } from "@/lib/pwa";
+import { isNativeIosAppShell, type RedirectSignInHints } from "@/lib/pwa";
 
 export const LOGIN_RETURN_TO_KEY = "loginReturnTo";
 export const LOGIN_RETURN_TO_PARAM = "returnTo";
@@ -60,12 +60,21 @@ export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): s
 
 export function shouldUseRedirectSignIn(href: string, hints: RedirectSignInHints = {}): boolean {
   const url = new URL(href);
+  // Use redirect sign-in ONLY where popup sign-in genuinely can't work: local dev
+  // hosts, the native iOS WKWebView shell (no window.open), and installed
+  // standalone PWAs (a popup would escape the app window).
+  //
+  // Plain mobile Safari deliberately uses popup instead. signInWithRedirect drops
+  // the session on iOS Safari here: the app is served from ucla-knee-mri.web.app
+  // while Firebase's auth handler lives on ucla-knee-mri.firebaseapp.com, and
+  // Safari's tracking prevention blocks that cross-domain hand-off — so the user
+  // returns unauthenticated and gets bounced back to /login. Popup keeps the
+  // credential exchange in the app's own origin, avoiding the problem.
   return (
     url.hostname === "localhost" ||
     url.hostname === "127.0.0.1" ||
     isNativeIosAppShell(url.search, hints.userAgent) ||
-    hints.standalone === true ||
-    isLikelyIosDevice(hints)
+    hints.standalone === true
   );
 }
 

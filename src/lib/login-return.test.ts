@@ -109,12 +109,6 @@ describe("login return paths", () => {
     expect(shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", { standalone: true })).toBe(
       true,
     );
-    expect(
-      shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", {
-        platform: "iPhone",
-        userAgent: "Mozilla/5.0",
-      }),
-    ).toBe(true);
   });
 
   it("uses full-page redirect sign-in in the native iOS shell", () => {
@@ -124,6 +118,29 @@ describe("login return paths", () => {
     expect(
       shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", {
         userAgent: "Mozilla/5.0 UCLASportsMRIiOS",
+      }),
+    ).toBe(true);
+  });
+
+  it("uses popup sign-in (not redirect) on plain mobile Safari", () => {
+    // iOS Safari can't use redirect sign-in: the web.app <-> firebaseapp.com auth
+    // handler hop is cross-domain and Safari's tracking prevention drops the
+    // session, bouncing the user back to /login. Popup keeps it same-origin.
+    const iosSafari =
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1";
+    expect(
+      shouldUseRedirectSignIn("https://ucla-knee-mri.web.app/login", {
+        platform: "iPhone",
+        userAgent: iosSafari,
+      }),
+    ).toBe(false);
+    // ...but an installed standalone (home-screen) PWA still uses redirect, since
+    // a popup would escape the standalone app window.
+    expect(
+      shouldUseRedirectSignIn("https://ucla-knee-mri.web.app/login", {
+        platform: "iPhone",
+        userAgent: iosSafari,
+        standalone: true,
       }),
     ).toBe(true);
   });
