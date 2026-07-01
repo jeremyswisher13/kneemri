@@ -337,7 +337,9 @@ assertIncludes("Archive helper checks development team", archiveHelper, "DEVELOP
 assertIncludes("Archive helper reports Distribution identities", archiveHelper, "Apple Distribution identities");
 assertIncludes("Archive helper decodes provisioning profiles", archiveHelper, "Decoded provisioning profiles");
 assertIncludes("Archive helper reports matching profiles", archiveHelper, "Matching provisioning profiles");
-assertIncludes("Archive helper reports local signing assets", archiveHelper, "Local signing assets ready");
+assertIncludes("Archive helper reports App Store profiles", archiveHelper, "Matching App Store profiles");
+assertIncludes("Archive helper reports archive signing assets", archiveHelper, "Local archive signing assets ready");
+assertIncludes("Archive helper reports App Store export signing", archiveHelper, "App Store export signing ready");
 
 const firestoreRules = readText("firestore.rules");
 assertIncludes("Deletion request rules exist", firestoreRules, "match /accountDeletionRequests/{userId}");

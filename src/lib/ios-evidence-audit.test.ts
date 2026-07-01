@@ -31,7 +31,7 @@ describe("iOS evidence audit", () => {
       expect(auditScript).toContain(script);
     }
 
-    expect(auditScript).toContain("Command-line archive signing ready");
+    expect(auditScript).toContain("App Store export signing ready");
     expect(auditScript).toContain("Apple/Firebase auth gates");
     expect(auditScript).toContain("Real-device/account-deletion gates");
     expect(auditScript).toContain("Ready screenshot gates");
@@ -45,7 +45,7 @@ describe("iOS evidence audit", () => {
     });
 
     expect(output).toContain("iOS Evidence Audit");
-    expect(output).toContain("Archive signing");
+    expect(output).toContain("Archive/export signing");
     expect(output).toContain("Apple/Firebase auth evidence");
     expect(output).toContain("Real-device/account-deletion evidence");
     expect(output).toContain("App Store Connect evidence");

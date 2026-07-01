@@ -8,11 +8,11 @@ const verify = process.argv.includes("--verify");
 const commands = [
   {
     key: "archiveSigning",
-    label: "Archive signing",
+    label: "Archive/export signing",
     command: "node",
     args: ["scripts/ios-archive.mjs", "--signing"],
-    readyPattern: /Command-line archive signing ready: yes/,
-    readyLabel: "Command-line archive signing ready",
+    readyPattern: /App Store export signing ready: yes/,
+    readyLabel: "App Store export signing ready",
   },
   {
     key: "appleFirebaseAuth",
@@ -127,7 +127,7 @@ for (const result of results) {
 console.log("## Suggested Order");
 const suggestedActions = [];
 if (failures.some((result) => result.key === "archiveSigning")) {
-  suggestedActions.push("Fix Xcode account credentials/signing assets, then rerun npm run archive:ios:signing.");
+  suggestedActions.push("Create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri, then rerun npm run archive:ios:signing.");
 }
 if (failures.some((result) => result.key === "appleFirebaseAuth")) {
   suggestedActions.push("Complete Apple Developer Sign in with Apple and Firebase apple.com provider setup, then rerun npm run auth:ios:evidence:verify.");

@@ -133,6 +133,12 @@ function xmlDateValue(plist, key) {
   return plist.match(new RegExp(`<key>${key}</key>\\s*<date>([^<]+)</date>`))?.[1] ?? "";
 }
 
+function xmlBoolValue(plist, key) {
+  const match = plist.match(new RegExp(`<key>${key}</key>\\s*<(true|false)\\s*/?>`));
+  if (!match) return null;
+  return match[1] === "true";
+}
+
 function xmlArrayValues(plist, key) {
   const body = plist.match(new RegExp(`<key>${key}</key>\\s*<array>([\\s\\S]*?)</array>`))?.[1] ?? "";
   return Array.from(body.matchAll(/<string>([^<]+)<\/string>/g), (match) => match[1]);
@@ -152,6 +158,8 @@ function decodeProvisioningProfile(filePath) {
   const bundleId = applicationIdentifier.startsWith(`${teamId}.`)
     ? applicationIdentifier.slice(teamId.length + 1)
     : applicationIdentifier;
+  const getTaskAllow = xmlBoolValue(plist, "get-task-allow");
+  const hasProvisionedDevices = plist.includes("<key>ProvisionedDevices</key>");
 
   return {
     filePath,
@@ -161,6 +169,9 @@ function decodeProvisioningProfile(filePath) {
     teamName: xmlValue(plist, "TeamName"),
     bundleId,
     expirationDate: xmlDateValue(plist, "ExpirationDate"),
+    getTaskAllow,
+    hasProvisionedDevices,
+    isAppStoreProfile: getTaskAllow === false && !hasProvisionedDevices,
   };
 }
 
@@ -186,12 +197,14 @@ function provisioningProfileSummary(targetBundleId = "", targetTeamId = "") {
       profile.bundleId === targetBundleId &&
       (!targetTeamId || profile.teamId === targetTeamId),
   );
+  const matchingAppStore = matching.filter((profile) => profile.isAppStoreProfile);
 
   return {
     count: files.length,
     decodedCount: decoded.length,
     decodeFailureCount: files.length - decoded.length,
     matching,
+    matchingAppStore,
     path: xcodeProvisioningProfilesPath,
   };
 }
@@ -309,6 +322,7 @@ function printSigningReport() {
     ["Provisioning profiles", `${profileSummary.count} at ${profileSummary.path}`],
     ["Decoded provisioning profiles", `${profileSummary.decodedCount}/${profileSummary.count}`],
     ["Matching provisioning profiles", `${profileSummary.matching.length} for ${bundleId || "missing"}${developmentTeam ? ` / ${developmentTeam}` : ""}`],
+    ["Matching App Store profiles", `${profileSummary.matchingAppStore.length} for ${bundleId || "missing"}${developmentTeam ? ` / ${developmentTeam}` : ""}`],
     ["Provisioning required", settings.get("PROVISIONING_PROFILE_REQUIRED")],
     ["Entitlements", settings.get("CODE_SIGN_ENTITLEMENTS")],
     ["DerivedData path", derivedDataPath],
@@ -325,18 +339,28 @@ function printSigningReport() {
     !!developmentTeam;
   const distributionIdentityReady = identitySummary.distributionCount > 0;
   const matchingProfileReady = profileSummary.matching.length > 0;
-  const localSigningAssetsReady = distributionIdentityReady && matchingProfileReady;
-  const archiveReady = archiveSettingsReady && localSigningAssetsReady;
+  const appStoreProfileReady = profileSummary.matchingAppStore.length > 0;
+  const localArchiveSigningAssetsReady = identitySummary.validCount > 0 && matchingProfileReady;
+  const appStoreExportSigningReady = distributionIdentityReady && appStoreProfileReady;
+  const archiveReady = archiveSettingsReady && localArchiveSigningAssetsReady;
 
   console.log(`\nCommand-line archive settings ready: ${archiveSettingsReady ? "yes" : "no"}`);
-  console.log(`Local signing assets ready: ${localSigningAssetsReady ? "yes" : "no"}`);
+  console.log(`Local archive signing assets ready: ${localArchiveSigningAssetsReady ? "yes" : "no"}`);
+  console.log(`App Store export signing ready: ${appStoreExportSigningReady ? "yes" : "no"}`);
   console.log(`Command-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
   if (profileSummary.decodeFailureCount > 0) {
     console.log(`Warning: ${profileSummary.decodeFailureCount} provisioning profile(s) could not be decoded.`);
   }
   if (profileSummary.matching.length > 0) {
     for (const profile of profileSummary.matching) {
-      console.log(`Matching profile: ${profile.name} (${profile.uuid}); expires ${profile.expirationDate || "unknown"}`);
+      const profileKind = profile.isAppStoreProfile
+        ? "App Store"
+        : profile.getTaskAllow === true
+          ? "Development"
+          : profile.hasProvisionedDevices
+            ? "Ad Hoc"
+            : "Unknown";
+      console.log(`Matching profile: ${profile.name} (${profile.uuid}); ${profileKind}; expires ${profile.expirationDate || "unknown"}`);
     }
   }
   if (!developmentTeam) {
@@ -345,8 +369,8 @@ function printSigningReport() {
     console.log("Next: open Xcode > Settings > Accounts, sign in or refresh Jeremy Swisher, then let Xcode create/download signing certificates and provisioning profiles for com.jeremyswisher.uclasportsmri.");
   } else if (!distributionIdentityReady) {
     console.log("Next: open Xcode > Settings > Accounts > Jeremy Swisher > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.");
-  } else if (!matchingProfileReady) {
-    console.log("Next: let Xcode create/download a provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
+  } else if (!matchingProfileReady || !appStoreProfileReady) {
+    console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B, then rerun npm run export:ios.");
   }
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
 }

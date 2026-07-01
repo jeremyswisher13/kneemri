@@ -51,15 +51,19 @@ describe("iOS archive readiness", () => {
     expect(archiveHelper).toContain("Provisioning profiles");
     expect(archiveHelper).toContain("Decoded provisioning profiles");
     expect(archiveHelper).toContain("Matching provisioning profiles");
+    expect(archiveHelper).toContain("Matching App Store profiles");
     expect(archiveHelper).toContain("application-identifier");
-    expect(archiveHelper).toContain("Local signing assets ready");
+    expect(archiveHelper).toContain("Local archive signing assets ready");
+    expect(archiveHelper).toContain("App Store export signing ready");
     expect(archiveHelper).toContain("distributionIdentityReady");
+    expect(archiveHelper).toContain("appStoreProfileReady");
     expect(archiveHelper).toContain("archiveBuild");
     expect(archiveHelper).toContain("exportArchive");
     expect(handoff).toContain("X578T4K65B");
     expect(handoff).toContain("1 Apple Distribution identity");
+    expect(handoff).toContain("0 matching App Store distribution profiles");
     expect(handoff).toContain("Failed to find an account with App Store Connect access");
-    expect(handoff).toContain("current blocker is App Store Connect access");
+    expect(handoff).toContain("current blocker is App Store Connect-capable Xcode account access");
     expect(readme).toContain("X578T4K65B");
   });
 

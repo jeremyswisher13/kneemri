@@ -83,7 +83,10 @@ npm run export:ios
 `export:ios` retries App Store Connect export/upload from the existing archive.
 If export fails with App Store Connect account access, open Xcode > Settings >
 Accounts and confirm the signed-in Apple ID has App Store Connect access for
-Team `X578T4K65B`.
+Team `X578T4K65B`. If `npm run archive:ios:signing` reports
+`App Store export signing ready: no`, create/download an App Store distribution
+provisioning profile for `com.jeremyswisher.uclasportsmri` before retrying
+export/upload.
 
 Once Apple Developer signing is configured, archive/export with:
 
@@ -93,7 +96,7 @@ IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 
 The Xcode project pins Team ID `X578T4K65B` for `Jeremy Swisher`, so `IOS_DEVELOPMENT_TEAM` is optional after Xcode account credentials and signing assets are valid.
 The archive helper writes to `ios/build/`, which is ignored by git.
-`npm run archive:ios:signing` reports the Release signing settings, detected team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`, and whether local signing assets are ready before you attempt the archive.
+`npm run archive:ios:signing` reports the Release signing settings, detected team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching profile count, matching App Store profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`, and whether archive signing and App Store export signing are ready before you attempt upload.
 
 ## Reviewer access
 
