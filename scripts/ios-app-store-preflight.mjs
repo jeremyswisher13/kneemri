@@ -195,6 +195,9 @@ assertIncludes("App Store Connect evidence derives native marketing version", ap
 assertIncludes("App Store Connect evidence derives native build number", appStoreConnectEvidenceScript, "CURRENT_PROJECT_VERSION");
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
 assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
+assertIncludes("App Store Connect evidence prints role prerequisites", appStoreConnectEvidenceScript, "Account Holder, App Manager, or Admin");
+assertIncludes("App Store Connect evidence prints primary language", appStoreConnectEvidenceScript, "Primary language");
+assertIncludes("App Store Connect evidence prints user access", appStoreConnectEvidenceScript, "Full Access");
 
 const appStoreReleaseEvidenceScript = readText("scripts", "ios-app-store-release-evidence.mjs");
 assertIncludes("App Store release evidence verifies submission gate", appStoreReleaseEvidenceScript, "appStoreRelease.submittedForReview");

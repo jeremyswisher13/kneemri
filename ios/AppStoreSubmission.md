@@ -129,6 +129,9 @@ External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEv
 
 - Name: `UCLA Sports MRI`
 - Subtitle: `Sports medicine MRI learning`
+- Primary language: `English (U.S.)`
+- User access when creating the app record: `Full Access`
+- Required App Store Connect role for app record creation: Account Holder, App Manager, or Admin. Confirm the latest Apple Developer/App Store Connect agreement is accepted before creating the record.
 - Primary category: Education
 - Secondary category: Medical
 - Age rating: 16+ recommended because Apple's current age-rating reference maps frequent medical/treatment information to 16+; this app is advanced medical education for clinicians/fellows and is not for diagnosis or treatment.

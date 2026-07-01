@@ -404,7 +404,10 @@ for (const item of items) {
 console.log("");
 
 console.log("## Copy-Paste Packet");
+console.log("Prerequisites: latest Paid Apps/Developer Program agreement accepted; role Account Holder, App Manager, or Admin.");
 console.log(`Name: ${metadata.name}`);
+console.log(`Primary language: ${metadata.primaryLanguage}`);
+console.log("User access: Full Access");
 console.log(`Subtitle: ${metadata.subtitle}`);
 console.log(`SKU: ${metadata.sku}`);
 console.log(`Bundle ID: ${metadata.bundleId}`);

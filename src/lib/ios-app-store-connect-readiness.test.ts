@@ -9,6 +9,7 @@ type Metadata = {
   build: string;
   name: string;
   subtitle: string;
+  primaryLanguage: string;
   ageRatingRecommendation: string;
   ageRatingBasis: {
     appleCategory: string;
@@ -67,6 +68,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(packageJson).toContain('"asc:ios:evidence:verify": "node scripts/ios-app-store-connect-evidence.mjs --verify"');
     expect(handoff).toContain("npm run asc:ios:evidence:verify");
     expect(handoff).toContain("ios/AppStoreConnectEvidence.json");
+    expect(handoff).toContain("Primary language: `English (U.S.)`");
+    expect(handoff).toContain("User access when creating the app record: `Full Access`");
+    expect(handoff).toContain("Account Holder, App Manager, or Admin");
     expect(readme).toContain("npm run asc:ios:evidence");
     expect(preflight).toContain("App Store Connect evidence script exists");
     expect(gateReport).toContain("npm run asc:ios:evidence");
@@ -82,6 +86,7 @@ describe("iOS App Store Connect readiness", () => {
     expect(metadata.name.length).toBeGreaterThanOrEqual(2);
     expect(metadata.name.length).toBeLessThanOrEqual(30);
     expect(metadata.subtitle.length).toBeLessThanOrEqual(30);
+    expect(metadata.primaryLanguage).toBe("English (U.S.)");
     expect(metadata.ageRatingRecommendation).toBe("16+");
     expect(metadata.ageRatingBasis.appleCategory).toBe("Medical or Wellness");
     expect(metadata.ageRatingBasis.appleAnswer).toBe("Frequent medical or treatment information");
@@ -154,6 +159,10 @@ describe("iOS App Store Connect readiness", () => {
     expect(output).toContain("Screenshot Source Verification");
     expect(output).toContain("Screenshot evidence verifier:");
     expect(output).toContain("Copy-Paste Packet");
+    expect(output).toContain("latest Paid Apps/Developer Program agreement accepted");
+    expect(output).toContain("role Account Holder, App Manager, or Admin");
+    expect(output).toContain("Primary language: English (U.S.)");
+    expect(output).toContain("User access: Full Access");
     expect(output).toContain("Optional Accessibility Nutrition Labels");
     expect(output).toContain("Ready App Store Connect gates:");
   });
