@@ -109,23 +109,85 @@ function detectedDevelopmentTeam() {
 
 function signingIdentitySummary() {
   const result = runCapturedOptional("security", ["find-identity", "-v", "-p", "codesigning"]);
+  const identityLines = result.output
+    .split(/\r?\n/)
+    .filter((line) => /^\s*\d+\)/.test(line));
   const validCount = Number(result.output.match(/(\d+) valid identities found/)?.[1] ?? 0);
   return {
     validCount,
+    distributionCount: identityLines.filter((line) => /Apple Distribution|iPhone Distribution/.test(line)).length,
+    developmentCount: identityLines.filter((line) => /Apple Development|iPhone Developer/.test(line)).length,
     available: result.status === 0,
   };
 }
 
-function provisioningProfileSummary() {
+function xmlValue(plist, key) {
+  return plist.match(new RegExp(`<key>${key}</key>\\s*<string>([^<]+)</string>`))?.[1] ?? "";
+}
+
+function xmlDateValue(plist, key) {
+  return plist.match(new RegExp(`<key>${key}</key>\\s*<date>([^<]+)</date>`))?.[1] ?? "";
+}
+
+function xmlArrayValues(plist, key) {
+  const body = plist.match(new RegExp(`<key>${key}</key>\\s*<array>([\\s\\S]*?)</array>`))?.[1] ?? "";
+  return Array.from(body.matchAll(/<string>([^<]+)<\/string>/g), (match) => match[1]);
+}
+
+function decodeProvisioningProfile(filePath) {
+  const openssl = runCapturedOptional("openssl", ["smime", "-inform", "DER", "-verify", "-noverify", "-in", filePath]);
+  if (openssl.status !== 0) return null;
+  const plistStart = openssl.output.indexOf("<?xml");
+  const plistEnd = openssl.output.lastIndexOf("</plist>");
+  if (plistStart < 0 || plistEnd < 0) return null;
+
+  const plist = openssl.output.slice(plistStart, plistEnd + "</plist>".length);
+  const applicationIdentifier = xmlValue(plist, "application-identifier");
+  const teamIdentifiers = xmlArrayValues(plist, "TeamIdentifier");
+  const teamId = teamIdentifiers[0] ?? applicationIdentifier.split(".")[0] ?? "";
+  const bundleId = applicationIdentifier.startsWith(`${teamId}.`)
+    ? applicationIdentifier.slice(teamId.length + 1)
+    : applicationIdentifier;
+
+  return {
+    filePath,
+    uuid: xmlValue(plist, "UUID"),
+    name: xmlValue(plist, "Name"),
+    teamId,
+    teamName: xmlValue(plist, "TeamName"),
+    bundleId,
+    expirationDate: xmlDateValue(plist, "ExpirationDate"),
+  };
+}
+
+function provisioningProfileSummary(targetBundleId = "", targetTeamId = "") {
   if (!existsSync(xcodeProvisioningProfilesPath)) {
     return {
       count: 0,
+      decodedCount: 0,
+      decodeFailureCount: 0,
+      matching: [],
       path: xcodeProvisioningProfilesPath,
     };
   }
 
+  const files = readdirSync(xcodeProvisioningProfilesPath)
+    .filter((filename) => filename.endsWith(".mobileprovision"))
+    .map((filename) => join(xcodeProvisioningProfilesPath, filename));
+  const decoded = files
+    .map((filePath) => decodeProvisioningProfile(filePath))
+    .filter((profile) => profile !== null);
+  const matching = decoded.filter(
+    (profile) =>
+      profile.bundleId === targetBundleId &&
+      (!targetTeamId || profile.teamId === targetTeamId),
+  );
+
   return {
-    count: readdirSync(xcodeProvisioningProfilesPath).filter((filename) => filename.endsWith(".mobileprovision")).length,
+    count: files.length,
+    decodedCount: decoded.length,
+    decodeFailureCount: files.length - decoded.length,
+    matching,
     path: xcodeProvisioningProfilesPath,
   };
 }
@@ -190,11 +252,12 @@ function printSigningReport() {
   mkdirSync(derivedDataPath, { recursive: true });
   const detectedTeam = detectedDevelopmentTeam();
   const identitySummary = signingIdentitySummary();
-  const profileSummary = provisioningProfileSummary();
   const settings = parseBuildSettings(runCaptured("xcodebuild", buildSettingsArgs()));
   const developmentTeam = settings.get("DEVELOPMENT_TEAM") || detectedTeam?.teamID || "";
+  const bundleId = settings.get("PRODUCT_BUNDLE_IDENTIFIER") ?? "";
+  const profileSummary = provisioningProfileSummary(bundleId, developmentTeam);
   const rows = [
-    ["Bundle ID", settings.get("PRODUCT_BUNDLE_IDENTIFIER")],
+    ["Bundle ID", bundleId],
     ["Version", settings.get("MARKETING_VERSION")],
     ["Build", settings.get("CURRENT_PROJECT_VERSION")],
     ["Code signing style", settings.get("CODE_SIGN_STYLE")],
@@ -207,7 +270,11 @@ function printSigningReport() {
         : "missing",
     ],
     ["Valid code signing identities", identitySummary.available ? String(identitySummary.validCount) : "unavailable"],
+    ["Apple Distribution identities", identitySummary.available ? String(identitySummary.distributionCount) : "unavailable"],
+    ["Apple Development identities", identitySummary.available ? String(identitySummary.developmentCount) : "unavailable"],
     ["Provisioning profiles", `${profileSummary.count} at ${profileSummary.path}`],
+    ["Decoded provisioning profiles", `${profileSummary.decodedCount}/${profileSummary.count}`],
+    ["Matching provisioning profiles", `${profileSummary.matching.length} for ${bundleId || "missing"}${developmentTeam ? ` / ${developmentTeam}` : ""}`],
     ["Provisioning required", settings.get("PROVISIONING_PROFILE_REQUIRED")],
     ["Entitlements", settings.get("CODE_SIGN_ENTITLEMENTS")],
     ["DerivedData path", derivedDataPath],
@@ -222,12 +289,20 @@ function printSigningReport() {
     settings.get("CODE_SIGN_STYLE") === "Automatic" &&
     settings.get("CODE_SIGN_ENTITLEMENTS") === "UCLASportsMRI/UCLASportsMRI.entitlements" &&
     !!developmentTeam;
-  const localSigningAssetsReady = identitySummary.validCount > 0 && profileSummary.count > 0;
+  const localSigningAssetsReady = identitySummary.validCount > 0 && profileSummary.matching.length > 0;
   const archiveReady = archiveSettingsReady && localSigningAssetsReady;
 
   console.log(`\nCommand-line archive settings ready: ${archiveSettingsReady ? "yes" : "no"}`);
   console.log(`Local signing assets ready: ${localSigningAssetsReady ? "yes" : "no"}`);
   console.log(`Command-line archive signing ready: ${archiveReady ? "yes" : "no"}`);
+  if (profileSummary.decodeFailureCount > 0) {
+    console.log(`Warning: ${profileSummary.decodeFailureCount} provisioning profile(s) could not be decoded.`);
+  }
+  if (profileSummary.matching.length > 0) {
+    for (const profile of profileSummary.matching) {
+      console.log(`Matching profile: ${profile.name} (${profile.uuid}); expires ${profile.expirationDate || "unknown"}`);
+    }
+  }
   if (!developmentTeam) {
     console.log("Next: set IOS_DEVELOPMENT_TEAM=<Apple Team ID> or select the Apple Developer Team in Xcode before archiving.");
   } else if (!localSigningAssetsReady) {

@@ -293,6 +293,9 @@ assertIncludes("Archive helper auto-detects Xcode teams", archiveHelper, "detect
 assertIncludes("Archive helper uses workspace DerivedData", archiveHelper, "IOS_DERIVED_DATA_PATH");
 assertIncludes("Archive helper reports signing settings", archiveHelper, "--signing");
 assertIncludes("Archive helper checks development team", archiveHelper, "DEVELOPMENT_TEAM");
+assertIncludes("Archive helper reports Distribution identities", archiveHelper, "Apple Distribution identities");
+assertIncludes("Archive helper decodes provisioning profiles", archiveHelper, "Decoded provisioning profiles");
+assertIncludes("Archive helper reports matching profiles", archiveHelper, "Matching provisioning profiles");
 assertIncludes("Archive helper reports local signing assets", archiveHelper, "Local signing assets ready");
 
 const firestoreRules = readText("firestore.rules");

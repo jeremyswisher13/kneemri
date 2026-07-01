@@ -80,7 +80,7 @@ IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 
 The Xcode project pins Team ID `X578T4K65B` for `Jeremy Swisher`, so `IOS_DEVELOPMENT_TEAM` is optional after Xcode account credentials and signing assets are valid.
 The archive helper writes to `ios/build/`, which is ignored by git.
-`npm run archive:ios:signing` reports the Release signing settings, detected team, valid code-signing identity count, provisioning profile count, and whether local signing assets are ready before you attempt the archive.
+`npm run archive:ios:signing` reports the Release signing settings, detected team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`, and whether local signing assets are ready before you attempt the archive.
 
 ## Reviewer access
 
