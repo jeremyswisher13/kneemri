@@ -12,7 +12,7 @@ import {
   type MedicalQaReviewRecord,
   type MedicalQaReviewTarget,
 } from "@/lib/medical-qa-review";
-import { isLocalPreviewSession } from "@/lib/local-preview-auth";
+import { isPreviewAuthSession } from "@/lib/local-preview-auth";
 import {
   addLocalPreviewWrongAnswerToReview,
   getLocalPreviewProgress,
@@ -36,7 +36,7 @@ import type {
 // --- Admin Preview Guard ---
 function isAdminPreview(): boolean {
   try {
-    return !!sessionStorage.getItem("adminPreviewRole") || isLocalPreviewSession();
+    return !!sessionStorage.getItem("adminPreviewRole") || isPreviewAuthSession();
   } catch {
     return false;
   }
@@ -104,7 +104,7 @@ export async function submitQuiz(
   });
 
   // Admin preview / admin-view: return real scoring without writing anything.
-  if (isLocalPreviewSession() && !skipWrite) {
+  if (isPreviewAuthSession() && !skipWrite) {
     recordLocalPreviewQuiz(quizType, answers, score, questions.length, courseId);
     return { score, totalQuestions: questions.length, results, attemptId: "local-preview" };
   }
@@ -142,7 +142,7 @@ export async function submitSurvey(
   // When true (admin viewing directly), skip the write so test runs don't pollute data.
   skipWrite = false
 ) {
-  if (isLocalPreviewSession() && !skipWrite) {
+  if (isPreviewAuthSession() && !skipWrite) {
     recordLocalPreviewSurvey(surveyType, responses, courseId, retroResponses);
     return { success: true };
   }
@@ -189,7 +189,7 @@ export async function completeModule(
   quizTotal?: number,
   courseId: CourseId = defaultCourse.id
 ) {
-  if (isLocalPreviewSession()) {
+  if (isPreviewAuthSession()) {
     recordLocalPreviewModule(moduleId, quizScore ?? null, quizTotal ?? null, courseId);
     return { success: true };
   }
@@ -225,7 +225,7 @@ export async function markNormalPlanePassed(
   score: number,
   total: number,
 ) {
-  if (isLocalPreviewSession()) {
+  if (isPreviewAuthSession()) {
     recordLocalPreviewNormalPlane(planeId, score, total);
     return { success: true };
   }
@@ -252,7 +252,7 @@ export async function submitCaseAttempt(
   report: string,
   courseId: CourseId = defaultCourse.id
 ) {
-  if (isLocalPreviewSession()) {
+  if (isPreviewAuthSession()) {
     recordLocalPreviewCaseAttempt(caseId, searchPatternChecklist, report, courseId);
     return { success: true, attemptId: "local-preview" };
   }
@@ -475,7 +475,7 @@ export async function getAllFellows(course: CourseDefinition = defaultCourse) {
 // fresh (no long-lived staleness after a progress-writing mutation).
 const progressInFlight = new Map<string, Promise<UserProgress>>();
 export function loadProgress(userId: string, course: CourseDefinition = defaultCourse): Promise<UserProgress> {
-  if (isLocalPreviewSession()) return Promise.resolve(getLocalPreviewProgress(course));
+  if (isPreviewAuthSession()) return Promise.resolve(getLocalPreviewProgress(course));
 
   const key = `${userId}:${course.id}`;
   const existing = progressInFlight.get(key);
@@ -568,7 +568,7 @@ export async function saveMedicalQaReview(
 // collection read; cleared once settled so later navigations still refetch.
 let reviewCardsInFlight: { uid: string; p: Promise<ReviewCard[]> } | null = null;
 export async function getReviewCards(userId: string): Promise<ReviewCard[]> {
-  if (isLocalPreviewSession()) return getLocalPreviewReviewCards();
+  if (isPreviewAuthSession()) return getLocalPreviewReviewCards();
   if (isAdminPreview()) return [];
   if (reviewCardsInFlight && reviewCardsInFlight.uid === userId) return reviewCardsInFlight.p;
   const p = (async () => {
@@ -583,7 +583,7 @@ export async function getReviewCards(userId: string): Promise<ReviewCard[]> {
 }
 
 export async function saveReviewCard(userId: string, card: ReviewCard): Promise<void> {
-  if (isLocalPreviewSession()) {
+  if (isPreviewAuthSession()) {
     saveLocalPreviewReviewCard(card);
     return;
   }
@@ -636,7 +636,7 @@ export async function addWrongAnswerToReview(
   moduleId: string,
   courseId: CourseId = defaultCourse.id,
 ): Promise<void> {
-  if (isLocalPreviewSession()) {
+  if (isPreviewAuthSession()) {
     addLocalPreviewWrongAnswerToReview(questionId, moduleId, courseId);
     return;
   }

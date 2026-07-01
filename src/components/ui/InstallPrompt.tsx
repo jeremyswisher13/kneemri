@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Button from "@/components/ui/Button";
-import { installInstructionsForUserAgent, isStandaloneDisplayMode } from "@/lib/pwa";
+import { installInstructionsForUserAgent, isNativeIosAppShell, isStandaloneDisplayMode } from "@/lib/pwa";
 
 const DISMISS_KEY = "uclaSportsMri.installPrompt.dismissed";
 
@@ -25,6 +25,7 @@ function readDismissed() {
 export default function InstallPrompt({ variant = "full", className = "" }: InstallPromptProps) {
   const [dismissed, setDismissed] = useState(readDismissed);
   const [standalone] = useState(() => isStandaloneDisplayMode());
+  const [nativeIosShell] = useState(() => isNativeIosAppShell());
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
 
@@ -42,7 +43,7 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
     return installInstructionsForUserAgent(navigator.userAgent, navigator.platform, navigator.maxTouchPoints);
   }, []);
 
-  if (dismissed || standalone) return null;
+  if (dismissed || standalone || nativeIosShell) return null;
 
   async function install() {
     if (!deferredPrompt) return;
@@ -77,7 +78,7 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
             }
             setDetailsOpen((open) => !open);
           }}
-          className="inline-flex min-h-9 items-center rounded-lg border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-ucla-dark"
+          className="inline-flex min-h-11 items-center rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-ucla-dark sm:min-h-9 sm:py-1.5 sm:text-xs"
         >
           Install app
         </button>

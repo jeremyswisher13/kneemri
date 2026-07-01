@@ -28,7 +28,7 @@ export default function NormalSeriesSelector<TId extends string>({
             type="button"
             onClick={() => onSeriesChange(item.id)}
             aria-pressed={active}
-            className={`min-h-9 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+            className={`min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors sm:min-h-9 sm:px-3.5 sm:py-1.5 ${
               active
                 ? "border-ucla-blue bg-ucla-blue text-white"
                 : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
@@ -42,7 +42,7 @@ export default function NormalSeriesSelector<TId extends string>({
         <span
           key={item}
           aria-disabled="true"
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-dashed border-gray-300 bg-gray-50 px-3.5 py-1.5 text-sm font-medium text-gray-500"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dashed border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-500 sm:min-h-9 sm:px-3.5 sm:py-1.5"
           title="Coming soon"
         >
           {item}

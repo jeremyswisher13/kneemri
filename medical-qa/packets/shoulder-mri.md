@@ -1,5 +1,5 @@
 # Medical QA Packet: Shoulder MRI for Primary Care Sports Medicine
-Generated: 2026-06-28
+Generated: 2026-06-30
 Course ID: `shoulder-mri`  
 Body region: `shoulder`  
 Audience: Primary care sports medicine fellows

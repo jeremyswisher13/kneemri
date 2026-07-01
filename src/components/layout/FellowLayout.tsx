@@ -251,7 +251,7 @@ export default function FellowLayout() {
           </div>
           <button
             onClick={exitPreview}
-            className="rounded-lg bg-amber-600 px-3 py-1 text-xs font-semibold text-white hover:bg-amber-700 transition-colors"
+            className="min-h-11 rounded-lg bg-amber-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-amber-700 sm:min-h-0 sm:py-1 sm:text-xs"
           >
             Exit Preview → Admin
           </button>
@@ -329,7 +329,7 @@ export default function FellowLayout() {
           <Link
             to="/"
             onClick={() => setSidebarOpen(false)}
-            className="mt-4 flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100"
+            className="mt-4 flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 lg:min-h-0 lg:py-1.5"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -348,7 +348,7 @@ export default function FellowLayout() {
                     key={course.id}
                     to={coursePath(course, "/")}
                     onClick={() => setSidebarOpen(false)}
-                    className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`flex min-h-11 items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       selected
                         ? "bg-ucla-light text-ucla-dark"
                         : "text-gray-700 hover:bg-gray-100"
@@ -402,7 +402,7 @@ export default function FellowLayout() {
                   <Link
                     to={item.path}
                     onClick={() => setSidebarOpen(false)}
-                    className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(item.path)
                         ? "bg-ucla-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
@@ -427,7 +427,7 @@ export default function FellowLayout() {
                   <Link
                     to={coursePath(activeCourse, "/reference")}
                     onClick={() => setSidebarOpen(false)}
-                    className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(coursePath(activeCourse, "/reference"))
                         ? "bg-ucla-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
@@ -451,7 +451,7 @@ export default function FellowLayout() {
                 <Link
                   to={coursePath(activeCourse, "/review")}
                   onClick={() => setSidebarOpen(false)}
-                  className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                     isActive(coursePath(activeCourse, "/review"))
                       ? "bg-ucla-blue text-white"
                       : "text-gray-700 hover:bg-gray-100"
@@ -492,7 +492,7 @@ export default function FellowLayout() {
                   <Link
                     to={scopedPath}
                     onClick={() => setSidebarOpen(false)}
-                    className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(scopedPath)
                         ? "bg-ucla-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
@@ -517,7 +517,7 @@ export default function FellowLayout() {
                 <Link
                   to={coursePath(activeCourse, "/certificate")}
                   onClick={() => setSidebarOpen(false)}
-                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                     isActive(coursePath(activeCourse, "/certificate"))
                       ? "bg-ucla-blue text-white"
                       : "text-gray-700 hover:bg-gray-100"
@@ -538,7 +538,7 @@ export default function FellowLayout() {
             onClick={toggleSurgical}
             role="switch"
             aria-checked={showSurgical}
-            className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
+            className="flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 lg:min-h-0"
             title="Show surgical & arthroscopic correlates alongside the MRI"
           >
             <span className="flex items-center gap-2">
@@ -563,14 +563,21 @@ export default function FellowLayout() {
           {role === "admin" && (
             <Link
               to="/admin"
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="block min-h-11 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 lg:min-h-0"
             >
               Admin Panel
             </Link>
           )}
+          <Link
+            to="/account"
+            onClick={() => setSidebarOpen(false)}
+            className="block min-h-11 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 lg:min-h-0"
+          >
+            Account & Privacy
+          </Link>
           <button
             onClick={() => signOutUser()}
-            className="w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-100"
+            className="min-h-11 w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-100 lg:min-h-0"
           >
             Sign Out
           </button>

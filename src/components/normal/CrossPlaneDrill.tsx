@@ -214,7 +214,7 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
         <div
           role="group"
           aria-label="Cross-plane difficulty"
-          className="inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-xs"
+          className="inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-sm sm:text-xs"
         >
           {(coarse ? (["mc"] as Diff[]) : (["mc", "free"] as Diff[])).map((d) => (
             <button
@@ -222,7 +222,7 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               type="button"
               onClick={() => changeDiff(d)}
               aria-pressed={diff === d}
-              className={`min-h-9 rounded-md px-3 py-1.5 font-medium transition-colors lg:min-h-0 lg:px-2.5 lg:py-1 ${
+              className={`min-h-11 rounded-md px-3 py-2 font-medium transition-colors sm:min-h-9 sm:py-1.5 lg:min-h-0 lg:px-2.5 lg:py-1 ${
                 diff === d ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
               }`}
             >

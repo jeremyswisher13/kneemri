@@ -1,5 +1,5 @@
 # Medical QA Packet: Elbow MRI for Primary Care Sports Medicine
-Generated: 2026-06-28
+Generated: 2026-06-30
 Course ID: `elbow-mri`  
 Body region: `elbow`  
 Audience: Primary care sports medicine fellows
@@ -152,7 +152,7 @@ Topics:
 - Normal-variant pitfalls: the capitellar pseudodefect, transverse trochlear ridge, and distal-UCL synovial recess
 Common mistakes:
 - **Mistake:** Staging a capitellar OCD off the sagittal plane alone (or off a single plane)
-  **Correction:** Read capitellar OCD on coronal AND sagittal together — the coronal face shows the radiocapitellar contact zone where the lesion lives, while the sagittal defines its anterior-to-posterior extent and contour. Confirm any osteochondral finding in ≥2 planes before calling it, and remember the available stacks here are coronal T2-FS, so full OCD staging awaits sagittal acquisition.
+  **Correction:** Read capitellar OCD on coronal AND sagittal together — the coronal face shows the radiocapitellar contact zone where the lesion lives, while the sagittal defines its anterior-to-posterior extent and contour. Confirm any osteochondral finding in ≥2 planes before calling it; the course now has coronal, axial, and sagittal elbow stacks, but dedicated arthrographic/FABS views are still separate protocol decisions.
 - **Mistake:** Reflexively ordering MR arthrography for every elbow, or treating an elbow 'ABER'/valgus-applied sequence as a validated routine like the shoulder
   **Correction:** Non-contrast 3T MRI answers most elbow questions (tendons, OCD, nerves, occult fracture, loose bodies). Add direct MR arthrography specifically when a UCL undersurface (T-sign) tear is suspected but non-contrast is equivocal, or when loose-body count/OCD stability will change the operation. A valgus-applied or flexed positioning adjunct can open the medial joint, but the elbow evidence base is thin compared with the shoulder ABER — present it as an adjunct, not a routine sequence.
 - **Mistake:** Calling the capitellar pseudodefect, the transverse trochlear ridge, or a small distal-UCL synovial recess a lesion
@@ -172,7 +172,7 @@ The first orientation skill is knowing **which plane answers which question** �
 
 **Capitellar OCD is the key cross-plane rule:** read it on **coronal + sagittal together**, not sagittal alone. The coronal shows the lesion at the radiocapitellar surface where it lives; the sagittal defines its anterior-to-posterior extent and contour. A lesion convincing on one plane but absent on the orthogonal plane is more likely a partial-volume artifact than a real defect.
 
-**Build note:** as of this build the only stacks on hand are **coronal T2-FS**, so UCL, epicondylitis, LCL-origin, and the coronal OCD face can be taught now; axial, sagittal, FABS, and arthrographic stacks are needed before image-driven nerve, biceps-footprint, loose-body, and full OCD-staging teaching.
+**Course-image note:** the normal elbow workstation now includes coronal, axial, and sagittal stacks, so the course can teach the plane map visually. Dedicated **FABS** views for distal-biceps footprint grading and **MR arthrography** for subtle UCL undersurface tears or equivocal OCD stability remain protocol choices that are not represented by the normal stacks.
 
 **Pearl:** Each elbow plane owns a question: axial for nerves and the biceps footprint, coronal for the UCL and the radiocapitellar OCD face, sagittal for loose bodies and the triceps — and capitellar OCD must be read on coronal AND sagittal together, never sagittal alone.
 
@@ -210,7 +210,7 @@ The distal biceps tendon runs **obliquely** to its radial-tuberosity footprint, 
 
 **The shoulder-ABER caveat (don't over-promise):** an abduction/valgus-applied or flexed positioning adjunct *can* open the medial joint to improve undersurface-tear conspicuity, but the **elbow evidence base is thin** compared with the shoulder ABER. Present it as an **adjunct, not a validated routine sequence**.
 
-**Image-availability caveat for this course:** the available stacks are **non-arthrographic coronal T2-FS**, so the T-sign is taught here as a concept on coronal non-contrast images — with the explicit reminder that **MR arthrography is more sensitive** for it.
+**Course-image caveat:** the local normal stacks are non-arthrographic, so the T-sign is taught as a concept with the explicit reminder that **MR arthrography is more sensitive** when the clinical question is a subtle undersurface UCL tear.
 
 **Pearl:** Reach for MR arthrography only when it changes the operation — confirming the partial undersurface UCL T-sign, detecting/counting loose bodies, or settling OCD stability when non-contrast is equivocal; non-contrast 3T answers most elbow cases, and an elbow valgus/ABER adjunct is not a validated routine.
 
@@ -229,7 +229,7 @@ Think **T1 = anatomy/marrow, fluid-sensitive = pathology/edema.** A fracture lin
 
 **The orientation discipline: confirm every finding in at least two planes.** A signal abnormality on one plane that disappears on the orthogonal plane is usually **partial-volume averaging or a normal contour**, not pathology. This is why the OCD rule (coronal + sagittal) and the LUCL rule (coronal + axial) exist — partial-volume averaging is the single most common reason a real lesion is missed *or* a normal variant is over-called.
 
-**Available here:** coronal **T2-FS** — the workhorse fluid-sensitive plane for the UCL, the T-sign concept, epicondylitis, and the LCL origin.
+**Available in the normal workstation:** **coronal T2-FS**, **axial T2-FS**, and **sagittal IR/STIR** stacks. They are enough to teach orientation and two-plane confirmation, while T1, MR arthrography, and FABS remain protocol-specific additions when the clinical question requires them.
 
 **Pearl:** Fluid-sensitive fat-sat shows the pathology (tears, edema, the OCD rim) and T1 shows the anatomy and the marrow red flag — and a finding seen on only one plane is partial-volume artifact until you confirm it on a second.
 
@@ -286,7 +286,7 @@ A reproducible order forces you to **visit every compartment regardless of where
 - **Calibrates attention** — the high-consequence compartment (**bones/marrow**) is read *early*, while attention is freshest, not last when fatigue sets in.
 - **Auditable dictation** — the report writes itself in a fixed sequence reviewers can follow.
 
-**The elbow caveat on planes:** as of this build the only stacks on hand are **coronal T2-FS**, which carries the UCL, the LCL/LUCL origin, the common flexor/extensor origins, and the coronal face of a capitellar OCD. A complete search still *names* the structures that need **axial** (nerves, annular ligament, biceps footprint), **sagittal** (fossae/loose bodies, OCD's anteroposterior extent), and **FABS** (distal biceps) — so you can flag what the available planes cannot answer rather than silently skip it.
+**The elbow caveat on planes:** the normal workstation includes coronal, axial, and sagittal stacks, which is enough to teach the compartment map and the discipline of naming what each plane can and cannot answer. A complete pathology read still flags when a dedicated **FABS** view (distal biceps) or **MR arthrogram** (subtle UCL undersurface tear, equivocal OCD stability, or loose-body/chondral mapping) would change the decision.
 
 **Management impact:** lesion-spotting over-calls the symptomatic structure and under-calls the silent surgical one. A fixed order keeps you from discharging an elbow to a counterforce brace when the marrow held an unstable OCD or the LUCL was torn.
 
@@ -557,7 +557,7 @@ The other two contribute little to valgus restraint:
 | Posterior bundle | Medial epicondyle → olecranon (cubital tunnel floor) | Minimal |
 | Transverse/Cooper | Coronoid → olecranon | Negligible |
 
-**Note on the available images:** the elbow stacks here are **coronal + axial non-arthrographic T2 fat-sat** — coronal is the plane to read the anterior bundle and the T-sign, with the caveat below that MR arthrography is more sensitive for the undersurface tear.
+**Course-image note:** the normal elbow workstation includes **coronal T2-FS, axial T2-FS, and sagittal IR/STIR** non-arthrographic stacks. Coronal remains the plane to read the anterior bundle and the T-sign conceptually, with the caveat below that MR arthrography is more sensitive for subtle undersurface tears.
 
 **Pearl:** When a thrower presents with medial pain, the only valgus-relevant ligament is the anterior bundle from the medial epicondyle to the sublime tubercle — read it on coronal fluid-sensitive images prescribed along the band, and do not let the overlying flexor-pronator tendon distract you from the deep ligament.
 
@@ -594,7 +594,7 @@ The **T-sign** is the signature of a **partial-thickness undersurface (articular
 | Proximal fibers | **Still attached** | Discontinuous / gap / retraction |
 | Extravasation | Contained (articular-sided) | **Medial extravasation through the defect** |
 
-**The arthrography caveat:** because the deep surface tear may not fill with native joint fluid on a non-contrast study, **MR arthrography is the most sensitive study** for the T-sign — intra-articular contrast actively undercuts the partial tear. On the non-arthrographic coronal T2 fat-sat available here, you can suggest the T-sign, but if the question is surgically decisive and the study is equivocal, **add MR arthrography**.
+**The arthrography caveat:** because the deep surface tear may not fill with native joint fluid on a non-contrast study, **MR arthrography is the most sensitive study** for the T-sign — intra-articular contrast actively undercuts the partial tear. On the coronal T2-FS stack in this normal workstation, teach the T-sign conceptually; if the question is surgically decisive and the non-contrast study is equivocal, **add MR arthrography**.
 
 **Pearl:** The T-sign is fluid undercutting the distal UCL beyond the cartilage edge while the proximal fibers stay attached — it is the under-recognized, season-ending undersurface tear of the throwing elbow, and MR arthrography is the most sensitive study to confirm it when non-contrast imaging is equivocal.
 
@@ -830,7 +830,7 @@ Three structures decide every distal biceps read. Find them before you grade any
 | **Short head** | Distal / anterior | Flexion |
 | **Long head** | Proximal / posterior | Supination |
 
-**Best images:** the distal biceps is read on **axial fluid-sensitive fat-sat** and, ideally, the dedicated **FABS view** (Flexion–ABduction–Supination, prone), which lays the footprint flat for partial-tear grading and retraction measurement. The current build's coronal-only T2-FS stack does not lay the footprint flat — note that the FABS/axial stacks are required before this is image-driven.
+**Best images:** the distal biceps is read on **axial fluid-sensitive fat-sat** and, ideally, the dedicated **FABS view** (Flexion–ABduction–Supination, prone), which lays the footprint flat for partial-tear grading and retraction measurement. The normal elbow workstation includes an axial T2-FS stack for tendon orientation but not a dedicated FABS acquisition, so use this as an anatomy anchor and avoid making footprint-grading claims from the teaching stack alone.
 
 **Pearl:** Before grading any distal biceps tear, locate the lacertus fibrosus — it is the structure that determines whether a complete tear retracts, and therefore how urgently it must reach a surgeon.
 
@@ -1256,6 +1256,10 @@ Teaching points:
 - Distal (sublime-tubercle) tears are a recognized, prognostically WORSE, and more often occult pattern, and they do worse nonoperatively — which is why naming the location matters. But distal-versus-proximal predominance is genuinely NOT uniform in the literature; teach distal tears as an important under-recognized pattern, not as the more common lesion (several series report proximal/humeral-sided partials as at least as frequent).
 - Management is driven by the lesion + the moving-valgus exam + the athlete's demand, not the MRI alone. Repair ± internal brace has re-emerged for acute avulsion-type tears with good tissue (often younger/earlier-return athletes), while reconstruction (Tommy John) is the conversation for full-thickness tears or high-grade/symptomatic partials in throwers wanting high-level return — so 'avulsion off bone vs shredded midsubstance' is a distinction the surgeon wants.
 - Every thrower's medial-pain read is the valgus triad: UCL + flexor-pronator origin + ulnar nerve — they injure together. Document ulnar neuritis/subluxation, but concurrent ulnar nerve transposition with UCL surgery is SELECTIVE (for preoperative ulnar symptoms or instability), not routine; anchor any neuritis call to caliber change + denervation + clinical correlation, not T2 signal alone.
+Teaching media:
+- src=/images/teaching/us/elbow-ucl.jpg | alt=Long-axis ultrasound of the elbow UCL anterior bundle | caption=US correlate: long-axis UCL anterior bundle from the medial epicondyle with a labeled overlay. | attribution=Manske RC, Voight M, Wolfe C, Page P. Int J Sports Phys Ther 2023;18(2). CC BY-NC 4.0.
+- src=/images/teaching/us/elbow-common-flexor.jpg | alt=Long-axis ultrasound of the common flexor-pronator origin at the medial epicondyle | caption=US correlate: common flexor-pronator origin at the medial epicondyle. | attribution=Konarski W, et al. Healthcare 2022;10(8):1529. CC BY 4.0.
+- src=/images/teaching/us/elbow-ulnar-nerve.jpg | alt=Short-axis ultrasound of the ulnar nerve in the cubital tunnel | caption=US correlate: ulnar nerve in the cubital tunnel with labeled anatomic overlay. | attribution=Manske RC, Voight M, Page P, Wolfe C. Int J Sports Phys Ther 2024;19(4):502-6. CC BY-NC 4.0.
 
 ### Capitellar Osteochondritis Dissecans — Stable vs Unstable
 
@@ -1405,6 +1409,8 @@ Teaching points:
 - Management/disposition pearl: a complete distal biceps avulsion in an active patient is a surgical referral for anatomic repair. Earlier repair is technically easier - frame timing as a GUIDELINE (earlier is better), NOT a hard 2-4-week deadline. Many primary repairs succeed out to roughly 4-6 weeks and beyond; chronic, retracted, irreducible tears that will not reach the tuberosity are the ones that need a graft.
 - Pitfall: an intact brachialis preserves some elbow flexion and an intact lacertus preserves some gross strength, so the patient may not look as weak as expected - weak SUPINATION and a positive HOOK test are the more reliable clinical clues. Do not let preserved flexion talk you out of a complete tear.
 - The FABS view (flexion-abduction-supination, prone) profiles the footprint and is the best plane to grade partial-vs-complete and measure retraction; bicipitoradial bursitis is a CLUE to scrutinize the insertion, not a diagnosis. A large distended bursa can also compress the PIN, so check the radial nerve.
+Teaching media:
+- src=/images/teaching/us/elbow-distal-biceps.jpg | alt=Long-axis ultrasound of the distal biceps tendon toward the radial tuberosity | caption=US correlate: distal biceps tendon in the antecubital fossa toward the radial tuberosity. | attribution=Daoukas S, Galanis D. Ultrasound 2025. CC BY 4.0.
 
 ### Lateral Epicondylitis + Partial Common Extensor / LUCL Tear
 
@@ -1480,6 +1486,8 @@ Teaching points:
 - Don't over-call the reactive findings: lateral-epicondyle marrow edema and a thin RCL signal routinely accompany lateral epicondylitis and are NOT, by themselves, an LCL tear. Anchor an LUCL/PLRI call to loss of ligament continuity, an undersurface tear deep to the common extensor, and secondary signs (posterolateral radial subluxation/radiocapitellar incongruity) plus the clinical pivot-shift — not edema alone.
 - PLRI from an undercutting deep extensor/LUCL tear is a classic post-injection and post-lateral-release complication. In a patient who has had prior lateral steroid injections or a release and now has refractory or new mechanical lateral symptoms, specifically interrogate the LUCL for iatrogenic injury.
 - Disposition: tendinosis and low-grade partial tears are rehab-first (eccentric loading, activity modification; injection is at best temporizing and potentially harmful). A deep extensor tear INVOLVING the LUCL with PLRI is the surgical exception — refer to orthopedics/elbow surgery for ligament repair/reconstruction. Name the single management-changing finding (LUCL involvement) explicitly in the impression.
+Teaching media:
+- src=/images/teaching/us/elbow-common-extensor.jpg | alt=Long-axis ultrasound of the common extensor origin at the lateral epicondyle | caption=US correlate: common extensor origin at the lateral epicondyle with the radial head deep. | attribution=Allen GM, Jacobson JA, in IDKD 'Musculoskeletal Diseases 2021-2024' (NCBI Bookshelf NBK570156). CC BY 4.0.
 
 ### Medial Epicondylitis with Adjacent Ulnar Neuritis
 
@@ -1553,6 +1561,10 @@ Teaching points:
 - Management/disposition pearl: uncomplicated medial epicondylitis with ulnar neuritis is REHAB-first (swing/activity modification, flexor-pronator and kinetic-chain rehab, nerve hygiene, night extension splinting). The presence of ulnar symptoms changes the OPERATIVE plan if surgery is later needed - the nerve must be addressed, not ignored, when the flexor-pronator origin is debrided.
 - The single most operative-changing nerve finding is DYNAMIC SUBLUXATION: an ulnar nerve that subluxates over the medial epicondyle in flexion (or a coexisting anconeus epitrochlearis or snapping triceps) favors selective ANTERIOR TRANSPOSITION over in-situ decompression. Assess subluxation on flexion axial images and look for the accessory muscle - it is absent here, so this nerve is stable.
 - Pitfall: do not overcall the UCL. A couple of millimetres of fluid undercutting the distal UCL can be a normal synovial recess; the abnormal T-sign is fluid tracking BEYOND the articular-cartilage edge. But DO trace it every time - a concomitant UCL tear in a thrower (less so this older golfer) shifts the conversation from rehab toward UCL reconstruction, and transposition with reconstruction is selective (for preoperative ulnar symptoms/instability), not routine.
+Teaching media:
+- src=/images/teaching/us/elbow-common-flexor.jpg | alt=Long-axis ultrasound of the common flexor-pronator origin at the medial epicondyle | caption=US correlate: common flexor-pronator origin at the medial epicondyle. | attribution=Konarski W, et al. Healthcare 2022;10(8):1529. CC BY 4.0.
+- src=/images/teaching/us/elbow-ulnar-nerve.jpg | alt=Short-axis ultrasound of the ulnar nerve in the cubital tunnel | caption=US correlate: ulnar nerve in the cubital tunnel with labeled anatomic overlay. | attribution=Manske RC, Voight M, Page P, Wolfe C. Int J Sports Phys Ther 2024;19(4):502-6. CC BY-NC 4.0.
+- src=/images/teaching/us/elbow-ucl.jpg | alt=Long-axis ultrasound of the elbow UCL anterior bundle | caption=US correlate: long-axis UCL anterior bundle from the medial epicondyle with a labeled overlay. | attribution=Manske RC, Voight M, Wolfe C, Page P. Int J Sports Phys Ther 2023;18(2). CC BY-NC 4.0.
 
 ### Cubital Tunnel Syndrome — Ulnar Neuritis ± Subluxation
 
@@ -1626,6 +1638,8 @@ Teaching points:
 - Snapping triceps is the don't-miss companion: the medial head of the triceps can subluxate over the medial epicondyle in flexion together with the ulnar nerve. If you decompress or transpose the nerve but ignore a snapping triceps, the patient keeps snapping — so interrogate the triceps on the flexion images every time you call ulnar subluxation.
 - Anchor the diagnosis to CALIBER change plus muscle DENERVATION plus clinical correlation — not signal alone. Mild ulnar-nerve T2 hyperintensity occurs in asymptomatic elbows, so compare the nerve to the ipsilateral MEDIAN nerve (internal control) and the CONTRALATERAL ulnar nerve. There is no universal cross-sectional-area cutoff.
 - Stage the denervation by timing: there is NO MRI change for the first ~2-4 weeks, then SUBACUTE (potentially reversible) T2/STIR muscle edema in FCU and the ulnar FDP, then CHRONIC T1 fatty atrophy. Subacute edema is a subacute, not hyperacute, finding — and fatty atrophy signals later, less reversible disease that raises the urgency of decompression.
+Teaching media:
+- src=/images/teaching/us/elbow-ulnar-nerve.jpg | alt=Short-axis ultrasound of the ulnar nerve in the cubital tunnel | caption=US correlate: ulnar nerve in the cubital tunnel with labeled anatomic overlay. | attribution=Manske RC, Voight M, Page P, Wolfe C. Int J Sports Phys Ther 2024;19(4):502-6. CC BY-NC 4.0.
 
 ### Valgus Extension Overload — Posteromedial Loose Body
 
@@ -1777,6 +1791,8 @@ Teaching points:
 - The don't-overcall counterpoint: the capitellar PSEUDODEFECT (posterolateral bare-area groove) and the transverse TROCHLEAR RIDGE are normal variants — calling either an osteochondral lesion or fracture sends a patient down an unnecessary surgical pathway. Capitellar OCD requires a fluid-undercut fragment, a sizeable/multiple subchondral cyst (the 5 mm figure is knee-derived, not validated for the capitellum), a cartilage breach, or a displaced fragment — none of which a pseudodefect has.
 - The radial-head SURGICAL TRIGGER is functional, not a single number: a mechanical BLOCK to forearm rotation, an articular fragment displaced enough to impede motion, or comminution of the whole head (Mason III). The '2 mm' figure alone does not mandate surgery — many minimally displaced Mason I/II fractures without a block are managed non-operatively with early motion.
 - Run the radiocapitellar line on every projection/plane (it must bisect the capitellum) to avoid missing an occult Monteggia, and in CHILDREN convert the same fat-pad sign into a dedicated hunt for the non-union-prone lateral condyle (Salter-Harris IV) fracture — a classic pediatric miss with very different stakes.
+Teaching media:
+- src=/images/teaching/us/elbow-radial-head.jpg | alt=Ultrasound of the radiocapitellar joint and radial head | caption=US correlate: radiocapitellar joint and radial head; the MRI task is still to confirm a true fracture line plus edema. | attribution=Malahias MA, et al. Arch Bone Jt Surg 2018;6(6):539. CC BY-NC 3.0.
 
 ## Normal MRI Workstation
 
@@ -2409,7 +2425,7 @@ Explanation: Snapping triceps — the medial triceps head subluxating over the m
 
 #### Planes — what each one answers
 - **Axial:** Cross-sections the four compartments. Best for the ulnar nerve in the cubital tunnel (and dynamic flexion subluxation), the radial nerve/PIN at the radiocapitellar level, the common flexor/extensor origins, the annular ligament around the radial neck, and the distal biceps footprint.
-- **Coronal:** The UCL anterior bundle to the sublime tubercle, the RCL/LUCL complex, the common flexor and extensor origins, and the capitellar/trochlear articular surfaces. This is the plane to read the T-sign. (Currently the only sequences on hand are coronal and axial T2 FS.)
+- **Coronal:** The UCL anterior bundle to the sublime tubercle, the RCL/LUCL complex, the common flexor and extensor origins, and the capitellar/trochlear articular surfaces. This is the plane to read the T-sign conceptually, while remembering that MR arthrography is more sensitive for subtle undersurface tears.
 - **Sagittal:** The distal biceps and triceps, the brachialis, the anterior/posterior fat pads, the trochlea/capitellum cartilage contour, and the olecranon/coronoid fossae for loose bodies. Read capitellar OCD on coronal + sagittal together.
 - **FABS (Flexion–ABduction–Supination, prone):** A dedicated view that lays the distal biceps footprint flat at the radial tuberosity for partial-tear grading and retraction measurement.
 

@@ -1,7 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import {
-  completeGoogleRedirectSignIn,
+  completeRedirectSignIn,
+  signInWithApple,
+  signInWithAppleRedirect,
   signInWithGoogle,
   signInWithGoogleRedirect,
 } from "@/lib/auth";
@@ -17,9 +19,21 @@ import {
   returnPathFromLocation,
   shouldUseRedirectSignIn,
 } from "@/lib/login-return";
-import { enableLocalPreviewAuth, isLocalPreviewHost } from "@/lib/local-preview-auth";
+import {
+  canEnableAppReviewDemo,
+  enableAppReviewDemoAuth,
+  enableLocalPreviewAuth,
+  isLocalPreviewHost,
+} from "@/lib/local-preview-auth";
 import { useEffect, useState } from "react";
 import PageLoader from "@/components/ui/PageLoader";
+
+type SignInProvider = "google" | "apple";
+
+const providerLabels: Record<SignInProvider, string> = {
+  google: "Google",
+  apple: "Apple",
+};
 
 function shouldUseRedirectFallback(err: unknown): boolean {
   const code = (err as { code?: string } | null)?.code;
@@ -37,11 +51,15 @@ export default function LoginPage() {
   const returnTo = returnPathFromLocation(location.state, location.search);
   const [error, setError] = useState<string | null>(null);
   const [signingIn, setSigningIn] = useState(false);
+  const [activeProvider, setActiveProvider] = useState<SignInProvider | null>(null);
+  const [fallbackProvider, setFallbackProvider] = useState<SignInProvider>("google");
   const [checkingRedirect, setCheckingRedirect] = useState(true);
   const [canonicalizingLocalHost, setCanonicalizingLocalHost] = useState(false);
   const [standaloneMode] = useState(() => isStandaloneDisplayMode());
   const localPreviewAvailable =
     typeof window !== "undefined" && isLocalPreviewHost(window.location.href);
+  const appReviewDemoAvailable =
+    typeof window !== "undefined" && canEnableAppReviewDemo(window.location.href, sessionStorage);
   const installInstructions =
     typeof navigator === "undefined"
       ? ""
@@ -62,7 +80,7 @@ export default function LoginPage() {
     let cancelled = false;
     async function completeRedirect() {
       try {
-        const result = await completeGoogleRedirectSignIn();
+        const result = await completeRedirectSignIn();
         if (!result || cancelled) return;
         setRole(result.role);
         navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
@@ -86,27 +104,32 @@ export default function LoginPage() {
     }
   }, [checkingRedirect, user, loading, navigate, returnTo]);
 
-  async function handleGoogleSignIn() {
+  async function handleProviderSignIn(provider: SignInProvider) {
     setError(null);
     setSigningIn(true);
+    setActiveProvider(provider);
+    setFallbackProvider(provider);
     rememberReturnPath(sessionStorage, returnTo);
     try {
       if (
         typeof window !== "undefined" &&
         shouldUseRedirectSignIn(window.location.href, browserRedirectSignInHints())
       ) {
-        await signInWithGoogleRedirect();
+        await signInWithProviderRedirect(provider);
         return;
       }
 
-      const { role } = await signInWithGoogle();
+      const { role } =
+        provider === "apple"
+          ? await signInWithApple()
+          : await signInWithGoogle();
       // Set the role directly — avoids race with onAuthStateChanged
       setRole(role);
       navigate(consumeReturnPath(sessionStorage, returnTo), { replace: true });
     } catch (err: unknown) {
       if (shouldUseRedirectFallback(err)) {
         try {
-          await signInWithGoogleRedirect();
+          await signInWithProviderRedirect(provider);
           return;
         } catch (redirectErr: unknown) {
           setError(redirectErr instanceof Error ? redirectErr.message : "Failed to sign in");
@@ -116,18 +139,29 @@ export default function LoginPage() {
       }
     } finally {
       setSigningIn(false);
+      setActiveProvider(null);
     }
+  }
+
+  async function signInWithProviderRedirect(provider: SignInProvider) {
+    if (provider === "apple") {
+      await signInWithAppleRedirect();
+      return;
+    }
+    await signInWithGoogleRedirect();
   }
 
   async function handleRedirectSignIn() {
     setError(null);
     setSigningIn(true);
+    setActiveProvider(fallbackProvider);
     rememberReturnPath(sessionStorage, returnTo);
     try {
-      await signInWithGoogleRedirect();
+      await signInWithProviderRedirect(fallbackProvider);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to sign in");
       setSigningIn(false);
+      setActiveProvider(null);
     }
   }
 
@@ -135,6 +169,13 @@ export default function LoginPage() {
     setError(null);
     setSigningIn(true);
     enableLocalPreviewAuth(sessionStorage);
+    window.location.assign(returnTo);
+  }
+
+  function handleAppReviewDemoSignIn() {
+    setError(null);
+    setSigningIn(true);
+    enableAppReviewDemoAuth(sessionStorage);
     window.location.assign(returnTo);
   }
 
@@ -153,6 +194,10 @@ export default function LoginPage() {
           <p className="mt-2 text-sm text-gray-600">
             Interactive MRI interpretation courses for sports medicine learners
           </p>
+          <p className="mx-auto mt-3 max-w-sm text-xs leading-5 text-gray-500">
+            Educational training only. This app does not diagnose, treat, or replace clinical judgment;
+            confirm patient-care decisions with qualified clinicians and local policy.
+          </p>
         </div>
 
         <div className="rounded-xl bg-white p-8 shadow-lg">
@@ -165,7 +210,7 @@ export default function LoginPage() {
           )}
 
           <button
-            onClick={handleGoogleSignIn}
+            onClick={() => handleProviderSignIn("google")}
             disabled={signingIn}
             className="w-full flex items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
           >
@@ -175,11 +220,22 @@ export default function LoginPage() {
               <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
             </svg>
-            {signingIn ? "Signing in..." : "Sign in with Google"}
+            {signingIn && activeProvider === "google" ? "Signing in..." : "Sign in with Google"}
+          </button>
+
+          <button
+            onClick={() => handleProviderSignIn("apple")}
+            disabled={signingIn}
+            className="mt-3 flex w-full items-center justify-center gap-3 rounded-lg bg-black px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.37 1.51c0 1.15-.42 2.17-1.25 3.04-.93.97-2 1.53-3.18 1.44-.12-1.1.45-2.25 1.21-3.05.84-.88 2.28-1.55 3.22-1.43ZM20.77 17.08c-.48 1.1-.7 1.59-1.31 2.56-.85 1.31-2.04 2.95-3.52 2.97-1.31.01-1.65-.86-3.43-.85-1.78.01-2.15.87-3.47.85-1.48-.02-2.61-1.49-3.46-2.8-2.43-3.76-2.68-8.17-1.18-10.52 1.07-1.67 2.75-2.65 4.34-2.65 1.62 0 2.64.87 3.98.87 1.3 0 2.09-.87 3.97-.87 1.42 0 2.92.77 3.98 2.1-3.49 1.91-2.92 6.88.1 8.34Z" />
+            </svg>
+            {signingIn && activeProvider === "apple" ? "Signing in..." : "Sign in with Apple"}
           </button>
 
           <p className="mt-4 text-center text-xs text-gray-500">
-          Sign in with your Google account to access the courses.
+            Sign in with Google or Apple to access the courses.
           </p>
 
           {standaloneMode && (
@@ -199,13 +255,23 @@ export default function LoginPage() {
             </button>
           )}
 
+          {appReviewDemoAvailable && (
+            <button
+              onClick={handleAppReviewDemoSignIn}
+              disabled={signingIn}
+              className="mt-4 w-full rounded-lg border border-[#003B5C]/30 bg-[#F4F8FB] px-4 py-2 text-sm font-semibold text-[#003B5C] transition-colors hover:bg-[#E8F1F7] focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              Continue in App Review demo
+            </button>
+          )}
+
           {error && (
             <button
               onClick={handleRedirectSignIn}
               disabled={signingIn}
               className="mt-4 w-full rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-2 text-sm font-medium text-ucla-dark hover:bg-ucla-light/70 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             >
-              Continue with full-page sign-in
+              Continue with full-page {providerLabels[fallbackProvider]} sign-in
             </button>
           )}
         </div>

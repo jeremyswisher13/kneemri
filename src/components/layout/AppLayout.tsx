@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import OfflineStatusBanner from "@/components/ui/OfflineStatusBanner";
 import InstallPrompt from "@/components/ui/InstallPrompt";
 
@@ -21,7 +21,11 @@ export default function AppLayout() {
       <footer className="bg-white border-t border-gray-200 px-6 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 text-center text-sm text-gray-500">
         <div className="flex flex-wrap items-center justify-between gap-2 max-w-5xl mx-auto">
           <span>Created by Jeremy Swisher, MD | UCLA Division of Sports Medicine</span>
-          <span>© 2026 UCLA Health</span>
+          <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <Link to="/privacy" className="font-medium text-ucla-blue hover:underline">Privacy</Link>
+            <Link to="/support" className="font-medium text-ucla-blue hover:underline">Support</Link>
+            <span>© 2026 UCLA Health</span>
+          </span>
         </div>
       </footer>
     </div>

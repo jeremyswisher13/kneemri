@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth, authPersistenceReady } from "@/lib/firebase";
 import { getUserProfile, ensureAdminRole } from "@/lib/auth";
-import { createLocalPreviewUser, isLocalPreviewSession } from "@/lib/local-preview-auth";
+import { createActivePreviewUser, isPreviewAuthSession } from "@/lib/local-preview-auth";
 
 type Specialty = "sports-med" | "ortho" | null;
 
@@ -33,20 +33,20 @@ const AuthContext = createContext<AuthContextType>({
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(() =>
-    isLocalPreviewSession() ? createLocalPreviewUser() : null,
+    isPreviewAuthSession() ? createActivePreviewUser() : null,
   );
   const [role, setRole] = useState<string | null>(() =>
-    isLocalPreviewSession() ? "fellow" : null,
+    isPreviewAuthSession() ? "fellow" : null,
   );
   const [specialty, setSpecialty] = useState<Specialty>(() =>
-    isLocalPreviewSession() ? "sports-med" : null,
+    isPreviewAuthSession() ? "sports-med" : null,
   );
   const [showSurgical, setShowSurgical] = useState(false);
-  const [loading, setLoading] = useState(() => !isLocalPreviewSession());
+  const [loading, setLoading] = useState(() => !isPreviewAuthSession());
 
   const refreshRole = async () => {
-    if (isLocalPreviewSession()) {
-      setUser(createLocalPreviewUser());
+    if (isPreviewAuthSession()) {
+      setUser(createActivePreviewUser());
       setRole("fellow");
       setSpecialty("sports-med");
       setShowSurgical(false);
@@ -68,7 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // resolved role and the UI (banner, Admin Panel link, useIsAdminView) agree.
     sessionStorage.removeItem("adminPreviewRole");
 
-    if (isLocalPreviewSession()) {
+    if (isPreviewAuthSession()) {
       return () => {};
     }
 

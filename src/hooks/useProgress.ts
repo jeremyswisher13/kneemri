@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { defaultCourse, type CourseDefinition } from "@/content/courses";
-import { isLocalPreviewSession } from "@/lib/local-preview-auth";
+import { isPreviewAuthSession } from "@/lib/local-preview-auth";
 import { getLocalPreviewProgress, LOCAL_PREVIEW_PROGRESS_EVENT } from "@/lib/local-preview-progress";
 import type { UserProgress } from "@/types/progress";
 
@@ -15,7 +15,7 @@ export function useProgress(course: CourseDefinition = defaultCourse) {
   const [progress, setProgress] = useState<UserProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [, setPreviewVersion] = useState(0);
-  const localPreview = isLocalPreviewSession();
+  const localPreview = isPreviewAuthSession();
 
   const courseId = course.id;
   const previewProgress = localPreview ? getLocalPreviewProgress(course, role) : null;

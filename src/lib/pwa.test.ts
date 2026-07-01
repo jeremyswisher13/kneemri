@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { installInstructionsForUserAgent, isLikelyIosDevice } from "@/lib/pwa";
+import { installInstructionsForUserAgent, isLikelyIosDevice, isNativeIosAppShell } from "@/lib/pwa";
 
 describe("pwa helpers", () => {
   it("detects modern iPadOS devices that report as MacIntel", () => {
@@ -30,6 +30,12 @@ describe("pwa helpers", () => {
     expect(installInstructionsForUserAgent("Mozilla/5.0 (Linux; Android 14)", "Linux")).toContain(
       "Install app",
     );
+  });
+
+  it("detects the native iOS shell so browser install prompts can be hidden", () => {
+    expect(isNativeIosAppShell("?source=ios-app", "")).toBe(true);
+    expect(isNativeIosAppShell("", "Mozilla/5.0 UCLASportsMRIiOS")).toBe(true);
+    expect(isNativeIosAppShell("?source=homescreen", "Mozilla/5.0 Safari/605.1.15")).toBe(false);
   });
 
   it("offers home-screen shortcuts for every normal MRI workstation", () => {

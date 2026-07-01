@@ -71,7 +71,7 @@ function ScrollDrill({ block }: { block: Extract<InteractiveBlock, { kind: "scro
             type="button"
             onClick={() => setShowCompare((v) => !v)}
             aria-pressed={showCompare}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
+            className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:min-h-0 sm:py-1.5 sm:text-xs ${
               showCompare
                 ? "border-rose-300 bg-rose-100 text-rose-700 hover:bg-rose-200"
                 : "border-rose-300/70 bg-rose-50 text-rose-700 hover:bg-rose-100"
@@ -101,13 +101,13 @@ function ShapeShift({ block }: { block: Extract<InteractiveBlock, { kind: "shape
   return (
     <div>
       <Instruction>{block.instruction}</Instruction>
-      <div className="mb-3 inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-xs">
+      <div className="mb-3 inline-flex rounded-lg border border-gray-200 bg-white p-0.5 text-sm sm:text-xs">
         {block.views.map((vw, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setV(i)}
-            className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
+            className={`min-h-11 rounded-md px-3 py-2 font-medium transition-colors sm:min-h-0 sm:py-1.5 ${
               i === v ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
           >
@@ -115,7 +115,14 @@ function ShapeShift({ block }: { block: Extract<InteractiveBlock, { kind: "shape
           </button>
         ))}
       </div>
-      <AnnotatedSlice dir={view.dir} sliceIndex={view.sliceIndex} markers={[view.marker]} showLabels pulse />
+      <AnnotatedSlice
+        dir={view.dir}
+        sliceIndex={view.sliceIndex}
+        markers={[view.marker]}
+        showLabels
+        pulse
+        alt={`${view.planeLabel} MRI slice highlighting ${view.marker.label ?? "the selected structure"}`}
+      />
       <Teaching>{block.teaching}</Teaching>
     </div>
   );
@@ -141,11 +148,12 @@ function Annotate({ block }: { block: Extract<InteractiveBlock, { kind: "annotat
         markers={block.markers}
         showLabels={reveal}
         pulse={reveal}
+        alt={`MRI slice ${block.sliceIndex + 1} for the ${block.title} annotation drill`}
       />
       <button
         type="button"
         onClick={() => setReveal((r) => !r)}
-        className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-ucla-blue/40 bg-ucla-blue/10 px-3 py-1.5 text-xs font-semibold text-ucla-blue transition-colors hover:bg-ucla-blue/20"
+        className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-ucla-blue/40 bg-ucla-blue/10 px-3 py-2 text-sm font-semibold text-ucla-blue transition-colors hover:bg-ucla-blue/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
       >
         {reveal ? "Hide structures" : "Reveal structures"}
       </button>

@@ -22,19 +22,22 @@ export default function AnnotatedSlice({
   markers = [],
   showLabels = false,
   pulse = false,
+  alt,
 }: {
   dir: string;
   sliceIndex: number;
   markers?: Marker[];
   showLabels?: boolean;
   pulse?: boolean;
+  alt?: string;
 }) {
   const src = `${dir}/slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`;
+  const imageAlt = alt ?? `MRI slice ${sliceIndex + 1} with educational annotation markers`;
   return (
     <div className="relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:max-h-none lg:w-full lg:max-w-[560px]">
       <img
         src={src}
-        alt=""
+        alt={imageAlt}
         draggable={false}
         className="mx-auto block max-h-[45svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full"
       />

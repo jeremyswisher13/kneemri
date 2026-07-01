@@ -87,7 +87,14 @@ export default function GuidedTour({
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       <div className="flex flex-col gap-3">
-        <AnnotatedSlice dir={dir} sliceIndex={step.sliceIndex} markers={step.markers} showLabels pulse />
+        <AnnotatedSlice
+          dir={dir}
+          sliceIndex={step.sliceIndex}
+          markers={step.markers}
+          showLabels
+          pulse
+          alt={`MRI slice ${step.sliceIndex + 1} highlighting ${step.title}`}
+        />
         {abnormal && compareOpen && (
           <figure className="overflow-hidden rounded-xl border border-rose-200 bg-white shadow-sm">
             <div className="border-b border-rose-100 bg-rose-50 px-3 py-2">
@@ -220,7 +227,7 @@ export default function GuidedTour({
               type="button"
               onClick={() => setReadingOpen((v) => !v)}
               aria-pressed={readingOpen}
-              className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:min-h-0 sm:py-1.5 sm:text-xs ${
                 readingOpen
                   ? "border-indigo-300 bg-indigo-100 text-indigo-800 hover:bg-indigo-200"
                   : "border-indigo-300/70 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
@@ -269,7 +276,7 @@ export default function GuidedTour({
               type="button"
               onClick={() => setCorrelateOpen((v) => !v)}
               aria-pressed={correlateOpen}
-              className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:min-h-0 sm:py-1.5 sm:text-xs ${
                 correlateOpen
                   ? "border-sky-300 bg-sky-100 text-sky-800 hover:bg-sky-200"
                   : "border-sky-300/70 bg-sky-50 text-sky-700 hover:bg-sky-100"
@@ -291,7 +298,7 @@ export default function GuidedTour({
                 onClick={() => setCompareOpen((v) => !v)}
                 aria-pressed={compareOpen}
                 aria-label={`${compareOpen ? "Hide" : "Show"} normal-to-pathology comparison for ${bridge.label}`}
-                className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:min-h-0 sm:py-1.5 sm:text-xs ${
                   compareOpen
                     ? "border-rose-300 bg-rose-100 text-rose-700 hover:bg-rose-200"
                     : "border-rose-300/70 bg-rose-50 text-rose-700 hover:bg-rose-100"
@@ -307,7 +314,7 @@ export default function GuidedTour({
             <Link
               to={`${caseBasePath}/${bridge.caseId}`}
               aria-label={`Open injured case: ${bridge.label}`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-ucla-gold/60 bg-ucla-gold/10 px-3 py-1.5 text-xs font-semibold text-[#7a5d00] transition-colors hover:bg-ucla-gold/20"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-ucla-gold/60 bg-ucla-gold/10 px-3 py-2 text-sm font-semibold text-[#7a5d00] transition-colors hover:bg-ucla-gold/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
             >
               See it injured: {bridge.label}
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

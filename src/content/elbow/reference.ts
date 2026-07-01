@@ -24,7 +24,7 @@ export const elbowAnatomySections: MeasurementSection[] = [
       {
         label: "Coronal",
         detail:
-          "The UCL anterior bundle to the sublime tubercle, the RCL/LUCL complex, the common flexor and extensor origins, and the capitellar/trochlear articular surfaces. This is the plane to read the T-sign. (Currently the only sequences on hand are coronal and axial T2 FS.)",
+          "The UCL anterior bundle to the sublime tubercle, the RCL/LUCL complex, the common flexor and extensor origins, and the capitellar/trochlear articular surfaces. This is the plane to read the T-sign conceptually, while remembering that MR arthrography is more sensitive for subtle undersurface tears.",
       },
       {
         label: "Sagittal",

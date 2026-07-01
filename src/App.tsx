@@ -13,6 +13,9 @@ import LoginPage from "@/pages/LoginPage";
 // Suspense boundary lives inside FellowLayout/AdminLayout (around <Outlet/>),
 // so the sidebar stays put and only the content area shows a loader.
 const HomePage = lazy(() => import("@/pages/HomePage"));
+const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
+const SupportPage = lazy(() => import("@/pages/SupportPage"));
+const AccountPage = lazy(() => import("@/pages/AccountPage"));
 const DashboardPage = lazy(() => import("@/pages/DashboardPage"));
 const ModulesPage = lazy(() => import("@/pages/ModulesPage"));
 const ModulePage = lazy(() => import("@/pages/ModulePage"));
@@ -53,11 +56,14 @@ export default function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/support" element={<SupportPage />} />
 
             {/* Fellow routes */}
             <Route element={<ProtectedRoute />}>
               {/* Course-picker landing — standalone (AppLayout chrome, no course sidebar). */}
               <Route index element={<HomePage />} />
+              <Route path="/account" element={<AccountPage />} />
               <Route element={<FellowLayout />}>
                 <Route path="courses/:courseId" element={<DashboardPage />} />
                 <Route path="courses/:courseId/modules" element={<ModulesPage />} />

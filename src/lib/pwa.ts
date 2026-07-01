@@ -16,6 +16,15 @@ export function isStandaloneDisplayMode(): boolean {
   return window.matchMedia("(display-mode: standalone)").matches || nav.standalone === true;
 }
 
+export function isNativeIosAppShell(search?: string, userAgent?: string): boolean {
+  const rawSearch =
+    search ?? (typeof window === "undefined" ? "" : window.location.search);
+  const ua =
+    userAgent ?? (typeof navigator === "undefined" ? "" : navigator.userAgent);
+  const source = new URLSearchParams(rawSearch).get("source")?.toLowerCase();
+  return source === "ios-app" || /\bUCLASportsMRIiOS\b/i.test(ua);
+}
+
 export function browserRedirectSignInHints(): RedirectSignInHints {
   if (typeof window === "undefined") return {};
   const nav = navigator as NavigatorWithStandalone;

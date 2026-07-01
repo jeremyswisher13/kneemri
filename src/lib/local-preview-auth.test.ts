@@ -1,11 +1,19 @@
 import { describe, expect, it } from "vitest";
 import {
+  APP_REVIEW_DEMO_AUTH_KEY,
+  APP_REVIEW_DEMO_UID,
   LOCAL_PREVIEW_AUTH_KEY,
   LOCAL_PREVIEW_UID,
+  canEnableAppReviewDemo,
+  createAppReviewDemoUser,
   createLocalPreviewUser,
+  disableAppReviewDemoAuth,
   disableLocalPreviewAuth,
+  enableAppReviewDemoAuth,
   enableLocalPreviewAuth,
+  hasAppReviewDemoAuth,
   hasLocalPreviewAuth,
+  isAppReviewDemoRequested,
   isLocalPreviewHost,
 } from "@/lib/local-preview-auth";
 
@@ -42,12 +50,44 @@ describe("local preview auth", () => {
     expect(hasLocalPreviewAuth(storage)).toBe(false);
   });
 
+  it("recognizes App Review demo launch flags", () => {
+    expect(isAppReviewDemoRequested("https://ucla-knee-mri.firebaseapp.com/login?reviewerDemo=1")).toBe(true);
+    expect(isAppReviewDemoRequested("https://ucla-knee-mri.firebaseapp.com/login?reviewerDemo=true")).toBe(true);
+    expect(isAppReviewDemoRequested("https://ucla-knee-mri.firebaseapp.com/login?returnTo=%2F%3FreviewerDemo%3D1")).toBe(true);
+    expect(isAppReviewDemoRequested("https://ucla-knee-mri.firebaseapp.com/login")).toBe(false);
+    expect(isAppReviewDemoRequested("not a url")).toBe(false);
+  });
+
+  it("stores and clears the App Review demo flag", () => {
+    const storage = memoryStorage();
+
+    expect(hasAppReviewDemoAuth(storage)).toBe(false);
+    expect(canEnableAppReviewDemo("https://ucla-knee-mri.firebaseapp.com/login", storage)).toBe(false);
+
+    enableAppReviewDemoAuth(storage);
+    expect(storage.getItem(APP_REVIEW_DEMO_AUTH_KEY)).toBe("1");
+    expect(hasAppReviewDemoAuth(storage)).toBe(true);
+    expect(canEnableAppReviewDemo("https://ucla-knee-mri.firebaseapp.com/login", storage)).toBe(true);
+
+    disableAppReviewDemoAuth(storage);
+    expect(hasAppReviewDemoAuth(storage)).toBe(false);
+  });
+
   it("creates a stable fellow preview user", () => {
     const user = createLocalPreviewUser();
 
     expect(user.uid).toBe(LOCAL_PREVIEW_UID);
     expect(user.email).toBe("local-preview@localhost");
     expect(user.displayName).toBe("Local Preview");
+    expect(user.isAnonymous).toBe(false);
+  });
+
+  it("creates a stable App Review demo user", () => {
+    const user = createAppReviewDemoUser();
+
+    expect(user.uid).toBe(APP_REVIEW_DEMO_UID);
+    expect(user.email).toBe("app-review-demo@uclasportsmri.local");
+    expect(user.displayName).toBe("App Review Demo");
     expect(user.isAnonymous).toBe(false);
   });
 });

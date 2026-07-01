@@ -164,7 +164,7 @@ export default function KnowledgeCheck({
       <div
         role="group"
         aria-label="Knowledge check mode"
-        className="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5 text-xs font-semibold"
+        className="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5 text-sm font-semibold sm:text-xs"
       >
         {(["identify", "locate"] as Mode[]).map((m) => (
           <button
@@ -172,7 +172,7 @@ export default function KnowledgeCheck({
             type="button"
             onClick={() => setMode(m)}
             aria-pressed={mode === m}
-            className={`rounded-md px-3 py-1.5 transition-colors ${
+            className={`min-h-11 rounded-md px-3 py-2 transition-colors sm:min-h-0 sm:py-1.5 ${
               mode === m ? "bg-white text-ucla-blue shadow-sm" : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -183,7 +183,13 @@ export default function KnowledgeCheck({
 
       <div className="grid gap-5 lg:grid-cols-2">
         {mode === "identify" ? (
-          <AnnotatedSlice dir={dir} sliceIndex={q.sliceIndex} markers={[q.marker]} pulse />
+          <AnnotatedSlice
+            dir={dir}
+            sliceIndex={q.sliceIndex}
+            markers={[q.marker]}
+            pulse
+            alt={`${planeLabel} MRI slice with a marked structure for identification`}
+          />
         ) : (
           <LocatableSlice
             key={q.id}
@@ -276,7 +282,7 @@ export default function KnowledgeCheck({
                   onClick={() =>
                     onShowInLearn({ itemId: q.id, sliceIndex: q.sliceIndex, marker: q.marker, structure })
                   }
-                  className="mt-2 flex items-center gap-1 text-xs font-semibold text-ucla-blue hover:underline"
+                  className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ucla-blue hover:underline sm:min-h-0 sm:text-xs"
                 >
                   Show me in Learn mode
                   <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

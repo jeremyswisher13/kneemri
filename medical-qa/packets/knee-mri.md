@@ -1,5 +1,5 @@
 # Medical QA Packet: UCLA Knee MRI Interpretation Course
-Generated: 2026-06-28
+Generated: 2026-06-30
 Course ID: `knee-mri`  
 Body region: `knee`  
 Audience: Sports medicine fellows and orthopaedic residents

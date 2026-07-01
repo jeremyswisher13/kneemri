@@ -1,5 +1,5 @@
 # Medical QA Packet: Hip MRI for Primary Care Sports Medicine
-Generated: 2026-06-28
+Generated: 2026-06-30
 Course ID: `hip-mri`  
 Body region: `hip`  
 Audience: Primary care sports medicine fellows
