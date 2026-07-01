@@ -63,12 +63,14 @@ assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.jso
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
 assertFile("Screenshot evidence JSON exists", "ios", "ScreenshotEvidence.json");
 assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
+assertFile("Apple/Firebase auth evidence JSON exists", "ios", "AppleFirebaseAuthEvidence.json");
 assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 assertFile("Submission gate report script exists", "scripts", "ios-gate-report.mjs");
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
+assertFile("Apple/Firebase auth evidence script exists", "scripts", "ios-auth-evidence.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
 assertFile("Screenshot evidence script exists", "scripts", "ios-screenshot-evidence.mjs");
@@ -116,6 +118,7 @@ assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConn
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run screenshots:ios:check");
 assertIncludes("Screenshot evidence documented", appStoreSubmission, "npm run screenshots:ios:evidence:verify");
+assertIncludes("Apple/Firebase auth evidence documented", appStoreSubmission, "npm run auth:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
@@ -134,7 +137,14 @@ assertIncludes("Apple setup doc gives secondary auth handler", authSetup, "https
 assertIncludes("Apple setup doc names Firebase auth domain", authSetup, "ucla-knee-mri.firebaseapp.com");
 assertIncludes("Apple setup doc names Firebase web.app domain", authSetup, "ucla-knee-mri.web.app");
 assertIncludes("Apple setup doc warns against committing secrets", authSetup, "Do not commit");
+assertIncludes("Apple setup doc includes auth evidence command", authSetup, "npm run auth:ios:evidence:verify");
 assertIncludes("Apple setup doc includes submission gate command", authSetup, "npm run preflight:ios:submit");
+
+const authEvidence = readText("scripts", "ios-auth-evidence.mjs");
+assertIncludes("Auth evidence verifies Apple Developer gate", authEvidence, "appleDeveloper.signInWithAppleEnabledForBundleId");
+assertIncludes("Auth evidence verifies Firebase Apple provider gate", authEvidence, "firebaseAuth.appleProviderConfigured");
+assertIncludes("Auth evidence verifies Firebase authorized domains gate", authEvidence, "firebaseAuth.authorizedDomainsIncludeFirebaseHosting");
+assertIncludes("Auth evidence rejects private keys", authEvidence, "PRIVATE KEY");
 
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
 if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {

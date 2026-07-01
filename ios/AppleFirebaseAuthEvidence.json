@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "Track external Apple Developer and Firebase Auth evidence for Sign in with Apple. Set booleans to true only after the matching console evidence exists.",
+  "doNotStoreSecrets": "Do not enter Apple private-key file contents, Firebase credentials, client secrets, or API keys in this file.",
+  "appleDeveloper": {
+    "signInWithAppleEnabledForBundleId": false,
+    "bundleId": "com.jeremyswisher.uclasportsmri",
+    "confirmedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  },
+  "firebaseAuth": {
+    "appleProviderConfigured": false,
+    "appleServiceIdCreated": false,
+    "applePrivateKeyConfigured": false,
+    "redirectUrlVerifiedInAppleAndFirebase": false,
+    "authorizedDomainsIncludeFirebaseHosting": false,
+    "firebaseProjectId": "ucla-knee-mri",
+    "primaryReturnUrl": "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
+    "secondaryAuthHandler": "https://ucla-knee-mri.web.app/__/auth/handler",
+    "authorizedDomains": [
+      "ucla-knee-mri.firebaseapp.com",
+      "ucla-knee-mri.web.app"
+    ],
+    "confirmedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": ""
+  }
+}

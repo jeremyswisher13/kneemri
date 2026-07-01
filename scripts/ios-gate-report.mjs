@@ -14,7 +14,7 @@ const groups = [
       {
         key: "appleDeveloper.signInWithAppleEnabledForBundleId",
         value: gate.appleDeveloper?.signInWithAppleEnabledForBundleId,
-        next: "Enable Sign in with Apple on App ID com.jeremyswisher.uclasportsmri.",
+        next: "Enable Sign in with Apple on App ID com.jeremyswisher.uclasportsmri, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.",
       },
     ],
   },
@@ -25,7 +25,7 @@ const groups = [
       {
         key: "firebaseAuth.appleProviderConfigured",
         value: gate.firebaseAuth?.appleProviderConfigured,
-        next: "Enable the Apple provider in Firebase Authentication.",
+        next: "Enable the Apple provider in Firebase Authentication, update ios/AppleFirebaseAuthEvidence.json, and run npm run auth:ios:evidence:verify.",
       },
       {
         key: "firebaseAuth.appleServiceIdCreated",
@@ -206,6 +206,7 @@ if (missing.length > 0) {
   console.log("- npm run preflight:ios");
   console.log("- npm run preflight:ios:live");
   console.log("- npm run preflight:ios:submit");
+  console.log("- npm run auth:ios:evidence");
   console.log("- npm run archive:ios:signing");
   console.log("- npm run screenshots:ios:check");
   console.log("- npm run screenshots:ios:evidence");

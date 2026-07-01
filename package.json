@@ -15,6 +15,8 @@
     "archive:ios": "node scripts/ios-archive.mjs --archive",
     "archive:ios:check": "node scripts/ios-archive.mjs --check",
     "archive:ios:signing": "node scripts/ios-archive.mjs --signing",
+    "auth:ios:evidence": "node scripts/ios-auth-evidence.mjs",
+    "auth:ios:evidence:verify": "node scripts/ios-auth-evidence.mjs --verify",
     "account:deletion": "node scripts/process-account-deletion.mjs",
     "screenshots:ios:check": "node scripts/ios-screenshot-check.mjs",
     "screenshots:ios:evidence": "node scripts/ios-screenshot-evidence.mjs",

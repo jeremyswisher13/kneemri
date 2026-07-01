@@ -51,6 +51,8 @@ The live preflight checks that the deployed app serves the required public route
 Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only for items that have external evidence, then run:
 
 ```sh
+npm run auth:ios:evidence
+npm run auth:ios:evidence:verify
 npm run preflight:ios:report
 npm run preflight:ios:submit
 ```
@@ -172,6 +174,7 @@ The processor deletes the Firebase Auth user, recursively removes the learner's 
 ## Sign in with Apple setup
 
 Detailed setup tracking lives in `ios/AppleFirebaseAuthSetup.md` and `ios/AppStoreSubmissionGate.json`.
+External Apple/Firebase setup evidence lives in `ios/AppleFirebaseAuthEvidence.json`; it intentionally stores only confirmation metadata and must never store Apple private keys, `.p8` contents, Firebase credentials, or client secrets.
 
 The web app now exposes a Sign in with Apple button through Firebase Auth's `apple.com` provider. Before uploading for review:
 

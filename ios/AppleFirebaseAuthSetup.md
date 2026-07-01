@@ -85,6 +85,20 @@ firebase deploy --only hosting
 npm run preflight:ios:live
 ```
 
+Record the external Apple Developer and Firebase Console evidence in
+`ios/AppleFirebaseAuthEvidence.json`, then run:
+
+```sh
+npm run auth:ios:evidence
+npm run auth:ios:evidence:verify
+```
+
+`npm run auth:ios:evidence` prints a non-failing status report. The verify command
+is the hard gate: it fails until Sign in with Apple is enabled for the app ID,
+the Apple Service ID/return URL is configured, the Firebase Apple provider is
+configured, the Firebase authorized domains are confirmed, and no private key or
+`.p8` material has been committed.
+
 Then archive/upload a TestFlight build and verify on a real iPhone:
 
 1. Google sign-in works in the native shell.
@@ -96,6 +110,7 @@ Then archive/upload a TestFlight build and verify on a real iPhone:
 Once each item is verified, update `ios/AppStoreSubmissionGate.json` and run:
 
 ```sh
+npm run auth:ios:evidence:verify
 npm run preflight:ios:submit
 ```
 
