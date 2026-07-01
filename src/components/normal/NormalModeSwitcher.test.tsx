@@ -21,7 +21,11 @@ describe("NormalModeSwitcher", () => {
     expect(html).toContain('aria-label="Normal MRI modes"');
     expect(html).toContain("w-full");
     expect(html).toContain("max-w-full");
-    expect(html).toContain("basis-[8.5rem]");
+    // Mobile: a single horizontally-scrollable row (no multi-row button wall);
+    // desktop keeps the inline segmented control.
+    expect(html).toContain("flex-nowrap");
+    expect(html).toContain("overflow-x-auto");
+    expect(html).toContain("whitespace-nowrap");
     expect(html).toContain("sm:inline-flex");
     expect(html).toContain('aria-pressed="true"');
     expect(html).toContain("Knowledge Check");

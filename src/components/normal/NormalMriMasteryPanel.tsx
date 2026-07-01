@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getCourseById, normalMriTitle, type CourseId } from "@/content/courses";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
@@ -76,6 +77,10 @@ export default function NormalMriMasteryPanel({
   const course = getCourseById(courseId);
   const { user } = useAuth();
   const { progress, loading } = useProgress(course);
+  // On phones this guidance (focus text + 5-step list + footer) is ~half a
+  // screen of chrome sitting above the actual viewer on every visit, so it is
+  // collapsed by default on mobile and always shown from lg up.
+  const [showGuide, setShowGuide] = useState(false);
   const activeStep = stepForMode(activeMode);
   const modeIds = new Set(availableModes.map((mode) => mode.id));
   const hasCrossPlane = modeIds.has("correlate") || modeIds.has("compare");
@@ -103,12 +108,22 @@ export default function NormalMriMasteryPanel({
   return (
     <section className="mt-4 rounded-xl border border-ucla-blue/10 bg-white p-4 shadow-sm">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-ucla-blue">
-            Normal MRI mastery
-          </p>
+        <div className="min-w-0">
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ucla-blue">
+              Normal MRI mastery
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowGuide((v) => !v)}
+              aria-expanded={showGuide}
+              className="shrink-0 text-xs font-semibold text-ucla-blue underline-offset-2 hover:underline lg:hidden"
+            >
+              {showGuide ? "Hide steps" : "Learning steps"}
+            </button>
+          </div>
           <h2 className="mt-1 text-base font-semibold text-gray-900">{normalMriTitle(course)}</h2>
-          <p className="mt-1 max-w-3xl text-sm text-gray-600">
+          <p className={`mt-1 max-w-3xl text-sm text-gray-600 lg:block ${showGuide ? "" : "hidden"}`}>
             Current focus: <strong className="font-semibold text-gray-800">{seriesLabel}</strong>{" "}
             in <strong className="font-semibold text-gray-800">{activeModeLabel}</strong>.{" "}
             {FOCUS_COPY[activeMode] ?? FOCUS_COPY.explore}
@@ -125,7 +140,8 @@ export default function NormalMriMasteryPanel({
         </div>
       </div>
 
-      <ol className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
+      <div className={`lg:block ${showGuide ? "" : "hidden"}`}>
+        <ol className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
         {steps.map((stepId, index) => {
           const active = stepId === activeStep;
           const step = STEP_COPY[stepId];
@@ -155,10 +171,11 @@ export default function NormalMriMasteryPanel({
         })}
       </ol>
 
-      <p className="mt-3 text-xs leading-5 text-gray-500">
-        Before calling pathology, confirm on another plane, check the expected normal variant,
-        and use T1 or sequence logic when edema-like signal could be artifact or marrow reconversion.
-      </p>
+        <p className="mt-3 text-xs leading-5 text-gray-500">
+          Before calling pathology, confirm on another plane, check the expected normal variant,
+          and use T1 or sequence logic when edema-like signal could be artifact or marrow reconversion.
+        </p>
+      </div>
     </section>
   );
 }
