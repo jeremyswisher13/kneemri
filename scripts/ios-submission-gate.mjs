@@ -19,6 +19,12 @@ const evidenceChecks = [
     args: "scripts/ios-auth-evidence.mjs --verify".split(" "),
   },
   {
+    label: "Live hosting readiness",
+    args: "scripts/ios-live-readiness.mjs".split(" "),
+    requiredPattern: /\d+ live iOS App Store readiness checks passed\./,
+    failureMessage: "Live Firebase Hosting readiness is not current. Run npm run preflight:ios:live after deploying the current build.",
+  },
+  {
     label: "Real-device/account-deletion evidence",
     args: "scripts/ios-release-evidence.mjs --verify".split(" "),
   },

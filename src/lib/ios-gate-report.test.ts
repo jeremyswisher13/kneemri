@@ -79,11 +79,14 @@ describe("iOS App Store gate report", () => {
 
   it("keeps the hard submission gate tied to detailed evidence verifiers", () => {
     expect(handoff).toContain("runs the detailed evidence verifiers");
+    expect(handoff).toContain("reruns the live Firebase Hosting readiness check");
     expect(handoff).toContain("App Store export signing ready: yes");
     expect(submissionGateScript).toContain("Detailed evidence verification");
     expect(submissionGateScript).toContain("scripts/ios-archive.mjs --signing");
     expect(submissionGateScript).toContain("^App Store export signing ready: yes$");
     expect(submissionGateScript).toContain("scripts/ios-auth-evidence.mjs --verify");
+    expect(submissionGateScript).toContain("scripts/ios-live-readiness.mjs");
+    expect(submissionGateScript).toContain("live iOS App Store readiness checks passed");
     expect(submissionGateScript).toContain("scripts/ios-release-evidence.mjs --verify");
     expect(submissionGateScript).toContain("scripts/ios-screenshot-evidence.mjs --verify");
     expect(submissionGateScript).toContain("scripts/ios-app-store-connect-evidence.mjs --verify");

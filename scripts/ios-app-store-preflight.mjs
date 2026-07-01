@@ -143,6 +143,7 @@ assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucl
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Submission gate evidence verifier behavior documented", appStoreSubmission, "runs the detailed evidence verifiers");
+assertIncludes("Submission gate live readiness behavior documented", appStoreSubmission, "reruns the live Firebase Hosting readiness check");
 assertIncludes("Submission gate archive-signing behavior documented", appStoreSubmission, "App Store export signing ready: yes");
 assertIncludes("Evidence audit documented", appStoreSubmission, "npm run evidence:ios");
 assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
@@ -243,6 +244,8 @@ assertIncludes(
 assertIncludes("Hard gate runs archive-signing verifier", submissionGateScript, "scripts/ios-archive.mjs --signing");
 assertIncludes("Hard gate requires exact export-signing success", submissionGateScript, "^App Store export signing ready: yes$");
 assertIncludes("Hard gate runs Apple/Firebase verifier", submissionGateScript, "scripts/ios-auth-evidence.mjs --verify");
+assertIncludes("Hard gate runs live hosting verifier", submissionGateScript, "scripts/ios-live-readiness.mjs");
+assertIncludes("Hard gate requires live readiness success", submissionGateScript, "live iOS App Store readiness checks passed");
 assertIncludes("Hard gate runs release verifier", submissionGateScript, "scripts/ios-release-evidence.mjs --verify");
 assertIncludes("Hard gate runs screenshot verifier", submissionGateScript, "scripts/ios-screenshot-evidence.mjs --verify");
 assertIncludes("Hard gate runs App Store Connect verifier", submissionGateScript, "scripts/ios-app-store-connect-evidence.mjs --verify");
