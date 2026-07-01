@@ -29,6 +29,12 @@ mri-staging/
 # Firebase deploy cache (build artifact)
 .firebase/
 
+# Generated audit screenshots / local review evidence
+audit-output/
+
+# Local Xcode archive/export output
+ios/build/
+
 # Environment files (secrets / Firebase web config). *.local already covers
 # .env.local; this also catches a bare .env in the repo root or functions/.
 .env

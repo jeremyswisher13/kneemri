@@ -45,6 +45,7 @@ Before archiving, run the local submission preflight:
 ```sh
 npm run build
 npm run preflight:ios
+npm run archive:ios:check
 ```
 
 After deploying Firebase Hosting, verify the live web bundle before archiving:
@@ -60,6 +61,14 @@ npm run preflight:ios:submit
 ```
 
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
+
+Once Apple Developer signing is configured, archive/export with:
+
+```sh
+IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
+```
+
+The archive helper writes to `ios/build/`, which is ignored by git.
 
 ## Reviewer access
 

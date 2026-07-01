@@ -12,6 +12,8 @@
     "test:watch": "vitest",
     "test:types": "tsc --noEmit -p tsconfig.test.json",
     "test:normal": "vitest run src/content/normal-workstation-regression.test.ts src/components/normal",
+    "archive:ios": "node scripts/ios-archive.mjs --archive",
+    "archive:ios:check": "node scripts/ios-archive.mjs --check",
     "preflight:ios": "node scripts/ios-app-store-preflight.mjs",
     "preflight:ios:live": "node scripts/ios-live-readiness.mjs",
     "preflight:ios:submit": "node scripts/ios-submission-gate.mjs",

@@ -66,6 +66,7 @@ assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
 assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
+assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -106,6 +107,8 @@ assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConn
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
+assertIncludes("Archive check documented", appStoreSubmission, "npm run archive:ios:check");
+assertIncludes("Archive command documented", appStoreSubmission, "npm run archive:ios");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
 
@@ -186,6 +189,12 @@ const exportOptions = readText("ios", "ExportOptions.plist");
 assertIncludes("Export destination uploads to App Store Connect", exportOptions, "<string>upload</string>");
 assertIncludes("Export method targets App Store Connect", exportOptions, "<string>app-store-connect</string>");
 assertIncludes("Automatic signing export configured", exportOptions, "<string>automatic</string>");
+
+const archiveHelper = readText("scripts", "ios-archive.mjs");
+assertIncludes("Archive helper targets Release", archiveHelper, '"Release"');
+assertIncludes("Archive helper targets generic iOS", archiveHelper, "generic/platform=iOS");
+assertIncludes("Archive helper uses export options", archiveHelper, "ExportOptions.plist");
+assertIncludes("Archive helper supports explicit team", archiveHelper, "IOS_DEVELOPMENT_TEAM");
 
 const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));

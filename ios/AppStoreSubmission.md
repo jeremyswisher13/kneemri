@@ -20,6 +20,7 @@ Run this before every TestFlight archive/upload:
 ```sh
 npm run build
 npm run preflight:ios
+npm run archive:ios:check
 plutil -lint ios/ExportOptions.plist ios/UCLASportsMRI/UCLASportsMRI.entitlements ios/UCLASportsMRI/PrivacyInfo.xcprivacy ios/UCLASportsMRI/Info.plist
 ```
 
@@ -44,6 +45,12 @@ This command is expected to fail until Apple Developer setup, Firebase Auth setu
 After the command passes and the app is submitted, set `appStoreConnect.submittedForReview` to `true` in `ios/AppStoreSubmissionGate.json` as final submission evidence.
 
 For command-line export/upload after an Xcode archive, use `ios/ExportOptions.plist` as the export options template. Xcode Organizer upload is still the easiest first TestFlight path.
+
+When Apple Developer signing is configured, command-line archive/export is available:
+
+```sh
+IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
+```
 
 ## App Store Connect metadata draft
 
