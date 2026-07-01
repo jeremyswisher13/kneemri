@@ -33,6 +33,16 @@ npm run preflight:ios:live
 
 The live preflight checks that the deployed app serves the required public routes and includes the App Store login affordances expected by the native shell. It is expected to fail before the current build is deployed.
 
+Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` only for items that have external evidence, then run:
+
+```sh
+npm run preflight:ios:submit
+```
+
+This command is expected to fail until Apple Developer setup, Firebase Auth setup, live deploy, TestFlight/real-device auth, screenshots, account deletion handling, and App Store Connect fields are all verified.
+
+After the command passes and the app is submitted, set `appStoreConnect.submittedForReview` to `true` in `ios/AppStoreSubmissionGate.json` as final submission evidence.
+
 For command-line export/upload after an Xcode archive, use `ios/ExportOptions.plist` as the export options template. Xcode Organizer upload is still the easiest first TestFlight path.
 
 ## App Store Connect metadata draft
@@ -99,6 +109,8 @@ Not used for tracking:
 5. Because this is medical education, keep the in-app disclaimer and review notes clear that the app is educational and not for diagnosis/treatment.
 
 ## Sign in with Apple setup
+
+Detailed setup tracking lives in `ios/AppleFirebaseAuthSetup.md` and `ios/AppStoreSubmissionGate.json`.
 
 The web app now exposes a Sign in with Apple button through Firebase Auth's `apple.com` provider. Before uploading for review:
 

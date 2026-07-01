@@ -65,6 +65,7 @@
     "Enable Sign in with Apple for com.jeremyswisher.uclasportsmri in Apple Developer.",
     "Configure Firebase Authentication apple.com provider with Apple service ID, team ID, key ID, private key, and redirect URL.",
     "Deploy the current Firebase Hosting build after auth provider setup is verified.",
+    "Run npm run preflight:ios:live and then npm run preflight:ios:submit.",
     "Archive UCLASportsMRI in Xcode and upload to TestFlight.",
     "Verify Google sign-in, Sign in with Apple, App Review demo, privacy/support URLs, and account deletion request on a real device.",
     "Capture iPhone 6.9-inch and iPad 13-inch screenshots from the TestFlight build.",

@@ -61,8 +61,11 @@ assertFile("Export options template exists", "ios", "ExportOptions.plist");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
+assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
+assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
 assertFile("Live readiness script exists", "scripts", "ios-live-readiness.mjs");
+assertFile("Submission gate script exists", "scripts", "ios-submission-gate.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -102,8 +105,32 @@ assertIncludes("Reviewer demo documented", appStoreSubmission, "Continue in App 
 assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConnectMetadata.json");
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
+assertIncludes("Submission gate documented", appStoreSubmission, "npm run preflight:ios:submit");
 assertIncludes("Medical education disclaimer documented", appStoreSubmission, "not intended to diagnose");
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
+
+const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
+assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
+assertIncludes("Apple setup doc lists Firebase provider", authSetup, "Firebase Authentication");
+assertIncludes("Apple setup doc warns against committing secrets", authSetup, "Do not commit");
+assertIncludes("Apple setup doc includes submission gate command", authSetup, "npm run preflight:ios:submit");
+
+const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
+if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
+  pass("Submission gate bundle ID matches native bundle");
+} else {
+  fail("Submission gate bundle ID matches native bundle", submissionGate.appleDeveloper?.bundleId ?? "missing");
+}
+if (submissionGate.firebaseAuth?.appleProviderConfigured === false) {
+  pass("Submission gate tracks Firebase Apple provider as external");
+} else {
+  fail("Submission gate tracks Firebase Apple provider as external");
+}
+if (submissionGate.appStoreConnect?.submittedForReview === false) {
+  pass("Submission gate prevents accidental App Review completion claim");
+} else {
+  fail("Submission gate prevents accidental App Review completion claim");
+}
 
 const metadata = JSON.parse(readText("ios", "AppStoreConnectMetadata.json"));
 if (metadata.bundleId === "com.jeremyswisher.uclasportsmri") {

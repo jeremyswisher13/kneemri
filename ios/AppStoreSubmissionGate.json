@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "This file tracks external App Store gates that cannot be proven by local build/tests alone. Set an item to true only after the listed evidence exists.",
+  "appleDeveloper": {
+    "signInWithAppleEnabledForBundleId": false,
+    "bundleId": "com.jeremyswisher.uclasportsmri",
+    "evidence": "Apple Developer > Certificates, Identifiers & Profiles > App ID shows Sign in with Apple enabled."
+  },
+  "firebaseAuth": {
+    "appleProviderConfigured": false,
+    "appleServiceIdCreated": false,
+    "applePrivateKeyConfigured": false,
+    "redirectUrlVerifiedInAppleAndFirebase": false,
+    "authorizedDomainsIncludeFirebaseHosting": false,
+    "evidence": "Firebase Authentication > Sign-in method > Apple is enabled and configured; Apple service identifier return URL matches Firebase's Apple callback URL."
+  },
+  "hosting": {
+    "currentBuildDeployed": false,
+    "livePreflightPassed": false,
+    "evidence": "Run npm run preflight:ios:live after firebase deploy and save/pass its output."
+  },
+  "realDeviceAuth": {
+    "googleSignInPassedInNativeShell": false,
+    "appleSignInPassedInNativeShell": false,
+    "appReviewDemoPassedInNativeShell": false,
+    "evidence": "Real iPhone/TestFlight build signs in through Google, signs in through Apple, and enters App Review demo."
+  },
+  "accountDeletion": {
+    "requestFlowVerified": false,
+    "adminDeletionProcessReady": false,
+    "evidence": "Signed-in test user can submit an in-app deletion request, and the backend/admin process can honor it."
+  },
+  "screenshots": {
+    "iphone69Captured": false,
+    "ipad13Captured": false,
+    "screenshotsReviewedForNoPhi": false,
+    "evidence": "Screenshots captured according to ios/ScreenshotPlan.md and reviewed for no PHI or real learner data."
+  },
+  "appStoreConnect": {
+    "appRecordCreated": false,
+    "metadataEntered": false,
+    "privacyLabelsEntered": false,
+    "ageRatingCompleted": false,
+    "exportComplianceCompleted": false,
+    "buildUploaded": false,
+    "buildSelectedForVersion": false,
+    "reviewNotesEntered": false,
+    "screenshotsUploaded": false,
+    "submittedForReview": false,
+    "evidence": "App Store Connect version 1.0 has metadata, privacy, screenshots, selected TestFlight build, and review notes. Keep submittedForReview false until after the final App Review submission action is complete."
+  }
+}

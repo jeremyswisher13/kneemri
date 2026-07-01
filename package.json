@@ -14,6 +14,7 @@
     "test:normal": "vitest run src/content/normal-workstation-regression.test.ts src/components/normal",
     "preflight:ios": "node scripts/ios-app-store-preflight.mjs",
     "preflight:ios:live": "node scripts/ios-live-readiness.mjs",
+    "preflight:ios:submit": "node scripts/ios-submission-gate.mjs",
     "gen:metas": "node scripts/gen-content-metas.mjs",
     "qa:medical": "node scripts/export-medical-qa.mjs"
   },

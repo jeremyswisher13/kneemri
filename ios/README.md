@@ -53,6 +53,12 @@ After deploying Firebase Hosting, verify the live web bundle before archiving:
 npm run preflight:ios:live
 ```
 
+Before submitting to App Review, update `ios/AppStoreSubmissionGate.json` with verified external evidence and run:
+
+```sh
+npm run preflight:ios:submit
+```
+
 For command-line export/upload after archiving, use `ios/ExportOptions.plist` as the export options template.
 
 ## Reviewer access
