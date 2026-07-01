@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,20 +11,25 @@ const metadataPath = join(root, "ios", "AppStoreConnectMetadata.json");
 const screenshotEvidencePath = join(root, "ios", "ScreenshotEvidence.json");
 const submissionGatePath = join(root, "ios", "AppStoreSubmissionGate.json");
 const infoPlistPath = join(root, "ios", "UCLASportsMRI", "Info.plist");
+const projectSpecPath = join(root, "ios", "project.yml");
 
 const evidenceText = readFileSync(evidencePath, "utf8");
 const evidence = JSON.parse(evidenceText);
-const metadata = JSON.parse(readFileSync(metadataPath, "utf8"));
+const metadataText = readFileSync(metadataPath, "utf8");
+const metadata = JSON.parse(metadataText);
 const screenshotEvidence = JSON.parse(readFileSync(screenshotEvidencePath, "utf8"));
 const submissionGate = JSON.parse(readFileSync(submissionGatePath, "utf8"));
 const infoPlist = readFileSync(infoPlistPath, "utf8");
+const projectSpec = readFileSync(projectSpecPath, "utf8");
+const nativeMarketingVersion = yamlStringValue(projectSpec, "MARKETING_VERSION");
+const nativeBuildNumber = yamlStringValue(projectSpec, "CURRENT_PROJECT_VERSION");
 
 const expected = {
   bundleId: "com.jeremyswisher.uclasportsmri",
   sku: "ucla-sports-mri-ios",
   platform: "iOS",
-  version: "1.0",
-  build: "1",
+  version: nativeMarketingVersion,
+  build: nativeBuildNumber,
   name: "UCLA Sports MRI",
   subtitle: "Sports medicine MRI learning",
   supportUrl: "https://ucla-knee-mri.firebaseapp.com/support",
@@ -74,6 +80,25 @@ function includesAll(actual, required) {
   return Array.isArray(actual) && required.every((value) => actual.includes(value));
 }
 
+function yamlStringValue(source, key) {
+  return source.match(new RegExp(`\\b${key}:\\s*"?([^"\\n]+)"?`))?.[1]?.trim() ?? "";
+}
+
+function runScreenshotEvidenceVerifier() {
+  return spawnSync(process.execPath, ["scripts/ios-screenshot-evidence.mjs", "--verify"], {
+    cwd: root,
+    encoding: "utf8",
+  });
+}
+
+function firstUsefulFailure(output) {
+  const lines = output
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  return lines.find((line) => line.startsWith("FAIL ") || line.startsWith("TODO ")) ?? lines.at(-1) ?? "No verifier output.";
+}
+
 const keywords = Array.isArray(metadata.keywords) ? metadata.keywords.join(", ") : "";
 const metadataChecks = [
   {
@@ -97,7 +122,7 @@ const metadataChecks = [
     detail: metadata.sku ?? "missing",
   },
   {
-    label: "Version/build match native Info.plist",
+    label: "Version/build match native project settings",
     ok: metadata.version === expected.version && metadata.build === expected.build,
     detail: `${metadata.version ?? "missing"} (${metadata.build ?? "missing"})`,
   },
@@ -185,15 +210,18 @@ const metadataChecks = [
   },
 ];
 
+const screenshotEvidenceVerification = runScreenshotEvidenceVerifier();
+const screenshotEvidenceVerifierPassed = screenshotEvidenceVerification.status === 0;
 const metadataSourceReady = metadataChecks.every((check) => check.ok);
 const screenshotEvidenceReady =
+  screenshotEvidenceVerifierPassed &&
   screenshotEvidence.iphone69?.captured === true &&
   screenshotEvidence.ipad13?.captured === true &&
   screenshotEvidence.phiReview?.reviewed === true &&
   screenshotEvidence.phiReview?.noPhiConfirmed === true;
 const exportComplianceReady =
   infoPlist.includes("<key>ITSAppUsesNonExemptEncryption</key>") && infoPlist.includes("<false/>");
-const secretLeak = hasSecretLeak(evidenceText);
+const secretLeak = hasSecretLeak(`${evidenceText}\n${metadataText}`);
 
 const appRecord = evidence.appRecord ?? {};
 const metadataEvidence = evidence.metadata ?? {};
@@ -353,6 +381,14 @@ console.log("");
 console.log("## Metadata Source Checks");
 for (const check of metadataChecks) {
   console.log(`- ${check.ok ? "PASS" : "TODO"} ${check.label} (${check.detail})`);
+}
+console.log("");
+
+console.log("## Screenshot Source Verification");
+console.log(`Screenshot evidence verifier: ${screenshotEvidenceVerifierPassed ? "PASS" : "TODO"}`);
+if (!screenshotEvidenceVerifierPassed) {
+  const screenshotOutput = `${screenshotEvidenceVerification.stdout ?? ""}\n${screenshotEvidenceVerification.stderr ?? ""}`;
+  console.log(`First screenshot evidence issue: ${firstUsefulFailure(screenshotOutput)}`);
 }
 console.log("");
 

@@ -184,6 +184,10 @@ const appStoreConnectEvidenceScript = readText("scripts", "ios-app-store-connect
 assertIncludes("App Store Connect evidence verifies metadata gate", appStoreConnectEvidenceScript, "appStoreConnect.metadataEntered");
 assertIncludes("App Store Connect evidence verifies regulated medical device gate", appStoreConnectEvidenceScript, "appStoreConnect.regulatedMedicalDeviceStatusCompleted");
 assertIncludes("App Store Connect evidence verifies screenshot upload gate", appStoreConnectEvidenceScript, "appStoreConnect.screenshotsUploaded");
+assertIncludes("App Store Connect evidence runs screenshot verifier", appStoreConnectEvidenceScript, "scripts/ios-screenshot-evidence.mjs");
+assertIncludes("App Store Connect evidence requires screenshot verifier pass", appStoreConnectEvidenceScript, "screenshotEvidenceVerifierPassed");
+assertIncludes("App Store Connect evidence derives native marketing version", appStoreConnectEvidenceScript, "MARKETING_VERSION");
+assertIncludes("App Store Connect evidence derives native build number", appStoreConnectEvidenceScript, "CURRENT_PROJECT_VERSION");
 assertIncludes("App Store Connect evidence validates App Store limits", appStoreConnectEvidenceScript, "reviewNotesMaxBytes");
 assertIncludes("App Store Connect evidence reports ready gates", appStoreConnectEvidenceScript, "Ready App Store Connect gates");
 

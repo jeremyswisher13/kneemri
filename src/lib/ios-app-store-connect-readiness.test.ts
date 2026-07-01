@@ -117,6 +117,11 @@ describe("iOS App Store Connect readiness", () => {
       expect(gateReport).toContain(key);
     }
 
+    expect(evidenceScript).toContain("scripts/ios-screenshot-evidence.mjs");
+    expect(evidenceScript).toContain("--verify");
+    expect(evidenceScript).toContain("screenshotEvidenceVerifierPassed");
+    expect(evidenceScript).toContain("MARKETING_VERSION");
+    expect(evidenceScript).toContain("CURRENT_PROJECT_VERSION");
     expect(evidence.appRecord.bundleId).toBe(metadata.bundleId);
     expect(evidence.appRecord.sku).toBe(metadata.sku);
     expect(evidence.appRecord.platform).toBe("iOS");
@@ -146,6 +151,8 @@ describe("iOS App Store Connect readiness", () => {
 
     expect(output).toContain("iOS App Store Connect Evidence Report");
     expect(output).toContain("Metadata Source Checks");
+    expect(output).toContain("Screenshot Source Verification");
+    expect(output).toContain("Screenshot evidence verifier:");
     expect(output).toContain("Copy-Paste Packet");
     expect(output).toContain("Optional Accessibility Nutrition Labels");
     expect(output).toContain("Ready App Store Connect gates:");
