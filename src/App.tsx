@@ -13,6 +13,7 @@ import LoginPage from "@/pages/LoginPage";
 // Suspense boundary lives inside FellowLayout/AdminLayout (around <Outlet/>),
 // so the sidebar stays put and only the content area shows a loader.
 const HomePage = lazy(() => import("@/pages/HomePage"));
+const AccessibilityPage = lazy(() => import("@/pages/AccessibilityPage"));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const SupportPage = lazy(() => import("@/pages/SupportPage"));
 const AccountPage = lazy(() => import("@/pages/AccountPage"));
@@ -56,6 +57,7 @@ export default function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/support" element={<SupportPage />} />
 

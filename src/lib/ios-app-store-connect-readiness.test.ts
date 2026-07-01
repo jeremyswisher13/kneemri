@@ -21,6 +21,12 @@ type Metadata = {
   };
   supportUrl: string;
   privacyPolicyUrl: string;
+  accessibilityUrl: string;
+  accessibilityNutritionLabels: {
+    claimSupportOnlyAfterDeviceAudit: boolean;
+    featuresToEvaluate: string[];
+    commonTaskBasis: string[];
+  };
   keywords: string[];
   reviewNotes: string;
   privacy: {
@@ -39,6 +45,11 @@ type Evidence = {
   build: { version: string; build: string };
   reviewNotes: { source: string };
   screenshots: { source: string };
+  accessibilityNutritionLabels: {
+    optionalForCurrentSubmission: boolean;
+    accessibilityUrl: string;
+    source: string;
+  };
 };
 
 describe("iOS App Store Connect readiness", () => {
@@ -80,6 +91,10 @@ describe("iOS App Store Connect readiness", () => {
     expect(keywords.length).toBeLessThanOrEqual(100);
     expect(metadata.supportUrl).toBe("https://ucla-knee-mri.firebaseapp.com/support");
     expect(metadata.privacyPolicyUrl).toBe("https://ucla-knee-mri.firebaseapp.com/privacy");
+    expect(metadata.accessibilityUrl).toBe("https://ucla-knee-mri.firebaseapp.com/accessibility");
+    expect(metadata.accessibilityNutritionLabels.claimSupportOnlyAfterDeviceAudit).toBe(true);
+    expect(metadata.accessibilityNutritionLabels.featuresToEvaluate).toEqual(expect.arrayContaining(["VoiceOver", "Voice Control", "Larger Text"]));
+    expect(metadata.accessibilityNutritionLabels.commonTaskBasis).toEqual(expect.arrayContaining(["Choose a course"]));
     expect(metadata.reviewNotes).toContain("Continue in App Review demo");
     expect(metadata.reviewNotes).toContain("not intended to diagnose");
     expect(Buffer.byteLength(metadata.reviewNotes, "utf8")).toBeLessThanOrEqual(4000);
@@ -119,6 +134,9 @@ describe("iOS App Store Connect readiness", () => {
     expect(evidence.build.build).toBe(metadata.build);
     expect(evidence.reviewNotes.source).toBe("ios/AppStoreConnectMetadata.json#reviewNotes");
     expect(evidence.screenshots.source).toBe("ios/ScreenshotEvidence.json");
+    expect(evidence.accessibilityNutritionLabels.optionalForCurrentSubmission).toBe(true);
+    expect(evidence.accessibilityNutritionLabels.accessibilityUrl).toBe(metadata.accessibilityUrl);
+    expect(evidence.accessibilityNutritionLabels.source).toBe("ios/AppStoreConnectMetadata.json#accessibilityNutritionLabels");
   });
 
   it("can report App Store Connect evidence status before external entry is complete", () => {
@@ -129,6 +147,7 @@ describe("iOS App Store Connect readiness", () => {
     expect(output).toContain("iOS App Store Connect Evidence Report");
     expect(output).toContain("Metadata Source Checks");
     expect(output).toContain("Copy-Paste Packet");
+    expect(output).toContain("Optional Accessibility Nutrition Labels");
     expect(output).toContain("Ready App Store Connect gates:");
   });
 });

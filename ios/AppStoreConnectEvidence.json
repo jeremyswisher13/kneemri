@@ -81,5 +81,16 @@
     "uploadedAt": "",
     "confirmedBy": "",
     "evidenceNote": ""
+  },
+  "accessibilityNutritionLabels": {
+    "optionalForCurrentSubmission": true,
+    "accessibilityUrlEntered": false,
+    "labelResponsesEntered": false,
+    "source": "ios/AppStoreConnectMetadata.json#accessibilityNutritionLabels",
+    "accessibilityUrl": "https://ucla-knee-mri.firebaseapp.com/accessibility",
+    "evaluatedDevices": [],
+    "completedAt": "",
+    "confirmedBy": "",
+    "evidenceNote": "Apple says Accessibility Nutrition Labels are voluntary to start. Do not claim support for specific labels until common tasks are tested on each supported device against Apple's criteria."
   }
 }

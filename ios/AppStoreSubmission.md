@@ -15,8 +15,8 @@ Last updated: July 1, 2026
 
 ## Current verified status
 
-- Firebase Hosting was deployed on July 1, 2026 after the native-shell stale-cache fix.
-- `npm run preflight:ios:live` passes live checks against `https://ucla-knee-mri.firebaseapp.com`, including the Firebase Auth callback endpoints.
+- Firebase Hosting was deployed on July 1, 2026 after the accessibility URL addition.
+- `npm run preflight:ios:live` passes 27 live checks against `https://ucla-knee-mri.firebaseapp.com`, including the public privacy/support/accessibility routes and Firebase Auth callback endpoints.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
 - The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
@@ -115,12 +115,18 @@ External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEv
 - In-app purchases: None
 - Tracking: No
 - Advertising: None
+- Accessibility URL: `https://ucla-knee-mri.firebaseapp.com/accessibility`
+- Accessibility Nutrition Labels: optional for the current submission; do not claim support for individual labels until common tasks are tested on each supported device against Apple's criteria.
 
 ## Description draft
 
 UCLA Sports MRI is an interactive sports medicine MRI education app for fellows and advanced learners. Work through normal MRI workstations for knee, shoulder, hip, and elbow, practice guided tours and cross-plane correlation, answer image-based knowledge checks, review cases, and reinforce missed concepts with spaced review.
 
 The app is designed for education and training. It is not a diagnostic device, treatment tool, or substitute for professional clinical judgment.
+
+## Accessibility draft
+
+The accessibility URL is `https://ucla-knee-mri.firebaseapp.com/accessibility`. It describes common app tasks, current support, known MRI image-interpretation limitations, and the plan to claim Accessibility Nutrition Label support only after device-level testing. Enter the URL in App Store Connect if the field is available. Keep individual label claims conservative until VoiceOver, Voice Control, Larger Text, Differentiate Without Color Alone, Sufficient Contrast, Reduced Motion, and Dark Interface are tested against common tasks on iPhone and iPad.
 
 ## Keywords draft
 
@@ -156,6 +162,7 @@ Not used for tracking:
 
 - Privacy Policy URL: `https://ucla-knee-mri.firebaseapp.com/privacy`
 - Support URL: `https://ucla-knee-mri.firebaseapp.com/support`
+- Accessibility URL: `https://ucla-knee-mri.firebaseapp.com/accessibility`
 
 ## App Review risks to resolve before submission
 

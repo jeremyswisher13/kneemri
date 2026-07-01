@@ -73,6 +73,9 @@ async function main() {
   const support = await fetchText("/support");
   assertBodyIncludes("Live support route serves app shell", support.text, "root");
 
+  const accessibility = await fetchText("/accessibility");
+  assertBodyIncludes("Live accessibility route serves app shell", accessibility.text, "root");
+
   const login = await fetchText("/login?source=ios-app&reviewerDemo=1");
   assertBodyIncludes("Live login route serves app shell", login.text, "root");
   assertBodyIncludes("Live bundle includes Sign in with Apple", bundleText, "Sign in with Apple");

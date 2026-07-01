@@ -28,6 +28,7 @@ const expected = {
   subtitle: "Sports medicine MRI learning",
   supportUrl: "https://ucla-knee-mri.firebaseapp.com/support",
   privacyPolicyUrl: "https://ucla-knee-mri.firebaseapp.com/privacy",
+  accessibilityUrl: "https://ucla-knee-mri.firebaseapp.com/accessibility",
   screenshotSource: "ios/ScreenshotEvidence.json",
 };
 
@@ -127,6 +128,19 @@ const metadataChecks = [
     detail: metadata.privacyPolicyUrl ?? "missing",
   },
   {
+    label: "Accessibility URL is HTTPS",
+    ok: metadata.accessibilityUrl === expected.accessibilityUrl && httpsUrl(metadata.accessibilityUrl),
+    detail: metadata.accessibilityUrl ?? "missing",
+  },
+  {
+    label: "Accessibility Nutrition Label audit plan is prepared",
+    ok:
+      metadata.accessibilityNutritionLabels?.claimSupportOnlyAfterDeviceAudit === true &&
+      includesAll(metadata.accessibilityNutritionLabels?.featuresToEvaluate, ["VoiceOver", "Voice Control", "Larger Text"]) &&
+      includesAll(metadata.accessibilityNutritionLabels?.commonTaskBasis, ["Choose a course"]),
+    detail: metadata.accessibilityNutritionLabels?.status ?? "missing",
+  },
+  {
     label: "Keywords fit App Store Connect field",
     ok: keywords.length > 0 && keywords.length <= limits.keywordsMax,
     detail: `${keywords.length}/${limits.keywordsMax}`,
@@ -190,6 +204,7 @@ const exportCompliance = evidence.exportCompliance ?? {};
 const build = evidence.build ?? {};
 const reviewNotes = evidence.reviewNotes ?? {};
 const screenshots = evidence.screenshots ?? {};
+const accessibilityNutritionLabels = evidence.accessibilityNutritionLabels ?? {};
 
 const items = [
   {
@@ -365,8 +380,16 @@ console.log(`Regulated medical device: ${metadata.regulatedMedicalDevice?.answer
 console.log(`Keywords (${keywords.length}/${limits.keywordsMax}): ${keywords}`);
 console.log(`Support URL: ${metadata.supportUrl}`);
 console.log(`Privacy Policy URL: ${metadata.privacyPolicyUrl}`);
+console.log(`Accessibility URL: ${metadata.accessibilityUrl}`);
 console.log(`Review notes: ios/AppStoreConnectMetadata.json#reviewNotes (${byteLength(metadata.reviewNotes)} bytes)`);
 console.log("What's New: initial 1.0 release; only paste if App Store Connect asks for it.");
+console.log("");
+
+console.log("## Optional Accessibility Nutrition Labels");
+console.log(`Accessibility URL entered: ${accessibilityNutritionLabels.accessibilityUrlEntered === true ? "yes" : "no"}`);
+console.log(`Label responses entered: ${accessibilityNutritionLabels.labelResponsesEntered === true ? "yes" : "no"}`);
+console.log(`Source: ${accessibilityNutritionLabels.source ?? "missing"}`);
+console.log("Do not claim specific accessibility label support until common tasks are tested on each supported device.");
 console.log("");
 
 console.log("## Submission Gate Alignment");

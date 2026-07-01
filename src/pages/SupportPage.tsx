@@ -31,6 +31,19 @@ export default function SupportPage() {
         </Card>
 
         <Card>
+          <h2 className="text-lg font-semibold text-gray-900">Accessibility</h2>
+          <p className="mt-2 text-sm leading-6 text-gray-600">
+            If an accessibility issue blocks a common task, include the page, device, assistive
+            technology, and what happened when you contact the course team.
+          </p>
+          <div className="mt-4">
+            <Link to="/accessibility" className="text-sm font-semibold text-ucla-blue hover:underline">
+              Accessibility statement
+            </Link>
+          </div>
+        </Card>
+
+        <Card>
           <h2 className="text-lg font-semibold text-gray-900">Privacy and account deletion</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">
             Signed-in users can request account deletion from the Account page.

@@ -245,6 +245,19 @@ if (metadata.privacyPolicyUrl === "https://ucla-knee-mri.firebaseapp.com/privacy
 } else {
   fail("Metadata privacy URL matches app route", metadata.privacyPolicyUrl ?? "missing");
 }
+if (metadata.accessibilityUrl === "https://ucla-knee-mri.firebaseapp.com/accessibility") {
+  pass("Metadata accessibility URL matches app route");
+} else {
+  fail("Metadata accessibility URL matches app route", metadata.accessibilityUrl ?? "missing");
+}
+if (
+  metadata.accessibilityNutritionLabels?.claimSupportOnlyAfterDeviceAudit === true &&
+  metadata.accessibilityNutritionLabels?.featuresToEvaluate?.includes("VoiceOver")
+) {
+  pass("Metadata accessibility label audit plan is ready");
+} else {
+  fail("Metadata accessibility label audit plan is ready");
+}
 if (Array.isArray(metadata.keywords) && metadata.keywords.includes("MRI") && metadata.keywords.includes("sports medicine")) {
   pass("Metadata keywords include core search terms");
 } else {
@@ -399,9 +412,15 @@ assertFile("PWA 512 icon exists", "public", "pwa-icon-512.png");
 assertFile("Apple touch icon exists", "public", "apple-touch-icon.png");
 
 const app = readText("src", "App.tsx");
+assertIncludes("Accessibility route exists", app, 'path="/accessibility"');
 assertIncludes("Privacy route exists", app, 'path="/privacy"');
 assertIncludes("Support route exists", app, 'path="/support"');
 assertIncludes("Account route exists", app, 'path="/account"');
+
+const accessibility = readText("src", "pages", "AccessibilityPage.tsx");
+assertIncludes("Accessibility page names common tasks", accessibility, "Common tasks");
+assertIncludes("Accessibility page avoids unsupported label claims", accessibility, "should be entered only after");
+assertIncludes("Accessibility page explains MRI image limitation", accessibility, "image anatomy");
 
 const login = readText("src", "pages", "LoginPage.tsx");
 assertIncludes("Sign in with Apple button exists", login, "Sign in with Apple");

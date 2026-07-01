@@ -31,6 +31,33 @@
   "copyright": "2026 Jeremy Swisher, MD",
   "supportUrl": "https://ucla-knee-mri.firebaseapp.com/support",
   "privacyPolicyUrl": "https://ucla-knee-mri.firebaseapp.com/privacy",
+  "accessibilityUrl": "https://ucla-knee-mri.firebaseapp.com/accessibility",
+  "accessibilityNutritionLabels": {
+    "status": "Prepared for device-level audit before claiming labels",
+    "accessibilityUrlRecommended": true,
+    "claimSupportOnlyAfterDeviceAudit": true,
+    "featuresToEvaluate": [
+      "VoiceOver",
+      "Voice Control",
+      "Larger Text",
+      "Differentiate Without Color Alone",
+      "Sufficient Contrast",
+      "Reduced Motion",
+      "Dark Interface"
+    ],
+    "notCoreExperience": [
+      "Captions",
+      "Audio Descriptions"
+    ],
+    "commonTaskBasis": [
+      "Sign in or enter App Review demo mode",
+      "Choose a course",
+      "Read modules and references",
+      "Use normal MRI workstations, guided tours, knowledge checks, and cross-plane drills",
+      "Review cases, progress, spaced-review cards, and account settings",
+      "Request account deletion or contact support"
+    ]
+  },
   "keywords": [
     "MRI",
     "sports medicine",
