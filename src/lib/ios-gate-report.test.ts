@@ -46,6 +46,18 @@ describe("iOS App Store gate report", () => {
     expect(gateReportScript).not.toContain("process.exit(1)");
   });
 
+  it("keeps the hard submission gate tied to detailed evidence verifiers", () => {
+    expect(handoff).toContain("runs the detailed evidence verifiers");
+    expect(handoff).toContain("App Store export signing ready: yes");
+    expect(submissionGateScript).toContain("Detailed evidence verification");
+    expect(submissionGateScript).toContain("scripts/ios-archive.mjs --signing");
+    expect(submissionGateScript).toContain("^App Store export signing ready: yes$");
+    expect(submissionGateScript).toContain("scripts/ios-auth-evidence.mjs --verify");
+    expect(submissionGateScript).toContain("scripts/ios-release-evidence.mjs --verify");
+    expect(submissionGateScript).toContain("scripts/ios-screenshot-evidence.mjs --verify");
+    expect(submissionGateScript).toContain("scripts/ios-app-store-connect-evidence.mjs --verify");
+  });
+
   it("prints counts that match the current gate evidence", () => {
     const output = execFileSync(process.execPath, ["scripts/ios-gate-report.mjs"], {
       encoding: "utf8",
