@@ -99,6 +99,9 @@ assertIncludes("Reviewer demo launch flag present", webShell, 'URLQueryItem(name
 assertIncludes("TestFlight sandbox receipt path handled", webShell, "sandboxReceipt");
 assertIncludes("Apple auth host allowed", webShell, "appleid.apple.com");
 assertIncludes("External links open outside shell", webShell, "UIApplication.shared.open(url)");
+assertIncludes("Native load retry increments reload token", webShell, "self.reloadToken += 1");
+assertIncludes("Native web view observes reload token", webShell, "context.coordinator.reloadToken != reloadToken");
+assertIncludes("Native retry reloads initial URL", webShell, "loadInitialURL(in: webView, url: url)");
 
 const appStoreSubmission = readText("ios", "AppStoreSubmission.md");
 assertIncludes("Privacy URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/privacy");

@@ -78,11 +78,13 @@ private enum WebApp {
 struct WebShellView: View {
     @State private var isLoading = true
     @State private var loadError: String?
+    @State private var reloadToken = 0
 
     var body: some View {
         ZStack {
             WebAppView(
                 url: WebApp.initialURL,
+                reloadToken: reloadToken,
                 isLoading: $isLoading,
                 loadError: $loadError
             )
@@ -110,6 +112,7 @@ struct WebShellView: View {
                     Button("Try Again") {
                         self.loadError = nil
                         self.isLoading = true
+                        self.reloadToken += 1
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red: 0.0, green: 0.33, blue: 0.53))
@@ -126,6 +129,7 @@ struct WebShellView: View {
 
 struct WebAppView: UIViewRepresentable {
     let url: URL
+    let reloadToken: Int
     @Binding var isLoading: Bool
     @Binding var loadError: String?
 
@@ -154,21 +158,32 @@ struct WebAppView: UIViewRepresentable {
         webView.scrollView.contentInsetAdjustmentBehavior = .automatic
         webView.scrollView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
         webView.backgroundColor = webView.scrollView.backgroundColor
-        webView.load(URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30))
+        context.coordinator.loadInitialURL(in: webView, url: url)
         return webView
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
+        if context.coordinator.reloadToken != reloadToken {
+            context.coordinator.reloadToken = reloadToken
+            context.coordinator.loadInitialURL(in: webView, url: url)
+            return
+        }
         if loadError == nil, webView.url == nil, !webView.isLoading {
-            webView.load(URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30))
+            context.coordinator.loadInitialURL(in: webView, url: url)
         }
     }
 
     final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         private let parent: WebAppView
+        var reloadToken: Int
 
         init(_ parent: WebAppView) {
             self.parent = parent
+            self.reloadToken = parent.reloadToken
+        }
+
+        func loadInitialURL(in webView: WKWebView, url: URL) {
+            webView.load(URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 30))
         }
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

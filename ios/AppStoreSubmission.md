@@ -18,6 +18,7 @@ Last updated: July 1, 2026
 - Firebase Hosting was deployed on July 1, 2026.
 - `npm run preflight:ios:live` passes 20 checks against `https://ucla-knee-mri.firebaseapp.com`.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
+- The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
 - `npm run preflight:ios:submit` still intentionally fails on 23 unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, real-device/TestFlight auth, account deletion operations, App Store screenshots, and App Store Connect submission fields.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
 
