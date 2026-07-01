@@ -85,7 +85,7 @@ describe("iOS evidence audit", () => {
     expect(output).toContain("App Store release evidence");
     expect(output).toContain("Suggested Order");
     expect(output).toContain("Audited groups ready:");
-    expect(output).toContain("full keychain access");
+    expect(output).toContain("App Store export signing ready:");
     expect(output).toContain("IOS_ASC_API_KEY_PATH");
     expect(output).not.toContain("Manage Certificates");
   });
