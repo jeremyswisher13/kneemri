@@ -147,12 +147,12 @@ Not used for tracking:
 1. Sign in with Apple is now in the app code, but Apple Developer + Firebase Auth provider setup must be completed before submission.
 2. Google sign-in inside `WKWebView` may be blocked by Google OAuth policy on real devices. Test on device/TestFlight.
 3. App Review demo mode is implemented locally for TestFlight/App Review builds. Verify it after the next Firebase Hosting deploy and on a real device/TestFlight build.
-4. Account deletion must be available in app. The app now has an in-app deletion request path at `/account`; the backend/admin deletion process must actually honor those requests before public release.
+4. Account deletion must be available in app. The app now has an in-app deletion request path at `/account` and shows a confirmation notice after sign-out; the backend/admin deletion process must actually honor those requests before public release.
 5. Because this is medical education, keep the in-app disclaimer and review notes clear that the app is educational and not for diagnosis/treatment.
 
 ## Account deletion operations
 
-The app writes signed-in user requests to `accountDeletionRequests/{uid}`. Firestore rules allow a learner to create/update only their own request, and admins can review/process requests. The account-deletion rules were deployed to Firebase on July 1, 2026.
+The app writes signed-in user requests to `accountDeletionRequests/{uid}`. Firestore rules allow a learner to create/update only their own request, and admins can review/process requests. The account-deletion rules were deployed to Firebase on July 1, 2026. After request submission, the app signs the learner out and shows the success notice on `/login`.
 
 After a test user submits `/account` > **Request deletion**, list pending requests with:
 

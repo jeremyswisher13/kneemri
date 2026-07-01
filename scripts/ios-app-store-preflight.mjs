@@ -334,6 +334,8 @@ const login = readText("src", "pages", "LoginPage.tsx");
 assertIncludes("Sign in with Apple button exists", login, "Sign in with Apple");
 assertIncludes("App Review demo button exists", login, "Continue in App Review demo");
 assertIncludes("Medical disclaimer present on login", login, "Educational training only");
+assertIncludes("Account deletion notice survives sign-out redirect", login, "noticeFromLocationState");
+assertIncludes("Account deletion notice is announced", login, 'role="status"');
 
 const loginReturn = readText("src", "lib", "login-return.ts");
 assertIncludes("Native iOS shell auth uses redirect flow", loginReturn, "isNativeIosAppShell(url.search, hints.userAgent)");

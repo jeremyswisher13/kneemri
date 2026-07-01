@@ -4,12 +4,16 @@ import { readFileSync } from "node:fs";
 describe("account deletion App Store readiness", () => {
   const auth = readFileSync("src/lib/auth.ts", "utf8");
   const accountPage = readFileSync("src/pages/AccountPage.tsx", "utf8");
+  const loginPage = readFileSync("src/pages/LoginPage.tsx", "utf8");
   const rules = readFileSync("firestore.rules", "utf8");
   const processor = readFileSync("scripts/process-account-deletion.mjs", "utf8");
   const packageJson = readFileSync("package.json", "utf8");
 
   it("keeps the in-app request path wired to the rules-backed collection", () => {
     expect(accountPage).toContain("requestAccountDeletion");
+    expect(accountPage).toContain('state: { notice: "Your account deletion request has been recorded." }');
+    expect(loginPage).toContain("noticeFromLocationState");
+    expect(loginPage).toContain('role="status"');
     expect(auth).toContain('doc(db, "accountDeletionRequests", user.uid)');
     expect(auth).toContain('status: "requested"');
     expect(auth).toContain('source: "in-app"');

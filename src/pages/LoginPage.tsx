@@ -39,6 +39,12 @@ const providerLabels: Record<SignInProvider, string> = {
   apple: "Apple",
 };
 
+function noticeFromLocationState(state: unknown): string | null {
+  if (!state || typeof state !== "object" || !("notice" in state)) return null;
+  const notice = (state as { notice?: unknown }).notice;
+  return typeof notice === "string" && notice.trim() ? notice : null;
+}
+
 function shouldUseRedirectFallback(err: unknown): boolean {
   const code = authErrorCode(err);
   return (
@@ -64,6 +70,7 @@ export default function LoginPage() {
     typeof window !== "undefined" && isLocalPreviewHost(window.location.href);
   const appReviewDemoAvailable =
     typeof window !== "undefined" && canEnableAppReviewDemo(window.location.href, sessionStorage);
+  const notice = noticeFromLocationState(location.state);
   const installInstructions =
     typeof navigator === "undefined"
       ? ""
@@ -206,6 +213,12 @@ export default function LoginPage() {
 
         <div className="rounded-xl bg-white p-8 shadow-lg">
           <h2 className="mb-6 text-xl font-semibold text-gray-900">Sign In</h2>
+
+          {notice && (
+            <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800" role="status">
+              {notice}
+            </div>
+          )}
 
           {error && (
             <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 border border-red-200">
