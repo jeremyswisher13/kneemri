@@ -113,4 +113,15 @@ describe("pwa helpers", () => {
     expect(favicon).toContain("UCLA Sports MRI favicon");
     expect(favicon).not.toContain("#863bff");
   });
+
+  it("keeps live App Store readiness checking install icons", () => {
+    const liveReadiness = readFileSync(resolve("scripts/ios-live-readiness.mjs"), "utf8");
+
+    expect(liveReadiness).toContain("/manifest.webmanifest");
+    expect(liveReadiness).toContain("/apple-touch-icon.png");
+    expect(liveReadiness).toContain("/pwa-icon-512.png");
+    expect(liveReadiness).toContain("assertContentTypeIncludes");
+    expect(liveReadiness).toContain("Live web manifest names app");
+    expect(liveReadiness).toContain("Live favicon names app");
+  });
 });

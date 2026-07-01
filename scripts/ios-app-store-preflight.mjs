@@ -453,6 +453,10 @@ assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "htt
 assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
 assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCLASportsMRIiOS");
 assertIncludes("Live readiness fetches lazy chunks", liveReadiness, "Live JS bundle and lazy chunks fetched");
+assertIncludes("Live readiness checks web manifest", liveReadiness, "/manifest.webmanifest");
+assertIncludes("Live readiness checks Apple touch icon", liveReadiness, "/apple-touch-icon.png");
+assertIncludes("Live readiness checks 512 PWA icon", liveReadiness, "/pwa-icon-512.png");
+assertIncludes("Live readiness validates icon content types", liveReadiness, "assertContentTypeIncludes");
 assertIncludes("Live readiness normalizes Vite asset references", liveReadiness, 'assetPath.startsWith("assets/")');
 assertIncludes("Live readiness rejects rewritten JS chunks", liveReadiness, "Live JS asset did not rewrite to HTML shell");
 assertIncludes("Live readiness checks account route", liveReadiness, 'fetchText("/account")');

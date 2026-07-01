@@ -118,12 +118,36 @@ function assertBodyIncludes(label, body, needle) {
   }
 }
 
+function assertContentTypeIncludes(label, response, needle) {
+  const contentType = response.headers.get("content-type") ?? "";
+  if (contentType.includes(needle)) {
+    pass(label, contentType);
+  } else {
+    fail(label, `Expected ${needle}; got ${contentType || "missing content-type"}`);
+  }
+}
+
 async function main() {
   console.log(`Checking live iOS App Store readiness at ${baseUrl}\n`);
 
   const home = await fetchText("/");
   assertBodyIncludes("Live app has Vite root", home.text, "root");
   const bundleText = await fetchBundleText(home.text);
+
+  const manifest = await fetchText("/manifest.webmanifest");
+  assertContentTypeIncludes("Live web manifest content type", manifest.response, "application/manifest+json");
+  assertBodyIncludes("Live web manifest names app", manifest.text, "UCLA Sports MRI");
+  assertBodyIncludes("Live web manifest includes 512 icon", manifest.text, "/pwa-icon-512.png");
+
+  const favicon = await fetchText("/favicon.svg");
+  assertContentTypeIncludes("Live favicon content type", favicon.response, "image/svg+xml");
+  assertBodyIncludes("Live favicon names app", favicon.text, "UCLA Sports MRI favicon");
+
+  const appleTouchIcon = await fetchText("/apple-touch-icon.png");
+  assertContentTypeIncludes("Live Apple touch icon content type", appleTouchIcon.response, "image/png");
+
+  const pwaIcon = await fetchText("/pwa-icon-512.png");
+  assertContentTypeIncludes("Live 512 PWA icon content type", pwaIcon.response, "image/png");
 
   const privacy = await fetchText("/privacy");
   assertBodyIncludes("Live privacy route serves app shell", privacy.text, "root");
