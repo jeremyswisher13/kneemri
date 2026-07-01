@@ -16,6 +16,8 @@
     "archive:ios:check": "node scripts/ios-archive.mjs --check",
     "account:deletion": "node scripts/process-account-deletion.mjs",
     "screenshots:ios:check": "node scripts/ios-screenshot-check.mjs",
+    "screenshots:ios:evidence": "node scripts/ios-screenshot-evidence.mjs",
+    "screenshots:ios:evidence:verify": "node scripts/ios-screenshot-evidence.mjs --verify",
     "preflight:ios": "node scripts/ios-app-store-preflight.mjs",
     "preflight:ios:live": "node scripts/ios-live-readiness.mjs",
     "preflight:ios:report": "node scripts/ios-gate-report.mjs",

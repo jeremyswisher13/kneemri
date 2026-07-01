@@ -61,9 +61,12 @@ After final TestFlight/native screenshots are captured, run:
 
 ```sh
 npm run screenshots:ios:check
+npm run screenshots:ios:evidence
+npm run screenshots:ios:evidence:verify
 ```
 
-That command verifies the iPhone 6.9-inch and iPad 13-inch screenshot folders, filenames, file formats, screenshot count, and accepted Apple pixel dimensions before App Store Connect upload.
+These commands verify the iPhone 6.9-inch and iPad 13-inch screenshot folders, filenames, file formats, screenshot count, and accepted Apple pixel dimensions before App Store Connect upload.
+The evidence commands use `ios/ScreenshotEvidence.json` to keep device/build/source/no-PHI review evidence aligned with the three screenshot gates in `ios/AppStoreSubmissionGate.json`.
 
 After the command passes and the app is submitted, set `appStoreConnect.submittedForReview` to `true` in `ios/AppStoreSubmissionGate.json` as final submission evidence.
 

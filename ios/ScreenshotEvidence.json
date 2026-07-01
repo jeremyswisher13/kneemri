@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-07-01",
+  "purpose": "Track final App Store screenshot evidence. Set captured/reviewed values to true only after the matching final native/TestFlight screenshot evidence exists.",
+  "iphone69": {
+    "captured": false,
+    "source": "",
+    "capturedAt": "",
+    "device": "",
+    "appBuild": "",
+    "files": [
+      "iphone-6-9-01-dashboard.png",
+      "iphone-6-9-02-normal-guided-tour.png",
+      "iphone-6-9-03-knowledge-check.png",
+      "iphone-6-9-04-cross-plane.png",
+      "iphone-6-9-05-cases.png",
+      "iphone-6-9-06-spaced-review.png",
+      "iphone-6-9-07-progress.png"
+    ]
+  },
+  "ipad13": {
+    "captured": false,
+    "source": "",
+    "capturedAt": "",
+    "device": "",
+    "appBuild": "",
+    "files": [
+      "ipad-13-01-dashboard.png",
+      "ipad-13-02-normal-guided-tour.png",
+      "ipad-13-03-knowledge-check.png",
+      "ipad-13-04-cross-plane.png",
+      "ipad-13-05-cases.png",
+      "ipad-13-06-spaced-review.png",
+      "ipad-13-07-progress.png"
+    ]
+  },
+  "phiReview": {
+    "reviewed": false,
+    "noPhiConfirmed": false,
+    "reviewedAt": "",
+    "reviewer": "",
+    "notes": ""
+  }
+}

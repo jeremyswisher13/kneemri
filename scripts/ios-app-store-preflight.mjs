@@ -61,6 +61,7 @@ assertFile("Export options template exists", "ios", "ExportOptions.plist");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
 assertFile("App Store metadata JSON exists", "ios", "AppStoreConnectMetadata.json");
 assertFile("Screenshot plan exists", "ios", "ScreenshotPlan.md");
+assertFile("Screenshot evidence JSON exists", "ios", "ScreenshotEvidence.json");
 assertFile("Apple/Firebase auth setup doc exists", "ios", "AppleFirebaseAuthSetup.md");
 assertFile("Submission gate file exists", "ios", "AppStoreSubmissionGate.json");
 assertFile("iOS README exists", "ios", "README.md");
@@ -70,6 +71,7 @@ assertFile("Submission gate report script exists", "scripts", "ios-gate-report.m
 assertFile("Archive helper script exists", "scripts", "ios-archive.mjs");
 assertFile("Account deletion processor exists", "scripts", "process-account-deletion.mjs");
 assertFile("Screenshot checker exists", "scripts", "ios-screenshot-check.mjs");
+assertFile("Screenshot evidence script exists", "scripts", "ios-screenshot-evidence.mjs");
 
 const project = readText("ios", "project.yml");
 assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
@@ -113,6 +115,7 @@ assertIncludes("Reviewer demo documented", appStoreSubmission, "Continue in App 
 assertIncludes("Metadata JSON documented", appStoreSubmission, "ios/AppStoreConnectMetadata.json");
 assertIncludes("Screenshot plan documented", appStoreSubmission, "ios/ScreenshotPlan.md");
 assertIncludes("Screenshot checker documented", appStoreSubmission, "npm run screenshots:ios:check");
+assertIncludes("Screenshot evidence documented", appStoreSubmission, "npm run screenshots:ios:evidence:verify");
 assertIncludes("Live readiness documented", appStoreSubmission, "npm run preflight:ios:live");
 assertIncludes("Apple callback URL documented", appStoreSubmission, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Gate report documented", appStoreSubmission, "npm run preflight:ios:report");
@@ -207,6 +210,7 @@ assertIncludes("Screenshot plan covers guided tour route", screenshotPlan, "norm
 assertIncludes("Screenshot plan covers knowledge check route", screenshotPlan, "normal-knee-mri?mode=check");
 assertIncludes("Screenshot plan covers cross-plane route", screenshotPlan, "normal-shoulder-mri?mode=correlate");
 assertIncludes("Screenshot plan includes checker command", screenshotPlan, "npm run screenshots:ios:check");
+assertIncludes("Screenshot plan includes evidence command", screenshotPlan, "npm run screenshots:ios:evidence:verify");
 assertIncludes("Screenshot plan excludes PHI", screenshotPlan, "No protected health information");
 
 const exportOptions = readText("ios", "ExportOptions.plist");
@@ -240,6 +244,12 @@ assertIncludes("Screenshot checker validates iPhone 6.9 size", screenshotChecker
 assertIncludes("Screenshot checker validates iPad 13 size", screenshotChecker, "2048, 2732");
 assertIncludes("Screenshot checker enforces screenshot count", screenshotChecker, "screenshot count is 1-10");
 assertIncludes("Screenshot checker covers App Store stem", screenshotChecker, "04-cross-plane");
+
+const screenshotEvidence = readText("scripts", "ios-screenshot-evidence.mjs");
+assertIncludes("Screenshot evidence verifies iPhone screenshot gate", screenshotEvidence, "screenshots.iphone69Captured");
+assertIncludes("Screenshot evidence verifies iPad screenshot gate", screenshotEvidence, "screenshots.ipad13Captured");
+assertIncludes("Screenshot evidence verifies no-PHI screenshot gate", screenshotEvidence, "screenshots.screenshotsReviewedForNoPhi");
+assertIncludes("Screenshot evidence requires native/TestFlight source", screenshotEvidence, "TestFlight/native iOS app");
 
 const liveReadiness = readText("scripts", "ios-live-readiness.mjs");
 assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");

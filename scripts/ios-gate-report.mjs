@@ -119,7 +119,7 @@ const groups = [
       {
         key: "screenshots.screenshotsReviewedForNoPhi",
         value: gate.screenshots?.screenshotsReviewedForNoPhi,
-        next: "Run npm run screenshots:ios:check and review every screenshot for no PHI or real learner data.",
+        next: "Run npm run screenshots:ios:check and npm run screenshots:ios:evidence:verify after reviewing every screenshot for no PHI or real learner data.",
       },
     ],
   },
@@ -207,6 +207,7 @@ if (missing.length > 0) {
   console.log("- npm run preflight:ios:live");
   console.log("- npm run preflight:ios:submit");
   console.log("- npm run screenshots:ios:check");
+  console.log("- npm run screenshots:ios:evidence");
   console.log("");
 }
 

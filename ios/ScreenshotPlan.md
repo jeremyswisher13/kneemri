@@ -77,9 +77,13 @@ Before uploading to App Store Connect, verify every file with:
 
 ```sh
 npm run screenshots:ios:check
+npm run screenshots:ios:evidence
+npm run screenshots:ios:evidence:verify
 ```
 
 The checker validates the two screenshot folders, planned filenames, accepted `.png` / `.jpg` / `.jpeg` formats, 1-10 screenshots per device set, and the Apple-accepted pixel dimensions listed above.
+
+`npm run screenshots:ios:evidence` prints the current screenshot evidence status without failing. `npm run screenshots:ios:evidence:verify` is the hard gate: it fails until both native/TestFlight device sets are captured, the files pass `npm run screenshots:ios:check`, and `ios/ScreenshotEvidence.json` records the no-PHI review.
 
 ## Final QA Before Upload
 
