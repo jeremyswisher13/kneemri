@@ -34,6 +34,8 @@ describe("iOS evidence audit", () => {
 
     expect(auditScript).toContain("App Store export signing ready");
     expect(auditScript).toContain("readyPattern: /^App Store export signing ready: yes$/m");
+    expect(auditScript).toContain("no code-signing identities were visible to this process");
+    expect(auditScript).toContain("with full keychain access");
     expect(auditScript).toContain("App Store Connect access for Team X578T4K65B");
     expect(auditScript).toContain("Apple/Firebase auth gates");
     expect(auditScript).toContain("Real-device/account-deletion gates");
@@ -56,5 +58,7 @@ describe("iOS evidence audit", () => {
     expect(output).toContain("App Store release evidence");
     expect(output).toContain("Suggested Order");
     expect(output).toContain("Audited groups ready:");
+    expect(output).toContain("full keychain access");
+    expect(output).not.toContain("Manage Certificates");
   });
 });

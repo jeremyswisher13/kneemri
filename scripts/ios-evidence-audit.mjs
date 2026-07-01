@@ -95,7 +95,15 @@ function parseReady(result) {
   return { ready: false, count: "unknown" };
 }
 
-function firstActionableLine(output) {
+function firstActionableLine(result) {
+  if (
+    result.key === "archiveSigning" &&
+    result.output.includes("no code-signing identities were visible to this process")
+  ) {
+    return "Next: rerun npm run archive:ios:signing with full keychain access, then create/download the App Store distribution provisioning profile and confirm Xcode App Store Connect upload access for Team X578T4K65B.";
+  }
+
+  const output = result.output;
   const lines = output
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -112,7 +120,7 @@ function firstActionableLine(output) {
 const results = commands.map(runCommand).map((result) => ({
   ...result,
   parsed: parseReady(result),
-  next: firstActionableLine(result.output),
+  next: firstActionableLine(result),
 }));
 
 const failures = results.filter((result) => result.status !== 0 || !result.parsed.ready);
