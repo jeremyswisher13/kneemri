@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import type { QuizQuestion as QuizQuestionType } from "@/types/content";
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"];
@@ -49,6 +49,36 @@ export default function QuizQuestion({
     setDisplayOptions(shuffleOptions(question.options));
   }
 
+  // WAI-ARIA radio-group keyboard support. The group is a single tab stop (the
+  // selected option, or the first if none is chosen yet); Arrow keys move the
+  // selection between options and wrap around, so keyboard/AT users can answer
+  // the scored quiz the same way mouse users can.
+  const groupRef = useRef<HTMLDivElement>(null);
+  const activeIndex = Math.max(
+    0,
+    displayOptions.findIndex((o) => o.key === selectedAnswer),
+  );
+
+  function focusRadioAt(index: number) {
+    const radios = groupRef.current?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+    radios?.[index]?.focus();
+  }
+
+  function handleRadioKeyDown(e: KeyboardEvent<HTMLButtonElement>, idx: number) {
+    if (disabled) return;
+    let next: number;
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      next = (idx + 1) % displayOptions.length;
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      next = (idx - 1 + displayOptions.length) % displayOptions.length;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    onSelect(displayOptions[next].key);
+    focusRadioAt(next);
+  }
+
   return (
     <div>
       {/* Progress bar */}
@@ -89,7 +119,7 @@ export default function QuizQuestion({
       )}
 
       {/* Options */}
-      <div role="radiogroup" aria-labelledby={`quiz-stem-${question.id}`} className="space-y-3">
+      <div ref={groupRef} role="radiogroup" aria-labelledby={`quiz-stem-${question.id}`} className="space-y-3">
         {displayOptions.map((option, idx) => {
           const isSelected = selectedAnswer === option.key;
           const isCorrectOption = correctAnswer === option.key;
@@ -120,7 +150,9 @@ export default function QuizQuestion({
               type="button"
               role="radio"
               aria-checked={isSelected}
+              tabIndex={idx === activeIndex ? 0 : -1}
               onClick={() => !disabled && onSelect(option.key)}
+              onKeyDown={(e) => handleRadioKeyDown(e, idx)}
               disabled={disabled}
               className={`w-full text-left rounded-lg border-2 p-4 transition-colors ${borderClass} ${disabled ? "cursor-default" : ""}`}
             >

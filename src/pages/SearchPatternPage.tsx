@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import MriStackViewer from "@/components/ui/MriStackViewer";
@@ -98,6 +98,25 @@ export default function SearchPatternPage() {
     setShowSummary(false);
     setActiveTargetStep(null);
   }
+
+  // Deep link from a module's "Step N of the systematic search pattern" chip:
+  // open that step and, if it has a verified viewer target, park the "look here"
+  // stack on it.
+  const [searchParams] = useSearchParams();
+  const stepParam = searchParams.get("step");
+  useEffect(() => {
+    if (stepParam == null) return;
+    const n = Number(stepParam);
+    const idx = searchPatternSteps.findIndex((s) => s.number === n);
+    if (idx < 0) return;
+    setCurrentStep(idx);
+    setShowSummary(false);
+    if (STEP_TARGETS[activeCourse.id]?.[n]) {
+      setActiveTargetStep(n);
+      setViewerOpen(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepParam, activeCourse.id]);
 
   function toggleItem(stepNumber: number, itemIndex: number) {
     const key = `${stepNumber}-${itemIndex}`;

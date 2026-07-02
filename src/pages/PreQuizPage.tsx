@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 import { submitQuiz, addWrongAnswerToReview } from "@/lib/firestore";
 import { workstationReviewId } from "@/content/review-id";
+import { domainLabel } from "@/lib/growth";
 
 interface QuizResult {
   questionId: string;
@@ -108,6 +109,29 @@ export default function PreQuizPage() {
 
   // Results view
   if (results) {
+    // Aggregate performance by blueprint domain. We deliberately do NOT reveal the
+    // per-item correct answers or explanations on the pre-assessment: pre and post
+    // are matched parallel forms, so showing the key here would coach fellows on the
+    // exact concepts the post-quiz re-tests and inflate the measured gain. The full
+    // item-by-item review lands at the post-assessment instead.
+    const domainAgg = new Map<string, { correct: number; total: number }>();
+    for (const q of preQuestions) {
+      const r = results.results.find((x) => x.questionId === q.id);
+      const cur = domainAgg.get(q.domain) ?? { correct: 0, total: 0 };
+      cur.total += 1;
+      if (r?.correct) cur.correct += 1;
+      domainAgg.set(q.domain, cur);
+    }
+    const domainRows = Array.from(domainAgg.entries())
+      .map(([domain, v]) => ({
+        domain,
+        label: domainLabel(domain),
+        correct: v.correct,
+        total: v.total,
+        pct: v.total > 0 ? Math.round((v.correct / v.total) * 100) : 0,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
     return (
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Quiz Results</h1>
@@ -125,71 +149,44 @@ export default function PreQuizPage() {
           </p>
         </div>
 
-        {/* Individual results */}
-        <div className="mt-8 space-y-4">
-          {preQuestions.map((question, idx) => {
-            const result = results.results.find(
-              (r) => r.questionId === question.id
-            );
-            const userAnswer = answers[question.id];
-            const isCorrect = result?.correct;
-
-            return (
-              <div
-                key={question.id}
-                className={`rounded-xl border-2 p-6 ${
-                  isCorrect
-                    ? "border-green-200 bg-green-50"
-                    : "border-red-200 bg-red-50"
-                }`}
-              >
-                <div className="flex items-start gap-3">
-                  <span
-                    className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white ${
-                      isCorrect ? "bg-green-500" : "bg-red-500"
-                    }`}
-                  >
-                    {isCorrect ? "\u2713" : "\u2717"}
+        {/* Per-domain performance \u2014 aggregate only; the per-item answer key and
+            explanations are intentionally withheld until the post-assessment. */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold text-gray-900">Where you stand by domain</h2>
+          <p className="mt-1 text-sm text-gray-600">
+            Your starting point across the {domainRows.length} knowledge domains this course covers \u2014
+            a map of where to focus, not a score to worry about.
+          </p>
+          <div className="mt-4 space-y-3">
+            {domainRows.map((row) => (
+              <div key={row.domain}>
+                <div className="flex items-baseline justify-between gap-3 text-sm">
+                  <span className="font-medium text-gray-800">{row.label}</span>
+                  <span className="tabular-nums text-gray-500">
+                    {row.correct}/{row.total}
                   </span>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900">
-                      {idx + 1}. {question.stem}
-                    </p>
-
-                    <div className="mt-3 space-y-1.5">
-                      {question.options.map((opt) => {
-                        const isUserAnswer = userAnswer === opt.key;
-                        const isCorrectAnswer =
-                          result?.correctAnswer === opt.key;
-
-                        let optStyle = "text-gray-600";
-                        if (isCorrectAnswer)
-                          optStyle =
-                            "text-green-800 font-medium bg-green-100 rounded px-2 py-0.5";
-                        else if (isUserAnswer && !isCorrect)
-                          optStyle =
-                            "text-red-800 line-through bg-red-100 rounded px-2 py-0.5";
-
-                        return (
-                          <p key={opt.key} className={`text-sm ${optStyle}`}>
-                            <span className="font-semibold">{opt.key}.</span>{" "}
-                            {opt.text}
-                            {isCorrectAnswer && " \u2190 Correct"}
-                            {isUserAnswer && !isCorrect && " \u2190 Your answer"}
-                          </p>
-                        );
-                      })}
-                    </div>
-
-                    <p className="mt-3 text-sm text-gray-700 bg-white/60 rounded-lg p-3 border border-gray-200">
-                      <span className="font-semibold">Explanation:</span>{" "}
-                      {result?.explanation}
-                    </p>
-                  </div>
+                </div>
+                <div className="mt-1 h-2 overflow-hidden rounded-full bg-gray-200">
+                  <div
+                    className="h-full rounded-full bg-ucla-blue transition-all"
+                    style={{ width: `${row.pct}%` }}
+                  />
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+
+        {/* Why the answer key is withheld on the pre-assessment */}
+        <div className="mt-8 rounded-xl border border-ucla-blue/20 bg-ucla-blue/5 p-5">
+          <p className="text-sm leading-6 text-gray-700">
+            <span className="font-semibold text-gray-900">
+              Answers are hidden for the pre-assessment on purpose.
+            </span>{" "}
+            This is your baseline before the course, so revealing the correct answers now would turn
+            the test into a study guide and make your post-course gain look bigger than it really is.
+            You'll get the correct answers and full explanations at the post-assessment.
+          </p>
         </div>
 
         <div className="mt-8 text-center">
