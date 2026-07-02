@@ -294,6 +294,8 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
   const activeCourse = useActiveCourse();
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -336,13 +338,18 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
     };
   }, [open]);
 
-  // Focus input when opening
+  // Focus input when opening; restore focus to the trigger when closing so
+  // keyboard/AT users are not dropped at the top of the page.
   useEffect(() => {
     if (open) {
+      previouslyFocused.current = (document.activeElement as HTMLElement) ?? null;
       setQuery("");
       setActiveIndex(0);
       // Small delay so the DOM is painted
       requestAnimationFrame(() => inputRef.current?.focus());
+      return () => {
+        previouslyFocused.current?.focus?.();
+      };
     }
   }, [open]);
 
@@ -377,6 +384,22 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
       } else if (e.key === "Escape") {
         e.preventDefault();
         onClose();
+      } else if (e.key === "Tab") {
+        // Trap focus inside the dialog so Tab can't wander into the page behind it.
+        const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
+        );
+        if (!focusables || focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const activeEl = document.activeElement;
+        if (e.shiftKey && activeEl === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && activeEl === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     },
     [grouped.ordered, activeIndex, selectResult, onClose]
@@ -401,6 +424,10 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
 
       {/* Dialog */}
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search course content"
         className="relative mx-4 flex w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-gray-200"
         onKeyDown={handleKeyDown}
       >

@@ -1,3 +1,4 @@
+import { useRef, type KeyboardEvent } from "react";
 import type { ConfidenceStatement } from "@/types/content";
 
 interface RetroLikertScaleProps {
@@ -32,6 +33,18 @@ function Row({
   onRate: (rating: number) => void;
   accent: "now" | "then";
 }) {
+  const groupRef = useRef<HTMLDivElement>(null);
+  const activeValue = rating ?? 1;
+  function handleKeyDown(e: KeyboardEvent<HTMLButtonElement>, value: number) {
+    let next: number;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = value === 5 ? 1 : value + 1;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = value === 1 ? 5 : value - 1;
+    else return;
+    e.preventDefault();
+    onRate(next);
+    groupRef.current?.querySelector<HTMLButtonElement>(`[data-value="${next}"]`)?.focus();
+  }
+
   return (
     <fieldset>
       <legend className="mb-1.5 flex items-baseline gap-2">
@@ -42,7 +55,12 @@ function Row({
         </span>
         <span className="text-[11px] text-gray-500">{hint}</span>
       </legend>
-      <div className="flex items-center justify-between gap-1.5">
+      <div
+        ref={groupRef}
+        role="radiogroup"
+        aria-label={legend}
+        className="flex items-center justify-between gap-1.5"
+      >
         {[1, 2, 3, 4, 5].map((value) => {
           const isSelected = rating === value;
           const selectedClass =
@@ -53,9 +71,13 @@ function Row({
             <button
               key={value}
               type="button"
+              role="radio"
+              aria-checked={isSelected}
+              tabIndex={value === activeValue ? 0 : -1}
+              data-value={value}
               aria-label={`${value} — ${labels[value - 1]}`}
-              aria-pressed={isSelected}
               onClick={() => onRate(value)}
+              onKeyDown={(e) => handleKeyDown(e, value)}
               className={`flex flex-1 flex-col items-center rounded-lg border-2 px-2 py-2 transition-colors ${
                 isSelected
                   ? selectedClass
