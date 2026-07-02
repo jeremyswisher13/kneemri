@@ -7,8 +7,7 @@ import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { coursePath, getPreQuizQuestions } from "@/content/courses";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
-import { submitQuiz, addWrongAnswerToReview } from "@/lib/firestore";
-import { workstationReviewId } from "@/content/review-id";
+import { submitQuiz } from "@/lib/firestore";
 import { domainLabel } from "@/lib/growth";
 
 interface QuizResult {
@@ -82,22 +81,10 @@ export default function PreQuizPage() {
 
       const data = await submitQuiz(user.uid, user.email || "", "pre", answersArray, activeCourse.id, isAdminView);
 
-      // Feed missed questions into the spaced-review queue. Namespaced key MUST
-      // match the registry exactly (stage 1: workstationReviewId(courseId,
-      // "prepost-"+id)). allSettled so a Firestore hiccup can't block results.
-      if (activeCourse.features.reviewCards && !isAdminView) {
-        const wrong = data.results.filter((r) => !r.correct);
-        await Promise.allSettled(
-          wrong.map((r) =>
-            addWrongAnswerToReview(
-              user.uid,
-              workstationReviewId(activeCourse.id, `prepost-${r.questionId}`),
-              "assessment",
-              activeCourse.id,
-            ),
-          ),
-        );
-      }
+      // The pre-assessment deliberately does NOT seed the spaced-review queue. It
+      // is a clean baseline: any answer feedback here (on screen or later via a
+      // review card) would coach fellows on the matched post-quiz and inflate the
+      // measured gain. Post-quiz misses still feed review.
 
       setResults(data);
     } catch (err) {

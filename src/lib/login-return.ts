@@ -61,20 +61,22 @@ export function localLoginUrlForLocalAuthHost(href: string, returnTo: string): s
 export function shouldUseRedirectSignIn(href: string, hints: RedirectSignInHints = {}): boolean {
   const url = new URL(href);
   // Use redirect sign-in ONLY where popup sign-in genuinely can't work: local dev
-  // hosts, the native iOS WKWebView shell (no window.open), and installed
-  // standalone PWAs (a popup would escape the app window).
+  // hosts and the native iOS WKWebView shell (no window.open). Everything a real
+  // browser renders — desktop, mobile Safari, AND installed standalone (home-screen)
+  // PWAs — uses popup.
   //
-  // Plain mobile Safari deliberately uses popup instead. signInWithRedirect drops
-  // the session on iOS Safari here: the app is served from ucla-knee-mri.web.app
-  // while Firebase's auth handler lives on ucla-knee-mri.firebaseapp.com, and
-  // Safari's tracking prevention blocks that cross-domain hand-off — so the user
-  // returns unauthenticated and gets bounced back to /login. Popup keeps the
-  // credential exchange in the app's own origin, avoiding the problem.
+  // Why popup for standalone PWAs too: on iOS, signInWithRedirect sends the user
+  // out to Google + the firebaseapp.com auth handler, which on a home-screen PWA
+  // breaks out into Safari — a SEPARATE storage context from the installed app —
+  // so the credential never returns and the user is bounced back to /login. (In
+  // plain mobile Safari the same web.app <-> firebaseapp.com hop is dropped by
+  // tracking prevention.) signInWithPopup keeps the exchange in an in-app browser
+  // tied to this origin, so the session lands where the app can see it. If a popup
+  // is ever blocked, handleProviderSignIn falls back to redirect anyway.
   return (
     url.hostname === "localhost" ||
     url.hostname === "127.0.0.1" ||
-    isNativeIosAppShell(url.search, hints.userAgent) ||
-    hints.standalone === true
+    isNativeIosAppShell(url.search, hints.userAgent)
   );
 }
 
