@@ -365,7 +365,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 11,
-        markers: [{ x: 44, y: 46, label: "Labrum" }],
+        markers: [{ x: 46, y: 54, label: "Labrum" }],
         title: "Acetabular labrum",
         note: "On sagittal PD FS the acetabular labrum is the small low-signal triangle on the bony rim, and this plane helps localize it around the clock face — the anterosuperior quadrant is the tear hotspot. Confirm a uniformly dark, sharply pointed triangle blending with the rim; rounded, blunted, or internally bright signal raises tear, which MR arthrography depicts best with intra-articular contrast tracking into the cleft.",
       },
@@ -397,7 +397,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [
           { x: 36, y: 70, label: "Head-neck junction" },
-          { x: 44, y: 46, label: "Labrum" },
+          { x: 46, y: 54, label: "Labrum" },
           { x: 33, y: 57, label: "Anterior recess" },
         ],
         title: "Do-not-overcall checkpoint",
@@ -433,7 +433,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       {
         id: "hs-q3",
         sliceIndex: 11,
-        marker: { x: 44, y: 46 },
+        marker: { x: 46, y: 54 },
         prompt: "What is the marked low-signal triangle along the acetabular rim?",
         options: ["Ligamentum teres", "Transverse acetabular ligament", "Acetabular labrum", "Zona orbicularis"],
         answer: 2,

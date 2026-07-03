@@ -358,7 +358,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt: "This is a meniscus on the sagittal — a low-signal “bow-tie.” Find the same meniscus on the coronal.",
     explanation:
       "Same structure, different shape: the sagittal “bow-tie” becomes a triangular WEDGE pointing into the joint on the coronal. Flipping between the two views is how you build a 3-D model of each structure.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 8, x: 66.6, y: 59.2, label: "Meniscus (bow-tie)" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 8, x: 61, y: 59.2, label: "Meniscus (bow-tie)" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
@@ -956,7 +956,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 8,
         markers: [
           { x: 40, y: 61, label: "Anterior horn (meniscus)" },
-          { x: 66.6, y: 59.2, label: "Posterior horn (meniscus)" },
+          { x: 61, y: 59.2, label: "Posterior horn (meniscus)" },
         ],
         title: "Meniscus — the dark bow-ties",
         note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
@@ -1053,7 +1053,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "sag-q7",
         sliceIndex: 8,
-        marker: { x: 66.6, y: 59.2 },
+        marker: { x: 61, y: 59.2 },
         prompt: WHAT,
         options: ["Posterior horn of the meniscus", "PCL", "Posterior joint capsule", "Popliteus tendon"],
         answer: 0,
@@ -1492,7 +1492,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 8,
         markers: [
           { x: 40, y: 61, label: "Anterior horn (meniscus)" },
-          { x: 66.6, y: 59.2, label: "Posterior horn (meniscus)" },
+          { x: 61, y: 59.2, label: "Posterior horn (meniscus)" },
         ],
         title: "Meniscus",
         note: "Low-signal triangles at the joint line — dark on T1, as on PD-FS.",
@@ -1574,7 +1574,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q7",
         sliceIndex: 8,
-        marker: { x: 66.6, y: 59.2 },
+        marker: { x: 61, y: 59.2 },
         prompt: WHAT,
         options: ["Posterior horn of the meniscus", "PCL", "Posterior joint capsule", "Popliteus tendon"],
         answer: 0,
