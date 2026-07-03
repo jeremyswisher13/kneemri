@@ -421,7 +421,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         sliceIndex: 14,
         markers: [{ x: 27, y: 40, label: "Humeral head" }],
         title: "Humeral head",
-        note: "The round humeral head — bright marrow, thin dark cortex. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability).",
+        note: "The round humeral head. On this fat-suppressed sequence the normal fatty marrow is SUPPRESSED (dark/intermediate) inside a thin dark cortex — so a focal BRIGHT area is marrow edema, not normal fat. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability).",
       },
       {
         sliceIndex: 14,
@@ -496,7 +496,7 @@ export const normalShoulderLearn: Record<string, PlaneLearn> = {
         prompt: WHAT,
         options: ["Humeral head", "Glenoid", "Coracoid process", "Acromion"],
         answer: 0,
-        explanation: "The round ball with bright marrow and a thin dark cortex, lateral in the image, is the humeral head.",
+        explanation: "The round ball lateral in the image, with a thin dark cortex and fat-suppressed (dark/intermediate) marrow, is the humeral head. On this fat-sat sequence a focal bright marrow signal would be edema, not normal fat.",
       },
       {
         id: "axi-q2",
