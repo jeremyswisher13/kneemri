@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30",
+  "generatedAt": "2026-07-09",
   "course": {
     "id": "shoulder-mri",
     "title": "Shoulder MRI for Primary Care Sports Medicine",
@@ -2241,7 +2241,7 @@
               }
             ],
             "title": "Humeral head",
-            "note": "The round humeral head — bright marrow, thin dark cortex. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability)."
+            "note": "The round humeral head. On this fat-suppressed sequence the normal fatty marrow is SUPPRESSED (dark/intermediate) inside a thin dark cortex — so a focal BRIGHT area is marrow edema, not normal fat. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability)."
           },
           {
             "sliceIndex": 14,
@@ -2388,7 +2388,7 @@
               "Acromion"
             ],
             "answer": 0,
-            "explanation": "The round ball with bright marrow and a thin dark cortex, lateral in the image, is the humeral head."
+            "explanation": "The round ball lateral in the image, with a thin dark cortex and fat-suppressed (dark/intermediate) marrow, is the humeral head. On this fat-sat sequence a focal bright marrow signal would be edema, not normal fat."
           },
           {
             "id": "axi-q2",
@@ -2858,7 +2858,7 @@
       "Rotator-cuff muscles (medial slice)": "Grade fatty atrophy on this sagittal view (Goutallier–Fuchs) — it predicts whether a cuff tear is repairable.",
       "Subscapularis": "Don't miss a subscapularis tear — look for biceps medial subluxation/dislocation out of the groove, its companion finding.",
       "Infraspinatus & teres minor": "Isolated teres-minor fatty atrophy = quadrilateral-space / axillary-nerve problem until proven otherwise.",
-      "Glenoid & labrum": "Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears.",
+      "Glenoid & labrum": "Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears. A Buford complex can coexist with and is associated with SLAP pathology, so still inspect the superior labrum and biceps anchor.",
       "Biceps & rotator interval": "A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.",
       "Humeral head": "Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.",
       "Supraspinatus tendon": "Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact.",
@@ -3617,7 +3617,7 @@
           "Sublabral foramen"
         ],
         "answer": 0,
-        "explanation": "Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants, not superior labral tears, and should not be repaired."
+        "explanation": "Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants rather than superior labral tears. Do not repair an otherwise normal variant in isolation; a Buford complex can coexist with and is associated with SLAP pathology, so inspect the biceps anchor and superior labrum rather than dismissing concordant symptoms."
       },
       {
         "id": "sh-caq-4",
@@ -7252,6 +7252,2488 @@
       "topicIndex": 5,
       "courseId": "shoulder-mri"
     },
+    "shoulder-mri::ssag-q1": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Humeral head"
+        },
+        {
+          "key": "B",
+          "text": "Glenoid"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On a lateral sagittal slice the round ball capped by the cuff is the humeral head.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 17,
+        "x": 43,
+        "y": 52
+      }
+    },
+    "shoulder-mri::ssag-q2": {
+      "stem": "Which cuff tendon drapes over the superior humeral head?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "C",
+          "text": "Teres minor"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The supraspinatus tendon caps the superior humeral head, running to the greater-tuberosity footprint.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 11,
+        "x": 44,
+        "y": 28
+      }
+    },
+    "shoulder-mri::ssag-q3": {
+      "stem": "Which cuff muscle is anterior, the largest, and inserts on the lesser tuberosity?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "B",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "Teres minor"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Subscapularis is the anterior and largest cuff muscle; its tendon inserts on the lesser tuberosity.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 5,
+        "x": 27,
+        "y": 59
+      }
+    },
+    "shoulder-mri::ssag-q4": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Infraspinatus / teres minor"
+        },
+        {
+          "key": "B",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "C",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The posterior cuff muscles are infraspinatus (superior) and teres minor (inferior).",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 5,
+        "x": 60,
+        "y": 55
+      }
+    },
+    "shoulder-mri::ssag-q5": {
+      "stem": "Between supraspinatus and subscapularis, this space holds the biceps and its pulley — what is it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Rotator interval"
+        },
+        {
+          "key": "B",
+          "text": "Subacromial bursa"
+        },
+        {
+          "key": "C",
+          "text": "Axillary recess"
+        },
+        {
+          "key": "D",
+          "text": "Quadrilateral space"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator interval (between supraspinatus and subscapularis) contains the long head of biceps and the coracohumeral/superior glenohumeral ligament pulley.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 9,
+        "x": 47,
+        "y": 36
+      }
+    },
+    "shoulder-mri::ssag-q6": {
+      "stem": "A hooked or down-sloping shape of which structure can narrow the supraspinatus outlet?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Acromion"
+        },
+        {
+          "key": "B",
+          "text": "Coracoid"
+        },
+        {
+          "key": "C",
+          "text": "Greater tuberosity"
+        },
+        {
+          "key": "D",
+          "text": "Clavicle"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The acromion can narrow the subacromial outlet when hooked, down-sloping, or unfused as an os acromiale. Treat that morphology as a risk factor to correlate with symptoms, dynamic exam, bursal change, and cuff findings.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 11,
+        "x": 43,
+        "y": 19
+      }
+    },
+    "shoulder-mri::ssag-q7": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Glenoid & labrum"
+        },
+        {
+          "key": "B",
+          "text": "Humeral head"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The socket of the scapula rimmed by the low-signal labrum is the glenoid and labrum.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 9,
+        "x": 43,
+        "y": 51
+      }
+    },
+    "shoulder-mri::ssag-q8": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deltoid"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "Trapezius"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The deltoid is the outer muscular envelope, NOT a rotator cuff (SITS) muscle; it lies superficial to the subacromial-subdeltoid bursa.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 11,
+        "x": 20,
+        "y": 48
+      }
+    },
+    "shoulder-mri::ssag-q9": {
+      "stem": "On this scapular-Y view, which rotator cuff muscle fills the fossa ABOVE the scapular spine?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "D",
+          "text": "Teres minor"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On the scapular-Y the supraspinatus occupies the supraspinous fossa above the scapular spine; it is the most superior cuff muscle.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 5,
+        "x": 45,
+        "y": 28
+      }
+    },
+    "shoulder-mri::ssag-q10": {
+      "stem": "Most degenerative tears of the marked supraspinatus tendon begin ~1 cm from its footprint, in which region?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Critical zone"
+        },
+        {
+          "key": "B",
+          "text": "Rotator interval"
+        },
+        {
+          "key": "C",
+          "text": "Footprint enthesis"
+        },
+        {
+          "key": "D",
+          "text": "Bare area"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The hypovascular 'critical zone' ~1 cm proximal to the greater-tuberosity footprint is where most degenerative supraspinatus tears begin.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 11,
+        "x": 44,
+        "y": 28
+      }
+    },
+    "shoulder-mri::ssag-q11": {
+      "stem": "The marked rotator interval houses the biceps pulley. Which two ligaments form that pulley?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coracohumeral + superior glenohumeral ligaments"
+        },
+        {
+          "key": "B",
+          "text": "Coracoacromial + transverse ligaments"
+        },
+        {
+          "key": "C",
+          "text": "Inferior glenohumeral ligament complex"
+        },
+        {
+          "key": "D",
+          "text": "Middle glenohumeral + spiral glenoid ligaments"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator-interval biceps pulley is the coracohumeral (CHL) plus superior glenohumeral (SGHL) ligament; a pulley tear lets the biceps subluxate medially.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 9,
+        "x": 47,
+        "y": 36
+      }
+    },
+    "shoulder-mri::ssag-q12": {
+      "stem": "On this en-face glenoid, a tear of the anteroinferior labrum (3-6 o'clock) is which lesion?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bankart (anteroinferior labral) lesion"
+        },
+        {
+          "key": "B",
+          "text": "SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "Hill-Sachs lesion"
+        },
+        {
+          "key": "D",
+          "text": "Bennett lesion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On the sagittal-oblique en-face glenoid clock-face, the anteroinferior labrum (3-6 o'clock) is the Bankart zone torn after anterior dislocation.",
+      "source": "Shoulder MRI · Sagittal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal",
+        "sliceIndex": 9,
+        "x": 43,
+        "y": 51
+      }
+    },
+    "shoulder-mri::shcor-sid-1": {
+      "stem": "What is the marked dependent inferior pouch of the joint capsule below the humeral head?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Axillary recess"
+        },
+        {
+          "key": "B",
+          "text": "Subacromial-subdeltoid bursa"
+        },
+        {
+          "key": "C",
+          "text": "Bicipital groove"
+        },
+        {
+          "key": "D",
+          "text": "Subscapular recess"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The dependent inferior capsular pouch below the humeral head is the axillary recess, formed by the inferior glenohumeral ligament complex; it is the site to assess for capsular thickening/edema in adhesive capsulitis. The subacromial-subdeltoid bursa lies superficial to the cuff, above the head, not inferior to it.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 38,
+        "y": 82
+      }
+    },
+    "shoulder-mri::shcor-sid-2": {
+      "stem": "What is the marked lateral bony footprint onto which the supraspinatus and infraspinatus insert?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Greater tuberosity"
+        },
+        {
+          "key": "B",
+          "text": "Lesser tuberosity"
+        },
+        {
+          "key": "C",
+          "text": "Glenoid"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The greater tuberosity is the lateral footprint for the supraspinatus and infraspinatus; a subcortical cyst or marrow edema here is a soft sign of an adjacent cuff tear. The lesser tuberosity, anteriorly, is the subscapularis insertion, not the supraspinatus/infraspinatus footprint.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 24,
+        "y": 45
+      }
+    },
+    "shoulder-mri::scor-q2": {
+      "stem": "The cuff tendon followed to its footprint here is the…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "C",
+          "text": "Biceps"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On coronal the supraspinatus tendon is followed along its length to the greater-tuberosity footprint.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 35,
+        "y": 33
+      }
+    },
+    "shoulder-mri::scor-q4": {
+      "stem": "Fluid undercuts the superior labrum with a smooth, medially-directed margin paralleling the glenoid. What is this most likely?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sublabral recess (normal variant)"
+        },
+        {
+          "key": "B",
+          "text": "Type II SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "Bankart lesion"
+        },
+        {
+          "key": "D",
+          "text": "Paralabral cyst"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A smooth, medially-oriented cleft paralleling the glenoid is the normal sublabral recess; a laterally-curved, irregular cleft extending into the labral substance favors a SLAP tear.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 53,
+        "y": 57
+      }
+    },
+    "shoulder-mri::scor-q5": {
+      "stem": "The thin fat/fluid plane between the cuff and the acromion/deltoid is the…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Subacromial–subdeltoid bursa"
+        },
+        {
+          "key": "B",
+          "text": "Glenohumeral joint"
+        },
+        {
+          "key": "C",
+          "text": "Axillary recess"
+        },
+        {
+          "key": "D",
+          "text": "Rotator interval"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The plane between the cuff and the overlying acromion/deltoid is the subacromial–subdeltoid bursa.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 33,
+        "y": 32
+      }
+    },
+    "shoulder-mri::scor-q6": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Acromion / AC joint"
+        },
+        {
+          "key": "B",
+          "text": "Greater tuberosity"
+        },
+        {
+          "key": "C",
+          "text": "Humeral head"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The bony arch and its joint with the distal clavicle is the acromion / AC joint.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 45,
+        "y": 19
+      }
+    },
+    "shoulder-mri::scor-q8": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Humeral head"
+        },
+        {
+          "key": "B",
+          "text": "Glenoid"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The round proximal humerus capped by the supraspinatus tendon on the coronal is the humeral head.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 34,
+        "y": 58
+      }
+    },
+    "shoulder-mri::scor-q9": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deltoid"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Trapezius"
+        },
+        {
+          "key": "D",
+          "text": "Subscapularis"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The deltoid drapes the greater tuberosity laterally as the outer envelope, separated from the cuff by the subacromial-subdeltoid bursa.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 16,
+        "y": 52
+      }
+    },
+    "shoulder-mri::scor-q10": {
+      "stem": "Fluid in the marked subacromial-subdeltoid bursa AND the glenohumeral joint together most strongly suggests what?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full-thickness rotator cuff tear"
+        },
+        {
+          "key": "B",
+          "text": "Isolated subacromial bursitis"
+        },
+        {
+          "key": "C",
+          "text": "Adhesive capsulitis"
+        },
+        {
+          "key": "D",
+          "text": "Normal finding"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Communicating fluid in BOTH the SASD bursa and the joint strongly suggests a full-thickness cuff tear; isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear by itself.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 11,
+        "x": 33,
+        "y": 32
+      }
+    },
+    "shoulder-mri::scor-q11": {
+      "stem": "A subcortical cyst or marrow edema at the marked greater-tuberosity footprint is a soft sign of what?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adjacent rotator cuff tear"
+        },
+        {
+          "key": "B",
+          "text": "AC joint arthrosis"
+        },
+        {
+          "key": "C",
+          "text": "Acute fracture"
+        },
+        {
+          "key": "D",
+          "text": "Normal apophysis"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A subcortical cyst or marrow edema at the greater-tuberosity footprint is a soft sign of an adjacent rotator cuff tear.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 24,
+        "y": 45
+      }
+    },
+    "shoulder-mri::scor-q12": {
+      "stem": "The coronal is the best plane to measure which feature of this torn supraspinatus tendon?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tendon gap / retraction (Patte stage)"
+        },
+        {
+          "key": "B",
+          "text": "Which cuff tendons are torn"
+        },
+        {
+          "key": "C",
+          "text": "Fatty muscle atrophy (Goutallier)"
+        },
+        {
+          "key": "D",
+          "text": "Labral integrity"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Coronal measures the tendon GAP and retraction (Patte); the sagittal-Y shows WHICH tendons are torn and T1 shows fatty atrophy (Goutallier).",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 35,
+        "y": 33
+      }
+    },
+    "shoulder-mri::scor-q13": {
+      "stem": "On the distal supraspinatus, why does the rotator cable/crescent concept matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "An intact cable can preserve load transfer across a thin crescent tear, while cable disruption can make a tear more functionally important"
+        },
+        {
+          "key": "B",
+          "text": "The cable is a normal labral variant and should not affect cuff interpretation"
+        },
+        {
+          "key": "C",
+          "text": "The crescent is the biceps pulley, so crescent injury predicts medial biceps dislocation"
+        },
+        {
+          "key": "D",
+          "text": "The cable is assessed only on axial images and is unrelated to the supraspinatus footprint"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator cable is the thicker articular-sided bundle just medial to the thinner distal cuff crescent. Crescent tears are common near the footprint, but an intact cable can help preserve force transmission; cable disruption, especially anteriorly, makes the tear more clinically important.",
+      "source": "Shoulder MRI · Coronal",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-coronal",
+        "sliceIndex": 7,
+        "x": 35,
+        "y": 33
+      }
+    },
+    "shoulder-mri::shaxi-sid-1": {
+      "stem": "What is the marked anteromedial bony process of the scapula on this axial slice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coracoid process"
+        },
+        {
+          "key": "B",
+          "text": "Lesser tuberosity"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Spine of the scapula"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The hook-like anteromedial process of the scapula on the higher axial slices is the coracoid, the origin of the conjoint tendon and the anchor for the coracoclavicular and coracoacromial ligaments. The lesser tuberosity is on the humerus (laterally), not the scapula.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 8,
+        "x": 48,
+        "y": 30
+      }
+    },
+    "shoulder-mri::shaxi-sid-2": {
+      "stem": "On this axial slice with anterior at the top, what is the marked dark triangle at the lower glenoid rim?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Posterior labrum"
+        },
+        {
+          "key": "B",
+          "text": "Anterior labrum"
+        },
+        {
+          "key": "C",
+          "text": "Glenoid articular cartilage"
+        },
+        {
+          "key": "D",
+          "text": "Infraspinatus tendon"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "With anterior at the top of the axial image, the dark fibrocartilage triangle at the LOWER (posterior) glenoid rim is the posterior labrum; blunting or a tear suggests posterior instability or a reverse Bankart. The anterior labrum is the dark triangle at the upper (anterior) rim on the same slice.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 49,
+        "y": 63
+      }
+    },
+    "shoulder-mri::axi-q1": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Humeral head"
+        },
+        {
+          "key": "B",
+          "text": "Glenoid"
+        },
+        {
+          "key": "C",
+          "text": "Coracoid process"
+        },
+        {
+          "key": "D",
+          "text": "Acromion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The round ball lateral in the image, with a thin dark cortex and fat-suppressed (dark/intermediate) marrow, is the humeral head. On this fat-sat sequence a focal bright marrow signal would be edema, not normal fat.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 14,
+        "x": 27,
+        "y": 40
+      }
+    },
+    "shoulder-mri::axi-q2": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Glenoid"
+        },
+        {
+          "key": "B",
+          "text": "Humeral head"
+        },
+        {
+          "key": "C",
+          "text": "Coracoid"
+        },
+        {
+          "key": "D",
+          "text": "Acromion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The shallow comma-shaped articular face of the scapula, medial to the head, is the glenoid.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 14,
+        "x": 51,
+        "y": 54
+      }
+    },
+    "shoulder-mri::axi-q3": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anterior labrum"
+        },
+        {
+          "key": "B",
+          "text": "Posterior labrum"
+        },
+        {
+          "key": "C",
+          "text": "Articular cartilage"
+        },
+        {
+          "key": "D",
+          "text": "Subscapularis tendon"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The dark triangle at the anterior glenoid rim is the anterior labrum — its anteroinferior part is the Bankart site of anterior instability.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 50,
+        "y": 49
+      }
+    },
+    "shoulder-mri::axi-q4": {
+      "stem": "The small dark dot seated between the tuberosities here is the…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Long head of biceps tendon in its groove"
+        },
+        {
+          "key": "B",
+          "text": "Subscapularis tendon"
+        },
+        {
+          "key": "C",
+          "text": "Anterior labrum"
+        },
+        {
+          "key": "D",
+          "text": "Joint fluid only"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A small low-signal dot in the bicipital groove between the tuberosities is the long head of biceps. An empty groove signals a torn or dislocated tendon.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 44,
+        "y": 40
+      }
+    },
+    "shoulder-mri::axi-q6": {
+      "stem": "This anterior tendon coursing toward the lesser tuberosity is the…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "Long head of biceps"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The anterior cuff tendon running to the lesser tuberosity is the subscapularis; its tears are easily missed — look for medial biceps subluxation as a clue.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 39,
+        "y": 33
+      }
+    },
+    "shoulder-mri::axi-q8": {
+      "stem": "If the marked bicipital groove were EMPTY, what would that imply?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Torn or medially dislocated long head of biceps"
+        },
+        {
+          "key": "B",
+          "text": "Normal fluid in the groove"
+        },
+        {
+          "key": "C",
+          "text": "Os acromiale"
+        },
+        {
+          "key": "D",
+          "text": "SLAP tear"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "An empty bicipital groove means the long head of biceps is torn or medially dislocated; medial dislocation implies a torn subscapularis or biceps pulley.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 44,
+        "y": 40
+      }
+    },
+    "shoulder-mri::axi-q9": {
+      "stem": "A tear of the marked anteroinferior labrum, classically after anterior dislocation, is which lesion?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bankart lesion"
+        },
+        {
+          "key": "B",
+          "text": "SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "Buford complex"
+        },
+        {
+          "key": "D",
+          "text": "Hill-Sachs lesion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A torn anteroinferior labrum after anterior dislocation is a Bankart lesion; an attached osseous fragment makes it a bony Bankart.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 50,
+        "y": 49
+      }
+    },
+    "shoulder-mri::axi-q10": {
+      "stem": "A torn posterior labrum (marked) paired with a reverse Hill-Sachs is the signature of what?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Posterior instability (often post-seizure/electric shock)"
+        },
+        {
+          "key": "B",
+          "text": "Anterior Bankart instability"
+        },
+        {
+          "key": "C",
+          "text": "SLAP tear"
+        },
+        {
+          "key": "D",
+          "text": "AC joint separation"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A blunted or torn posterior labrum plus a reverse Hill-Sachs on the anteromedial head signals posterior instability, classically after a seizure or electric shock.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 49,
+        "y": 63
+      }
+    },
+    "shoulder-mri::axi-q11": {
+      "stem": "A tear of the marked subscapularis tendon most directly destabilizes which structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Long head of biceps (medial subluxation/dislocation)"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus tendon"
+        },
+        {
+          "key": "C",
+          "text": "Posterior labrum"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A subscapularis tear at the lesser-tuberosity insertion disrupts the biceps pulley, so the long head subluxates or dislocates medially.",
+      "source": "Shoulder MRI · Axial",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-axial",
+        "sliceIndex": 13,
+        "x": 39,
+        "y": 33
+      }
+    },
+    "shoulder-mri::shsagt1-sid-1": {
+      "stem": "What is the marked bony shelf that separates the supraspinatus above from the infraspinatus below on this scapular-Y slice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Spine of the scapula"
+        },
+        {
+          "key": "B",
+          "text": "Coracoid process"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Clavicle"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The scapular spine is the keystone of the Y, dividing the supraspinous fossa (supraspinatus, above) from the infraspinous fossa (infraspinatus, below); use it to be certain which muscle you are grading. The acromion is the lateral continuation of the spine forming the outlet roof, not the dividing shelf between the two fossae.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 44,
+        "y": 45
+      }
+    },
+    "shoulder-mri::shsagt1-sid-2": {
+      "stem": "On this lateral sagittal T1 slice, what is the marked rounded structure filled with bright fatty marrow?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Humeral head"
+        },
+        {
+          "key": "B",
+          "text": "Glenoid"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On the lateral T1 slices the humeral head fills the field with uniformly bright fatty marrow; a focal DARK region is the abnormal finding (edema, fracture, or a marrow-replacing lesion). The glenoid is the shallow scapular socket seen on the more medial slices, not this lateral rounded ball.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 16,
+        "x": 40,
+        "y": 48
+      }
+    },
+    "shoulder-mri::t1-q1": {
+      "stem": "On this scapular-'Y' slice, which cuff muscle sits ABOVE the scapular spine?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "D",
+          "text": "Teres minor"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Supraspinatus occupies the supraspinatus fossa above the scapular spine; infraspinatus lies below it.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 40,
+        "y": 28
+      }
+    },
+    "shoulder-mri::t1-q2": {
+      "stem": "The large anterior cuff muscle filling the anterior fossa is the…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Subscapularis is the anterior rotator cuff; it fills the subscapular fossa and inserts on the lesser tuberosity.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 31,
+        "y": 61
+      }
+    },
+    "shoulder-mri::t1-q3": {
+      "stem": "On this T1 image, normal humeral-head marrow appears…",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bright (fatty marrow)"
+        },
+        {
+          "key": "B",
+          "text": "Dark"
+        },
+        {
+          "key": "C",
+          "text": "Identical to muscle"
+        },
+        {
+          "key": "D",
+          "text": "Bright only after contrast"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Normal marrow is bright on T1 (fat is not suppressed); a focal dark area signals edema, fracture, or a lesion.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 16,
+        "x": 40,
+        "y": 48
+      }
+    },
+    "shoulder-mri::t1-q4": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Glenoid & labrum"
+        },
+        {
+          "key": "B",
+          "text": "Humeral head"
+        },
+        {
+          "key": "C",
+          "text": "Acromion"
+        },
+        {
+          "key": "D",
+          "text": "Coracoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The pear-shaped scapular glenoid rimmed by the low-signal labrum is seen en face on this slice.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 10,
+        "x": 42,
+        "y": 50
+      }
+    },
+    "shoulder-mri::t1-q5": {
+      "stem": "T1 is the best sequence to grade which feature of a chronic cuff tear?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fatty muscle atrophy (Goutallier)"
+        },
+        {
+          "key": "B",
+          "text": "Subacromial bursal fluid"
+        },
+        {
+          "key": "C",
+          "text": "Bone marrow edema"
+        },
+        {
+          "key": "D",
+          "text": "Cartilage thickness"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "T1 shows fatty infiltration of the cuff muscles (Goutallier–Fuchs); high-grade atrophy predicts an irreparable tear and changes surgical planning.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 40,
+        "y": 28
+      }
+    },
+    "shoulder-mri::t1-q6": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Acromion"
+        },
+        {
+          "key": "B",
+          "text": "Coracoid"
+        },
+        {
+          "key": "C",
+          "text": "Clavicle"
+        },
+        {
+          "key": "D",
+          "text": "Greater tuberosity"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The flat bone forming the roof of the outlet superiorly is the acromion.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 14,
+        "x": 45,
+        "y": 18
+      }
+    },
+    "shoulder-mri::t1-q7": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Teres minor"
+        },
+        {
+          "key": "D",
+          "text": "Subscapularis"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The infraspinatus is the large posterior cuff muscle filling the infraspinous fossa below the scapular spine; supraspinatus lies above the spine.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 57,
+        "y": 56
+      }
+    },
+    "shoulder-mri::t1-q8": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Teres minor"
+        },
+        {
+          "key": "B",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "D",
+          "text": "Deltoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Teres minor is the small posterior cuff muscle just below infraspinatus; isolated fatty atrophy points to axillary-nerve (quadrilateral-space) denervation.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 56,
+        "y": 76
+      }
+    },
+    "shoulder-mri::t1-q10": {
+      "stem": "What is the marked structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coracoid process"
+        },
+        {
+          "key": "B",
+          "text": "Acromion"
+        },
+        {
+          "key": "C",
+          "text": "Glenoid"
+        },
+        {
+          "key": "D",
+          "text": "Clavicle"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The coracoid is the anterior hook-like process, origin of the conjoint tendon and the coracoclavicular/coracoacromial ligaments, and a reliable 'anterior' landmark.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 6,
+        "x": 33,
+        "y": 30
+      }
+    },
+    "shoulder-mri::t1-q11": {
+      "stem": "Why is T1 the sequence used to grade rotator-cuff fatty atrophy (Goutallier)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fat is bright and unsuppressed on T1, so fatty muscle infiltration is conspicuous"
+        },
+        {
+          "key": "B",
+          "text": "Fluid is brightest on T1"
+        },
+        {
+          "key": "C",
+          "text": "Fat is suppressed on T1"
+        },
+        {
+          "key": "D",
+          "text": "T1 has the highest spatial resolution"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "On T1 fat is bright and unsuppressed, so Goutallier fatty infiltration of the cuff muscles stands out -- and its grade predicts whether a tear is repairable.",
+      "source": "Shoulder MRI · Sagittal T1",
+      "courseId": "shoulder-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-shoulder-sagittal-t1",
+        "sliceIndex": 4,
+        "x": 40,
+        "y": 28
+      }
+    },
+    "shoulder-mri::sh-caq-1": {
+      "stem": "A 64-year-old retired carpenter has a chronic full-thickness supraspinatus tear. On the sagittal-oblique Y-view, the supraspinatus muscle belly lies entirely below a line drawn from the superior border of the scapular spine to the superior border of the coracoid, and the muscle shows more fat than muscle on T1. Which finding most strongly predicts that an anatomic primary cuff repair will fail?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Positive tangent sign with Goutallier grade 3-4 fatty infiltration"
+        },
+        {
+          "key": "B",
+          "text": "Tendon retraction to the apex of the humeral head"
+        },
+        {
+          "key": "C",
+          "text": "A trace of fluid in the subacromial-subdeltoid bursa"
+        },
+        {
+          "key": "D",
+          "text": "A type II (curved) acromion on the outlet view"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A positive tangent sign (supraspinatus belly below the spine-coracoid line) plus high-grade Goutallier fatty infiltration (grade 3-4) reflects irreversible muscle degeneration and is the strongest predictor of repair failure and re-tear, often shifting management toward debridement, superior capsular reconstruction, or reverse arthroplasty. Tendon retraction to the humeral apex is concerning but, without advanced fatty atrophy, is more often still reparable; acromial shape and a trace of bursal fluid do not by themselves predict repair failure.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-2": {
+      "stem": "A 47-year-old falls onto an outstretched, externally rotated arm and now has anterior shoulder pain and weakness with the lift-off and belly-press tests. MRI shows the long head of the biceps displaced medially, lying over (superficial to) the lesser tuberosity. Which associated injury should you most specifically look for on the axial images?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A subscapularis tendon tear"
+        },
+        {
+          "key": "B",
+          "text": "A SLAP type II tear"
+        },
+        {
+          "key": "C",
+          "text": "An anteroinferior (Bankart) labral tear"
+        },
+        {
+          "key": "D",
+          "text": "A supraspinatus footprint tear"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Medial subluxation/dislocation of the long head of the biceps is the companion sign of a subscapularis tendon tear, because the subscapularis and the deep capsular fibers form the medial wall of the biceps pulley; positive lift-off and belly-press tests localize to the subscapularis. A SLAP tear involves the superior labral-biceps anchor, not the groove, and does not displace the biceps medially; a Bankart is an instability lesion of the anteroinferior labrum unrelated to biceps position.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-3": {
+      "stem": "A 28-year-old overhead athlete has deep shoulder pain and a positive O'Brien test. MR arthrogram shows superior labral contrast that is irregular and laterally curved, extending lateral to the biceps anchor into the labral substance, and measuring more than 2-3 mm wide. Which is the most appropriate interpretation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Type II SLAP tear"
+        },
+        {
+          "key": "B",
+          "text": "Normal sublabral recess"
+        },
+        {
+          "key": "C",
+          "text": "Buford complex"
+        },
+        {
+          "key": "D",
+          "text": "Sublabral foramen"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants rather than superior labral tears. Do not repair an otherwise normal variant in isolation; a Buford complex can coexist with and is associated with SLAP pathology, so inspect the biceps anchor and superior labrum rather than dismissing concordant symptoms.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-4": {
+      "stem": "A 21-year-old contact athlete has had four anterior dislocations. CT shows 24% anteroinferior glenoid bone loss, and MRI shows an off-track Hill-Sachs lesion. Which surgical option gives the lowest recurrence risk?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bony augmentation such as a coracoid transfer (Latarjet)"
+        },
+        {
+          "key": "B",
+          "text": "Isolated arthroscopic Bankart soft-tissue repair"
+        },
+        {
+          "key": "C",
+          "text": "Capsular plication without bony augmentation"
+        },
+        {
+          "key": "D",
+          "text": "Physical therapy with activity modification"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "With substantial/critical glenoid bone loss (often ~20-25%, with lower subcritical thresholds relevant in high-risk contact athletes) and an off-track Hill-Sachs lesion, isolated arthroscopic Bankart repair has a high recurrence rate, so bony augmentation such as Latarjet is favored to restore the glenoid track and lower recurrence; remplissage may be added depending on the humeral defect strategy. Isolated Bankart repair and capsular plication do not address the bone deficit, and recurrent dislocations in a young contact athlete are not reliably controlled by nonoperative management.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-5": {
+      "stem": "A 26-year-old with recurrent anterior instability after multiple dislocations has a non-arthrogram MRI showing the anteroinferior labrum medially displaced and rotated down onto the scapular neck, healed in a medialized position, with an intact but stripped anterior scapular periosteum. Which lesion does this best describe?",
+      "options": [
+        {
+          "key": "A",
+          "text": "ALPSA lesion"
+        },
+        {
+          "key": "B",
+          "text": "Classic soft-tissue Bankart lesion"
+        },
+        {
+          "key": "C",
+          "text": "Perthes lesion"
+        },
+        {
+          "key": "D",
+          "text": "GLAD lesion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "An ALPSA (anterior labroligamentous periosteal sleeve avulsion) shows medial and inferior displacement of the labroligamentous complex with an intact but stripped periosteum, so the labrum heals chronically in a medialized position - typical of recurrent instability. A classic Bankart has a torn periosteum with the labrum free at the rim; a Perthes has a nondisplaced labrum with intact periosteum that lifts only with stress; a GLAD is a superficial labral tear with an articular cartilage defect and is not an instability lesion.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-6": {
+      "stem": "A 53-year-old woman with diabetes has 4 months of progressive shoulder stiffness with global loss of both active and passive motion and no antecedent trauma. Non-arthrogram fat-suppressed T2 MRI is most likely to show which combination of findings?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Thickening and edema of the axillary recess capsule with soft tissue obliterating the subcoracoid fat triangle in the rotator interval"
+        },
+        {
+          "key": "B",
+          "text": "A full-thickness supraspinatus tear with fluid in the subacromial-subdeltoid bursa"
+        },
+        {
+          "key": "C",
+          "text": "An anteroinferior labral tear with a Hill-Sachs lesion"
+        },
+        {
+          "key": "D",
+          "text": "Fatty atrophy of the infraspinatus with a spinoglenoid notch cyst"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Adhesive capsulitis produces capsular and synovial thickening with T2 edema in the axillary recess, plus rotator-interval soft-tissue thickening that obliterates the subcoracoid fat triangle - a highly specific sign - matching the clinical picture of painful global motion loss in a diabetic patient. A cuff tear, a labral-Hill-Sachs instability pattern, and a spinoglenoid notch cyst with infraspinatus denervation each produce focal mechanical or neurologic findings, not the diffuse capsular thickening of a frozen shoulder.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-7": {
+      "stem": "A 34-year-old volleyball player has posterior shoulder aching and mild external-rotation weakness. MRI shows a paralabral cyst extending into the spinoglenoid notch but not reaching the suprascapular notch, with a posterosuperior labral tear. Which muscle is most likely to show denervation edema or atrophy?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Supraspinatus"
+        },
+        {
+          "key": "C",
+          "text": "Teres minor"
+        },
+        {
+          "key": "D",
+          "text": "Both supraspinatus and infraspinatus"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "At the spinoglenoid notch the suprascapular nerve has already given off its supraspinatus branches more proximally, so compression there denervates the infraspinatus alone, producing isolated infraspinatus edema or atrophy. A lesion at the more proximal suprascapular notch would affect both the supraspinatus and infraspinatus; the teres minor is supplied by the axillary nerve in the quadrilateral space, not the suprascapular nerve.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-caq-8": {
+      "stem": "A 58-year-old returns 9 months after arthroscopic supraspinatus repair with recurrent pain and weakness. On fat-suppressed T2 imaging, which finding most reliably indicates a recurrent full-thickness re-tear rather than expected postoperative change?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A fluid-signal-intensity gap spanning the full tendon thickness with tendon retraction from the footprint"
+        },
+        {
+          "key": "B",
+          "text": "Intermediate T2 signal within the tendon at the repair site"
+        },
+        {
+          "key": "C",
+          "text": "Low-signal suture-anchor artifact at the greater tuberosity"
+        },
+        {
+          "key": "D",
+          "text": "A small amount of fluid in the subacromial-subdeltoid bursa"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A full-thickness, fluid-bright gap with tendon retraction off the footprint indicates a recurrent re-tear, because fluid-equivalent signal traversing the entire tendon is the same criterion used in the native cuff. Intermediate (not fluid-bright) intratendinous signal, susceptibility from suture anchors, and a small amount of bursal fluid are all expected postoperative findings and do not by themselves indicate a re-tear; granulation tissue can keep signal intermediate for months.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::cuff-1": {
+      "stem": "A 58-year-old laborer has a chronic full-thickness supraspinatus tear. On the sagittal-oblique T1-weighted image at the level of the scapular Y, the supraspinatus muscle belly does not cross a line drawn from the superior margin of the scapular spine to the superior margin of the coracoid. According to the tangent sign, this finding most specifically indicates which of the following?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tendon retraction to the level of the glenoid (Patte stage 3)"
+        },
+        {
+          "key": "B",
+          "text": "Goutallier grade 1 fatty infiltration"
+        },
+        {
+          "key": "C",
+          "text": "Supraspinatus muscle atrophy"
+        },
+        {
+          "key": "D",
+          "text": "An irreparable subscapularis tear"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The tangent sign is positive when the supraspinatus muscle belly fails to cross (lies below) the line connecting the superior borders of the scapular spine and coracoid on the Y-shaped sagittal image, indicating significant supraspinatus muscle atrophy and predicting poorer repair outcomes. It assesses bulk/atrophy, distinct from tendon retraction (Patte) or fatty infiltration grading (Goutallier).",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::cuff-2": {
+      "stem": "On an oblique-coronal fat-suppressed T2-weighted image, you identify focal high signal at the articular surface of the supraspinatus immediately adjacent to its insertion on the greater tuberosity footprint, with intact bursal-side fibers. This 'rim-rent' (PASTA-type) tear is most often UNDERESTIMATED on conventional MRI for which reason?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The magic-angle effect artifactually raises signal at the footprint, masking the tear"
+        },
+        {
+          "key": "B",
+          "text": "Partial-volume averaging and the tear's deep footprint location cause it to be missed or undergraded without MR arthrography or ABER positioning"
+        },
+        {
+          "key": "C",
+          "text": "Chemical-shift artifact obscures the articular margin in the frequency-encoding direction"
+        },
+        {
+          "key": "D",
+          "text": "Fluid in the subacromial-subdeltoid bursa mimics articular signal"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Articular-sided rim-rent tears at the deep tendon footprint are commonly underestimated on conventional MRI due to partial-volume averaging and their location; MR arthrography, especially with abduction-external-rotation (ABER) positioning, increases sensitivity by distending and offloading the articular fibers (Lee 2002; Li meta-analysis 2021). Magic angle affects short-TE sequences, not long-TE fluid-sensitive T2; chemical-shift artifact is suppressed on fat-suppressed images; bursal fluid does not mimic articular-surface signal at the footprint.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::cuff-4": {
+      "stem": "When grading fatty muscle degeneration of the rotator cuff, a key distinction between the Goutallier classification and the Fuchs modification is which of the following?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Goutallier was originally validated on MRI, whereas Fuchs uses CT"
+        },
+        {
+          "key": "B",
+          "text": "Goutallier was originally described on axial CT (then adapted to MRI), while Fuchs simplified it to a 3-stage MRI grading on the sagittal-oblique image"
+        },
+        {
+          "key": "C",
+          "text": "Fuchs grades only the supraspinatus, whereas Goutallier grades all four cuff muscles equally"
+        },
+        {
+          "key": "D",
+          "text": "Goutallier uses a 3-stage system and Fuchs expanded it to 5 stages"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Goutallier's original 5-stage (0-4) classification was described on axial CT and later applied to MRI, whereas the Fuchs modification simplified assessment into a 3-stage system performed on the sagittal-oblique (Y-view) MR image. Both grade fatty infiltration, but the staging granularity and original modality differ.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::labrum-1": {
+      "stem": "On a non-arthrogram MRI of a 24-year-old with recurrent anterior instability after a prior dislocation, the anteroinferior labrum is medially displaced and rotated against the scapular neck but remains attached to an intact, stripped anterior scapular periosteum, so no contrast or fluid insinuates between the labrum and glenoid. Which lesion does this BEST describe?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perthes lesion"
+        },
+        {
+          "key": "B",
+          "text": "ALPSA lesion"
+        },
+        {
+          "key": "C",
+          "text": "Classic (soft-tissue) Bankart lesion"
+        },
+        {
+          "key": "D",
+          "text": "GLAD lesion"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "An ALPSA (anterior labroligamentous periosteal sleeve avulsion) is characterized by medial displacement and inferomedial rotation of the labroligamentous complex with an intact but stripped periosteum, so the labrum heals in a medialized position; a Perthes has a nondisplaced labrum with intact periosteum, and a classic Bankart has a torn periosteum.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::labrum-2": {
+      "stem": "On glenoid bone-loss assessment, an en-face sagittal-oblique 'best-fit circle' is drawn on the inferior glenoid. The width of the bare anterior bone defect measures 7 mm and the maximum diameter of the circle is 28 mm. According to the glenoid track concept and contemporary surgical thresholds, this degree of bone loss is MOST appropriately classified as:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Critical/significant loss (~25%), favoring consideration of bony augmentation (e.g., Latarjet)"
+        },
+        {
+          "key": "B",
+          "text": "Trivial loss (<10%), arthroscopic Bankart repair alone is reliably sufficient"
+        },
+        {
+          "key": "C",
+          "text": "Critical loss (>40%), mandating total shoulder arthroplasty"
+        },
+        {
+          "key": "D",
+          "text": "No measurable loss; the defect represents the normal bare area of the glenoid"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Percent bone loss = defect width / best-fit circle diameter = 7/28 = 25%. This sits at the upper end of the historically cited 'critical' range (~20-25%), where isolated arthroscopic Bankart repair has higher recurrence/poorer functional scores and bony procedures such as Latarjet are increasingly favored. Lower 'subcritical' loss can still matter in contact athletes, so the number is a management risk marker, not a stand-alone rule.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::labrum-3": {
+      "stem": "On an MR arthrogram, contrast is seen tracking between the superior labrum and glenoid at the 12-o'clock position. Which feature MOST reliably distinguishes a true type II SLAP tear from a normal sublabral recess (sulcus)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Contrast that is laterally curved/irregular, extending away from the glenoid and lateral to the biceps anchor into the labral substance"
+        },
+        {
+          "key": "B",
+          "text": "A smooth, medially oriented cleft paralleling the glenoid surface, located at or anterior to the biceps anchor"
+        },
+        {
+          "key": "C",
+          "text": "Contrast/signal in the cleft that follows fluid signal on all sequences"
+        },
+        {
+          "key": "D",
+          "text": "Presence of a Buford complex on the same study"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A type II SLAP tear shows contrast that is laterally curved and irregular, extending away from the glenoid (lateral to the biceps anchor) into the labral substance. A normal sublabral recess is a smooth, medially directed cleft that parallels the glenoid surface. Posterior extension is NOT reliable: per Jin et al. (AJR 2006), signal posterior to the biceps anchor occurs in ~91% of recesses and ~97% of SLAP tears, whereas a laterally curved configuration favors SLAP. Both fill with contrast, so following fluid signal does not help, and a Buford complex is an unrelated anterosuperior variant.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::labrum-4": {
+      "stem": "A pitcher has a Hill-Sachs lesion. On the glenoid-track method, the Hill-Sachs interval (the width of the Hill-Sachs lesion plus the bone bridge to the rotator cuff footprint) is compared with the glenoid track, calculated as 0.83 times the glenoid diameter minus the anterior bone-loss width. When a Hill-Sachs lesion is 'off-track,' the clinical implication is that:",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Hill-Sachs interval exceeds the glenoid track, so the lesion engages and isolated Bankart repair has a high failure rate"
+        },
+        {
+          "key": "B",
+          "text": "The lesion is entirely contained within the track and will not engage regardless of glenoid loss"
+        },
+        {
+          "key": "C",
+          "text": "The defect is purely a soft-tissue Bankart and bone loss is irrelevant"
+        },
+        {
+          "key": "D",
+          "text": "Track width equals the full glenoid diameter because the 0.83 factor applies only to posterior lesions"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "An off-track Hill-Sachs has a Hill-Sachs interval wider than the glenoid track (0.83 x glenoid diameter - anterior bone loss), so the humeral defect engages the glenoid rim. Isolated Bankart repair then has high recurrence (Locher: ~33% vs 6% for on-track), favoring remplissage or bony augmentation.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::biceps-1": {
+      "stem": "On an axial fat-suppressed proton-density MR image at the level of the bicipital groove, the long head of the biceps tendon is seen displaced MEDIALLY and lies superficial to the subscapularis tendon fibers, which themselves remain intact and inserting on the lesser tuberosity. Which structure's disruption MOST specifically explains this pattern of medial biceps subluxation while the subscapularis remains intact?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Superficial fibers of the subscapularis tendon at the lesser tuberosity"
+        },
+        {
+          "key": "B",
+          "text": "The deep (capsular) fibers of the subscapularis tendon and superior glenohumeral ligament forming the floor/medial sling of the pulley"
+        },
+        {
+          "key": "C",
+          "text": "The supraspinatus tendon footprint"
+        },
+        {
+          "key": "D",
+          "text": "The transverse humeral ligament alone"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Medial biceps subluxation with an intact-appearing subscapularis implies failure of the medial pulley sling — the deep capsular subscapularis fibers and the superior glenohumeral ligament — which can be torn while the more superficial subscapularis fibers remain intact; if the tendon lies deep to (dislocated into) a torn subscapularis it is a true medial dislocation. The transverse humeral ligament's role as a primary stabilizer is now considered minor compared with the SGHL/CHL/subscapularis pulley (Nakata 2011; the SGHL defect and biceps displacement sign are the most sensitive MR criteria for pulley lesions).",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::biceps-2": {
+      "stem": "In the Habermeyer/Martetschläger classification of biceps pulley (\"hidden\") lesions, a tear of the medial pulley sling is characteristically difficult to identify on standard arthroscopic inspection (and on non-arthrographic MRI) because of its location. A medial-sling pulley lesion most specifically involves tearing of which component, producing a defect best appreciated as loss of the normal medial sling on MR arthrography?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The lateral band of the coracohumeral ligament (lateral pulley sling)"
+        },
+        {
+          "key": "B",
+          "text": "The medial band of the coracohumeral ligament and superior glenohumeral ligament (medial pulley sling) at the medial aspect of the rotator interval"
+        },
+        {
+          "key": "C",
+          "text": "The anterosuperior labrum"
+        },
+        {
+          "key": "D",
+          "text": "The bursal-side supraspinatus footprint"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The medial pulley sling is formed by the medial band of the coracohumeral ligament (medial CHL) plus the superior glenohumeral ligament (SGHL) at the medial aspect of the rotator interval/entrance of the bicipital groove; the Martetschläger 2020 update defines a type 1 pulley lesion as a tear of this medial sling (medial CHL and/or SGHL). Such lesions are occult clinically and on standard arthroscopic inspection (the basis for the term 'hidden lesion') and are often associated with partial articular-side subscapularis and/or supraspinatus tears. MR arthrography is the modality of choice, showing contrast undermining or loss of the normal medial sling. The lateral band of the coracohumeral ligament forms the lateral (not medial) sling; the anterosuperior labrum and the bursal-side supraspinatus footprint are not components of the pulley at all.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::biceps-4": {
+      "stem": "A sports-medicine fellow reviewing a shoulder MR notes the long head of the biceps tendon appears thickened and bright on a single axial image at the top of the groove, prompting concern for tendinopathy. Which technical/anatomic pitfall is the MOST likely benign explanation for apparent increased signal in the intra-articular/groove portion of a normal biceps tendon?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Magic-angle artifact where the tendon curves ~55° relative to B0 on short-TE sequences"
+        },
+        {
+          "key": "B",
+          "text": "Chemical-shift artifact in the frequency-encoding direction"
+        },
+        {
+          "key": "C",
+          "text": "Susceptibility artifact from adjacent cortical bone"
+        },
+        {
+          "key": "D",
+          "text": "Partial volume averaging with the deltoid muscle"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "As the biceps tendon curves over the humeral head and into the groove it can approach the magic angle (~55° to the main field), producing artifactually increased intratendinous signal on short-TE sequences (T1/PD/GRE) that disappears on long-TE (T2) images. Recognizing this prevents overcalling tendinopathy on the curved intra-articular segment.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::impingement-1": {
+      "stem": "A 22-year-old elite baseball pitcher has posterior shoulder pain in late cocking. ABER (abduction-external rotation) MR arthrography shows undersurface fraying of the posterosuperior rotator cuff with subtle cyst formation in the greater tuberosity and fraying of the posterosuperior labrum. Which mechanism best explains these findings?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Repetitive contact of the coracoacromial ligament against the bursal cuff surface"
+        },
+        {
+          "key": "B",
+          "text": "Contact of the undersurface (articular side) of the posterosuperior cuff against the posterosuperior glenoid in abduction-external rotation"
+        },
+        {
+          "key": "C",
+          "text": "Subcoracoid narrowing compressing the subscapularis against the lesser tuberosity"
+        },
+        {
+          "key": "D",
+          "text": "Os acromiale instability producing downward traction on the supraspinatus"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Posterosuperior (internal) impingement results from contact between the articular surface of the posterosuperior cuff and the posterosuperior glenoid/labrum in the ABER position, producing the triad of articular-sided cuff fraying, posterosuperior labral fraying, and greater tuberosity cystic change in overhead throwers. Bursal-sided contact from the coracoacromial ligament (option 1) is external/outlet impingement, subcoracoid narrowing (option 3) is a distinct anterior entity, and os acromiale (option 4) is unrelated.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::impingement-2": {
+      "stem": "On a properly positioned anteroposterior radiograph, the critical shoulder angle (CSA) is measured. Which statement about the CSA is most accurate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A CSA greater than ~35 degrees is associated with a higher prevalence of degenerative rotator cuff tears"
+        },
+        {
+          "key": "B",
+          "text": "A CSA greater than ~35 degrees is associated with a higher prevalence of glenohumeral osteoarthritis"
+        },
+        {
+          "key": "C",
+          "text": "The CSA is the angle between the acromion undersurface and a horizontal line, independent of glenoid inclination"
+        },
+        {
+          "key": "D",
+          "text": "A low CSA (<30 degrees) predisposes to subacromial impingement and cuff tears"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The CSA combines glenoid inclination and lateral acromial extension; a high CSA (>35 degrees) increases superiorly directed shear and is associated with degenerative rotator cuff tears, whereas a low CSA (<30 degrees) is associated with primary glenohumeral osteoarthritis.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::impingement-3": {
+      "stem": "On a true AP radiograph of the shoulder, the acromiohumeral interval (AHI) measures 5 mm. Which interpretation is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "This is within the normal range and excludes significant rotator cuff disease"
+        },
+        {
+          "key": "B",
+          "text": "It indicates an os acromiale until proven otherwise"
+        },
+        {
+          "key": "C",
+          "text": "It is narrowed and suggests a chronic full-thickness/massive rotator cuff tear with superior humeral migration"
+        },
+        {
+          "key": "D",
+          "text": "It reflects subcoracoid impingement of the subscapularis"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The normal radiographic acromiohumeral interval is approximately 7-14 mm; an AHI of 7 mm or less (especially <6 mm) suggests superior humeral head migration from chronic full-thickness/massive cuff insufficiency and predicts poorer reparability. Correlate with cuff continuity and remember MRI-based AHI is supportive, not interchangeable with a properly positioned radiograph.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::impingement-4": {
+      "stem": "An os acromiale is incidentally identified. Regarding its imaging and clinical significance, which statement is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It represents non-fusion of the basiacromion and is best confirmed on a sagittal-oblique MR sequence"
+        },
+        {
+          "key": "B",
+          "text": "The most common symptomatic type is the meso-acromion, representing non-union at the junction of the meso- and meta-acromion, best seen on axial images"
+        },
+        {
+          "key": "C",
+          "text": "It is always asymptomatic and never contributes to subacromial impingement"
+        },
+        {
+          "key": "D",
+          "text": "It is reliably diagnosed on a standard AP radiograph because the unfused segment lies in the coronal plane"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The acromion ossifies from up to four centers (pre-, meso-, meta-, basi-acromion); failure of fusion at the meso-meta junction (meso-acromion) is the most common type (~75%) and most often symptomatic, best demonstrated on axial images, and a mobile fragment can tilt with deltoid pull to narrow the subacromial space.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::acjoint-1": {
+      "stem": "A 24-year-old competitive powerlifter has chronic anterior shoulder pain. MRI shows subchondral marrow edema and small subchondral cysts confined to the DISTAL CLAVICLE, with preservation of the acromial side, and no marginal osteophytes. Which feature most specifically distinguishes distal clavicular osteolysis from ordinary AC osteoarthrosis?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bilateral involvement of the AC joints"
+        },
+        {
+          "key": "B",
+          "text": "Marrow edema and subchondral resorption predominantly on the clavicular side of the joint"
+        },
+        {
+          "key": "C",
+          "text": "Capsular hypertrophy and joint-space narrowing"
+        },
+        {
+          "key": "D",
+          "text": "Inferior AC joint osteophytes producing supraspinatus outlet narrowing"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Distal clavicular osteolysis (a stress/overuse injury of weightlifters) characteristically produces marrow edema, subchondral microfracture, and resorption that PREDOMINATES on the clavicular side of the AC joint, whereas degenerative osteoarthrosis affects both sides with osteophytes and joint-space narrowing. Clavicular-side predominance is the key discriminator; secondary acromial marrow edema is not uncommon (seen in roughly a third to a half of cases on MRI: de la Puente 1999, Gulati 2025), so true acromial involvement does not exclude the diagnosis.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::acjoint-2": {
+      "stem": "On shoulder arthrography (or fluid-sensitive MRI), the 'geyser sign' refers to contrast/fluid tracking from the glenohumeral joint through a rotator cuff defect into the subacromial-subdeltoid bursa and then erupting superiorly through an incompetent acromioclavicular (AC) joint capsule. What does this sign most reliably indicate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "An isolated grade I AC sprain with intact capsule"
+        },
+        {
+          "key": "B",
+          "text": "A chronic full-thickness rotator cuff tear allowing fluid to communicate from the glenohumeral joint up through the AC joint"
+        },
+        {
+          "key": "C",
+          "text": "Os acromiale with a synovial pseudarthrosis"
+        },
+        {
+          "key": "D",
+          "text": "Coracoclavicular ligament calcification"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The geyser sign (Craig, 1984) reflects a chronic full-thickness rotator cuff tear: fluid/contrast passes from the glenohumeral joint through the cuff defect into the subacromial-subdeltoid bursa and then erupts superiorly through an incompetent (eroded) AC joint capsule, often forming an AC joint (Type II) cyst. It signals an irreparable cuff with AC erosion, classically seen on arthrography and on fluid-sensitive MRI.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::acjoint-3": {
+      "stem": "Using the Rockwood classification of AC joint separation, which combination of findings defines a TYPE IV injury and distinguishes it from a Type III?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sprain of the AC ligament with intact coracoclavicular ligaments and normal alignment"
+        },
+        {
+          "key": "B",
+          "text": "Disruption of both AC and CC ligaments with posterior displacement of the distal clavicle into or through the trapezius"
+        },
+        {
+          "key": "C",
+          "text": "Disruption of both AC and CC ligaments with the clavicle displaced inferiorly beneath the coracoid"
+        },
+        {
+          "key": "D",
+          "text": "Disruption of both AC and CC ligaments with 100–300% superior coracoclavicular widening and superior clavicle displacement"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Type IV involves rupture of both AC and CC ligaments with POSTERIOR displacement of the distal clavicle into/through the trapezius (best appreciated on axial imaging), distinguishing it from the purely superior displacement of Type III. Inferior (subcoracoid) displacement is Type VI; massive 100–300% superior displacement is Type V.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::capsule-1": {
+      "stem": "On a non-arthrographic fat-suppressed T2 MRI of a 52-year-old with progressive shoulder stiffness and global motion loss, which combination of findings is the MOST specific for adhesive capsulitis?",
+      "options": [
+        {
+          "key": "A",
+          "text": "T2-hyperintense edema and thickening of the capsule in the axillary recess plus soft-tissue thickening obliterating the subcoracoid fat triangle in the rotator interval"
+        },
+        {
+          "key": "B",
+          "text": "A thickened middle glenohumeral ligament with a sublabral foramen at the anterosuperior labrum"
+        },
+        {
+          "key": "C",
+          "text": "Fluid distending the subacromial-subdeltoid bursa with biceps tendon sheath fluid"
+        },
+        {
+          "key": "D",
+          "text": "Thinning and attenuation of the axillary pouch capsule with a patulous joint recess"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Adhesive capsulitis shows capsular/synovial THICKENING and T2 edema in the axillary recess plus rotator-interval soft-tissue thickening obliterating the subcoracoid fat triangle; the latter (subcoracoid triangle sign) is highly specific (Mengiardi reported ~100% specificity). Thinning/patulous capsule is the opposite (instability), bursal/biceps-sheath fluid is nonspecific, and a thickened MGHL with a sublabral foramen is a normal anterosuperior variant.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::capsule-2": {
+      "stem": "Using the inferior axillary pouch (capsule + synovium) thickness as a quantitative sign of adhesive capsulitis, which threshold best discriminates affected from normal shoulders on MRI?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Axillary capsule thickness > 4 mm"
+        },
+        {
+          "key": "B",
+          "text": "Axillary capsule thickness > 1 mm"
+        },
+        {
+          "key": "C",
+          "text": "Axillary capsule thickness > 8 mm"
+        },
+        {
+          "key": "D",
+          "text": "Axillary capsule thickness > 12 mm"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A combined capsule-synovium thickness exceeding ~4 mm in the axillary recess is the classic discriminating threshold for adhesive capsulitis (Emig 1995: mean 5.2 mm in affected vs 2.9 mm in normals; >4 mm was 95% specific, 70% sensitive). A >1 mm cutoff overlaps the normal range (~2-3 mm), while >8 mm and >12 mm are too high and insensitive.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::capsule-3": {
+      "stem": "Regarding the coracohumeral ligament (CHL) in the rotator interval, which MRI finding most reliably supports adhesive capsulitis rather than a normal interval?",
+      "options": [
+        {
+          "key": "A",
+          "text": "CHL thickening greater than approximately 4 mm with enhancement/edema and obliteration of the rotator interval fat"
+        },
+        {
+          "key": "B",
+          "text": "A normal CHL measuring 1-2 mm bridging the supraspinatus and subscapularis"
+        },
+        {
+          "key": "C",
+          "text": "Visualization of the superior glenohumeral ligament forming the medial sling of the biceps pulley"
+        },
+        {
+          "key": "D",
+          "text": "A high-riding biceps tendon with an intact pulley on the sagittal oblique image"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "In adhesive capsulitis the CHL becomes pathologically thickened (>~4 mm) with edema/enhancement and effacement of rotator-interval fat; a thin CHL and a normal biceps pulley/SGHL sling are normal anatomy.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::capsule-4": {
+      "stem": "On MR arthrography, a smooth focal outpouching of contrast at the anterior capsule near the level of the subscapularis is identified. Which capsular insertion variant does this MOST likely represent, and why is it important?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A type II/III (medial) capsular insertion variant of the anterior capsule, which is a normal variant and should not be mistaken for a capsular/periosteal stripping injury"
+        },
+        {
+          "key": "B",
+          "text": "A reverse Bankart lesion indicating posterior instability"
+        },
+        {
+          "key": "C",
+          "text": "An ALPSA lesion requiring surgical repair"
+        },
+        {
+          "key": "D",
+          "text": "A HAGL lesion at the humeral attachment of the IGHL"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Anterior capsular insertion is classified into types I-III by how medially the capsule attaches to the scapular neck; a more medial (type II/III) insertion is a normal variant that can mimic, but must be distinguished from, true capsuloperiosteal stripping (e.g., ALPSA). Insertion type alone does not predict instability (Palmer, Radiology 1995).",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::nerve-1": {
+      "stem": "A 34-year-old volleyball player has a posterosuperior paralabral cyst. On MRI the cyst extends from the glenoid margin into the spinoglenoid notch but does NOT reach the suprascapular notch. Which denervation pattern is MOST expected?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isolated infraspinatus edema/atrophy"
+        },
+        {
+          "key": "B",
+          "text": "Combined supraspinatus and infraspinatus edema/atrophy"
+        },
+        {
+          "key": "C",
+          "text": "Isolated supraspinatus edema/atrophy"
+        },
+        {
+          "key": "D",
+          "text": "Isolated teres minor edema/atrophy"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "At the spinoglenoid notch the suprascapular nerve has already given off its supraspinatus branches (which arise proximally near the suprascapular notch), so compression there denervates the infraspinatus alone; more proximal suprascapular-notch lesions affect both muscles. Teres minor is supplied by the axillary nerve.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::nerve-2": {
+      "stem": "A pitcher with chronic posterior shoulder pain shows isolated teres minor fatty atrophy on MRI, with a normal infraspinatus and an unremarkable spinoglenoid notch. The MOST likely explanation is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Quadrilateral space syndrome (axillary nerve, posterior branch)"
+        },
+        {
+          "key": "B",
+          "text": "Spinoglenoid notch paralabral cyst"
+        },
+        {
+          "key": "C",
+          "text": "Suprascapular notch ganglion cyst"
+        },
+        {
+          "key": "D",
+          "text": "Parsonage–Turner involving the long thoracic nerve"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with an unremarkable spinoglenoid notch excludes spinoglenoid and suprascapular-notch cysts; the long thoracic nerve supplies serratus anterior, not teres minor.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::nerve-3": {
+      "stem": "On a fluid-sensitive sequence, a denervated infraspinatus shows diffuse hyperintensity but preserved bulk and NO fatty infiltration on T1. Compared with established fatty atrophy, this finding indicates:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A more acute/subacute and potentially reversible stage of denervation"
+        },
+        {
+          "key": "B",
+          "text": "A chronic irreversible process unlikely to recover with decompression"
+        },
+        {
+          "key": "C",
+          "text": "Superimposed acute strain rather than denervation"
+        },
+        {
+          "key": "D",
+          "text": "A normal variant of muscle signal with no clinical significance"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Denervation edema (T2 hyperintensity without volume loss or T1 fatty change) reflects an earlier, often reversible phase; T1 fatty infiltration and atrophy mark chronic, less recoverable disease.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::nerve-4": {
+      "stem": "A 41-year-old develops acute shoulder pain followed by weakness; MRI shows diffuse T2 hyperintense edema involving BOTH the supraspinatus and infraspinatus, plus the deltoid, with NO paralabral cyst or mass at either notch. The BEST diagnosis is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Parsonage–Turner syndrome (neuralgic amyotrophy)"
+        },
+        {
+          "key": "B",
+          "text": "Spinoglenoid notch ganglion cyst"
+        },
+        {
+          "key": "C",
+          "text": "Quadrilateral space syndrome"
+        },
+        {
+          "key": "D",
+          "text": "Suprascapular notch ganglion cyst"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion is the hallmark of Parsonage–Turner. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). The absence of any cyst/mass and the cross-territory pattern exclude all compressive causes.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::measure-3": {
+      "stem": "A sports-medicine fellow suspects a Perthes lesion in a young thrower with anterior instability, but the standard MR arthrogram in neutral position is equivocal. Which additional maneuver best demonstrates this lesion, and what is the mechanism?",
+      "options": [
+        {
+          "key": "A",
+          "text": "ABER (abduction-external rotation) position, because tension on the inferior glenohumeral ligament lifts the medially synovialized labrum and allows contrast undercutting"
+        },
+        {
+          "key": "B",
+          "text": "FADIR position, because internal rotation loads the posterosuperior labrum against the glenoid"
+        },
+        {
+          "key": "C",
+          "text": "Traction with a weighted hand, because it widens the subacromial space"
+        },
+        {
+          "key": "D",
+          "text": "Intravenous rather than intra-articular contrast, because it improves capsular enhancement"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A Perthes lesion is an anteroinferior labral tear whose scapular periosteum stays intact but is medially stripped, so the labrum lies reduced against the glenoid and is often occult on neutral MR arthrography. ABER tensions the anterior band of the inferior glenohumeral ligament, lifting the labroligamentous complex off the glenoid so intra-articular contrast undercuts and reveals the tear. FADIR is a hip/FAI maneuver; subacromial traction doesn't affect the labrum; IV (rather than intra-articular) contrast defeats the joint distension arthrography depends on.",
+      "source": "Shoulder MRI · Advanced",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-1": {
+      "stem": "A 63-year-old has chronic shoulder weakness. This medial sagittal slice is the scapular-Y view used to grade the rotator cuff muscle bellies in cross-section.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Grade fatty atrophy of the cuff muscles (Goutallier-Fuchs), which predicts repairability"
+        },
+        {
+          "key": "B",
+          "text": "Measure tendon gap and retraction to assign a Patte stage"
+        },
+        {
+          "key": "C",
+          "text": "Assess the bicipital groove for an empty groove sign"
+        },
+        {
+          "key": "D",
+          "text": "Evaluate the anteroinferior glenoid for a bony Bankart"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "This medial Y-view shows all four cuff bellies (supraspinatus, subscapularis, infraspinatus, teres minor) in cross-section, making it THE plane to grade fatty atrophy with the Goutallier-Fuchs system, which predicts whether a cuff tear is repairable. Patte tendon-gap/retraction is measured on the coronal that follows the tendon to its footprint, the empty-groove sign is an axial finding, and the bony glenoid rim is assessed on the axial - none of which is the purpose of this medial sagittal muscle slice.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-2": {
+      "stem": "A 35-year-old has anterior shoulder pain and a positive belly-press test after a fall. On this axial slice, the anterior cuff tendon coursing toward the lesser tuberosity is the subscapularis.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The long head of the biceps may subluxate or dislocate medially out of its groove"
+        },
+        {
+          "key": "B",
+          "text": "The supraspinatus footprint will show a full-thickness gap"
+        },
+        {
+          "key": "C",
+          "text": "The posterior labrum will be torn (reverse Bankart)"
+        },
+        {
+          "key": "D",
+          "text": "The acromion will show a type III hooked morphology"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "This is the subscapularis tendon; a tear here disrupts the medial wall of the biceps pulley, so the most specifically associated finding is medial subluxation or dislocation of the long head of the biceps out of the bicipital groove - the companion clue to a subscapularis tear. A supraspinatus footprint gap, a posterior (reverse Bankart) labral tear, and acromial hooking are not the direct consequence of a subscapularis tendon tear.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-3": {
+      "stem": "A 23-year-old sustained an anterior shoulder dislocation in a wrestling match and now has apprehension. On this axial slice (anterior at the top), the dark triangle at the anterior glenoid rim is the anterior labrum.",
+      "options": [
+        {
+          "key": "A",
+          "text": "A posterosuperolateral humeral head impaction (Hill-Sachs lesion)"
+        },
+        {
+          "key": "B",
+          "text": "A superior labral tear extending into the biceps anchor (SLAP)"
+        },
+        {
+          "key": "C",
+          "text": "An os acromiale at the meso-meta junction"
+        },
+        {
+          "key": "D",
+          "text": "Distal clavicular osteolysis"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A torn anteroinferior labrum (Bankart lesion) from anterior dislocation is classically paired with a Hill-Sachs lesion, the impaction fracture of the posterosuperolateral humeral head where it strikes the anterior glenoid rim. A SLAP tear involves the superior labral-biceps anchor (a different mechanism, overhead athletes); os acromiale and distal clavicular osteolysis are unrelated to the instability event shown here.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-4": {
+      "stem": "A 55-year-old has chronic shoulder pain and weakness. On this coronal slice, the thin plane between the rotator cuff and the overlying acromion/deltoid is the subacromial-subdeltoid bursa.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Combined with joint fluid, distension of this bursa suggests a full-thickness cuff tear"
+        },
+        {
+          "key": "B",
+          "text": "Isolated distension here is diagnostic of adhesive capsulitis"
+        },
+        {
+          "key": "C",
+          "text": "Fluid here indicates a SLAP tear at the biceps anchor"
+        },
+        {
+          "key": "D",
+          "text": "Fluid here localizes a quadrilateral-space syndrome"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "This is the subacromial-subdeltoid bursa; communicating fluid in BOTH this bursa and the glenohumeral joint strongly suggests a full-thickness rotator cuff tear that lets fluid pass from the joint into the bursa. A trace of isolated bursal fluid is nonspecific and does not diagnose a full-thickness tear or frozen shoulder (which thickens the axillary recess capsule); the bursa is unrelated to the superior labral anchor (SLAP) or the quadrilateral space.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-5": {
+      "stem": "A 52-year-old diabetic woman has months of painful global stiffness with no trauma. On this coronal slice, the dependent inferior pouch of the joint capsule is the axillary recess.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Capsular thickening and edema here support adhesive capsulitis"
+        },
+        {
+          "key": "B",
+          "text": "Fluid distension here is a normal finding requiring no follow-up"
+        },
+        {
+          "key": "C",
+          "text": "Thickening here indicates a full-thickness supraspinatus tear"
+        },
+        {
+          "key": "D",
+          "text": "Edema here localizes a spinoglenoid notch paralabral cyst"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "This is the axillary recess; thickening and T2 edema of the axillary recess capsule (together with rotator-interval soft-tissue thickening that obliterates the subcoracoid fat) is the MRI signature of adhesive capsulitis, fitting this diabetic patient with non-traumatic global stiffness. The axillary recess is not where a supraspinatus tear or a spinoglenoid notch cyst is assessed, and capsular thickening here is not a normal finding to ignore.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-6": {
+      "stem": "A 60-year-old with a chronic cuff tear is being evaluated for repair. This sagittal T1 scapular-Y slice shows the four cuff muscle bellies; the muscle filling the supraspinous fossa above the scapular spine is the supraspinatus.",
+      "options": [
+        {
+          "key": "A",
+          "text": "High-grade fatty infiltration here predicts an irreparable tear"
+        },
+        {
+          "key": "B",
+          "text": "Bright marrow signal here on T1 indicates marrow edema"
+        },
+        {
+          "key": "C",
+          "text": "This slice is best for measuring the acromiohumeral interval"
+        },
+        {
+          "key": "D",
+          "text": "This T1 slice best demonstrates a SLAP tear of the biceps anchor"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The supraspinatus fills the supraspinous fossa, and T1 (fat bright, unsuppressed) is the sequence to grade Goutallier-Fuchs fatty infiltration; high-grade fatty atrophy of the supraspinatus predicts an irreparable tear and changes surgical planning. Bright signal in MUSCLE on T1 reflects fatty infiltration, not marrow edema (which is DARK on T1); the acromiohumeral interval is a radiographic/coronal measurement, and a SLAP tear is a labral lesion best shown on fluid-sensitive or arthrographic sequences, not this T1 muscle slice.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::sh-icaq-7": {
+      "stem": "A 48-year-old overhead athlete has lateral shoulder pain and weakness. On this coronal slice, follow the supraspinatus tendon to the greater-tuberosity footprint and separate the thin distal crescent from the thicker rotator cable just medial to it. Why does that distinction matter when a small articular-sided tear is present?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cable integrity helps determine functional importance; an intact cable may preserve load transfer, while cable disruption makes a small-appearing tear more consequential"
+        },
+        {
+          "key": "B",
+          "text": "The cable is the same structure as the superior labrum, so its injury is reported as a SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "A crescent tear is diagnosed only on axial imaging because the coronal cannot show the footprint"
+        },
+        {
+          "key": "D",
+          "text": "The cable/crescent distinction applies only after surgery and should be ignored on the initial MRI"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rotator cable/crescent model matters because the cable is a load-sharing band just medial to the thin distal cuff crescent. A limited crescent tear with an intact cable can behave differently from a tear that disrupts the cable, especially anteriorly, so the report should not describe only the footprint gap and retraction.",
+      "source": "Shoulder MRI · Image CAQ",
+      "courseId": "shoulder-mri"
+    },
     "fc-shoulder-mri-orientation-t0-1": {
       "stem": "When is an MR arthrogram preferred over a routine non-contrast shoulder MRI?",
       "options": [],
@@ -7740,6 +10222,556 @@
       },
       "moduleId": "shoulder-arthritis-bursa-dontmiss",
       "topicIndex": 5,
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-orientation-search-1-pre": {
+      "stem": "A fellow reviewing a shoulder MRI wants to assess the subscapularis tendon at its lesser-tuberosity insertion and confirm that the long head of the biceps tendon is seated within the bicipital groove. Which imaging plane is best suited for evaluating both of these structures together?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Axial"
+        },
+        {
+          "key": "B",
+          "text": "Oblique coronal"
+        },
+        {
+          "key": "C",
+          "text": "Oblique sagittal"
+        },
+        {
+          "key": "D",
+          "text": "Abduction-external-rotation (ABER) oblique"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The axial plane displays the subscapularis tendon in cross-section at its lesser-tuberosity insertion and shows the long head of biceps within the bicipital groove, making it the workhorse plane for both. The oblique coronal plane is optimized for the supraspinatus and superior labrum and the oblique sagittal plane for muscle bulk and the cuff arch in profile, so choosing either mismatches a structure to a non-optimal plane; the ABER view is a problem-solving sequence for anteroinferior labral lesions, not a routine plane for the groove and subscapularis.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-orientation-search-1-post": {
+      "stem": "During a systematic search, a fellow wants to grade fatty infiltration and muscle bulk of the supraspinatus and infraspinatus bellies (Goutallier/Warner assessment) on a shoulder MRI. Which plane is the standard reference for this evaluation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Axial"
+        },
+        {
+          "key": "B",
+          "text": "Oblique coronal"
+        },
+        {
+          "key": "C",
+          "text": "Oblique sagittal"
+        },
+        {
+          "key": "D",
+          "text": "True (non-oblique) coronal"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The oblique sagittal plane (the 'Y' view, just medial to the glenoid) profiles the cuff muscle bellies within the supraspinatus and infraspinatus fossae, which is where fatty infiltration and atrophy are graded. The oblique coronal plane best depicts the supraspinatus tendon and footprint rather than muscle bulk, the axial plane is optimized for the subscapularis and biceps groove, and a true coronal is not angled to the scapular plane, so selecting those confuses tendon/insertion or non-aligned planes with the muscle-belly plane.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-1-pre": {
+      "stem": "A 52-year-old with chronic shoulder pain has an MRI showing a thickened supraspinatus tendon with diffuse intermediate (not fluid-bright) signal on the fat-saturated T2 images, but no focal fluid-bright defect reaching either the articular or bursal surface. What does this finding most likely represent?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Articular-surface partial-thickness tear"
+        },
+        {
+          "key": "B",
+          "text": "Tendinosis (intermediate-signal degeneration)"
+        },
+        {
+          "key": "C",
+          "text": "Bursal-surface partial-thickness tear"
+        },
+        {
+          "key": "D",
+          "text": "Full-thickness tear with joint-to-bursa communication"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Tendon thickening with intermediate (not fluid-bright) signal that does not reach a surface is the classic appearance of tendinosis, reflecting myxoid/mucoid degeneration rather than a fiber gap. A partial tear requires focal fluid-bright signal reaching the articular or bursal surface, and a full-thickness tear requires a fluid-bright defect spanning the entire tendon with joint-to-bursa communication; calling intermediate non-surfacing signal a 'tear' is the most common over-reading error.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-1-post": {
+      "stem": "A 60-year-old with weakness has an MRI showing a fluid-bright gap through the full thickness of the supraspinatus tendon, with high T2 signal continuous from the glenohumeral joint into the overlying subacromial-subdeltoid bursa. Which interpretation best fits this finding?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tendinosis (intermediate-signal degeneration)"
+        },
+        {
+          "key": "B",
+          "text": "Intrasubstance partial-thickness tear"
+        },
+        {
+          "key": "C",
+          "text": "Articular-surface partial-thickness tear"
+        },
+        {
+          "key": "D",
+          "text": "Full-thickness tear with joint-to-bursa communication"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A fluid-bright defect spanning the entire tendon thickness with continuity of fluid signal between the joint and the subacromial-subdeltoid bursa defines a full-thickness tear. Tendinosis shows intermediate, non-fluid signal without a gap, and an articular-surface or intrasubstance partial tear involves only part of the tendon thickness and does not create joint-to-bursa communication, so those choices underestimate a defect that clearly traverses the whole tendon.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-2-pre": {
+      "stem": "An overhead-throwing athlete has a partial supraspinatus tear. On the oblique coronal images, the fluid-bright defect reaches the deep (inferior) surface of the tendon at the footprint, while the superior (bursal) fibers remain intact. How is this partial tear best classified?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bursal-sided tear"
+        },
+        {
+          "key": "B",
+          "text": "Intrasubstance (interstitial) tear"
+        },
+        {
+          "key": "C",
+          "text": "Articular-sided (PASTA) tear"
+        },
+        {
+          "key": "D",
+          "text": "Full-thickness tear"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A defect reaching the deep/articular surface at the footprint with intact bursal fibers is an articular-sided partial tear, the PASTA lesion (partial articular-sided supraspinatus tendon avulsion), which is the most common partial tear and typical in throwers. A bursal-sided tear reaches the superior surface, and an intrasubstance tear is confined within the tendon touching neither surface, so those answers misassign which surface the fluid contacts.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-2-post": {
+      "stem": "A 48-year-old laborer with impingement symptoms has a partial supraspinatus tear. On fat-saturated images the fluid-bright defect reaches the superior surface of the tendon abutting the subacromial-subdeltoid bursa, while the deep articular fibers at the footprint remain intact. What is the correct classification?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Articular-sided (PASTA) tear"
+        },
+        {
+          "key": "B",
+          "text": "Bursal-sided tear"
+        },
+        {
+          "key": "C",
+          "text": "Intrasubstance (interstitial) tear"
+        },
+        {
+          "key": "D",
+          "text": "Full-thickness tear"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A partial tear whose fluid-bright defect reaches the superior surface adjacent to the subacromial bursa, with intact deep articular fibers, is a bursal-sided tear, classically associated with extrinsic impingement. An articular-sided (PASTA) tear contacts the deep surface instead, and an intrasubstance tear reaches neither surface; choosing those reverses or ignores which surface the defect contacts.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-3-pre": {
+      "stem": "A 67-year-old has a full-thickness supraspinatus tear. On the oblique sagittal images the supraspinatus muscle shows more fat than muscle (Goutallier grade 3-4), and on coronal images the tendon stump is retracted to the level of the glenoid. Which feature most strongly predicts poor reparability and should prompt earlier surgical discussion?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Goutallier grade 3-4 fatty infiltration with retraction to the glenoid"
+        },
+        {
+          "key": "B",
+          "text": "A small rim of reactive subacromial bursal fluid"
+        },
+        {
+          "key": "C",
+          "text": "Mild tendinosis of the adjacent infraspinatus"
+        },
+        {
+          "key": "D",
+          "text": "A type II (curved) acromion"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Advanced Goutallier 3-4 fatty infiltration combined with high-grade retraction (Patte stage III, to the glenoid) and muscle atrophy is largely irreversible and predicts poor healing and re-tear, so it argues for earlier surgical referral before further degeneration. Reactive bursal fluid, mild adjacent tendinosis, and acromial shape influence symptoms but are not the dominant reparability/prognosis drivers, so they are plausible but incorrect markers of irreparability.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-rotator-cuff-3-post": {
+      "stem": "A 65-year-old has a full-thickness infraspinatus and supraspinatus tear. The surgeon asks which single imaging feature most strongly predicts that a durable repair is unlikely and warrants earlier surgical discussion. Which feature carries that prognostic weight?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A moderate subacromial-subdeltoid bursal effusion"
+        },
+        {
+          "key": "B",
+          "text": "A type III (hooked) acromion on the oblique sagittal images"
+        },
+        {
+          "key": "C",
+          "text": "Mild tendinosis of the intact subscapularis"
+        },
+        {
+          "key": "D",
+          "text": "Goutallier grade 3-4 fatty infiltration with muscle atrophy and retraction to the glenoid"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Advanced Goutallier 3-4 fatty infiltration with muscle atrophy and high-grade (Patte III) retraction to the glenoid reflects poor muscle-tendon quality that is largely irreversible and predicts low healing and high re-tear rates, so it drives earlier surgical discussion. A bursal effusion is nonspecific, a hooked acromion relates to impingement risk rather than tendon reparability, and mild subscapularis tendinosis is incidental, so each is a real but non-dominant finding that does not determine reparability.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-subscapularis-biceps-1-pre": {
+      "stem": "A 55-year-old has an MRI showing a tear of the upper subscapularis tendon at the lesser tuberosity. On the axial images the long head of the biceps tendon is no longer within the bicipital groove and instead lies medially, displaced over the torn subscapularis. This medial biceps displacement is best interpreted as which of the following?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A normal variant biceps position seen with a shallow groove"
+        },
+        {
+          "key": "B",
+          "text": "An indirect sign of a biceps pulley lesion associated with the subscapularis tear"
+        },
+        {
+          "key": "C",
+          "text": "An isolated supraspinatus tear without pulley involvement"
+        },
+        {
+          "key": "D",
+          "text": "Mucoid degeneration of the intra-articular biceps tendon"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The subscapularis tendon contributes to the medial wall of the biceps pulley/reflection, so an upper subscapularis tear frequently disrupts the pulley and allows the biceps to sublux medially out of the groove, a recognized indirect sign of subscapularis/pulley injury. A shallow groove alone does not displace a seated tendon over a torn subscapularis, supraspinatus tears do not explain medial biceps subluxation, and mucoid degeneration alters signal rather than position, so those distractors miss the pulley mechanism.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-subscapularis-biceps-1-post": {
+      "stem": "A fellow notices on axial images that the long head of the biceps tendon has subluxed medially and appears to lie deep to (medial to) the lesser tuberosity. Recognizing the anatomic relationship of the biceps pulley, which additional tendon should be scrutinized most closely for an associated tear?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Infraspinatus"
+        },
+        {
+          "key": "B",
+          "text": "Teres minor"
+        },
+        {
+          "key": "C",
+          "text": "Subscapularis"
+        },
+        {
+          "key": "D",
+          "text": "Supraspinatus"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The subscapularis tendon forms the medial sling of the biceps pulley, so medial subluxation of the biceps out of the groove should trigger close evaluation of the subscapularis, which is commonly torn in this pattern. The infraspinatus and teres minor are posterior cuff and do not stabilize the biceps medially, and an isolated supraspinatus tear does not produce medial biceps subluxation, so those choices overlook the pulley's medial anatomy.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-labrum-slap-1-pre": {
+      "stem": "A 24-year-old overhead athlete has an MR arthrogram for clicking and deep pain. At the superior labrum, contrast tracks into a cleft that is smooth, oriented medially, parallels the glenoid rim, and stops at the biceps anchor without lateral extension. Which interpretation is best supported?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Type II SLAP tear"
+        },
+        {
+          "key": "B",
+          "text": "Anterosuperior sublabral foramen"
+        },
+        {
+          "key": "C",
+          "text": "Normal sublabral recess"
+        },
+        {
+          "key": "D",
+          "text": "Bucket-handle labral tear"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A sublabral recess is a normal variant: a smooth, medially oriented cleft that parallels the glenoid and stops at the biceps anchor without lateral extension or irregular margins, exactly as described. A type II SLAP tear would show contrast extending laterally into the labral substance with irregular margins posterior to the anchor, and a bucket-handle tear shows a displaced labral fragment; calling this smooth medial recess a tear is the most common over-reading error, while a sublabral foramen is an anterosuperior (not superior-at-the-anchor) variant.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-labrum-slap-1-post": {
+      "stem": "A 27-year-old pitcher has an MR arthrogram. At the superior labrum, gadolinium extends laterally into the labral substance with irregular margins and tracks posterior to the biceps anchor. Which interpretation is best supported?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal sublabral recess"
+        },
+        {
+          "key": "B",
+          "text": "Type II SLAP tear"
+        },
+        {
+          "key": "C",
+          "text": "Normal sublabral foramen"
+        },
+        {
+          "key": "D",
+          "text": "Mucoid degeneration of the labrum"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Lateral extension into the labral substance, irregular margins, and tracking posterior to the biceps anchor distinguish a SLAP tear from a normal recess, which is smooth, medially oriented, and ends at the anchor. A sublabral recess and a sublabral foramen are both smooth variants that follow the glenoid rather than extending irregularly into the labrum, so labeling this finding either of those is the classic benign-variant pitfall; mucoid degeneration produces ill-defined intrasubstance signal without a discrete margin-irregular contrast-filled cleft.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-instability-1-pre": {
+      "stem": "A 30-year-old with recurrent anterior dislocations has an MR arthrogram. The anteroinferior labroligamentous complex is displaced medially and 'rolled up' on the glenoid neck along an intact but stripped scapular periosteum. Which lesion does this describe?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bankart lesion, with a disrupted anterior scapular periosteum"
+        },
+        {
+          "key": "B",
+          "text": "ALPSA lesion, with the complex rolled up medially on an intact stripped periosteum"
+        },
+        {
+          "key": "C",
+          "text": "Perthes lesion, with an intact periosteum and a non-displaced labrum resynovialized in place"
+        },
+        {
+          "key": "D",
+          "text": "HAGL lesion, with avulsion of the inferior glenohumeral ligament from the humerus"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "ALPSA (anterior labroligamentous periosteal sleeve avulsion) is medial displacement of the labroligamentous sleeve along an intact but stripped periosteum, classically chronic/recurrent with the labrum 'rolled up' on the glenoid neck. A Bankart has a torn periosteum so the labrum is not held medially, a Perthes keeps the periosteum intact but the labrum stays anatomically positioned rather than rolled up medially, and a HAGL is a humeral-sided ligament avulsion rather than a labral lesion.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-instability-1-post": {
+      "stem": "A 22-year-old has anterior instability. On MR arthrogram the inferior glenohumeral ligament is avulsed from its humeral neck attachment, the axillary pouch takes on a 'J' configuration, and contrast leaks extra-articularly on the humeral side. The anteroinferior labrum is intact. Which lesion is this?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bankart lesion, with anteroinferior labral avulsion from the glenoid"
+        },
+        {
+          "key": "B",
+          "text": "GLAD lesion, with a glenolabral articular cartilage defect and intact ligaments"
+        },
+        {
+          "key": "C",
+          "text": "Perthes lesion, with a non-displaced anteroinferior labral tear on an intact periosteum"
+        },
+        {
+          "key": "D",
+          "text": "HAGL lesion, with humeral avulsion of the inferior glenohumeral ligament and a J-shaped axillary pouch"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A HAGL lesion is humeral-sided avulsion of the inferior glenohumeral ligament, producing a 'J-sign' of the axillary pouch and an extra-articular contrast leak on the humeral side, with the glenoid labrum intact. A Bankart and a Perthes are glenoid/labral-sided lesions and a GLAD is a glenolabral cartilage injury, so all three represent the classic pitfall of fixating on the glenoid side while missing the humeral-sided ligament avulsion; none produces a humeral contrast leak or a J-shaped pouch.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-instability-2-pre": {
+      "stem": "A 26-year-old has had four anterior dislocations. MRI suggests substantial anterior glenoid bone loss and a Hill-Sachs lesion that appears to engage. The surgeon wants precise osseous quantification to decide between an arthroscopic soft-tissue repair and a Latarjet. What is the most appropriate next step?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Proceed to arthroscopic Bankart repair on clinical grounds alone"
+        },
+        {
+          "key": "B",
+          "text": "Obtain a radionuclide bone scan of the glenoid rim"
+        },
+        {
+          "key": "C",
+          "text": "Repeat MRI with intra-articular gadolinium to re-image the labrum"
+        },
+        {
+          "key": "D",
+          "text": "Obtain CT to quantify glenoid bone loss and the Hill-Sachs track"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "When MRI suggests significant glenoid bone loss (approaching ~20% or more) or an engaging/off-track Hill-Sachs, CT — often 3D with the humeral head digitally subtracted — best quantifies the osseous defect and drives the choice between soft-tissue repair and a bony procedure such as Latarjet. Proceeding to isolated Bankart repair ignores that high bone loss predicts soft-tissue-repair failure, a bone scan gives no quantification of bone loss, and an MR arthrogram characterizes soft tissue but underestimates osseous defects compared with CT.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-instability-2-post": {
+      "stem": "A 19-year-old collision-sport athlete has recurrent anterior dislocations. CT shows ~25% anterior glenoid bone loss and an off-track Hill-Sachs lesion. Based on these osseous findings, which surgical strategy is most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isolated arthroscopic Bankart repair, the labrum being the primary stabilizer"
+        },
+        {
+          "key": "B",
+          "text": "Nonoperative management with bracing and activity modification"
+        },
+        {
+          "key": "C",
+          "text": "A bony augmentation procedure such as Latarjet to restore the deficient glenoid arc"
+        },
+        {
+          "key": "D",
+          "text": "Arthroscopic capsular plication to retension the anterior capsule"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Critical glenoid bone loss (around 20-25% or more) with an off-track/engaging Hill-Sachs predicts high failure rates for soft-tissue repair, so a bony procedure such as Latarjet — which lengthens the glenoid arc and adds a sling effect — is favored. Isolated Bankart repair reflects the misconception that labral repair suffices despite bone loss, bracing wrongly assumes bone loss is irrelevant to recurrence, and capsular plication addresses soft tissue but does not restore the deficient bony track.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-capsule-adhesive-1-pre": {
+      "stem": "A 54-year-old with diabetes has months of progressive global stiffness and a marked loss of passive external rotation. Which MRI finding most specifically supports adhesive capsulitis rather than a rotator cuff tear?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fluid-bright signal spanning the supraspinatus from articular to bursal surface"
+        },
+        {
+          "key": "B",
+          "text": "Thickening and edema of the coracohumeral ligament and rotator interval with obliteration of the subcoracoid fat triangle"
+        },
+        {
+          "key": "C",
+          "text": "Intermediate signal and thickening of the supraspinatus tendon without a surface defect"
+        },
+        {
+          "key": "D",
+          "text": "Fluid in the subacromial-subdeltoid bursa"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Adhesive capsulitis shows soft-tissue thickening and edema at the rotator interval and coracohumeral ligament with loss of the normal subcoracoid fat triangle, plus axillary pouch/inferior capsule thickening — findings that explain the global loss of motion. Fluid-bright transmural supraspinatus signal describes a full-thickness cuff tear (the mimic to be excluded), intermediate non-surfacing tendon signal describes tendinosis, and bursal fluid is nonspecific and does not indicate capsulitis.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-capsule-adhesive-1-post": {
+      "stem": "A 49-year-old has 4 months of painful shoulder stiffness limiting motion in all planes. MRI is ordered to distinguish adhesive capsulitis from a cuff problem. Which constellation of findings is most specific for adhesive capsulitis?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Retraction of the supraspinatus to the glenoid with Goutallier grade 3 fatty infiltration"
+        },
+        {
+          "key": "B",
+          "text": "A laterally extending superior labral contrast cleft with irregular margins"
+        },
+        {
+          "key": "C",
+          "text": "Thickening and edema of the axillary pouch and inferior glenohumeral ligament with rotator-interval and coracohumeral ligament thickening"
+        },
+        {
+          "key": "D",
+          "text": "Isolated subacromial-subdeltoid bursal fluid without capsular changes"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The specific MRI signature of adhesive capsulitis is thickening and edema of the axillary pouch/inferior glenohumeral ligament combined with rotator-interval and coracohumeral ligament thickening and obliteration of the subcoracoid fat triangle, often with capsular enhancement. Supraspinatus retraction with fatty infiltration describes a chronic cuff tear (the mimic), a laterally extending irregular superior labral cleft describes a SLAP tear, and isolated bursal fluid is nonspecific and does not establish capsulitis.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-nerve-entrapment-1-pre": {
+      "stem": "A 35-year-old volleyball player has posterior shoulder weakness. MRI shows a posterosuperior labral tear with a paralabral cyst extending into the spinoglenoid notch. Which additional finding best explains the weakness and should be reported?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Denervation of both the supraspinatus and infraspinatus, from compression at the suprascapular notch"
+        },
+        {
+          "key": "B",
+          "text": "Denervation of the deltoid, from axillary nerve compression in the quadrilateral space"
+        },
+        {
+          "key": "C",
+          "text": "Denervation edema or fatty atrophy of the infraspinatus alone, from suprascapular nerve compression at the spinoglenoid notch"
+        },
+        {
+          "key": "D",
+          "text": "Denervation of the subscapularis, from upper subscapular nerve involvement"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A cyst at the spinoglenoid notch compresses the suprascapular nerve after its branch to the supraspinatus has departed, so denervation is isolated to the infraspinatus (edema acutely, fatty atrophy chronically). Denervation of both muscles is the more proximal suprascapular-notch pattern, and deltoid or subscapularis denervation involves different nerves (axillary, subscapular) not affected by a spinoglenoid notch cyst; the teaching point is to look beyond the labrum to muscle denervation signal.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-nerve-entrapment-1-post": {
+      "stem": "A 41-year-old has shoulder pain and weakness of both abduction and external rotation. MRI shows a paralabral cyst arising from a superior labral tear that extends medially into the suprascapular notch. Which pattern of muscle denervation do you most expect?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isolated infraspinatus denervation, the cyst lying distal to the supraspinatus branch"
+        },
+        {
+          "key": "B",
+          "text": "Isolated teres minor denervation, from axillary nerve compression"
+        },
+        {
+          "key": "C",
+          "text": "Isolated supraspinatus denervation, the cyst sparing the infraspinatus branch"
+        },
+        {
+          "key": "D",
+          "text": "Denervation of both the supraspinatus and infraspinatus, the cyst compressing the suprascapular nerve at the suprascapular notch"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A cyst at the suprascapular notch compresses the nerve proximal to both motor branches, so both the supraspinatus and infraspinatus show denervation, matching the combined abduction and external-rotation weakness. Isolated infraspinatus denervation is the more distal spinoglenoid-notch pattern, isolated supraspinatus denervation inverts the anatomy because a proximal lesion cannot spare the infraspinatus, and teres minor denervation involves a different nerve; the key is to localize the cyst along the nerve's course.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-postoperative-1-pre": {
+      "stem": "Five months after supraspinatus repair, a patient has persistent pain. On fluid-sensitive images the repaired tendon shows intermediate-to-heterogeneous signal and mild thickening, with a little subacromial-subdeltoid bursal fluid and focal susceptibility artifact near the anchors. How should this be interpreted?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Recurrent full-thickness tear, because persistent intratendinous signal indicates failure"
+        },
+        {
+          "key": "B",
+          "text": "Recurrent full-thickness tear, because subacromial-subdeltoid bursal fluid confirms a gap"
+        },
+        {
+          "key": "C",
+          "text": "Recurrent full-thickness tear, because anchor susceptibility artifact represents a tendon defect"
+        },
+        {
+          "key": "D",
+          "text": "Expected postoperative change, because heterogeneous signal, mild bursal fluid, and anchor artifact are normal here"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Repaired cuff tendons normally remain thickened and heterogeneous with intermediate-to-increased signal for many months, and mild bursal fluid and anchor susceptibility artifact are expected, so none of these indicates failure. Options A, B, and C each reflect the common error of overcalling a recurrent tear from nonspecific postoperative signal, reactive bursal fluid, or hardware artifact; a recurrent full-thickness tear instead requires a fluid-bright gap spanning the tendon with fluid communication.",
+      "source": "Pre/Post assessment",
+      "courseId": "shoulder-mri"
+    },
+    "shoulder-mri::prepost-sh-postoperative-1-post": {
+      "stem": "Seven months after rotator cuff repair, a patient has recurrent pain and weakness. On fluid-sensitive fat-saturated images there is a fluid-bright (fluid-equivalent) defect spanning the full thickness of the repaired tendon, with fluid communicating between the joint and the subacromial-subdeltoid bursa. Which interpretation is best supported?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Recurrent full-thickness tear, because a fluid-bright gap spans the tendon with joint-to-bursa communication"
+        },
+        {
+          "key": "B",
+          "text": "Expected postoperative change, because some increased intratendinous signal is normal after repair"
+        },
+        {
+          "key": "C",
+          "text": "Expected postoperative change, because anchor susceptibility artifact mimics a defect"
+        },
+        {
+          "key": "D",
+          "text": "Tendinosis of the repaired tendon, because the signal is intermediate rather than fluid-bright"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A fluid-bright (fluid-equivalent) defect spanning the full tendon thickness with fluid communication between the joint and the subacromial-subdeltoid bursa is the reliable sign of a recurrent full-thickness tear. Options B and C reflect the opposite error of dismissing a true fluid-bright gap as benign postoperative signal or artifact, and option D mischaracterizes the defect because the finding is fluid-equivalent, not the intermediate signal of tendinosis.",
+      "source": "Pre/Post assessment",
       "courseId": "shoulder-mri"
     }
   }

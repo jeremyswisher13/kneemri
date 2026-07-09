@@ -13,6 +13,9 @@ import {
   pct,
   fellowName,
   fellowStatus,
+  hasNormalMriWorkstation,
+  daysSince,
+  lastSeen,
   totalCasesForRole,
   STATUS_COLORS,
   type Fellow,
@@ -80,6 +83,7 @@ function exportCSV(fellows: Fellow[], course: CourseDefinition) {
     "Post-Confidence Avg",
     "Modules Completed",
     "Cases Completed",
+    "Normal MRI",
     "Status",
   ];
   const rows = fellows.map((f) => {
@@ -103,6 +107,7 @@ function exportCSV(fellows: Fellow[], course: CourseDefinition) {
       postConf !== null ? postConf.toFixed(1) : "",
       `${f.modulesCompleted}/${totalModules}`,
       `${f.casesCompleted}/${csvTotalCases(f, course)}`,
+      normalMriProgressLabel(f, course),
       fellowStatus(f, totalModules, csvTotalCases(f, course), course, POST_QUIZ_TOTAL),
     ];
   });
@@ -176,6 +181,9 @@ function exportDetailedCSV(fellows: Fellow[], course: CourseDefinition) {
     "Cases Completed",
     "Cases Required",
     "Case Completion %",
+    "Normal MRI Complete",
+    "Normal MRI Planes Passed",
+    "Normal MRI Planes Required",
     "Avg Module Quiz %",
   ];
 
@@ -269,6 +277,9 @@ function exportDetailedCSV(fellows: Fellow[], course: CourseDefinition) {
       f.casesCompleted,
       totalCases,
       totalCases > 0 ? Math.round((f.casesCompleted / totalCases) * 100) : 0,
+      hasNormalMriWorkstation(course) ? (f.normalMriComplete ? "Yes" : "No") : "Not required",
+      f.normalPlanesPassed ?? "",
+      f.totalNormalPlanes ?? "",
       avgModQuiz !== null ? avgModQuiz : "",
     ];
 
@@ -345,6 +356,162 @@ function HBar({ value, max, color, label }: { value: number; max: number; color:
       <span className="w-10 text-xs font-semibold text-gray-700">{value}%</span>
     </div>
   );
+}
+
+const TRACKED_FELLOW_TARGETS = [
+  { name: "Riley Coon", aliases: ["riley coon"] },
+  { name: "Sonal Singh", aliases: ["sonal singh"] },
+  { name: "Lilian Toaspern", aliases: ["lilian toaspern", "lillian toaspern"] },
+] as const;
+
+type NextStepTone = "done" | "attention" | "steady" | "waiting";
+
+interface TrackedFellowRow {
+  targetName: string;
+  fellow: Fellow | null;
+  status: FellowStatus | null;
+  progressPct: number;
+  nextStep: string;
+  nextStepTone: NextStepTone;
+  normalMri: string;
+  daysInactive: number | null;
+}
+
+function normalizePersonText(value?: string | null): string {
+  return (value ?? "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function fellowMatchesAlias(fellow: Fellow, alias: string): boolean {
+  const normalizedAlias = normalizePersonText(alias);
+  const searchable = normalizePersonText([fellowName(fellow), fellow.email ?? ""].join(" "));
+  if (!normalizedAlias || !searchable) return false;
+  if (searchable.includes(normalizedAlias)) return true;
+  const parts = normalizedAlias.split(" ").filter(Boolean);
+  return parts.length > 1 && parts.every((part) => searchable.includes(part));
+}
+
+function normalMriProgressLabel(fellow: Fellow, course: CourseDefinition): string {
+  if (!hasNormalMriWorkstation(course)) return "Not required";
+  const total = fellow.totalNormalPlanes ?? 0;
+  const passed = fellow.normalPlanesPassed ?? (fellow.normalMriComplete ? total : 0);
+  if (fellow.normalMriComplete) {
+    return total > 0 ? `Complete (${passed}/${total})` : "Complete";
+  }
+  return total > 0 ? `${passed}/${total} planes` : "Not started";
+}
+
+function learnerProgressPct(
+  fellow: Fellow,
+  course: CourseDefinition,
+  totalModules: number,
+  totalCases: number,
+): number {
+  const hasNormal = hasNormalMriWorkstation(course);
+  const normalTotal = fellow.totalNormalPlanes ?? 0;
+  const normalPassed = fellow.normalPlanesPassed ?? (fellow.normalMriComplete ? normalTotal : 0);
+  const normalProgress = !hasNormal
+    ? 1
+    : normalTotal > 0
+      ? Math.min(normalPassed / normalTotal, 1)
+      : fellow.normalMriComplete
+        ? 1
+        : 0;
+  const moduleProgress = totalModules > 0 ? Math.min(fellow.modulesCompleted / totalModules, 1) : 1;
+  const casesRequired = course.bodyRegion === "knee" ? 0 : totalCases;
+  const caseProgress = casesRequired > 0 ? Math.min(fellow.casesCompleted / casesRequired, 1) : 1;
+  const steps = [
+    fellow.preQuizScore !== null ? 1 : 0,
+    fellow.preSurveyCompleted ? 1 : 0,
+    normalProgress,
+    moduleProgress,
+    caseProgress,
+    fellow.postQuizScore !== null ? 1 : 0,
+    fellow.postSurveyCompleted ? 1 : 0,
+  ];
+  return Math.round((steps.reduce((sum, value) => sum + value, 0) / steps.length) * 100);
+}
+
+function nextIncompleteModuleLabel(fellow: Fellow, course: CourseDefinition): string | null {
+  const completed = new Set(
+    (fellow.moduleProgress ?? []).filter((item) => item.completed).map((item) => item.id),
+  );
+  const next = course.modules.find((module) => !completed.has(module.id));
+  return next ? `Module ${next.number}: ${next.title}` : null;
+}
+
+function nextStepForFellow(
+  fellow: Fellow,
+  course: CourseDefinition,
+  totalModules: number,
+  totalCases: number,
+  postQuizTotal: number,
+): { label: string; tone: NextStepTone } {
+  if (fellow.preQuizScore === null) return { label: "Start pre-assessment", tone: "attention" };
+  if (!fellow.preSurveyCompleted) return { label: "Finish pre-confidence survey", tone: "attention" };
+  if (hasNormalMriWorkstation(course) && !fellow.normalMriComplete) {
+    return { label: `Complete Normal MRI (${normalMriProgressLabel(fellow, course)})`, tone: "attention" };
+  }
+  if (fellow.modulesCompleted < totalModules) {
+    return { label: nextIncompleteModuleLabel(fellow, course) ?? "Continue modules", tone: "steady" };
+  }
+  if (course.bodyRegion !== "knee" && fellow.casesCompleted < totalCases) {
+    return { label: "Complete required cases", tone: "steady" };
+  }
+  if (fellow.postQuizScore === null) return { label: "Take post-assessment", tone: "attention" };
+  if (!fellow.postSurveyCompleted) return { label: "Finish post-confidence survey", tone: "attention" };
+
+  const status = fellowStatus(fellow, totalModules, totalCases, course, postQuizTotal);
+  if (status === "Below 70%") return { label: "Review and retake post-assessment", tone: "attention" };
+  if (!fellow.certificateSent) return { label: "Certificate ready to send", tone: "done" };
+  return { label: "Certificate sent", tone: "done" };
+}
+
+function buildTrackedFellowRows(
+  fellows: Fellow[],
+  course: CourseDefinition,
+  totalModules: number,
+  totalCasesForFellow: (fellow: Fellow) => number,
+  postQuizTotal: number,
+): TrackedFellowRow[] {
+  const usedIds = new Set<string>();
+  return TRACKED_FELLOW_TARGETS.map((target) => {
+    const fellow =
+      fellows.find((candidate) => {
+        if (usedIds.has(candidate.id)) return false;
+        return target.aliases.some((alias) => fellowMatchesAlias(candidate, alias));
+      }) ?? null;
+    if (!fellow) {
+      return {
+        targetName: target.name,
+        fellow: null,
+        status: null,
+        progressPct: 0,
+        nextStep: "Waiting for first sign-in",
+        nextStepTone: "waiting",
+        normalMri: "No account yet",
+        daysInactive: null,
+      };
+    }
+
+    usedIds.add(fellow.id);
+    const totalCases = totalCasesForFellow(fellow);
+    const next = nextStepForFellow(fellow, course, totalModules, totalCases, postQuizTotal);
+    return {
+      targetName: target.name,
+      fellow,
+      status: fellowStatus(fellow, totalModules, totalCases, course, postQuizTotal),
+      progressPct: learnerProgressPct(fellow, course, totalModules, totalCases),
+      nextStep: next.label,
+      nextStepTone: next.tone,
+      normalMri: normalMriProgressLabel(fellow, course),
+      daysInactive: daysSince(lastSeen(fellow)),
+    };
+  });
 }
 
 /* ───────── MAIN COMPONENT ───────── */
@@ -564,6 +731,11 @@ export default function AdminDashboardPage() {
     );
   }, [filteredFellows, statusFilter, totalModules, totalCasesForFellow, selectedCourse, POST_QUIZ_TOTAL]);
 
+  const trackedFellowRows = useMemo(
+    () => buildTrackedFellowRows(fellows, selectedCourse, totalModules, totalCasesForFellow, POST_QUIZ_TOTAL),
+    [fellows, selectedCourse, totalModules, totalCasesForFellow, POST_QUIZ_TOTAL],
+  );
+
   const handleExport = useCallback(() => {
     exportCSV(filteredFellows, selectedCourse);
   }, [filteredFellows, selectedCourse]);
@@ -710,6 +882,13 @@ export default function AdminDashboardPage() {
             <SummaryCard label="Completion Rate" value={`${stats.completionRate}%`} color="#005587" />
           </div>
 
+          <TrackedFellowsPanel
+            rows={trackedFellowRows}
+            course={selectedCourse}
+            totalModules={totalModules}
+            onSelectLearner={handleJumpToLearner}
+          />
+
           <MedicalQaReadinessPanel course={selectedCourse} />
 
           <StatusFunnel
@@ -804,10 +983,10 @@ export default function AdminDashboardPage() {
               </div>
             )}
             <div className="overflow-x-auto -mx-5 px-5">
-              <table className="w-full text-left text-sm min-w-[1000px]">
+              <table className="w-full text-left text-sm min-w-[1080px]">
                 <thead>
                   <tr className="border-b-2" style={{ borderColor: "#2774AE" }}>
-                    {["Name", "Email", "Role", "Pre-Quiz", "Post-Quiz", "Impr.", "Pre-Conf.", "Post-Conf.", "Modules", "Cases", "Status", "Last Active"].map(
+                    {["Name", "Email", "Role", "Pre-Quiz", "Post-Quiz", "Impr.", "Pre-Conf.", "Post-Conf.", "Normal MRI", "Modules", "Cases", "Status", "Last Active"].map(
                       (h) => (
                         <th key={h} className="pb-3 pr-3 font-semibold text-gray-700 whitespace-nowrap text-xs uppercase tracking-wide">
                           {h}
@@ -819,7 +998,7 @@ export default function AdminDashboardPage() {
                 <tbody className="divide-y divide-gray-100">
                   {displayedFellows.length === 0 ? (
                     <tr>
-                      <td colSpan={12} className="py-12 text-center text-gray-500">
+                      <td colSpan={13} className="py-12 text-center text-gray-500">
                         No learners found.
                       </td>
                     </tr>
@@ -913,6 +1092,15 @@ export default function AdminDashboardPage() {
                               )}
                             </td>
                             <td className="py-3 pr-3">
+                              <span
+                                className={`text-xs font-semibold ${
+                                  f.normalMriComplete ? "text-green-700" : "text-gray-600"
+                                }`}
+                              >
+                                {normalMriProgressLabel(f, selectedCourse)}
+                              </span>
+                            </td>
+                            <td className="py-3 pr-3">
                               <span className="text-gray-900">{f.modulesCompleted}</span>
                               <span className="text-gray-500">/{totalModules}</span>
                             </td>
@@ -969,7 +1157,7 @@ export default function AdminDashboardPage() {
                           {/* ─── E. EXPANDED FELLOW DETAIL ─── */}
                           {isExpanded && (
                             <tr>
-                              <td colSpan={12} className="bg-gray-50/80 px-6 py-5 border-l-4" style={{ borderColor: "#2774AE" }}>
+                              <td colSpan={13} className="bg-gray-50/80 px-6 py-5 border-l-4" style={{ borderColor: "#2774AE" }}>
                                 <FellowDetail fellow={f} course={selectedCourse} />
                               </td>
                             </tr>
@@ -1080,6 +1268,144 @@ export default function AdminDashboardPage() {
 
 /* ───────── Sub-components ───────── */
 
+function TrackedFellowsPanel({
+  rows,
+  course,
+  totalModules,
+  onSelectLearner,
+}: {
+  rows: TrackedFellowRow[];
+  course: CourseDefinition;
+  totalModules: number;
+  onSelectLearner: (id: string) => void;
+}) {
+  const foundCount = rows.filter((row) => row.fellow).length;
+  const attentionCount = rows.filter((row) => row.nextStepTone === "attention" || row.nextStepTone === "waiting").length;
+  const completeCount = rows.filter((row) => row.status === "Complete").length;
+
+  return (
+    <section className="space-y-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-lg font-bold text-gray-900">Tracked Sports Medicine Fellows</h2>
+          <p className="mt-0.5 text-xs text-gray-500">
+            Riley Coon, Sonal Singh, and Lilian Toaspern in the selected {course.shortTitle} cohort.
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-center sm:w-[360px]">
+          <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
+            <p className="text-lg font-bold text-ucla-dark">{foundCount}/3</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Signed in</p>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
+            <p className="text-lg font-bold text-green-700">{completeCount}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Complete</p>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
+            <p className="text-lg font-bold text-amber-700">{attentionCount}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Needs check</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-3 lg:grid-cols-3">
+        {rows.map((row) => {
+          const fellow = row.fellow;
+          const postPct =
+            fellow && fellow.postQuizScore !== null
+              ? pct(fellow.postQuizScore, fellow.postQuizTotal ?? getPostQuizQuestions(course).length)
+              : null;
+          const caseTotal = fellow ? totalCasesForRole(course, fellow.role) : 0;
+          const caseValue = !fellow
+            ? "--"
+            : course.bodyRegion === "knee"
+              ? `${fellow.casesCompleted}/${caseTotal} optional`
+              : `${fellow.casesCompleted}/${caseTotal}`;
+          const nextClass =
+            row.nextStepTone === "done"
+              ? "border-green-200 bg-green-50 text-green-800"
+              : row.nextStepTone === "attention"
+                ? "border-amber-200 bg-amber-50 text-amber-800"
+                : row.nextStepTone === "waiting"
+                  ? "border-gray-200 bg-gray-50 text-gray-600"
+                  : "border-blue-200 bg-blue-50 text-blue-800";
+          const inactive = row.daysInactive !== null && row.daysInactive >= 14;
+
+          return (
+            <article
+              key={row.targetName}
+              className={`rounded-xl border bg-white p-4 shadow-sm ${
+                fellow ? "border-gray-200" : "border-dashed border-gray-300"
+              }`}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="truncate text-base font-bold text-gray-900">{row.targetName}</h3>
+                  <p className="mt-0.5 truncate text-xs text-gray-500">{fellow?.email ?? "No learner account matched yet"}</p>
+                </div>
+                {row.status ? (
+                  <StatusBadge status={row.status} />
+                ) : (
+                  <span className="shrink-0 rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-semibold text-gray-500">
+                    Waiting
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-4">
+                <div className="mb-1 flex items-center justify-between text-xs">
+                  <span className="font-semibold text-gray-600">Course progress</span>
+                  <span className="font-bold text-gray-900">{row.progressPct}%</span>
+                </div>
+                <div className="h-2 rounded-full bg-gray-100">
+                  <div
+                    className="h-2 rounded-full bg-ucla-blue"
+                    style={{ width: `${Math.min(Math.max(row.progressPct, 0), 100)}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <TrackedMetric label="Normal MRI" value={row.normalMri} />
+                <TrackedMetric label="Modules" value={fellow ? `${fellow.modulesCompleted}/${totalModules}` : "--"} />
+                <TrackedMetric label="Cases" value={caseValue} />
+                <TrackedMetric label="Post Quiz" value={postPct !== null ? `${postPct}%` : "--"} />
+              </div>
+
+              <div className={`mt-4 rounded-lg border px-3 py-2 text-xs font-semibold ${nextClass}`}>
+                {row.nextStep}
+              </div>
+
+              <div className="mt-3 flex flex-col gap-2 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+                <span className={inactive ? "font-semibold text-amber-700" : ""}>
+                  {fellow ? `Last active: ${formatDateTime(lastSeen(fellow))}` : "Waiting for first login"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => fellow && onSelectLearner(fellow.id)}
+                  disabled={!fellow}
+                  className="self-start rounded-lg border border-ucla-blue/30 px-3 py-1.5 text-xs font-semibold text-ucla-dark transition-colors hover:bg-ucla-light disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400 disabled:hover:bg-transparent sm:self-auto"
+                >
+                  Open row
+                </button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function TrackedMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+      <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">{label}</p>
+      <p className="mt-0.5 truncate text-xs font-bold text-gray-900">{value}</p>
+    </div>
+  );
+}
+
 function SummaryCard({
   label,
   value,
@@ -1184,6 +1510,23 @@ function FellowDetail({ fellow, course }: { fellow: Fellow; course: CourseDefini
       </div>
 
       <div className="space-y-6">
+        {/* Normal MRI Workstation */}
+        <div>
+          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Normal MRI Workstation</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-3">
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-sm font-medium text-gray-700">Plane knowledge checks</span>
+              <span
+                className={`text-sm font-bold ${
+                  fellow.normalMriComplete || !hasNormalMriWorkstation(course) ? "text-green-700" : "text-amber-700"
+                }`}
+              >
+                {normalMriProgressLabel(fellow, course)}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Module Quiz Scores */}
         <div>
           <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Module Progress</h3>

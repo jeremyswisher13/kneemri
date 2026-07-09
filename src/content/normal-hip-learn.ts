@@ -87,7 +87,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 15,
-        markers: [{ x: 40, y: 45, label: "SI joint" }],
+        markers: [{ x: 34, y: 45, label: "SI joint" }],
         title: "Sacrum & SI joint",
         note: "On the posterior coronal slices the sacrum sits in the midline with the sacroiliac joints articulating against the iliac bones bilaterally. Confirm symmetric, dark subchondral marrow across both SI joints and sacral alae — this is your screening plane for sacroiliitis and for the sacral/parasymphyseal insufficiency fractures that mimic hip or groin pain.",
       },

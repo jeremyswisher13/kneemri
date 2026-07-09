@@ -830,7 +830,7 @@ export const structureShoulderPearl: Record<string, string> = {
   "Rotator-cuff muscles (medial slice)": "Grade fatty atrophy on this sagittal view (Goutallier–Fuchs) — it predicts whether a cuff tear is repairable.",
   Subscapularis: "Don't miss a subscapularis tear — look for biceps medial subluxation/dislocation out of the groove, its companion finding.",
   "Infraspinatus & teres minor": "Isolated teres-minor fatty atrophy = quadrilateral-space / axillary-nerve problem until proven otherwise.",
-  "Glenoid & labrum": "Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears.",
+  "Glenoid & labrum": "Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears. A Buford complex can coexist with and is associated with SLAP pathology, so still inspect the superior labrum and biceps anchor.",
   "Biceps & rotator interval": "A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.",
   "Humeral head": "Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.",
   "Supraspinatus tendon": "Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact.",
@@ -898,7 +898,7 @@ export const shoulderAdvanced: AdvancedQ[] = [
     prompt: "A 28-year-old overhead athlete has deep shoulder pain and a positive O'Brien test. MR arthrogram shows superior labral contrast that is irregular and laterally curved, extending lateral to the biceps anchor into the labral substance, and measuring more than 2-3 mm wide. Which is the most appropriate interpretation?",
     options: ["Type II SLAP tear", "Normal sublabral recess", "Buford complex", "Sublabral foramen"],
     answer: 0,
-    explanation: "Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants, not superior labral tears, and should not be repaired.",
+    explanation: "Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants rather than superior labral tears. Do not repair an otherwise normal variant in isolation; a Buford complex can coexist with and is associated with SLAP pathology, so inspect the biceps anchor and superior labrum rather than dismissing concordant symptoms.",
   },
   {
     id: "sh-caq-4",

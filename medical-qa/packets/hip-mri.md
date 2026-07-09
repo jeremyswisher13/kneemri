@@ -1,5 +1,5 @@
 # Medical QA Packet: Hip MRI for Primary Care Sports Medicine
-Generated: 2026-06-30
+Generated: 2026-07-09
 Course ID: `hip-mri`  
 Body region: `hip`  
 Audience: Primary care sports medicine fellows
@@ -15,9 +15,9 @@ Audience: Primary care sports medicine fellows
 
 ## Automated QA Summary
 
-- Review queue items: 492
-- High-risk keyword items: 305
-- Numeric threshold / named-criterion items: 119
+- Review queue items: 556
+- High-risk keyword items: 343
+- Numeric threshold / named-criterion items: 135
 - Diagnostics: 0
 
 ## Course Overview
@@ -1768,7 +1768,7 @@ Guided tour:
 - **9. Adductors & pubic symphysis** (slice 19) Inferomedially on this large-FOV coronal, the adductor longus/brevis origins and the rectus abdominis–adductor aponeurosis converge on the pubis flanking the fibrocartilaginous pubic symphysis. Keep the symphysis marrow symmetric and the adductor origins dark and uniform — this aponeurosis is the athletic-pubalgia ('sports hernia'/core-muscle injury) hot spot.
   - Symphysis @ x=48, y=77
 - **10. Sacrum & SI joint** (slice 15) On the posterior coronal slices the sacrum sits in the midline with the sacroiliac joints articulating against the iliac bones bilaterally. Confirm symmetric, dark subchondral marrow across both SI joints and sacral alae — this is your screening plane for sacroiliitis and for the sacral/parasymphyseal insufficiency fractures that mimic hip or groin pain.
-  - SI joint @ x=40, y=45
+  - SI joint @ x=34, y=45
 - **11. Do-not-overcall checkpoint** (slice 19) Before leaving the coronal stack, pause on the traps: cam or pincer morphology is not symptomatic FAI without concordant pain plus labral/cartilage injury; GTPS is usually abductor tendon disease, not bursal fluid alone; pubic marrow or aponeurotic signal can be seen in asymptomatic athletes; and any hip marrow edema deserves a deliberate AVN, femoral-neck stress, and subchondral-insufficiency screen.
   - Labrum @ x=77, y=47
   - Femoral neck @ x=71, y=63
@@ -1899,7 +1899,7 @@ Guided tour:
 - **3. Femoral neck & head-neck junction** (slice 11) The sagittal plane profiles the femoral neck and shows the anterior head-neck junction contour. Trace a smooth concave anterior waist from head to neck — loss of that concavity (a convex 'bump') suggests cam morphology, though the alpha angle itself is measured on oblique-axial-along-the-neck or radial images, not here; the neck marrow is also your tension-side stress-fracture and AVN territory.
   - Head-neck @ x=36, y=70
 - **4. Acetabular labrum** (slice 11) On sagittal PD FS the acetabular labrum is the small low-signal triangle on the bony rim, and this plane helps localize it around the clock face — the anterosuperior quadrant is the tear hotspot. Confirm a uniformly dark, sharply pointed triangle blending with the rim; rounded, blunted, or internally bright signal raises tear, which MR arthrography depicts best with intra-articular contrast tracking into the cleft.
-  - Labrum @ x=44, y=46
+  - Labrum @ x=46, y=54
 - **5. Iliopsoas tendon & bursa** (slice 11) Anterior to the joint, the iliopsoas tendon is the rounded low-signal structure crossing the femoral head/anterior capsule toward the lesser trochanter, with its bursa interposed between tendon and the iliopectineal eminence/capsule. Normally the tendon is uniformly dark and the bursa imperceptible or a thin fluid sliver; a distended iliopsoas bursa or thickened tendon is the substrate for anterior groin pain and internal snapping hip.
   - Iliopsoas @ x=23, y=54
 - **6. Gluteus medius & minimus (abductors)** (slice 11) The lateral sagittal images show the gluteus medius and minimus tendons converging onto the greater trochanter — the 'rotator cuff of the hip.' Confirm uniformly low-signal tendons and a dry trochanteric footprint; peritendinous edema, tendon thickening, or footprint fluid is the imaging substrate of greater trochanteric pain syndrome (GTPS) and frank abductor tears.
@@ -1910,7 +1910,7 @@ Guided tour:
   - Capsule / IFL @ x=30, y=51
 - **9. Do-not-overcall checkpoint** (slice 11) Sagittal is a profile view, not the whole FAI answer. Use it to notice head-neck asphericity and the chondrolabral junction, but measure alpha angle on oblique-axial/radial images when available. A thin anterior recess can be normal; convex distension is effusion. A bright labral-adjacent cleft needs shape, displacement, cartilage injury, and orthogonal confirmation before you call a tear.
   - Head-neck junction @ x=36, y=70
-  - Labrum @ x=44, y=46
+  - Labrum @ x=46, y=54
   - Anterior recess @ x=33, y=57
 
 Knowledge check:

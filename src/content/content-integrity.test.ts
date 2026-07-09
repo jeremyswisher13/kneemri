@@ -602,6 +602,44 @@ describe('review registry', () => {
         const key = workstationReviewId(courseId, `prepost-${q.id}`)
         expect(reviewQuestionById[key], `missing pre/post entry ${key}`).toBeTruthy()
         expect(reviewQuestionById[key].source).toBe('Pre/Post assessment')
+        expect(reviewQuestionById[key].courseId).toBe(courseId)
+      }
+    }
+  })
+
+  it('course-scopes every workstation-derived spaced-review entry', () => {
+    const workstationSources = [
+      {
+        courseId: 'knee-mri',
+        quizIds: Object.values(normalKneeLearn).flatMap((plane) => plane.quiz.map((q) => q.id)),
+        advancedIds: advancedChallenge.map((q) => q.id),
+        imageCaqIds: kneeImageCaq.map((q) => q.id),
+      },
+      {
+        courseId: 'shoulder-mri',
+        quizIds: Object.values(normalShoulderLearn).flatMap((plane) => plane.quiz.map((q) => q.id)),
+        advancedIds: shoulderAdvanced.map((q) => q.id),
+        imageCaqIds: shoulderImageCaq.map((q) => q.id),
+      },
+      {
+        courseId: 'hip-mri',
+        quizIds: Object.values(normalHipLearn).flatMap((plane) => plane.quiz.map((q) => q.id)),
+        advancedIds: hipAdvanced.map((q) => q.id),
+        imageCaqIds: hipImageCaq.map((q) => q.id),
+      },
+      {
+        courseId: 'elbow-mri',
+        quizIds: Object.values(normalElbowLearn).flatMap((plane) => plane.quiz.map((q) => q.id)),
+        advancedIds: elbowAdvanced.map((q) => q.id),
+        imageCaqIds: elbowImageCaq.map((q) => q.id),
+      },
+    ] as const
+
+    for (const source of workstationSources) {
+      for (const id of [...source.quizIds, ...source.advancedIds, ...source.imageCaqIds]) {
+        const key = workstationReviewId(source.courseId, id)
+        expect(reviewQuestionById[key], `missing review entry ${key}`).toBeTruthy()
+        expect(reviewQuestionById[key].courseId, `${key} courseId`).toBe(source.courseId)
       }
     }
   })

@@ -1,5 +1,5 @@
 # Medical QA Packet: UCLA Knee MRI Interpretation Course
-Generated: 2026-06-30
+Generated: 2026-07-09
 Course ID: `knee-mri`  
 Body region: `knee`  
 Audience: Sports medicine fellows and orthopaedic residents
@@ -15,9 +15,9 @@ Audience: Sports medicine fellows and orthopaedic residents
 
 ## Automated QA Summary
 
-- Review queue items: 1325
-- High-risk keyword items: 559
-- Numeric threshold / named-criterion items: 211
+- Review queue items: 1102
+- High-risk keyword items: 442
+- Numeric threshold / named-criterion items: 151
 - Diagnostics: 0
 
 ## Course Overview
@@ -3194,7 +3194,7 @@ Guided tour:
   - Hoffa's (infrapatellar) fat pad @ x=24, y=60
 - **7. Meniscus — the dark bow-ties** (slice 8) On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.
   - Anterior horn (meniscus) @ x=40, y=61
-  - Posterior horn (meniscus) @ x=66.6, y=59.2
+  - Posterior horn (meniscus) @ x=61, y=59.2
 - **8. Cartilage & joint fluid** (slice 7) Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal.
   - Articular cartilage / joint fluid @ x=61.3, y=50.8
 - **9. Anterior cruciate ligament** (slice 21) On this lateral notch slice the ACL is a straight, striated band running parallel to the roof of the notch (Blumensaat line), from the lateral femoral condyle down to the anterior tibial spine — more fibrillar and a touch brighter than the smooth, dark PCL. It is partly volume-averaged on any one slice, so trace it across a couple: normal fibers stay continuous and parallel to the notch roof.
@@ -3475,7 +3475,7 @@ Guided tour:
   - Hoffa's (infrapatellar) fat pad @ x=24, y=60
 - **7. Meniscus** (slice 8) Low-signal triangles at the joint line — dark on T1, as on PD-FS.
   - Anterior horn (meniscus) @ x=40, y=61
-  - Posterior horn (meniscus) @ x=66.6, y=59.2
+  - Posterior horn (meniscus) @ x=61, y=59.2
 - **8. Bone marrow — T1's job** (slice 13) Normal marrow is uniformly bright (fatty) on T1. The key abnormal finding is FOCAL DARK signal — a fracture line, infiltration, or a lesion. (Joint fluid is dark on T1, so it is the PD-FS — not T1 — that you use for cartilage and effusion.)
   - Bone marrow @ x=34, y=41
 - **9. Posterior cruciate ligament** (slice 16) The PCL is a smooth, continuous low-signal arc through the posterior notch.

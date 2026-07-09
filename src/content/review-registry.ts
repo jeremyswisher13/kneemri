@@ -132,6 +132,7 @@ function buildRegistry(): Record<string, ReviewQuestion> {
       for (const it of plane.quiz) {
         map[workstationReviewId(courseId, it.id)] = {
           ...fromMcq(it.prompt, it.options, it.answer, it.explanation, `${courseLabel} · ${planeLabel}`),
+          courseId,
           ...(dir
             ? { image: { dir, sliceIndex: it.sliceIndex, x: it.marker.x, y: it.marker.y } }
             : {}),
@@ -149,7 +150,10 @@ function buildRegistry(): Record<string, ReviewQuestion> {
   ];
   for (const [courseId, bank, source] of advanced) {
     for (const a of bank) {
-      map[workstationReviewId(courseId, a.id)] = fromMcq(a.prompt, a.options, a.answer, a.explanation, source);
+      map[workstationReviewId(courseId, a.id)] = {
+        ...fromMcq(a.prompt, a.options, a.answer, a.explanation, source),
+        courseId,
+      };
     }
   }
 
@@ -162,7 +166,10 @@ function buildRegistry(): Record<string, ReviewQuestion> {
   ];
   for (const [courseId, bank, source] of imageCaqBanks) {
     for (const q of bank) {
-      map[workstationReviewId(courseId, q.id)] = fromMcq(q.vignette, q.options, q.answer, q.explanation, source);
+      map[workstationReviewId(courseId, q.id)] = {
+        ...fromMcq(q.vignette, q.options, q.answer, q.explanation, source),
+        courseId,
+      };
     }
   }
 
@@ -204,6 +211,7 @@ function buildRegistry(): Record<string, ReviewQuestion> {
         correctAnswer: q.correctAnswer,
         explanation: q.explanation,
         source: "Pre/Post assessment",
+        courseId,
       };
     }
   }

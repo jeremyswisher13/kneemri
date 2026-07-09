@@ -1,5 +1,5 @@
 # Medical QA Packet: Elbow MRI for Primary Care Sports Medicine
-Generated: 2026-06-30
+Generated: 2026-07-09
 Course ID: `elbow-mri`  
 Body region: `elbow`  
 Audience: Primary care sports medicine fellows
@@ -15,9 +15,9 @@ Audience: Primary care sports medicine fellows
 
 ## Automated QA Summary
 
-- Review queue items: 385
-- High-risk keyword items: 308
-- Numeric threshold / named-criterion items: 136
+- Review queue items: 434
+- High-risk keyword items: 351
+- Numeric threshold / named-criterion items: 158
 - Diagnostics: 0
 
 ## Course Overview

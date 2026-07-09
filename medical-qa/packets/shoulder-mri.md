@@ -1,5 +1,5 @@
 # Medical QA Packet: Shoulder MRI for Primary Care Sports Medicine
-Generated: 2026-06-30
+Generated: 2026-07-09
 Course ID: `shoulder-mri`  
 Body region: `shoulder`  
 Audience: Primary care sports medicine fellows
@@ -15,9 +15,9 @@ Audience: Primary care sports medicine fellows
 
 ## Automated QA Summary
 
-- Review queue items: 552
-- High-risk keyword items: 187
-- Numeric threshold / named-criterion items: 77
+- Review queue items: 662
+- High-risk keyword items: 223
+- Numeric threshold / named-criterion items: 99
 - Diagnostics: 0
 
 ## Course Overview
@@ -1544,7 +1544,7 @@ Knowledge check:
 
 Guided tour:
 - **1. Get oriented** (slice 14) Axial PD-FS through the glenohumeral joint. Anterior is at the TOP, posterior at the bottom; the round humeral head is lateral (image left), the glenoid medial (right). This is your plane for the labrum and the biceps in its groove.
-- **2. Humeral head** (slice 14) The round humeral head — bright marrow, thin dark cortex. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability).
+- **2. Humeral head** (slice 14) The round humeral head. On this fat-suppressed sequence the normal fatty marrow is SUPPRESSED (dark/intermediate) inside a thin dark cortex — so a focal BRIGHT area is marrow edema, not normal fat. Scan its posterolateral contour for a Hill-Sachs impaction (it engages the glenoid in anterior instability).
   - Humeral head @ x=27, y=40
 - **3. Bony glenoid** (slice 14) The shallow, comma-shaped glenoid of the scapula, medial to the head. Axial shows glenohumeral congruence and the bony rim — check the anteroinferior margin for a bony Bankart.
   - Glenoid @ x=51, y=54
@@ -1581,7 +1581,7 @@ Knowledge check:
   - B. Glenoid
   - C. Coracoid process
   - D. Acromion
-    Explanation: The round ball with bright marrow and a thin dark cortex, lateral in the image, is the humeral head.
+    Explanation: The round ball lateral in the image, with a thin dark cortex and fat-suppressed (dark/intermediate) marrow, is the humeral head. On this fat-sat sequence a focal bright marrow signal would be edema, not normal fat.
 - **axi-q2:** What is the marked structure? (slice 14)
   - A. Glenoid [CORRECT]
   - B. Humeral head
@@ -1734,7 +1734,7 @@ Knowledge check:
 - **Rotator-cuff muscles (medial slice):** Grade fatty atrophy on this sagittal view (Goutallier–Fuchs) — it predicts whether a cuff tear is repairable.
 - **Subscapularis:** Don't miss a subscapularis tear — look for biceps medial subluxation/dislocation out of the groove, its companion finding.
 - **Infraspinatus & teres minor:** Isolated teres-minor fatty atrophy = quadrilateral-space / axillary-nerve problem until proven otherwise.
-- **Glenoid & labrum:** Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears.
+- **Glenoid & labrum:** Trace the labral clock-face; a sublabral foramen (1–3 o'clock) and a Buford complex (absent anterosuperior labrum + cord-like MGHL) are normal variants — don't call them tears. A Buford complex can coexist with and is associated with SLAP pathology, so still inspect the superior labrum and biceps anchor.
 - **Biceps & rotator interval:** A torn biceps pulley lets the long head subluxate medially — often the first clue to a hidden subscapularis tear.
 - **Humeral head:** Scan the posterosuperior head for a Hill-Sachs impaction after anterior dislocation; a deep one that engages the glenoid matters.
 - **Supraspinatus tendon:** Scrutinize the 'critical zone' ~1 cm from the footprint, the articular surface for a PASTA tear, and whether the rotator cable is intact.
@@ -1813,7 +1813,7 @@ A 28-year-old overhead athlete has deep shoulder pain and a positive O'Brien tes
 - B. Normal sublabral recess
 - C. Buford complex
 - D. Sublabral foramen
-Explanation: Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants, not superior labral tears, and should not be repaired.
+Explanation: Contrast with an irregular, laterally curved contour that extends lateral to the biceps anchor into the labrum (the load-bearing morphologic finding, reinforced by a width greater than ~2-3 mm) is a type II SLAP tear. A normal sublabral recess is a smooth, thin, medially directed cleft that parallels the glenoid surface. The Buford complex (absent anterosuperior labrum with a cord-like middle glenohumeral ligament) and the sublabral foramen are anterosuperior variants rather than superior labral tears. Do not repair an otherwise normal variant in isolation; a Buford complex can coexist with and is associated with SLAP pathology, so inspect the biceps anchor and superior labrum rather than dismissing concordant symptoms.
 
 #### Advanced: sh-caq-4 · Instability - glenoid bone loss
 

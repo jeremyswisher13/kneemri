@@ -47,6 +47,8 @@ export interface Fellow {
   modulesCompleted: number;
   casesCompleted: number;
   normalMriComplete?: boolean;
+  normalPlanesPassed?: number;
+  totalNormalPlanes?: number;
   moduleProgress: ModuleProgressItem[];
   caseAttempts: CaseAttemptItem[];
   certificateSent?: boolean;

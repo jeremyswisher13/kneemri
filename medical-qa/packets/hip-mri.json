@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30",
+  "generatedAt": "2026-07-09",
   "course": {
     "id": "hip-mri",
     "title": "Hip MRI for Primary Care Sports Medicine",
@@ -1491,7 +1491,7 @@
             "sliceIndex": 15,
             "markers": [
               {
-                "x": 40,
+                "x": 34,
                 "y": 45,
                 "label": "SI joint"
               }
@@ -1927,8 +1927,8 @@
             "sliceIndex": 11,
             "markers": [
               {
-                "x": 44,
-                "y": 46,
+                "x": 46,
+                "y": 54,
                 "label": "Labrum"
               }
             ],
@@ -1992,8 +1992,8 @@
                 "label": "Head-neck junction"
               },
               {
-                "x": 44,
-                "y": 46,
+                "x": 46,
+                "y": 54,
                 "label": "Labrum"
               },
               {
@@ -2045,8 +2045,8 @@
             "id": "hs-q3",
             "sliceIndex": 11,
             "marker": {
-              "x": 44,
-              "y": 46
+              "x": 46,
+              "y": 54
             },
             "prompt": "What is the marked low-signal triangle along the acetabular rim?",
             "options": [
@@ -5741,6 +5741,1138 @@
       "topicIndex": 5,
       "courseId": "hip-mri"
     },
+    "hip-mri::hc-q1": {
+      "stem": "On this coronal T2 FS Dixon image, what is the marked structure seated within the acetabulum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Femoral head"
+        },
+        {
+          "key": "B",
+          "text": "Greater trochanter"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular roof (sourcil)"
+        },
+        {
+          "key": "D",
+          "text": "Femoral neck"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and subchondral insufficiency fracture of the femoral head (SIFH). The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 72,
+        "y": 55
+      }
+    },
+    "hip-mri::hc-q2": {
+      "stem": "The dense subchondral weight-bearing roof of the acetabulum marked here is best termed the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Triradiate cartilage"
+        },
+        {
+          "key": "B",
+          "text": "Sourcil (acetabular roof)"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "D",
+          "text": "Fovea capitis"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The sclerotic superolateral weight-bearing roof of the acetabulum is the sourcil, the surface you assess for coverage and stress change. The acetabular labrum is the triangular fibrocartilage at the rim peripheral to the bony roof — a soft-tissue structure, not the bony subchondral plate.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 70.5,
+        "y": 46
+      }
+    },
+    "hip-mri::hc-q3": {
+      "stem": "The small triangular low-signal structure capping the superolateral acetabular rim is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ligamentum teres"
+        },
+        {
+          "key": "B",
+          "text": "Transverse acetabular ligament"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "D",
+          "text": "Zona orbicularis"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The triangular fibrocartilage seating on the bony rim and deepening the socket is the acetabular labrum, the anterosuperior tear site worked up with MR arthrography. The transverse acetabular ligament bridges the inferior acetabular notch, not the superolateral rim seen on this slice; the zona orbicularis is the circular capsular waist around the neck, not a rim structure.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 77,
+        "y": 47
+      }
+    },
+    "hip-mri::hc-q4": {
+      "stem": "The thin intermediate-signal layer marked between the femoral head cortex and the acetabular cortex represents the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Joint effusion"
+        },
+        {
+          "key": "B",
+          "text": "Hyaline articular cartilage"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "D",
+          "text": "Subchondral marrow"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The smooth intermediate-signal stripe covering the bony surfaces is hyaline articular cartilage, scrutinized for focal chondral loss in FAI. A joint effusion would be bright fluid distending the capsule and recesses rather than a thin layer conforming to the subchondral cortex.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 69.5,
+        "y": 50
+      }
+    },
+    "hip-mri::hc-q5": {
+      "stem": "The bony segment connecting the femoral head to the trochanters, marked here, is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Femoral neck"
+        },
+        {
+          "key": "B",
+          "text": "Intertrochanteric line"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular column"
+        },
+        {
+          "key": "D",
+          "text": "Femoral shaft"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The segment between the head and the trochanteric region is the femoral neck, where you must clear the superolateral tension-side cortex for stress fracture. The intertrochanteric line lies distal to the neck between the greater and lesser trochanters, not the head-neck connecting segment marked here.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 71,
+        "y": 63
+      }
+    },
+    "hip-mri::hc-q6": {
+      "stem": "The tendons marked inserting onto the greater trochanter — the abductor 'rotator cuff of the hip' — are the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Iliopsoas and rectus femoris"
+        },
+        {
+          "key": "B",
+          "text": "Gluteus medius and minimus"
+        },
+        {
+          "key": "C",
+          "text": "Piriformis and obturator internus"
+        },
+        {
+          "key": "D",
+          "text": "Tensor fasciae latae and sartorius"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The gluteus medius and minimus insert on the greater trochanter and are the hip abductor 'rotator cuff' implicated in GTPS. The iliopsoas inserts on the lesser trochanter (and rectus femoris arises anteriorly at the AIIS), so neither forms the greater-trochanteric abductor footprint marked here.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 88,
+        "y": 52
+      }
+    },
+    "hip-mri::hc-q7": {
+      "stem": "The midline fibrocartilaginous joint marked inferiorly between the two pubic bones is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sacroiliac joint"
+        },
+        {
+          "key": "B",
+          "text": "Pubic symphysis"
+        },
+        {
+          "key": "C",
+          "text": "Hip joint"
+        },
+        {
+          "key": "D",
+          "text": "Iliopubic eminence"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The midline fibrocartilaginous articulation between the pubic bones is the pubic symphysis, the focus of the athletic pubalgia workup with the adductor aponeurosis. The sacroiliac joint lies posterosuperiorly between the sacrum and ilium — a separate joint, not in this anterior midline location.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 48,
+        "y": 77
+      }
+    },
+    "hip-mri::hc-q8": {
+      "stem": "The paired articulations marked between the sacrum and the iliac bones on this posterior coronal slice are the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hip (femoroacetabular) joints"
+        },
+        {
+          "key": "B",
+          "text": "Sacroiliac joints"
+        },
+        {
+          "key": "C",
+          "text": "Pubic symphysis"
+        },
+        {
+          "key": "D",
+          "text": "Lumbosacral facet joints"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The articulations between the sacrum and the ilia are the sacroiliac joints, screened here for sacroiliitis and sacral insufficiency fracture. The femoroacetabular (hip) joints lie laterally between the femoral heads and acetabula — separate, more anterolateral joints not formed by the sacrum.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 15,
+        "x": 40,
+        "y": 45
+      }
+    },
+    "hip-mri::hc-q9": {
+      "stem": "On this coronal T2 FS Dixon image, the marked lateral bony prominence of the proximal femur — the footprint of the gluteus medius and minimus tendons — is which structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Greater trochanter"
+        },
+        {
+          "key": "B",
+          "text": "Lesser trochanter"
+        },
+        {
+          "key": "C",
+          "text": "Femoral head"
+        },
+        {
+          "key": "D",
+          "text": "Iliac crest"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The greater trochanter is the lateral proximal-femoral prominence and the abductor (gluteus medius/minimus) footprint, with the trochanteric/subgluteus bursae normally collapsed superficial to the tendons — the GTPS hot spot. The lesser trochanter is also a proximal-femoral apophysis but lies posteromedially as the iliopsoas insertion, not the lateral abductor footprint.",
+      "source": "Hip MRI · Coronal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-coronal",
+        "sliceIndex": 19,
+        "x": 85.5,
+        "y": 62
+      }
+    },
+    "hip-mri::ha-q1": {
+      "stem": "What is the marked spherical structure seated in the acetabular socket?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Greater trochanter"
+        },
+        {
+          "key": "B",
+          "text": "Femoral head"
+        },
+        {
+          "key": "C",
+          "text": "Femoral neck"
+        },
+        {
+          "key": "D",
+          "text": "Ischial tuberosity"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The round ball articulating within the acetabulum is the femoral head. The femoral neck is the narrower column connecting the head to the trochanters and is not spherical, so it is the best distractor but wrong here.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 42,
+        "y": 45
+      }
+    },
+    "hip-mri::ha-q2": {
+      "stem": "What is the marked low-signal triangular structure at the rim of the acetabulum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "B",
+          "text": "Ligamentum teres"
+        },
+        {
+          "key": "C",
+          "text": "Transverse acetabular ligament"
+        },
+        {
+          "key": "D",
+          "text": "Iliofemoral ligament"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The triangular low-signal fibrocartilage capping the bony rim is the acetabular labrum. The ligamentum teres runs centrally from the fovea to the acetabular notch, not at the peripheral rim, so it is the closest distractor but incorrect.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 32,
+        "y": 35
+      }
+    },
+    "hip-mri::ha-q3": {
+      "stem": "On this axial image, the marked intact bony column behind the femoral head is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anterior wall/column of the acetabulum"
+        },
+        {
+          "key": "B",
+          "text": "Posterior wall/column of the acetabulum"
+        },
+        {
+          "key": "C",
+          "text": "Quadrilateral plate"
+        },
+        {
+          "key": "D",
+          "text": "Teardrop"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Behind (posterior to) the femoral head the marked bone is the posterior wall/column of the acetabulum. The anterior wall/column lies in front of the head; the quadrilateral plate is the medial wall and the teardrop is a medial-floor radiographic structure, so all three are plausible but wrong for a posterior marker.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 54,
+        "y": 54
+      }
+    },
+    "hip-mri::ha-q4": {
+      "stem": "The marked round low-signal tendon lying directly anterior to the femoral head is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Rectus femoris tendon"
+        },
+        {
+          "key": "B",
+          "text": "Sartorius tendon"
+        },
+        {
+          "key": "C",
+          "text": "Iliopsoas tendon"
+        },
+        {
+          "key": "D",
+          "text": "Gluteus minimus tendon"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The tendon immediately anterior to the hip joint/femoral head is the iliopsoas tendon. The rectus femoris (direct head at the AIIS, indirect head along the acetabular rim) lies more anterolateral and superficial, so it is the best distractor but not in this position.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 26,
+        "y": 30
+      }
+    },
+    "hip-mri::ha-q5": {
+      "stem": "The marked muscles converging on the greater trochanter — the hip's abductor 'rotator cuff' — are the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gluteus medius & minimus"
+        },
+        {
+          "key": "B",
+          "text": "Piriformis & obturator internus"
+        },
+        {
+          "key": "C",
+          "text": "Tensor fasciae latae & sartorius"
+        },
+        {
+          "key": "D",
+          "text": "Quadratus femoris & obturator externus"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Gluteus medius and minimus are the abductors that insert on the greater trochanter and form the hip's 'rotator cuff.' Piriformis (superomedial trochanter) and obturator internus (medial trochanter) attach in the same region and are short external rotators, making them the strongest distractor, but they are not the abductors.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 72,
+        "y": 42
+      }
+    },
+    "hip-mri::ha-q6": {
+      "stem": "The marked fascicular structure posterior to the ischium, between the ischial tuberosity and greater trochanter, is the:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Femoral nerve"
+        },
+        {
+          "key": "B",
+          "text": "Obturator nerve"
+        },
+        {
+          "key": "C",
+          "text": "Pudendal nerve"
+        },
+        {
+          "key": "D",
+          "text": "Sciatic nerve"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The large fascicular nerve coursing posterior to the hip between the ischial tuberosity and greater trochanter is the sciatic nerve. The femoral nerve lies anteriorly within the iliopsoas groove lateral to the femoral artery, so it is a plausible but anatomically opposite distractor.",
+      "source": "Hip MRI · Axial",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-axial",
+        "sliceIndex": 23,
+        "x": 42,
+        "y": 66
+      }
+    },
+    "hip-mri::hs-q1": {
+      "stem": "What is the marked spherical epiphyseal structure seated in the acetabulum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Greater trochanter"
+        },
+        {
+          "key": "B",
+          "text": "Acetabular dome (sourcil)"
+        },
+        {
+          "key": "C",
+          "text": "Femoral head"
+        },
+        {
+          "key": "D",
+          "text": "Ischial tuberosity"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The large, round, cartilage-capped epiphysis articulating with the acetabular cup is the femoral head; its sphericity and marrow are the key normal checks. The acetabular dome (sourcil) is the curved acetabular roof ABOVE the head, not the rounded ball itself, so it is the closest miss.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 43,
+        "y": 60
+      }
+    },
+    "hip-mri::hs-q2": {
+      "stem": "What is the marked structure connecting the femoral head to the shaft, seen here in profile?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Femoral neck & head-neck junction"
+        },
+        {
+          "key": "B",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "C",
+          "text": "Iliopsoas tendon"
+        },
+        {
+          "key": "D",
+          "text": "Anterior inferior iliac spine"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The waisted column of bone linking the round head to the trochanteric region is the femoral neck and its head-neck junction, where you judge anterior offset (cam) and tension-side stress. The acetabular labrum is the small triangular fibrocartilage at the socket rim, not the tubular bony bridge, making it the tempting distractor.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 36,
+        "y": 70
+      }
+    },
+    "hip-mri::hs-q3": {
+      "stem": "What is the marked low-signal triangle along the acetabular rim?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ligamentum teres"
+        },
+        {
+          "key": "B",
+          "text": "Transverse acetabular ligament"
+        },
+        {
+          "key": "C",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "D",
+          "text": "Zona orbicularis"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The triangular low-signal fibrocartilage seated on the bony acetabular rim is the labrum, with the anterosuperior segment the classic tear site read on MR arthrography. The ligamentum teres runs from the fovea to the acetabular notch INSIDE the joint, not along the outer rim, so it is the best distractor.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 46,
+        "y": 54
+      }
+    },
+    "hip-mri::hs-q4": {
+      "stem": "What is the marked rounded low-signal tendon coursing anterior to the hip joint toward the lesser trochanter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Iliopsoas tendon"
+        },
+        {
+          "key": "B",
+          "text": "Rectus femoris tendon"
+        },
+        {
+          "key": "C",
+          "text": "Sartorius"
+        },
+        {
+          "key": "D",
+          "text": "Gluteus minimus tendon"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The rounded tendon gliding over the anterior capsule and femoral head toward the lesser trochanter is the iliopsoas — the internal-snapping and anterior bursa structure. The rectus femoris (direct head off the AIIS, indirect head off the acetabular rim) lies more superolateral on the anterior pelvis, so it is the closest anatomic mimic.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 23,
+        "y": 54
+      }
+    },
+    "hip-mri::hs-q5": {
+      "stem": "What is the marked tendon group inserting on the greater trochanter (the 'rotator cuff of the hip')?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Piriformis tendon"
+        },
+        {
+          "key": "B",
+          "text": "Iliopsoas tendon"
+        },
+        {
+          "key": "C",
+          "text": "Gluteus medius & minimus (abductors)"
+        },
+        {
+          "key": "D",
+          "text": "Quadratus femoris"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The tendons converging on the greater trochanter are the gluteus medius and minimus — the hip abductors, analogous to the shoulder rotator cuff and the source of GTPS. The piriformis also reaches the trochanter but inserts on its superomedial tip and is an external rotator, not the lateral-facet abductor footprint, so it is the strongest distractor.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 72,
+        "y": 38
+      }
+    },
+    "hip-mri::hs-q6": {
+      "stem": "What is the marked thin fluid-containing space along the anterior femoral neck beneath the capsule?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anterior joint recess"
+        },
+        {
+          "key": "B",
+          "text": "Iliopsoas bursa"
+        },
+        {
+          "key": "C",
+          "text": "Zona orbicularis"
+        },
+        {
+          "key": "D",
+          "text": "Rectus femoris origin"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The thin capsular space hugging the anterior head-neck deep to the iliofemoral ligament is the anterior joint recess, the first site effusion collects and the access point for aspiration. The iliopsoas bursa lies superficial to the capsule around the iliopsoas tendon and can communicate with the joint, but it is extracapsular, making it the most plausible miss.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 33,
+        "y": 57
+      }
+    },
+    "hip-mri::hs-q7": {
+      "stem": "On this sagittal PD FS image, the marked anterior fibrous layer draped over the femoral head-neck and reinforced by the Y ligament of Bigelow is which structure?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Acetabular labrum"
+        },
+        {
+          "key": "B",
+          "text": "Joint capsule with iliofemoral ligament"
+        },
+        {
+          "key": "C",
+          "text": "Ligamentum teres"
+        },
+        {
+          "key": "D",
+          "text": "Iliopsoas tendon"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The anterior joint capsule reinforced by the iliofemoral ligament forms the roof of the anterior synovial recess, and its distension by fluid indicates effusion/synovitis — also the target for image-guided aspiration/injection. The acetabular labrum is the triangular fibrocartilage rim at the acetabular margin (tears are anterosuperior, best shown on MR arthrography), not the fibrous capsular layer draped over the femoral neck.",
+      "source": "Hip MRI · Sagittal",
+      "courseId": "hip-mri",
+      "image": {
+        "dir": "/images/teaching/stacks/normal-hip-sagittal",
+        "sliceIndex": 11,
+        "x": 30,
+        "y": 51
+      }
+    },
+    "hip-mri::hadv-1": {
+      "stem": "A 24-year-old male ice-hockey player has insidious right groin pain and a positive flexion-adduction-internal-rotation (FADIR) impingement test. Radiographs show a bony prominence at the anterolateral head-neck junction. To quantify the lesion driving his impingement, you elect to measure the alpha angle. On which imaging plane is the alpha angle most reliably measured for this morphology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oblique-axial (or radial) images through the femoral head-neck axis"
+        },
+        {
+          "key": "B",
+          "text": "Standard coronal images at the mid-acetabular level"
+        },
+        {
+          "key": "C",
+          "text": "Sagittal images centered on the ischial tuberosity"
+        },
+        {
+          "key": "D",
+          "text": "Axial images through the lesser trochanter"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Cam morphology is an aspherical anterior/anterolateral head-neck junction (loss of the normal head-neck offset) that can lever against the acetabulum in flexion/internal rotation when symptoms and labral/cartilage injury fit. The alpha angle is measured on oblique-axial images aligned to the femoral neck axis, or on radial reformats, because these planes display the anterosuperior 'bump' where cam lesions predominate; standard coronal images underestimate the anterior deformity and miss the lesion, which is why coronal-only measurement is wrong. Lesser-trochanter axial images assess version, not the alpha angle.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-2": {
+      "stem": "A 41-year-old female recreational dancer has anterior hip pain with deep flexion. On a properly oriented AP pelvic radiograph the anterior acetabular wall line projects lateral to the posterior wall line in the superior acetabulum before they meet inferiorly. Her femoral head-neck offset and alpha angle are normal. Which diagnosis best explains these findings?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cam-type femoroacetabular impingement"
+        },
+        {
+          "key": "B",
+          "text": "Developmental dysplasia of the hip with acetabular undercoverage"
+        },
+        {
+          "key": "C",
+          "text": "Pincer-type femoroacetabular impingement from acetabular retroversion"
+        },
+        {
+          "key": "D",
+          "text": "Femoral anteversion with iliopsoas impingement"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — a pincer morphology pattern in which an over-covering acetabular rim can contact a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-3": {
+      "stem": "A 29-year-old soccer player has mechanical clicking and catching anterior groin pain. Non-contrast MRI is equivocal. You order the study most sensitive for a labral tear. On that study, where is the tear most likely to be located, and what is the modality?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Posteroinferior labrum on CT arthrography"
+        },
+        {
+          "key": "B",
+          "text": "Anterosuperior labrum on MR arthrography"
+        },
+        {
+          "key": "C",
+          "text": "Posterosuperior labrum on non-contrast MRI"
+        },
+        {
+          "key": "D",
+          "text": "Anteroinferior labrum on bone scintigraphy"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Acetabular labral tears occur predominantly at the anterosuperior labrum, and MR arthrography (intra-articular gadolinium distending the joint and tracking into the tear) is the most sensitive/specific modality, outperforming non-contrast MRI. The strongest distractor (posterosuperior on non-contrast MRI) errs on both location and modality: posterosuperior tears are far less common (seen more in certain populations/posterior impingement) and non-contrast MRI is less sensitive than arthrography. CT arthrography and scintigraphy are not the labral workhorses here.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-4": {
+      "stem": "A 19-year-old female military recruit has weeks of progressive groin pain with running. MRI shows marrow edema and a low-signal fracture line along the SUPEROLATERAL cortex of the femoral neck. Which statement about this finding is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "This is a compression-side fracture and can be managed with protected weight-bearing alone"
+        },
+        {
+          "key": "B",
+          "text": "This is a tension-side fracture and warrants urgent orthopedic referral for likely surgical fixation"
+        },
+        {
+          "key": "C",
+          "text": "This is a transient bone-marrow-edema pattern requiring only observation"
+        },
+        {
+          "key": "D",
+          "text": "This represents subchondral insufficiency fracture of the femoral head"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and often surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFH is a subchondral femoral-head process, not femoral-neck cortex.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-5": {
+      "stem": "A 35-year-old man on chronic corticosteroids has dull hip pain. Radiographs of the hip are normal. MRI shows a serpentine subchondral lesion in the anterosuperior femoral head with a 'double-line sign' on T2 imaging. The articular surface is intact and there is no subchondral collapse. Which classification best fits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "ARCO stage I (MRI-positive, radiograph-negative)"
+        },
+        {
+          "key": "B",
+          "text": "ARCO stage III (subchondral collapse/crescent sign)"
+        },
+        {
+          "key": "C",
+          "text": "ARCO stage II (radiographic sclerosis without collapse)"
+        },
+        {
+          "key": "D",
+          "text": "Transient osteoporosis of the hip"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The double-line sign (inner T2-hyperintense granulation tissue, outer hypointense sclerotic rim) is the classic, highly specific MRI pattern for AVN. With a NORMAL radiograph but a positive MRI and no collapse, this is ARCO stage I. The strongest distractor, ARCO stage II, requires radiographic changes (sclerosis/lucency) without collapse — but here the radiograph is normal, so it cannot be stage II. Stage III requires subchondral fracture/collapse (crescent sign), which is absent. Transient osteoporosis shows diffuse edema without a demarcated double-line lesion.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-6": {
+      "stem": "A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amount of adjacent subchondral hyperintensity. Which diagnosis is most likely, and why does it matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Transient bone-marrow-edema syndrome — self-limited, treat conservatively"
+        },
+        {
+          "key": "B",
+          "text": "Subchondral insufficiency fracture — risk of articular collapse"
+        },
+        {
+          "key": "C",
+          "text": "Septic arthritis — urgent aspiration required"
+        },
+        {
+          "key": "D",
+          "text": "Avascular necrosis, ARCO stage I — no fracture line present"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines subchondral insufficiency fracture of the femoral head (SIFH), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFH from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-7": {
+      "stem": "A 62-year-old woman has chronic lateral hip pain, worse lying on that side, with tenderness over the greater trochanter and a positive single-leg-stance (Trendelenburg) test. MRI shows increased signal and partial-thickness tearing at the gluteus medius footprint on the greater trochanter with surrounding peritrochanteric edema. What is the best characterization of her condition?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isolated trochanteric bursitis — the abductor tendons are normal"
+        },
+        {
+          "key": "B",
+          "text": "Greater trochanteric pain syndrome from gluteus medius tendinopathy/tear (the hip's 'rotator cuff')"
+        },
+        {
+          "key": "C",
+          "text": "Iliotibial band friction over the trochanter causing external snapping hip"
+        },
+        {
+          "key": "D",
+          "text": "Hip osteoarthritis referring pain laterally"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The gluteus medius and minimus are the abductor 'rotator cuff of the hip,' and footprint tendinopathy/tear with peritrochanteric edema is the substrate of greater trochanteric pain syndrome (GTPS), matching the lateral pain, trochanteric tenderness, and abductor weakness. The strongest distractor — isolated trochanteric bursitis — is the historical label, but most clinically diagnosed 'bursitis' is actually gluteal tendinopathy; here the MRI explicitly shows footprint tendon tearing, so 'normal tendons/bursitis only' is wrong. External snapping is a dynamic ITB phenomenon, not a footprint tendon tear.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-8": {
+      "stem": "A 47-year-old water-skier felt a sudden pop in the buttock during a forced hip-flexion/knee-extension fall, with bruising tracking down the thigh. MRI shows avulsion of the conjoint tendon and semimembranosus from the ischial tuberosity (2 of 3 tendons) with 3 cm of retraction. Which management decision is best supported?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Conservative management; surgical referral is never indicated for hamstring avulsions"
+        },
+        {
+          "key": "B",
+          "text": "Refer for surgical repair — ≥2 tendons torn with ≥2 cm retraction meets operative criteria, and the adjacent sciatic nerve is at risk"
+        },
+        {
+          "key": "C",
+          "text": "Observe; only complete 3-tendon avulsions with >5 cm retraction warrant surgery"
+        },
+        {
+          "key": "D",
+          "text": "Refer urgently for piriformis release given deep gluteal pain"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Proximal hamstring avulsions meet surgical-referral criteria when ≥2 tendons are torn AND there is ≥2 cm retraction — both satisfied here (2 tendons, 3 cm) — and the proximally retracting stump lies near the sciatic nerve, adding a neural-risk rationale for early repair. The strongest distractor sets an inflated threshold (3 tendons/>5 cm); that overstates the bar and would inappropriately deny repair to a patient who already meets the ≥2-tendon/≥2-cm rule. Piriformis release addresses deep gluteal syndrome, not a tendon avulsion.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-9": {
+      "stem": "A 26-year-old male soccer player has lower-abdominal/groin pain with sit-ups and kicking, without a palpable inguinal hernia. Dedicated MRI shows disruption of the rectus abdominis–adductor longus aponeurosis at the pubic symphysis with a 'secondary cleft sign.' Which diagnosis is most consistent?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Athletic pubalgia (core-muscle injury) at the rectus-adductor aponeurosis"
+        },
+        {
+          "key": "B",
+          "text": "Osteitis pubis as the primary and isolated diagnosis"
+        },
+        {
+          "key": "C",
+          "text": "Indirect inguinal hernia"
+        },
+        {
+          "key": "D",
+          "text": "Adductor longus muscle-belly strain (myotendinous junction)"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Athletic pubalgia/core-muscle injury is an injury of the rectus abdominis–adductor longus aponeurosis at the pubic symphysis; the secondary cleft sign (contrast/fluid extending inferolaterally from the symphyseal cleft) reflects this aponeurotic detachment and is the classic MRI marker. The strongest distractor, osteitis pubis, frequently coexists and can mimic it, but osteitis pubis is symphyseal bone-marrow edema/degeneration rather than the aponeurotic injury defined by the secondary cleft sign. There is no hernia, and the lesion is at the aponeurosis/symphysis, not the adductor muscle belly.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-10": {
+      "stem": "A 23-year-old ballet dancer reports an audible, reproducible deep ANTERIOR groin clunk when moving the hip from a flexed-abducted-externally-rotated position into extension. Static MRI of the hip is unremarkable. Which diagnosis and confirmatory test are most appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "External snapping hip from the iliotibial band over the greater trochanter; confirm with static MRI"
+        },
+        {
+          "key": "B",
+          "text": "Internal snapping hip from the iliopsoas tendon over the iliopectineal eminence; confirm with dynamic ultrasound"
+        },
+        {
+          "key": "C",
+          "text": "Intra-articular labral tear; confirm with non-contrast MRI"
+        },
+        {
+          "key": "D",
+          "text": "Deep gluteal (piriformis) syndrome; confirm with static MRI"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A deep anterior snap as the hip moves from flexion-abduction-external-rotation into extension is classic internal snapping hip, caused by the iliopsoas tendon catching over the iliopectineal eminence (or femoral head); because it is a dynamic event, real-time dynamic ultrasound (not static MRI) is the confirmatory test. The strongest distractor, external snapping hip, is a lateral phenomenon — the ITB/gluteus maximus flicking over the greater trochanter — not an anterior groin snap, and it too would be confirmed dynamically, not on static MRI. The unremarkable static MRI argues against a structural intra-articular cause.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-11": {
+      "stem": "A 44-year-old cyclist has deep buttock pain with radiation down the posterior thigh, worse with prolonged sitting, but no back pain and a normal lumbar MRI. Examination reproduces symptoms with piriformis stretch. MR neurography shows the sciatic nerve coursing adjacent to a hypertrophied piriformis with perineural changes in the deep gluteal space. Which diagnosis best fits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lumbar disc herniation with L5-S1 radiculopathy"
+        },
+        {
+          "key": "B",
+          "text": "Deep gluteal (piriformis) syndrome with sciatic nerve entrapment"
+        },
+        {
+          "key": "C",
+          "text": "Greater trochanteric pain syndrome"
+        },
+        {
+          "key": "D",
+          "text": "Ischiofemoral impingement of the quadratus femoris alone"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Deep buttock pain radiating down the leg with a normal lumbar spine, positive piriformis-stretch provocation, and imaging showing the sciatic nerve irritated in the deep gluteal space defines deep gluteal/piriformis syndrome — an extraspinal sciatic nerve entrapment. The strongest distractor, L5-S1 radiculopathy, produces overlapping leg symptoms but the normal lumbar MRI and absence of back pain point away from a spinal source and toward extraspinal sciatic compression. GTPS causes lateral (not deep posterior) pain, and the findings localize to the sciatic nerve/piriformis rather than isolated quadratus femoris narrowing.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hadv-12": {
+      "stem": "An 81-year-old woman with osteoporosis has low back and buttock pain after no significant trauma; radiographs are unremarkable. Bone scintigraphy (and corresponding MRI marrow edema) shows bilateral vertical sacral-ala uptake connected by a horizontal transverse band across the sacrum, forming an 'H' pattern. What is the diagnosis?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sacral metastatic disease"
+        },
+        {
+          "key": "B",
+          "text": "Sacral insufficiency fracture (Honda/H-sign)"
+        },
+        {
+          "key": "C",
+          "text": "Sacroiliitis"
+        },
+        {
+          "key": "D",
+          "text": "Coccygeal stress fracture"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The bilateral vertical sacral-ala fractures bridged by a transverse component (through the sacral body, typically at the S2 level) produce the classic 'H' (Honda) sign — diagnostic of a sacral insufficiency fracture, typical of elderly osteoporotic patients with minimal/no trauma and normal radiographs. The strongest distractor, metastatic disease, can also cause sacral uptake and marrow edema, but it does not produce the symmetric, geometric H configuration that follows the stress-fracture lines of the sacrum. Sacroiliitis localizes to the SI joints rather than the sacral ala/body, and the coccyx is not involved.",
+      "source": "Hip MRI · Advanced",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-1": {
+      "stem": "On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids has 6 weeks of groin pain; radiographs are normal. If this femoral head marrow instead showed a serpentine subchondral line with the classic 'double-line sign' (T2-bright inner / T2-dark outer rim) and NO sclerosis on radiograph, what is the most appropriate staging and management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "ARCO stage I osteonecrosis (MRI-positive, radiograph-negative) — joint-preserving management may be considered before collapse"
+        },
+        {
+          "key": "B",
+          "text": "ARCO stage III osteonecrosis — subchondral collapse already present, proceed to arthroplasty"
+        },
+        {
+          "key": "C",
+          "text": "Transient bone-marrow-edema syndrome — reassure, protected weight-bearing, expect self-resolution"
+        },
+        {
+          "key": "D",
+          "text": "Subchondral insufficiency fracture — restricted weight-bearing for a stress-type fracture with no necrosis"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: a classic double-line AVN pattern with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, joint-preserving management may be considered before collapse. Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a demarcated double-line lesion and is self-limited. SIFH is wrong because it is a subchondral fracture line without the necrotic double-line pattern and is not staged by ARCO.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-2": {
+      "stem": "On this coronal T2-FS image, find the gluteus medius and minimus tendon footprint on the greater trochanter (the medius inserts on the lateral and superoposterior facets; the minimus on the anterior facet). A 58-year-old woman has chronic lateral hip pain, point tenderness over the trochanter, and a positive single-leg-stance (Trendelenburg) test; she failed a corticosteroid injection. If this footprint instead showed tendon delamination with peritrochanteric T2 hyperintensity, which statement is most accurate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The gluteus medius/minimus are the 'rotator cuff of the hip,' and most clinically labeled 'trochanteric bursitis' is actually gluteal tendinopathy/tearing"
+        },
+        {
+          "key": "B",
+          "text": "Isolated greater trochanteric bursa fluid is the dominant pain generator, so the tendon footprint is rarely involved"
+        },
+        {
+          "key": "C",
+          "text": "Lateral hip pain with a positive Trendelenburg sign points to iliopsoas (internal snapping) tendinopathy"
+        },
+        {
+          "key": "D",
+          "text": "A footprint tear here is a surgical emergency requiring acute open repair regardless of tendon quality"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: the gluteus medius/minimus act as the abductor 'rotator cuff of the hip,' and the modern understanding is that most 'trochanteric bursitis' is really gluteal tendinopathy/footprint tearing — the core of GTPS. The bursitis distractor is wrong because isolated bursal fluid is usually secondary; the tendon footprint is the primary lesion. Iliopsoas is wrong — that is an anterior/internal snapping problem, not lateral footprint pathology, and snapping is a dynamic-ultrasound diagnosis. 'Surgical emergency' is wrong — GTPS is managed conservatively first (load management, PT), with repair reserved for refractory full-thickness/retracted tears.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-3": {
+      "stem": "On this axial T2-FS image, find the anterior/anterosuperior acetabular labrum at the rim of the joint — the segment most prone to tearing in FAI. A 24-year-old hockey player has anterior groin pain and a positive anterior impingement (FADIR) test, and you suspect a labral tear. If you needed to maximize sensitivity for a labral tear, which choice best reflects the site and modality?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anterosuperior labrum; MR arthrography is the most sensitive study for detecting labral tears"
+        },
+        {
+          "key": "B",
+          "text": "Posteroinferior labrum; MR arthrography is the most sensitive study for detecting labral tears"
+        },
+        {
+          "key": "C",
+          "text": "Anterosuperior labrum; non-contrast 1.5-T MRI is equal or superior to MR arthrography for tears"
+        },
+        {
+          "key": "D",
+          "text": "Anterosuperior labrum; dynamic ultrasound is the gold standard for diagnosing the tear"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: acetabular labral tears are predominantly anterosuperior, and MR arthrography (intra-articular gadolinium distending the joint) is the most sensitive modality for detecting them. The posteroinferior option is wrong — that is not the classic FAI tear location. The 'non-contrast equals arthrography' option is wrong because MR arthrography outperforms standard non-contrast MRI for labral tears (especially at lower field strength). Dynamic ultrasound is wrong — it is the diagnostic tool for snapping-hip syndromes, not for intra-articular labral tears.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-4": {
+      "stem": "On this axial T2-FS image, find the sciatic nerve in the deep gluteal space — between the posterior acetabulum/ischium and the gluteus maximus, just deep to the piriformis. A 40-year-old runner has buttock pain with sitting and non-dermatomal posterior thigh radiation; lumbar MRI is unremarkable. If imaging here showed an enlarged/T2-hyperintense sciatic nerve adjacent to the piriformis, which is the most accurate characterization?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deep gluteal syndrome — extraspinal sciatic nerve entrapment in the subgluteal space (piriformis is one cause)"
+        },
+        {
+          "key": "B",
+          "text": "A lumbar L5–S1 disc radiculopathy that simply was not captured on the spine MRI"
+        },
+        {
+          "key": "C",
+          "text": "Meralgia paresthetica from lateral femoral cutaneous nerve compression"
+        },
+        {
+          "key": "D",
+          "text": "Pudendal neuralgia from entrapment within Alcock's canal"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: sciatic nerve findings in the deep gluteal (subgluteal) space with buttock pain and non-radicular sciatica describe deep gluteal syndrome / extraspinal sciatic entrapment, of which piriformis syndrome is one cause. The disc-radiculopathy distractor is wrong because the spine MRI is normal and the entrapment is extraspinal at the hip. Meralgia paresthetica is wrong — that is the lateral femoral cutaneous nerve causing anterolateral thigh symptoms, not the sciatic nerve. Pudendal neuralgia is wrong — that involves the pudendal nerve/perineum, a different nerve and territory.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-5": {
+      "stem": "On this sagittal PD-FS image, find the anterior femoral head–neck junction in profile and trace its contour/offset — the region that loses sphericity in cam morphology. A 27-year-old soccer player has anterior groin pain and limited internal rotation; you suspect cam FAI. Regarding measuring the alpha angle to quantify cam morphology, which statement is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The alpha angle is best measured on oblique-axial (and radial) images aligned to the femoral neck, not on the coronal plane"
+        },
+        {
+          "key": "B",
+          "text": "The alpha angle is measured on the straight coronal image, where the superolateral head-neck offset is shown"
+        },
+        {
+          "key": "C",
+          "text": "An alpha angle below ~40° is diagnostic of cam morphology and predicts a labral tear"
+        },
+        {
+          "key": "D",
+          "text": "Cam FAI reflects acetabular over-coverage, so the crossover sign is the measurement of choice"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology, while ~60° may be more specific; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER morphology (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity. Morphology still needs clinical and chondrolabral correlation before calling symptomatic FAI.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::hicaq-6": {
+      "stem": "On this coronal T2-FS image, follow the joint inferomedially to the pubic symphysis and the rectus abdominis–adductor longus aponeurosis at the pubic body — the focus of athletic pubalgia. A 30-year-old soccer player has chronic lower-abdominal/groin pain worse with cutting and sit-ups, no palpable inguinal hernia. If imaging here showed fluid tracking inferolaterally from the symphysis along the adductor origin, what is this finding and its significance?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The 'secondary cleft sign' — fluid extending from the symphysis indicating a rectus–adductor aponeurosis/common-origin injury of athletic pubalgia"
+        },
+        {
+          "key": "B",
+          "text": "The normal 'primary cleft' — a midline symphyseal cleft that is an expected variant and excludes pathology"
+        },
+        {
+          "key": "C",
+          "text": "A femoral-neck tension-side stress fracture requiring urgent surgical fixation"
+        },
+        {
+          "key": "D",
+          "text": "An inguinal canal lipoma confirming a true (palpable) inguinal hernia as the pain source"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Key: fluid extending inferolaterally from the symphysis along the rectus-adductor aponeurosis is the secondary cleft sign, marking a common rectus abdominis–adductor longus aponeurotic injury at the symphysis — the imaging hallmark of athletic pubalgia. The 'primary cleft' distractor is wrong because the primary cleft is the normal midline symphyseal cleft; it is the SECONDARY cleft that signals injury. The femoral-neck stress-fracture option is wrong — that is a superolateral (tension-side) femoral-neck process, an unrelated location and entity. The inguinal-hernia option is wrong because athletic pubalgia is a non-hernia aponeurotic/musculotendinous injury without a true palpable hernia.",
+      "source": "Hip MRI · Image CAQ",
+      "courseId": "hip-mri"
+    },
     "fc-hip-mri-basics-t0-1": {
       "stem": "Large-FOV pelvis screen vs small-FOV dedicated hip — which for which question?",
       "options": [],
@@ -6187,6 +7319,606 @@
       },
       "moduleId": "hip-dont-miss",
       "topicIndex": 4,
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-anatomy-pre": {
+      "stem": "A 28-year-old has nonspecific anterior groin discomfort. MRI shows a smooth, linear high-signal cleft at the posteroinferior chondrolabral junction that follows the labral margin without displacement, blunting, or an adjacent paralabral cyst, and the labrum is otherwise normal in size and shape. What is the most appropriate management implication of this finding?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Refer for arthroscopic labral repair given a displaced bucket-handle tear"
+        },
+        {
+          "key": "B",
+          "text": "Order urgent aspiration for suspected paralabral cyst causing nerve compression"
+        },
+        {
+          "key": "C",
+          "text": "Treat as a likely normal sublabral sulcus variant; correlate clinically rather than refer for surgery"
+        },
+        {
+          "key": "D",
+          "text": "Escalate to oncology workup for a labral-based soft-tissue mass"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A smooth linear cleft following the labral margin without displacement, blunting, or a paralabral cyst is most consistent with a normal sublabral sulcus/recess variant and should be correlated clinically, not taken to surgery. The location is important: sublabral sulci/recesses are most accepted as normal variants posteroinferiorly and at the anteroinferior junction, whereas a true cleft at the anterosuperior junction is the site where pathologic tears predominate and should not be casually dismissed as a variant. A bucket-handle tear (A) shows a displaced fragment, which is absent. There is no cyst to aspirate (B). A normal-shaped labrum with a thin cleft is not a mass (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-anatomy-post": {
+      "stem": "A 35-year-old recreational athlete has mild intermittent groin ache. MRI demonstrates a thin, regular high-signal line at the posteroinferior chondrolabral junction paralleling the labral base, with a triangular labrum of normal contour, no fragment displacement, and no surrounding cyst. How should this finding most appropriately direct management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Diagnose a full-thickness radial labral tear and refer for reconstruction"
+        },
+        {
+          "key": "B",
+          "text": "Interpret as a normal sublabral recess; manage symptoms clinically without surgical referral"
+        },
+        {
+          "key": "C",
+          "text": "Recommend MR arthrography solely to drain an associated paralabral cyst"
+        },
+        {
+          "key": "D",
+          "text": "Initiate a marrow-replacement tumor protocol for a labral lesion"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A thin regular line at the posteroinferior chondrolabral junction paralleling the labral base with a normally contoured labrum and no cyst or displacement indicates a normal sublabral recess variant; manage clinically. Location matters: a posteroinferior/inferior cleft is a recognized normal-variant site, in contrast to the anterosuperior junction where most true symptomatic tears occur and a cleft cannot be safely called a variant. A radial tear (A) disrupts and irregularly clefts the labrum, not seen here. There is no cyst to drain (C), and a normal-appearing labrum is not a tumor (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-bones-stress-pre": {
+      "stem": "A 30-year-old marathoner has 2 weeks of groin pain. MRI shows marrow edema in the femoral neck with a linear T1-hypointense fracture line along the superolateral (tension) cortex extending partway across the neck. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Allow continued running with a 10% weekly mileage reduction and recheck in 6 weeks"
+        },
+        {
+          "key": "B",
+          "text": "Make the patient non-weight-bearing and obtain urgent orthopedic surgical referral"
+        },
+        {
+          "key": "C",
+          "text": "Start protected weight-bearing with a cane and routine clinic follow-up in 3 months"
+        },
+        {
+          "key": "D",
+          "text": "Inject the hip with corticosteroid to control pain and resume training"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A tension-side (superolateral) femoral neck stress fracture is at high risk of completion and displacement and is treated as a surgical emergency with non-weight-bearing and urgent referral. Continued running (A), partial weight-bearing with routine follow-up (C), or steroid injection (D) all risk catastrophic completion of the fracture.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-bones-stress-post": {
+      "stem": "A 26-year-old triathlete reports 3 weeks of groin pain. MRI reveals femoral neck marrow edema with a short fracture line along the inferomedial (compression) cortex and no cortical break or displacement. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Immediate operative fixation that day as a surgical emergency"
+        },
+        {
+          "key": "B",
+          "text": "Continue full training with anti-inflammatories and no imaging follow-up"
+        },
+        {
+          "key": "C",
+          "text": "Protected weight-bearing with activity modification and close outpatient orthopedic follow-up"
+        },
+        {
+          "key": "D",
+          "text": "Same-day corticosteroid injection followed by return to competition"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A compression-side (inferomedial) femoral neck stress fracture without a cortical break is typically managed conservatively with protected weight-bearing, activity modification, and close follow-up. Emergent fixation (A) is reserved for tension-side or displaced fractures. Continuing full training (B) or steroid injection then competing (D) risk progression. The tension-vs-compression distinction is what changes management.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-bones-occult-pre": {
+      "stem": "A 67-year-old woman with osteoporosis fell and has groin pain and inability to bear weight, but radiographs are read as negative. MRI shows an incomplete linear T1-hypointense fracture line with surrounding marrow edema in the femoral neck. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Discharge home with full weight-bearing since radiographs were negative"
+        },
+        {
+          "key": "B",
+          "text": "Provide a corticosteroid injection for presumed bursitis and mobilize"
+        },
+        {
+          "key": "C",
+          "text": "Schedule routine outpatient physiotherapy with weight-bearing as tolerated"
+        },
+        {
+          "key": "D",
+          "text": "Keep her non-weight-bearing and obtain urgent orthopedic referral for an occult femoral neck fracture"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "An MRI-detected occult femoral neck fracture in an osteoporotic patient who cannot bear weight requires non-weight-bearing and urgent surgical referral because of the high risk of displacement. Discharging with full weight-bearing (A), steroid injection (B), or weight-bearing-as-tolerated physiotherapy (C) all risk fracture completion and displacement.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-bones-occult-post": {
+      "stem": "An 82-year-old man fell from standing and has groin pain with inability to bear weight; two views of the hip are read as negative. MRI shows an incomplete T1-hypointense fracture line through the femoral neck with surrounding marrow edema and no displacement. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keep him non-weight-bearing and obtain urgent orthopedic referral for the occult femoral neck fracture"
+        },
+        {
+          "key": "B",
+          "text": "Discharge with weight-bearing as tolerated because the plain films were negative"
+        },
+        {
+          "key": "C",
+          "text": "Treat presumptively for greater trochanteric bursitis with a corticosteroid injection and mobilize"
+        },
+        {
+          "key": "D",
+          "text": "Arrange routine outpatient physiotherapy with a follow-up radiograph in 6 weeks"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "An MRI-detected occult femoral neck fracture in an older adult who cannot bear weight needs non-weight-bearing and urgent surgical referral because of the high risk of completion and displacement, even when radiographs are negative. Weight-bearing as tolerated (B), a steroid injection for presumed bursitis (C), or routine delayed physiotherapy (D) all risk the fracture completing and displacing.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-cartilage-oa-pre": {
+      "stem": "A 48-year-old former athlete has groin pain. MRI shows DIFFUSE acetabular and femoral cartilage thinning with several subchondral cysts and global joint-space narrowing, rather than a single focal FAI rim lesion. The patient asks whether hip arthroscopy will fix the joint. Which interpretation best guides the management conversation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Diffuse cartilage loss with joint-space narrowing indicates early/established OA, shifting management away from arthroscopy toward joint-preservation/arthroplasty pathways"
+        },
+        {
+          "key": "B",
+          "text": "The subchondral cysts represent an aggressive lytic tumor requiring biopsy before any treatment"
+        },
+        {
+          "key": "C",
+          "text": "The findings are a focal FAI rim injury that arthroscopic labral repair will durably correct"
+        },
+        {
+          "key": "D",
+          "text": "The pattern is transient bone marrow edema syndrome that will fully resolve with observation"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Diffuse bipolar cartilage loss with joint-space narrowing reflects OA, which predicts poor arthroscopic outcomes and pushes the conversation toward preservation or arthroplasty pathways. Subchondral geodes in OA are not aggressive tumors (B). The diffuse pattern is not a focal FAI rim lesion amenable to arthroscopy (C). OA with structural cartilage loss is not self-limited transient edema (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-cartilage-oa-post": {
+      "stem": "A 52-year-old recreational cyclist has progressive groin pain. MRI demonstrates widespread bipolar cartilage thinning, multiple subchondral geodes, and superior joint-space narrowing, without a discrete focal rim lesion. The patient hopes arthroscopy will restore the joint. Which interpretation best frames the management discussion?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The geodes are an aggressive lytic process mandating urgent oncologic biopsy"
+        },
+        {
+          "key": "B",
+          "text": "This is an isolated focal chondral flap that arthroscopic debridement will permanently resolve"
+        },
+        {
+          "key": "C",
+          "text": "Diffuse bipolar cartilage loss with joint-space narrowing represents OA, moving care toward arthroplasty rather than arthroscopic labral surgery"
+        },
+        {
+          "key": "D",
+          "text": "This represents reversible transient marrow edema needing only rest"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Widespread bipolar cartilage loss with joint-space narrowing indicates OA; arthroscopy is poorly suited and the discussion shifts toward arthroplasty. OA geodes are not aggressive tumors (A). A diffuse process is not an isolated focal flap fixable by debridement (B), and structural OA cartilage loss is not reversible transient edema (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-dont-miss-pre": {
+      "stem": "A 58-year-old man on chronic corticosteroids has 6 weeks of groin pain and a normal radiograph. MRI shows a serpentine subchondral line in the anterosuperior femoral head with a 'double-line sign' and preserved spherical head contour without subchondral collapse. What management does this finding most appropriately drive?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reassure and discharge, since the head contour is preserved and no action is needed"
+        },
+        {
+          "key": "B",
+          "text": "Treat as routine transient marrow edema with observation and full activity"
+        },
+        {
+          "key": "C",
+          "text": "Refer to orthopedics for pre-collapse AVN, including protected weight-bearing and joint-preserving options"
+        },
+        {
+          "key": "D",
+          "text": "Start antibiotics for presumed osteomyelitis based on the marrow signal"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A double-line sign with a serpentine subchondral line in a steroid-exposed patient is osteonecrosis (AVN); identifying it before collapse opens a window for protected weight-bearing and joint-preserving procedures, so referral is key. Discharge (A) or treating as transient edema (B) misses a progressive disease. There is no infectious picture to justify antibiotics (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-dont-miss-post": {
+      "stem": "A 44-year-old woman with a history of heavy alcohol use has 2 months of groin pain and normal radiographs. MRI demonstrates a serpiginous subchondral 'double-line sign' in the superior femoral head with maintained sphericity and no subchondral fracture or flattening. What management does this finding most appropriately direct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Discharge with no follow-up because the femoral head remains spherical"
+        },
+        {
+          "key": "B",
+          "text": "Manage as benign transient bone marrow edema with unrestricted activity"
+        },
+        {
+          "key": "C",
+          "text": "Begin empiric IV antibiotics for suspected septic osteomyelitis"
+        },
+        {
+          "key": "D",
+          "text": "Orthopedic referral for pre-collapse osteonecrosis with protected weight-bearing and joint-preserving consideration"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A double-line sign with maintained sphericity in an at-risk patient indicates pre-collapse AVN; catching it before collapse allows protected weight-bearing and joint-preserving surgery, so referral is appropriate. Discharge (A) or calling it transient edema (B) misses progressive necrosis. No infectious features justify antibiotics (C).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-dontmiss-scfe-pre": {
+      "stem": "A 13-year-old boy with obesity has 3 weeks of dull groin and knee pain and now walks with the foot externally rotated. MRI shows widening and irregularity of the proximal femoral physis with posteromedial slip of the epiphysis relative to the metaphysis. What is the most appropriate immediate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Make him non-weight-bearing and arrange urgent orthopedic surgical referral"
+        },
+        {
+          "key": "B",
+          "text": "Begin outpatient physical therapy and recheck in 6 weeks"
+        },
+        {
+          "key": "C",
+          "text": "Allow full activity with NSAIDs and clinic follow-up in 3 months"
+        },
+        {
+          "key": "D",
+          "text": "Inject the hip with corticosteroid and resume sports"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Physeal widening with posteromedial epiphyseal slip is a slipped capital femoral epiphysis (SCFE), which is an urgent, non-weight-bearing diagnosis requiring prompt surgical fixation to prevent further slip and AVN. Physical therapy (B), full activity (C), or steroid injection with return to sport (D) all risk progression and avascular necrosis.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-dontmiss-scfe-post": {
+      "stem": "An 11-year-old boy with obesity has several weeks of vague knee and thigh pain and now limps with the leg turned outward. MRI of the hips shows widening and irregularity of the proximal femoral physis with posteromedial displacement of the epiphysis. What is the most appropriate immediate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Begin a knee-focused physiotherapy program and reassess in 6 weeks"
+        },
+        {
+          "key": "B",
+          "text": "Allow unrestricted activity with NSAIDs and routine follow-up in 3 months"
+        },
+        {
+          "key": "C",
+          "text": "Make him non-weight-bearing and obtain urgent orthopedic surgical referral"
+        },
+        {
+          "key": "D",
+          "text": "Aspirate the knee to evaluate the referred knee pain"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Physeal widening with posteromedial epiphyseal displacement is a slipped capital femoral epiphysis (SCFE); referred knee and thigh pain is classic, and the diagnosis is missed when attention stays on the knee. It requires non-weight-bearing and prompt surgical fixation to prevent further slip and avascular necrosis. Knee physiotherapy (A), unrestricted activity (B), or knee aspiration (D) all delay fixation and risk progression and AVN.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-fai-labrum-pre": {
+      "stem": "A 25-year-old hockey player has activity-related anterior groin pain. Dedicated hip MRI shows an alpha angle of 68 degrees on the oblique-axial neck plane, an anterosuperior labral tear, AND adjacent acetabular rim cartilage delamination. Conservative rehab has failed over 4 months. What does the imaging add that most supports operative referral over continued rehab?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The 68-degree alpha angle alone proves symptomatic disease and mandates surgery regardless of cartilage"
+        },
+        {
+          "key": "B",
+          "text": "The rim chondral delamination accompanying cam morphology and a labral tear weights toward arthroscopic referral"
+        },
+        {
+          "key": "C",
+          "text": "The labral tear by itself indicates urgent same-week surgery to prevent dislocation"
+        },
+        {
+          "key": "D",
+          "text": "The findings indicate diffuse end-stage OA, so arthroplasty rather than arthroscopy is appropriate"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Associated rim chondral injury/delamination alongside cam morphology and a labral tear is a feature that shifts decision-making toward arthroscopic surgery, especially after failed rehab. Cam morphology is common and often asymptomatic, so the alpha angle alone is not dispositive (A). A labral tear is not a dislocation emergency (C). Focal rim delamination is not diffuse end-stage OA requiring arthroplasty (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-fai-labrum-post": {
+      "stem": "A 29-year-old dancer has deep flexion-provoked groin pain. Dedicated hip MRI shows an alpha angle of 64 degrees, an anterosuperior labral tear, and focal full-thickness acetabular rim cartilage loss with delamination at the same location, after 5 months of failed physiotherapy. Which imaging feature most strongly supports proceeding to arthroscopic referral rather than further conservative care?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The 64-degree alpha angle alone confirms the pathology is symptomatic and dictates surgery"
+        },
+        {
+          "key": "B",
+          "text": "The isolated labral tear mandates emergent operative repair within days"
+        },
+        {
+          "key": "C",
+          "text": "The combination indicates global joint-space collapse warranting total hip arthroplasty"
+        },
+        {
+          "key": "D",
+          "text": "The focal rim chondral delamination co-located with cam morphology and a labral tear favors surgical referral"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Co-located rim chondral delamination with cam morphology and a labral tear, after failed conservative care, weights toward arthroscopic referral. The alpha angle alone does not establish symptomatic disease because cam morphology is frequently asymptomatic (A). A labral tear is not an emergency (B). Focal rim loss is not global collapse requiring arthroplasty (C).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-fai-cam-pre": {
+      "stem": "A 27-year-old with anterior groin pain has a dedicated hip MRI. On the oblique-axial plane along the femoral neck, the alpha angle measures 70 degrees with an anterosuperior osseous bump, but the labrum and cartilage are intact and the patient is currently asymptomatic at rest. How should this isolated finding influence management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Treat cam morphology as a common, often asymptomatic finding and correlate clinically rather than refer for surgery on imaging alone"
+        },
+        {
+          "key": "B",
+          "text": "Refer for prophylactic arthroscopic osteoplasty because the alpha angle exceeds 55 degrees"
+        },
+        {
+          "key": "C",
+          "text": "Order an urgent oncologic workup for the femoral neck osseous bump"
+        },
+        {
+          "key": "D",
+          "text": "Place the patient non-weight-bearing for an impending femoral neck fracture"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Cam morphology (alpha angle >55 degrees) is common and frequently asymptomatic; isolated morphology without chondrolabral injury or concordant symptoms should be correlated clinically, not taken to surgery. Prophylactic osteoplasty on morphology alone (B) is not indicated. A cam bump is not a tumor (C) or a fracture (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-fai-cam-post": {
+      "stem": "A 32-year-old recreational swimmer has a dedicated hip MRI for lateral pain later attributed to the abductors. Incidentally, on the oblique-axial neck plane the alpha angle measures 66 degrees with an anterosuperior osseous bump, but the labrum and chondral surfaces are intact and there is no impingement-type pain with deep flexion. How should this isolated cam finding influence management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Refer for prophylactic arthroscopic osteoplasty because the alpha angle is above 55 degrees"
+        },
+        {
+          "key": "B",
+          "text": "Treat cam morphology as a common, frequently asymptomatic finding and correlate clinically rather than operate on imaging alone"
+        },
+        {
+          "key": "C",
+          "text": "Order a staging workup for an aggressive osseous lesion of the femoral neck"
+        },
+        {
+          "key": "D",
+          "text": "Place the patient non-weight-bearing for an impending femoral neck fracture"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Cam morphology (alpha angle >55 degrees) is common and frequently asymptomatic; an isolated bump without chondrolabral injury or concordant impingement symptoms should be correlated clinically, not taken to surgery — especially when found incidentally. Prophylactic osteoplasty on morphology alone (A) is not indicated; a cam bump is neither an aggressive osseous lesion (C) nor a fracture (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-basics-pre": {
+      "stem": "A 24-year-old runner has deep anterior groin pain with pivoting. The ordered study is a large-FOV pelvis MRI read as 'no fracture, mild bursitis.' You suspect cam-type FAI and want to measure the alpha angle reliably. Which acquisition change most directly enables an accurate alpha-angle measurement to guide the FAI workup?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Add a small-FOV dedicated hip protocol with an oblique-axial plane along the femoral neck"
+        },
+        {
+          "key": "B",
+          "text": "Repeat the large-FOV pelvis sequence with thinner coronal slices only"
+        },
+        {
+          "key": "C",
+          "text": "Add IV gadolinium to the existing large-FOV pelvis sequences"
+        },
+        {
+          "key": "D",
+          "text": "Switch the large-FOV T1 sequences to STIR for better fat suppression"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Alpha angle requires an oblique-axial plane prescribed along the femoral neck on a dedicated small-FOV hip study; the large-FOV pelvis screen lacks the resolution and plane to measure cam morphology. Thinner coronal slices (B) still do not give the neck-axis plane needed. IV gadolinium (C) does not address geometry/resolution. STIR (D) changes contrast, not the plane or FOV needed for the measurement.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-basics-post": {
+      "stem": "A 31-year-old soccer player has anterior hip pain catching with deep flexion. Outside imaging is a large-FOV pelvis MRI labeled 'unremarkable hips.' You want to confirm or exclude cam morphology before deciding on a surgical referral. Which protocol adjustment most directly provides the information needed to measure cam morphology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Order a small-FOV dedicated hip protocol including an oblique-axial plane along the femoral neck"
+        },
+        {
+          "key": "B",
+          "text": "Re-run the large-FOV axial sequence with a larger matrix and the same coverage"
+        },
+        {
+          "key": "C",
+          "text": "Convert the large-FOV PD sequences to chemically fat-saturated images"
+        },
+        {
+          "key": "D",
+          "text": "Add post-contrast large-FOV imaging through both hips"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Cam morphology and the alpha angle are measured on a small-FOV dedicated hip protocol with an oblique-axial plane aligned to the femoral neck. A larger matrix on the large-FOV axial (B) still does not provide the neck-axis plane. Chemical fat-sat (C) changes contrast, not the plane/FOV. Contrast (D) adds nothing for measuring osseous cam shape.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-search-pre": {
+      "stem": "A 40-year-old distance runner has worsening anterior groin pain, now with night pain and pain on weight-bearing. The reading radiologist anchors on an incidental small labral fray and stops. Given a fixed search-pattern discipline, which additional structure must be deliberately checked before translating the read into a return-to-run plan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The tension (superolateral) side of the femoral neck for a stress fracture line and marrow edema"
+        },
+        {
+          "key": "B",
+          "text": "The contralateral asymptomatic acetabular labrum for incidental fraying"
+        },
+        {
+          "key": "C",
+          "text": "The trochanteric bursa for fluid before scanning the femoral neck"
+        },
+        {
+          "key": "D",
+          "text": "The skin and subcutaneous fat for postoperative seroma"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Satisfaction-of-search after spotting a minor labral fray risks missing a superolateral (tension-side) femoral neck stress fracture, which is a surgical-urgency finding that changes a runner from 'return to run' to non-weight-bearing and referral. The asymptomatic contralateral labrum (B), bursa first (C), or skin (D) do not carry the same management-changing red-flag weight in this presentation.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-search-post": {
+      "stem": "A 22-year-old military recruit has 3 weeks of escalating groin pain after ramping up marching, now with rest pain. The MRI report fixates on a small herniation pit and concludes 'benign.' Applying a disciplined search pattern, which area most needs deliberate inspection before clearing the recruit to continue training?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The opposite hip's herniation pit for symmetry"
+        },
+        {
+          "key": "B",
+          "text": "The iliopsoas bursa for distension before assessing marrow"
+        },
+        {
+          "key": "C",
+          "text": "The gluteal subcutaneous tissues for cellulitis"
+        },
+        {
+          "key": "D",
+          "text": "The superolateral femoral neck for a tension-side stress fracture and reactive marrow edema"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Anchoring on a benign herniation pit can mask a tension-side (superolateral) femoral neck stress fracture in a high-risk recruit; finding it converts management to non-weight-bearing and urgent surgical referral. The contralateral pit (A), bursa first (B), or subcutaneous tissue (C) do not change this high-stakes decision the way the tension-side neck does.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-tendons-pre": {
+      "stem": "A 70-year-old woman has chronic lateral hip pain, a limp, and weak abduction. MRI shows a FULL-THICKNESS gluteus medius tendon tear with 2 cm of tendon retraction and fatty muscle atrophy at the greater trochanter. Prior corticosteroid injection and physiotherapy failed. What does this imaging most appropriately direct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Another image-guided peritrochanteric corticosteroid injection as definitive treatment"
+        },
+        {
+          "key": "B",
+          "text": "Reassurance that this is simple trochanteric bursitis managed with stretching"
+        },
+        {
+          "key": "C",
+          "text": "Urgent escalation for suspected septic arthritis of the hip"
+        },
+        {
+          "key": "D",
+          "text": "Orthopedic surgical referral for consideration of abductor tendon repair"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A full-thickness, retracted gluteus medius tear with atrophy that has failed conservative care warrants surgical referral for possible tendon repair. Repeat steroid injection (A) does not address a retracted full-thickness tear and may worsen tendon quality. This is not simple bursitis (B). There is no septic picture (C).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-tendons-post": {
+      "stem": "A 64-year-old woman has persistent lateral hip pain and a Trendelenburg gait. MRI reveals a FULL-THICKNESS gluteus minimus and medius tendon tear with retraction and grade 2 fatty atrophy, after 6 months of physiotherapy and one peritrochanteric injection. What management does this imaging most appropriately support?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Repeat peritrochanteric corticosteroid injection as the definitive next step"
+        },
+        {
+          "key": "B",
+          "text": "Referral to orthopedic surgery to evaluate for abductor tendon reconstruction"
+        },
+        {
+          "key": "C",
+          "text": "Labeling the process as greater trochanteric bursitis treated with a home program"
+        },
+        {
+          "key": "D",
+          "text": "Emergent admission for presumed osteomyelitis of the trochanter"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A retracted full-thickness abductor tendon tear with fatty atrophy refractory to conservative measures should prompt surgical referral for possible reconstruction. Another injection (A) will not restore a retracted tendon. This is more than bursitis (C). No infectious findings are described to warrant osteomyelitis admission (D).",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-tendons-hamstring-pre": {
+      "stem": "A 45-year-old water-skier had a sudden hamstring 'pop' while the hip flexed and the knee extended. MRI shows all three proximal hamstring tendons avulsed from the ischial tuberosity with 3 cm of retraction and a surrounding hematoma. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Provide a home stretching program and clear for return to sport in 2 weeks"
+        },
+        {
+          "key": "B",
+          "text": "Refer promptly to orthopedic surgery for operative repair of the complete retracted avulsion"
+        },
+        {
+          "key": "C",
+          "text": "Provide an image-guided corticosteroid injection at the ischial tuberosity"
+        },
+        {
+          "key": "D",
+          "text": "Reassure as a grade 1 strain and continue normal activity"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A complete three-tendon proximal hamstring avulsion with significant (3 cm) retraction is a surgical lesion; timely referral is favored because the window for primary repair is best within a few weeks before further retraction and scarring. A stretching program with rapid return (A) or calling it a grade 1 strain (D) understages a complete avulsion. A corticosteroid injection (C) does not address tendon retraction and may impair healing.",
+      "source": "Pre/Post assessment",
+      "courseId": "hip-mri"
+    },
+    "hip-mri::prepost-hip-tendons-hamstring-post": {
+      "stem": "A 41-year-old man slipped on a boat ramp with the hip suddenly flexed and the knee held straight, feeling a painful pop in the buttock. MRI shows all three proximal hamstring tendons avulsed off the ischial tuberosity with 4 cm of retraction and a surrounding hematoma. What is the most appropriate management?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Refer promptly to orthopedic surgery for operative repair of the complete retracted avulsion"
+        },
+        {
+          "key": "B",
+          "text": "Prescribe a home eccentric-stretching program and clear for sport in 2 weeks"
+        },
+        {
+          "key": "C",
+          "text": "Inject the ischial tuberosity with corticosteroid to control pain"
+        },
+        {
+          "key": "D",
+          "text": "Reassure that this is a low-grade strain and continue normal activity"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A complete three-tendon proximal hamstring avulsion with significant (4 cm) retraction is a surgical lesion; prompt referral is favored because primary-repair outcomes are best within a few weeks before further retraction and scarring. A stretching program with early return (B) or calling it a low-grade strain (D) understages a complete avulsion. A corticosteroid injection (C) does not address tendon retraction and can impair healing.",
+      "source": "Pre/Post assessment",
       "courseId": "hip-mri"
     }
   }

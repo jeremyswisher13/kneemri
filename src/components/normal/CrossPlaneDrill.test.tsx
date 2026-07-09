@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import CrossPlaneDrill from "./CrossPlaneDrill";
+import { moveCrossPlaneCursor } from "./cross-plane-cursor";
 import type { CorrelationItem } from "@/content/normal-mri-types";
 
 const correlations: CorrelationItem[] = [
@@ -59,5 +60,12 @@ describe("CrossPlaneDrill", () => {
     const html = renderToStaticMarkup(<CrossPlaneDrill items={[]} />);
 
     expect(html).toContain("Cross-plane correlations are being prepared");
+  });
+
+  it("moves and clamps the keyboard crosshair", () => {
+    expect(moveCrossPlaneCursor({ x: 50, y: 50 }, "ArrowRight")).toEqual({ x: 54, y: 50 });
+    expect(moveCrossPlaneCursor({ x: 50, y: 50 }, "ArrowUp", true)).toEqual({ x: 50, y: 49 });
+    expect(moveCrossPlaneCursor({ x: 99, y: 2 }, "ArrowRight")).toEqual({ x: 100, y: 2 });
+    expect(moveCrossPlaneCursor({ x: 99, y: 2 }, "ArrowUp")).toEqual({ x: 99, y: 0 });
   });
 });

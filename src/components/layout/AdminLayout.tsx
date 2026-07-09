@@ -28,7 +28,7 @@ export default function AdminLayout() {
   return (
     <div className="flex-1">
       <div className="border-b border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
           <span className="rounded-md bg-ucla-gold px-2 py-0.5 text-xs font-bold text-ucla-dark">
             ADMIN
           </span>
@@ -74,7 +74,7 @@ export default function AdminLayout() {
           </Link>
         </div>
       </div>
-      <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <Suspense fallback={<PageLoader />}>
           <Outlet />
         </Suspense>

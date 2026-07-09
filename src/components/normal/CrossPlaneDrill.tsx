@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import {
+  clampCrossPlaneCoordinate,
+  moveCrossPlaneCursor,
+} from "@/components/normal/cross-plane-cursor";
 import type { CorrelationItem } from "@/content/normal-mri-types";
 
 const pad = (n: number) => String(n + 1).padStart(2, "0");
@@ -54,6 +58,8 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
   const [scored, setScored] = useState(false);
   const [pickedIdx, setPickedIdx] = useState<number | null>(null);
   const [clickPct, setClickPct] = useState<{ x: number; y: number } | null>(null);
+  const [keyboardPoint, setKeyboardPoint] = useState({ x: 50, y: 50 });
+  const [keyboardActive, setKeyboardActive] = useState(false);
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
   const toBoxRef = useRef<HTMLDivElement>(null);
@@ -84,6 +90,8 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     setScored(false);
     setPickedIdx(null);
     setClickPct(null);
+    setKeyboardPoint({ x: 50, y: 50 });
+    setKeyboardActive(false);
   }
 
   // Switching difficulty re-opens the current item (but never double-scores it).
@@ -93,6 +101,8 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     setAnswered(false);
     setPickedIdx(null);
     setClickPct(null);
+    setKeyboardPoint({ x: 50, y: 50 });
+    setKeyboardActive(false);
   }
 
   if (done) {
@@ -119,6 +129,8 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
               setScored(false);
               setPickedIdx(null);
               setClickPct(null);
+              setKeyboardPoint({ x: 50, y: 50 });
+              setKeyboardActive(false);
               setDone(false);
             }}
           >
@@ -177,6 +189,13 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     commit(candIdx === item.to.answer);
   }
 
+  function commitFree(x: number, y: number) {
+    if (answered || diff !== "free") return;
+    const point = { x: clampCrossPlaneCoordinate(x), y: clampCrossPlaneCoordinate(y) };
+    setClickPct(point);
+    commit(nearestCandidate(point.x, point.y) === item.to.answer);
+  }
+
   function clickFree(e: React.MouseEvent<HTMLDivElement>) {
     if (answered || diff !== "free") return;
     const box = toBoxRef.current;
@@ -184,8 +203,22 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
     const r = box.getBoundingClientRect();
     const x = ((e.clientX - r.left) / r.width) * 100;
     const y = ((e.clientY - r.top) / r.height) * 100;
-    setClickPct({ x, y });
-    commit(nearestCandidate(x, y) === item.to.answer);
+    commitFree(x, y);
+  }
+
+  function keyFree(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (answered || diff !== "free") return;
+    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+      const key = e.key as "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight";
+      setKeyboardPoint((point) => moveCrossPlaneCursor(point, key, e.shiftKey));
+      setKeyboardActive(true);
+      e.preventDefault();
+      return;
+    }
+    if (e.key === "Enter" || e.key === " ") {
+      commitFree(keyboardPoint.x, keyboardPoint.y);
+      e.preventDefault();
+    }
   }
 
   function next() {
@@ -287,7 +320,17 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
           <div
             ref={toBoxRef}
             onClick={clickFree}
-            className={`relative mx-auto block w-fit max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black lg:mx-0 lg:max-h-none lg:w-full ${
+            onKeyDown={keyFree}
+            tabIndex={diff === "free" && !answered ? 0 : -1}
+            role={diff === "free" ? "application" : undefined}
+            aria-label={
+              diff === "free"
+                ? answered
+                  ? `Result: the ${item.from.label} is highlighted on ${item.to.plane}; your answer ${correct ? "was on target" : "missed"}.`
+                  : `Locate the ${item.from.label} on this ${item.to.plane} MRI. Click the image, or use the arrow keys to move the crosshair (hold Shift for fine steps) and press Enter to place it.`
+                : undefined
+            }
+            className={`relative mx-auto block w-fit max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:mx-0 lg:max-h-none lg:w-full ${
               diff === "free" && !answered ? "cursor-crosshair" : ""
             }`}
           >
@@ -355,6 +398,16 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
                 )}
               </>
             )}
+            {diff === "free" && !answered && keyboardActive && (
+              <span
+                className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
+                style={{ left: `${keyboardPoint.x}%`, top: `${keyboardPoint.y}%` }}
+                aria-hidden="true"
+              >
+                <span className="block h-6 w-6 rounded-full border-2 border-white shadow-[0_0_0_2px_rgba(0,0,0,0.6)]" />
+                <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
+              </span>
+            )}
           </div>
           {diff === "mc" && (
             <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:hidden">
@@ -380,7 +433,9 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
             </p>
           )}
           {diff === "free" && !answered && (
-            <p className="mt-1.5 text-xs text-gray-500">No labels — click where the structure is.</p>
+            <p className="mt-1.5 text-xs text-gray-500">
+              No labels — click where the structure is, or use the arrow keys and press Enter.
+            </p>
           )}
         </div>
       </div>

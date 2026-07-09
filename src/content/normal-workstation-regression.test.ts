@@ -7,24 +7,32 @@ import {
   advancedChallenge,
   crossPlane,
   kneeImageCaq,
+  structurePearl,
+  structureReading,
 } from "@/content/normal-knee-learn";
 import {
   normalShoulderLearn,
   shoulderAdvanced,
   shoulderCrossPlane,
   shoulderImageCaq,
+  structureShoulderPearl,
+  structureShoulderReading,
 } from "@/content/normal-shoulder-learn";
 import {
   normalHipLearn,
   hipAdvanced,
   hipCrossPlane,
   hipImageCaq,
+  structureHipPearl,
+  structureHipReading,
 } from "@/content/normal-hip-learn";
 import {
   normalElbowLearn,
   elbowAdvanced,
   elbowCrossPlane,
   elbowImageCaq,
+  structureElbowPearl,
+  structureElbowReading,
 } from "@/content/normal-elbow-learn";
 import {
   normalKneeSeries,
@@ -57,6 +65,29 @@ const STACK_ROOT = join(process.cwd(), "public/images/teaching/stacks");
 const stackFolder = (dir: string) => dir.split("/").filter(Boolean).pop() as string;
 const stackCount = (dir: string) =>
   readdirSync(join(STACK_ROOT, stackFolder(dir))).filter((file) => file.endsWith(".jpg")).length;
+const sliceFile = (dir: string, sliceIndex: number) =>
+  join(STACK_ROOT, stackFolder(dir), `slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`);
+
+function expectPercentMarker(marker: { x: number; y: number }, label: string) {
+  expect(Number.isFinite(marker.x), `${label} x`).toBe(true);
+  expect(Number.isFinite(marker.y), `${label} y`).toBe(true);
+  expect(marker.x, `${label} x`).toBeGreaterThanOrEqual(0);
+  expect(marker.x, `${label} x`).toBeLessThanOrEqual(100);
+  expect(marker.y, `${label} y`).toBeGreaterThanOrEqual(0);
+  expect(marker.y, `${label} y`).toBeLessThanOrEqual(100);
+}
+
+function expectValidAnswer(answer: number, options: string[], label: string) {
+  expect(Number.isInteger(answer), `${label} answer`).toBe(true);
+  expect(answer, `${label} answer`).toBeGreaterThanOrEqual(0);
+  expect(answer, `${label} answer`).toBeLessThan(options.length);
+  expect(options[answer]?.trim(), `${label} correct option`).toBeTruthy();
+}
+
+function expectUnique(ids: string[], label: string) {
+  const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+  expect(duplicates, `${label} duplicate ids`).toEqual([]);
+}
 
 const EXPECTED_MODES = [
   "Explore",
@@ -173,6 +204,106 @@ describe("normal MRI workstation regression contract", () => {
       }
     });
 
+    it("keeps all normal workstation markers, slices, and answer keys valid", () => {
+      const seriesById = new Map(workstation.series.map((series) => [series.id, series]));
+      const knownDirs = new Map(workstation.series.map((series) => [series.dir, series]));
+      const quizIds: string[] = [];
+
+      for (const [seriesId, learn] of Object.entries(workstation.learn)) {
+        const series = seriesById.get(seriesId);
+        expect(series, `${seriesId} series metadata`).toBeTruthy();
+        if (!series) continue;
+
+        learn.tour.forEach((step, stepIndex) => {
+          const label = `${seriesId} tour step ${stepIndex + 1} (${step.title})`;
+          expect(step.title.trim(), `${label} title`).toBeTruthy();
+          expect(step.note.trim(), `${label} note`).toBeTruthy();
+          expect(step.sliceIndex, `${label} sliceIndex`).toBeGreaterThanOrEqual(0);
+          expect(step.sliceIndex, `${label} sliceIndex`).toBeLessThan(series.count);
+          expect(existsSync(sliceFile(series.dir, step.sliceIndex)), `${label} slice file`).toBe(true);
+          step.markers.forEach((marker, markerIndex) => {
+            expectPercentMarker(marker, `${label} marker ${markerIndex + 1}`);
+            if (marker.label !== undefined) {
+              expect(marker.label.trim(), `${label} marker ${markerIndex + 1} label`).toBeTruthy();
+            }
+          });
+        });
+
+        learn.quiz.forEach((item) => {
+          quizIds.push(item.id);
+          const label = `${seriesId} quiz ${item.id}`;
+          expect(item.id.trim(), `${label} id`).toBeTruthy();
+          expect(item.prompt.trim(), `${label} prompt`).toBeTruthy();
+          expect(item.explanation.trim(), `${label} explanation`).toBeTruthy();
+          expect(item.options.length, `${label} options`).toBeGreaterThanOrEqual(2);
+          expect(item.options.every((option) => option.trim()), `${label} blank options`).toBe(true);
+          expectValidAnswer(item.answer, item.options, label);
+          expect(item.sliceIndex, `${label} sliceIndex`).toBeGreaterThanOrEqual(0);
+          expect(item.sliceIndex, `${label} sliceIndex`).toBeLessThan(series.count);
+          expect(existsSync(sliceFile(series.dir, item.sliceIndex)), `${label} slice file`).toBe(true);
+          expectPercentMarker(item.marker, `${label} marker`);
+        });
+      }
+
+      expectUnique(quizIds, `${workstation.courseId} knowledge-check`);
+
+      const crossPlaneIds = workstation.crossPlane.map((item) => item.id);
+      expectUnique(crossPlaneIds, `${workstation.courseId} cross-plane`);
+      workstation.crossPlane.forEach((item) => {
+        const fromSeries = knownDirs.get(item.from.dir);
+        const toSeries = knownDirs.get(item.to.dir);
+        const label = `${workstation.courseId} cross-plane ${item.id}`;
+        expect(item.prompt.trim(), `${label} prompt`).toBeTruthy();
+        expect(item.explanation.trim(), `${label} explanation`).toBeTruthy();
+        expect(fromSeries, `${label} source series`).toBeTruthy();
+        expect(toSeries, `${label} target series`).toBeTruthy();
+        if (fromSeries) {
+          expect(item.from.sliceIndex, `${label} source sliceIndex`).toBeGreaterThanOrEqual(0);
+          expect(item.from.sliceIndex, `${label} source sliceIndex`).toBeLessThan(fromSeries.count);
+          expect(existsSync(sliceFile(item.from.dir, item.from.sliceIndex)), `${label} source slice file`).toBe(true);
+        }
+        if (toSeries) {
+          expect(item.to.sliceIndex, `${label} target sliceIndex`).toBeGreaterThanOrEqual(0);
+          expect(item.to.sliceIndex, `${label} target sliceIndex`).toBeLessThan(toSeries.count);
+          expect(existsSync(sliceFile(item.to.dir, item.to.sliceIndex)), `${label} target slice file`).toBe(true);
+        }
+        expect(item.from.label.trim(), `${label} source label`).toBeTruthy();
+        expectPercentMarker(item.from, `${label} source marker`);
+        expectValidAnswer(item.to.answer, item.to.candidates.map((_, index) => String(index)), label);
+        item.to.candidates.forEach((candidate, candidateIndex) =>
+          expectPercentMarker(candidate, `${label} candidate ${candidateIndex + 1}`),
+        );
+      });
+
+      expectUnique(workstation.advanced.map((item) => item.id), `${workstation.courseId} advanced`);
+      workstation.advanced.forEach((item) => {
+        const label = `${workstation.courseId} advanced ${item.id}`;
+        expect(item.topic.trim(), `${label} topic`).toBeTruthy();
+        expect(item.prompt.trim(), `${label} prompt`).toBeTruthy();
+        expect(item.explanation.trim(), `${label} explanation`).toBeTruthy();
+        expect(item.options.length, `${label} options`).toBeGreaterThanOrEqual(2);
+        expect(item.options.every((option) => option.trim()), `${label} blank options`).toBe(true);
+        expectValidAnswer(item.answer, item.options, label);
+      });
+
+      expectUnique(workstation.imageCaq.map((item) => item.id), `${workstation.courseId} image CAQ`);
+      workstation.imageCaq.forEach((item) => {
+        const series = knownDirs.get(item.dir);
+        const label = `${workstation.courseId} image CAQ ${item.id}`;
+        expect(series, `${label} series`).toBeTruthy();
+        expect(item.count, `${label} count`).toBe(stackCount(item.dir));
+        expect(item.startIndex, `${label} startIndex`).toBeGreaterThanOrEqual(0);
+        expect(item.startIndex, `${label} startIndex`).toBeLessThan(item.count);
+        expect(existsSync(sliceFile(item.dir, item.startIndex)), `${label} slice file`).toBe(true);
+        expect(item.topic.trim(), `${label} topic`).toBeTruthy();
+        expect(item.vignette.trim(), `${label} vignette`).toBeTruthy();
+        expect(item.explanation.trim(), `${label} explanation`).toBeTruthy();
+        expect(item.options.length, `${label} options`).toBeGreaterThanOrEqual(2);
+        expect(item.options.every((option) => option.trim()), `${label} blank options`).toBe(true);
+        expectValidAnswer(item.answer, item.options, label);
+      });
+    });
+
     it("keeps the cross-plane drill, advanced bank, and image CAQ bank present", () => {
       expect(workstation.crossPlane.length).toBe(workstation.expectedCrossPlaneCount);
       const firstTarget = workstation.crossPlane[0].to.candidates[workstation.crossPlane[0].to.answer];
@@ -184,5 +315,63 @@ describe("normal MRI workstation regression contract", () => {
       expect(workstation.imageCaq.length).toBe(workstation.expectedImageCaqCount);
       expect(workstation.imageCaq[0].options[workstation.imageCaq[0].answer]).toBeTruthy();
     });
+  });
+});
+
+const contentText = (...sources: unknown[]) => JSON.stringify(sources).toLowerCase();
+
+describe("normal MRI must-not-overcall teaching safeguards", () => {
+  it("keeps the knee root, TT-TG, and MCL caveats", () => {
+    const text = contentText(
+      normalKneeLearn,
+      structurePearl,
+      structureReading,
+      advancedChallenge,
+      crossPlane,
+      kneeImageCaq,
+    );
+    expect(text).toContain("extrusion alone does not prove a root tear");
+    expect(text).toContain("as a standalone surgical rule");
+    expect(text).toContain("deep mcl");
+  });
+
+  it("keeps the shoulder impingement and Buford-complex caveats", () => {
+    const text = contentText(
+      normalShoulderLearn,
+      structureShoulderPearl,
+      structureShoulderReading,
+      shoulderAdvanced,
+      shoulderCrossPlane,
+      shoulderImageCaq,
+    );
+    expect(text).toContain("not as a standalone diagnosis of impingement");
+    expect(text).toContain("buford complex can coexist");
+  });
+
+  it("keeps the hip FAI and GTPS caveats", () => {
+    const text = contentText(
+      normalHipLearn,
+      structureHipPearl,
+      structureHipReading,
+      hipAdvanced,
+      hipCrossPlane,
+      hipImageCaq,
+    );
+    expect(text).toContain("morphology is not symptomatic fai");
+    expect(text).toContain("abductor tendon disease");
+  });
+
+  it("keeps the elbow OCD, UCL, and ulnar-nerve caveats", () => {
+    const text = contentText(
+      normalElbowLearn,
+      structureElbowPearl,
+      structureElbowReading,
+      elbowAdvanced,
+      elbowCrossPlane,
+      elbowImageCaq,
+    );
+    expect(text).toContain("coronal and sagittal together");
+    expect(text).toContain("beyond the articular-cartilage edge");
+    expect(text).toContain("signal alone does not diagnose entrapment");
   });
 });
