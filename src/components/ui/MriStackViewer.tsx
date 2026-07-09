@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { wheelSliceStep } from "@/components/ui/mri-stack-wheel";
 
 /**
  * Scrollable MRI stack viewer.
  *
  * Radiologist-style viewing:
- *   - Mouse wheel / trackpad scroll to change slice
+ *   - Horizontal trackpad swipe or Shift+wheel to change slice
  *   - Click-and-drag (up/down) to scrub
  *   - Touch: drag to scrub, PINCH to zoom, double-tap to zoom, drag to pan when zoomed
  *   - Arrow keys ↑/↓ or ←/→ for one slice at a time; Home/End for first/last
@@ -139,13 +140,15 @@ export default function MriStackViewer({
     return () => window.clearInterval(id);
   }, [cinePlaying, cineMs, total]);
 
-  // Wheel scroll — native non-passive so preventDefault works under React 19.
+  // Preserve ordinary vertical page scrolling over the large viewer. Horizontal
+  // trackpad gestures and Shift+wheel retain fast radiology-style stack scrubbing.
   useEffect(() => {
     const el = viewportRef.current;
     if (!el || total <= 1) return;
     const onWheelNative = (e: WheelEvent) => {
+      const step = wheelSliceStep(e);
+      if (step === 0) return;
       e.preventDefault();
-      const step = e.deltaY > 0 ? 1 : -1;
       setIndex((i) => Math.min(total - 1, Math.max(0, i + step)));
     };
     el.addEventListener("wheel", onWheelNative, { passive: false });
@@ -338,7 +341,7 @@ export default function MriStackViewer({
         aria-roledescription="MRI stack viewer"
         aria-label={`${[title, plane].filter(Boolean).join(" ") || "Normal"} MRI — ${total} ${
           total === 1 ? "slice" : "slices"
-        }. Arrow keys change slice; Home and End jump to first and last${
+        }. Arrow keys, horizontal trackpad gestures, or Shift plus mouse wheel change slice; Home and End jump to first and last${
           showPlay ? "; Space plays or pauses the cine loop" : ""
         }.`}
         tabIndex={0}

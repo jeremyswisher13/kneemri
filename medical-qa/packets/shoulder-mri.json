@@ -741,7 +741,7 @@
           "id": "supraspinatus-tear-coronal",
           "title": "Full-thickness supraspinatus tear — scroll the coronal series",
           "plane": "Oblique coronal, fluid-sensitive MR arthrogram",
-          "caption": "Scroll through four consecutive oblique-coronal slices (anterior → posterior). Yellow arrows mark the torn, retracted supraspinatus tendon edge; blue arrows (slices C–D) mark the aponeurotic expansion over the humeral head where the tendon should insert. Wheel-scroll, drag, or use the arrow keys.",
+          "caption": "Scroll through four consecutive oblique-coronal slices (anterior → posterior). Yellow arrows mark the torn, retracted supraspinatus tendon edge; blue arrows (slices C–D) mark the aponeurotic expansion over the humeral head where the tendon should insert. Use the slider, drag, a horizontal trackpad gesture, or the arrow keys.",
           "attribution": "Uludag V et al., Cureus 2024;16(8):e66272, Fig 1. PMC11376144. CC BY 4.0.",
           "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11376144/",
           "slices": [
@@ -998,7 +998,7 @@
           "id": "slap-labrum-axial",
           "title": "Labral tear — scroll the axial MR-arthrogram series",
           "plane": "Axial, fat-suppressed T1 MR arthrogram",
-          "caption": "Scroll four consecutive axial MR-arthrogram slices (superior → inferior) through the labrum. Arrows mark contrast undercutting the torn labrum at successive clock positions (here a Type IX / circumferential pattern). Wheel-scroll, drag, or use the arrow keys.",
+          "caption": "Scroll four consecutive axial MR-arthrogram slices (superior → inferior) through the labrum. Arrows mark contrast undercutting the torn labrum at successive clock positions (here a Type IX / circumferential pattern). Use the slider, drag, a horizontal trackpad gesture, or the arrow keys.",
           "attribution": "SA J Radiol 2023. PMC10879901, Fig 14 (panels b–e). CC BY 4.0.",
           "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879901/",
           "slices": [

@@ -976,7 +976,7 @@ Teaching points:
 Teaching media:
 - src=/images/teaching/shoulder/fullthickness-supraspinatus.jpg | alt=Full-thickness supraspinatus tear on fluid-sensitive MRI (three planes) | caption=Real MRI — full-thickness supraspinatus tear: a fluid-bright defect spanning the tendon at the footprint (arrowheads), with fluid communicating into the subacromial-subdeltoid bursa. | attribution=Cureus 2020. PMC7370661. CC-BY 4.0.
 - src=/images/teaching/shoulder/retraction-muscle-quality.svg | alt=Schematic of rotator cuff tear retraction (Patte) and muscle fatty infiltration (Goutallier) | caption=Report retraction (Patte 1 = footprint → 3 = glenoid) and muscle quality (Goutallier; grade ≥3 = poor healing / possibly irreparable). These features drive reparability — not just 'tear present.' | attribution=UCLA Shoulder MRI Course — original schematic illustration.
-- caption=Scroll through four consecutive oblique-coronal slices (anterior → posterior). Yellow arrows mark the torn, retracted supraspinatus tendon edge; blue arrows (slices C–D) mark the aponeurotic expansion over the humeral head where the tendon should insert. Wheel-scroll, drag, or use the arrow keys. | attribution=Uludag V et al., Cureus 2024;16(8):e66272, Fig 1. PMC11376144. CC BY 4.0.
+- caption=Scroll through four consecutive oblique-coronal slices (anterior → posterior). Yellow arrows mark the torn, retracted supraspinatus tendon edge; blue arrows (slices C–D) mark the aponeurotic expansion over the humeral head where the tendon should insert. Use the slider, drag, a horizontal trackpad gesture, or the arrow keys. | attribution=Uludag V et al., Cureus 2024;16(8):e66272, Fig 1. PMC11376144. CC BY 4.0.
 
 ### Anterior Instability with Bankart and Hill-Sachs Lesions
 
@@ -1097,7 +1097,7 @@ Teaching points:
 Teaching media:
 - src=/images/teaching/shoulder/slap-real.jpg | alt=MR arthrogram and arthroscopy of a type II SLAP lesion | caption=Real MR arthrogram (panels b–d, with arthroscopic correlation in e) — contrast undercutting the superior labrum at the biceps anchor (arrows): the hallmark of a Type II SLAP tear. Panel (a) is the labeled illustration. | attribution=SA J Radiol 2023. PMC10879901. CC-BY 4.0.
 - src=/images/teaching/shoulder/slap-vs-recess.svg | alt=Schematic comparing a SLAP tear with a normal sublabral recess | caption=A sublabral recess is smooth, medial, and parallels the glenoid (stopping at the biceps anchor). A SLAP extends laterally into the labral substance or posterior to the anchor with irregular margins. | attribution=UCLA Shoulder MRI Course — original schematic illustration.
-- caption=Scroll four consecutive axial MR-arthrogram slices (superior → inferior) through the labrum. Arrows mark contrast undercutting the torn labrum at successive clock positions (here a Type IX / circumferential pattern). Wheel-scroll, drag, or use the arrow keys. | attribution=SA J Radiol 2023. PMC10879901, Fig 14 (panels b–e). CC BY 4.0.
+- caption=Scroll four consecutive axial MR-arthrogram slices (superior → inferior) through the labrum. Arrows mark contrast undercutting the torn labrum at successive clock positions (here a Type IX / circumferential pattern). Use the slider, drag, a horizontal trackpad gesture, or the arrow keys. | attribution=SA J Radiol 2023. PMC10879901, Fig 14 (panels b–e). CC BY 4.0.
 
 ### Adhesive Capsulitis Support Pattern
 
