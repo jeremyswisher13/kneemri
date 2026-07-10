@@ -390,9 +390,13 @@ function fellowMatchesAlias(fellow: Fellow, alias: string): boolean {
   const normalizedAlias = normalizePersonText(alias);
   const searchable = normalizePersonText([fellowName(fellow), fellow.email ?? ""].join(" "));
   if (!normalizedAlias || !searchable) return false;
-  if (searchable.includes(normalizedAlias)) return true;
-  const parts = normalizedAlias.split(" ").filter(Boolean);
-  return parts.length > 1 && parts.every((part) => searchable.includes(part));
+  // Match on whole normalized tokens (word boundaries), not raw substrings, so a
+  // short alias like "Sonal Singh" can't collide with a superstring name like
+  // "Sonali Singhania". Every alias token must appear as a full token in the
+  // learner's normalized name + email.
+  const haystack = new Set(searchable.split(" ").filter(Boolean));
+  const aliasParts = normalizedAlias.split(" ").filter(Boolean);
+  return aliasParts.length > 0 && aliasParts.every((part) => haystack.has(part));
 }
 
 function normalMriProgressLabel(fellow: Fellow, course: CourseDefinition): string {

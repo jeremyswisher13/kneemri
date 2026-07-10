@@ -20,6 +20,18 @@ html {
   background-color: var(--color-ucla-gray);
 }
 
+/* iOS Safari auto-zooms the page when a focused text field's font is < 16px.
+   Force >= 16px for text-entry controls on small screens so tapping search, the
+   FAQ box, quiz/survey fields, etc. never triggers a disorienting zoom. Sliders,
+   checkboxes, and radios are excluded (no text, unaffected). */
+@media (max-width: 640px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 /* Hide scrollbar utility */
 .scrollbar-hide {
   -ms-overflow-style: none;

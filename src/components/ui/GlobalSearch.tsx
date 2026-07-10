@@ -326,15 +326,15 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
     return { map, ordered };
   }, [results]);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when open; save + restore the PRIOR value (don't hardcode
+  // '') so closing this palette doesn't clobber another overlay's lock — e.g. a
+  // CasePage lightbox still open underneath when Cmd/Ctrl+K was used over it.
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = prev;
     };
   }, [open]);
 

@@ -92,9 +92,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           } catch (err) {
             if (cancelled) return;
             console.error("Failed to load user profile:", err);
-            setRole(null);
-            setSpecialty(null);
-            setShowSurgical(false);
+            // An offline / unavailable read is NOT a missing profile. Don't strip
+            // the fellow's role and bounce them to role-selection on a flaky mobile
+            // connection or an offline PWA cold-launch — leave whatever we have.
+            const offline =
+              (err as { code?: string })?.code === "unavailable" ||
+              (typeof navigator !== "undefined" && navigator.onLine === false);
+            if (!offline) {
+              setRole(null);
+              setSpecialty(null);
+              setShowSurgical(false);
+            }
           }
         } else {
           setRole(null);

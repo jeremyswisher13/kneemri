@@ -47,7 +47,7 @@ export interface MedicalQaPriorityItem {
   textPreview: string;
 }
 
-export const medicalQaGeneratedAt = "2026-07-09";
+export const medicalQaGeneratedAt = "2026-07-10";
 
 export const medicalQaTotals: MedicalQaTotals = {
   "reviewItems": 2754,

@@ -87,6 +87,8 @@ export default function MriStackViewer({
     startDist: number;
   } | null>(null);
   const lastTapRef = useRef(0);
+  const downPtRef = useRef({ x: 0, y: 0 });
+  const movedRef = useRef(false);
 
   const maxIndex = Math.max(0, total - 1);
   const safeIndex = Math.min(index, maxIndex);
@@ -169,16 +171,18 @@ export default function MriStackViewer({
       pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
       const pts = [...pointersRef.current.values()];
 
-      // Double-tap / double-click toggles zoom.
+      // Double-tap / double-click toggles zoom. Only a *stationary* tap arms the
+      // next one (armed in onPointerUp): a scrub/pan drag must never register as a
+      // tap, or rapid slice-flicking would trip an accidental zoom mid-scrub.
       const now = e.timeStamp;
-      if (pts.length === 1 && now - lastTapRef.current < 300) {
+      if (pts.length === 1 && lastTapRef.current > 0 && now - lastTapRef.current < 300) {
         const z = zoom > 1 ? 1 : 2.5;
         setZoom(z);
         setPan(z === 1 ? { x: 0, y: 0 } : (p) => clampPan(p, z));
         lastTapRef.current = 0;
-      } else {
-        lastTapRef.current = now;
       }
+      downPtRef.current = { x: e.clientX, y: e.clientY };
+      movedRef.current = false;
 
       if (pts.length === 2) {
         gestureRef.current = {
@@ -210,6 +214,11 @@ export default function MriStackViewer({
     (e: React.PointerEvent<HTMLDivElement>) => {
       if (!pointersRef.current.has(e.pointerId)) return;
       pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (!movedRef.current) {
+        const dx = e.clientX - downPtRef.current.x;
+        const dy = e.clientY - downPtRef.current.y;
+        if (dx * dx + dy * dy > 100) movedRef.current = true; // moved > ~10px → a drag, not a tap
+      }
       const g = gestureRef.current;
       if (!g) return;
       const pts = [...pointersRef.current.values()];
@@ -234,6 +243,9 @@ export default function MriStackViewer({
   const onPointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     pointersRef.current.delete(e.pointerId);
     if (pointersRef.current.size === 0) {
+      // Arm a double-tap only for a stationary single-finger lift (timed from UP);
+      // any drag clears it, so fast flicking can't be misread as a double-tap zoom.
+      lastTapRef.current = movedRef.current ? 0 : e.timeStamp;
       gestureRef.current = null;
       setGesturing(false);
     } else if (pointersRef.current.size === 1 && gestureRef.current?.mode === "pinch") {

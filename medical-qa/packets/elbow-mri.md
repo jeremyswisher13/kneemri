@@ -1,5 +1,5 @@
 # Medical QA Packet: Elbow MRI for Primary Care Sports Medicine
-Generated: 2026-07-09
+Generated: 2026-07-10
 Course ID: `elbow-mri`  
 Body region: `elbow`  
 Audience: Primary care sports medicine fellows
