@@ -1,112 +1,316 @@
-# Handoff to Codex — UCLA Sports MRI App
+# Handoff to Claude Ultra Code - UCLA Sports MRI App
 
-Last updated: July 2, 2026 (Claude session)
-Repo path: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
+Last updated: July 10, 2026 (Codex session)
+
+Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
+
 Branch: `main`
-HEAD this handoff is based on: `da85bec Nudge two off-structure workstation markers onto their targets`
 
-Verified before handoff: `git status` clean, 386/386 tests passing, `npm run build` clean, `npm run lint` clean, Firebase Hosting deployed and confirmed live (bundle hash on `https://ucla-knee-mri.web.app` matches this build's `dist/`).
+Current app HEAD before this handoff-only update: `128a78f Fix desktop scrolling over MRI viewers`
 
----
+Production:
 
-## ⚠️ iOS App Store submission is PAUSED — read this before touching `ios/`
-
-Jeremy decided to **stay web-app-only for now** rather than continue the App Store push. This was an informed decision after a licensing/legal risk review (informational, not legal advice) surfaced three real blockers to submitting under his personal Apple account:
-
-1. **NonCommercial teaching images** — ~46 uses (~33 unique files) of Radiopaedia/journal images licensed CC BY-NC / BY-NC-SA are bundled in the app. NC + App Store distribution is a plausible license violation; "free app" is not a defense under CC's NC test. One source (`PMC11463185`) accounts for 19 of the 46 uses.
-2. **"UCLA" branding under a personal Apple developer account with no evidence of authorization** — the app is UCLA end-to-end (name, "© UCLA Health" footer on every authenticated screen at `src/components/layout/AppLayout.tsx:27`, and completion certificates headed "UNIVERSITY OF CALIFORNIA, LOS ANGELES" with a seal, generated both client-side `CertificatePage.tsx` and server-side `functions/index.js`) while the Apple account/bundle ID/copyright are personal (`com.jeremyswisher.uclasportsmri`, Team `X578T4K65B`). This is the one that exposes Jeremy personally and needs UCLA Trademarks & Licensing + department sign-off, or a UCLA-owned Apple org account — not something to resolve in code.
-3. Plus a real signing/export blocker (no App Store distribution profile) — purely operational, not a legal issue.
-
-**Do not resume `ios/` submission work (archive, export, App Store Connect evidence gates) without Jeremy explicitly re-opening it.** The web app is the shipping surface now: it already installs to the home screen as a PWA, has working offline support (better than the native shell, which was actively deleting its own service-worker cache), and keeps all the branding/certificates/images as-is with much lower legal exposure as an unpublished, closed-cohort teaching site.
-
-The `ios/` project, its evidence-gate tooling (`npm run evidence:ios`, `preflight:ios:*`, `archive:ios:*`, `asc:ios:*`), and the older App Store technical setup notes are left in the repo untouched and still accurate if this resumes later — see "iOS reference material (dormant)" at the bottom of this doc. **I did not touch `ios/` this session** — the gate file is unchanged since Codex's `a60bdb6 Sync live hosting evidence for App Store`.
-
-If Jeremy asks about App Store status: the honest state is unchanged from Codex's last update (`5/28` submission gates verified) — nothing regressed, it's just not being actively pursued.
-
----
-
-## What changed since Codex's last session (chronological)
-
-All committed to `main`, all deployed, all covered by the current 386-test suite.
-
-1. **`094a7a0`, `8d7790b` — Redesigned the PWA/App Store icon** (UCLA-blue reticle mark) across all sizes (web PWA, iOS AppIcon set, SVGs), fixed a brittle iOS evidence test.
-2. **`8f45cda` — Fixed 3 real bugs from a post-Codex audit**: service-worker `staleWhileRevalidate` offline-fallback bug (an un-awaited promise skipped the offline page on network failure), a login double-navigation race, and CasePage image-load failures leaving empty boxes instead of a placeholder.
-3. **`1280d1f`, `a524556` — Fixed iOS Safari + standalone-PWA login** (this was reported by a real user, "Riley," and then hit Jeremy himself on his home-screen app). `signInWithRedirect` on iOS breaks out to Safari — a separate storage context — and drops the session. Fixed by routing mobile Safari **and** installed PWAs through `signInWithPopup` instead; redirect is now reserved for the native iOS shell and localhost only. See `src/lib/login-return.ts:shouldUseRedirectSignIn`.
-4. **`48d975d` — Simplified the mobile workstation UI.** The normal-MRI workstation stacked ~1.3 screens of nav chrome (a 7-mode button wall + a 5-step guidance panel) above the actual content on phones. `NormalModeSwitcher` is now a horizontally-scrolling single row on mobile; `NormalMriMasteryPanel`'s guidance collapses behind a "Learning steps" toggle on mobile. Affects all 4 course workstations (shared components).
-5. **`6686b00` — Quick-wins batch**: pre-quiz no longer leaks the answer key (pre/post are matched parallel forms — revealing answers on the baseline was inflating the measured learning gain; now shows a per-domain breakdown only); `QuizQuestion` is now a real WAI-ARIA radio group (roving tabindex + arrow keys); modules now show a "Step N of the systematic search pattern" chip linking to `SearchPatternPage`, which now honors `?step=N`.
-6. **`a524556` — Pre-quiz also stopped seeding the spaced-review queue** (per Jeremy's explicit choice), so it's now a genuinely clean baseline with zero answer feedback.
-7. **`9054789` — Accessibility sprint**: `GlobalSearch` is now a proper `role="dialog"` with a focus trap and focus restore; both confidence-survey Likert components (`LikertScale`, `RetroLikertScale`) are now real radio groups instead of `aria-pressed` toggles.
-8. **`ab86a9c`, `da85bec` — Normal-MRI workstation accuracy audit** (see full section below).
-
-Also produced but **not yet acted on** — see "Open items for Jeremy" below.
-
----
-
-## Normal-MRI workstation marker audit (completed this session)
-
-Jeremy asked for an extreme-detail pass on every marker placement across all 4 courses' interactive normal-MRI workstations (knee/shoulder/hip/elbow — 14 planes, ~327 markers total: `src/content/normal-{knee,shoulder,hip,elbow}-learn.ts`).
-
-**Result: 5/14 planes fully clean, zero laterality (wrong-side) bugs anywhere.** Fixed and deployed:
-- Shoulder Axial PD-FS humeral-head note said "bright marrow" on a fat-suppressed sequence (fat is suppressed → should read dark; a bright focus is edema). Fixed in the tour note and the `axi-q1` quiz explanation.
-- Knee posterior-horn meniscus marker (Sagittal PD-FS **and** Sagittal T1, 5 linked occurrences incl. the cross-plane drill) was ~5% too posterior, in the capsule behind the meniscal triangle. Nudged `x: 66.6 → 61` (do not confuse with the separate lateral-femoral-condyle marker at `66.6, 44.9`, which is correct and untouched).
-- Hip acetabular labrum marker (Sagittal PD-FS, 3 occurrences) was in the acetabular roof bone above the cartilage arc. Moved `(44,46) → (46,54)` onto the rim.
-
-**Important methodology finding, worth knowing before doing more of this work:** I ran a 3-independent-AI-read precision pass to try to nail exact pixel coordinates on the remaining flagged markers. The reads diverged badly — e.g. 62% spread on the ulnar-nerve x-coordinate, 10-17% spread on joint-line vertical position, and the consensus would have moved an *already-correct* meniscus marker into bone. **AI vision cannot reliably pixel-place these markers to teaching-grade precision** — only apply a coordinate change when multiple signals tightly agree AND a human/radiologist visually confirms it. The admin **Adjust mode** (`MarkerAdjuster.tsx`, the "Adjust (admin)" tab on each workstation, admin-only) is the right tool for the rest.
-
-**Open punch-list for Adjust mode** (direction is reasonably agreed, exact pixel needs a human eye on the rendered slice):
-- ⚠️ Elbow Axial — **ulnar nerve** marker (`x:20,y:61`): genuinely ambiguous, the bright candidate structure nearby reads as vascular (a vein), not nerve. Needs tracking across the original series, not a single-slice guess.
-- Elbow Sagittal IR — coronoid process (`x:45,y:60`): likely sits anterior to the bony beak, nudge toward ~`(49,55)`.
-- Shoulder Coronal T2-FS — superior glenoid labrum (`x:53,y:57`): likely needs to rise toward the superior rim.
-- Shoulder Axial PD-FS — biceps groove (`x:44,y:40`): may be above the formed groove; consider a lower slice or reword the note.
-- Shoulder Axial PD-FS — coracoid process (`x:48,y:30`): minor nudge onto cortex.
-- Hip Coronal T2-FS — SI joint (`x:40,y:45`): minor nudge onto the joint cleft.
-- Minor/low-priority: hip coronal femoral-neck / sourcil / cartilage markers, small lateral nudges only.
-
-Confirmed fine as-is (do not change without new evidence): hip axial labrum/iliopsoas/sciatic nerve, hip sagittal abductor marker (only the tour note's "tendon footprint" wording vs. "muscle belly" is a judgment call, not an error).
-
----
-
-## Open items for Jeremy (informational — not yet actioned, no urgency)
-
-These came out of a broader improvement audit and a licensing review this session. None are blocking; listed here so Codex has context if Jeremy brings any of them up.
-
-- **PHI pixel-sweep of the teaching MRI slices** (recommended, not yet done): ~400+ "de-identified" PACS-screen-capture JPGs (`public/images/teaching/stacks/`) have no documented provenance/PHI QA record. A spot-check was clean but most slices are uninspected. Worth an OCR sweep + a one-page provenance record, independent of any App Store question — this app is public today.
-- **Persistent in-app "educational, not for diagnosis" disclaimer**: currently only on the pre-auth `LoginPage`, not in the authenticated app chrome (`FellowLayout`/`AppLayout`). Cheap to add, good liability hygiene for a medical teaching app.
-- **CC-BY image attribution completeness**: ~102 permissively-licensed images don't carry a source-URL/license-deed link in the UI (`MriStackViewer` already supports a `sourceUrl` field on ~4 images — just needs populating). CC BY 4.0 technically requires it.
-- **Remaining accessibility/faculty-analytics quick-wins** (not started): pace/time-to-completion analytics and distractor→module links for the admin dashboard (data already fetched, just not surfaced) — these were on Jeremy's original roadmap pick but got deprioritized when he pivoted to the App Store question, then the marker audit.
-- A larger prioritized product roadmap (pedagogy, content parity, workstation depth, admin analytics, a11y, engagement, trust) exists in this session's history if useful context — ask Jeremy or re-derive from the codebase; not persisted to a file to avoid rot.
-
----
-
-## Constraint (standing, from Jeremy)
-
-Stay scoped to this repo (`knee-mri-app`) only. Do not write to `~/.codex/`, sibling projects, or global git config. Both of us (Claude Code and Codex) work in this same repo across sessions — always start with `git status`/`git log` to reconcile before assuming the state you last left it in.
-
----
-
-## iOS reference material (dormant — do not act on unless Jeremy re-opens this)
-
-Everything below was accurate as of Codex's last iOS session and I did not change it. Kept for reference only.
-
-### Locked identifiers
-- Native bundle ID: `com.jeremyswisher.uclasportsmri`
-- Apple Team ID: `X578T4K65B`
-- Apple Services ID: `com.jeremyswisher.uclasportsmri.web`
-- Primary return URL: `https://ucla-knee-mri.firebaseapp.com/__/auth/handler`
-- Secondary auth handler: `https://ucla-knee-mri.web.app/__/auth/handler`
+- Custom domain: `https://jeremyswisherkneemri.com`
+- Firebase Hosting: `https://ucla-knee-mri.web.app`
 - Firebase project: `ucla-knee-mri`
-- Firebase authorized domains: `ucla-knee-mri.firebaseapp.com`, `ucla-knee-mri.web.app`
-- Xcode project: `ios/UCLASportsMRI.xcodeproj`, scheme `UCLASportsMRI`, version/build `1.0 (1)`, deployment target iOS 16.0
 
-### Last known gate status
-- `npm run evidence:ios`: 1/7 audited groups ready.
-- `npm run preflight:ios:report`: 5/28 submission gates verified, 23/28 missing.
-- `npm run preflight:ios`: passes. `npm run preflight:ios:submit`: fails (expected — real external Apple/ASC steps incomplete).
-- Screenshots complete and verified (no PHI, no browser chrome).
-- Blocking on: App Store distribution provisioning profile + ASC account access (export/signing), Apple Sign-In App ID + Services ID + Firebase provider config, TestFlight/real-device verification, App Store Connect app-record creation.
+The web/PWA is the active shipping surface. Native iOS submission remains paused; read the iOS section before touching `ios/` or any App Store evidence tooling.
 
-### Safety rules if this resumes
-- Never commit Apple private keys, `.p8` files, ASC API keys, issuer IDs, app-specific passwords, Firebase service-account paths, real learner emails/UIDs, or PHI.
-- Do not set an evidence boolean true in `ios/AppStoreSubmissionGate.json` unless the matching real external step is verified.
-- Do not claim submitted/approved/live until App Store Connect and the public listing prove it.
-- **Before resuming any of this, first resolve the two real blockers above (image licensing, UCLA authorization) — do not re-attempt export/submission while those are open.**
+## Start Here
+
+Before changing anything:
+
+```bash
+cd "/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app"
+git status --short --branch
+git log -5 --oneline --decorate
+npm run lint
+npm test
+npm run test:normal
+npm run build
+```
+
+Expected baseline at handoff:
+
+- `main` is synchronized with `origin/main`.
+- Full suite: 48 test files, 398 tests passing.
+- Normal MRI suite: 10 test files, 45 tests passing.
+- `npm run lint`: clean.
+- `npm run build`: clean.
+- `npm audit --omit=dev`: zero vulnerabilities.
+- `npm run qa:medical`: zero automated diagnostics.
+
+If any of those differ, reconcile the working tree and recent commits before assuming this document is still exact. Do not discard uncommitted user work.
+
+## Current Product State
+
+The application contains four active MRI courses:
+
+- Knee MRI
+- Shoulder MRI
+- Hip MRI
+- Elbow MRI
+
+Each course has a real-image interactive normal MRI workstation with:
+
+- Explore
+- Guided Tour
+- Knowledge Check (Identify and Locate)
+- Cross-Plane
+- Compare
+- Advanced
+- Image CAQ
+
+The app is optimized for fellows using a mobile home-screen PWA, while retaining a desktop workstation experience. It also includes course modules, search patterns, cases, pre/post assessments, progress, spaced review, reference material, certificates, and an admin dashboard.
+
+## Work Completed by Codex After the Previous Handoff
+
+### `8200592 Polish PWA workflows and strengthen MRI workstation QA`
+
+This was the main app-polish and QA release.
+
+#### Login and PWA
+
+- Reworked `LoginPage` for clearer mobile onboarding, larger touch targets, the production PWA icon, and return-destination messaging.
+- Google and Apple sign-in behavior remains routed through the existing popup/redirect safeguards.
+- Local preview and App Review demo paths remain available only under their existing guards.
+- The production PWA manifest, service worker, Apple touch icon, and 512 px icon were verified live.
+
+#### Admin dashboard
+
+- Expanded the admin layout to `max-w-7xl`.
+- Added a tracked-fellows panel for:
+  - Riley Coon
+  - Sonal Singh
+  - Lilian Toaspern (with a `Lillian` spelling alias)
+- Matching uses normalized display name plus email text; no learner UID or private email is hard-coded.
+- The panel shows sign-in match state, course progress, normal MRI progress, modules, cases, post-quiz score, inactivity, and the next recommended step.
+- Added normal-MRI progress to the learner table and expanded learner detail.
+- Important limit: local preview intentionally has fellow permissions, so the updated authenticated admin dashboard was compiled and tested but was not visually exercised with a real admin session during Codex QA. Perform that visual pass before making broad admin layout changes.
+
+#### Normal MRI interaction fixes
+
+- Fixed a real keyboard-accessibility bug in Cross-Plane free response.
+- Free response now supports arrow-key crosshair movement, Shift for fine movement, and Enter/Space to submit.
+- Ordinary mouse/touch behavior is unchanged.
+- Added tests for movement and coordinate clamping.
+- Improved mobile mode-strip positioning so direct links reveal the active mode.
+
+#### Review and content integrity
+
+- Workstation-derived spaced-review items are now explicitly course-scoped.
+- Added regression coverage for every workstation route, series, stack folder, slice file, marker range, unique ID, answer key, Cross-Plane bank, Advanced bank, and Image CAQ bank.
+- Added must-not-overcall content safeguards for high-risk teaching points.
+- Regenerated all medical-QA packets and the admin source-check queue.
+
+#### Medical-content refinements
+
+- Moved the hip coronal SI-joint marker from `(40,45)` to `(34,45)` so it sits on the joint cleft rather than too medially.
+- Refined Buford-complex teaching: do not repair an otherwise normal variant in isolation, but do not dismiss it because it can coexist with and is associated with SLAP pathology. The superior labrum and biceps anchor still require inspection.
+
+### `128a78f Fix desktop scrolling over MRI viewers`
+
+This fixed a user-reported production bug.
+
+Root cause: `MriStackViewer` unconditionally called `preventDefault()` for every wheel/trackpad event over the large image. On desktop, the image occupies much of the viewport, making the page feel completely scroll-locked.
+
+Current required behavior:
+
+- Ordinary vertical wheel/trackpad gestures scroll the page, even directly over the MRI image.
+- Horizontal trackpad gestures scrub slices.
+- Shift + mouse wheel scrubs slices.
+- Drag, arrow keys, slider, previous/next controls, and cine playback still work.
+- Small diagonal or jitter events must not accidentally change slices.
+
+Do not restore unconditional vertical-wheel slice capture. The behavior is isolated in:
+
+- `src/components/ui/MriStackViewer.tsx`
+- `src/components/ui/mri-stack-wheel.ts`
+- `src/components/ui/MriStackViewer.test.tsx`
+
+Two shoulder case captions were updated so their instructions match the new controls.
+
+## Browser QA Evidence
+
+Codex used the in-app browser with local preview authentication and real input events.
+
+### Whole app
+
+- 135 mobile routes were loaded across knee, shoulder, hip, elbow, account, support, privacy, accessibility, login, and protected-route behavior.
+- No broken visible images, error boundaries, page-not-found states, content-coming-soon fallbacks, or page-level horizontal overflow were found.
+- Search dialog body-lock cleanup and case-lightbox body-lock cleanup were explicitly verified.
+- Nine representative long desktop pages were wheel-scrolled successfully: dashboards, modules, search pattern, cases, reference, progress, and cross-course pages.
+
+### Normal MRI workstations
+
+- 58 mobile workstation states passed:
+  - all 14 series in Explore, Guided Tour, and Knowledge Check
+  - each course in Cross-Plane, Compare, Advanced, and Image CAQ
+- All 14 Identify knowledge checks rendered four options, accepted an answer, enabled Next, and advanced.
+- All 14 Locate checks accepted keyboard placement and advanced.
+- All 14 guided tours advanced to step 2 and back to step 1.
+- All four Cross-Plane multiple-choice banks advanced correctly.
+- All four Advanced banks and all four Image CAQ banks started, answered, showed feedback, and advanced.
+- All four Compare modes rendered two working MRI stacks and changed planes.
+- All 14 Explore stacks advanced by keyboard.
+- Cross-Plane free response passed keyboard submission in all four courses after the fix.
+
+### Scroll regression
+
+- Vertical wheel input directly over the viewer was tested in knee, shoulder, hip, and elbow. In all four, the page moved and the MRI slice stayed unchanged.
+- Horizontal trackpad input advanced the MRI slice without moving the page.
+- Mobile home-screen dimensions (`390x844`) had no horizontal overflow, retained viewer side gutters, and scrolled normally.
+- The same vertical and horizontal input behavior was verified on the deployed custom domain after Firebase release.
+
+## Medical QA: What Is Proven and What Is Not
+
+Generated summary: `medical-qa/summary.json`
+
+- Review items: 2,754
+- High-risk items: 1,359
+- Source-check items: 1,584
+- Automated diagnostics: 0
+- Diagnostic errors: 0
+- Diagnostic warnings: 0
+
+Zero diagnostics means the automated structural/content-integrity checks are clean. It does not prove every medical statement or marker is clinically perfect.
+
+The supplied evidence checklist was reviewed at:
+
+`/Users/jeremyswisher/Downloads/Evidence-Based Normal MRI Teaching Checklist for Sports Medicine Fellows.pdf`
+
+Current high-yield safeguards explicitly preserved by regression tests include:
+
+- Knee: meniscal extrusion is a root-tear clue, not a diagnosis; TT-TG is not a standalone surgical rule; superficial and deep MCL are both taught.
+- Shoulder: acromial morphology is not a standalone impingement diagnosis; Buford-complex nuance is preserved.
+- Hip: cam/pincer morphology is not symptomatic FAI by itself; GTPS is not reduced to isolated bursal fluid.
+- Elbow: capitellar OCD requires coronal and sagittal correlation; the UCL T-sign extends beyond the cartilage edge; isolated ulnar-nerve T2 signal is insufficient.
+
+Do not tell Jeremy that the app is medically error-free or that automated QA has clinically validated it. Final teaching-grade approval still needs physician/MSK-radiology review with source notes.
+
+## Marker Audit Status
+
+Structural validation now guarantees that every normal-workstation marker:
+
+- uses finite 0-100 percent coordinates
+- references an existing series
+- references a valid slice
+- points to an existing image file
+
+Codex manually rechecked the prior marker punch list on rendered source images:
+
+- Hip coronal SI joint: confirmed too medial and fixed to `(34,45)`.
+- Elbow sagittal coronoid: visually plausible on the bony beak; left unchanged.
+- Shoulder coronal glenoid/labrum: visually plausible for the labeled structure; left unchanged.
+- Shoulder axial bicipital groove: visually plausible; left unchanged.
+- Shoulder axial coracoid: visually plausible on the coracoid cortex; left unchanged.
+- Hip coronal sourcil, cartilage, femoral neck, abductors, and trochanter: visually plausible; left unchanged.
+- Elbow axial ulnar nerve at `(20,61)`: still the most ambiguous marker. It is not clearly wrong, but exact teaching-grade confirmation requires tracking the nerve through adjacent slices with a human MSK reviewer.
+
+Standing rule: do not move a marker from a single AI image read. Require consistent cross-slice evidence and human/radiologist confirmation. The admin Adjust mode remains the safest coordinate-editing surface.
+
+## Recommended Next Work
+
+Priority order:
+
+1. **Authenticated admin visual QA**
+   - Log in with a real admin account.
+   - Verify the Riley/Sonal/Lilian matching cards against the real Firestore profiles.
+   - Check desktop and mobile wrapping, long emails/names, missing accounts, zero-progress accounts, inactivity, and Open row behavior.
+   - Do not expose learner email/UID data in screenshots or commits.
+
+2. **Faculty medical sign-off workflow**
+   - Start with the ulnar-nerve marker and the highest-risk rows in `medical-qa/review-items.csv`.
+   - Record reviewer, date, source notes, and decision rather than making unsourced bulk edits.
+   - Regenerate with `npm run qa:medical` after source changes.
+
+3. **Real-device authentication acceptance test**
+   - Test Google and Apple sign-in on Safari, Chrome desktop, and the installed iOS PWA.
+   - Confirm the exact `returnTo` page survives login and the session remains available after closing/reopening the PWA.
+   - Do not change auth strategy solely from localhost behavior.
+
+4. **PHI/provenance audit of teaching stacks**
+   - Run an OCR and visual sweep of `public/images/teaching/stacks/`.
+   - Create a durable provenance/PHI-review record for each stack.
+
+5. **Trust and attribution cleanup**
+   - Add complete source/license links for permissively licensed teaching images.
+   - Consider a persistent authenticated educational-use disclaimer with Jeremy's approval.
+
+6. **Admin analytics after the above**
+   - Pace/time-to-completion.
+   - Distractor-to-module remediation links.
+   - Keep analytics actionable for three fellows rather than building a generic enterprise dashboard.
+
+## Critical Behavior Contracts
+
+- Pre-assessment remains a clean baseline: no answer-key feedback and no spaced-review seeding.
+- Workstation review IDs and entries remain course-scoped.
+- Every normal MRI course requires passing each plane knowledge check at 70% for normal-MRI completion.
+- Knee cases remain optional for certificate completion; non-knee course requirements follow existing course definitions.
+- `MriStackViewer` must not trap ordinary vertical desktop scrolling.
+- Search and lightbox dialogs must restore body scrolling on close/unmount.
+- Do not weaken local-preview/App Review demo guards or expose those paths as normal production login options.
+- Do not claim all medical markers are exact without faculty confirmation.
+- Do not modify or delete user changes encountered in the working tree.
+
+## Deployment Workflow
+
+For app changes:
+
+```bash
+npm run lint
+npm test
+npm run test:normal
+npm run build
+npm audit --omit=dev
+git diff --check
+git status --short
+```
+
+For medical content changes, also run:
+
+```bash
+npm run qa:medical
+```
+
+Then review generated diffs before committing. Deploy only a passing build:
+
+```bash
+firebase deploy --only hosting
+```
+
+After deploy, verify both production domains, the current hashed app bundle, `manifest.webmanifest`, `sw.js`, the 512 px icon, and at least one real MRI stack asset. For interaction changes, use the deployed App Review demo to verify the actual production bundle without using a learner account.
+
+The service worker uses network-first navigation and content-hashed assets. A currently open tab still needs one refresh after deployment; an installed PWA may need to be closed and reopened once.
+
+## iOS App Store Submission Is Paused
+
+Do not resume native iOS submission work unless Jeremy explicitly reopens it.
+
+The pause is intentional and based on unresolved risks:
+
+1. Several bundled teaching images use CC BY-NC / BY-NC-SA licenses. App Store distribution under a personal account may conflict with those noncommercial terms.
+2. The app uses UCLA branding, certificates, and copyright language while the Apple developer account and bundle ownership are personal. UCLA Trademarks & Licensing and department authorization, or a UCLA-owned Apple organization account, should be resolved before submission.
+3. App Store distribution signing/provisioning and App Store Connect evidence remain incomplete.
+
+Last known native submission gate state remains 5/28 verified. The native project and evidence scripts are retained but dormant:
+
+- Bundle ID: `com.jeremyswisher.uclasportsmri`
+- Team ID: `X578T4K65B`
+- Xcode project: `ios/UCLASportsMRI.xcodeproj`
+- Scheme: `UCLASportsMRI`
+
+Never commit Apple private keys, `.p8` files, API keys, issuer IDs, app-specific passwords, Firebase service-account paths, real learner emails/UIDs, or PHI. Do not mark an external evidence gate complete unless it was actually verified.
+
+## Scope and Collaboration Rules
+
+- Stay inside `knee-mri-app` unless Jeremy explicitly redirects the work.
+- Claude and Codex share this repository across sessions. Always reconcile `git status` and `git log` first.
+- Work with existing changes; do not reset or revert edits you did not create.
+- Prefer current project patterns over new frameworks or broad refactors.
+- Keep user-facing web/PWA quality ahead of dormant certificate or iOS work unless Jeremy explicitly changes the priority.
+
+## One-Paragraph Executive Summary
+
+The web/PWA is live, clean, and materially more polished. All four interactive normal MRI workstations have passed exhaustive series/mode interaction sweeps; structural marker, slice, answer-key, and bank integrity is covered by regression tests; Cross-Plane free response is keyboard accessible; the named-fellow admin tracking panel is implemented; login and mobile mode navigation are improved; and the desktop MRI viewer no longer traps vertical scrolling. The current release is `128a78f`, with 398 tests passing and zero automated medical-QA diagnostics. The next highest-value work is a real-admin visual/data pass, faculty source-and-marker sign-off, and real-device authentication acceptance testing. Native iOS submission remains intentionally paused.
