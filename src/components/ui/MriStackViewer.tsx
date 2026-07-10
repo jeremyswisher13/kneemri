@@ -336,11 +336,13 @@ export default function MriStackViewer({
 
       {/* Image viewport.
           On phones the viewport is touch-locked (touch-action: none) so drags
-          scrub slices instead of scrolling. To keep that from trapping page
-          scroll, small screens cap the height (max-h-[70svh]) and inset the box
-          with auto side margins — a swipe in those gutters lands on the card
-          (which has no touch-action) and scrolls the page normally. sm: restores
-          the full-width / max-h-[600px] desktop layout unchanged. */}
+          scrub slices (vertical) instead of scrolling. To keep that from trapping
+          page scroll, small screens cap the height (max-h-[70svh]) and inset the
+          box with generous auto side gutters (~2.5rem each) — a swipe starting in
+          those gutters lands on the card (no touch-action) and scrolls the page
+          normally, so the fellow can always scroll past the viewer with a thumb-
+          width margin on either side. sm: restores the full-width / max-h-[600px]
+          desktop layout unchanged. */}
       {/* Screen-reader live announcement of the current slice position. Suppressed
           during cine playback / active scrub so rapid changes don't flood the
           screen reader — only discrete, settled steps are announced. */}
@@ -362,7 +364,7 @@ export default function MriStackViewer({
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-3rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none sm:mx-0 sm:max-h-[600px] sm:w-full ${
+        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-5rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none sm:mx-0 sm:max-h-[600px] sm:w-full ${
           zoomed ? "cursor-grab" : "cursor-ns-resize"
         }`}
         style={{ touchAction: "none" }}
