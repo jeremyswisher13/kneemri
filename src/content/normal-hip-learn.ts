@@ -181,8 +181,10 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
       },
       {
         id: "hc-q8",
+        // SI-joint marker kept in sync with the tour step (Codex moved the tour
+        // marker to (34,45) but left this quiz at the old (40,45)).
         sliceIndex: 15,
-        marker: { x: 40, y: 45 },
+        marker: { x: 34, y: 45 },
         prompt: "The paired articulations marked between the sacrum and the iliac bones on this posterior coronal slice are the:",
         options: ["Hip (femoroacetabular) joints", "Sacroiliac joints", "Pubic symphysis", "Lumbosacral facet joints"],
         answer: 1,
