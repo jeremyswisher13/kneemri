@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import {
@@ -47,7 +47,13 @@ function sourceLabelClass(point: { x: number; y: number }) {
  *    candidate region the click lands nearest to).
  * Trains the mental 3-D model that ties the planes together.
  */
-export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] }) {
+export default function CrossPlaneDrill({
+  items,
+  onContextChange,
+}: {
+  items: CorrelationItem[];
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
+}) {
   const [coarse] = useState(isCoarsePointer);
   const [diff, setDiff] = useState<Diff>("mc");
   const [idx, setIdx] = useState(0);
@@ -65,6 +71,15 @@ export default function CrossPlaneDrill({ items }: { items: CorrelationItem[] })
   const toBoxRef = useRef<HTMLDivElement>(null);
 
   const item = items[idx];
+
+  useEffect(() => {
+    if (!item) return;
+    onContextChange?.({
+      sliceIndex: item.from.sliceIndex,
+      landmark: `${item.from.label} (${item.from.plane} to ${item.to.plane})`,
+      itemId: item.id,
+    });
+  }, [item, onContextChange]);
 
   // New shuffle + clear the current answer whenever we move to a new item.
   // Adjusted during render (keyed on idx) so the new item never renders for a

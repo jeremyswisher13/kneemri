@@ -22,11 +22,15 @@ function Pane({
   selectedId,
   onSelect,
   attribution,
+  paneLabel,
+  onContextChange,
 }: {
   planes: ComparePlane[];
   selectedId: string;
   onSelect: (id: string) => void;
   attribution: string;
+  paneLabel: string;
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
 }) {
   const plane = planes.find((p) => p.id === selectedId) ?? planes[0];
   // Memoize per plane so the viewer's referential-reset guard only fires on a
@@ -51,6 +55,13 @@ function Pane({
         plane={plane.plane}
         startIndex={plane.startIndex}
         attribution={attribution}
+        onSliceChange={(sliceIndex) =>
+          onContextChange?.({
+            sliceIndex,
+            landmark: `${paneLabel}: ${plane.label}`,
+            itemId: plane.id,
+          })
+        }
       />
     </div>
   );
@@ -65,9 +76,11 @@ function Pane({
 export default function PlaneCompare({
   planes,
   attribution,
+  onContextChange,
 }: {
   planes: ComparePlane[];
   attribution: string;
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
 }) {
   const [aId, setAId] = useState(planes[0]?.id ?? "");
   const [bId, setBId] = useState(planes[1]?.id ?? planes[0]?.id ?? "");
@@ -81,8 +94,8 @@ export default function PlaneCompare({
         cross-plane sense of where things live. Each stack scrolls independently.
       </p>
       <div className="grid gap-5 lg:grid-cols-2">
-        <Pane planes={planes} selectedId={aId} onSelect={setAId} attribution={attribution} />
-        <Pane planes={planes} selectedId={bId} onSelect={setBId} attribution={attribution} />
+        <Pane planes={planes} selectedId={aId} onSelect={setAId} attribution={attribution} paneLabel="Compare A" onContextChange={onContextChange} />
+        <Pane planes={planes} selectedId={bId} onSelect={setBId} attribution={attribution} paneLabel="Compare B" onContextChange={onContextChange} />
       </div>
     </div>
   );

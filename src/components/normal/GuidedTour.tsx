@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AnnotatedSlice from "./AnnotatedSlice";
 import Button from "@/components/ui/Button";
@@ -16,6 +16,7 @@ export default function GuidedTour({
   caseImageById = {},
   caseBasePath = "/cases",
   focusTarget,
+  onContextChange,
 }: {
   dir: string;
   steps: TourStep[];
@@ -33,6 +34,8 @@ export default function GuidedTour({
   caseBasePath?: string;
   /** Missed knowledge-check item to open directly in the tour. */
   focusTarget?: TourFocusTarget | null;
+  /** Supplies the active authored landmark to the structured issue reporter. */
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
 }) {
   const [i, setI] = useState(0);
   const [compareOpen, setCompareOpen] = useState(false);
@@ -64,8 +67,17 @@ export default function GuidedTour({
     }
   }
 
-  if (!steps.length) return null;
-  const step = steps[Math.min(i, steps.length - 1)];
+  const step = steps.length ? steps[Math.min(i, steps.length - 1)] : null;
+  useEffect(() => {
+    if (!step) return;
+    onContextChange?.({
+      sliceIndex: step.sliceIndex,
+      landmark: step.title,
+      itemId: step.markers.map((marker) => marker.label).filter(Boolean).join(" | ") || step.title,
+    });
+  }, [onContextChange, step]);
+
+  if (!step) return null;
   const atEnd = i >= steps.length - 1;
   const focusedStepIndex = focusTarget ? findFocusedTourStepIndex(steps, focusTarget) : -1;
   const isShowingFocusedStep = Boolean(focusTarget) && i === focusedStepIndex;

@@ -29,6 +29,7 @@ export interface MriStackViewerProps {
   sourceUrl?: string;
   startIndex?: number;
   initialCineMs?: number;
+  onSliceChange?: (sliceIndex: number) => void;
 }
 
 const MAX_ZOOM = 4;
@@ -45,6 +46,7 @@ export default function MriStackViewer({
   sourceUrl,
   startIndex = 0,
   initialCineMs = 150,
+  onSliceChange,
 }: MriStackViewerProps) {
   const total = slices.length;
   const [index, setIndex] = useState(() =>
@@ -92,6 +94,15 @@ export default function MriStackViewer({
 
   const maxIndex = Math.max(0, total - 1);
   const safeIndex = Math.min(index, maxIndex);
+  const onSliceChangeRef = useRef(onSliceChange);
+
+  useEffect(() => {
+    onSliceChangeRef.current = onSliceChange;
+  }, [onSliceChange]);
+
+  useEffect(() => {
+    onSliceChangeRef.current?.(safeIndex);
+  }, [safeIndex, slices]);
 
   // Reset loaded/zoom/pan AND jump to the new stack's own startIndex whenever the
   // stack changes — adjusted during render (not in an effect) so a new plane never
@@ -299,6 +310,13 @@ export default function MriStackViewer({
     [total],
   );
 
+  // A stable ref/onLoad callback prevents parent context updates from
+  // detaching and reattaching the image ref, which would otherwise schedule a
+  // state update during every commit in two-pane Compare mode.
+  const markVisibleLoaded = useCallback(() => {
+    setLoadedSet((prev) => (prev.has(safeIndex) ? prev : new Set(prev).add(safeIndex)));
+  }, [safeIndex]);
+
   if (total === 0) {
     return (
       <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500">
@@ -309,9 +327,6 @@ export default function MriStackViewer({
 
   const loaded = loadedSet.has(safeIndex);
 
-  // Mark the on-screen slice loaded (idempotent, no-op if already set).
-  const markVisibleLoaded = () =>
-    setLoadedSet((prev) => (prev.has(safeIndex) ? prev : new Set(prev).add(safeIndex)));
   const showPlay = total > 1;
   const zoomed = zoom > 1.02;
 
@@ -351,6 +366,9 @@ export default function MriStackViewer({
       </span>
       <div
         ref={viewportRef}
+        data-testid="mri-stack-viewer"
+        data-slice-index={safeIndex}
+        data-slice-count={total}
         role="group"
         aria-roledescription="MRI stack viewer"
         aria-label={`${[title, plane].filter(Boolean).join(" ") || "Normal"} MRI — ${total} ${

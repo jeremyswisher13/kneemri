@@ -3,7 +3,9 @@ import {
   APP_REVIEW_DEMO_AUTH_KEY,
   APP_REVIEW_DEMO_UID,
   LOCAL_PREVIEW_AUTH_KEY,
+  LOCAL_PREVIEW_ROLE_KEY,
   LOCAL_PREVIEW_UID,
+  activePreviewRole,
   canEnableAppReviewDemo,
   createAppReviewDemoUser,
   createLocalPreviewUser,
@@ -80,6 +82,27 @@ describe("local preview auth", () => {
     expect(user.email).toBe("local-preview@localhost");
     expect(user.displayName).toBe("Local Preview");
     expect(user.isAnonymous).toBe(false);
+  });
+
+  it("keeps the local admin role gated behind an active local preview session", () => {
+    const previousWindow = globalThis.window;
+    const previousSessionStorage = globalThis.sessionStorage;
+    const storage = memoryStorage();
+    storage.setItem(LOCAL_PREVIEW_AUTH_KEY, "1");
+    storage.setItem(LOCAL_PREVIEW_ROLE_KEY, "admin");
+    Object.defineProperty(globalThis, "window", {
+      configurable: true,
+      value: { location: { href: "http://127.0.0.1:4174/" } },
+    });
+    Object.defineProperty(globalThis, "sessionStorage", { configurable: true, value: storage });
+
+    expect(activePreviewRole()).toBe("admin");
+
+    Object.defineProperty(globalThis, "window", { configurable: true, value: previousWindow });
+    Object.defineProperty(globalThis, "sessionStorage", {
+      configurable: true,
+      value: previousSessionStorage,
+    });
   });
 
   it("creates a stable App Review demo user", () => {

@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 // Absolute filesystem path resolver. The html2canvas alias is hit by the
@@ -10,9 +11,14 @@ import { fileURLToPath } from 'node:url'
 // fails ("Could not load ../../../../src/lib/html2canvas-stub.ts"), so the
 // stub target must be an absolute path.
 const r = (p: string) => fileURLToPath(new URL(p, import.meta.url))
+const packageVersion = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version as string
+const buildId = process.env.VITE_APP_BUILD || new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15)
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    __APP_VERSION__: JSON.stringify(`web-${packageVersion}+${buildId}`),
+  },
   resolve: {
     alias: {
       '@': '/src',

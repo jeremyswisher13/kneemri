@@ -46,6 +46,78 @@ service cloud.firestore {
         && isStringOrNull(request.resource.data.displayName);
     }
 
+    function isBoundedStringOrNull(value, maxLength) {
+      return value == null || (value is string && value.size() <= maxLength);
+    }
+
+    function isValidIssueReport() {
+      return request.resource.data.keys().hasOnly([
+          'schemaVersion',
+          'category',
+          'courseId',
+          'route',
+          'pageKind',
+          'mode',
+          'seriesId',
+          'seriesLabel',
+          'sliceNumber',
+          'landmark',
+          'itemId',
+          'appVersion',
+          'deviceClass',
+          'displayMode',
+          'viewport',
+          'online',
+          'status',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.schemaVersion == 1
+        && request.resource.data.category in [
+          'marker-location',
+          'medical-content',
+          'interaction',
+          'display',
+          'progress-sync'
+        ]
+        && request.resource.data.courseId in [
+          'knee-mri',
+          'shoulder-mri',
+          'hip-mri',
+          'elbow-mri'
+        ]
+        && request.resource.data.route is string
+        && request.resource.data.route.size() <= 240
+        && (
+          request.resource.data.route == '/'
+          || request.resource.data.route.matches('^/[^/].*')
+        )
+        && request.resource.data.pageKind in ['course', 'normal-mri']
+        && isBoundedStringOrNull(request.resource.data.mode, 40)
+        && isBoundedStringOrNull(request.resource.data.seriesId, 80)
+        && isBoundedStringOrNull(request.resource.data.seriesLabel, 100)
+        && (
+          request.resource.data.sliceNumber == null
+          || (
+            request.resource.data.sliceNumber is int
+            && request.resource.data.sliceNumber > 0
+            && request.resource.data.sliceNumber <= 10000
+          )
+        )
+        && isBoundedStringOrNull(request.resource.data.landmark, 160)
+        && isBoundedStringOrNull(request.resource.data.itemId, 120)
+        && request.resource.data.appVersion is string
+        && request.resource.data.appVersion.size() <= 80
+        && request.resource.data.deviceClass in ['ios', 'android', 'desktop']
+        && request.resource.data.displayMode in ['standalone', 'browser']
+        && request.resource.data.viewport is string
+        && request.resource.data.viewport.size() <= 30
+        && request.resource.data.online is bool
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+    }
+
     match /users/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
       // On create, a client may set role only to a non-privileged value (or none).
@@ -122,6 +194,14 @@ service cloud.firestore {
 
     match /medicalQaReviews/{reviewId} {
       allow read, write: if isAdmin();
+    }
+
+    // Learners can submit only a tightly shape-validated, structured report.
+    // There is intentionally no reporter id, name, email, free-text field, or
+    // patient-data field. Reports are visible and mutable only to admins.
+    match /issueReports/{reportId} {
+      allow create: if request.auth != null && isValidIssueReport();
+      allow read, update, delete: if isAdmin();
     }
 
     match /auditLog/{logId} {

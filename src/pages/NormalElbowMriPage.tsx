@@ -28,6 +28,7 @@ import { normalElbowSeries as SERIES } from "@/content/normal-workstation-series
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { useNormalMriResume } from "@/hooks/useNormalMriResume";
+import { useNormalIssueContext } from "@/hooks/useNormalIssueContext";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -119,6 +120,13 @@ export default function NormalElbowMriPage() {
     seriesId: series.id,
     seriesLabel: series.label,
   });
+  const issueContext = useNormalIssueContext({
+    mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+    startIndex: series.startIndex ?? 0,
+  });
 
   const slices = useMemo(
     () =>
@@ -165,6 +173,7 @@ export default function NormalElbowMriPage() {
               startIndex={series.startIndex}
               caption="Normal elbow reference stack for comparing ligaments, tendons, cartilage, nerves, and marrow across slices."
               attribution="De-identified normal elbow MRI · UCLA Sports Medicine teaching collection"
+              onSliceChange={issueContext.onSliceChange}
             />
           </div>
           <div>
@@ -178,6 +187,7 @@ export default function NormalElbowMriPage() {
         <PlaneCompare
           planes={SERIES}
           attribution="De-identified normal elbow MRI · UCLA Sports Medicine teaching collection"
+          onContextChange={issueContext.onContextChange}
         />
       )}
 
@@ -195,6 +205,7 @@ export default function NormalElbowMriPage() {
               caseImageById={caseTeachingImageById}
               caseBasePath={ELBOW_CASE_BASE}
               focusTarget={tourTarget}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />
@@ -215,6 +226,7 @@ export default function NormalElbowMriPage() {
               onComplete={(s, t) => handleCheckComplete(`elbow-${series.id}`, s, t)}
               onMiss={handleMiss}
               onShowInLearn={handleShowInLearn}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="practice and mastery check" />
@@ -246,7 +258,7 @@ export default function NormalElbowMriPage() {
               },
             ]}
           />
-          <CrossPlaneDrill items={elbowCrossPlane} />
+          <CrossPlaneDrill items={elbowCrossPlane} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 
@@ -268,7 +280,7 @@ export default function NormalElbowMriPage() {
             Board-style questions anchored to the real MRI — review the image stack, then commit to your answer.{" "}
             <span className="text-gray-500">Misses return in your spaced review.</span>
           </p>
-          <ImageCaq questions={elbowImageCaq} onMiss={handleMiss} />
+          <ImageCaq questions={elbowImageCaq} onMiss={handleMiss} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 

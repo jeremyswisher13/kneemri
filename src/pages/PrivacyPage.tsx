@@ -6,7 +6,7 @@ export default function PrivacyPage() {
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
       <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Privacy</p>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">UCLA Sports MRI Privacy Policy</h1>
-      <p className="mt-2 text-sm text-gray-500">Last updated: July 1, 2026</p>
+      <p className="mt-2 text-sm text-gray-500">Last updated: July 14, 2026</p>
 
       <div className="mt-6 space-y-5">
         <Card>
@@ -25,8 +25,18 @@ export default function PrivacyPage() {
             <li>Account information from sign-in, such as name, email address, profile photo, and user ID.</li>
             <li>Learning activity, such as course role, module progress, quiz attempts, case attempts, normal MRI plane completion, and spaced-review cards.</li>
             <li>Administrative review activity for course directors, such as medical QA review status and audit events.</li>
+            <li>Structured issue reports, such as issue category, course screen, MRI mode/series/slice, app version, general device class, viewport size, and online status.</li>
             <li>Technical data needed to operate the app, secure accounts, and troubleshoot access issues.</li>
           </ul>
+        </Card>
+
+        <Card>
+          <h2 className="text-lg font-semibold text-gray-900">Issue-report privacy</h2>
+          <p className="mt-2 text-sm leading-6 text-gray-600">
+            The in-app Report Issue tool does not collect reporter name, email, free text, raw user-agent
+            strings, or patient information. It records only a fixed issue category and the authored app
+            state needed to reproduce the problem. Issue reports are visible only to course administrators.
+          </p>
         </Card>
 
         <Card>

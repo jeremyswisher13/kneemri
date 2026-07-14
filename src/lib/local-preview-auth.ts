@@ -1,6 +1,7 @@
 import type { User } from "firebase/auth";
 
 export const LOCAL_PREVIEW_AUTH_KEY = "localPreviewAuth";
+export const LOCAL_PREVIEW_ROLE_KEY = "localPreviewRole";
 export const LOCAL_PREVIEW_UID = "local-preview-user";
 export const APP_REVIEW_DEMO_AUTH_KEY = "appReviewDemoAuth";
 export const APP_REVIEW_DEMO_UID = "app-review-demo-user";
@@ -84,6 +85,16 @@ export function isAppReviewDemoSession(): boolean {
 
 export function isPreviewAuthSession(): boolean {
   return isLocalPreviewSession() || isAppReviewDemoSession();
+}
+
+export function activePreviewRole(): "admin" | "fellow" | "resident" {
+  if (!isLocalPreviewSession()) return "fellow";
+  try {
+    const stored = sessionStorage.getItem(LOCAL_PREVIEW_ROLE_KEY);
+    return stored === "admin" || stored === "resident" ? stored : "fellow";
+  } catch {
+    return "fellow";
+  }
 }
 
 function createPreviewUser(uid: string, email: string, displayName: string, providerId: string): User {

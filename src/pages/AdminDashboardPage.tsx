@@ -33,6 +33,7 @@ import TestQualityPanel from "@/components/admin/TestQualityPanel";
 import ResearchSummaryPanel from "@/components/admin/ResearchSummaryPanel";
 import EngagementPanel from "@/components/admin/EngagementPanel";
 import MedicalQaReadinessPanel from "@/components/admin/MedicalQaReadinessPanel";
+import IssueReportsPanel from "@/components/admin/IssueReportsPanel";
 
 /* ───────── Helpers ───────── */
 
@@ -519,12 +520,13 @@ function buildTrackedFellowRows(
 
 /* ───────── MAIN COMPONENT ───────── */
 
-type DashboardTab = "overview" | "insights" | "learners";
+type DashboardTab = "overview" | "insights" | "learners" | "issues";
 
 const TABS: { id: DashboardTab; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "insights", label: "Insights" },
   { id: "learners", label: "Learners" },
+  { id: "issues", label: "Issue Reports" },
 ];
 
 export default function AdminDashboardPage() {
@@ -844,10 +846,12 @@ export default function AdminDashboardPage() {
             </button>
           );
         })}
-        {/* Role filter is global: it shapes every tab's stats and panels, so it
-            must stay visible no matter which tab is active. */}
-        <span className="ml-auto px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Learners</span>
-        {(["all", "fellow", "resident"] as const).map((filter) => {
+        {/* Role filters shape learner analytics, but do not apply to the
+            course-scoped issue queue. */}
+        {activeTab !== "issues" && (
+          <span className="ml-auto px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Learners</span>
+        )}
+        {activeTab !== "issues" && (["all", "fellow", "resident"] as const).map((filter) => {
           const count = filter === "all" ? fellows.length : filter === "fellow" ? fellowCount : residentCount;
           const label = filter === "all" ? "All" : filter === "fellow" ? "Fellows" : "Residents";
           const isActive = roleFilter === filter;
@@ -1265,6 +1269,8 @@ export default function AdminDashboardPage() {
           </Section>
         </>
       )}
+
+      {activeTab === "issues" && <IssueReportsPanel course={selectedCourse} />}
     </div>
   );
 }

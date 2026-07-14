@@ -33,6 +33,7 @@ export default function KnowledgeCheck({
   onComplete,
   onMiss,
   onShowInLearn,
+  onContextChange,
 }: {
   dir: string;
   items: QuizItem[];
@@ -42,6 +43,7 @@ export default function KnowledgeCheck({
   onComplete?: (score: number, total: number) => void;
   onMiss?: (itemId: string) => void;
   onShowInLearn?: (args: ShowInLearnArgs) => void;
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
 }) {
   const [mode, setMode] = useState<KnowledgeCheckMode>("identify");
   const [round, setRound] = useState(0);
@@ -72,6 +74,17 @@ export default function KnowledgeCheck({
     void round;
     return buildKnowledgeRound(labeledItems, mode);
   }, [labeledItems, mode, round]);
+  const activeQuestion = qs[idx] ?? null;
+
+  useEffect(() => {
+    if (!activeQuestion) return;
+    const answerText = activeQuestion.options[activeQuestion.answer] ?? "MRI landmark";
+    onContextChange?.({
+      sliceIndex: activeQuestion.sliceIndex,
+      landmark: activeQuestion.locateLabel ?? answerText,
+      itemId: activeQuestion.id,
+    });
+  }, [activeQuestion, onContextChange]);
 
   useEffect(() => {
     if (done && shouldRecordPlaneResult(mode) && qs.length > 0) {
@@ -435,6 +448,9 @@ function LocatableSlice({
 
   return (
     <div
+      data-testid="locatable-mri"
+      data-target-x={target.x}
+      data-target-y={target.y}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={answered ? -1 : 0}

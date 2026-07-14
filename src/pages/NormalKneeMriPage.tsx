@@ -28,6 +28,7 @@ import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { useNormalMriResume } from "@/hooks/useNormalMriResume";
+import { useNormalIssueContext } from "@/hooks/useNormalIssueContext";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -89,6 +90,13 @@ export default function NormalKneeMriPage() {
     modeLabel,
     seriesId: series.id,
     seriesLabel: series.label,
+  });
+  const issueContext = useNormalIssueContext({
+    mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+    startIndex: series.startIndex ?? 0,
   });
 
   // Passing a plane's blinded Mastery Check (70%+) records it toward completing the
@@ -172,6 +180,7 @@ export default function NormalKneeMriPage() {
               startIndex={series.startIndex}
               caption="Normal knee reference stack for comparing marrow, cartilage, menisci, ligaments, and recesses across slices."
               attribution="De-identified normal knee MRI · UCLA Sports Medicine teaching collection"
+              onSliceChange={issueContext.onSliceChange}
             />
           </div>
           <div>
@@ -186,6 +195,7 @@ export default function NormalKneeMriPage() {
         <PlaneCompare
           planes={SERIES}
           attribution="De-identified normal knee MRI · UCLA Sports Medicine teaching collection"
+          onContextChange={issueContext.onContextChange}
         />
       )}
 
@@ -203,6 +213,7 @@ export default function NormalKneeMriPage() {
               caseImageById={caseTeachingImageById}
               caseBasePath={KNEE_CASE_BASE}
               focusTarget={tourTarget}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />
@@ -227,6 +238,7 @@ export default function NormalKneeMriPage() {
                 onComplete={(s, t) => handleCheckComplete(series.id, s, t)}
                 onMiss={handleMiss}
                 onShowInLearn={handleShowInLearn}
+                onContextChange={issueContext.onContextChange}
               />
             </>
           ) : (
@@ -259,7 +271,7 @@ export default function NormalKneeMriPage() {
               },
             ]}
           />
-          <CrossPlaneDrill items={crossPlane} />
+          <CrossPlaneDrill items={crossPlane} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 
@@ -281,7 +293,7 @@ export default function NormalKneeMriPage() {
             Board-style questions anchored to the real MRI — review the image stack, then commit to your answer.{" "}
             <span className="text-gray-500">Misses return in your spaced review.</span>
           </p>
-          <ImageCaq questions={kneeImageCaq} onMiss={handleMiss} />
+          <ImageCaq questions={kneeImageCaq} onMiss={handleMiss} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 

@@ -449,6 +449,7 @@ export async function getUserProgress(
 
 // --- Admin ---
 export async function getAllFellows(course: CourseDefinition = defaultCourse) {
+  if (isPreviewAuthSession()) return [];
   // Fetch both fellows and residents (exclude admins with no learner role).
   // Progress is computed for the supplied course so the admin dashboard can
   // switch between cohorts.

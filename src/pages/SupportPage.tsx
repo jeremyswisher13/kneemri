@@ -25,8 +25,9 @@ export default function SupportPage() {
           <h2 className="text-lg font-semibold text-gray-900">Content concerns</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">
             If an MRI marker, quiz explanation, case, or teaching statement seems unclear or medically
-            inaccurate, send the course, page, series/plane, and question or marker title to the course
-            director for review.
+            inaccurate, use Report Issue in the course toolbar. The app securely captures the course,
+            page, series/plane, slice, and active authored landmark without asking for free text or patient
+            information.
           </p>
         </Card>
 

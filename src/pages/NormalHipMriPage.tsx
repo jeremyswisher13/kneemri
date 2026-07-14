@@ -28,6 +28,7 @@ import { normalHipSeries as SERIES } from "@/content/normal-workstation-series";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { useNormalMriResume } from "@/hooks/useNormalMriResume";
+import { useNormalIssueContext } from "@/hooks/useNormalIssueContext";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -119,6 +120,13 @@ export default function NormalHipMriPage() {
     seriesId: series.id,
     seriesLabel: series.label,
   });
+  const issueContext = useNormalIssueContext({
+    mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+    startIndex: series.startIndex ?? 0,
+  });
 
   const slices = useMemo(
     () =>
@@ -165,6 +173,7 @@ export default function NormalHipMriPage() {
               startIndex={series.startIndex}
               caption="Normal hip reference stack for comparing the femoral head, acetabular rim, labrum, tendons, and marrow across slices."
               attribution="De-identified normal hip MRI · UCLA Sports Medicine teaching collection"
+              onSliceChange={issueContext.onSliceChange}
             />
           </div>
           <div>
@@ -179,6 +188,7 @@ export default function NormalHipMriPage() {
         <PlaneCompare
           planes={SERIES}
           attribution="De-identified normal hip MRI · UCLA Sports Medicine teaching collection"
+          onContextChange={issueContext.onContextChange}
         />
       )}
 
@@ -196,6 +206,7 @@ export default function NormalHipMriPage() {
               caseImageById={caseTeachingImageById}
               caseBasePath={HIP_CASE_BASE}
               focusTarget={tourTarget}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />
@@ -216,6 +227,7 @@ export default function NormalHipMriPage() {
               onComplete={(s, t) => handleCheckComplete(`hip-${series.id}`, s, t)}
               onMiss={handleMiss}
               onShowInLearn={handleShowInLearn}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="practice and mastery check" />
@@ -247,7 +259,7 @@ export default function NormalHipMriPage() {
               },
             ]}
           />
-          <CrossPlaneDrill items={hipCrossPlane} />
+          <CrossPlaneDrill items={hipCrossPlane} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 
@@ -269,7 +281,7 @@ export default function NormalHipMriPage() {
             Board-style questions anchored to the real MRI — review the image stack, then commit to your answer.{" "}
             <span className="text-gray-500">Misses return in your spaced review.</span>
           </p>
-          <ImageCaq questions={hipImageCaq} onMiss={handleMiss} />
+          <ImageCaq questions={hipImageCaq} onMiss={handleMiss} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 

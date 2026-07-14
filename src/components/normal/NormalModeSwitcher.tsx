@@ -72,6 +72,7 @@ export default function NormalModeSwitcher<TMode extends string>({
         return (
           <button
             key={mode.id}
+            data-normal-mode={mode.id}
             ref={active ? activeButtonRef : undefined}
             type="button"
             onClick={() => onModeChange(mode.id)}

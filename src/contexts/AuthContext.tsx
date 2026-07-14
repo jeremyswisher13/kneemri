@@ -3,7 +3,11 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth, authPersistenceReady } from "@/lib/firebase";
 import { getUserProfile, ensureAdminRole } from "@/lib/auth";
-import { createActivePreviewUser, isPreviewAuthSession } from "@/lib/local-preview-auth";
+import {
+  activePreviewRole,
+  createActivePreviewUser,
+  isPreviewAuthSession,
+} from "@/lib/local-preview-auth";
 
 type Specialty = "sports-med" | "ortho" | null;
 
@@ -36,19 +40,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isPreviewAuthSession() ? createActivePreviewUser() : null,
   );
   const [role, setRole] = useState<string | null>(() =>
-    isPreviewAuthSession() ? "fellow" : null,
+    isPreviewAuthSession() ? activePreviewRole() : null,
   );
   const [specialty, setSpecialty] = useState<Specialty>(() =>
-    isPreviewAuthSession() ? "sports-med" : null,
+    isPreviewAuthSession() && activePreviewRole() !== "admin" ? "sports-med" : null,
   );
   const [showSurgical, setShowSurgical] = useState(false);
   const [loading, setLoading] = useState(() => !isPreviewAuthSession());
 
   const refreshRole = async () => {
     if (isPreviewAuthSession()) {
+      const previewRole = activePreviewRole();
       setUser(createActivePreviewUser());
-      setRole("fellow");
-      setSpecialty("sports-med");
+      setRole(previewRole);
+      setSpecialty(previewRole === "admin" ? null : "sports-med");
       setShowSurgical(false);
       return;
     }

@@ -35,6 +35,7 @@ export default function AnnotatedSlice({
   const imageAlt = alt ?? `MRI slice ${sliceIndex + 1} with educational annotation markers`;
   return (
     <div
+      data-testid="annotated-mri"
       data-screenshot-anchor="mri-viewer"
       className="relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:max-h-none lg:w-full lg:max-w-[560px]"
     >
@@ -47,6 +48,9 @@ export default function AnnotatedSlice({
       {markers.map((m, i) => (
         <div
           key={i}
+          data-mri-marker="true"
+          data-marker-x={m.x}
+          data-marker-y={m.y}
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${m.x}%`, top: `${m.y}%` }}
         >

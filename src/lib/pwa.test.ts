@@ -108,8 +108,10 @@ describe("pwa helpers", () => {
         expect.objectContaining({ src: "/pwa-maskable-icon-512.png", sizes: "512x512", purpose: "maskable" }),
       ]),
     );
-    expect(sw).toContain('const CACHE_VERSION = "ucla-sports-mri-v5"');
+    expect(sw).toContain('const CACHE_VERSION = "ucla-sports-mri-v6"');
     expect(sw).toContain('"/apple-touch-icon.png"');
+    expect(sw).toContain("html.matchAll");
+    expect(sw).toContain('event.data?.type === "SKIP_WAITING"');
     expect(favicon).toContain("UCLA Sports MRI favicon");
     expect(favicon).not.toContain("#863bff");
   });

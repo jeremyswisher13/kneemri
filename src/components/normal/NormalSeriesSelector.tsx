@@ -25,6 +25,7 @@ export default function NormalSeriesSelector<TId extends string>({
         return (
           <button
             key={item.id}
+            data-normal-series={item.id}
             type="button"
             onClick={() => onSeriesChange(item.id)}
             aria-pressed={active}

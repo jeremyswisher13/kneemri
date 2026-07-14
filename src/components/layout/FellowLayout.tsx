@@ -21,6 +21,8 @@ import {
   requiredCoreCaseCount,
 } from "@/content/courses";
 import { pageTitleForRouteSegment } from "@/components/layout/fellow-route-title";
+import { IssueReportProvider } from "@/contexts/IssueReportContext";
+import IssueReportButton from "@/components/ui/IssueReportButton";
 
 const assessmentItems = [
   { label: "Pre-Assessment", path: "/pre-assessment" },
@@ -41,6 +43,14 @@ function isMacPlatform() {
 }
 
 export default function FellowLayout() {
+  return (
+    <IssueReportProvider>
+      <FellowLayoutContent />
+    </IssueReportProvider>
+  );
+}
+
+function FellowLayoutContent() {
   const { user, role, showSurgical, setRole, setShowSurgical } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -273,19 +283,22 @@ export default function FellowLayout() {
         <span className="text-sm font-semibold text-[#005587] hidden sm:block">
           {activeCourse.title}
         </span>
-        <button
-          onClick={() => setSearchOpen(true)}
-          aria-label="Open search"
-          className="ml-auto flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:bg-gray-100 sm:min-h-0 sm:min-w-0 sm:justify-start sm:py-1.5"
-        >
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <span className="hidden sm:inline">Search...</span>
-          <kbd className="hidden rounded border border-gray-200 bg-white px-1.5 py-0.5 text-[10px] font-medium text-gray-500 sm:inline-block">
-            {isMacPlatform() ? "\u2318K" : "Ctrl+K"}
-          </kbd>
-        </button>
+        <div className="ml-auto flex items-center gap-2">
+          <IssueReportButton course={activeCourse} />
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label="Open search"
+            className="flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:bg-gray-100 sm:min-h-0 sm:min-w-0 sm:justify-start sm:py-1.5"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <span className="hidden sm:inline">Search...</span>
+            <kbd className="hidden rounded border border-gray-200 bg-white px-1.5 py-0.5 text-[10px] font-medium text-gray-500 sm:inline-block">
+              {isMacPlatform() ? "\u2318K" : "Ctrl+K"}
+            </kbd>
+          </button>
+        </div>
       </div>
 
       <div className="flex min-h-0 flex-1 overflow-hidden">

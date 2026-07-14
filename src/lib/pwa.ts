@@ -90,6 +90,21 @@ export function registerServiceWorker() {
     navigator.serviceWorker
       .register("/sw.js")
       .then((registration) => {
+        const announceUpdate = () => {
+          if (!registration.waiting || !navigator.serviceWorker.controller) return;
+          window.dispatchEvent(
+            new CustomEvent("ucla-pwa-update", { detail: { registration } }),
+          );
+        };
+
+        announceUpdate();
+        registration.addEventListener("updatefound", () => {
+          const installing = registration.installing;
+          installing?.addEventListener("statechange", () => {
+            if (installing.state === "installed") announceUpdate();
+          });
+        });
+
         window.dispatchEvent(
           new CustomEvent("ucla-pwa-ready", {
             detail: { active: !!registration.active },
@@ -99,5 +114,23 @@ export function registerServiceWorker() {
       .catch(() => {
         window.dispatchEvent(new Event("ucla-pwa-unavailable"));
       });
+  });
+}
+
+let reloadForAcceptedUpdate = false;
+
+export function activateWaitingServiceWorker(registration: ServiceWorkerRegistration): boolean {
+  if (!registration.waiting) return false;
+  reloadForAcceptedUpdate = true;
+  registration.waiting.postMessage({ type: "SKIP_WAITING" });
+  return true;
+}
+
+export function installAcceptedUpdateReload() {
+  if (!("serviceWorker" in navigator)) return;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (!reloadForAcceptedUpdate) return;
+    reloadForAcceptedUpdate = false;
+    window.location.reload();
   });
 }

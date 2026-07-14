@@ -28,6 +28,7 @@ import { normalShoulderSeries as SERIES } from "@/content/normal-workstation-ser
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { useNormalMriResume } from "@/hooks/useNormalMriResume";
+import { useNormalIssueContext } from "@/hooks/useNormalIssueContext";
 import { coursePath, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
@@ -129,6 +130,13 @@ export default function NormalShoulderMriPage() {
     seriesId: series.id,
     seriesLabel: series.label,
   });
+  const issueContext = useNormalIssueContext({
+    mode,
+    modeLabel,
+    seriesId: series.id,
+    seriesLabel: series.label,
+    startIndex: series.startIndex ?? 0,
+  });
 
   const slices = useMemo(
     () =>
@@ -175,6 +183,7 @@ export default function NormalShoulderMriPage() {
               startIndex={series.startIndex}
               caption="Normal shoulder reference stack for comparing cuff, labrum, biceps, cartilage, and bone marrow across slices."
               attribution="De-identified normal shoulder MRI · UCLA Sports Medicine teaching collection"
+              onSliceChange={issueContext.onSliceChange}
             />
           </div>
           <div>
@@ -189,6 +198,7 @@ export default function NormalShoulderMriPage() {
         <PlaneCompare
           planes={SERIES}
           attribution="De-identified normal shoulder MRI · UCLA Sports Medicine teaching collection"
+          onContextChange={issueContext.onContextChange}
         />
       )}
 
@@ -206,6 +216,7 @@ export default function NormalShoulderMriPage() {
               caseImageById={caseTeachingImageById}
               caseBasePath={SHOULDER_CASE_BASE}
               focusTarget={tourTarget}
+              onContextChange={issueContext.onContextChange}
             />
           ) : (
             <ComingSoonForPlane label={series.label} kind="guided tour" />
@@ -230,6 +241,7 @@ export default function NormalShoulderMriPage() {
                 onComplete={(s, t) => handleCheckComplete(`sh-${series.id}`, s, t)}
                 onMiss={handleMiss}
                 onShowInLearn={handleShowInLearn}
+                onContextChange={issueContext.onContextChange}
               />
             </>
           ) : (
@@ -262,7 +274,7 @@ export default function NormalShoulderMriPage() {
               },
             ]}
           />
-          <CrossPlaneDrill items={shoulderCrossPlane} />
+          <CrossPlaneDrill items={shoulderCrossPlane} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 
@@ -284,7 +296,7 @@ export default function NormalShoulderMriPage() {
             Board-style questions anchored to the real MRI — review the image stack, then commit to your answer.{" "}
             <span className="text-gray-500">Misses return in your spaced review.</span>
           </p>
-          <ImageCaq questions={shoulderImageCaq} onMiss={handleMiss} />
+          <ImageCaq questions={shoulderImageCaq} onMiss={handleMiss} onContextChange={issueContext.onContextChange} />
         </div>
       )}
 

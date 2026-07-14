@@ -32,9 +32,11 @@ const questionCountText = (count: number) => `${count} question${count === 1 ? "
 export default function ImageCaq({
   questions,
   onMiss,
+  onContextChange,
 }: {
   questions: ImageCaqQ[];
   onMiss?: (itemId: string) => void;
+  onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
 }) {
   const [run, setRun] = useState<RunItem[] | null>(null);
   const [qi, setQi] = useState(0);
@@ -206,6 +208,9 @@ export default function ImageCaq({
             plane={q.plane}
             attribution={ATTR}
             startIndex={q.startIndex}
+            onSliceChange={(sliceIndex) =>
+              onContextChange?.({ sliceIndex, landmark: q.topic, itemId: q.id })
+            }
           />
           <p className="mt-2 text-xs text-gray-500">
             Opened at the key slice. Review adjacent slices before you answer.

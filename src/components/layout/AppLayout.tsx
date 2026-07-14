@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import OfflineStatusBanner from "@/components/ui/OfflineStatusBanner";
 import InstallPrompt from "@/components/ui/InstallPrompt";
+import PwaUpdatePrompt from "@/components/ui/PwaUpdatePrompt";
 
 export default function AppLayout() {
   const location = useLocation();
@@ -15,6 +16,7 @@ export default function AppLayout() {
         </div>
       </header>
       <OfflineStatusBanner />
+      <PwaUpdatePrompt />
       <main className="flex min-h-0 flex-1 flex-col">
         <Outlet />
       </main>

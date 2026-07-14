@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ucla-sports-mri-v5";
+const CACHE_VERSION = "ucla-sports-mri-v6";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -13,14 +13,50 @@ const APP_SHELL = [
   "/offline.html"
 ];
 
+async function cacheResponse(cache, url, options) {
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) await cache.put(url, response.clone());
+    return response.ok ? response : null;
+  } catch {
+    return null;
+  }
+}
+
+async function precacheAppShell() {
+  const cache = await caches.open(CACHE_VERSION);
+  await Promise.all(APP_SHELL.map((url) => cacheResponse(cache, url)));
+
+  // Vite fingerprints the production JS/CSS filenames. Parse the just-built
+  // index and cache those exact files so the first fully closed home-screen
+  // relaunch works offline, even if the worker did not control the first load.
+  const indexResponse = await cacheResponse(cache, "/index.html", { cache: "no-store" });
+  if (!indexResponse) return;
+  const html = await indexResponse.text();
+  const assetUrls = [
+    ...new Set(
+      [...html.matchAll(/(?:src|href)=["'](\/assets\/[^"']+)["']/g)].map((match) => match[1]),
+    ),
+  ];
+  await Promise.all(assetUrls.map((url) => cacheResponse(cache, url)));
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE_VERSION)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
-      .catch(() => self.skipWaiting())
+    precacheAppShell().then(() => {
+      // First install can activate immediately. Updates wait until the learner
+      // accepts the in-app prompt, preventing an old page/new asset mismatch.
+      if (!self.registration.active) return self.skipWaiting();
+      return undefined;
+    }),
   );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") self.skipWaiting();
+  if (event.data?.type === "GET_VERSION") {
+    event.ports?.[0]?.postMessage({ cacheVersion: CACHE_VERSION });
+  }
 });
 
 self.addEventListener("activate", (event) => {
