@@ -25,8 +25,8 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['start', 'begin', 'course', 'how', 'get started', 'beginning'],
     question: 'How do I start the course?',
     answer:
-      'After signing in, you land on the Dashboard which shows your progress. Start with Module 1 (MRI Basics) by clicking "Modules" in the sidebar, then work through the modules in order. Each module builds on the previous one.',
-    relatedModule: '/modules',
+      'After signing in, open a course and follow the single "Next up" action on its Dashboard. Begin with the baseline knowledge quiz and confidence survey, then continue through Normal MRI, modules, three core cases, and the post-assessment.',
+    relatedModule: '/pre-assessment',
     category: 'app',
   },
   {
@@ -34,7 +34,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['pre-assessment', 'pretest', 'pre test', 'baseline', 'assessment before'],
     question: 'How do I take the pre-assessment?',
     answer:
-      'Click "Pre-Assessment" in the Assessments section of the sidebar. The pre-assessment establishes your baseline knowledge before starting the course. It covers all major topics and helps identify areas to focus on.',
+      'Click "Pre-Assessment" in the Assessments section of the sidebar. Complete both the knowledge quiz and confidence survey before opening the teaching sequence so your baseline is measured cleanly.',
     relatedModule: '/pre-assessment',
     category: 'app',
   },
@@ -43,7 +43,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['post-assessment', 'posttest', 'post test', 'final exam', 'assessment after'],
     question: 'How do I take the post-assessment?',
     answer:
-      'The post-assessment is available under Assessments in the sidebar. It is designed to be taken after completing all modules and cases. Your score is compared to your pre-assessment to measure learning gains.',
+      'The post-assessment unlocks after the baseline, Normal MRI mastery, all modules, and any three core cases are complete. Finish both the knowledge quiz and confidence survey; the knowledge score is compared with baseline to measure learning gains.',
     relatedModule: '/post-assessment',
     category: 'app',
   },
@@ -70,7 +70,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['certificate', 'completion', 'finish', 'done', 'cme', 'credit'],
     question: 'How do I get my certificate?',
     answer:
-      'Click "Certificate" under the Completion section in the sidebar. You can generate your certificate once you have completed all required modules, cases, and assessments.',
+      'Open "Certificate" under Completion. Eligibility requires the baseline quiz and survey, every module, Normal MRI mastery, any three core cases, the post-course quiz and survey, and a post-course knowledge score of at least 70%.',
     relatedModule: '/certificate',
     category: 'app',
   },
@@ -88,7 +88,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['how many', 'modules', 'total', 'number of modules', 'count'],
     question: 'How many modules are there?',
     answer:
-      'The course contains 9 modules covering MRI Basics, Anatomy, the Search Pattern, Bones & Marrow, Cartilage & Osteochondral, Menisci, Ligaments, Extensor Mechanism & Synovium, and Don\'t Miss Findings. Your progress is tracked in the sidebar next to "Modules."',
+      'The module count varies by joint. The course Dashboard and the badge beside "Modules" show the exact total and your completed count for the active course.',
     relatedModule: '/modules',
     category: 'app',
   },

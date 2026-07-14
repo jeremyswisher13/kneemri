@@ -18,6 +18,7 @@ import {
   hasNormalMriWorkstation,
   interactiveNormalMriTitle,
   normalMriPath,
+  requiredCoreCaseCount,
 } from "@/content/courses";
 import { pageTitleForRouteSegment } from "@/components/layout/fellow-route-title";
 
@@ -122,17 +123,17 @@ export default function FellowLayout() {
   const modulesCompleted = (progress?.moduleProgress ?? []).filter(
     (m) => m.completed && activeModuleIds.has(m.id)
   ).length;
-  const requiredCases = getVisibleCoreCases(activeCourse, isResident);
-  const requiredCaseIds = new Set(requiredCases.map((c) => c.id));
+  const visibleCoreCases = getVisibleCoreCases(activeCourse, isResident);
+  const visibleCoreCaseIds = new Set(visibleCoreCases.map((c) => c.id));
   const completedCaseIds = new Set(
     (progress?.caseAttempts ?? [])
-      .filter((a) => requiredCaseIds.has(a.caseId))
+      .filter((a) => visibleCoreCaseIds.has(a.caseId))
       .map((a) => a.caseId)
   );
-  const casesCompleted = completedCaseIds.size;
-  const totalCases = requiredCaseIds.size;
-  // The interactive workstation is the course's starting point, so it sits at the
-  // top (right under Dashboard, above Modules) and renders as a highlighted card.
+  const totalCases = requiredCoreCaseCount(activeCourse, isResident);
+  const casesCompleted = Math.min(completedCaseIds.size, totalCases);
+  // The interactive workstation is the first learning activity after the
+  // baseline pre-assessment, so it remains prominent above Modules.
   const isWorkstationCourse = hasNormalMriWorkstation(activeCourse);
   const workstationItem: NavItem | null = isWorkstationCourse
     ? {
@@ -153,9 +154,7 @@ export default function FellowLayout() {
     { label: "Modules", path: coursePath(activeCourse, "/modules") },
     { label: "Search Pattern", path: coursePath(activeCourse, "/search-pattern") },
     { label: "Cases", path: coursePath(activeCourse, "/cases") },
-    ...(activeCourse.bodyRegion === "knee" || activeCourse.bodyRegion === "shoulder"
-      ? [{ label: "Learning Paths", path: coursePath(activeCourse, "/learning-paths") }]
-      : []),
+    { label: "Learning Paths", path: coursePath(activeCourse, "/learning-paths") },
     { label: "Progress", path: coursePath(activeCourse, "/progress") },
   ];
 
@@ -190,7 +189,7 @@ export default function FellowLayout() {
   }, [refreshDueCount]);
 
   function progressBadge(completed: number, total: number, active: boolean) {
-    const isComplete = completed === total;
+    const isComplete = completed >= total;
     return (
       <span
         className={`ml-auto inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${
@@ -376,7 +375,7 @@ export default function FellowLayout() {
                   <Link
                     to={item.path}
                     onClick={() => setSidebarOpen(false)}
-                    aria-label={`${item.label}${workstationComplete ? " — completed" : " — start here"}`}
+                    aria-label={`${item.label}${workstationComplete ? " — completed" : " — course step 2"}`}
                     className={`block rounded-xl bg-gradient-to-br from-[#003B5C] to-[#2774AE] px-3 py-2.5 text-white shadow-sm transition-all hover:shadow-md hover:brightness-110 ${
                       isActive(item.path) ? "ring-2 ring-ucla-gold" : "ring-1 ring-ucla-gold/40"
                     }`}
@@ -386,7 +385,7 @@ export default function FellowLayout() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
                       </svg>
                       <span className="inline-flex items-center rounded-full bg-ucla-gold px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#003B5C]">
-                        {workstationComplete ? "Completed" : "Start here"}
+                        {workstationComplete ? "Completed" : "Step 2"}
                       </span>
                       {progress && progress.totalNormalPlanes > 0 && (
                         <span className="ml-auto inline-flex items-center rounded-full bg-white/20 px-1.5 py-0.5 text-[10px] font-bold text-white">

@@ -598,6 +598,23 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q5",
+    "section": "normal-mri",
+    "title": "What is the marked round proximal-radial structure articulating with the capitellum?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "What is the marked round proximal-radial structure articulating with the capitellum? | Coronoid process | Radial head | Olecranon | Sublime tubercle | Correct: Radial head | The radial head is the round disc of the proximal radius directly beneath the capitellum on the lateral..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
     "itemId": "axi-t2fs:ec-axi-q1",
     "section": "normal-mri",
     "title": "The marked nerve sits posterior to the medial epicondyle. Mild T2 brightness here can be normal — what anchors a diagnosis of cubital tunnel syndrome?",
@@ -1400,6 +1417,22 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "A 60-year-old gardener has a red, warm, fluctuant swelling over the olecranon. MRI shows a distended olecranon bursa with mild surrounding edema and no definite marrow signal abnormality. What is the most appropriate next step? | A. Reassure the patient that the absence of mar..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q5",
+    "section": "spaced-review-registry",
+    "title": "What is the marked round proximal-radial structure articulating with the capitellum?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What is the marked round proximal-radial structure articulating with the capitellum? | A. Coronoid process | B. Radial head | C. Olecranon | D. Sublime tubercle | B | The radial head is the round disc of the proximal radius directly beneath the capitellum on the lateral side. ..."
   },
   {
     "courseId": "elbow-mri",

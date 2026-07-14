@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10",
+  "generatedAt": "2026-07-14",
   "courses": {
     "knee-mri": {
       "title": "UCLA Knee MRI Interpretation Course",
@@ -52,20 +52,20 @@
       "cases": 8,
       "prePostQuizItems": 24,
       "normalPlanes": 3,
-      "normalPlaneQuizItems": 8,
+      "normalPlaneQuizItems": 15,
       "advancedItems": 10,
       "imageCaqItems": 7,
       "redFlags": 5,
-      "reviewItems": 434,
-      "highRiskItems": 351,
-      "sourceCheckItems": 380,
+      "reviewItems": 448,
+      "highRiskItems": 353,
+      "sourceCheckItems": 382,
       "diagnostics": 0
     }
   },
   "totals": {
-    "reviewItems": 2754,
-    "highRiskItems": 1359,
-    "sourceCheckItems": 1584,
+    "reviewItems": 2768,
+    "highRiskItems": 1361,
+    "sourceCheckItems": 1586,
     "diagnostics": 0,
     "diagnosticErrors": 0,
     "diagnosticWarnings": 0

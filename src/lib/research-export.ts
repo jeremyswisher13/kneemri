@@ -22,7 +22,7 @@ import {
 } from "@/lib/psychometrics";
 import { computeGrowth, domainLabel } from "@/lib/growth";
 import {
-  getVisibleCoreCases,
+  requiredCoreCaseCount,
   type CourseDefinition,
 } from "@/content/courses";
 import type { SurveyResponse, QuizResponse } from "@/types/progress";
@@ -78,11 +78,11 @@ function domainKeysOf(course: CourseDefinition): string[] {
 
 function casesPctFor(f: ResearchFellow, course: CourseDefinition): number | null {
   const isResident = f.role === "resident";
-  // `casesCompleted` is sourced from getUserProgress and intentionally counts
-  // role-visible core cases only; advanced cases are optional practice.
-  const total = getVisibleCoreCases(course, isResident).length;
+  // Report progress toward the common core-case milestone. Additional core and
+  // advanced cases remain available but do not inflate completion above 100%.
+  const total = requiredCoreCaseCount(course, isResident);
   if (total === 0) return null;
-  return (f.casesCompleted / total) * 100;
+  return Math.min(100, (f.casesCompleted / total) * 100);
 }
 
 /**

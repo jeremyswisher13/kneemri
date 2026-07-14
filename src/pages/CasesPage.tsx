@@ -4,7 +4,12 @@ import type { CaseMeta } from "@/content/case-metas";
 import { useProgress } from "@/hooks/useProgress";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
-import { coursePath, getVisibleAdvancedCases, getVisibleCoreCases } from "@/content/courses";
+import {
+  coursePath,
+  getVisibleAdvancedCases,
+  getVisibleCoreCases,
+  requiredCoreCaseCount,
+} from "@/content/courses";
 
 const difficultyConfig = {
   foundational: { label: "Foundational", bg: "bg-green-100", text: "text-green-700" },
@@ -44,9 +49,21 @@ export default function CasesPage() {
   const totalCompleted = coreCompletedCount + advancedCompletedCount;
   const totalVisible = visibleCoreCases.length + visibleAdvancedCases.length;
 
+  const requiredCoreCount = requiredCoreCaseCount(activeCourse, isResident);
+  const requiredCoreDone = coreCompletedCount >= requiredCoreCount;
   const allCoreDone = visibleCoreCases.length > 0 && visibleCoreCases.every((c) => isCaseCompleted(c.id));
   const regionTitle = activeCourse.bodyRegion.charAt(0).toUpperCase() + activeCourse.bodyRegion.slice(1);
   const normalMriPath = coursePath(activeCourse, `/normal-${activeCourse.bodyRegion}-mri`);
+  const baselineComplete = !!(progress?.preQuizCompleted && progress?.preSurveyCompleted);
+  const prerequisitePath = baselineComplete
+    ? normalMriPath
+    : coursePath(activeCourse, "/pre-assessment");
+  const prerequisiteTitle = baselineComplete
+    ? `Recommended first: master the normal ${activeCourse.bodyRegion}`
+    : "Recommended first: capture your baseline";
+  const prerequisiteCopy = baselineComplete
+    ? `Pathology is easier to recognize once normal is second nature. Complete the Normal ${regionTitle} practice and blinded Mastery Check before these cases.`
+    : "Complete the baseline knowledge quiz and confidence survey before opening the teaching sequence.";
 
   return (
     <div>
@@ -58,24 +75,24 @@ export default function CasesPage() {
           {totalCompleted}/{totalVisible} completed
         </span>
       </p>
+      <p className="mt-2 text-sm font-medium text-gray-700">
+        Complete any {requiredCoreCount} core cases for the course requirement. The rest are optional practice.
+      </p>
 
-      {/* Recommended-first: master the normal MRI before pathology cases */}
-      <Link to={normalMriPath} className="mt-4 block">
+      {(!baselineComplete || !progress?.normalMriComplete) && <Link to={prerequisitePath} className="mt-4 block">
         <div className="flex items-center gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70">
           <svg className="h-5 w-5 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
           </svg>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-[#003B5C]">Recommended first: master the normal {activeCourse.bodyRegion}</p>
-            <p className="text-xs text-gray-600">
-              You'll catch far more pathology once normal is second nature — run the Normal {regionTitle} tour &amp; check before these cases.
-            </p>
+            <p className="text-sm font-semibold text-[#003B5C]">{prerequisiteTitle}</p>
+            <p className="text-xs text-gray-600">{prerequisiteCopy}</p>
           </div>
           <svg className="h-4 w-4 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </div>
-      </Link>
+      </Link>}
 
       <div className="mt-4 grid gap-2 sm:grid-cols-3">
         {[
@@ -98,9 +115,14 @@ export default function CasesPage() {
       </div>
 
       {/* Milestone encouragement banners */}
-      {coreCompletedCount > 0 && !allCoreDone && (
+      {coreCompletedCount > 0 && !requiredCoreDone && (
         <div className="mt-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
           Great start! Each case builds your pattern recognition skills.
+        </div>
+      )}
+      {requiredCoreDone && !allCoreDone && (
+        <div className="mt-4 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+          Required cases complete. Keep exploring the remaining core cases whenever they match your learning goals.
         </div>
       )}
       {allCoreDone && visibleAdvancedCases.length > 0 && advancedCompletedCount < visibleAdvancedCases.length && (
@@ -118,7 +140,7 @@ export default function CasesPage() {
       <div className="mt-8">
         <h2 className="text-lg font-semibold text-gray-900">Core Cases</h2>
         <p className="mt-1 text-sm text-gray-500">
-          {coreCompletedCount}/{visibleCoreCases.length} completed
+          {Math.min(coreCompletedCount, requiredCoreCount)}/{requiredCoreCount} required · {coreCompletedCount}/{visibleCoreCases.length} explored
         </p>
         <div className="mt-4 grid gap-6 md:grid-cols-2">
           {visibleCoreCases.map((caseItem, caseIndex) =>

@@ -1,4 +1,4 @@
-import type { CourseDefinition } from "@/content/courses";
+import { requiredCoreCaseCount, type CourseDefinition } from "@/content/courses";
 import type { UserProgress } from "@/types/progress";
 
 /** Minimum post-assessment score (rounded percent) required for the certificate. */
@@ -30,10 +30,9 @@ export function meetsPassThreshold(p: UserProgress, course: CourseDefinition): b
 /**
  * All activity requirements, WITHOUT the post-assessment pass threshold.
  *
- * Required: pre-assessment (quiz + survey) · all modules · the Interactive
- * Normal MRI workstation (EVERY course that has one — knee, shoulder, hip, elbow) ·
- * post-assessment (quiz + survey). Cases are OPTIONAL on the knee course and
- * required on the others.
+ * Required: pre-assessment (quiz + survey) · the Interactive Normal MRI
+ * workstation (EVERY course that has one — knee, shoulder, hip, elbow) · all
+ * modules · any three role-visible core cases · post-assessment (quiz + survey).
  *
  * Gating on `p.normalMriComplete` DIRECTLY (not `!isKnee || …`) is both safe and
  * correct: getUserProgress already sets normalMriComplete = true for any course
@@ -48,9 +47,9 @@ export function hasCompletedRequirements(p: UserProgress, course: CourseDefiniti
   const preDone = !assessments || (p.preQuizCompleted && p.preSurveyCompleted);
   const postDone = !assessments || (p.postQuizCompleted && p.postSurveyCompleted);
   const modulesDone = p.modulesCompleted >= p.totalModules;
-  const isKnee = course.bodyRegion === "knee";
   const normalDone = p.normalMriComplete;
-  const casesDone = isKnee ? true : p.casesCompleted >= p.totalCases;
+  const requiredCases = p.requiredCases ?? requiredCoreCaseCount(course);
+  const casesDone = p.casesCompleted >= requiredCases;
   return preDone && modulesDone && normalDone && casesDone && postDone;
 }
 

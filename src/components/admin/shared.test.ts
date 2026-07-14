@@ -44,13 +44,23 @@ describe("hasNormalMriWorkstation", () => {
 });
 
 describe("fellowStatus", () => {
-  it("keeps knee cases optional but still requires the workstation", () => {
+  it("requires the shared case milestone and the workstation for knee", () => {
     const totalModules = knee.modules.length;
     const totalCases = totalCasesForRole(knee, "fellow");
 
     expect(
       fellowStatus(
-        mkFellow({ modulesCompleted: totalModules, casesCompleted: 0, normalMriComplete: true }),
+        mkFellow({ modulesCompleted: totalModules, casesCompleted: totalCases - 1, normalMriComplete: true }),
+        totalModules,
+        totalCases,
+        knee,
+        12,
+      ),
+    ).toBe("In Progress");
+
+    expect(
+      fellowStatus(
+        mkFellow({ modulesCompleted: totalModules, casesCompleted: totalCases, normalMriComplete: true }),
         totalModules,
         totalCases,
         knee,

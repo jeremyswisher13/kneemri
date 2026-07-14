@@ -1,4 +1,4 @@
-// Interactive Normal MRI Knowledge Check passes required for each workstation.
+// Interactive Normal MRI Mastery Check passes required for each workstation.
 // The Firestore collection name remains "normalKnee" for legacy reasons, but
 // these IDs are course-disambiguated across knee, shoulder, hip, and elbow.
 export const NORMAL_KNEE_PLANE_IDS = ["sag-pdfs", "cor-pdfs", "axi-t2fs", "sag-t1"];

@@ -77,7 +77,8 @@ export function suggestedNextStep(modeLabel?: string) {
     case "Explore":
       return "Next: Guided Tour";
     case "Guided Tour":
-      return "Next: Knowledge Check";
+      return "Next: Practice & Mastery";
+    case "Practice & Mastery":
     case "Knowledge Check":
       return "Next: Cross-Plane";
     case "Cross-Plane":
@@ -86,6 +87,6 @@ export function suggestedNextStep(modeLabel?: string) {
     case "Image CAQ":
       return "Next: Spaced Review";
     default:
-      return "Start with Explore, then Guided Tour, Knowledge Check, Cross-Plane, and Image CAQ.";
+      return "Start with Explore, then Guided Tour, Practice & Mastery, Cross-Plane, and Image CAQ.";
   }
 }

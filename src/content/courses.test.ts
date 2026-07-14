@@ -3,6 +3,8 @@ import {
   courseRegistry,
   defaultCourse,
   coreCasesRequiredForCompletion,
+  REQUIRED_CORE_CASE_COUNT,
+  requiredCoreCaseCount,
   getCourseById,
   getCourseBasePath,
   coursePath,
@@ -94,11 +96,14 @@ describe('course display helpers', () => {
     expect(courseRegistry.every(hasNormalMriWorkstation)).toBe(true)
   })
 
-  it('keeps knee cases optional and non-knee core cases required for completion', () => {
-    expect(coreCasesRequiredForCompletion(knee)).toBe(false)
+  it('uses the same bounded core-case requirement for every course', () => {
+    expect(REQUIRED_CORE_CASE_COUNT).toBe(3)
+    expect(coreCasesRequiredForCompletion(knee)).toBe(true)
     expect(coreCasesRequiredForCompletion(shoulder)).toBe(true)
     expect(coreCasesRequiredForCompletion(hip)).toBe(true)
     expect(coreCasesRequiredForCompletion(elbow)).toBe(true)
+    expect(courseRegistry.every((course) => requiredCoreCaseCount(course) === 3)).toBe(true)
+    expect(courseRegistry.every((course) => requiredCoreCaseCount(course, true) === 3)).toBe(true)
   })
 })
 

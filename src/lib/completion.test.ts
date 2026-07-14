@@ -11,8 +11,8 @@ import type { UserProgress } from "@/types/progress";
 
 // The completion predicates are the gates that decide whether a fellow's work is
 // recorded as done and whether a certificate is earned — so the cross-course
-// rules (knee = cases optional + workstation required; shoulder/hip/elbow = cases
-// required + workstation required) are pinned here.
+// rules (same three-case milestone + workstation requirement in every course)
+// are pinned here.
 
 const knee = getCourseById("knee-mri");
 const hip = getCourseById("hip-mri");
@@ -30,6 +30,7 @@ function mk(overrides: Partial<UserProgress> = {}): UserProgress {
     normalMriComplete: true,
     casesCompleted: 6,
     totalCases: 6,
+    requiredCases: 3,
     postQuizScore: 10,
     postQuizTotal: 12,
     ...overrides,
@@ -62,9 +63,10 @@ describe("meetsPassThreshold", () => {
   });
 });
 
-describe("hasCompletedRequirements — knee (cases optional, workstation required)", () => {
-  it("is complete with modules + workstation + pre/post, even with zero cases", () => {
-    expect(hasCompletedRequirements(mk({ casesCompleted: 0 }), knee)).toBe(true);
+describe("hasCompletedRequirements — knee", () => {
+  it("requires the shared three-case milestone", () => {
+    expect(hasCompletedRequirements(mk({ casesCompleted: 2 }), knee)).toBe(false);
+    expect(hasCompletedRequirements(mk({ casesCompleted: 3 }), knee)).toBe(true);
   });
   it("requires the Interactive Normal Knee MRI workstation", () => {
     expect(hasCompletedRequirements(mk({ normalMriComplete: false }), knee)).toBe(false);
@@ -76,12 +78,13 @@ describe("hasCompletedRequirements — knee (cases optional, workstation require
   });
 });
 
-describe("hasCompletedRequirements — hip (cases AND workstation required)", () => {
-  it("is complete when modules + all cases + workstation + pre/post are done", () => {
+describe("hasCompletedRequirements — hip", () => {
+  it("is complete when modules + three cases + workstation + pre/post are done", () => {
     expect(hasCompletedRequirements(mk(), hip)).toBe(true);
   });
-  it("requires all core cases (unlike knee)", () => {
-    expect(hasCompletedRequirements(mk({ casesCompleted: 4, totalCases: 6 }), hip)).toBe(false);
+  it("does not require the rest of the core library", () => {
+    expect(hasCompletedRequirements(mk({ casesCompleted: 3, totalCases: 6 }), hip)).toBe(true);
+    expect(hasCompletedRequirements(mk({ casesCompleted: 2, totalCases: 6 }), hip)).toBe(false);
   });
   it("gates the workstation directly (so an admin post-quiz unlock can't bypass it)", () => {
     // completion.ts now gates on normalMriComplete directly rather than relying on
@@ -90,11 +93,14 @@ describe("hasCompletedRequirements — hip (cases AND workstation required)", ()
   });
 });
 
-describe("cross-course isolation — identical progress, different rules", () => {
-  it("finished-modules + finished-workstation + no cases: knee complete, hip not", () => {
-    const p = mk({ casesCompleted: 0, totalCases: 6 });
-    expect(hasCompletedRequirements(p, knee)).toBe(true);
-    expect(hasCompletedRequirements(p, hip)).toBe(false);
+describe("cross-course consistency", () => {
+  it("applies the same case milestone to knee and hip", () => {
+    const incomplete = mk({ casesCompleted: 2, totalCases: 6 });
+    const complete = mk({ casesCompleted: 3, totalCases: 6 });
+    expect(hasCompletedRequirements(incomplete, knee)).toBe(false);
+    expect(hasCompletedRequirements(incomplete, hip)).toBe(false);
+    expect(hasCompletedRequirements(complete, knee)).toBe(true);
+    expect(hasCompletedRequirements(complete, hip)).toBe(true);
   });
 });
 
@@ -104,6 +110,6 @@ describe("isCourseComplete — requirements AND the pass threshold", () => {
     // Activities done but failing score → not complete.
     expect(isCourseComplete(mk({ postQuizScore: 8, postQuizTotal: 12 }), knee)).toBe(false);
     // Passing score but a missing activity → not complete.
-    expect(isCourseComplete(mk({ casesCompleted: 0, totalCases: 6 }), hip)).toBe(false);
+    expect(isCourseComplete(mk({ casesCompleted: 2, totalCases: 6 }), hip)).toBe(false);
   });
 });

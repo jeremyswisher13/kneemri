@@ -132,8 +132,7 @@ export const courseRegistry: CourseDefinition[] = [
     bodyRegion: "elbow",
     // Live: modules, cases, matched-parallel pre/post quiz, confidence survey,
     // reference, red flags, and the 3-plane interactive workstation are all
-    // authored, MSK-verified, and wired. Workstation anatomy markers are starter
-    // coordinates pending radiologist fine-tuning via the admin Adjust tool.
+    // authored, wired, and faculty-adjustable through the admin marker tools.
     status: "live",
     modules: elbowModuleMetas,
     cases: elbowCaseMetas,
@@ -182,8 +181,22 @@ export function hasNormalMriWorkstation(course: CourseDefinition): boolean {
   return ["knee", "shoulder", "hip", "elbow"].includes(course.bodyRegion);
 }
 
+/**
+ * Deliberate-practice requirement shared by every course. Learners may choose
+ * any role-visible core cases; the rest of the case library remains available
+ * for additional practice without delaying the post-assessment.
+ */
+export const REQUIRED_CORE_CASE_COUNT = 3;
+
+export function requiredCoreCaseCount(
+  course: CourseDefinition,
+  isResident = false,
+): number {
+  return Math.min(REQUIRED_CORE_CASE_COUNT, getVisibleCoreCases(course, isResident).length);
+}
+
 export function coreCasesRequiredForCompletion(course: CourseDefinition): boolean {
-  return course.bodyRegion !== "knee";
+  return requiredCoreCaseCount(course) > 0;
 }
 
 // Every course is reached under its own `/courses/:id` namespace now that the

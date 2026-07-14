@@ -3,6 +3,7 @@ import MriStackViewer from "@/components/ui/MriStackViewer";
 import Card from "@/components/ui/Card";
 import GuidedTour from "@/components/normal/GuidedTour";
 import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/KnowledgeCheck";
+import { isPassingMasteryScore } from "@/components/normal/knowledge-check-logic";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
 import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
@@ -46,7 +47,7 @@ const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "comp
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
-  { id: "check", label: "Knowledge Check" },
+  { id: "check", label: "Practice & Mastery" },
 ];
 
 /**
@@ -73,11 +74,11 @@ export default function NormalShoulderMriPage() {
   const series = SERIES.find((s) => s.id === activeId) ?? SERIES[0];
   const learn = normalShoulderLearn[series.id];
 
-  // Passing a plane's Knowledge Check (70%+) records it toward completing the
+  // Passing a plane's blinded Mastery Check (70%+) records it toward completing the
   // Interactive Normal Shoulder MRI. Plane ids are "sh-"-prefixed so they never
   // collide with the knee course's plane passes.
   async function handleCheckComplete(planeId: string, score: number, total: number) {
-    if (!user || isAdminView || total <= 0 || score / total < 0.7) return;
+    if (!user || isAdminView || !isPassingMasteryScore(score, total)) return;
     const { markNormalPlanePassed } = await import("@/lib/firestore");
     markNormalPlanePassed(user.uid, user.email || "", planeId, score, total).catch(() => {});
   }
@@ -212,18 +213,19 @@ export default function NormalShoulderMriPage() {
         </div>
       )}
 
-      {/* ── Knowledge Check ─────────────────────────────────────────── */}
+      {/* ── Practice & Mastery ──────────────────────────────────────── */}
       {mode === "check" && (
         <div className="mt-5">
           {learn ? (
             <>
               <p className="mb-4 text-sm text-gray-500">
-                Identify each marked structure on this normal {series.label} shoulder.{" "}
-                <span className="text-gray-500">Use this to lock in the normal landmarks before pathology.</span>
+                Practice the normal {series.label} landmarks with feedback, then pass the blinded Mastery Check at 70% or higher.
               </p>
               <KnowledgeCheck
+                key={series.id}
                 dir={series.dir}
                 items={learn.quiz}
+                tour={learn.tour}
                 planeLabel={series.label}
                 onComplete={(s, t) => handleCheckComplete(`sh-${series.id}`, s, t)}
                 onMiss={handleMiss}
@@ -231,7 +233,7 @@ export default function NormalShoulderMriPage() {
               />
             </>
           ) : (
-            <ComingSoonForPlane label={series.label} kind="knowledge check" />
+            <ComingSoonForPlane label={series.label} kind="practice and mastery check" />
           )}
         </div>
       )}

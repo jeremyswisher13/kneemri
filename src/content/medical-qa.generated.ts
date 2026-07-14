@@ -47,12 +47,12 @@ export interface MedicalQaPriorityItem {
   textPreview: string;
 }
 
-export const medicalQaGeneratedAt = "2026-07-10";
+export const medicalQaGeneratedAt = "2026-07-14";
 
 export const medicalQaTotals: MedicalQaTotals = {
-  "reviewItems": 2754,
-  "highRiskItems": 1359,
-  "sourceCheckItems": 1584,
+  "reviewItems": 2768,
+  "highRiskItems": 1361,
+  "sourceCheckItems": 1586,
   "diagnostics": 0,
   "diagnosticErrors": 0,
   "diagnosticWarnings": 0
@@ -110,13 +110,13 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "cases": 8,
     "prePostQuizItems": 24,
     "normalPlanes": 3,
-    "normalPlaneQuizItems": 8,
+    "normalPlaneQuizItems": 15,
     "advancedItems": 10,
     "imageCaqItems": 7,
     "redFlags": 5,
-    "reviewItems": 434,
-    "highRiskItems": 351,
-    "sourceCheckItems": 380,
+    "reviewItems": 448,
+    "highRiskItems": 353,
+    "sourceCheckItems": 382,
     "diagnostics": 0
   }
 };
@@ -308,9 +308,9 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   },
   "elbow-mri": {
     "risks": {
-      "high": 351,
+      "high": 353,
       "medium": 29,
-      "standard": 54
+      "standard": 66
     },
     "itemTypes": {
       "course-overview": 1,
@@ -324,7 +324,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 40,
       "case-search-finding": 64,
       "normal-tour-step": 22,
-      "normal-plane-quiz": 8,
+      "normal-plane-quiz": 15,
       "normal-structure-pearl": 12,
       "normal-structure-reading": 6,
       "normal-structure-correlate": 6,
@@ -336,7 +336,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-anatomySections": 6,
       "reference-measurementSections": 12,
       "daily-pearl": 11,
-      "review-registry-question": 73
+      "review-registry-question": 80
     },
     "sourceCheckByType": {
       "search-pattern-step": 8,
@@ -349,7 +349,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 33,
       "case-search-finding": 56,
       "normal-tour-step": 14,
-      "normal-plane-quiz": 6,
+      "normal-plane-quiz": 7,
       "normal-structure-pearl": 9,
       "normal-structure-reading": 6,
       "normal-structure-correlate": 4,
@@ -361,9 +361,9 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-anatomySections": 5,
       "reference-measurementSections": 12,
       "daily-pearl": 8,
-      "review-registry-question": 69
+      "review-registry-question": 70
     }
   }
 };
 
-export const medicalQaPriorityItemCount = 1584;
+export const medicalQaPriorityItemCount = 1586;

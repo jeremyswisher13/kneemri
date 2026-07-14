@@ -13,12 +13,12 @@ import {
 } from "@/lib/completion";
 import {
   coursePath,
-  coreCasesRequiredForCompletion,
   defaultCourse,
   getPreQuizQuestions,
   getPostQuizQuestions,
   getVisibleCoreCases,
   normalMriTitle,
+  requiredCoreCaseCount,
 } from "@/content/courses";
 
 /* ─── helpers ─── */
@@ -318,11 +318,9 @@ export default function CertificatePage() {
       .filter((id: string) => requiredCaseIds.has(id))
   );
   const casesCompleted = completedCaseIds.size;
-  const totalCases = requiredCases.length;
+  const requiredCaseCount = requiredCoreCaseCount(activeCourse, isResident);
   const postAssessmentComplete =
     progress?.postQuizCompleted && progress?.postSurveyCompleted;
-  const isKnee = activeCourse.bodyRegion === "knee";
-  const casesRequired = coreCasesRequiredForCompletion(activeCourse);
   const normalTitle = normalMriTitle(activeCourse);
   const hasWorkstation = (progress?.totalNormalPlanes ?? 0) > 0;
   const requirementsDone = progress ? hasCompletedRequirements(progress, activeCourse) : false;
@@ -330,7 +328,7 @@ export default function CertificatePage() {
 
   /* ─── Requirements remaining: show checklist ─── */
   if (!requirementsDone) {
-    const remaining: { label: string; done: boolean; detail: string; optional?: boolean }[] = [
+    const remaining: { label: string; done: boolean; detail: string }[] = [
       {
         label: "Pre-Assessment",
         done: !!preAssessmentComplete,
@@ -352,9 +350,8 @@ export default function CertificatePage() {
         : []),
       {
         label: "Cases",
-        done: casesCompleted === totalCases,
-        detail: `${casesCompleted}/${totalCases} reviewed · ${casesRequired ? "required" : "optional"}`,
-        optional: !casesRequired,
+        done: casesCompleted >= requiredCaseCount,
+        detail: `${Math.min(casesCompleted, requiredCaseCount)}/${requiredCaseCount} required core cases reviewed`,
       },
       {
         label: "Post-Assessment",
@@ -363,15 +360,13 @@ export default function CertificatePage() {
           ? "Complete"
           : progress?.postQuizUnlocked
           ? "Available - quiz and survey required"
-          : isKnee
-          ? `Locked - finish modules and the ${normalTitle} first`
           : hasWorkstation
-          ? `Locked - finish modules, cases, and the ${normalTitle} first`
-          : "Locked - complete modules and cases first",
+          ? `Locked - finish the baseline, the ${normalTitle}, all modules, and 3 core cases first`
+          : "Locked - finish the baseline, modules, and 3 core cases first",
       },
     ];
 
-    const requiredItems = remaining.filter((r) => !r.optional);
+    const requiredItems = remaining;
     const doneCount = requiredItems.filter((r) => r.done).length;
     const overallPct = Math.round((doneCount / requiredItems.length) * 100);
 
@@ -441,10 +436,10 @@ export default function CertificatePage() {
               </div>
               <span
                 className={`text-xs font-medium ${
-                  item.done ? "text-green-600" : item.optional ? "text-gray-500" : "text-amber-500"
+                  item.done ? "text-green-600" : "text-amber-500"
                 }`}
               >
-                {item.done ? "Done" : item.optional ? "Optional" : "Remaining"}
+                {item.done ? "Done" : "Remaining"}
               </span>
             </div>
           ))}

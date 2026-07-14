@@ -25,6 +25,10 @@ export interface QuizItem {
   id: string;
   sliceIndex: number;
   marker: { x: number; y: number };
+  /** Verified anatomy at the marker, used for localization prompts. */
+  locateLabel?: string;
+  /** Landmark-specific feedback for localization practice. */
+  locateExplanation?: string;
   prompt: string;
   options: string[];
   answer: number; // index into options

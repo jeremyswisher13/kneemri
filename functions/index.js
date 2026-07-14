@@ -41,11 +41,10 @@ const escapeHtml = (s) =>
   );
 
 const MODULE_COUNT = 9;
-const CORE_CASE_COUNT = 8;
-const RESIDENT_CORE_CASE_COUNT = 5;
+const REQUIRED_CORE_CASE_COUNT = 3;
 
-// Required case IDs per role — must stay in sync with src/content/cases/index.ts
-// (core cases for fellows; resident-visible core cases for residents).
+// Eligible core-case IDs per role. Completion requires any three from the
+// relevant pool; keep the pools in sync with src/content/case-metas.ts.
 const FELLOW_REQUIRED_CASE_IDS = [
   "degenerative-knee-oa",
   "acl-pivot-shift",
@@ -64,7 +63,7 @@ const RESIDENT_REQUIRED_CASE_IDS = [
   "mcl-distal-avulsion",
 ];
 
-// Shoulder required core cases (all core cases are resident-visible, so the
+// Shoulder eligible core cases (all core cases are resident-visible, so the
 // fellow and resident lists are identical). Must stay in sync with
 // src/content/shoulder/cases.ts (tier: "core").
 const SHOULDER_REQUIRED_CASE_IDS = [
@@ -76,7 +75,7 @@ const SHOULDER_REQUIRED_CASE_IDS = [
   "shoulder-subscapularis-biceps-hidden-lesion",
 ];
 
-// Hip required core cases (all core cases are resident-visible, so the fellow and
+// Hip eligible core cases (all core cases are resident-visible, so the fellow and
 // resident lists are identical). Must stay in sync with src/content/hip/cases.ts
 // (tier: "core").
 const HIP_REQUIRED_CASE_IDS = [
@@ -88,9 +87,9 @@ const HIP_REQUIRED_CASE_IDS = [
   "hip-athletic-pubalgia",
 ];
 
-// Elbow required core cases. Fellows complete all 7 core cases; the two nerve
-// cases (medial-epicondylitis-ulnar, cubital-tunnel) are NOT resident-visible, so
-// the resident list is the 5 resident-visible core cases. Sync with
+// Elbow eligible core cases. The two nerve cases (medial-epicondylitis-ulnar,
+// cubital-tunnel) are NOT resident-visible, so the resident pool is the five
+// resident-visible core cases. Sync with
 // src/content/elbow/cases.ts (tier: "core", residentVisible).
 const ELBOW_FELLOW_REQUIRED_CASE_IDS = [
   "elbow-ucl-tear-thrower",
@@ -213,19 +212,26 @@ async function normalMriComplete(userId, course) {
   return planeIds.every((id) => passed.has(id));
 }
 
-// Single completion predicate so the certificate trigger and the weekly digest
-// can never drift from src/lib/completion.ts. Mirrors that file's rule:
-//   knee  → modules + Interactive Normal Knee MRI + post >= threshold (cases OPTIONAL)
-//   other → modules + all required core cases + Interactive Normal MRI + post >= threshold
-// (Pre/post survey completion is intentionally not gated here: the trigger fires on
-// a quizAttempts write and would never re-fire when a later survey is submitted.)
-function meetsCompletion({ courseId, course, modulesCompleted, uniqueCases, requiredCaseIds, normalDone, postPct }) {
-  const isKnee = courseId === "knee-mri";
+// Single completion predicate so the certificate trigger and weekly digest stay
+// aligned with src/lib/completion.ts: baseline quiz + survey, Normal MRI mastery,
+// all modules, any three role-visible core cases, and post quiz + survey with a
+// passing knowledge score.
+function meetsCompletion({
+  course,
+  modulesCompleted,
+  uniqueCases,
+  requiredCaseIds,
+  normalDone,
+  preAssessmentDone,
+  postAssessmentDone,
+  postPct,
+}) {
   const modulesDone = modulesCompleted >= course.moduleCount;
-  const casesDone = isKnee ? true : requiredCaseIds.every((id) => uniqueCases.has(id));
+  const requiredCount = Math.min(REQUIRED_CORE_CASE_COUNT, requiredCaseIds.length);
+  const casesDone = requiredCaseIds.filter((id) => uniqueCases.has(id)).length >= requiredCount;
   const normalOk = normalDone;
   const scorePass = postPct != null && postPct >= CERTIFICATE_PASS_THRESHOLD;
-  return modulesDone && casesDone && normalOk && scorePass;
+  return preAssessmentDone && normalOk && modulesDone && casesDone && postAssessmentDone && scorePass;
 }
 
 function resolveCourse(courseId) {
@@ -436,7 +442,9 @@ async function sendCertificateEmail(transporter, recipientEmail, recipientName, 
 // ============================================================
 exports.onCourseCompletion = onDocumentWritten(
   {
-    document: "users/{userId}/quizAttempts/{attemptId}",
+    // The post survey is the final learner action, after the post quiz. Triggering
+    // here lets the full quiz + survey completion contract be verified atomically.
+    document: "users/{userId}/surveyResponses/{responseId}",
     secrets: [GMAIL_APP_PASSWORD],
   },
   async (event) => {
@@ -444,9 +452,9 @@ exports.onCourseCompletion = onDocumentWritten(
     if (!AUTO_SEND_CERTIFICATES) return;
 
     const data = event.data?.after?.data();
-    if (!data || data.quizType !== "post") return;
+    if (!data || data.surveyType !== "post") return;
 
-    // Resolve the course for this post-quiz. Attempts written before multi-course
+    // Resolve the course for this post survey. Responses written before multi-course
     // support have no courseId and are knee by definition.
     const courseId = data.courseId || "knee-mri";
     const course = resolveCourse(courseId);
@@ -467,36 +475,50 @@ exports.onCourseCompletion = onDocumentWritten(
     const requiredCaseIds = isResident ? course.residentCaseIds : course.fellowCaseIds;
     const belongsToCourse = (d) => (d.data().courseId || "knee-mri") === courseId;
 
-    // Gather completion inputs (modules, cases, pre-quiz, normal MRI workstation).
+    // Gather completion inputs (modules, cases, both assessment phases, and the
+    // normal MRI workstation).
     const moduleSnap = await db.collection("users").doc(userId).collection("moduleProgress").get();
     const modulesCompleted = moduleSnap.docs.filter((d) => d.data().completed && belongsToCourse(d)).length;
 
     const caseSnap = await db.collection("users").doc(userId).collection("caseAttempts").get();
     const uniqueCases = new Set(caseSnap.docs.filter(belongsToCourse).map((d) => d.data().caseId));
 
-    // Pre-quiz must exist for THIS course.
+    // Both knowledge quizzes and the baseline confidence survey must exist for
+    // this course. The triggering document is the post confidence survey.
     const preQuiz = await db.collection("users").doc(userId).collection("quizAttempts")
       .where("quizType", "==", "pre").get();
+    const postQuiz = await db.collection("users").doc(userId).collection("quizAttempts")
+      .where("quizType", "==", "post").get();
+    const preSurvey = await db.collection("users").doc(userId).collection("surveyResponses")
+      .where("surveyType", "==", "pre").get();
     const preDoc = newestFirst(preQuiz.docs).find((d) => (d.data().courseId || "knee-mri") === courseId);
-    if (!preDoc) return;
+    const postDoc = newestFirst(postQuiz.docs).find((d) => (d.data().courseId || "knee-mri") === courseId);
+    const preSurveyDoc = newestFirst(preSurvey.docs).find((d) => (d.data().courseId || "knee-mri") === courseId);
+    if (!preDoc || !postDoc || !preSurveyDoc) return;
 
     const preData = preDoc.data();
-    const postData = data;
+    const postData = postDoc.data();
     const postPct = postScorePercent(postData, course);
     const normalDone = await normalMriComplete(userId, course);
 
     // Single shared completion predicate — keeps this in lockstep with
-    // src/lib/completion.ts (knee: cases optional; all courses require their
-    // normal MRI workstation and a post-assessment score ≥70%).
-    if (!meetsCompletion({ courseId, course, modulesCompleted, uniqueCases, requiredCaseIds, normalDone, postPct })) {
+    // src/lib/completion.ts (all courses require the same three-case milestone,
+    // their normal MRI workstation, and a post-assessment score >=70%).
+    if (!meetsCompletion({
+      course,
+      modulesCompleted,
+      uniqueCases,
+      requiredCaseIds,
+      normalDone,
+      preAssessmentDone: true,
+      postAssessmentDone: true,
+      postPct,
+    })) {
       console.log(`${course.label} not yet complete or below ${CERTIFICATE_PASS_THRESHOLD}% — certificate not sent (${userId}, post ${postPct}%)`);
       return;
     }
 
-    // Cases actually completed (knee = however many of the optional core cases they did).
-    const casesCount = courseId === "knee-mri"
-      ? requiredCaseIds.filter((id) => uniqueCases.has(id)).length
-      : requiredCaseIds.length;
+    const casesCount = requiredCaseIds.filter((id) => uniqueCases.has(id)).length;
 
     // Generate PDF
     const pdfBytes = await generateCertificatePdf({
@@ -593,9 +615,14 @@ exports.sendCertificate = onCall(
       .where("quizType", "==", "pre").get();
     const postQuiz = await db.collection("users").doc(userId).collection("quizAttempts")
       .where("quizType", "==", "post").get();
+    const surveySnap = await db.collection("users").doc(userId).collection("surveyResponses").get();
 
     const preDoc = newestFirst(preQuiz.docs).find(belongsToCourse);
     const postDoc = newestFirst(postQuiz.docs).find(belongsToCourse);
+    const preSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "pre"))
+      .find(belongsToCourse);
+    const postSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "post"))
+      .find(belongsToCourse);
     const preData = preDoc ? preDoc.data() : { score: 0, totalQuestions: course.quizTotal };
     const postData = postDoc ? postDoc.data() : { score: 0, totalQuestions: course.quizTotal };
 
@@ -606,18 +633,33 @@ exports.sendCertificate = onCall(
     // completion); the override is recorded in the admin notification email below.
     const postPct = postScorePercent(postData, course);
     const normalDone = await normalMriComplete(userId, course);
-    if (!force && !meetsCompletion({ courseId: cid, course, modulesCompleted, uniqueCases, requiredCaseIds, normalDone, postPct })) {
+    const preAssessmentDone = !!preDoc && !!preSurveyDoc;
+    const postAssessmentDone = !!postDoc && !!postSurveyDoc;
+    if (!force && !meetsCompletion({
+      course,
+      modulesCompleted,
+      uniqueCases,
+      requiredCaseIds,
+      normalDone,
+      preAssessmentDone,
+      postAssessmentDone,
+      postPct,
+    })) {
       const missing = [];
-      if (postPct == null || postPct < CERTIFICATE_PASS_THRESHOLD) {
+      if (!preDoc) missing.push("baseline knowledge quiz");
+      if (!preSurveyDoc) missing.push("baseline confidence survey");
+      if (!postDoc) {
+        missing.push("post-assessment knowledge quiz");
+      } else if (postPct == null || postPct < CERTIFICATE_PASS_THRESHOLD) {
         missing.push(`post-assessment ${postPct ?? 0}% (need ${CERTIFICATE_PASS_THRESHOLD}%)`);
       }
+      if (!postSurveyDoc) missing.push("post-course confidence survey");
       if (modulesCompleted < course.moduleCount) {
         missing.push(`modules ${modulesCompleted}/${course.moduleCount}`);
       }
-      if (cid !== "knee-mri") {
-        const doneCases = requiredCaseIds.filter((id) => uniqueCases.has(id)).length;
-        if (doneCases < requiredCaseIds.length) missing.push(`cases ${doneCases}/${requiredCaseIds.length}`);
-      }
+      const doneCases = requiredCaseIds.filter((id) => uniqueCases.has(id)).length;
+      const requiredCases = Math.min(REQUIRED_CORE_CASE_COUNT, requiredCaseIds.length);
+      if (doneCases < requiredCases) missing.push(`cases ${doneCases}/${requiredCases}`);
       if (!normalDone) {
         missing.push(`Interactive Normal ${course.label} workstation`);
       }
@@ -788,18 +830,31 @@ exports.weeklyDigest = onSchedule(
       const moduleSnap = await db.collection("users").doc(userDoc.id).collection("moduleProgress").get();
       const caseSnap = await db.collection("users").doc(userDoc.id).collection("caseAttempts").get();
       const modulesCompleted = moduleSnap.docs.filter((d) => d.data().completed && isKnee(d)).length;
-      const casesCompleted = new Set(caseSnap.docs.filter(isKnee).map((d) => d.data().caseId)).size;
+      const eligibleCaseIds = data.role === "resident" ? RESIDENT_REQUIRED_CASE_IDS : FELLOW_REQUIRED_CASE_IDS;
+      const completedCaseIds = new Set(caseSnap.docs.filter(isKnee).map((d) => d.data().caseId));
+      const casesCompleted = eligibleCaseIds.filter((id) => completedCaseIds.has(id)).length;
 
-      // "Complete" must match the certificate definition (src/lib/completion.ts):
-      // knee = modules + Interactive Normal Knee MRI + post-assessment ≥70%
-      // (cases are optional). Not the raw module+case counts used before.
+      // "Complete" mirrors the certificate definition in src/lib/completion.ts.
       const normalDone = await normalMriComplete(userDoc.id, COURSE_CONFIG["knee-mri"]);
-      const postSnap = await db.collection("users").doc(userDoc.id).collection("quizAttempts")
-        .where("quizType", "==", "post").get();
-      const postDoc = newestFirst(postSnap.docs).find(isKnee);
+      const quizSnap = await db.collection("users").doc(userDoc.id).collection("quizAttempts").get();
+      const surveySnap = await db.collection("users").doc(userDoc.id).collection("surveyResponses").get();
+      const preDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "pre")).find(isKnee);
+      const postDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "post")).find(isKnee);
+      const preSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "pre"))
+        .find(isKnee);
+      const postSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "post"))
+        .find(isKnee);
       const postPct = postDoc ? postScorePercent(postDoc.data(), COURSE_CONFIG["knee-mri"]) : null;
-      const courseComplete =
-        modulesCompleted >= MODULE_COUNT && normalDone && postPct != null && postPct >= CERTIFICATE_PASS_THRESHOLD;
+      const courseComplete = meetsCompletion({
+        course: COURSE_CONFIG["knee-mri"],
+        modulesCompleted,
+        uniqueCases: completedCaseIds,
+        requiredCaseIds: eligibleCaseIds,
+        normalDone,
+        preAssessmentDone: !!preDoc && !!preSurveyDoc,
+        postAssessmentDone: !!postDoc && !!postSurveyDoc,
+        postPct,
+      });
 
       const lastActive = data.lastActive?.toDate?.() || null;
       const daysSinceActive = lastActive

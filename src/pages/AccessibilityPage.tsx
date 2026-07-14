@@ -5,7 +5,7 @@ const commonTasks = [
   "Sign in or enter App Review demo mode.",
   "Choose a sports medicine MRI course.",
   "Read modules, references, pearls, and case explanations.",
-  "Use normal MRI workstations, guided tours, knowledge checks, and cross-plane drills.",
+  "Use normal MRI workstations, guided tours, formative practice, mastery checks, and cross-plane drills.",
   "Review progress, spaced-review cards, and account settings.",
   "Request account deletion or contact support.",
 ];

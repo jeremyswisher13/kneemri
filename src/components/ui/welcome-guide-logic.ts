@@ -3,6 +3,7 @@ import {
   hasNormalMriWorkstation,
   normalMriPath,
   normalMriTitle,
+  requiredCoreCaseCount,
   type CourseDefinition,
 } from "@/content/courses";
 
@@ -72,22 +73,22 @@ export function getStepSubtext(
   if (status === "future") return null;
   switch (kind) {
     case "pre":
-      return "Start here";
+      return "Begin with the baseline";
     case "normal":
-      return "Pass the knowledge check on every plane";
+      return "Pass the Mastery Check on every plane";
     case "modules":
-      return `Continue with Module ${p.modulesCompleted + 1}`;
+      return `${p.modulesCompleted}/${p.totalModules} modules`;
     case "cases":
-      return `${p.casesCompleted}/${p.totalCases} cases`;
+      return `${Math.min(p.casesCompleted, p.totalCases)}/${p.totalCases} required cases`;
     case "post":
-      return p.postAssessmentUnlocked ? "Ready to take" : "Waiting for instructor to unlock";
+      return p.postAssessmentUnlocked ? "Ready to take" : "Complete the earlier steps to unlock";
   }
 }
 
 export function buildStepData(course: CourseDefinition): WelcomeStep[] {
   const moduleCount = course.modules.length;
   const stepCount = course.searchPatternSteps.length;
-  const isKnee = course.bodyRegion === "knee";
+  const requiredCases = requiredCoreCaseCount(course);
 
   const pre: WelcomeStep = {
     kind: "pre",
@@ -102,7 +103,7 @@ export function buildStepData(course: CourseDefinition): WelcomeStep[] {
   const normal: WelcomeStep = {
     kind: "normal",
     title: `Master the ${normalTitle}`,
-    description: `The heart of the course — scroll a real normal ${region} MRI like a workstation, take the guided tour, then prove it with the knowledge check on each plane.`,
+    description: `Scroll a real normal ${region} MRI, take the guided tour, practice with feedback, then pass the blinded Mastery Check on each plane.`,
     link: normalMriPath(course),
     linkLabel: "Open the workstation",
   };
@@ -115,28 +116,26 @@ export function buildStepData(course: CourseDefinition): WelcomeStep[] {
   };
   const cases: WelcomeStep = {
     kind: "cases",
-    title: "Practice with Cases",
-    description: `Apply your pattern to interactive cases using the ${stepCount}-step search and compare to the expert read.`,
+    title: `Complete ${requiredCases} Core Cases`,
+    description: `Apply the ${stepCount}-step search to any ${requiredCases} core cases and compare your read with the expert interpretation.`,
     link: coursePath(course, "/cases"),
     linkLabel: "View Cases",
   };
   const post: WelcomeStep = {
     kind: "post",
     title: "Post-Assessment",
-    description: isKnee
-      ? `After the ${normalTitle} and the modules, the post-assessment unlocks so you can measure your improvement.`
-      : `After completing the ${normalTitle}, all modules, and cases, the post-assessment unlocks so you can measure your improvement.`,
+    description: `After the ${normalTitle}, all modules, and ${requiredCases} core cases, measure your improvement.`,
     link: coursePath(course, "/post-assessment"),
     linkLabel: "View Post-Assessment",
   };
 
-  // The Normal-MRI workstation is the primary focus, placed before the modules.
-  // Knee: cases are optional (omitted). Shoulder/hip/elbow: cases are required.
+  // Every course follows one sequence: baseline, normal workstation, modules,
+  // a bounded case milestone, then the post-assessment.
   const hasWorkstation = hasNormalMriWorkstation(course);
   const steps: WelcomeStep[] = [pre];
   if (hasWorkstation) steps.push(normal);
   steps.push(modules);
-  if (!isKnee) steps.push(cases);
+  steps.push(cases);
   steps.push(post);
   return steps;
 }

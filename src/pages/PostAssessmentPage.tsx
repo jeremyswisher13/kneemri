@@ -98,11 +98,9 @@ export default function PostAssessmentPage() {
             Post-Assessment Locked
           </h2>
           <p className="mt-2 text-gray-500 max-w-md mx-auto">
-            {activeCourse.bodyRegion === "knee"
-              ? `Finish all modules and the Interactive ${normalTitle} to unlock the post-assessment. (Cases are optional.)`
-              : (progress.totalNormalPlanes ?? 0) > 0
-                ? `Complete all modules, all cases, and the Interactive ${normalTitle} to unlock the post-assessment.`
-                : "Complete all modules and cases to unlock the post-assessment."}
+            {(progress.totalNormalPlanes ?? 0) > 0
+              ? `Complete the baseline, the Interactive ${normalTitle}, all modules, and any three core cases to unlock the post-assessment.`
+              : "Complete the baseline, all modules, and any three core cases to unlock the post-assessment."}
           </p>
           <div className="mt-6">
             <Link to={coursePath(activeCourse, "/")}>

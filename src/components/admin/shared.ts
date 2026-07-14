@@ -4,7 +4,7 @@
  * here so the Fellow shape and status logic stay single-sourced.
  */
 import { CERTIFICATE_PASS_THRESHOLD } from "@/lib/completion";
-import type { CourseDefinition } from "@/content/courses";
+import { requiredCoreCaseCount, type CourseDefinition } from "@/content/courses";
 
 export interface SurveyResponse {
   statementId: string;
@@ -46,6 +46,7 @@ export interface Fellow {
   postQuizResponses: { questionId: string; selectedAnswer: string }[] | null;
   modulesCompleted: number;
   casesCompleted: number;
+  requiredCases?: number;
   normalMriComplete?: boolean;
   normalPlanesPassed?: number;
   totalNormalPlanes?: number;
@@ -68,8 +69,7 @@ export function fellowName(f: Fellow): string {
 
 /** Required core-case count for a learner, which differs by role. */
 export function totalCasesForRole(course: CourseDefinition, role?: string | null): number {
-  const residentCoreCaseCount = course.coreCases.filter((c) => c.residentVisible).length;
-  return role === "resident" ? residentCoreCaseCount : course.coreCases.length;
+  return requiredCoreCaseCount(course, role === "resident");
 }
 
 export function hasNormalMriWorkstation(course: CourseDefinition): boolean {
@@ -83,10 +83,9 @@ export function fellowStatus(
   course: CourseDefinition,
   postQuizTotal: number,
 ): FellowStatus {
-  // Knee: cases are optional. Every current course requires its Normal MRI
-  // workstation before the learner is certificate-ready.
-  const isKnee = course.bodyRegion === "knee";
-  const casesDone = isKnee ? true : f.casesCompleted >= totalCases;
+  // Every current course requires its Normal MRI workstation and the same
+  // role-aware core-case milestone before the learner is certificate-ready.
+  const casesDone = f.casesCompleted >= totalCases;
   const normalDone = !hasNormalMriWorkstation(course) || !!f.normalMriComplete;
   const hasAll =
     f.preQuizScore !== null &&

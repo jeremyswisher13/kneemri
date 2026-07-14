@@ -67,7 +67,7 @@ export default function ExploreChecklist({ plane, items }: { plane: string; item
       </ul>
       <p className="mt-4 border-t border-gray-100 pt-3 text-xs text-gray-500">
         Tap each as you find it. Then <strong>Guided Tour</strong> for a labeled walkthrough, or{" "}
-        <strong>Knowledge Check</strong> to test yourself.
+        <strong>Practice &amp; Mastery</strong> to test yourself.
       </p>
     </Card>
   );

@@ -4,7 +4,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import {
   courseRegistry,
   coursePath,
-  normalMriPath,
   type CourseDefinition,
 } from "@/content/courses";
 import { courseRegionAccent } from "@/lib/course-visuals";
@@ -79,15 +78,15 @@ function ResumePanel({ resume }: { resume: LearnerResumeState | null }) {
     return (
       <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
         <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Recommended start</p>
-        <h2 className="mt-2 text-lg font-bold text-gray-900">Master normal first</h2>
+        <h2 className="mt-2 text-lg font-bold text-gray-900">Capture your baseline</h2>
         <p className="mt-1 text-sm text-gray-600">
-          Begin with an interactive normal MRI workstation before cases and pathology.
+          Take the short knowledge quiz and confidence survey before opening the teaching content.
         </p>
         <Link
-          to={normalMriPath(firstCourse)}
+          to={coursePath(firstCourse, "/pre-assessment")}
           className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:w-auto"
         >
-          Start normal knee MRI
+          Start knee pre-assessment
         </Link>
       </section>
     );
@@ -112,7 +111,7 @@ function ResumePanel({ resume }: { resume: LearnerResumeState | null }) {
 }
 
 function RecommendedPath() {
-  const steps = ["Explore", "Guided Tour", "Knowledge Check", "Cross-Plane", "Image CAQ"];
+  const steps = ["Explore", "Guided Tour", "Practice & Mastery", "Cross-Plane", "Image CAQ"];
   return (
     <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
       <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Suggested sequence</p>

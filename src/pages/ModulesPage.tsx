@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Card from "@/components/ui/Card";
 import { useProgress } from "@/hooks/useProgress";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
-import { coursePath } from "@/content/courses";
+import { coursePath, normalMriPath } from "@/content/courses";
 
 export default function ModulesPage() {
   const activeCourse = useActiveCourse();
@@ -29,6 +29,20 @@ export default function ModulesPage() {
   const completedModuleCount = modules.filter(
     (mod) => getModuleStatus(mod.id) === "completed"
   ).length;
+  const baselineComplete = !!(progress?.preQuizCompleted && progress?.preSurveyCompleted);
+  const prerequisite = !baselineComplete
+    ? {
+        href: coursePath(activeCourse, "/pre-assessment"),
+        title: "Recommended first: capture your baseline",
+        copy: "Complete the knowledge quiz and confidence survey before opening the teaching sequence.",
+      }
+    : !progress?.normalMriComplete
+      ? {
+          href: normalMriPath(activeCourse),
+          title: `Recommended first: master the normal ${activeCourse.bodyRegion}`,
+          copy: "Build the normal anatomy map and pass the blinded Mastery Check on every plane before moving into pathology.",
+        }
+      : null;
 
   return (
     <div>
@@ -38,6 +52,19 @@ export default function ModulesPage() {
         interpretation skills.
       </p>
 
+      {prerequisite && (
+        <Link
+          to={prerequisite.href}
+          className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70"
+        >
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-[#003B5C]">{prerequisite.title}</p>
+            <p className="mt-0.5 text-xs leading-5 text-gray-600">{prerequisite.copy}</p>
+          </div>
+          <span className="shrink-0 text-ucla-blue" aria-hidden="true">&rarr;</span>
+        </Link>
+      )}
+
       {/* Milestone encouragement banners */}
       {completedModuleCount >= Math.ceil(modules.length / 2) && completedModuleCount < modules.length && (
         <div className="mt-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
@@ -46,7 +73,7 @@ export default function ModulesPage() {
       )}
       {completedModuleCount === modules.length && (
         <div className="mt-4 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
-          All modules complete! Time to put your knowledge to the test with cases.
+          All modules complete. Continue with any three core cases when the earlier pathway steps are complete.
         </div>
       )}
 

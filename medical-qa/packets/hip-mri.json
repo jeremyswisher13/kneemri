@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10",
+  "generatedAt": "2026-07-14",
   "course": {
     "id": "hip-mri",
     "title": "Hip MRI for Primary Care Sports Medicine",
@@ -1651,7 +1651,7 @@
             "id": "hc-q8",
             "sliceIndex": 15,
             "marker": {
-              "x": 40,
+              "x": 34,
               "y": 45
             },
             "prompt": "The paired articulations marked between the sacrum and the iliac bones on this posterior coronal slice are the:",
@@ -5985,7 +5985,7 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-hip-coronal",
         "sliceIndex": 15,
-        "x": 40,
+        "x": 34,
         "y": 45
       }
     },

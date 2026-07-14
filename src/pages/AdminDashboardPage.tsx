@@ -106,7 +106,7 @@ function exportCSV(fellows: Fellow[], course: CourseDefinition) {
       preConf !== null ? preConf.toFixed(1) : "",
       postConf !== null ? postConf.toFixed(1) : "",
       `${f.modulesCompleted}/${totalModules}`,
-      `${f.casesCompleted}/${csvTotalCases(f, course)}`,
+      `${Math.min(f.casesCompleted, csvTotalCases(f, course))}/${csvTotalCases(f, course)}`,
       normalMriProgressLabel(f, course),
       fellowStatus(f, totalModules, csvTotalCases(f, course), course, POST_QUIZ_TOTAL),
     ];
@@ -274,9 +274,9 @@ function exportDetailedCSV(fellows: Fellow[], course: CourseDefinition) {
       f.modulesCompleted,
       totalModules,
       totalModules > 0 ? Math.round((f.modulesCompleted / totalModules) * 100) : 0,
-      f.casesCompleted,
+      Math.min(f.casesCompleted, totalCases),
       totalCases,
-      totalCases > 0 ? Math.round((f.casesCompleted / totalCases) * 100) : 0,
+      totalCases > 0 ? Math.min(100, Math.round((f.casesCompleted / totalCases) * 100)) : 0,
       hasNormalMriWorkstation(course) ? (f.normalMriComplete ? "Yes" : "No") : "Not required",
       f.normalPlanesPassed ?? "",
       f.totalNormalPlanes ?? "",
@@ -426,8 +426,7 @@ function learnerProgressPct(
         ? 1
         : 0;
   const moduleProgress = totalModules > 0 ? Math.min(fellow.modulesCompleted / totalModules, 1) : 1;
-  const casesRequired = course.bodyRegion === "knee" ? 0 : totalCases;
-  const caseProgress = casesRequired > 0 ? Math.min(fellow.casesCompleted / casesRequired, 1) : 1;
+  const caseProgress = totalCases > 0 ? Math.min(fellow.casesCompleted / totalCases, 1) : 1;
   const steps = [
     fellow.preQuizScore !== null ? 1 : 0,
     fellow.preSurveyCompleted ? 1 : 0,
@@ -463,7 +462,7 @@ function nextStepForFellow(
   if (fellow.modulesCompleted < totalModules) {
     return { label: nextIncompleteModuleLabel(fellow, course) ?? "Continue modules", tone: "steady" };
   }
-  if (course.bodyRegion !== "knee" && fellow.casesCompleted < totalCases) {
+  if (fellow.casesCompleted < totalCases) {
     return { label: "Complete required cases", tone: "steady" };
   }
   if (fellow.postQuizScore === null) return { label: "Take post-assessment", tone: "attention" };
@@ -542,7 +541,7 @@ export default function AdminDashboardPage() {
   // Per-course derived values (recompute when the admin switches cohort).
   const PRE_QUIZ_TOTAL = getPreQuizQuestions(selectedCourse).length;
   const POST_QUIZ_TOTAL = getPostQuizQuestions(selectedCourse).length;
-  const residentCoreCaseCount = selectedCourse.coreCases.filter((c) => c.residentVisible).length;
+  const residentRequiredCaseCount = totalCasesForRole(selectedCourse, "resident");
 
   // Force-complete state
   const [fcSelectedFellow, setFcSelectedFellow] = useState<string>("");
@@ -637,11 +636,11 @@ export default function AdminDashboardPage() {
   }, [selectedCourse]);
 
   const totalModules = selectedCourse.modules.length;
-  const totalCases = selectedCourse.coreCases.length;
+  const totalCases = totalCasesForRole(selectedCourse, "fellow");
 
   const totalCasesForFellow = useCallback((f: Fellow): number => {
-    return f.role === "resident" ? residentCoreCaseCount : totalCases;
-  }, [totalCases, residentCoreCaseCount]);
+    return f.role === "resident" ? residentRequiredCaseCount : totalCases;
+  }, [totalCases, residentRequiredCaseCount]);
 
   const handleFunnelSelect = useCallback((s: FellowStatus | null) => {
     setStatusFilter(s);
@@ -1009,7 +1008,7 @@ export default function AdminDashboardPage() {
                   ) : (
                     displayedFellows.map((f) => {
                       const isResident = f.role === "resident";
-                      const userTotalCases = isResident ? residentCoreCaseCount : totalCases;
+                      const userTotalCases = isResident ? residentRequiredCaseCount : totalCases;
                       const preAvg = avgConfidence(f.preSurveyResponses);
                       const postAvg = avgConfidence(f.postSurveyResponses);
                       const prePct = f.preQuizScore !== null ? pct(f.preQuizScore, f.preQuizTotal ?? PRE_QUIZ_TOTAL) : null;
@@ -1109,7 +1108,7 @@ export default function AdminDashboardPage() {
                               <span className="text-gray-500">/{totalModules}</span>
                             </td>
                             <td className="py-3 pr-3">
-                              <span className="text-gray-900">{f.casesCompleted}</span>
+                              <span className="text-gray-900">{Math.min(f.casesCompleted, userTotalCases)}</span>
                               <span className="text-gray-500">/{userTotalCases}</span>
                             </td>
                             <td className="py-3 pr-3">
@@ -1322,9 +1321,7 @@ function TrackedFellowsPanel({
           const caseTotal = fellow ? totalCasesForRole(course, fellow.role) : 0;
           const caseValue = !fellow
             ? "--"
-            : course.bodyRegion === "knee"
-              ? `${fellow.casesCompleted}/${caseTotal} optional`
-              : `${fellow.casesCompleted}/${caseTotal}`;
+            : `${Math.min(fellow.casesCompleted, caseTotal)}/${caseTotal}`;
           const nextClass =
             row.nextStepTone === "done"
               ? "border-green-200 bg-green-50 text-green-800"
@@ -1519,7 +1516,7 @@ function FellowDetail({ fellow, course }: { fellow: Fellow; course: CourseDefini
           <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Normal MRI Workstation</h3>
           <div className="rounded-lg border border-gray-200 bg-white p-3">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-sm font-medium text-gray-700">Plane knowledge checks</span>
+              <span className="text-sm font-medium text-gray-700">Plane Mastery Checks</span>
               <span
                 className={`text-sm font-bold ${
                   fellow.normalMriComplete || !hasNormalMriWorkstation(course) ? "text-green-700" : "text-amber-700"

@@ -3,6 +3,7 @@ import MriStackViewer from "@/components/ui/MriStackViewer";
 import Card from "@/components/ui/Card";
 import GuidedTour from "@/components/normal/GuidedTour";
 import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/KnowledgeCheck";
+import { isPassingMasteryScore } from "@/components/normal/knowledge-check-logic";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
 import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
@@ -43,7 +44,7 @@ const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "comp
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
-  { id: "check", label: "Knowledge Check" },
+  { id: "check", label: "Practice & Mastery" },
 ];
 
 /**
@@ -70,7 +71,7 @@ export default function NormalHipMriPage() {
   const learn = normalHipLearn[series.id];
 
   async function handleCheckComplete(planeId: string, score: number, total: number) {
-    if (!user || isAdminView || total <= 0 || score / total < 0.7) return;
+    if (!user || isAdminView || !isPassingMasteryScore(score, total)) return;
     const { markNormalPlanePassed } = await import("@/lib/firestore");
     markNormalPlanePassed(user.uid, user.email || "", planeId, score, total).catch(() => {});
   }
@@ -202,20 +203,22 @@ export default function NormalHipMriPage() {
         </div>
       )}
 
-      {/* ── Knowledge Check ─────────────────────────────────────────── */}
+      {/* ── Practice & Mastery ──────────────────────────────────────── */}
       {mode === "check" && (
         <div className="mt-5">
           {learn ? (
             <KnowledgeCheck
+              key={series.id}
               dir={series.dir}
               items={learn.quiz}
+              tour={learn.tour}
               planeLabel={series.label}
               onComplete={(s, t) => handleCheckComplete(`hip-${series.id}`, s, t)}
               onMiss={handleMiss}
               onShowInLearn={handleShowInLearn}
             />
           ) : (
-            <ComingSoonForPlane label={series.label} kind="knowledge check" />
+            <ComingSoonForPlane label={series.label} kind="practice and mastery check" />
           )}
         </div>
       )}

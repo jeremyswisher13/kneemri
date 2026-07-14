@@ -49,7 +49,7 @@ export default function RoleSelection({ onSelectRole }: RoleSelectionProps) {
               Sports Medicine Fellow
             </h2>
             <p className="mt-2 flex-1 text-sm text-gray-500">
-              Complete MRI interpretation curriculum with advanced topics, all cases, and comprehensive assessments
+              Complete MRI interpretation curriculum with advanced topics, the full case library, and comprehensive assessments
             </p>
             <div className="mt-4 inline-flex items-center text-sm font-medium text-[#005587]">
               Select

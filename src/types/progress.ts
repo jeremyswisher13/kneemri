@@ -73,10 +73,14 @@ export interface UserProgress {
   postQuizUnlocked: boolean;
   modulesCompleted: number;
   totalModules: number;
+  /** Unique role-visible core cases explored. */
   casesCompleted: number;
+  /** Total role-visible core cases in the library. */
   totalCases: number;
+  /** Number of core cases required for course completion. */
+  requiredCases: number;
   // Interactive Normal MRI workstation for the active course. "Complete" =
-  // passed the Knowledge Check on all required planes.
+  // passed the blinded Mastery Check on all required planes.
   normalMriComplete: boolean;
   normalPlanesPassed: number;
   totalNormalPlanes: number;

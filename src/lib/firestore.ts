@@ -5,7 +5,14 @@ import { db } from "./db";
 import { logAuditEvent } from "./audit";
 import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
 import { certificateFieldsForCourse } from "@/lib/course-certificate";
-import { defaultCourse, getCourseById, LEGACY_DEFAULT_COURSE_ID, type CourseDefinition, type CourseId } from "@/content/courses";
+import {
+  defaultCourse,
+  getCourseById,
+  LEGACY_DEFAULT_COURSE_ID,
+  requiredCoreCaseCount,
+  type CourseDefinition,
+  type CourseId,
+} from "@/content/courses";
 import {
   medicalQaReviewId,
   type MedicalQaReviewInput,
@@ -217,7 +224,7 @@ export async function completeModule(
 // keyed by course-disambiguated ids (knee bare, "sh-"/"hip-"/"elbow-" prefixed;
 // see NORMAL_*_PLANE_IDS). Renaming the collection would orphan existing data, so
 // only the function name is generic. There is NO knee-specific behavior here.
-/** Record that a fellow passed the Knowledge Check for one workstation plane (any course). */
+/** Record that a fellow passed the blinded Mastery Check for one workstation plane. */
 export async function markNormalPlanePassed(
   userId: string,
   userEmail: string,
@@ -376,13 +383,14 @@ export async function getUserProgress(
     settingsData[`postQuizUnlocked_${course.id}`] === true ||
     (isDefaultCourse && settingsData.postQuizUnlocked === true);
 
-  // Auto-unlock: if user completed all modules and all role-appropriate cases
+  // Auto-unlock: baseline first, then the normal workstation, all modules, and
+  // any three role-appropriate core cases.
   const userRole = userSnap.exists() ? userSnap.data().role : null;
   const isResident = userRole === 'resident';
   const visibleCoreCases = isResident
     ? course.coreCases.filter(c => c.residentVisible)
     : course.coreCases;
-  const requiredCases = visibleCoreCases.length;
+  const requiredCases = requiredCoreCaseCount(course, isResident);
   const visibleCaseIds = new Set(visibleCoreCases.map(c => c.id));
   const completedVisibleCases = new Set(
     caseAttempts.filter((c) => visibleCaseIds.has(c.caseId)).map((c) => c.caseId)
@@ -391,10 +399,9 @@ export async function getUserProgress(
   // An empty required-case set is trivially satisfied (nothing left to do).
   const allCasesDone = completedVisibleCases.size >= requiredCases;
 
-  // Interactive Normal MRI: "complete" = passed the Knowledge Check on every
+  // Interactive Normal MRI: "complete" = passed the Mastery Check on every
   // plane of this course's workstation. Courses without a workstation (none
   // currently) treat it as not-applicable (complete).
-  const isKnee = course.bodyRegion === "knee";
   let normalPlanesPassed = 0;
   if (hasWorkstation && nkSnap) {
     const passedIds = new Set(nkSnap.docs.filter((d) => d.data().passed === true).map((d) => d.id));
@@ -403,13 +410,9 @@ export async function getUserProgress(
   const totalNormalPlanes = planeIds.length;
   const normalMriComplete = !hasWorkstation || normalPlanesPassed >= planeIds.length;
 
-  // Required learning to unlock the post-assessment:
-  //  • Knee: all modules + the Normal Knee MRI (cases are OPTIONAL).
-  //  • Shoulder/hip/elbow: all modules + all role-appropriate core cases + the
-  //    course's Normal MRI workstation.
-  const requiredLearningDone = isKnee
-    ? allModulesDone && normalMriComplete
-    : allModulesDone && allCasesDone && normalMriComplete;
+  const baselineDone = !!preQuiz && !!preSurvey;
+  const requiredLearningDone =
+    baselineDone && normalMriComplete && allModulesDone && allCasesDone;
   const postQuizUnlocked = adminUnlocked || requiredLearningDone;
 
   return {
@@ -434,7 +437,8 @@ export async function getUserProgress(
     modulesCompleted,
     totalModules: course.modules.length,
     casesCompleted: completedVisibleCases.size,
-    totalCases: requiredCases,
+    totalCases: visibleCoreCases.length,
+    requiredCases,
     normalMriComplete,
     normalPlanesPassed,
     totalNormalPlanes,

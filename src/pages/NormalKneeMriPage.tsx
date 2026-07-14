@@ -3,6 +3,7 @@ import MriStackViewer from "@/components/ui/MriStackViewer";
 import Card from "@/components/ui/Card";
 import GuidedTour from "@/components/normal/GuidedTour";
 import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/KnowledgeCheck";
+import { isPassingMasteryScore } from "@/components/normal/knowledge-check-logic";
 import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
@@ -43,7 +44,7 @@ const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "comp
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
-  { id: "check", label: "Knowledge Check" },
+  { id: "check", label: "Practice & Mastery" },
   { id: "correlate", label: "Cross-Plane" },
   { id: "compare", label: "Compare" },
   // "Advanced" appended at render time only when the bank has questions.
@@ -90,15 +91,15 @@ export default function NormalKneeMriPage() {
     seriesLabel: series.label,
   });
 
-  // Passing a plane's Knowledge Check (70%+) records it toward completing the
+  // Passing a plane's blinded Mastery Check (70%+) records it toward completing the
   // Interactive Normal Knee MRI — a required part of the course.
   async function handleCheckComplete(planeId: string, score: number, total: number) {
-    if (!user || isAdminView || total <= 0 || score / total < 0.7) return;
+    if (!user || isAdminView || !isPassingMasteryScore(score, total)) return;
     const { markNormalPlanePassed } = await import("@/lib/firestore");
     markNormalPlanePassed(user.uid, user.email || "", planeId, score, total).catch(() => {});
   }
 
-  // Missed Knowledge-Check / Advanced items feed the spaced-review queue.
+  // Missed practice, mastery, and Advanced items feed the spaced-review queue.
   function handleMiss(itemId: string) {
     if (!user || isAdminView || !getCourseById("knee-mri").features.reviewCards) return;
     import("@/lib/firestore")
@@ -209,20 +210,19 @@ export default function NormalKneeMriPage() {
         </div>
       )}
 
-      {/* ── Knowledge Check ─────────────────────────────────────────── */}
+      {/* ── Practice & Mastery ──────────────────────────────────────── */}
       {mode === "check" && (
         <div className="mt-5">
           {learn ? (
             <>
               <p className="mb-4 text-sm text-gray-500">
-                Identify each marked structure on this normal {series.label} knee.{" "}
-                <span className="text-gray-500">
-                  Score 70%+ on all four loaded knee series to complete the Normal Knee MRI — a required part of the course.
-                </span>
+                Practice the normal {series.label} landmarks with feedback, then pass the blinded Mastery Check at 70% or higher. Pass all four loaded series to complete the Normal Knee MRI.
               </p>
               <KnowledgeCheck
+                key={series.id}
                 dir={series.dir}
                 items={learn.quiz}
+                tour={learn.tour}
                 planeLabel={series.label}
                 onComplete={(s, t) => handleCheckComplete(series.id, s, t)}
                 onMiss={handleMiss}
@@ -230,7 +230,7 @@ export default function NormalKneeMriPage() {
               />
             </>
           ) : (
-            <ComingSoonForPlane label={series.label} kind="knowledge check" />
+            <ComingSoonForPlane label={series.label} kind="practice and mastery check" />
           )}
         </div>
       )}

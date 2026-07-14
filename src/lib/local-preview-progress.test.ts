@@ -52,11 +52,31 @@ describe("local preview progress", () => {
     expect(progress.normalMriComplete).toBe(true);
     expect(progress.normalPlanesPassed).toBe(normalPlaneIdsFor(shoulder.bodyRegion).length);
     expect(progress.casesCompleted).toBe(shoulder.coreCases.length);
+    expect(progress.requiredCases).toBe(3);
+    expect(progress.totalCases).toBe(shoulder.coreCases.length);
     expect(progress.preQuizCompleted).toBe(true);
     expect(progress.preSurveyCompleted).toBe(true);
     expect(progress.postQuizCompleted).toBe(true);
     expect(progress.postSurveyCompleted).toBe(true);
     expect(progress.postQuizUnlocked).toBe(true);
+  });
+
+  it("unlocks post only after the baseline and any three core cases", () => {
+    const storage = memoryStorage();
+    const knee = getCourseById("knee-mri");
+
+    for (const mod of knee.modules) recordLocalPreviewModule(mod.id, 1, 1, knee.id, storage);
+    for (const planeId of normalPlaneIdsFor(knee.bodyRegion)) {
+      recordLocalPreviewNormalPlane(planeId, 7, 10, storage);
+    }
+    for (const caseItem of knee.coreCases.slice(0, 3)) {
+      recordLocalPreviewCaseAttempt(caseItem.id, {}, "", knee.id, storage);
+    }
+
+    expect(getLocalPreviewProgress(knee, "fellow", storage).postQuizUnlocked).toBe(false);
+    recordLocalPreviewQuiz("pre", [], 7, 10, knee.id, storage);
+    recordLocalPreviewSurvey("pre", [], knee.id, undefined, storage);
+    expect(getLocalPreviewProgress(knee, "fellow", storage).postQuizUnlocked).toBe(true);
   });
 
   it("keeps unrelated course progress isolated", () => {

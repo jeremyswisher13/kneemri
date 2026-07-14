@@ -160,7 +160,7 @@ export default function ReviewPage() {
               </p>
             ) : (
               <p className="mx-auto mt-2 max-w-md text-sm text-gray-500">
-                Anything you miss — on a module quiz, a Normal MRI Knowledge Check, or an Advanced
+                Anything you miss — on a module quiz, Normal MRI practice or mastery, or an Advanced
                 question — lands here and comes back on a spaced schedule so it sticks.
               </p>
             )}

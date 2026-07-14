@@ -1,4 +1,10 @@
-import { defaultCourse, LEGACY_DEFAULT_COURSE_ID, type CourseDefinition, type CourseId } from "@/content/courses";
+import {
+  defaultCourse,
+  LEGACY_DEFAULT_COURSE_ID,
+  requiredCoreCaseCount,
+  type CourseDefinition,
+  type CourseId,
+} from "@/content/courses";
 import { createNewCard, type ReviewCard } from "@/lib/spaced-repetition";
 import { normalPlaneIdsFor } from "@/lib/normal-plane-ids";
 import type { CaseAttemptItem, ModuleProgressItem, QuizResponse, SurveyResponse, UserProgress } from "@/types/progress";
@@ -290,12 +296,11 @@ export function getLocalPreviewProgress(
   );
   const normalPlanesPassed = planeIds.filter((id) => passedIds.has(id)).length;
   const normalMriComplete = planeIds.length === 0 || normalPlanesPassed >= planeIds.length;
-  const isKnee = course.bodyRegion === "knee";
   const allModulesDone = modulesCompleted >= course.modules.length;
-  const allCasesDone = completedVisibleCases.size >= visibleCoreCases.length;
-  const postQuizUnlocked = isKnee
-    ? allModulesDone && normalMriComplete
-    : allModulesDone && allCasesDone && normalMriComplete;
+  const requiredCases = requiredCoreCaseCount(course, role === "resident");
+  const allCasesDone = completedVisibleCases.size >= requiredCases;
+  const baselineDone = !!preQuiz && !!preSurvey;
+  const postQuizUnlocked = baselineDone && normalMriComplete && allModulesDone && allCasesDone;
 
   return {
     preQuizCompleted: !!preQuiz,
@@ -320,6 +325,7 @@ export function getLocalPreviewProgress(
     totalModules: course.modules.length,
     casesCompleted: completedVisibleCases.size,
     totalCases: visibleCoreCases.length,
+    requiredCases,
     normalMriComplete,
     normalPlanesPassed,
     totalNormalPlanes: planeIds.length,

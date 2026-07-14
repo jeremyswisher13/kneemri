@@ -28,8 +28,8 @@ const STEP_COPY: Record<MasteryStepId, { label: string; text: string }> = {
     text: "Name the structures and the normal variants before moving to pathology.",
   },
   check: {
-    label: "Knowledge Check",
-    text: "Pass each series at 70% or higher to complete the normal MRI requirement.",
+    label: "Practice & Mastery",
+    text: "Practice with feedback, then pass the blinded check at 70% or higher.",
   },
   correlate: {
     label: "Cross-Plane",
@@ -55,7 +55,7 @@ const MODE_TO_STEP: Record<string, MasteryStepId> = {
 const FOCUS_COPY: Record<string, string> = {
   explore: "First build the normal mental map: sweep the series, then call out one variant or pitfall before leaving the stack.",
   tour: "Work through the landmarks on this series, including the variant and measurement notes that prevent false positives.",
-  check: "Answer from the image, then use missed items to jump back to the exact normal landmark in the tour.",
+  check: "Use feedback during practice, then complete the mixed identification and localization mastery round without answer cues.",
   correlate: "Make the orthogonal-confirmation habit explicit: one-plane impressions should become two-plane anatomy.",
   compare: "Use side-by-side planes to prove orientation and avoid mistaking shape change for pathology.",
   advanced: "Treat these as management-changing board traps: thresholds matter, but context and imaging plane matter too.",

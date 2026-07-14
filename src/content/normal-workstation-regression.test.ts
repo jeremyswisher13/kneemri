@@ -42,6 +42,10 @@ import {
   type NormalWorkstationSeries,
 } from "@/content/normal-workstation-series";
 import type { AdvancedQ, CorrelationItem, ImageCaqQ, PlaneLearn } from "@/content/normal-mri-types";
+import {
+  canStartMastery,
+  labelQuizItemsFromTour,
+} from "@/components/normal/knowledge-check-logic";
 
 type WorkstationContract = {
   courseId: string;
@@ -92,7 +96,7 @@ function expectUnique(ids: string[], label: string) {
 const EXPECTED_MODES = [
   "Explore",
   "Guided Tour",
-  "Knowledge Check",
+  "Practice & Mastery",
   "Cross-Plane",
   "Compare",
   "Advanced",
@@ -159,7 +163,7 @@ const workstations: WorkstationContract[] = [
     learn: normalElbowLearn,
     expectedSeriesLabels: ["Coronal T2-FS", "Axial T2-FS", "Sagittal IR"],
     expectedTourCounts: { "cor-t2fs": 8, "axi-t2fs": 7, "sag-ir": 7 },
-    expectedQuizCounts: { "cor-t2fs": 3, "axi-t2fs": 2, "sag-ir": 3 },
+    expectedQuizCounts: { "cor-t2fs": 5, "axi-t2fs": 5, "sag-ir": 5 },
     crossPlane: elbowCrossPlane,
     expectedCrossPlaneCount: 7,
     firstCrossPlaneTarget: { x: 61, y: 54 },
@@ -199,6 +203,9 @@ describe("normal MRI workstation regression contract", () => {
       for (const [seriesId, learn] of Object.entries(workstation.learn)) {
         expect(learn.tour.length, `${seriesId} tour count`).toBe(workstation.expectedTourCounts[seriesId]);
         expect(learn.quiz.length, `${seriesId} quiz count`).toBe(workstation.expectedQuizCounts[seriesId]);
+        expect(learn.quiz.length, `${seriesId} mastery source count`).toBeGreaterThanOrEqual(5);
+        const labeledItems = labelQuizItemsFromTour(learn.quiz, learn.tour);
+        expect(canStartMastery(labeledItems), `${seriesId} mastery-ready landmarks`).toBe(true);
         expect(learn.tour[0]?.title, `${seriesId} first tour step`).toBe("Get oriented");
         expect(learn.quiz[0]?.options[learn.quiz[0].answer], `${seriesId} first answer`).toBeTruthy();
       }

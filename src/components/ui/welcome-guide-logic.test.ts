@@ -19,7 +19,7 @@ function progress(overrides: Partial<WelcomeGuideProgress> = {}): WelcomeGuidePr
     modulesCompleted: 0,
     totalModules: 5,
     casesCompleted: 0,
-    totalCases: 5,
+    totalCases: 3,
     normalMriComplete: false,
     postAssessmentUnlocked: false,
     postAssessmentComplete: false,
@@ -28,8 +28,8 @@ function progress(overrides: Partial<WelcomeGuideProgress> = {}): WelcomeGuidePr
 }
 
 describe('buildStepData order', () => {
-  it('knee puts the Normal-MRI workstation before the modules', () => {
-    expect(buildStepData(knee).map((s) => s.kind)).toEqual(['pre', 'normal', 'modules', 'post'])
+  it('knee follows the shared five-step course sequence', () => {
+    expect(buildStepData(knee).map((s) => s.kind)).toEqual(['pre', 'normal', 'modules', 'cases', 'post'])
   })
   it('shoulder leads with the workstation, then modules, then required cases', () => {
     expect(buildStepData(shoulder).map((s) => s.kind)).toEqual([
@@ -64,6 +64,7 @@ describe('buildStepData links are course-scoped', () => {
     expect(byKind.pre).toBe('/courses/knee-mri/pre-assessment')
     expect(byKind.normal).toBe('/courses/knee-mri/normal-knee-mri')
     expect(byKind.modules).toBe('/courses/knee-mri/modules')
+    expect(byKind.cases).toBe('/courses/knee-mri/cases')
     expect(byKind.post).toBe('/courses/knee-mri/post-assessment')
   })
   it('shoulder uses namespaced paths', () => {
@@ -99,8 +100,8 @@ describe('stepDone', () => {
     expect(stepDone('pre', p)).toBe(true)
     expect(stepDone('modules', p)).toBe(true)
     expect(stepDone('normal', p)).toBe(false)
-    expect(stepDone('cases', progress({ casesCompleted: 5, totalCases: 5 }))).toBe(true)
-    expect(stepDone('cases', progress({ casesCompleted: 2, totalCases: 5 }))).toBe(false)
+    expect(stepDone('cases', progress({ casesCompleted: 3, totalCases: 3 }))).toBe(true)
+    expect(stepDone('cases', progress({ casesCompleted: 2, totalCases: 3 }))).toBe(false)
   })
 })
 
@@ -108,18 +109,18 @@ describe('getStepStatuses (order-driven walk)', () => {
   const steps = buildStepData(knee)
 
   it('fresh progress: only the first step is current', () => {
-    expect(getStepStatuses(steps, progress())).toEqual(['current', 'future', 'future', 'future'])
+    expect(getStepStatuses(steps, progress())).toEqual(['current', 'future', 'future', 'future', 'future'])
   })
   it('pre done → normal (workstation) becomes current', () => {
     const s = getStepStatuses(steps, progress({ preAssessmentComplete: true }))
-    expect(s).toEqual(['complete', 'current', 'future', 'future'])
+    expect(s).toEqual(['complete', 'current', 'future', 'future', 'future'])
   })
   it('pre + normal done → modules current', () => {
     const s = getStepStatuses(
       steps,
       progress({ preAssessmentComplete: true, normalMriComplete: true }),
     )
-    expect(s).toEqual(['complete', 'complete', 'current', 'future'])
+    expect(s).toEqual(['complete', 'complete', 'current', 'future', 'future'])
   })
   it('everything but post done → post current', () => {
     const s = getStepStatuses(
@@ -129,14 +130,16 @@ describe('getStepStatuses (order-driven walk)', () => {
         normalMriComplete: true,
         modulesCompleted: 5,
         totalModules: 5,
+        casesCompleted: 3,
+        totalCases: 3,
       }),
     )
-    expect(s).toEqual(['complete', 'complete', 'complete', 'current'])
+    expect(s).toEqual(['complete', 'complete', 'complete', 'complete', 'current'])
   })
   it('a later step done out of order does not steal "current" from an earlier undone step', () => {
     // post complete but pre not: pre stays current, post shows complete.
     const s = getStepStatuses(steps, progress({ postAssessmentComplete: true }))
-    expect(s).toEqual(['current', 'future', 'future', 'complete'])
+    expect(s).toEqual(['current', 'future', 'future', 'future', 'complete'])
   })
 })
 
@@ -146,11 +149,9 @@ describe('getStepSubtext', () => {
     expect(getStepSubtext('modules', 'future', progress())).toBeNull()
   })
   it('current subtext is kind-specific', () => {
-    expect(getStepSubtext('pre', 'current', progress())).toBe('Start here')
-    expect(getStepSubtext('normal', 'current', progress())).toMatch(/knowledge check/i)
-    expect(getStepSubtext('modules', 'current', progress({ modulesCompleted: 2 }))).toBe(
-      'Continue with Module 3',
-    )
+    expect(getStepSubtext('pre', 'current', progress())).toMatch(/baseline/i)
+    expect(getStepSubtext('normal', 'current', progress())).toMatch(/mastery check/i)
+    expect(getStepSubtext('modules', 'current', progress({ modulesCompleted: 2 }))).toBe('2/5 modules')
     expect(getStepSubtext('post', 'current', progress({ postAssessmentUnlocked: true }))).toBe(
       'Ready to take',
     )

@@ -117,6 +117,26 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         explanation:
           "The LUCL/RCL origin lies deep to the common extensor tendon, so a deep extensor tear can take the LUCL and produce posterolateral rotatory instability (PLRI) — trace the LUCL to the supinator crest before signing off any high-grade lateral epicondylitis.",
       },
+      {
+        id: "ec-cor-q4",
+        sliceIndex: 12,
+        marker: { x: 46, y: 50 },
+        prompt: "What is the marked spool-shaped medial articular surface of the distal humerus?",
+        options: ["Capitellum", "Trochlea", "Radial head", "Olecranon"],
+        answer: 1,
+        explanation:
+          "The trochlea is the spool-shaped MEDIAL distal-humeral articular surface and articulates with the trochlear notch of the ulna. The capitellum is the rounded LATERAL surface that articulates with the radial head.",
+      },
+      {
+        id: "ec-cor-q5",
+        sliceIndex: 12,
+        marker: { x: 65, y: 64 },
+        prompt: "What is the marked round proximal-radial structure articulating with the capitellum?",
+        options: ["Coronoid process", "Radial head", "Olecranon", "Sublime tubercle"],
+        answer: 1,
+        explanation:
+          "The radial head is the round disc of the proximal radius directly beneath the capitellum on the lateral side. Its smooth cortex and uniform marrow are important checks when an occult fracture is suspected after trauma.",
+      },
     ],
   },
 
@@ -191,6 +211,36 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         answer: 1,
         explanation:
           "The cubital tunnel sits just posterior to the common flexor-pronator origin, so medial epicondylitis and ulnar neuritis coexist — when you call medial epicondylitis, always interrogate the ulnar nerve and the UCL (the medial triad).",
+      },
+      {
+        id: "ec-axi-q3",
+        sliceIndex: 16,
+        marker: { x: 72, y: 42 },
+        prompt: "What is the marked tendon origin on the anterolateral side of this axial elbow?",
+        options: ["Common flexor-pronator origin", "Common extensor origin", "Distal triceps tendon", "Distal biceps tendon"],
+        answer: 1,
+        explanation:
+          "The common extensor origin is anterolateral at the lateral epicondyle. On axial images, use this level to grade tendinosis or a deep tear and to inspect the adjacent lateral ligament complex.",
+      },
+      {
+        id: "ec-axi-q4",
+        sliceIndex: 16,
+        marker: { x: 45, y: 33 },
+        prompt: "What is the marked broad muscle immediately anterior to the elbow joint?",
+        options: ["Triceps", "Anconeus", "Brachialis", "Supinator"],
+        answer: 2,
+        explanation:
+          "The brachialis is the broad anterior elbow flexor lying deep to the biceps and inserting on the coronoid process and ulnar tuberosity. The triceps occupies the posterior compartment.",
+      },
+      {
+        id: "ec-axi-q5",
+        sliceIndex: 16,
+        marker: { x: 50, y: 82 },
+        prompt: "What is the marked posterior muscle-tendon unit inserting on the olecranon?",
+        options: ["Brachialis", "Distal biceps", "Common extensor", "Triceps"],
+        answer: 3,
+        explanation:
+          "The triceps occupies the posterior compartment and inserts on the olecranon. Its deep fibers can fail while the superficial expansion remains intact, so continuity should be assessed across the full footprint.",
       },
     ],
   },
@@ -284,6 +334,26 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         answer: 0,
         explanation:
           "A posterolateral radiocapitellar plica/synovial fold can be a normal thin fold in the radiocapitellar recess. Do not call it a loose body or OCD instability sign by itself; worry when it is thickened/edematous or matches mechanical snapping/catching.",
+      },
+      {
+        id: "ec-sag-q4",
+        sliceIndex: 14,
+        marker: { x: 63, y: 60 },
+        prompt: "What is the marked posterior process of the proximal ulna where the triceps inserts?",
+        options: ["Coronoid process", "Radial head", "Olecranon", "Capitellum"],
+        answer: 2,
+        explanation:
+          "The olecranon is the posterior beak of the proximal ulna and the triceps insertion. In a thrower, inspect its posteromedial margin and the adjacent olecranon fossa for valgus-extension-overload change and loose bodies.",
+      },
+      {
+        id: "ec-sag-q5",
+        sliceIndex: 14,
+        marker: { x: 33, y: 55 },
+        prompt: "Which anterior muscle-tendon region is marked in the antecubital fossa?",
+        options: ["Brachialis and distal biceps", "Triceps and anconeus", "Common extensor and LUCL", "Flexor-pronator and UCL"],
+        answer: 0,
+        explanation:
+          "The anterior antecubital region contains the brachialis and the distal biceps tendon as it approaches the radial-tuberosity footprint. The triceps and anconeus are posterior, while the common tendon and collateral-ligament groups sit along the epicondyles.",
       },
     ],
   },

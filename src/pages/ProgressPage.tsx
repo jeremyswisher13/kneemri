@@ -8,6 +8,7 @@ import {
   getVisibleCoreCases,
   getPreQuizQuestions,
   getPostQuizQuestions,
+  requiredCoreCaseCount,
 } from "@/content/courses";
 
 export default function ProgressPage() {
@@ -18,10 +19,12 @@ export default function ProgressPage() {
   // Fallback quiz totals for this course (used only when a stored attempt lacks totalQuestions).
   const preTotalFallback = getPreQuizQuestions(activeCourse).length;
   const postTotalFallback = getPostQuizQuestions(activeCourse).length;
-  // Completion percentage is based on core cases only
+  // The case card tracks the shared completion milestone; the library section
+  // below still shows every role-visible core and advanced case.
   const visibleCoreCases = getVisibleCoreCases(activeCourse, isResident);
   const visibleAdvancedCases = getVisibleAdvancedCases(activeCourse, isResident);
-  const totalCases = visibleCoreCases.length;
+  const totalCoreCases = visibleCoreCases.length;
+  const requiredCaseCount = requiredCoreCaseCount(activeCourse, isResident);
 
   if (loading) {
     return (
@@ -56,8 +59,8 @@ export default function ProgressPage() {
     [...allCompletedCaseIds].filter((id) => coreCaseIds.has(id))
   );
   const casePercent =
-    totalCases > 0
-      ? Math.min(100, Math.round((completedCoreCaseIds.size / totalCases) * 100))
+    requiredCaseCount > 0
+      ? Math.min(100, Math.round((completedCoreCaseIds.size / requiredCaseCount) * 100))
       : 0;
 
   return (
@@ -127,12 +130,12 @@ export default function ProgressPage() {
 
         <Card>
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-            Cases{activeCourse.bodyRegion === "knee" ? " · optional" : ""}
+            Required Cases
           </p>
           <p className="mt-2 text-2xl font-bold text-ucla-blue">
-            {completedCoreCaseIds.size}
+            {Math.min(completedCoreCaseIds.size, requiredCaseCount)}
             <span className="text-sm font-normal text-gray-500">
-              /{totalCases}
+              /{requiredCaseCount}
             </span>
           </p>
           <div className="mt-2 h-2 w-full rounded-full bg-gray-200">
@@ -141,7 +144,7 @@ export default function ProgressPage() {
               style={{ width: `${casePercent}%` }}
             />
           </div>
-          <p className="mt-1 text-xs text-gray-500">{casePercent}% complete</p>
+          <p className="mt-1 text-xs text-gray-500">Any 3 core cases</p>
         </Card>
 
         <Card>
@@ -288,11 +291,11 @@ export default function ProgressPage() {
       {/* Core Case Progress */}
       <div className="mt-10">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          Core Cases
-          {activeCourse.bodyRegion === "knee" && (
-            <span className="ml-2 align-middle text-xs font-normal text-gray-500">· optional, not required for completion</span>
-          )}
+          Core Case Library
         </h2>
+        <p className="-mt-2 mb-4 text-sm text-gray-500">
+          {completedCoreCaseIds.size}/{totalCoreCases} explored · any {requiredCaseCount} complete the course requirement
+        </p>
         <Card className="!p-0 divide-y divide-gray-100">
           {visibleCoreCases.map((caseItem, caseIndex) => {
             const isCompleted = allCompletedCaseIds.has(caseItem.id);
