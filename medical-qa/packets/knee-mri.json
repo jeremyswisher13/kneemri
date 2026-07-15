@@ -46,11 +46,11 @@
       "commonMistakes": [
         {
           "mistake": "Calling increased signal in the posterolateral meniscus a tear on PD without checking T2",
-          "correction": "Magic angle artifact disappears on T2. Always confirm meniscal signal abnormality on long TE sequences before diagnosing a tear."
+          "correction": "Magic-angle signal is usually markedly reduced on long-TE T2. Signal reduction supports artifact, but diagnose a tear from surface extension, morphology, and adjacent or orthogonal images."
         },
         {
           "mistake": "Reading only the sagittal PD FS series and skipping coronal and axial images",
-          "correction": "Every finding must be confirmed in at least two planes. Coronal images are critical for collateral ligaments and meniscal roots; axial images for the patellofemoral joint and MPFL."
+          "correction": "Review findings across all three planes and seek orthogonal correlation when anatomy permits; lack of a second-plane correlate does not automatically exclude a subtle lesion. Coronal images are critical for collateral ligaments and meniscal roots; axial images for the patellofemoral joint and MPFL."
         },
         {
           "mistake": "Not adjusting window/level when evaluating different structures",
@@ -136,7 +136,7 @@
           ]
         },
         {
-          "content": "### Key Bony Landmarks\n\n- **Tibial eminences** (medial and lateral intercondylar spines) — visible on coronal images; attachment sites for cruciate ligaments and meniscal roots. **Tibial eminence fractures** are common in adolescents and represent an **avulsion equivalent of an ACL tear**.\n- **Segond fracture** — a small avulsion off the lateral tibial plateau, **pathognomonic for ACL injury**. Best seen on coronal images.\n- **Femoral intercondylar notch** — the \"home\" of the cruciate ligaments. **Notch stenosis** (narrow or A-frame notch) is a risk factor for ACL tears.\n- **Tibial tubercle** — insertion of the patellar tendon; site of **Osgood-Schlatter disease** in adolescents.\n\n### Alignment\n\nThe **mechanical axis** should pass through the center of the knee on coronal images:\n- **Varus** malalignment — shifts load to the **medial** compartment\n- **Valgus** malalignment — shifts load to the **lateral** compartment",
+          "content": "### Key Bony Landmarks\n\n- **Tibial eminences** (medial and lateral intercondylar spines) — visible on coronal images; attachment sites for cruciate ligaments and meniscal roots. **Tibial eminence fractures** are common in adolescents and represent an **avulsion equivalent of an ACL tear**.\n- **Segond fracture** — a small avulsion off the lateral tibial plateau and a **highly specific marker of associated ACL injury**. Best seen on coronal images; confirm the ACL directly.\n- **Femoral intercondylar notch** — the \"home\" of the cruciate ligaments. **Notch stenosis** (narrow or A-frame notch) is a risk factor for ACL tears.\n- **Tibial tubercle** — insertion of the patellar tendon; site of **Osgood-Schlatter disease** in adolescents.\n\n### Alignment\n\nThe **mechanical axis** should pass through the center of the knee on coronal images:\n- **Varus** malalignment — shifts load to the **medial** compartment\n- **Valgus** malalignment — shifts load to the **lateral** compartment",
           "pearl": "On coronal images, look for small cortical avulsions at the lateral tibial plateau (Segond fracture), medial tibial plateau (reverse Segond/deep MCL avulsion), and the fibular head (arcuate sign, indicating PLC injury). These small fractures are often more important than the bone they break off — they tell you about the ligament injury.",
           "images": [
             {
@@ -513,7 +513,7 @@
       "commonMistakes": [
         {
           "mistake": "Calling grade 2 intrasubstance signal a tear",
-          "correction": "Only grade 3 signal — extending to the articular surface on two consecutive slices — constitutes a tear. Grade 2 is degenerative change and is extremely common over age 40."
+          "correction": "Grade 3 signal unequivocally reaches an articular surface; seeing that contact on two consecutive standard slices markedly increases confidence. Grade 2 signal remains intrasubstance and is common over age 40. A one-slice surface finding needs morphologic and orthogonal correlation rather than automatic dismissal or overcall."
         },
         {
           "mistake": "Missing a radial tear because it's only visible on one or two images",
@@ -530,8 +530,8 @@
       ],
       "topicContent": [
         {
-          "content": "### Meniscal Signal Grading\n\nMeniscal signal on MRI is graded using a **three-tier system** that directly guides clinical decision-making.\n\n| Grade | Signal Pattern | Clinical Significance |\n|-------|---------------|----------------------|\n| **Grade 1** | Small focus of intrameniscal signal, does not extend to articular surface | Early **mucinous degeneration** -- not surgical |\n| **Grade 2** | More extensive linear intrameniscal signal (often horizontal), does not reach articular surface | **Degenerative** change -- not surgical |\n| **Grade 3** | Increased signal unequivocally extending to at least one articular surface (assessed on PD / short-TE images) | **True meniscal tear** -- surgical consideration |\n\n### Diagnosing Grade 3 Signal\n\n- **Grade 3 signal** is defined as increased signal intensity that **unequivocally extends to at least one articular surface**, best assessed on **proton density / intermediate-weighted (short-TE) sequences** -- the most sensitive sequences for meniscal signal\n- Confirm surface extension on **at least two consecutive images** (the **two-slice-touch rule**) to avoid false positives from volume averaging\n- On **PD / short-TE** images, surface-reaching **intermediate-to-high** signal is enough — it need **not** approach fluid intensity. (Requiring fluid-bright signal is the **T2 / long-TE** criterion, which is exactly why T2 is *less* sensitive for tears and degeneration.)\n- Low-grade signal that barely touches a surface on a single image is more likely **degenerative change**",
-          "pearl": "Grade 2 signal in the posterior horn of the medial meniscus is extremely common in patients over 40 and should not be overcalled as a tear. Always confirm surface extension on two consecutive slices before diagnosing grade 3 signal.",
+          "content": "### Meniscal Signal Grading\n\nMeniscal signal on MRI is graded using a **three-tier system** that directly guides clinical decision-making.\n\n| Grade | Signal Pattern | Clinical Significance |\n|-------|---------------|----------------------|\n| **Grade 1** | Small focus of intrameniscal signal, does not extend to articular surface | Early **mucinous degeneration** -- not surgical |\n| **Grade 2** | More extensive linear intrameniscal signal (often horizontal), does not reach articular surface | **Degenerative** change -- not surgical |\n| **Grade 3** | Increased signal unequivocally extending to at least one articular surface (assessed on PD / short-TE images) | **True meniscal tear** -- surgical consideration |\n\n### Diagnosing Grade 3 Signal\n\n- **Grade 3 signal** is defined as increased signal intensity that **unequivocally extends to at least one articular surface**, best assessed on **proton density / intermediate-weighted (short-TE) sequences** -- the most sensitive sequences for meniscal signal\n- Surface extension on **at least two consecutive standard slices** (the **two-slice-touch rule**) greatly increases specificity and helps avoid false positives from volume averaging; a one-slice finding is lower confidence, not automatically degeneration\n- On **PD / short-TE** images, surface-reaching **intermediate-to-high** signal is enough — it need **not** approach fluid intensity. (Requiring fluid-bright signal is the **T2 / long-TE** criterion, which is exactly why T2 is *less* sensitive for tears and degeneration.)\n- Low-grade signal that barely touches a surface on a single image should be correlated with morphology, adjacent slices, and orthogonal planes before it is called a tear",
+          "pearl": "Grade 2 signal in the posterior horn of the medial meniscus is extremely common in patients over 40 and should not be overcalled as a tear. Surface contact on two consecutive standard slices markedly increases confidence; treat a one-slice finding cautiously and look for orthogonal or morphologic corroboration.",
           "images": [
             {
               "src": "/images/modules/meniscal-anatomy.svg",
@@ -557,8 +557,8 @@
           ]
         },
         {
-          "content": "### The Two-Slice-Touch Rule\n\nThe **two-slice-touch rule** is a fundamental diagnostic criterion for meniscal tears. This rule states that abnormal signal within the meniscus must **extend to an articular surface on at least two consecutive sagittal images** (using standard 3--4 mm slice thickness) to be called a definite tear.\n\nThis criterion was developed to reduce false-positive diagnoses caused by:\n- **Partial volume averaging**\n- **Truncation artifacts**\n- Normal **vascular signal** near the meniscal periphery\n\n### Applying the Rule\n\n- Requires **systematic scrolling** through sagittal images and **correlating findings on coronal and axial planes**\n- If increased signal touches the surface on **only one image**, report as **probable intrasubstance degeneration** or an equivocal finding -- not a definite tear\n- Performs best on standard **proton density** and **T2-weighted sequences** at **1.5T and 3T**\n\n### Pitfalls at 3T\n\nAt **3T**, be cautious of **artifactually increased intrameniscal signal** due to:\n- **Magic angle effect**\n- **Magnetization transfer**\n\nThese can mimic tears, particularly in the **posterior horn of the lateral meniscus** near the **popliteal hiatus**.",
-          "pearl": "The two-slice-touch rule applies to standard 3-4 mm sagittal slices. On thin-slice or 3D isotropic sequences, you may need to see surface-reaching signal on more consecutive images to have equivalent confidence in diagnosing a tear.",
+          "content": "### The Two-Slice-Touch Confidence Rule\n\nThe **two-slice-touch rule** is a high-specificity confidence rule for meniscal tears: surface-reaching signal on **at least two consecutive images** (using standard 3--4 mm slice thickness) has a much higher positive predictive value than contact on one image. It is not an absolute gate; a small or radial tear may be conspicuous on only one slice or primarily in an orthogonal plane.\n\nThis criterion was developed to reduce false-positive diagnoses caused by:\n- **Partial volume averaging**\n- **Truncation artifacts**\n- Normal **vascular signal** near the meniscal periphery\n\n### Applying the Rule\n\n- Requires **systematic scrolling** through sagittal images and **correlating findings on coronal and axial planes**\n- If increased signal touches the surface on **only one image**, scrutinize morphology, adjacent slices, and orthogonal planes. Without corroboration, describe it cautiously or as equivocal rather than automatically labeling it degeneration or a definite tear\n- Apply the rule primarily to standard **proton-density / intermediate-weighted short-TE sequences** at **1.5T and 3T**\n\n### Pitfalls at 3T\n\nAt **3T**, be cautious of **artifactually increased intrameniscal signal** due to:\n- **Magic angle effect**\n- **Magnetization transfer**\n\nThese can mimic tears, particularly in the **posterior horn of the lateral meniscus** near the **popliteal hiatus**.",
+          "pearl": "The two-slice-touch rule was developed for standard 3-4 mm slices. On thin-slice or 3D isotropic acquisitions, judge spatial continuity and multiplanar reformats rather than applying a fixed image count mechanically.",
           "images": [
             {
               "src": "/images/teaching/modules/module6-menisci/14_Meniscus_Transverse_Ligament_Normal.jpg",
@@ -814,8 +814,8 @@
           ]
         },
         {
-          "content": "### LCL and Posterolateral Corner (PLC)\n\nThe **lateral collateral ligament (LCL)** and **posterolateral corner (PLC)** structures are critical stabilizers that resist **varus stress** and **external rotation**.\n\n### Three Primary PLC Structures\n- **LCL** (fibular collateral ligament)\n- **Popliteus tendon**\n- **Popliteofibular ligament**\n\nInjury to the PLC is **frequently missed** on initial clinical evaluation and MRI interpretation, leading to **failed cruciate ligament reconstructions**.\n\n### Imaging by Plane\n\n- **Coronal images:** LCL appears as a thin, low-signal cord-like structure from the **lateral femoral epicondyle** to the **fibular head**\n- **Axial and sagittal images:** Popliteus tendon courses through the **popliteal hiatus** in the posterolateral meniscus and inserts on the lateral femoral condyle\n- **Axial images:** Popliteofibular ligament connects the popliteus tendon to the **fibular styloid**\n\n### Signs of PLC Injury\n- Edema and disruption of any PLC component, particularly at the **fibular head attachments**\n- **Arcuate fracture** (avulsion of the fibular styloid) -- **pathognomonic** for PLC injury\n- Bone contusions on the **anteromedial femoral condyle** and **anteromedial tibial plateau** (varus mechanism)\n- PLC injuries typically occur with **varus or hyperextension forces**\n- Commonly associated with **cruciate ligament tears** (particularly PCL)",
-          "pearl": "The PLC injury triad to report is: LCL disruption + popliteus tendon tear + popliteofibular ligament injury. Failure to diagnose PLC injury is the most common cause of ACL or PCL graft failure due to persistent rotational instability. An arcuate (fibular styloid) fracture is pathognomonic for PLC injury."
+          "content": "### LCL and Posterolateral Corner (PLC)\n\nThe **lateral collateral ligament (LCL)** and **posterolateral corner (PLC)** structures are critical stabilizers that resist **varus stress** and **external rotation**.\n\n### Three Primary PLC Structures\n- **LCL** (fibular collateral ligament)\n- **Popliteus tendon**\n- **Popliteofibular ligament**\n\nInjury to the PLC is **frequently missed** on initial clinical evaluation and MRI interpretation, leading to **failed cruciate ligament reconstructions**.\n\n### Imaging by Plane\n\n- **Coronal images:** LCL appears as a thin, low-signal cord-like structure from the **lateral femoral epicondyle** to the **fibular head**\n- **Axial and sagittal images:** Popliteus tendon courses through the **popliteal hiatus** in the posterolateral meniscus and inserts on the lateral femoral condyle\n- **Axial images:** Popliteofibular ligament connects the popliteus tendon to the **fibular styloid**\n\n### Signs of PLC Injury\n- Edema and disruption of any PLC component, particularly at the **fibular head attachments**\n- **Arcuate fracture** (avulsion of the fibular styloid) -- a **strong marker** of PLC injury that should trigger evaluation of every PLC component\n- Bone contusions on the **anteromedial femoral condyle** and **anteromedial tibial plateau** (varus mechanism)\n- PLC injuries typically occur with **varus or hyperextension forces**\n- Commonly associated with **cruciate ligament tears** (particularly PCL)",
+          "pearl": "The PLC injury triad to report is: LCL disruption + popliteus tendon tear + popliteofibular ligament injury. Failure to diagnose PLC injury is a major cause of ACL or PCL graft failure due to persistent rotational instability. An arcuate (fibular styloid) fracture is a strong PLC injury marker; define the injured structures directly."
         },
         {
           "content": "### Posteromedial Corner (PMC)\n\nThe **posteromedial corner (PMC)** of the knee is an important but often underappreciated group of stabilizers.\n\n### Key PMC Structures\n- **Posterior oblique ligament (POL)** -- primary structure of the PMC\n- **Semimembranosus tendon** and its expansions\n- **Oblique popliteal ligament**\n- **Posteromedial joint capsule**\n\nThe **POL** functions as a secondary restraint to **valgus stress** and a primary restraint to **internal rotation** and **anteromedial rotatory instability (AMRI)**.\n\n### MRI Evaluation\n- Best evaluated on **axial and coronal images** through the posteromedial knee\n- The POL is identified as a thickening of the posteromedial capsule that fans out from the **semimembranosus insertion**\n- PMC injuries present as **edema and disruption** along the posteromedial capsule, often in association with **MCL and ACL injuries**\n\n### Clinical Significance\n- PMC injuries contribute to **anteromedial rotatory instability (AMRI)**\n- When an ACL tear is present with a PMC injury, the **rotational instability is greater** than with an isolated ACL tear, potentially affecting surgical planning\n- **Chronic PMC insufficiency** can lead to persistent instability despite successful ACL reconstruction\n- Reporting should include specification of **which structures are involved** and the **grade of disruption**",
@@ -1025,8 +1025,8 @@
           ]
         },
         {
-          "content": "### Posterolateral Corner (PLC) Injuries\n\n**Posterolateral corner injuries** involving the **LCL** and **popliteus tendon complex** are among the most commonly missed diagnoses on knee MRI, yet their identification is essential for successful ligament reconstruction.\n\nAn unrecognized PLC injury is a **major and frequently overlooked cause of ACL and PCL graft failure** because persistent external rotation and varus laxity overload the reconstruction (the most common *technical* cause of ACL graft failure is non-anatomic tunnel placement).\n\n### Three Key Structures to Evaluate\n\n| Structure | Best Imaging Plane | Normal Appearance |\n|-----------|-------------------|-------------------|\n| **LCL** (fibular collateral ligament) | Coronal | Thin, low-signal cord from lateral femoral epicondyle to fibular head |\n| **Popliteus tendon** | Axial + sagittal | Courses through popliteal hiatus, inserts on lateral femoral condyle |\n| **Popliteofibular ligament** | Axial | Connects popliteus tendon to fibular styloid |\n\n### Signs of PLC Injury\n- **Edema and disruption** of any of the three structures\n- **Arcuate fracture** (fibular styloid avulsion) -- **pathognomonic**\n- Bone contusions on the **anteromedial tibia and femoral condyle** (varus mechanism)\n- **Peroneal nerve** edema or displacement around the fibular neck\n\n### Associations\n- Commonly accompany **PCL tears** (up to **60%** of grade III PCL injuries)\n- Also seen with **ACL tears** with varus mechanism\n- Always report PLC injuries explicitly with **specification of each involved structure**",
-          "pearl": "Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is pathognomonic for PLC injury and should never be dismissed as incidental."
+          "content": "### Posterolateral Corner (PLC) Injuries\n\n**Posterolateral corner injuries** involving the **LCL** and **popliteus tendon complex** are among the most commonly missed diagnoses on knee MRI, yet their identification is essential for successful ligament reconstruction.\n\nAn unrecognized PLC injury is a **major and frequently overlooked cause of ACL and PCL graft failure** because persistent external rotation and varus laxity overload the reconstruction (the most common *technical* cause of ACL graft failure is non-anatomic tunnel placement).\n\n### Three Key Structures to Evaluate\n\n| Structure | Best Imaging Plane | Normal Appearance |\n|-----------|-------------------|-------------------|\n| **LCL** (fibular collateral ligament) | Coronal | Thin, low-signal cord from lateral femoral epicondyle to fibular head |\n| **Popliteus tendon** | Axial + sagittal | Courses through popliteal hiatus, inserts on lateral femoral condyle |\n| **Popliteofibular ligament** | Axial | Connects popliteus tendon to fibular styloid |\n\n### Signs of PLC Injury\n- **Edema and disruption** of any of the three structures\n- **Arcuate fracture** (fibular styloid avulsion) -- a **strong PLC injury marker**\n- Bone contusions on the **anteromedial tibia and femoral condyle** (varus mechanism)\n- **Peroneal nerve** edema or displacement around the fibular neck\n\n### Associations\n- Commonly accompany **PCL tears** (up to **60%** of grade III PCL injuries)\n- Also seen with **ACL tears** with varus mechanism\n- Always report PLC injuries explicitly with **specification of each involved structure**",
+          "pearl": "Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is a strong marker that should prompt direct evaluation of the full PLC."
         },
         {
           "content": "### MPFL Tear with Osteochondral Injury\n\n**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.\n\n### Classic Injury Triad\n1. **MPFL tear**\n2. **Osteochondral injury** to the medial patellar facet or lateral femoral condyle\n3. **Possible loose body** from the osteochondral shear injury\n\n### Diagnostic Bone Bruise Pattern\n**Medial patellar facet edema + anterolateral femoral condyle edema** is a **classic, highly suggestive** pattern for transient lateral patellar dislocation, even if the patella has spontaneously reduced at the time of MRI.\n\n### Evaluation Checklist\n\n- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique\n- **Osteochondral injury** -- search for chondral or osteochondral fragments in:\n  - Suprapatellar pouch\n  - Lateral gutter\n  - Posterior recesses\n- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)\n\n### Predisposing Anatomy Assessment\n- **Trochlear dysplasia** (Dejour classification)\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm**)\n\nRecurrent dislocation risk is **high** when multiple anatomic risk factors are present.",
@@ -1037,13 +1037,13 @@
           "pearl": "A lipohemarthrosis without an identified fracture should prompt a second dedicated search. The most commonly missed fractures are subtle lateral tibial plateau depression fractures -- look for cortical irregularity and subchondral impaction on coronal images. If a plateau fracture is found, recommend CT for surgical planning."
         },
         {
-          "content": "### Segond Fracture\n\nThe **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is **pathognomonic for an ACL tear**, with an ACL injury present in approximately **75--100%** of cases.\n\nDespite its small size, this fracture has **enormous diagnostic significance** and should never be overlooked or dismissed as clinically insignificant.\n\n### MRI Appearance\n- **Thin sliver of bone** avulsed from the lateral tibial plateau, just distal to the joint line, with surrounding soft tissue edema\n- **Coronal images:** Small, vertically oriented bone fragment lateral to the tibial plateau with **marrow edema at the donor site**\n- **Axial images:** Avulsed fragment located anterolateral to the tibial plateau\n- The fragment may be **very small and easily missed** -- always scrutinize the anterolateral tibial rim when an ACL tear is identified or suspected\n\n### Reverse Segond Fracture\n- Avulsion of the **medial tibial rim**\n- Associated with **PCL tears** rather than ACL tears\n- Less common but equally important as an indicator of cruciate injury\n\n### Associated Findings to Evaluate\n- **ACL status** (should be torn)\n- **Meniscal tears** (particularly the lateral meniscus)\n- **Posterolateral corner injury**\n\nThe Segond fracture is often **more conspicuous on radiographs** than on MRI, so do not assume prior imaging has identified it.",
-          "pearl": "A Segond fracture (lateral tibial rim avulsion) is pathognomonic for ACL tear. Even a tiny bone fragment at the anterolateral tibial plateau should prompt immediate ACL evaluation. The reverse Segond fracture (medial tibial rim avulsion) is associated with PCL tears. These fractures are small but carry enormous diagnostic weight.",
+          "content": "### Segond Fracture\n\nThe **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is a **highly specific marker of associated ACL injury**, reported with an ACL injury in approximately **75--100%** of cases; still assess the ACL directly.\n\nDespite its small size, this fracture has **enormous diagnostic significance** and should never be overlooked or dismissed as clinically insignificant.\n\n### MRI Appearance\n- **Thin sliver of bone** avulsed from the lateral tibial plateau, just distal to the joint line, with surrounding soft tissue edema\n- **Coronal images:** Small, vertically oriented bone fragment lateral to the tibial plateau with **marrow edema at the donor site**\n- **Axial images:** Avulsed fragment located anterolateral to the tibial plateau\n- The fragment may be **very small and easily missed** -- always scrutinize the anterolateral tibial rim when an ACL tear is identified or suspected\n\n### Reverse Segond Fracture\n- Avulsion of the **medial tibial rim**\n- Associated with **PCL tears** rather than ACL tears\n- Less common but equally important as an indicator of cruciate injury\n\n### Associated Findings to Evaluate\n- **ACL status** (should be torn)\n- **Meniscal tears** (particularly the lateral meniscus)\n- **Posterolateral corner injury**\n\nThe Segond fracture is often **more conspicuous on radiographs** than on MRI, so do not assume prior imaging has identified it.",
+          "pearl": "A Segond fracture (lateral tibial rim avulsion) is highly specific for associated ACL injury. Even a tiny bone fragment at the anterolateral tibial plateau should prompt direct ACL evaluation. The reverse Segond fracture (medial tibial rim avulsion) is associated with PCL tears. These fractures are small but carry enormous diagnostic weight.",
           "images": [
             {
               "src": "/images/modules/segond-fracture.svg",
-              "alt": "Segond fracture diagram — lateral tibial avulsion pathognomonic for ACL tear",
-              "caption": "Segond fracture: lateral capsular avulsion pathognomonic for ACL tear"
+              "alt": "Segond fracture diagram — lateral tibial avulsion strongly associated with ACL tear",
+              "caption": "Segond fracture: lateral capsular avulsion strongly associated with ACL tear"
             },
             {
               "src": "/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg",
@@ -1227,7 +1227,7 @@
       "teachingPoints": [
         "The pivot-shift contusion pattern (LFC + posterolateral tibial plateau) is the most common bone bruise pattern and is strongly associated with ACL tears.",
         "When you see this contusion pattern, you MUST search for: (1) ACL tear, (2) lateral meniscal root tear, (3) ramp lesion, (4) bucket-handle tear.",
-        "A Segond fracture (lateral capsular avulsion) is pathognomonic for ACL tear.",
+        "A Segond fracture (lateral capsular avulsion) is highly specific for associated ACL injury and should prompt direct ACL assessment.",
         "Lipohemarthrosis (fat-fluid level on axial images) indicates an intra-articular fracture."
       ],
       "searchPatternFindings": [
@@ -3911,7 +3911,7 @@
         "measure": "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal."
       },
       "Meniscus": {
-        "variant": "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch). At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal."
+        "variant": "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40. Surface-reaching signal on two consecutive standard slices (two-slice-touch) gives high confidence for a tear; a one-slice finding is lower confidence and needs morphologic and orthogonal correlation. At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal."
       },
       "Patella": {
         "variant": "A subchondral lucency in the SUPEROLATERAL quadrant with intact overlying cartilage is the benign dorsal defect of the patella — don't call it an osteochondral lesion or infection."
@@ -6283,7 +6283,7 @@
     },
     {
       "id": 2,
-      "text": "Only grade 3 meniscal signal (reaching the articular surface on two consecutive slices) constitutes a tear. Grade 2 is degenerative change."
+      "text": "Meniscal signal that unequivocally reaches an articular surface is suspicious for a tear. Surface contact on two consecutive standard slices greatly increases confidence, but a one-slice finding still requires morphology and orthogonal-plane correlation rather than automatic dismissal."
     },
     {
       "id": 3,
@@ -6291,7 +6291,7 @@
     },
     {
       "id": 4,
-      "text": "Meniscal extrusion >3 mm is pathologic and strongly suggests a root tear. Always trace the root on coronal and axial images."
+      "text": "Meniscal extrusion >3 mm is abnormal and should trigger a careful search for root or radial tears and degeneration; extrusion alone does not diagnose a root tear. Trace the root on coronal and axial images."
     },
     {
       "id": 5,
@@ -6307,7 +6307,7 @@
     },
     {
       "id": 8,
-      "text": "Magic angle artifact disappears on T2-weighted sequences. If meniscal signal is gone on T2, it’s artifact, not a tear."
+      "text": "Magic-angle-related meniscal signal is usually markedly reduced on long-TE T2. Signal loss supports artifact, but tear diagnosis still depends on surface extension, morphology, and adjacent images."
     },
     {
       "id": 9,
@@ -6323,7 +6323,7 @@
     },
     {
       "id": 12,
-      "text": "SIFK (subchondral insufficiency fracture of the knee) in older patients is often caused by a posterior medial meniscal root tear — always check the root."
+      "text": "SIFK (subchondral insufficiency fracture of the knee) is associated with posterior medial meniscal root tears and extrusion, which can increase compartment loading — always check the root."
     },
     {
       "id": 13,
@@ -6355,7 +6355,7 @@
     },
     {
       "id": 20,
-      "text": "The Segond fracture (small lateral tibial avulsion) is pathognomonic for ACL injury. Look for it on coronal images."
+      "text": "The Segond fracture (small lateral tibial avulsion) is highly specific for associated ACL injury. Look for it on coronal images, then assess the ACL directly."
     },
     {
       "id": 21,
@@ -6633,7 +6633,7 @@
       },
       {
         "id": "m2-q5",
-        "stem": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for?",
+        "stem": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly?",
         "options": [
           {
             "key": "A",
@@ -6641,7 +6641,7 @@
           },
           {
             "key": "B",
-            "text": "Segond fracture; pathognomonic for ACL injury"
+            "text": "Segond fracture; strongly associated with ACL injury"
           },
           {
             "key": "C",
@@ -8082,7 +8082,7 @@
           {
             "id": "fc-anatomy-t1-1",
             "question": "What is the Segond fracture and what is its clinical significance?",
-            "answer": "A small avulsion fracture of the lateral tibial rim. It is pathognomonic for ACL injury."
+            "answer": "A small avulsion fracture of the lateral tibial rim. It is highly specific for associated ACL injury and should prompt direct ACL evaluation."
           },
           {
             "id": "fc-anatomy-t1-2",
@@ -8335,7 +8335,7 @@
           {
             "id": "fc-menisci-t1-1",
             "question": "What is the two-slice-touch rule?",
-            "answer": "Meniscal signal must contact the articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to be diagnosed as a tear. This reduces false positives from volume averaging and truncation artifact."
+            "answer": "Surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images gives high confidence for a tear and reduces false positives from volume averaging and pseudotears. It is a confidence rule, not an absolute gate: a one-image finding needs morphology, adjacent-slice, and orthogonal-plane correlation."
           },
           {
             "id": "fc-menisci-t1-2",
@@ -8350,7 +8350,7 @@
           {
             "id": "fc-menisci-t2-1",
             "question": "Why are radial meniscal tears biomechanically significant even when small?",
-            "answer": "Radial tears disrupt the circumferential hoop fibers of the meniscus, eliminating its ability to distribute axial load. This is true regardless of tear size."
+            "answer": "Radial tears disrupt circumferential hoop fibers. Complete or near-complete radial tears can markedly impair load distribution; the biomechanical effect depends on tear width and location, although even a small radial tear deserves careful characterization."
           },
           {
             "id": "fc-menisci-t2-2",
@@ -8477,7 +8477,7 @@
           {
             "id": "fc-ligaments-t0-3",
             "question": "What is the Segond fracture and what is its association with ACL tears?",
-            "answer": "A small avulsion of the lateral tibial rim representing anterolateral ligament avulsion. It is pathognomonic for ACL tear, with ACL injury present in approximately 75-100% of cases."
+            "answer": "A small avulsion of the lateral tibial rim representing anterolateral-ligament complex avulsion. It is highly specific for associated ACL injury, reported with ACL injury in approximately 75-100% of cases; confirm the ACL directly."
           }
         ]
       },
@@ -8547,7 +8547,7 @@
           {
             "id": "fc-ligaments-t5-2",
             "question": "What is the arcuate fracture and what does it indicate?",
-            "answer": "Avulsion of the fibular styloid. It is pathognomonic for a posterolateral corner injury."
+            "answer": "Avulsion of the fibular styloid. It is a strong marker of posterolateral-corner injury and should trigger direct evaluation of the LCL, popliteus tendon, and popliteofibular ligament."
           },
           {
             "id": "fc-ligaments-t5-3",
@@ -8780,8 +8780,8 @@
           },
           {
             "id": "fc-top-10-dont-miss-t4-2",
-            "question": "What fracture is pathognomonic for posterolateral corner injury?",
-            "answer": "Arcuate fracture -- avulsion of the fibular styloid. This finding should never be dismissed as incidental."
+            "question": "What fracture is a strong marker of posterolateral-corner injury?",
+            "answer": "Arcuate fracture -- avulsion of the fibular styloid. It should trigger direct evaluation of every PLC component rather than being dismissed as incidental."
           }
         ]
       },
@@ -8811,7 +8811,7 @@
           {
             "id": "fc-top-10-dont-miss-t7-1",
             "question": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association?",
-            "answer": "Segond fracture: lateral tibial rim avulsion, pathognomonic for ACL tear. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL tears rather than ACL tears."
+            "answer": "Segond fracture: lateral tibial rim avulsion, highly specific for associated ACL injury. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL injury rather than ACL injury. Confirm the cruciate ligaments directly in either case."
           }
         ]
       },
@@ -9117,7 +9117,7 @@
       "courseId": "knee-mri"
     },
     "m2-q5": {
-      "stem": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for?",
+      "stem": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly?",
       "options": [
         {
           "key": "A",
@@ -9125,7 +9125,7 @@
         },
         {
           "key": "B",
-          "text": "Segond fracture; pathognomonic for ACL injury"
+          "text": "Segond fracture; strongly associated with ACL injury"
         },
         {
           "key": "C",
@@ -13178,7 +13178,7 @@
       "source": "Flashcard · Anatomy",
       "flashcard": {
         "front": "What is the Segond fracture and what is its clinical significance?",
-        "back": "A small avulsion fracture of the lateral tibial rim. It is pathognomonic for ACL injury."
+        "back": "A small avulsion fracture of the lateral tibial rim. It is highly specific for associated ACL injury and should prompt direct ACL evaluation."
       },
       "moduleId": "anatomy",
       "topicIndex": 1,
@@ -13584,7 +13584,7 @@
       "source": "Flashcard · Menisci",
       "flashcard": {
         "front": "What is the two-slice-touch rule?",
-        "back": "Meniscal signal must contact the articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to be diagnosed as a tear. This reduces false positives from volume averaging and truncation artifact."
+        "back": "Surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images gives high confidence for a tear and reduces false positives from volume averaging and pseudotears. It is a confidence rule, not an absolute gate: a one-image finding needs morphology, adjacent-slice, and orthogonal-plane correlation."
       },
       "moduleId": "menisci",
       "topicIndex": 1,
@@ -13612,7 +13612,7 @@
       "source": "Flashcard · Menisci",
       "flashcard": {
         "front": "Why are radial meniscal tears biomechanically significant even when small?",
-        "back": "Radial tears disrupt the circumferential hoop fibers of the meniscus, eliminating its ability to distribute axial load. This is true regardless of tear size."
+        "back": "Radial tears disrupt circumferential hoop fibers. Complete or near-complete radial tears can markedly impair load distribution; the biomechanical effect depends on tear width and location, although even a small radial tear deserves careful characterization."
       },
       "moduleId": "menisci",
       "topicIndex": 2,
@@ -13864,7 +13864,7 @@
       "source": "Flashcard · Ligaments",
       "flashcard": {
         "front": "What is the Segond fracture and what is its association with ACL tears?",
-        "back": "A small avulsion of the lateral tibial rim representing anterolateral ligament avulsion. It is pathognomonic for ACL tear, with ACL injury present in approximately 75-100% of cases."
+        "back": "A small avulsion of the lateral tibial rim representing anterolateral-ligament complex avulsion. It is highly specific for associated ACL injury, reported with ACL injury in approximately 75-100% of cases; confirm the ACL directly."
       },
       "moduleId": "ligaments",
       "topicIndex": 0,
@@ -13990,7 +13990,7 @@
       "source": "Flashcard · Ligaments",
       "flashcard": {
         "front": "What is the arcuate fracture and what does it indicate?",
-        "back": "Avulsion of the fibular styloid. It is pathognomonic for a posterolateral corner injury."
+        "back": "Avulsion of the fibular styloid. It is a strong marker of posterolateral-corner injury and should trigger direct evaluation of the LCL, popliteus tendon, and popliteofibular ligament."
       },
       "moduleId": "ligaments",
       "topicIndex": 5,
@@ -14403,14 +14403,14 @@
       "courseId": "knee-mri"
     },
     "fc-top-10-dont-miss-t4-2": {
-      "stem": "What fracture is pathognomonic for posterolateral corner injury?",
+      "stem": "What fracture is a strong marker of posterolateral-corner injury?",
       "options": [],
       "correctAnswer": "",
       "explanation": "",
       "source": "Flashcard · Top 10 Don't Miss",
       "flashcard": {
-        "front": "What fracture is pathognomonic for posterolateral corner injury?",
-        "back": "Arcuate fracture -- avulsion of the fibular styloid. This finding should never be dismissed as incidental."
+        "front": "What fracture is a strong marker of posterolateral-corner injury?",
+        "back": "Arcuate fracture -- avulsion of the fibular styloid. It should trigger direct evaluation of every PLC component rather than being dismissed as incidental."
       },
       "moduleId": "top-10-dont-miss",
       "topicIndex": 4,
@@ -14452,7 +14452,7 @@
       "source": "Flashcard · Top 10 Don't Miss",
       "flashcard": {
         "front": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association?",
-        "back": "Segond fracture: lateral tibial rim avulsion, pathognomonic for ACL tear. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL tears rather than ACL tears."
+        "back": "Segond fracture: lateral tibial rim avulsion, highly specific for associated ACL injury. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL injury rather than ACL injury. Confirm the cruciate ligaments directly in either case."
       },
       "moduleId": "top-10-dont-miss",
       "topicIndex": 7,

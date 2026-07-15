@@ -63,7 +63,7 @@ describe("learner resume", () => {
   it("suggests the next normal-workstation step", () => {
     expect(suggestedNextStep("Explore")).toBe("Next: Guided Tour");
     expect(suggestedNextStep("Cross-Plane")).toBe("Next: Image CAQ");
-    expect(suggestedNextStep()).toContain("Start with Explore");
+    expect(suggestedNextStep()).toBe("Continue where you left off.");
   });
 
   it("auto-resumes only from explicit home-screen launch URLs", () => {

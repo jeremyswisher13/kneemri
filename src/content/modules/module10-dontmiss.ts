@@ -162,7 +162,7 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 
 ### Signs of PLC Injury
 - **Edema and disruption** of any of the three structures
-- **Arcuate fracture** (fibular styloid avulsion) -- **pathognomonic**
+- **Arcuate fracture** (fibular styloid avulsion) -- a **strong PLC injury marker**
 - Bone contusions on the **anteromedial tibia and femoral condyle** (varus mechanism)
 - **Peroneal nerve** edema or displacement around the fibular neck
 
@@ -170,7 +170,7 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 - Commonly accompany **PCL tears** (up to **60%** of grade III PCL injuries)
 - Also seen with **ACL tears** with varus mechanism
 - Always report PLC injuries explicitly with **specification of each involved structure**`,
-    pearl: `Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is pathognomonic for PLC injury and should never be dismissed as incidental.`,
+    pearl: `Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is a strong marker that should prompt direct evaluation of the full PLC.`,
   },
   {
     content: `### MPFL Tear with Osteochondral Injury
@@ -235,7 +235,7 @@ When a lipohemarthrosis is identified but no obvious fracture is seen, perform a
   {
     content: `### Segond Fracture
 
-The **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is **pathognomonic for an ACL tear**, with an ACL injury present in approximately **75--100%** of cases.
+The **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is a **highly specific marker of associated ACL injury**, reported with an ACL injury in approximately **75--100%** of cases; still assess the ACL directly.
 
 Despite its small size, this fracture has **enormous diagnostic significance** and should never be overlooked or dismissed as clinically insignificant.
 
@@ -256,12 +256,12 @@ Despite its small size, this fracture has **enormous diagnostic significance** a
 - **Posterolateral corner injury**
 
 The Segond fracture is often **more conspicuous on radiographs** than on MRI, so do not assume prior imaging has identified it.`,
-    pearl: `A Segond fracture (lateral tibial rim avulsion) is pathognomonic for ACL tear. Even a tiny bone fragment at the anterolateral tibial plateau should prompt immediate ACL evaluation. The reverse Segond fracture (medial tibial rim avulsion) is associated with PCL tears. These fractures are small but carry enormous diagnostic weight.`,
+    pearl: `A Segond fracture (lateral tibial rim avulsion) is highly specific for associated ACL injury. Even a tiny bone fragment at the anterolateral tibial plateau should prompt direct ACL evaluation. The reverse Segond fracture (medial tibial rim avulsion) is associated with PCL tears. These fractures are small but carry enormous diagnostic weight.`,
     images: [
       {
         src: '/images/modules/segond-fracture.svg',
-        alt: 'Segond fracture diagram — lateral tibial avulsion pathognomonic for ACL tear',
-        caption: 'Segond fracture: lateral capsular avulsion pathognomonic for ACL tear',
+        alt: 'Segond fracture diagram — lateral tibial avulsion strongly associated with ACL tear',
+        caption: 'Segond fracture: lateral capsular avulsion strongly associated with ACL tear',
       },
       {
         src: '/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg',

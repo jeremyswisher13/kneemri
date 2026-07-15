@@ -82,7 +82,7 @@ export const structureReading: Record<string, StructureReading> = {
   },
   Meniscus: {
     variant:
-      "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40 — call a tear only when surface-reaching signal is seen on two consecutive slices (two-slice-touch). At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.",
+      "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40. Surface-reaching signal on two consecutive standard slices (two-slice-touch) gives high confidence for a tear; a one-slice finding is lower confidence and needs morphologic and orthogonal correlation. At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.",
   },
   Patella: {
     variant:

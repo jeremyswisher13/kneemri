@@ -16,7 +16,7 @@ Audience: Primary care sports medicine fellows
 ## Automated QA Summary
 
 - Review queue items: 556
-- High-risk keyword items: 343
+- High-risk keyword items: 342
 - Numeric threshold / named-criterion items: 135
 - Diagnostics: 0
 
@@ -330,15 +330,15 @@ The **capsuloligamentous complex** stabilizes the hip and is read on oblique-axi
 
 ### Hamstring Origin, Adductors & the Rectus Abdominis–Adductor Aponeurosis
 
-**Proximal hamstring origin**: the **conjoint tendon (semitendinosus + biceps femoris long head)** and the **semimembranosus** arise from the **ischial tuberosity**. On oblique-coronal/axial fluid-sensitive images, document **how many of the tendons are torn** and the **retraction distance** — both drive surgery.
+**Proximal hamstring origin**: the **conjoint tendon (semitendinosus + biceps femoris long head)** and the **semimembranosus** arise from the **ischial tuberosity**. On oblique-coronal/axial fluid-sensitive images, document **how many of the tendons are torn** and the **retraction distance** — both influence management.
 
 **Adductors**: longus, brevis, magnus, gracilis, and pectineus arise from the **pubic body/inferior ramus**; adductor longus strains are the classic groin injury.
 
 **Rectus abdominis–adductor aponeurosis** at the **pubic symphysis**: the rectus abdominis and adductor longus blend into a common aponeurotic plate. This is the **athletic-pubalgia ("sports hernia") crossroads** — disruption here produces the **secondary cleft sign** (fluid tracking inferolaterally from the symphysis on coronal fluid-sensitive images).
 
-**Management:** proximal hamstring avulsion of **≥2 tendons with ≥2 cm retraction** warrants surgical referral; partial/single-tendon injuries get rehab. Aponeurotic/secondary-cleft injuries go to a core-muscle-injury (athletic pubalgia) specialist.
+**Management:** a complete 3-tendon avulsion, or a 2-tendon avulsion with **>2 cm retraction** in an active patient, commonly prompts surgical referral. Partial or single-tendon injuries usually begin with rehabilitation, but persistent symptoms and activity goals also influence referral. Aponeurotic/secondary-cleft injuries go to a core-muscle-injury (athletic pubalgia) specialist.
 
-**Pearl:** Proximal hamstring referral threshold: ≥2 tendons torn AND ≥2 cm retraction → surgeon; below that, rehab. Always report tendon count and retraction explicitly.
+**Pearl:** Common proximal hamstring referral pattern: a complete 3-tendon avulsion, or 2 tendons torn with >2 cm retraction in an active patient. Lesser tears usually start with rehabilitation but are not automatically nonsurgical. Report tendon count, retraction, chronicity, and sciatic-nerve findings.
 
 #### Topic 5: Bursae around the hip and pelvis (trochanteric, iliopsoas)
 
@@ -1527,7 +1527,7 @@ Model report impression:
 
 Teaching points:
 - Quantify two things at the hamstring origin: the NUMBER of tendons torn (semimembranosus + conjoint semitendinosus/long-head biceps = up to 3) and the amount of RETRACTION (measure in cm).
-- Management/disposition pearl: a complete (2–3 tendon) proximal hamstring avulsion with significant retraction (≥2 cm) triggers surgical referral for primary repair; partial or single-tendon injuries are typically managed conservatively (rehab). Report tendon count AND retraction explicitly — both drive the decision. Acute repair is time-sensitive, so do not delay the report or the referral.
+- Management/disposition pearl: a complete 3-tendon avulsion, or a 2-tendon avulsion with >2 cm retraction in an active patient, commonly triggers prompt surgical referral for possible primary repair. Partial or single-tendon injuries usually begin with rehabilitation, but persistent symptoms or high functional demand can still justify specialist review. Report tendon count, retraction, chronicity, and sciatic-nerve findings explicitly.
 - Pitfall: in skeletally immature athletes the injury is often an apophyseal AVULSION FRACTURE of the ischial tuberosity rather than a pure tendon tear - look for a displaced bony fragment and a different (often nonoperative-vs-operative by displacement) decision tree.
 - Always comment on the SCIATIC NERVE: proximity to the retracted stump and hematoma matters for symptoms and for surgical planning; chronic scarring can tether the nerve.
 - Pitfall: a partially torn but non-retracted tendon (free margin still apposed to the tuberosity) is a different, usually nonoperative entity - do not overcall retraction; measure it on the sagittal/coronal plane.
@@ -2509,7 +2509,7 @@ Explanation: A complete three-tendon proximal hamstring avulsion with significan
 - **Capsule, iliofemoral ligament & anterior recess:** Iliofemoral ligament (Y of Bigelow) is the strong anterior restraint; zona orbicularis normally 'waists' the neck — don't call it a tear. A thin anterior recess is normal; capsule integrity matters post-arthroscopy/dislocation.
 - **Abductors & greater trochanter:** Gluteus medius and minimus — the hip's 'rotator cuff' — insert on the greater trochanter facets with smooth low-signal footprints. This is the GTPS site; most 'trochanteric bursitis' is really gluteal tendinopathy or a footprint tear.
 - **Iliopsoas:** Tendon crosses the anterior joint / pelvic brim toward the lesser trochanter; a small iliopsoas bursa can be normal. Internal (iliopsoas) snapping is a dynamic ultrasound diagnosis, not a static-MRI one.
-- **Hamstring origin:** Conjoint tendon on the ischial tuberosity — uniformly low signal at its footprint. Count the tendons: surgical avulsion = ≥2 tendons torn AND ≥2 cm retraction (sciatic nerve is right there).
+- **Hamstring origin:** Conjoint tendon on the ischial tuberosity — uniformly low signal at its footprint. Count the tendons and measure retraction: a complete 3-tendon avulsion, or 2 tendons with >2 cm retraction in an active patient, commonly prompts surgical referral. Also assess the adjacent sciatic nerve.
 - **Sciatic nerve:** Posterior to the hip, just lateral to the ischial tuberosity (near the hamstring origin) — trace it on axial images for caliber, signal, and perineural edema.
 
 #### Normal variants — don't overcall
@@ -2573,7 +2573,7 @@ Explanation: A complete three-tendon proximal hamstring avulsion with significan
 - **What changes management:** A full-thickness, retracted abductor tear (especially with fatty atrophy) is a SURGICAL referral, analogous to a rotator cuff tear — not a bursitis to inject and forget.
 
 #### Proximal hamstring avulsion & athletic pubalgia
-- **Hamstring — surgical-referral criteria:** Count tendons and measure retraction at the ischial tuberosity. Surgical referral when at least 2 tendons are torn AND at least 2 cm of retraction; the sciatic nerve sits nearby a retracted stump. Always state both numbers.
+- **Hamstring — surgical-referral criteria:** Count tendons and measure retraction at the ischial tuberosity. A complete 3-tendon avulsion, or 2 tendons with >2 cm retraction in an active patient, is a commonly used surgical-referral threshold; symptoms, chronicity, activity goals, and failed rehabilitation also matter. State both measurements and assess the nearby sciatic nerve.
 - **Repair window:** The window for primary repair is best within a few weeks before further retraction and scarring — so flag the surgical pattern promptly.
 - **Athletic pubalgia — secondary cleft sign:** Rectus abdominis–adductor longus aponeurosis injury at the symphysis. The SECONDARY cleft sign (fluid tracking inferolaterally from the symphysis) indicates the tear. The PRIMARY cleft is the normal midline symphyseal cleft — don't confuse them.
 - **Snapping hip is dynamic, not static MRI:** Internal (iliopsoas) and external (ITB over the trochanter) snapping hip are DYNAMIC ULTRASOUND diagnoses. Static MRI may be normal — recognize the limitation.
@@ -2611,7 +2611,7 @@ Explanation: A complete three-tendon proximal hamstring avulsion with significan
 - **23:** A herniation pit (Pitt's pit) is a small well-corticated subchondral cyst at the anterosuperior head-neck junction; usually a benign incidental finding, but in the right setting it flags cam morphology and chronic impingement biomechanics.
 - **24:** Greater trochanteric pain syndrome on MRI is a spectrum — bursal fluid, gluteal tendinosis, and footprint partial tears — and identifying an actual tendon tear rather than isolated bursitis is what redirects refractory cases toward targeted injection or surgery.
 - **25:** Iliopsoas bursa distension communicates with the hip joint in roughly 15 percent of people; a large fluid collection medial to the femoral neck can be a joint effusion decompressing into the bursa — check the joint for synovitis or a labral source rather than calling isolated bursitis.
-- **26:** For suspected FAI, report all three legs of the triad — femoral cam (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because surgery must address the bony deformity and the soft-tissue lesion together.
+- **26:** For suspected FAI, report all three legs of the triad — femoral cam morphology (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because operative planning considers both osseous morphology and soft-tissue injury in the clinical context.
 - **27:** A normal hyaline cartilage stripe is thicker on the acetabular side than the femoral side at the hip; asymmetric thinning, full-thickness defects, or subchondral cysts at the anterosuperior rim signal the advanced chondral wear that lowers the yield of joint preservation.
 - **28:** Ischiofemoral impingement is suggested by quadratus femoris edema with narrowing of both the ischiofemoral space (<17 mm) and the quadratus femoris space (<8 mm); it is an under-recognized cause of deep buttock pain that mimics hamstring or sciatic pathology.
 - **29:** Os acetabuli (an unfused or stress-related rim ossicle) can represent a chronic rim fracture in pincer FAI; distinguish it from a benign accessory ossification center, because a painful os acetabuli may be addressed at the time of rim trimming.
@@ -2644,7 +2644,7 @@ Explanation: A complete three-tendon proximal hamstring avulsion with significan
   **Back:** A normal circular low-signal capsular condensation that waists the femoral neck on coronal images. The pitfall is mistaking it for a capsular tear or paralabral cyst and over-referring a normal hip.
 #### Topic 4
 - **Front:** What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral?
-  **Back:** ≥2 of the 3 tendons (conjoint of semitendinosus + biceps femoris long head, plus semimembranosus) torn AND ≥2 cm retraction → refer to surgeon. Below that, rehab. Always report tendon count and retraction distance.
+  **Back:** A commonly used surgical-referral threshold is a complete 3-tendon avulsion, or a 2-tendon avulsion with >2 cm retraction, especially in an active patient. Lesser tears usually begin with rehabilitation but may still merit referral when symptoms persist. Always report tendon count, retraction distance, chronicity, and sciatic-nerve findings.
 #### Topic 6
 - **Front:** How do you distinguish a benign herniation pit from concerning pathology on hip MRI?
   **Back:** A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anterosuperior femoral neck — often incidental but associated with cam FAI. If symptomatic, look for cam morphology (alpha angle >55°); it is not a marrow-replacing lesion.

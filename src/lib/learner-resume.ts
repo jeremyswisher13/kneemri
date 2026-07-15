@@ -87,6 +87,6 @@ export function suggestedNextStep(modeLabel?: string) {
     case "Image CAQ":
       return "Next: Spaced Review";
     default:
-      return "Start with Explore, then Guided Tour, Practice & Mastery, Cross-Plane, and Image CAQ.";
+      return "Continue where you left off.";
   }
 }

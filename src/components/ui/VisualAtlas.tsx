@@ -109,7 +109,7 @@ const atlasSections: AtlasSection[] = [
           { label: "Bone contusion patterns (pivot-shift & others)", url: "https://radiopaedia.org/articles/patterns-of-bone-bruise-in-knee-injury", description: "Five classic patterns including pivot-shift — posterolateral tibial plateau + lateral femoral condyle" },
           { label: "PCL tear (dashboard mechanism)", url: "https://radiopaedia.org/articles/posterior-cruciate-ligament-tear", description: "Dashboard injury — anterior tibial contusion with PCL tear" },
           { label: "Patellar dislocation contusions", url: "https://radiopaedia.org/articles/transient-lateral-patellar-dislocation", description: "Kissing contusions: medial patella + anterolateral LFC" },
-          { label: "Segond fracture", url: "https://radiopaedia.org/articles/segond-fracture", description: "Lateral capsular avulsion — pathognomonic for ACL tear" },
+          { label: "Segond fracture", url: "https://radiopaedia.org/articles/segond-fracture", description: "Lateral capsular avulsion — highly specific for associated ACL injury" },
         ],
       },
       {

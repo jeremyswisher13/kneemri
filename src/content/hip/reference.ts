@@ -102,7 +102,7 @@ export const hipAnatomySections: MeasurementSection[] = [
       {
         label: "Hamstring origin",
         detail:
-          "Conjoint tendon on the ischial tuberosity — uniformly low signal at its footprint. Count the tendons: surgical avulsion = ≥2 tendons torn AND ≥2 cm retraction (sciatic nerve is right there).",
+          "Conjoint tendon on the ischial tuberosity — uniformly low signal at its footprint. Count the tendons and measure retraction: a complete 3-tendon avulsion, or 2 tendons with >2 cm retraction in an active patient, commonly prompts surgical referral. Also assess the adjacent sciatic nerve.",
       },
       {
         label: "Sciatic nerve",
@@ -351,7 +351,7 @@ export const hipMeasurementSections: MeasurementSection[] = [
       {
         label: "Hamstring — surgical-referral criteria",
         detail:
-          "Count tendons and measure retraction at the ischial tuberosity. Surgical referral when at least 2 tendons are torn AND at least 2 cm of retraction; the sciatic nerve sits nearby a retracted stump. Always state both numbers.",
+          "Count tendons and measure retraction at the ischial tuberosity. A complete 3-tendon avulsion, or 2 tendons with >2 cm retraction in an active patient, is a commonly used surgical-referral threshold; symptoms, chronicity, activity goals, and failed rehabilitation also matter. State both measurements and assess the nearby sciatic nerve.",
       },
       {
         label: "Repair window",

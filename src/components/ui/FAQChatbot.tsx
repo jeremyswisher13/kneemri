@@ -85,10 +85,11 @@ export default function FAQChatbot() {
 
   return (
     <>
-      {/* Floating chat button */}
+      {/* Mobile keeps the assistant in the toolbar so it cannot cover learning
+          controls. From the tablet breakpoint up it returns to a floating button. */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-ucla-blue text-white shadow-lg transition-all duration-200 hover:bg-ucla-dark hover:shadow-xl hover:scale-105 active:scale-95 sm:bottom-4 sm:h-14 sm:w-14"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ucla-blue text-white transition-colors hover:bg-ucla-dark sm:fixed sm:bottom-4 sm:right-4 sm:z-50 sm:h-14 sm:w-14 sm:rounded-full sm:shadow-lg sm:transition-all sm:duration-200 sm:hover:scale-105 sm:hover:shadow-xl sm:active:scale-95"
         aria-label={open ? 'Close chat' : 'Open MRI Course Assistant'}
       >
         {open ? (
@@ -112,12 +113,11 @@ export default function FAQChatbot() {
       <div
         inert={!open}
         aria-label="MRI Course Assistant chat"
-        className={`fixed bottom-20 right-4 z-50 flex w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 sm:w-96 ${
+        className={`fixed right-4 top-[calc(3.5rem+env(safe-area-inset-top))] z-50 flex max-h-[calc(100dvh_-_4.5rem_-_env(safe-area-inset-bottom))] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 sm:bottom-20 sm:top-auto sm:max-h-[500px] sm:w-96 ${
           open
             ? 'pointer-events-auto translate-y-0 opacity-100'
             : 'pointer-events-none translate-y-4 opacity-0'
         }`}
-        style={{ maxHeight: '500px' }}
       >
         {/* Header */}
         <div className="flex items-center justify-between bg-ucla-blue px-4 py-3">

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/performance-budget.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "tsc --noEmit -p tsconfig.test.json && vitest run",
@@ -42,7 +42,8 @@
     "preflight:ios:submit": "node scripts/ios-submission-gate.mjs",
     "submit:ios:packet": "node scripts/ios-submission-packet.mjs",
     "gen:metas": "node scripts/gen-content-metas.mjs",
-    "qa:medical": "node scripts/export-medical-qa.mjs"
+    "qa:medical": "node scripts/export-medical-qa.mjs",
+    "qa:performance": "node scripts/performance-budget.mjs"
   },
   "dependencies": {
     "firebase": "^12.11.0",

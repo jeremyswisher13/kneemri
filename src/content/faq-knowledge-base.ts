@@ -414,7 +414,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['meniscal signal', 'grade', 'grading', 'signal grade', 'grade 1', 'grade 2', 'grade 3', 'meniscal grade'],
     question: 'How do I grade meniscal signal?',
     answer:
-      'Meniscal signal is graded 1-3. Grade 1 is a small focus of intrameniscal signal not reaching a surface (mucinous degeneration). Grade 2 is more extensive linear signal not reaching a surface (degenerative change). Grade 3 is signal extending to at least one articular surface on proton density / intermediate-weighted (short-TE) images, confirmed on two consecutive slices — this is a true meniscal tear. Only grade 3 is surgical.',
+      'Meniscal signal is graded 1-3. Grade 1 is a small focus of intrameniscal signal not reaching a surface; grade 2 is more extensive linear signal that still does not reach a surface. Grade 3 signal unequivocally reaches at least one articular surface on proton-density / intermediate-weighted short-TE images. Contact on two consecutive standard slices markedly increases positive predictive value; a one-slice surface finding needs morphologic and orthogonal correlation. Signal grade supports diagnosis but does not determine surgery by itself.',
     relatedModule: '/modules/menisci',
     category: 'menisci',
   },
@@ -423,7 +423,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['two slice', 'two-slice-touch', 'two slice touch', '2 slice', 'consecutive slices', 'false positive'],
     question: 'What is the two-slice-touch rule?',
     answer:
-      'The two-slice-touch rule requires that abnormal meniscal signal must extend to an articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to diagnose a definite tear. This reduces false positives from partial volume averaging, truncation artifact, and normal vascular signal. If signal touches the surface on only one image, consider it equivocal.',
+      'The two-slice-touch rule is a high-specificity confidence rule: surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images has a much higher positive predictive value than contact on one image. It reduces false positives from partial volume averaging and pseudotears, but it is not an absolute gate. If signal reaches a surface on only one image, scrutinize morphology, adjacent slices, and orthogonal planes and report cautiously when corroboration is absent.',
     relatedModule: '/modules/menisci',
     category: 'menisci',
   },
@@ -561,7 +561,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['Segond', 'Segond fracture', 'lateral capsular', 'avulsion', 'anterolateral ligament'],
     question: 'What is a Segond fracture?',
     answer:
-      'A Segond fracture is a small avulsion fracture of the lateral tibial plateau rim, representing a bony avulsion of the anterolateral ligament (ALL) complex. It is pathognomonic for ACL tear and indicates significant rotational instability. On coronal images, look for a small flake of bone just lateral to the lateral tibial plateau with associated soft tissue edema.',
+      'A Segond fracture is a small avulsion fracture of the lateral tibial plateau rim, representing a bony avulsion of the anterolateral ligament (ALL) complex. It is highly specific for associated ACL injury and indicates a substantial rotational mechanism, so assess the ACL directly. On coronal images, look for a small flake of bone just lateral to the lateral tibial plateau with associated soft tissue edema.',
     relatedModule: '/modules/ligaments',
     category: 'ligaments',
   },
@@ -697,7 +697,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['avulsion', 'avulsion fracture', 'bony avulsion', 'tibial spine'],
     question: 'What avulsion fractures should I look for?',
     answer:
-      'Key avulsion fractures around the knee include: tibial spine avulsion (ACL insertion in children/adolescents), Segond fracture (lateral tibial rim, pathognomonic for ACL tear), reverse Segond (medial tibial rim, associated with PCL tear), arcuate sign (fibular styloid avulsion from PLC), and Gerdy tubercle avulsion (IT band). Each avulsion points to a specific soft tissue injury mechanism.',
+      'Key avulsion fractures around the knee include: tibial spine avulsion (ACL insertion in children/adolescents), Segond fracture (lateral tibial rim, highly specific for associated ACL injury), reverse Segond (medial tibial rim, associated with PCL injury), arcuate sign (fibular styloid avulsion and a strong PLC injury marker), and Gerdy tubercle avulsion (IT band). Each avulsion points to a soft-tissue injury mechanism that should be confirmed directly.',
     relatedModule: '/modules/ligaments',
     category: 'bones',
   },

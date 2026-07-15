@@ -12,7 +12,7 @@
       "imageCaqItems": 7,
       "redFlags": 5,
       "reviewItems": 1102,
-      "highRiskItems": 442,
+      "highRiskItems": 441,
       "sourceCheckItems": 524,
       "diagnostics": 0
     },
@@ -42,7 +42,7 @@
       "imageCaqItems": 6,
       "redFlags": 5,
       "reviewItems": 556,
-      "highRiskItems": 343,
+      "highRiskItems": 342,
       "sourceCheckItems": 385,
       "diagnostics": 0
     },
@@ -64,7 +64,7 @@
   },
   "totals": {
     "reviewItems": 2768,
-    "highRiskItems": 1361,
+    "highRiskItems": 1359,
     "sourceCheckItems": 1586,
     "diagnostics": 0,
     "diagnosticErrors": 0,

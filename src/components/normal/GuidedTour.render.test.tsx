@@ -56,6 +56,15 @@ describe("GuidedTour render polish", () => {
     expect(html).toContain('aria-current="step"');
   });
 
+  it("allows both tour columns to shrink and moves step dots onto a mobile-safe row", () => {
+    const html = renderToStaticMarkup(<GuidedTour dir="/images/test" steps={tourSteps} />);
+
+    expect(html).toContain("grid min-w-0 gap-5");
+    expect(html.match(/flex min-w-0 flex-col/g)).toHaveLength(2);
+    expect(html).toContain("order-last flex w-full max-w-full justify-center");
+    expect(html).toContain("lg:order-none lg:ml-auto lg:w-auto");
+  });
+
   it("renders specific normal-to-injury comparison controls when a case bridge exists", () => {
     const html = renderToStaticMarkup(
       <MemoryRouter>

@@ -285,6 +285,11 @@ function FellowLayoutContent() {
         </span>
         <div className="ml-auto flex items-center gap-2">
           <IssueReportButton course={activeCourse} />
+          {activeCourse.id === "knee-mri" && (
+            <Suspense fallback={null}>
+              <FAQChatbot />
+            </Suspense>
+          )}
           <button
             onClick={() => setSearchOpen(true)}
             aria-label="Open search"
@@ -610,13 +615,6 @@ function FellowLayoutContent() {
       {searchOpen && (
         <Suspense fallback={null}>
           <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
-        </Suspense>
-      )}
-
-      {/* FAQ Chatbot (code-split; loads after first paint) */}
-      {activeCourse.id === "knee-mri" && (
-        <Suspense fallback={null}>
-          <FAQChatbot />
         </Suspense>
       )}
     </div>

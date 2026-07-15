@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Button from "@/components/ui/Button";
 import { installInstructionsForUserAgent, isNativeIosAppShell, isStandaloneDisplayMode } from "@/lib/pwa";
-
-const DISMISS_KEY = "uclaSportsMri.installPrompt.dismissed";
+import { INSTALL_PROMPT_DISMISS_KEY, isInstallPromptDismissed } from "@/lib/install-prompt";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -14,16 +13,8 @@ interface InstallPromptProps {
   className?: string;
 }
 
-function readDismissed() {
-  try {
-    return typeof localStorage === "undefined" ? false : localStorage.getItem(DISMISS_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
 export default function InstallPrompt({ variant = "full", className = "" }: InstallPromptProps) {
-  const [dismissed, setDismissed] = useState(readDismissed);
+  const [dismissed, setDismissed] = useState(isInstallPromptDismissed);
   const [standalone] = useState(() => isStandaloneDisplayMode());
   const [nativeIosShell] = useState(() => isNativeIosAppShell());
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -55,7 +46,7 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
 
   function dismiss() {
     try {
-      localStorage.setItem(DISMISS_KEY, "1");
+      localStorage.setItem(INSTALL_PROMPT_DISMISS_KEY, String(Date.now()));
     } catch {
       // Private browsing or strict storage settings should not break the prompt.
     }

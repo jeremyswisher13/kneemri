@@ -51,7 +51,7 @@ export const medicalQaGeneratedAt = "2026-07-14";
 
 export const medicalQaTotals: MedicalQaTotals = {
   "reviewItems": 2768,
-  "highRiskItems": 1361,
+  "highRiskItems": 1359,
   "sourceCheckItems": 1586,
   "diagnostics": 0,
   "diagnosticErrors": 0,
@@ -70,7 +70,7 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "imageCaqItems": 7,
     "redFlags": 5,
     "reviewItems": 1102,
-    "highRiskItems": 442,
+    "highRiskItems": 441,
     "sourceCheckItems": 524,
     "diagnostics": 0
   },
@@ -100,7 +100,7 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "imageCaqItems": 6,
     "redFlags": 5,
     "reviewItems": 556,
-    "highRiskItems": 343,
+    "highRiskItems": 342,
     "sourceCheckItems": 385,
     "diagnostics": 0
   },
@@ -124,8 +124,8 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
 export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> = {
   "knee-mri": {
     "risks": {
-      "high": 442,
-      "medium": 82,
+      "high": 441,
+      "medium": 83,
       "standard": 578
     },
     "itemTypes": {
@@ -245,8 +245,8 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   },
   "hip-mri": {
     "risks": {
-      "high": 343,
-      "medium": 42,
+      "high": 342,
+      "medium": 43,
       "standard": 171
     },
     "itemTypes": {

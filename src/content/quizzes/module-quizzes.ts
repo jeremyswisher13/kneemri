@@ -145,10 +145,10 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
     },
     {
       id: 'm2-q5',
-      stem: 'A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for?',
+      stem: 'A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly?',
       options: [
         { key: 'A', text: 'LCL tear; indicates posterolateral corner injury' },
-        { key: 'B', text: 'Segond fracture; pathognomonic for ACL injury' },
+        { key: 'B', text: 'Segond fracture; strongly associated with ACL injury' },
         { key: 'C', text: 'MCL tear; indicates medial compartment varus stress' },
         { key: 'D', text: 'Patellar dislocation; indicates MPFL injury' },
       ],

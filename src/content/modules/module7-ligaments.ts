@@ -226,11 +226,11 @@ Injury to the PLC is **frequently missed** on initial clinical evaluation and MR
 
 ### Signs of PLC Injury
 - Edema and disruption of any PLC component, particularly at the **fibular head attachments**
-- **Arcuate fracture** (avulsion of the fibular styloid) -- **pathognomonic** for PLC injury
+- **Arcuate fracture** (avulsion of the fibular styloid) -- a **strong marker** of PLC injury that should trigger evaluation of every PLC component
 - Bone contusions on the **anteromedial femoral condyle** and **anteromedial tibial plateau** (varus mechanism)
 - PLC injuries typically occur with **varus or hyperextension forces**
 - Commonly associated with **cruciate ligament tears** (particularly PCL)`,
-    pearl: `The PLC injury triad to report is: LCL disruption + popliteus tendon tear + popliteofibular ligament injury. Failure to diagnose PLC injury is the most common cause of ACL or PCL graft failure due to persistent rotational instability. An arcuate (fibular styloid) fracture is pathognomonic for PLC injury.`,
+    pearl: `The PLC injury triad to report is: LCL disruption + popliteus tendon tear + popliteofibular ligament injury. Failure to diagnose PLC injury is a major cause of ACL or PCL graft failure due to persistent rotational instability. An arcuate (fibular styloid) fracture is a strong PLC injury marker; define the injured structures directly.`,
   },
   {
     content: `### Posteromedial Corner (PMC)

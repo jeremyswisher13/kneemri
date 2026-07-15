@@ -73,7 +73,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-anatomy-t3-1",
           question: "What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral?",
-          answer: "≥2 of the 3 tendons (conjoint of semitendinosus + biceps femoris long head, plus semimembranosus) torn AND ≥2 cm retraction → refer to surgeon. Below that, rehab. Always report tendon count and retraction distance.",
+          answer: "A commonly used surgical-referral threshold is a complete 3-tendon avulsion, or a 2-tendon avulsion with >2 cm retraction, especially in an active patient. Lesser tears usually begin with rehabilitation but may still merit referral when symptoms persist. Always report tendon count, retraction distance, chronicity, and sciatic-nerve findings.",
         },
       ],
     },

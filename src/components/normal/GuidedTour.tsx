@@ -97,8 +97,8 @@ export default function GuidedTour({
   const reading = structureReading[step.title];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
-      <div className="flex flex-col gap-3">
+    <div className="grid min-w-0 gap-5 lg:grid-cols-2">
+      <div className="flex min-w-0 flex-col gap-3">
         <AnnotatedSlice
           dir={dir}
           sliceIndex={step.sliceIndex}
@@ -194,7 +194,7 @@ export default function GuidedTour({
         )}
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex min-w-0 flex-col">
         <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
           <span>
             Step {i + 1} of {steps.length}
@@ -336,7 +336,7 @@ export default function GuidedTour({
           </div>
         )}
 
-        <div className="mt-auto flex items-center gap-3 pt-6">
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-6">
           <Button
             variant="secondary"
             size="sm"
@@ -363,7 +363,11 @@ export default function GuidedTour({
               Restart tour
             </Button>
           )}
-          <span role="group" aria-label="Guided tour steps" className="ml-auto flex lg:gap-1">
+          <span
+            role="group"
+            aria-label="Guided tour steps"
+            className="order-last flex w-full max-w-full justify-center lg:order-none lg:ml-auto lg:w-auto lg:justify-start lg:gap-1"
+          >
             {steps.map((_, n) => (
               <button
                 key={n}

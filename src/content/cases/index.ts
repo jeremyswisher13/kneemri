@@ -153,7 +153,7 @@ export const caseRegistry: CaseMetadata[] = [
     teachingPoints: [
       'The pivot-shift contusion pattern (LFC + posterolateral tibial plateau) is the most common bone bruise pattern and is strongly associated with ACL tears.',
       'When you see this contusion pattern, you MUST search for: (1) ACL tear, (2) lateral meniscal root tear, (3) ramp lesion, (4) bucket-handle tear.',
-      'A Segond fracture (lateral capsular avulsion) is pathognomonic for ACL tear.',
+      'A Segond fracture (lateral capsular avulsion) is highly specific for associated ACL injury and should prompt direct ACL assessment.',
       'Lipohemarthrosis (fat-fluid level on axial images) indicates an intra-articular fracture.',
     ],
     searchPatternFindings: [

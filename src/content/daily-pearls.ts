@@ -10,7 +10,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 2,
-    text: "Only grade 3 meniscal signal (reaching the articular surface on two consecutive slices) constitutes a tear. Grade 2 is degenerative change.",
+    text: "Meniscal signal that unequivocally reaches an articular surface is suspicious for a tear. Surface contact on two consecutive standard slices greatly increases confidence, but a one-slice finding still requires morphology and orthogonal-plane correlation rather than automatic dismissal.",
   },
   {
     id: 3,
@@ -18,7 +18,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 4,
-    text: "Meniscal extrusion >3 mm is pathologic and strongly suggests a root tear. Always trace the root on coronal and axial images.",
+    text: "Meniscal extrusion >3 mm is abnormal and should trigger a careful search for root or radial tears and degeneration; extrusion alone does not diagnose a root tear. Trace the root on coronal and axial images.",
   },
   {
     id: 5,
@@ -34,7 +34,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 8,
-    text: "Magic angle artifact disappears on T2-weighted sequences. If meniscal signal is gone on T2, it\u2019s artifact, not a tear.",
+    text: "Magic-angle-related meniscal signal is usually markedly reduced on long-TE T2. Signal loss supports artifact, but tear diagnosis still depends on surface extension, morphology, and adjacent images.",
   },
   {
     id: 9,
@@ -50,7 +50,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 12,
-    text: "SIFK (subchondral insufficiency fracture of the knee) in older patients is often caused by a posterior medial meniscal root tear \u2014 always check the root.",
+    text: "SIFK (subchondral insufficiency fracture of the knee) is associated with posterior medial meniscal root tears and extrusion, which can increase compartment loading \u2014 always check the root.",
   },
   {
     id: 13,
@@ -82,7 +82,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 20,
-    text: "The Segond fracture (small lateral tibial avulsion) is pathognomonic for ACL injury. Look for it on coronal images.",
+    text: "The Segond fracture (small lateral tibial avulsion) is highly specific for associated ACL injury. Look for it on coronal images, then assess the ACL directly.",
   },
   {
     id: 21,
@@ -133,7 +133,7 @@ export const shoulderPearls: DailyPearl[] = [
   },
   {
     id: 2,
-    text: "Goutallier/Fuchs fatty atrophy is the key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view predicts irreparability and re-tear regardless of tear size. Always comment on muscle quality, not just the tendon.",
+    text: "Goutallier/Fuchs fatty atrophy is a key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view is associated with lower reparability and higher re-tear risk. Weigh it with tear size, retraction, chronicity, and patient factors, and always comment on muscle quality.",
   },
   {
     id: 3,
@@ -352,7 +352,7 @@ export const hipPearls: DailyPearl[] = [
   },
   {
     id: 26,
-    text: "For suspected FAI, report all three legs of the triad — femoral cam (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because surgery must address the bony deformity and the soft-tissue lesion together.",
+    text: "For suspected FAI, report all three legs of the triad — femoral cam morphology (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because operative planning considers both osseous morphology and soft-tissue injury in the clinical context.",
   },
   {
     id: 27,

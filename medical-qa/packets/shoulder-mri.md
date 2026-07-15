@@ -2602,7 +2602,7 @@ Explanation: A fluid-bright (fluid-equivalent) defect spanning the full tendon t
 ## Daily Pearls
 
 - **1:** Patte stage the retraction of a full-thickness supraspinatus tear on the coronal: stage 1 = stump near the footprint, stage 2 = at the humeral-head level, stage 3 = at the glenoid level (or more medial). Stage 3 retraction predicts poor reparability.
-- **2:** Goutallier/Fuchs fatty atrophy is the key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view predicts irreparability and re-tear regardless of tear size. Always comment on muscle quality, not just the tendon.
+- **2:** Goutallier/Fuchs fatty atrophy is a key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view is associated with lower reparability and higher re-tear risk. Weigh it with tear size, retraction, chronicity, and patient factors, and always comment on muscle quality.
 - **3:** Distinguish tendinosis (intermediate T2 signal, no fluid-bright gap) from a partial tear (fluid-bright defect not spanning the full thickness) from a full-thickness tear (fluid-signal cleft from articular to bursal surface). Only the last communicates the joint with the subacromial bursa.
 - **4:** Grade articular-surface partial tears by depth: a defect greater than 50% of the ~12 mm footprint (a high-grade PASTA lesion, roughly >6 mm) generally crosses the surgical threshold for repair rather than debridement.
 - **5:** The supraspinatus 'critical zone,' about 1 cm proximal to the footprint, is hypovascular and the most common site of degenerative tears. Scrutinize it on every fluid-sensitive coronal and sagittal image.

@@ -55,11 +55,11 @@ export const moduleRegistry: ModuleMetadata[] = [
     commonMistakes: [
       {
         mistake: 'Calling increased signal in the posterolateral meniscus a tear on PD without checking T2',
-        correction: 'Magic angle artifact disappears on T2. Always confirm meniscal signal abnormality on long TE sequences before diagnosing a tear.',
+        correction: 'Magic-angle signal is usually markedly reduced on long-TE T2. Signal reduction supports artifact, but diagnose a tear from surface extension, morphology, and adjacent or orthogonal images.',
       },
       {
         mistake: 'Reading only the sagittal PD FS series and skipping coronal and axial images',
-        correction: 'Every finding must be confirmed in at least two planes. Coronal images are critical for collateral ligaments and meniscal roots; axial images for the patellofemoral joint and MPFL.',
+        correction: 'Review findings across all three planes and seek orthogonal correlation when anatomy permits; lack of a second-plane correlate does not automatically exclude a subtle lesion. Coronal images are critical for collateral ligaments and meniscal roots; axial images for the patellofemoral joint and MPFL.',
       },
       {
         mistake: 'Not adjusting window/level when evaluating different structures',
@@ -232,7 +232,7 @@ Organize your cartilage and osteochondral findings by compartment when reporting
         content: `### Key Bony Landmarks
 
 - **Tibial eminences** (medial and lateral intercondylar spines) — visible on coronal images; attachment sites for cruciate ligaments and meniscal roots. **Tibial eminence fractures** are common in adolescents and represent an **avulsion equivalent of an ACL tear**.
-- **Segond fracture** — a small avulsion off the lateral tibial plateau, **pathognomonic for ACL injury**. Best seen on coronal images.
+- **Segond fracture** — a small avulsion off the lateral tibial plateau and a **highly specific marker of associated ACL injury**. Best seen on coronal images; confirm the ACL directly.
 - **Femoral intercondylar notch** — the "home" of the cruciate ligaments. **Notch stenosis** (narrow or A-frame notch) is a risk factor for ACL tears.
 - **Tibial tubercle** — insertion of the patellar tendon; site of **Osgood-Schlatter disease** in adolescents.
 
@@ -1010,7 +1010,7 @@ Loose bodies collect in dependent or recessed areas:
     commonMistakes: [
       {
         mistake: 'Calling grade 2 intrasubstance signal a tear',
-        correction: 'Only grade 3 signal — extending to the articular surface on two consecutive slices — constitutes a tear. Grade 2 is degenerative change and is extremely common over age 40.',
+        correction: 'Grade 3 signal unequivocally reaches an articular surface; seeing that contact on two consecutive standard slices markedly increases confidence. Grade 2 signal remains intrasubstance and is common over age 40. A one-slice surface finding needs morphologic and orthogonal correlation rather than automatic dismissal or overcall.',
       },
       {
         mistake: "Missing a radial tear because it's only visible on one or two images",

@@ -15,10 +15,10 @@ Meniscal signal on MRI is graded using a **three-tier system** that directly gui
 ### Diagnosing Grade 3 Signal
 
 - **Grade 3 signal** is defined as increased signal intensity that **unequivocally extends to at least one articular surface**, best assessed on **proton density / intermediate-weighted (short-TE) sequences** -- the most sensitive sequences for meniscal signal
-- Confirm surface extension on **at least two consecutive images** (the **two-slice-touch rule**) to avoid false positives from volume averaging
+- Surface extension on **at least two consecutive standard slices** (the **two-slice-touch rule**) greatly increases specificity and helps avoid false positives from volume averaging; a one-slice finding is lower confidence, not automatically degeneration
 - On **PD / short-TE** images, surface-reaching **intermediate-to-high** signal is enough — it need **not** approach fluid intensity. (Requiring fluid-bright signal is the **T2 / long-TE** criterion, which is exactly why T2 is *less* sensitive for tears and degeneration.)
-- Low-grade signal that barely touches a surface on a single image is more likely **degenerative change**`,
-    pearl: `Grade 2 signal in the posterior horn of the medial meniscus is extremely common in patients over 40 and should not be overcalled as a tear. Always confirm surface extension on two consecutive slices before diagnosing grade 3 signal.`,
+- Low-grade signal that barely touches a surface on a single image should be correlated with morphology, adjacent slices, and orthogonal planes before it is called a tear`,
+    pearl: `Grade 2 signal in the posterior horn of the medial meniscus is extremely common in patients over 40 and should not be overcalled as a tear. Surface contact on two consecutive standard slices markedly increases confidence; treat a one-slice finding cautiously and look for orthogonal or morphologic corroboration.`,
     images: [
       {
         src: '/images/modules/meniscal-anatomy.svg',
@@ -44,9 +44,9 @@ Meniscal signal on MRI is graded using a **three-tier system** that directly gui
     ],
   },
   {
-    content: `### The Two-Slice-Touch Rule
+    content: `### The Two-Slice-Touch Confidence Rule
 
-The **two-slice-touch rule** is a fundamental diagnostic criterion for meniscal tears. This rule states that abnormal signal within the meniscus must **extend to an articular surface on at least two consecutive sagittal images** (using standard 3--4 mm slice thickness) to be called a definite tear.
+The **two-slice-touch rule** is a high-specificity confidence rule for meniscal tears: surface-reaching signal on **at least two consecutive images** (using standard 3--4 mm slice thickness) has a much higher positive predictive value than contact on one image. It is not an absolute gate; a small or radial tear may be conspicuous on only one slice or primarily in an orthogonal plane.
 
 This criterion was developed to reduce false-positive diagnoses caused by:
 - **Partial volume averaging**
@@ -56,8 +56,8 @@ This criterion was developed to reduce false-positive diagnoses caused by:
 ### Applying the Rule
 
 - Requires **systematic scrolling** through sagittal images and **correlating findings on coronal and axial planes**
-- If increased signal touches the surface on **only one image**, report as **probable intrasubstance degeneration** or an equivocal finding -- not a definite tear
-- Performs best on standard **proton density** and **T2-weighted sequences** at **1.5T and 3T**
+- If increased signal touches the surface on **only one image**, scrutinize morphology, adjacent slices, and orthogonal planes. Without corroboration, describe it cautiously or as equivocal rather than automatically labeling it degeneration or a definite tear
+- Apply the rule primarily to standard **proton-density / intermediate-weighted short-TE sequences** at **1.5T and 3T**
 
 ### Pitfalls at 3T
 
@@ -66,7 +66,7 @@ At **3T**, be cautious of **artifactually increased intrameniscal signal** due t
 - **Magnetization transfer**
 
 These can mimic tears, particularly in the **posterior horn of the lateral meniscus** near the **popliteal hiatus**.`,
-    pearl: `The two-slice-touch rule applies to standard 3-4 mm sagittal slices. On thin-slice or 3D isotropic sequences, you may need to see surface-reaching signal on more consecutive images to have equivalent confidence in diagnosing a tear.`,
+    pearl: `The two-slice-touch rule was developed for standard 3-4 mm slices. On thin-slice or 3D isotropic acquisitions, judge spatial continuity and multiplanar reformats rather than applying a fixed image count mechanically.`,
     images: [
       {
         src: '/images/teaching/modules/module6-menisci/14_Meniscus_Transverse_Ligament_Normal.jpg',

@@ -68,11 +68,19 @@ async function expectMarkerGeometry(annotated: Locator, requireMarker = true) {
   await expectImageLoaded(annotated.locator("img"));
   const result = await annotated.evaluate((root) => {
     const image = root.querySelector("img");
+    const rootRect = root.getBoundingClientRect();
     const imageRect = image?.getBoundingClientRect();
     if (!imageRect || imageRect.width <= 0 || imageRect.height <= 0) {
       return { markerCount: 0, errors: ["MRI image has no rendered area"] };
     }
     const errors: string[] = [];
+    const viewportWidth = document.documentElement.clientWidth;
+    if (rootRect.left < -1 || rootRect.right > viewportWidth + 1) {
+      errors.push(`annotated MRI clipped by viewport: ${rootRect.left.toFixed(1)}-${rootRect.right.toFixed(1)} of ${viewportWidth}`);
+    }
+    if (imageRect.left < -1 || imageRect.right > viewportWidth + 1) {
+      errors.push(`MRI image clipped by viewport: ${imageRect.left.toFixed(1)}-${imageRect.right.toFixed(1)} of ${viewportWidth}`);
+    }
     const markers = Array.from(root.querySelectorAll<HTMLElement>("[data-mri-marker]"));
     for (const marker of markers) {
       const x = Number(marker.dataset.markerX);
@@ -207,6 +215,8 @@ async function inspectExtendedModes(
   expect(runtimeErrors).toEqual([]);
 
   await clickMode(page, "compare", series, runtimeErrors);
+  await expect(page.getByLabel("Compare A plane to compare")).toBeVisible();
+  await expect(page.getByLabel("Compare B plane to compare")).toBeVisible();
   const compareViewers = page.getByTestId("mri-stack-viewer");
   await expect(compareViewers).toHaveCount(2);
   await expectImageLoaded(compareViewers.first().locator("img"));

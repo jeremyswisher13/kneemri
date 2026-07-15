@@ -3711,7 +3711,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | front: What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | back: ≥2 of the 3 tendons (conjoint of semitendinosus + biceps femoris long head, plus..."
+    "textPreview": "What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | front: What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | back: A commonly used surgical-referral threshold is a complete 3-tendon avulsion, or ..."
   },
   {
     "courseId": "hip-mri",
@@ -4420,7 +4420,7 @@
     "itemType": "module-quiz",
     "itemId": "m2-q5",
     "section": "module quiz:anatomy",
-    "title": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for?",
+    "title": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -4428,7 +4428,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/quizzes/module-quizzes.ts",
-    "textPreview": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for? | A. LCL tear; indicates posterolateral corner injury | B. Segond fra..."
+    "textPreview": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly? | A. LCL tear; indicates posterolateral corner injur..."
   },
   {
     "courseId": "knee-mri",
@@ -5859,7 +5859,7 @@
     "itemType": "review-registry-question",
     "itemId": "m2-q5",
     "section": "spaced-review-registry",
-    "title": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for?",
+    "title": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -5867,7 +5867,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury is this fracture pathognomonic for? | A. LCL tear; indicates posterolateral corner injury | B. Segond fra..."
+    "textPreview": "A 23-year-old soccer player sustains a noncontact knee injury. Coronal MRI shows a small cortical avulsion fracture at the lateral tibial plateau. Which ligamentous injury should this fracture make you suspect most strongly? | A. LCL tear; indicates posterolateral corner injur..."
   },
   {
     "courseId": "knee-mri",
@@ -6950,7 +6950,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is the Segond fracture and what is its clinical significance? | front: What is the Segond fracture and what is its clinical significance? | back: A small avulsion fracture of the lateral tibial rim. It is pathognomonic for ACL injury."
+    "textPreview": "What is the Segond fracture and what is its clinical significance? | front: What is the Segond fracture and what is its clinical significance? | back: A small avulsion fracture of the lateral tibial rim. It is highly specific for associated ACL injury and should prompt direct ..."
   },
   {
     "courseId": "knee-mri",
@@ -7113,7 +7113,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is the Segond fracture and what is its association with ACL tears? | front: What is the Segond fracture and what is its association with ACL tears? | back: A small avulsion of the lateral tibial rim representing anterolateral ligament avulsion. It is pathognomonic for ACL..."
+    "textPreview": "What is the Segond fracture and what is its association with ACL tears? | front: What is the Segond fracture and what is its association with ACL tears? | back: A small avulsion of the lateral tibial rim representing anterolateral-ligament complex avulsion. It is highly specif..."
   },
   {
     "courseId": "knee-mri",
@@ -7161,7 +7161,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is the arcuate fracture and what does it indicate? | front: What is the arcuate fracture and what does it indicate? | back: Avulsion of the fibular styloid. It is pathognomonic for a posterolateral corner injury."
+    "textPreview": "What is the arcuate fracture and what does it indicate? | front: What is the arcuate fracture and what does it indicate? | back: Avulsion of the fibular styloid. It is a strong marker of posterolateral-corner injury and should trigger direct evaluation of the LCL, popliteus te..."
   },
   {
     "courseId": "knee-mri",
@@ -7394,7 +7394,7 @@
     "itemType": "review-registry-question",
     "itemId": "fc-top-10-dont-miss-t4-2",
     "section": "spaced-review-registry",
-    "title": "What fracture is pathognomonic for posterolateral corner injury?",
+    "title": "What fracture is a strong marker of posterolateral-corner injury?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -7402,7 +7402,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What fracture is pathognomonic for posterolateral corner injury? | front: What fracture is pathognomonic for posterolateral corner injury? | back: Arcuate fracture -- avulsion of the fibular styloid. This finding should never be dismissed as incidental."
+    "textPreview": "What fracture is a strong marker of posterolateral-corner injury? | front: What fracture is a strong marker of posterolateral-corner injury? | back: Arcuate fracture -- avulsion of the fibular styloid. It should trigger direct evaluation of every PLC component rather than bein..."
   },
   {
     "courseId": "knee-mri",
@@ -7451,7 +7451,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | front: What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | back: Segond fracture: lateral tibial rim avulsion, path..."
+    "textPreview": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | front: What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | back: Segond fracture: lateral tibial rim avulsion, high..."
   },
   {
     "courseId": "knee-mri",
@@ -14126,7 +14126,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Management/disposition pearl: a complete (2–3 tendon) proximal hamstring avulsion with significant retraction (≥2 cm) triggers surgical referral for primary repair; partial or single-tendon injuries are typically managed conservatively (rehab). Report tendon count AND retracti..."
+    "textPreview": "Management/disposition pearl: a complete 3-tendon avulsion, or a 2-tendon avulsion with >2 cm retraction in an active patient, commonly triggers prompt surgical referral for possible primary repair. Partial or single-tendon injuries usually begin with rehabilitation, but persi..."
   },
   {
     "courseId": "hip-mri",
@@ -14480,22 +14480,6 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "daily-pearl",
-    "itemId": 26,
-    "section": "daily-pearls",
-    "title": "",
-    "risk": "high",
-    "requiresSourceCheck": true,
-    "flags": [
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "For suspected FAI, report all three legs of the triad — femoral cam (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because surgery must address the bony deformity and the soft-tissue..."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "daily-pearl",
     "itemId": 29,
     "section": "daily-pearls",
     "title": "",
@@ -14581,7 +14565,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | ≥2 of the 3 tendons (conjoint of semitendinosus + biceps femoris long head, plus semimembranosus) torn AND ≥2 cm retraction → refer to surgeon. Below that, rehab. Always report tendon c..."
+    "textPreview": "What MRI-based threshold for a proximal hamstring origin tear triggers surgical referral? | A commonly used surgical-referral threshold is a complete 3-tendon avulsion, or a 2-tendon avulsion with >2 cm retraction, especially in an active patient. Lesser tears usually begin wi..."
   },
   {
     "courseId": "hip-mri",
@@ -16369,7 +16353,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/reference.ts",
-    "textPreview": "label: Hamstring — surgical-referral criteria | detail: Count tendons and measure retraction at the ischial tuberosity. Surgical referral when at least 2 tendons are torn AND at least 2 cm of retraction; the sciatic nerve sits nearby a retracted stump. Always state both number..."
+    "textPreview": "label: Hamstring — surgical-referral criteria | detail: Count tendons and measure retraction at the ischial tuberosity. A complete 3-tendon avulsion, or 2 tendons with >2 cm retraction in an active patient, is a commonly used surgical-referral threshold; symptoms, chronicity, ..."
   },
   {
     "courseId": "hip-mri",
@@ -17136,7 +17120,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/cases/index.ts",
-    "textPreview": "A Segond fracture (lateral capsular avulsion) is pathognomonic for ACL tear."
+    "textPreview": "A Segond fracture (lateral capsular avulsion) is highly specific for associated ACL injury and should prompt direct ACL assessment."
   },
   {
     "courseId": "knee-mri",
@@ -17393,7 +17377,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "SIFK (subchondral insufficiency fracture of the knee) in older patients is often caused by a posterior medial meniscal root tear — always check the root."
+    "textPreview": "SIFK (subchondral insufficiency fracture of the knee) is associated with posterior medial meniscal root tears and extrusion, which can increase compartment loading — always check the root."
   },
   {
     "courseId": "knee-mri",
@@ -17408,7 +17392,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "The Segond fracture (small lateral tibial avulsion) is pathognomonic for ACL injury. Look for it on coronal images."
+    "textPreview": "The Segond fracture (small lateral tibial avulsion) is highly specific for associated ACL injury. Look for it on coronal images, then assess the ACL directly."
   },
   {
     "courseId": "knee-mri",
@@ -17618,23 +17602,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "How do I grade meniscal signal? | Meniscal signal is graded 1-3. Grade 1 is a small focus of intrameniscal signal not reaching a surface (mucinous degeneration). Grade 2 is more extensive linear signal not reaching a surface (degenerative change). Grade 3 is signal extending t..."
-  },
-  {
-    "courseId": "knee-mri",
-    "courseTitle": "UCLA Knee MRI Interpretation Course",
-    "itemType": "faq",
-    "itemId": "menisci-two-slice-touch",
-    "section": "faq",
-    "title": "What is the two-slice-touch rule?",
-    "risk": "high",
-    "requiresSourceCheck": true,
-    "flags": [
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What is the two-slice-touch rule? | The two-slice-touch rule requires that abnormal meniscal signal must extend to an articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to diagnose a definite tear. This reduces false positives fr..."
+    "textPreview": "How do I grade meniscal signal? | Meniscal signal is graded 1-3. Grade 1 is a small focus of intrameniscal signal not reaching a surface; grade 2 is more extensive linear signal that still does not reach a surface. Grade 3 signal unequivocally reaches at least one articular su..."
   },
   {
     "courseId": "knee-mri",
@@ -17680,7 +17648,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What is a Segond fracture? | A Segond fracture is a small avulsion fracture of the lateral tibial plateau rim, representing a bony avulsion of the anterolateral ligament (ALL) complex. It is pathognomonic for ACL tear and indicates significant rotational instability. On corona..."
+    "textPreview": "What is a Segond fracture? | A Segond fracture is a small avulsion fracture of the lateral tibial plateau rim, representing a bony avulsion of the anterolateral ligament (ALL) complex. It is highly specific for associated ACL injury and indicates a substantial rotational mecha..."
   },
   {
     "courseId": "knee-mri",
@@ -17831,7 +17799,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What avulsion fractures should I look for? | Key avulsion fractures around the knee include: tibial spine avulsion (ACL insertion in children/adolescents), Segond fracture (lateral tibial rim, pathognomonic for ACL tear), reverse Segond (medial tibial rim, associated with PCL ..."
+    "textPreview": "What avulsion fractures should I look for? | Key avulsion fractures around the knee include: tibial spine avulsion (ACL insertion in children/adolescents), Segond fracture (lateral tibial rim, highly specific for associated ACL injury), reverse Segond (medial tibial rim, assoc..."
   },
   {
     "courseId": "knee-mri",
@@ -17982,7 +17950,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What is the Segond fracture and what is its clinical significance? | A small avulsion fracture of the lateral tibial rim. It is pathognomonic for ACL injury."
+    "textPreview": "What is the Segond fracture and what is its clinical significance? | A small avulsion fracture of the lateral tibial rim. It is highly specific for associated ACL injury and should prompt direct ACL evaluation."
   },
   {
     "courseId": "knee-mri",
@@ -18135,7 +18103,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What is the Segond fracture and what is its association with ACL tears? | A small avulsion of the lateral tibial rim representing anterolateral ligament avulsion. It is pathognomonic for ACL tear, with ACL injury present in approximately 75-100% of cases."
+    "textPreview": "What is the Segond fracture and what is its association with ACL tears? | A small avulsion of the lateral tibial rim representing anterolateral-ligament complex avulsion. It is highly specific for associated ACL injury, reported with ACL injury in approximately 75-100% of case..."
   },
   {
     "courseId": "knee-mri",
@@ -18180,7 +18148,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What is the arcuate fracture and what does it indicate? | Avulsion of the fibular styloid. It is pathognomonic for a posterolateral corner injury."
+    "textPreview": "What is the arcuate fracture and what does it indicate? | Avulsion of the fibular styloid. It is a strong marker of posterolateral-corner injury and should trigger direct evaluation of the LCL, popliteus tendon, and popliteofibular ligament."
   },
   {
     "courseId": "knee-mri",
@@ -18399,14 +18367,14 @@
     "itemType": "flashcard",
     "itemId": "top-10-dont-miss:topic:5:card:2",
     "section": "spaced-review",
-    "title": "What fracture is pathognomonic for posterolateral corner injury?",
+    "title": "What fracture is a strong marker of posterolateral-corner injury?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What fracture is pathognomonic for posterolateral corner injury? | Arcuate fracture -- avulsion of the fibular styloid. This finding should never be dismissed as incidental."
+    "textPreview": "What fracture is a strong marker of posterolateral-corner injury? | Arcuate fracture -- avulsion of the fibular styloid. It should trigger direct evaluation of every PLC component rather than being dismissed as incidental."
   },
   {
     "courseId": "knee-mri",
@@ -18452,7 +18420,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | Segond fracture: lateral tibial rim avulsion, pathognomonic for ACL tear. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL tears rather than ACL t..."
+    "textPreview": "What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association? | Segond fracture: lateral tibial rim avulsion, highly specific for associated ACL injury. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL injury r..."
   },
   {
     "courseId": "knee-mri",
@@ -18982,7 +18950,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/modules/index.ts",
-    "textPreview": "### The Two-Slice-Touch Rule The **two-slice-touch rule** is a fundamental diagnostic criterion for meniscal tears. This rule states that abnormal signal within the meniscus must **extend to an articular surface on at least two consecutive sagittal images** (using standard 3--..."
+    "textPreview": "### The Two-Slice-Touch Confidence Rule The **two-slice-touch rule** is a high-specificity confidence rule for meniscal tears: surface-reaching signal on **at least two consecutive images** (using standard 3--4 mm slice thickness) has a much higher positive predictive value th..."
   },
   {
     "courseId": "knee-mri",
@@ -19397,7 +19365,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/modules/index.ts",
-    "textPreview": "### Segond Fracture The **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is **pathognomonic for an ACL tear**, with an ACL injury present in approxim..."
+    "textPreview": "### Segond Fracture The **Segond fracture** is a small avulsion fracture of the **lateral tibial rim**, representing avulsion of the **anterolateral ligament (ALL)** or lateral capsular structures. It is a **highly specific marker of associated ACL injury**, reported with an A..."
   },
   {
     "courseId": "knee-mri",
@@ -22599,7 +22567,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is the two-slice-touch rule? | front: What is the two-slice-touch rule? | back: Meniscal signal must contact the articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to be diagnosed as a tear. This reduces false positives from..."
+    "textPreview": "What is the two-slice-touch rule? | front: What is the two-slice-touch rule? | back: Surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images gives high confidence for a tear and reduces false positives from volume averaging and pseudotears. It is a ..."
   },
   {
     "courseId": "knee-mri",
@@ -23705,6 +23673,21 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "daily-pearl",
+    "itemId": 26,
+    "section": "daily-pearls",
+    "title": "",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/daily-pearls.ts",
+    "textPreview": "For suspected FAI, report all three legs of the triad — femoral cam morphology (alpha angle), acetabular coverage (LCEA, crossover, profunda), and chondrolabral damage (anterosuperior delamination plus paralabral cyst) — because operative planning considers both osseous morpho..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "daily-pearl",
     "itemId": 28,
     "section": "daily-pearls",
     "title": "",
@@ -24061,7 +24044,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "Meniscal extrusion >3 mm is pathologic and strongly suggests a root tear. Always trace the root on coronal and axial images."
+    "textPreview": "Meniscal extrusion >3 mm is abnormal and should trigger a careful search for root or radial tears and degeneration; extrusion alone does not diagnose a root tear. Trace the root on coronal and axial images."
   },
   {
     "courseId": "knee-mri",
@@ -24092,6 +24075,21 @@
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
     "textPreview": "What is the quadriceps tendon? | The quadriceps tendon is a trilaminar structure inserting on the superior pole of the patella, approximately 8-10 mm thick. Its three layers correspond to the rectus femoris (superficial), vastus lateralis/medialis (middle), and vastus intermed..."
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "faq",
+    "itemId": "menisci-two-slice-touch",
+    "section": "faq",
+    "title": "What is the two-slice-touch rule?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/faq-knowledge-base.ts",
+    "textPreview": "What is the two-slice-touch rule? | The two-slice-touch rule is a high-specificity confidence rule: surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images has a much higher positive predictive value than contact on one image. It reduces false posit..."
   },
   {
     "courseId": "knee-mri",
@@ -24196,7 +24194,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What is the two-slice-touch rule? | Meniscal signal must contact the articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to be diagnosed as a tear. This reduces false positives from volume averaging and truncation artifact."
+    "textPreview": "What is the two-slice-touch rule? | Surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images gives high confidence for a tear and reduces false positives from volume averaging and pseudotears. It is a confidence rule, not an absolute gate: a one-imag..."
   },
   {
     "courseId": "knee-mri",
@@ -24499,7 +24497,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "Goutallier/Fuchs fatty atrophy is the key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view predicts irreparability and re-tear regardless of tear size. Always comment on muscle quality, not just the tendon."
+    "textPreview": "Goutallier/Fuchs fatty atrophy is a key reparability marker: grade 3-4 (fat equal to or exceeding muscle) on the sagittal Y-view is associated with lower reparability and higher re-tear risk. Weigh it with tear size, retraction, chronicity, and patient factors, and always comm..."
   },
   {
     "courseId": "shoulder-mri",

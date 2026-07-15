@@ -121,7 +121,7 @@ const anatomySections: AnatomySection[] = [
           { structure: "LCL (fibular collateral)", detail: "Lateral epicondyle to fibular head. Primary lateral stabilizer." },
           { structure: "Popliteus tendon", detail: "Runs from lateral femoral condyle through the popliteal hiatus to the posterior tibia. Resists external rotation and posterior tibial translation." },
           { structure: "Popliteofibular ligament", detail: "Connects popliteus to fibular styloid. Small but biomechanically important." },
-          { structure: "Arcuate ligament", detail: "Y-shaped ligament over the popliteus. Avulsion of its fibular attachment = arcuate fracture (pathognomonic for PLC injury)." },
+          { structure: "Arcuate ligament", detail: "Y-shaped ligament over the popliteus. Avulsion of its fibular attachment produces the arcuate sign, a strong marker of posterolateral-corner injury that should prompt evaluation of the full PLC." },
           { structure: "Biceps femoris tendon", detail: "Inserts on fibular head. Can be injured in PLC trauma." },
         ],
       },
@@ -174,7 +174,7 @@ const anatomySections: AnatomySection[] = [
         items: [
           { structure: "T1-weighted", detail: "Fat = bright, fluid = dark, cortical bone = dark. Best for: anatomy, fracture lines (low-signal line in bright marrow), marrow replacement." },
           { structure: "PD fat-suppressed (PD FS)", detail: "The workhorse. Fat suppressed, fluid/edema = bright. Best for: meniscal tears, ligament injuries, bone marrow edema, cartilage defects, effusion." },
-          { structure: "T2-weighted", detail: "Fluid = very bright, high contrast. Best for: cyst characterization, effusion, confirming findings seen on PD FS. Magic angle artifact disappears on T2." },
+          { structure: "T2-weighted", detail: "Fluid = very bright, high contrast. Best for: cyst characterization, effusion, and confirming findings seen on PD FS. Magic-angle signal is markedly reduced on long-TE T2." },
           { structure: "STIR", detail: "Alternative to PD FS for edema detection. More uniform fat suppression but lower resolution. Used when PD FS has poor fat suppression." },
         ],
       },

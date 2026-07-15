@@ -90,7 +90,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         title: "Same meniscus, two shapes — flip between planes",
         instruction: "Toggle between the sagittal and coronal view of the same medial meniscus.",
         teaching:
-          "The meniscus is one C-shaped structure, but each plane cuts it differently — a low-signal triangle (or bow-tie on the body slices) on the SAGITTAL, and a WEDGE pointing into the joint on the CORONAL. Always confirm a suspected tear on the orthogonal plane: a real tear tracks across both planes, while a pseudotear or volume-average artifact does not.",
+          "The meniscus is one C-shaped structure, but each plane cuts it differently — a low-signal triangle (or bow-tie on the body slices) on the SAGITTAL, and a WEDGE pointing into the joint on the CORONAL. Seek an orthogonal correlate for a suspected tear because continuity across planes increases confidence and helps expose pseudotears or volume averaging. A subtle real tear may still be conspicuous in only one plane, so also use surface contact, morphology, and adjacent slices.",
         views: [
           {
             planeLabel: "Sagittal — triangle / bow-tie",

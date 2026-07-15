@@ -109,7 +109,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-anatomy-t1-1',
           question: 'What is the Segond fracture and what is its clinical significance?',
-          answer: 'A small avulsion fracture of the lateral tibial rim. It is pathognomonic for ACL injury.',
+          answer: 'A small avulsion fracture of the lateral tibial rim. It is highly specific for associated ACL injury and should prompt direct ACL evaluation.',
         },
         {
           id: 'fc-anatomy-t1-2',
@@ -370,7 +370,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-menisci-t1-1',
           question: 'What is the two-slice-touch rule?',
-          answer: 'Meniscal signal must contact the articular surface on at least two consecutive sagittal images (at standard 3-4 mm slice thickness) to be diagnosed as a tear. This reduces false positives from volume averaging and truncation artifact.',
+          answer: 'Surface-reaching meniscal signal on at least two consecutive standard 3-4 mm images gives high confidence for a tear and reduces false positives from volume averaging and pseudotears. It is a confidence rule, not an absolute gate: a one-image finding needs morphology, adjacent-slice, and orthogonal-plane correlation.',
         },
         {
           id: 'fc-menisci-t1-2',
@@ -385,7 +385,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-menisci-t2-1',
           question: 'Why are radial meniscal tears biomechanically significant even when small?',
-          answer: 'Radial tears disrupt the circumferential hoop fibers of the meniscus, eliminating its ability to distribute axial load. This is true regardless of tear size.',
+          answer: 'Radial tears disrupt circumferential hoop fibers. Complete or near-complete radial tears can markedly impair load distribution; the biomechanical effect depends on tear width and location, although even a small radial tear deserves careful characterization.',
         },
         {
           id: 'fc-menisci-t2-2',
@@ -514,7 +514,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-ligaments-t0-3',
           question: 'What is the Segond fracture and what is its association with ACL tears?',
-          answer: 'A small avulsion of the lateral tibial rim representing anterolateral ligament avulsion. It is pathognomonic for ACL tear, with ACL injury present in approximately 75-100% of cases.',
+          answer: 'A small avulsion of the lateral tibial rim representing anterolateral-ligament complex avulsion. It is highly specific for associated ACL injury, reported with ACL injury in approximately 75-100% of cases; confirm the ACL directly.',
         },
       ],
     },
@@ -584,7 +584,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-ligaments-t5-2',
           question: 'What is the arcuate fracture and what does it indicate?',
-          answer: 'Avulsion of the fibular styloid. It is pathognomonic for a posterolateral corner injury.',
+          answer: 'Avulsion of the fibular styloid. It is a strong marker of posterolateral-corner injury and should trigger direct evaluation of the LCL, popliteus tendon, and popliteofibular ligament.',
         },
         {
           id: 'fc-ligaments-t5-3',
@@ -821,8 +821,8 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         },
         {
           id: 'fc-top-10-dont-miss-t4-2',
-          question: 'What fracture is pathognomonic for posterolateral corner injury?',
-          answer: 'Arcuate fracture -- avulsion of the fibular styloid. This finding should never be dismissed as incidental.',
+          question: 'What fracture is a strong marker of posterolateral-corner injury?',
+          answer: 'Arcuate fracture -- avulsion of the fibular styloid. It should trigger direct evaluation of every PLC component rather than being dismissed as incidental.',
         },
       ],
     },
@@ -852,7 +852,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-top-10-dont-miss-t7-1',
           question: 'What is a Segond fracture, and how does a reverse Segond fracture differ in its ligamentous association?',
-          answer: 'Segond fracture: lateral tibial rim avulsion, pathognomonic for ACL tear. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL tears rather than ACL tears.',
+          answer: 'Segond fracture: lateral tibial rim avulsion, highly specific for associated ACL injury. Reverse Segond fracture: medial tibial rim avulsion, associated with PCL injury rather than ACL injury. Confirm the cruciate ligaments directly in either case.',
         },
       ],
     },
