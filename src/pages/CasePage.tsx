@@ -377,7 +377,7 @@ export default function CasePage() {
             <button
               ref={lightboxCloseRef}
               onClick={() => setExpandedImage(null)}
-              className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              className="absolute top-3 right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 sm:h-8 sm:w-8"
               aria-label="Close"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

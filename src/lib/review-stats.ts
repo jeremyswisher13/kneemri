@@ -19,13 +19,23 @@ export interface ReviewSummary {
   buckets: { learning: number; strengthening: number; retained: number };
 }
 
+/**
+ * UTC calendar day — NOT the local one. The rest of the spaced-repetition
+ * pipeline stores and compares `nextReviewDate` on a UTC basis
+ * (calculateNextReview -> next.toISOString(), getDueCards -> new Date().toISOString()),
+ * so this summary must use the same basis. Using the local day made the dashboard
+ * ReviewSummaryCard disagree with the nav due-badge and the Review page for any
+ * negative-offset user (e.g. Pacific) once the UTC day had rolled over in the
+ * evening — the dashboard said "all caught up" while the badge showed cards due.
+ */
 function isoDate(d: Date): string {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  return d.toISOString().split("T")[0];
 }
 
 export function summarizeReview(cards: ReviewCardLite[], today: Date = new Date()): ReviewSummary {
   const todayIso = isoDate(today);
-  const horizon = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+  const horizon = new Date(today);
+  horizon.setUTCDate(horizon.getUTCDate() + 7);
   const horizonIso = isoDate(horizon);
 
   let dueNow = 0;

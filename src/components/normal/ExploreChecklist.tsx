@@ -46,7 +46,7 @@ export default function ExploreChecklist({ plane, items }: { plane: string; item
                 type="button"
                 onClick={() => toggle(i)}
                 aria-pressed={on}
-                className="flex w-full items-start gap-2 rounded-md px-1.5 py-1 text-left text-sm transition-colors hover:bg-gray-50"
+                className="flex min-h-11 w-full items-start gap-2 rounded-md px-1.5 py-2.5 text-left text-sm transition-colors hover:bg-gray-50 sm:min-h-0 sm:py-1"
               >
                 <span
                   className={`mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded border transition-colors ${

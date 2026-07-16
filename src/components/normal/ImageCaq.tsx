@@ -288,6 +288,10 @@ export default function ImageCaq({
 
           {answered && (
             <div
+              // Announce the result + explanation, matching QuizQuestion and
+              // KnowledgeCheck — a screen-reader user got no feedback at all here.
+              role="status"
+              aria-live="polite"
               className={`mt-4 rounded-lg border px-4 py-3 ${
                 correct ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
               }`}

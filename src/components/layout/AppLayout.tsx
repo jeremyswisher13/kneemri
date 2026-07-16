@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import OfflineStatusBanner from "@/components/ui/OfflineStatusBanner";
 import InstallPrompt from "@/components/ui/InstallPrompt";
@@ -6,6 +7,14 @@ import PwaUpdatePrompt from "@/components/ui/PwaUpdatePrompt";
 export default function AppLayout() {
   const location = useLocation();
   const showHeaderInstallPrompt = location.pathname !== "/";
+
+  // React Router does not reset scroll on navigation, so moving from a long
+  // page (e.g. a case or module) to a new route opened it mid-scroll. Keyed on
+  // pathname ONLY — deep links that scroll within a page use the query string
+  // (?topic=N, ?mode=) and must not be yanked back to the top.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="flex min-h-screen min-h-[100dvh] flex-col">

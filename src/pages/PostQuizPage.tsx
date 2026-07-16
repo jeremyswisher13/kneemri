@@ -272,7 +272,7 @@ export default function PostQuizPage() {
         />
       </div>
 
-      <div className="sticky bottom-0 z-20 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-gray-200 bg-white/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pr-20 shadow-[0_-1px_3px_rgba(0,0,0,0.06)] backdrop-blur supports-[backdrop-filter]:bg-white/80 lg:static lg:z-auto lg:mx-0 lg:gap-0 lg:border-0 lg:bg-transparent lg:px-0 lg:pr-0 lg:pt-0 lg:pb-0 lg:shadow-none lg:backdrop-blur-none">
+      <div className="sticky bottom-0 z-20 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-gray-200 bg-white/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pr-4 sm:pr-20 shadow-[0_-1px_3px_rgba(0,0,0,0.06)] backdrop-blur supports-[backdrop-filter]:bg-white/80 lg:static lg:z-auto lg:mx-0 lg:gap-0 lg:border-0 lg:bg-transparent lg:px-0 lg:pr-0 lg:pt-0 lg:pb-0 lg:shadow-none lg:backdrop-blur-none">
         <Button
           variant="secondary"
           onClick={() => setCurrentIndex((i) => i - 1)}

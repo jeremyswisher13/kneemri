@@ -1,7 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { summarizeReview, type ReviewCardLite } from "@/lib/review-stats";
 
-const today = new Date(2026, 5, 10); // 2026-06-10 (local)
+// Explicit UTC instant: summarizeReview compares on the UTC calendar day (to
+// match calculateNextReview/getDueCards), so a local-constructed date would make
+// this suite pass in Pacific/UTC but fail in a positive-offset timezone.
+const today = new Date("2026-06-10T12:00:00Z"); // 2026-06-10 (UTC)
 
 const cards: ReviewCardLite[] = [
   { nextReviewDate: "2026-06-08", interval: 1, repetitions: 0 }, // overdue, learning

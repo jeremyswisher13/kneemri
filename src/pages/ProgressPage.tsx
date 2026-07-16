@@ -67,7 +67,8 @@ export default function ProgressPage() {
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Your Progress</h1>
       <p className="mt-1 text-gray-500">
-        Track your journey through {activeCourse.dashboardTitle.toLowerCase()}.
+        {/* Not .toLowerCase() — it turned the "MRI" acronym into "mri". */}
+        Track your journey through {activeCourse.dashboardTitle}.
       </p>
 
       {/* Overall Summary */}

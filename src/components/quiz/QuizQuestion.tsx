@@ -154,11 +154,13 @@ export default function QuizQuestion({
               onClick={() => !disabled && onSelect(option.key)}
               onKeyDown={(e) => handleRadioKeyDown(e, idx)}
               disabled={disabled}
-              className={`w-full text-left rounded-lg border-2 p-4 transition-colors ${borderClass} ${disabled ? "cursor-default" : ""}`}
+              // flex + items-start gives the option text a hanging indent — as an
+              // inline layout, wrapped lines flowed back underneath the letter badge.
+              className={`flex w-full items-start gap-3 rounded-lg border-2 p-4 text-left transition-colors ${borderClass} ${disabled ? "cursor-default" : ""}`}
             >
               <span
                 aria-hidden="true"
-                className={`mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${badgeClass}`}
+                className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${badgeClass}`}
               >
                 {isChecked && isCorrectReveal ? "\u2713" : isChecked && isWrongSelection ? "\u2717" : LETTERS[idx]}
               </span>

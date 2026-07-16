@@ -160,7 +160,17 @@ export default function LoginPage() {
       setRole(role);
       navigateToReturn();
     } catch (err: unknown) {
-      if (shouldUseRedirectFallback(err)) {
+      // In an INSTALLED standalone PWA the redirect fallback is the exact path
+      // shouldUseRedirectSignIn deliberately avoids (see login-return.ts): the
+      // Google + firebaseapp.com hop breaks out to Safari — a separate storage
+      // context — so the credential never returns to the app and the user
+      // dead-ends back at /login. A blocked/unsupported popup here must surface
+      // an actionable message instead of a redirect that cannot complete.
+      if (shouldUseRedirectFallback(err) && standaloneMode) {
+        setError(
+          "The sign-in window was blocked. Allow pop-ups for this app, or open the course in Safari to sign in.",
+        );
+      } else if (shouldUseRedirectFallback(err)) {
         try {
           await signInWithProviderRedirect(provider);
           return;

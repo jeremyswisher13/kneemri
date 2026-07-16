@@ -12,7 +12,11 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="UCLA MRI" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- black-translucent lets the standalone web view extend under the status bar,
+         which is what the viewport-fit=cover + env(safe-area-inset-top) padding in
+         the layouts already assumes. With "default" iOS reserves an opaque status
+         bar, leaving a seam above the branded header. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>UCLA Sports MRI Courses</title>
     <meta name="description" content="Interactive, case-based knee, shoulder, hip, and elbow MRI training for sports medicine fellows and residents." />
 

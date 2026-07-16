@@ -22,9 +22,12 @@ export default function PostQuizReview({
 
   const items = useMemo(() => {
     const chosen = new Map((progress.postQuizResponses ?? []).map((r) => [r.questionId, r.selectedAnswer]));
-    return getPostQuizQuestions(course).map((q) => {
+    // `number` is the item's position in the FULL quiz and travels with it, so the
+    // "show only the N I missed" filter can't renumber items 1..N and stop matching
+    // the question numbers the learner actually saw.
+    return getPostQuizQuestions(course).map((q, i) => {
       const selected = chosen.get(q.id) ?? null;
-      return { q, selected, correct: selected !== null && selected === q.correctAnswer };
+      return { q, selected, correct: selected !== null && selected === q.correctAnswer, number: i + 1 };
     });
   }, [progress.postQuizResponses, course]);
 
@@ -72,10 +75,10 @@ export default function PostQuizReview({
             </label>
           )}
           <ol className="space-y-4">
-            {shown.map(({ q, selected, correct }, i) => (
+            {shown.map(({ q, selected, correct, number }) => (
               <li key={q.id} className="rounded-lg border border-gray-100 p-4">
                 <div className="mb-2 flex items-start justify-between gap-3">
-                  <p className="text-sm font-medium text-gray-900">{i + 1}. {q.stem}</p>
+                  <p className="text-sm font-medium text-gray-900">{number}. {q.stem}</p>
                   <span
                     className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${
                       correct ? "bg-green-100 text-green-700" : "bg-rose-100 text-rose-700"

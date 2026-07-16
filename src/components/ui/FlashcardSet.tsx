@@ -151,7 +151,10 @@ export default function FlashcardSet({ cards, topicName, onNeedsReview }: Flashc
               </p>
             </div>
 
-            {/* Answer area with CSS transition */}
+            {/* Answer area with CSS transition. ONLY the answer text is height-capped
+                — the response buttons live outside this box (below), because a long
+                answer used to fill max-h-96 and push them below the inner scroll fold,
+                where a learner on a phone could not see them at all. */}
             <div
               className={`mt-3 transition-all duration-300 ease-in-out ${
                 revealed
@@ -164,14 +167,16 @@ export default function FlashcardSet({ cards, topicName, onNeedsReview }: Flashc
                   {deck[currentCard].answer}
                 </p>
               </div>
+            </div>
 
-              {/* Response buttons */}
+            {/* Response buttons — always visible once revealed, never inside the cap. */}
+            {revealed && (
               <div className="mt-3 flex gap-3">
                 <button
                   type="button"
                   onClick={() => handleResponse("correct")}
                   disabled={results[currentCard] !== null}
-                  className="flex-1 rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-2.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-100 transition-colors disabled:opacity-50 disabled:cursor-default"
+                  className="min-h-11 flex-1 rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-2.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-100 transition-colors disabled:opacity-50 disabled:cursor-default"
                 >
                   ✓ Got it
                 </button>
@@ -179,12 +184,12 @@ export default function FlashcardSet({ cards, topicName, onNeedsReview }: Flashc
                   type="button"
                   onClick={() => handleResponse("review")}
                   disabled={results[currentCard] !== null}
-                  className="flex-1 rounded-lg border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-700 hover:bg-amber-100 transition-colors disabled:opacity-50 disabled:cursor-default"
+                  className="min-h-11 flex-1 rounded-lg border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-700 hover:bg-amber-100 transition-colors disabled:opacity-50 disabled:cursor-default"
                 >
                   ↻ Need to review
                 </button>
               </div>
-            </div>
+            )}
 
             {/* Reveal button */}
             {!revealed && (

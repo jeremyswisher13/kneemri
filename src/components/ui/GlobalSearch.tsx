@@ -505,7 +505,11 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
                         key={result.id}
                         data-index={idx}
                         onClick={() => selectResult(result)}
-                        onMouseEnter={() => setActiveIndex(idx)}
+                        // onMouseMove, not onMouseEnter: arrow-key navigation
+                        // scrolls the list under a stationary cursor, which fired
+                        // mouseenter on whatever row slid beneath it and yanked the
+                        // keyboard highlight back. Only a real pointer move re-targets.
+                        onMouseMove={() => setActiveIndex(idx)}
                         className={`flex w-full flex-col gap-0.5 px-4 py-2.5 text-left transition-colors ${
                           isActive
                             ? "bg-[#2774AE]/10"

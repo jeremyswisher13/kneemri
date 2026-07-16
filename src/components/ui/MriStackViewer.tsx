@@ -242,6 +242,9 @@ export default function MriStackViewer({
       } else if (g.mode === "pan") {
         setPan(clampPan({ x: g.startPan.x + (e.clientX - g.startClient.x), y: g.startPan.y + (e.clientY - g.startClient.y) }, zoom));
       } else if (g.mode === "scrub") {
+        // Taking manual control stops the cine timer — otherwise auto-advance
+        // fights the drag and the slice jumps out from under the finger.
+        setCinePlaying(false);
         const h = viewportRef.current?.clientHeight ?? 480;
         const pxPerSlice = clamp(h / Math.max(total, 1), 6, 16);
         const delta = Math.round((e.clientY - g.startClientY) / pxPerSlice);
@@ -382,7 +385,10 @@ export default function MriStackViewer({
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-5rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none sm:mx-0 sm:max-h-[600px] sm:w-full ${
+        // outline-none needs a replacement: this viewport is keyboard-focusable
+        // (tabIndex=0, arrow/Home/End/Space controls) but showed no focus state.
+        // ring-inset + gold reads against the black viewport.
+        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-5rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ucla-gold sm:mx-0 sm:max-h-[600px] sm:w-full ${
           zoomed ? "cursor-grab" : "cursor-ns-resize"
         }`}
         style={{ touchAction: "none" }}
@@ -473,7 +479,10 @@ export default function MriStackViewer({
         )}
         <button
           type="button"
-          onClick={() => setIndex((i) => Math.max(0, i - 1))}
+          onClick={() => {
+            setCinePlaying(false);
+            setIndex((i) => Math.max(0, i - 1));
+          }}
           disabled={safeIndex <= 0}
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-white sm:h-7 sm:w-7"
           aria-label="Previous slice"
@@ -489,7 +498,10 @@ export default function MriStackViewer({
             min={0}
             max={total - 1}
             value={safeIndex}
-            onChange={(e) => setIndex(Number(e.target.value))}
+            onChange={(e) => {
+              setCinePlaying(false);
+              setIndex(Number(e.target.value));
+            }}
             className="relative z-10 w-full accent-ucla-blue py-4 sm:py-0"
             aria-label="Slice position"
             aria-valuetext={`Slice ${safeIndex + 1} of ${total}`}
@@ -497,7 +509,10 @@ export default function MriStackViewer({
         </div>
         <button
           type="button"
-          onClick={() => setIndex((i) => Math.min(total - 1, i + 1))}
+          onClick={() => {
+            setCinePlaying(false);
+            setIndex((i) => Math.min(total - 1, i + 1));
+          }}
           disabled={safeIndex >= maxIndex}
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-white sm:h-7 sm:w-7"
           aria-label="Next slice"
