@@ -31,7 +31,12 @@ export default function PwaUpdatePrompt() {
         disabled={updating}
         onClick={() => {
           setUpdating(true);
-          if (!activateWaitingServiceWorker(registration)) setUpdating(false);
+          // If `waiting` is already gone, another client accepted the update and
+          // the new worker is active + claimed us — so this client is running a
+          // stale shell and a plain reload is exactly what it needs. Previously
+          // this just flipped `updating` back off, leaving a live-looking but
+          // permanently inert button on an undismissable card.
+          if (!activateWaitingServiceWorker(registration)) window.location.reload();
         }}
         className="min-h-11 shrink-0 rounded-lg bg-ucla-blue px-3 py-2 text-sm font-semibold text-white hover:bg-ucla-dark disabled:opacity-60"
       >

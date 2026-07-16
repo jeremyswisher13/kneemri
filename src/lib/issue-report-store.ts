@@ -1,5 +1,4 @@
 import {
-  addDoc,
   collection,
   doc,
   getDocs,
@@ -8,6 +7,7 @@ import {
   query,
   serverTimestamp,
   setDoc,
+  where,
 } from "firebase/firestore";
 import { db } from "@/lib/db";
 import { isPreviewAuthSession } from "@/lib/local-preview-auth";
@@ -73,23 +73,63 @@ export function updateLocalIssueReportStatus(
   return updated;
 }
 
-export async function submitIssueReport(input: IssueReportInput): Promise<{ id: string }> {
+export const ISSUE_REPORT_ACK_TIMEOUT_MS = 6000;
+
+/**
+ * Submit a report WITHOUT waiting on the backend acknowledgement.
+ *
+ * `doc()` mints the id client-side, so the server round-trip is never needed to
+ * show the learner a reference. A Firestore write promise only settles on
+ * backend ack — offline it stays pending indefinitely (the SDK itself warns it
+ * is "usually undesirable to await" it), and `persistentLocalCache` has already
+ * durably queued the mutation to IndexedDB. So a timeout here means QUEUED, not
+ * failed. Genuine errors (e.g. permission-denied) still reject inside the window
+ * and surface to the caller. Promise.race attaches handlers to the write, so a
+ * late rejection can't become an unhandled rejection.
+ */
+export async function submitIssueReport(
+  input: IssueReportInput,
+): Promise<{ id: string; queued: boolean }> {
   if (isPreviewAuthSession()) {
-    return { id: saveLocalIssueReport(input).id };
+    return { id: saveLocalIssueReport(input).id, queued: false };
   }
-  const reportRef = await addDoc(collection(db, "issueReports"), {
+  const reportRef = doc(collection(db, "issueReports"));
+  const acked = setDoc(reportRef, {
     ...input,
     status: "open",
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
-  });
-  return { id: reportRef.id };
+  }).then(() => "acked" as const);
+  const outcome = await Promise.race([
+    acked,
+    new Promise<"queued">((resolve) => {
+      setTimeout(() => resolve("queued"), ISSUE_REPORT_ACK_TIMEOUT_MS);
+    }),
+  ]);
+  return { id: reportRef.id, queued: outcome === "queued" };
 }
 
-export async function getIssueReports(): Promise<IssueReportRecord[]> {
-  if (isPreviewAuthSession()) return readLocalIssueReports();
+export const ISSUE_REPORT_PAGE_LIMIT = 250;
+
+/**
+ * Fetch reports for ONE course. The course filter runs server-side on purpose:
+ * a global `limit()` applied before a client-side course filter would silently
+ * hide a course's older reports (and under-count the status tabs) once the
+ * collection exceeded the limit across all four courses.
+ * Requires the issueReports (courseId ASC, createdAt DESC) composite index.
+ */
+export async function getIssueReports(courseId?: string): Promise<IssueReportRecord[]> {
+  if (isPreviewAuthSession()) {
+    const local = readLocalIssueReports();
+    return courseId ? local.filter((report) => report.courseId === courseId) : local;
+  }
   const snapshot = await getDocs(
-    query(collection(db, "issueReports"), orderBy("createdAt", "desc"), limit(250)),
+    query(
+      collection(db, "issueReports"),
+      ...(courseId ? [where("courseId", "==", courseId)] : []),
+      orderBy("createdAt", "desc"),
+      limit(ISSUE_REPORT_PAGE_LIMIT),
+    ),
   );
   return snapshot.docs.map((reportDoc) => ({
     id: reportDoc.id,

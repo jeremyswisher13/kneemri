@@ -113,7 +113,11 @@ export default function FAQChatbot() {
       <div
         inert={!open}
         aria-label="MRI Course Assistant chat"
-        className={`fixed right-4 top-[calc(3.5rem+env(safe-area-inset-top))] z-50 flex max-h-[calc(100dvh_-_4.5rem_-_env(safe-area-inset-bottom))] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 sm:bottom-20 sm:top-auto sm:max-h-[500px] sm:w-96 ${
+        // Mobile: anchor to the BOTTOM, never a hard-coded top offset. The
+        // toolbar's top edge is variable (AppLayout header, InstallPrompt, the
+        // admin preview banner, the offline banner all shift it), so a fixed
+        // `top-14` slid up over the toolbar and covered Report-issue + Search.
+        className={`fixed right-4 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-50 flex max-h-[calc(100dvh_-_8rem_-_env(safe-area-inset-top)_-_env(safe-area-inset-bottom))] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 sm:bottom-20 sm:max-h-[500px] sm:w-96 ${
           open
             ? 'pointer-events-auto translate-y-0 opacity-100'
             : 'pointer-events-none translate-y-4 opacity-0'

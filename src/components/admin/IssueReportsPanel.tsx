@@ -38,17 +38,19 @@ export default function IssueReportsPanel({ course }: { course: CourseDefinition
   const [error, setError] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
+  // Fetch this course's reports server-side (and refetch on course change) so
+  // the row limit applies per course rather than across all four.
   const refresh = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      setReports(await getIssueReports());
+      setReports(await getIssueReports(course.id));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Issue reports could not be loaded.");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [course.id]);
 
   useEffect(() => {
     refresh();

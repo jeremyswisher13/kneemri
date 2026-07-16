@@ -25,10 +25,20 @@ const dist = (a: { x: number; y: number }, b: { x: number; y: number }) =>
   Math.hypot(a.x - b.x, a.y - b.y);
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 
+/**
+ * Stable default for the optional `tour` prop. A `tour = []` default parameter
+ * would allocate a NEW array on every render, invalidating the `labeledItems`
+ * memo below and re-running buildKnowledgeRound — which reshuffles the answer
+ * options mid-question, so post-answer feedback would highlight a different
+ * option than the learner picked. Callers that omit `tour` (module spot-quizzes)
+ * must share this one frozen reference.
+ */
+const NO_TOUR: readonly TourStep[] = Object.freeze([]);
+
 export default function KnowledgeCheck({
   dir,
   items,
-  tour = [],
+  tour = NO_TOUR as TourStep[],
   planeLabel,
   onComplete,
   onMiss,

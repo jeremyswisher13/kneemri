@@ -15,14 +15,13 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
   const [category, setCategory] = useState<IssueReportCategory | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [queued, setQueued] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-  const submittingRef = useRef(submitting);
-
-  useEffect(() => {
-    submittingRef.current = submitting;
-  }, [submitting]);
+  // Bumped on every close/submit so a slow in-flight submit that settles after
+  // the user has moved on can't write stale state into a reopened dialog.
+  const runRef = useRef(0);
 
   useEffect(() => {
     if (!open) return;
@@ -31,7 +30,7 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
     document.body.style.overflow = "hidden";
     dialogRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && !submittingRef.current) setOpen(false);
+      if (event.key === "Escape") close();
       if (event.key !== "Tab") return;
       const dialog = dialogRef.current;
       if (!dialog) return;
@@ -59,16 +58,22 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
     };
   }, [open]);
 
+  // Dismissal must NEVER be gated on an in-flight network call: the write is
+  // durably queued locally, so trapping the user behind it (with the page
+  // scroll-locked) is strictly worse than letting them leave.
   function close() {
-    if (submitting) return;
+    runRef.current += 1;
     setOpen(false);
     setCategory(null);
     setSubmittedId(null);
+    setQueued(false);
     setError(null);
+    setSubmitting(false);
   }
 
   async function submit() {
     if (!category) return;
+    const run = ++runRef.current;
     setSubmitting(true);
     setError(null);
     try {
@@ -80,11 +85,14 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
       );
       const { submitIssueReport } = await import("@/lib/issue-report-store");
       const result = await submitIssueReport(input);
+      if (runRef.current !== run) return;
       setSubmittedId(result.id);
+      setQueued(result.queued);
     } catch {
+      if (runRef.current !== run) return;
       setError("The report could not be saved. Check your connection and try again.");
     } finally {
-      setSubmitting(false);
+      if (runRef.current === run) setSubmitting(false);
     }
   }
 
@@ -151,8 +159,13 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
               <div className="space-y-5 px-5 py-5">
                 {submittedId ? (
                   <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-800">
-                    <p className="font-semibold">Report received</p>
-                    <p className="mt-1">Reference {submittedId.slice(-8)}. It is now in the course-director review queue.</p>
+                    <p className="font-semibold">{queued ? "Report saved" : "Report received"}</p>
+                    <p className="mt-1">
+                      Reference {submittedId.slice(-8)}.{" "}
+                      {queued
+                        ? "You appear to be offline — it will send automatically once you reconnect."
+                        : "It is now in the course-director review queue."}
+                    </p>
                   </div>
                 ) : (
                   <>

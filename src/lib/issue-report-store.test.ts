@@ -1,10 +1,30 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  ISSUE_REPORT_ACK_TIMEOUT_MS,
   readLocalIssueReports,
   saveLocalIssueReport,
+  submitIssueReport,
   updateLocalIssueReportStatus,
 } from "@/lib/issue-report-store";
 import type { IssueReportInput } from "@/lib/issue-report";
+
+// The real (non-preview) submit path. A Firestore write promise only settles on
+// backend ACK, so offline it stays pending forever — the bug this guards against
+// was an unbounded `await` that wedged the dialog open with the page scroll-locked.
+const setDocMock = vi.hoisted(() => vi.fn());
+vi.mock("firebase/firestore", () => ({
+  collection: () => ({}),
+  doc: () => ({ id: "generated-report-id" }),
+  setDoc: setDocMock,
+  serverTimestamp: () => ({}),
+  getDocs: vi.fn(),
+  limit: vi.fn(),
+  orderBy: vi.fn(),
+  query: vi.fn(),
+  where: vi.fn(),
+}));
+vi.mock("@/lib/db", () => ({ db: {} }));
+vi.mock("@/lib/local-preview-auth", () => ({ isPreviewAuthSession: () => false }));
 
 function memoryStorage(): Pick<Storage, "getItem" | "setItem"> {
   const values = new Map<string, string>();
@@ -42,6 +62,37 @@ describe("local issue report store", () => {
 
     updateLocalIssueReportStatus(report.id, "resolved", storage);
     expect(readLocalIssueReports(storage)[0].status).toBe("resolved");
+  });
+});
+
+describe("submitIssueReport (real Firestore path)", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    setDocMock.mockReset();
+  });
+
+  it("resolves as queued when the write never acks (offline) instead of hanging", async () => {
+    vi.useFakeTimers();
+    // Offline: the SDK durably queues the mutation but never settles the promise.
+    setDocMock.mockReturnValue(new Promise(() => {}));
+
+    const pending = submitIssueReport(input);
+    await vi.advanceTimersByTimeAsync(ISSUE_REPORT_ACK_TIMEOUT_MS + 1);
+
+    await expect(pending).resolves.toEqual({ id: "generated-report-id", queued: true });
+  });
+
+  it("resolves as acked when the write completes online", async () => {
+    setDocMock.mockResolvedValue(undefined);
+    await expect(submitIssueReport(input)).resolves.toEqual({
+      id: "generated-report-id",
+      queued: false,
+    });
+  });
+
+  it("propagates a genuine write rejection (e.g. permission-denied)", async () => {
+    setDocMock.mockRejectedValue(new Error("permission-denied"));
+    await expect(submitIssueReport(input)).rejects.toThrow("permission-denied");
   });
 });
 

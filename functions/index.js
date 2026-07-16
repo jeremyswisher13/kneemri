@@ -444,6 +444,21 @@ exports.onCourseCompletion = onDocumentWritten(
   {
     // The post survey is the final learner action, after the post quiz. Triggering
     // here lets the full quiz + survey completion contract be verified atomically.
+    //
+    // ⚠️ KNOWN GAP — FIX BEFORE SETTING AUTO_SEND_CERTIFICATES = true.
+    // This assumes an order the UI does not enforce. PostAssessmentPage shows the
+    // quiz and survey as independent cards, and PostSurveyPage gates only on
+    // `postQuizUnlocked`, never `postQuizCompleted`. So a learner CAN submit the
+    // post survey first: this trigger then fires, finds no post-quiz doc, and
+    // bails — and the later quizAttempts write fires nothing, because quizAttempts
+    // is no longer a trigger source. That learner silently never gets a cert.
+    // (The pre-Codex version triggered on quizAttempts and had the mirror-image
+    // hazard, documented in reverse.) Correct fix: make the send order-independent
+    // — extract the completion check into a shared maybeSendCertificate(userId,
+    // courseId) that resolves all four assessment docs itself, and trigger it from
+    // BOTH surveyResponses and quizAttempts. The existing idempotency guard
+    // (`if (userData[course.sentField]) return;`) already makes a double-fire safe.
+    // Dormant today only because AUTO_SEND_CERTIFICATES is false.
     document: "users/{userId}/surveyResponses/{responseId}",
     secrets: [GMAIL_APP_PASSWORD],
   },
