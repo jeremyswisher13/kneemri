@@ -209,7 +209,15 @@ export interface CohortDomainGain {
   label: string;
   quizGain: number | null;
   honestConfGain: number | null;
-  n: number;
+  /**
+   * Sample sizes are TRACKED SEPARATELY on purpose: the quiz gain and the
+   * confidence gain are averaged over different learner sets (a learner can
+   * answer the quiz items without completing the retrospective ratings, and vice
+   * versa). Reporting one shared `n` beside both attributed the wrong sample size
+   * to the confidence figure in the panel and the exported PDF.
+   */
+  nQuiz: number;
+  nConf: number;
 }
 
 export interface CohortReport {
@@ -269,7 +277,8 @@ export function buildCohortReport(
       label,
       quizGain: gains.length ? mean(gains) : null,
       honestConfGain: conf.length ? mean(conf) : null,
-      n: gains.length,
+      nQuiz: gains.length,
+      nConf: conf.length,
     };
   });
 

@@ -29,11 +29,12 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
 import { useNormalMriResume } from "@/hooks/useNormalMriResume";
 import { useNormalIssueContext } from "@/hooks/useNormalIssueContext";
-import { coursePath, getCourseById } from "@/content/courses";
+import { coursePath, visibleCaseIdsFor, getCourseById } from "@/content/courses";
 import { workstationReviewId } from "@/content/review-id";
 import { caseTeachingImageById } from "@/content/case-preview-images";
 import {
   NORMAL_MRI_MODE_PARAM,
+  RESTORABLE_NORMAL_MODES,
   NORMAL_MRI_SERIES_PARAM,
   readNormalParam,
 } from "@/lib/normal-workstation-url";
@@ -44,7 +45,9 @@ import {
 const SHOULDER_CASE_BASE = coursePath(getCourseById("shoulder-mri"), "/cases");
 
 type Mode = "explore" | "tour" | "check" | "correlate" | "compare" | "advanced" | "caq" | "adjust";
-const RESTORABLE_MODES: Mode[] = ["explore", "tour", "check", "correlate", "compare", "advanced", "caq"];
+// Read side of the persist/restore round-trip — shared with useNormalMriResume
+// (see RESTORABLE_NORMAL_MODES) so the two can never drift apart again.
+const RESTORABLE_MODES = RESTORABLE_NORMAL_MODES as readonly Mode[];
 const MODES: { id: Mode; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "tour", label: "Guided Tour" },
@@ -64,6 +67,12 @@ export default function NormalShoulderMriPage() {
   const { user, role } = useAuth();
   const isAdmin = role === "admin";
   const isAdminView = useIsAdminView();
+  // Residents are hard-gated out of some cases, so the guided tour must not
+  // link them to one (it would dead-end on "Not Available").
+  const visibleCaseIds = useMemo(
+    () => visibleCaseIdsFor(getCourseById("shoulder-mri"), role === "resident"),
+    [role],
+  );
   const initialSearch = typeof window === "undefined" ? "" : window.location.search;
   const [activeId, setActiveId] = useState(() =>
     readNormalParam(initialSearch, NORMAL_MRI_SERIES_PARAM, SERIES.map((s) => s.id), SERIES[0].id),
@@ -210,6 +219,7 @@ export default function NormalShoulderMriPage() {
               dir={series.dir}
               steps={learn.tour}
               structureCase={structureShoulderCase}
+              isCaseAvailable={(id) => visibleCaseIds.has(id)}
               structurePearl={structureShoulderPearl}
               structureReading={structureShoulderReading}
               structureCorrelate={shoulderStructureCorrelate}

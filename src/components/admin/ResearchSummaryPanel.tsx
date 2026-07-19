@@ -87,8 +87,12 @@ async function buildPdf(report: CohortReport, course: CourseDefinition) {
   report.domains.forEach((d) => {
     doc.setFont("helvetica", "normal");
     doc.text(d.label, left, y);
-    doc.text(signedPp(d.quizGain), left + 250, y);
-    doc.text(d.honestConfGain === null ? "" : `conf ${signed1(d.honestConfGain)}`, left + 340, y);
+    doc.text(`${signedPp(d.quizGain)} (n=${d.nQuiz})`, left + 250, y);
+    doc.text(
+      d.honestConfGain === null ? "" : `conf ${signed1(d.honestConfGain)} (n=${d.nConf})`,
+      left + 340,
+      y,
+    );
     y += 15;
   });
   y += 16;
@@ -198,6 +202,7 @@ export default function ResearchSummaryPanel({ fellows, course }: Props) {
                 <tr className="bg-gray-50 text-left text-[11px] uppercase tracking-wide text-gray-500">
                   <th className="px-3 py-2 font-semibold">Domain</th>
                   <th className="px-3 py-2 text-right font-semibold">Knowledge gain</th>
+                  <th className="px-3 py-2 text-right font-semibold">n</th>
                   <th className="px-3 py-2 text-right font-semibold">Honest conf. gain</th>
                   <th className="px-3 py-2 text-right font-semibold">n</th>
                 </tr>
@@ -212,8 +217,12 @@ export default function ResearchSummaryPanel({ fellows, course }: Props) {
                     >
                       {signedPp(d.quizGain)}
                     </td>
+                    {/* Each gain carries ITS OWN n — they are averaged over
+                        different learner sets, so one shared n mislabelled the
+                        confidence figure. */}
+                    <td className="px-3 py-2 text-right text-gray-400">{d.nQuiz}</td>
                     <td className="px-3 py-2 text-right text-gray-600">{signed1(d.honestConfGain)}</td>
-                    <td className="px-3 py-2 text-right text-gray-400">{d.n}</td>
+                    <td className="px-3 py-2 text-right text-gray-400">{d.nConf}</td>
                   </tr>
                 ))}
               </tbody>

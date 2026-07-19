@@ -3,34 +3,6 @@ import {
 } from "firebase/firestore";
 import { db } from "./db";
 
-/**
- * How long to wait for a Firestore write to be ACKNOWLEDGED by the server before
- * treating it as "durably queued and good enough to proceed".
- *
- * WHY THIS EXISTS: we enable `persistentLocalCache` (see db.ts), so a write is
- * durably persisted to IndexedDB immediately, but the promise returned by
- * addDoc/setDoc only settles on SERVER acknowledgement. Offline it never settles
- * — it neither resolves nor rejects. Any `await` on it therefore hangs forever,
- * which previously left learners stuck on "Submitting..." with their score
- * unreachable even though the attempt was safely saved.
- *
- * Never `await` a learner-facing write directly. Wrap it in `settleWrite` so the
- * UI can proceed once the write is queued. Real errors (permission-denied, bad
- * data) still reject inside the window and propagate normally.
- */
-export const WRITE_ACK_TIMEOUT_MS = 4000;
-
-export async function settleWrite<T>(write: Promise<T>, queuedValue: T): Promise<T> {
-  // Attach a handler up front so an eventual offline rejection can never surface
-  // as an unhandled promise rejection after we've already moved on.
-  write.catch(() => {});
-  return Promise.race([
-    write,
-    new Promise<T>((resolve) => {
-      setTimeout(() => resolve(queuedValue), WRITE_ACK_TIMEOUT_MS);
-    }),
-  ]);
-}
 import { logAuditEvent } from "./audit";
 import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
 import { certificateFieldsForCourse } from "@/lib/course-certificate";
@@ -68,6 +40,35 @@ import type {
   SurveyAttempt,
   UserProgress,
 } from "@/types/progress";
+
+/**
+ * How long to wait for a Firestore write to be ACKNOWLEDGED by the server before
+ * treating it as "durably queued and good enough to proceed".
+ *
+ * WHY THIS EXISTS: we enable `persistentLocalCache` (see db.ts), so a write is
+ * durably persisted to IndexedDB immediately, but the promise returned by
+ * addDoc/setDoc only settles on SERVER acknowledgement. Offline it never settles
+ * — it neither resolves nor rejects. Any `await` on it therefore hangs forever,
+ * which previously left learners stuck on "Submitting..." with their score
+ * unreachable even though the attempt was safely saved.
+ *
+ * Never `await` a learner-facing write directly. Wrap it in `settleWrite` so the
+ * UI can proceed once the write is queued. Real errors (permission-denied, bad
+ * data) still reject inside the window and propagate normally.
+ */
+export const WRITE_ACK_TIMEOUT_MS = 4000;
+
+export async function settleWrite<T>(write: Promise<T>, queuedValue: T): Promise<T> {
+  // Attach a handler up front so an eventual offline rejection can never surface
+  // as an unhandled promise rejection after we've already moved on.
+  write.catch(() => {});
+  return Promise.race([
+    write,
+    new Promise<T>((resolve) => {
+      setTimeout(() => resolve(queuedValue), WRITE_ACK_TIMEOUT_MS);
+    }),
+  ]);
+}
 
 // --- Admin Preview Guard ---
 function isAdminPreview(): boolean {
@@ -458,10 +459,27 @@ export async function getUserProgress(
     baselineDone && normalMriComplete && allModulesDone && allCasesDone;
   const postQuizUnlocked = adminUnlocked || requiredLearningDone;
 
+  // `totalQuestions` is optional on older quizAttempt docs. Normalize it HERE,
+  // at the single read boundary, so every downstream consumer shares one
+  // denominator. Previously psychometrics/growth/research-export dropped a
+  // learner whose total was missing (pctOf returns null on a falsy total) while
+  // the dashboard tables fell back to the course form length — so the same
+  // cohort reported two different n's, and Cohen's d / KR-20 / the CSV silently
+  // disagreed with the on-screen means.
+  const prePostItems = course.prePostQuizQuestions;
+  const preFormLength = prePostItems.filter((q) =>
+    ["parallel-pre", "identical", "pre-only"].includes(q.prePostMapping),
+  ).length;
+  const postFormLength = prePostItems.filter((q) =>
+    ["parallel-post", "identical", "post-only"].includes(q.prePostMapping),
+  ).length;
+  const preQuizTotal = preQuiz ? (preQuiz.totalQuestions ?? preFormLength) || null : null;
+  const postQuizTotal = postQuiz ? (postQuiz.totalQuestions ?? postFormLength) || null : null;
+
   return {
     preQuizCompleted: !!preQuiz,
     preQuizScore: preQuiz?.score ?? null,
-    preQuizTotal: preQuiz?.totalQuestions ?? null,
+    preQuizTotal,
     preQuizCompletedAt: preQuiz?.completedAt ?? null,
     preQuizResponses: preQuiz?.answers ?? null,
     preSurveyCompleted: !!preSurvey,
@@ -473,7 +491,7 @@ export async function getUserProgress(
     postSurveyCompleted: !!postSurvey,
     postSurveyResponses: postSurvey?.responses ?? null,
     postRetroResponses: postSurvey?.retroResponses ?? null,
-    postQuizTotal: postQuiz?.totalQuestions ?? null,
+    postQuizTotal,
     postSurveyCompletedAt: postSurvey?.completedAt ?? null,
     postQuizCompletedAt: postQuiz?.completedAt ?? null,
     postQuizUnlocked,

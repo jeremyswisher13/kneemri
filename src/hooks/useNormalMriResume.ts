@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getCourseById, type CourseId } from "@/content/courses";
 import { saveLearnerResume } from "@/lib/learner-resume";
-import { normalWorkstationResumePath } from "@/lib/normal-workstation-url";
+import {
+  isRestorableNormalMode,
+  normalWorkstationResumePath,
+} from "@/lib/normal-workstation-url";
 
 interface UseNormalMriResumeArgs {
   courseId: CourseId;
@@ -24,11 +27,18 @@ export function useNormalMriResume({
   const location = useLocation();
   useEffect(() => {
     const course = getCourseById(courseId);
+    // Only persist a mode the pages can actually read back. Admin-only modes
+    // (e.g. "adjust") would otherwise be written into the URL and the resume
+    // card, then silently rejected on reload — landing the user in Explore with
+    // a resume card that lied about where it would take them.
+    const restorable = isRestorableNormalMode(modeId);
+    const persistedModeId = restorable ? modeId : "explore";
+    const persistedModeLabel = restorable ? modeLabel : "Explore";
     const path = normalWorkstationResumePath({
       pathname: location.pathname,
       search: location.search,
       hash: location.hash,
-      modeId,
+      modeId: persistedModeId,
       seriesId,
     });
     saveLearnerResume({
@@ -36,7 +46,7 @@ export function useNormalMriResume({
       title,
       courseId,
       courseTitle: course.shortTitle,
-      modeLabel,
+      modeLabel: persistedModeLabel,
       seriesLabel,
     });
     if (typeof window !== "undefined") {

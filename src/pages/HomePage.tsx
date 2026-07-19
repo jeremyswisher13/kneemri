@@ -42,27 +42,46 @@ export default function HomePage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
-      <div className="mb-8 text-center">
+    /* ORDER MATTERS HERE. This page's whole job is "choose a course", but the
+       picker used to sit behind a full-height start card, the suggested-sequence
+       chips and the install banner — on a 375x812 phone the first course card
+       began at y≈912, i.e. entirely below the fold. Now: the one thing a
+       returning fellow wants (resume) or a slim nudge for a new one, then the
+       picker itself, and only then the generic supporting content. */
+    <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 lg:py-14">
+      <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
           {firstName ? `Welcome back, ${firstName}` : "Welcome"}
         </h1>
-        <p className="mt-2 text-gray-500">Choose a course to begin — pick up right where you left off.</p>
+        <p className="mt-2 text-gray-500">
+          {resume
+            ? "Pick up where you left off, or choose another course."
+            : "Choose a course to begin."}
+        </p>
       </div>
 
-      <div className="mb-8 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-        <ResumePanel resume={resume} />
-        <RecommendedPath />
-      </div>
+      {/* Returning learner: the fastest path back in. */}
+      {resume && (
+        <div className="mb-6">
+          <ResumePanel resume={resume} />
+        </div>
+      )}
 
-      <div className="mb-8">
-        <InstallPrompt />
-      </div>
+      {/* New learner: a one-line nudge instead of a full card, so the picker
+          still lands in the first screen. */}
+      {!resume && <BaselineBanner />}
 
+      {/* PRIMARY ACTION — the picker the heading promises. */}
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {courseRegistry.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
+      </div>
+
+      {/* Supporting content — useful, but never ahead of the picker. */}
+      <div className="mt-8 space-y-4">
+        <RecommendedPath />
+        <InstallPrompt />
       </div>
 
       <p className="mt-10 text-center text-xs text-gray-500">
@@ -72,37 +91,46 @@ export default function HomePage() {
   );
 }
 
-function ResumePanel({ resume }: { resume: LearnerResumeState | null }) {
-  if (!resume) {
-    const firstCourse = courseRegistry[0];
-    return (
-      <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Recommended start</p>
-        <h2 className="mt-2 text-lg font-bold text-gray-900">Capture your baseline</h2>
-        <p className="mt-1 text-sm text-gray-600">
-          Take the short knowledge quiz and confidence survey before opening the teaching content.
-        </p>
-        <Link
-          to={coursePath(firstCourse, "/pre-assessment")}
-          className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:w-auto"
-        >
-          Start knee pre-assessment
-        </Link>
-      </section>
-    );
-  }
-
+/**
+ * Slim first-run nudge toward the baseline assessment. Deliberately NOT a full
+ * card: this is guidance, and it must not push the course picker off-screen.
+ */
+function BaselineBanner() {
+  const firstCourse = courseRegistry[0];
   return (
-    <section className="rounded-xl border border-ucla-blue/20 bg-white p-5 shadow-sm">
-      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Resume</p>
-      <h2 className="mt-2 text-lg font-bold text-gray-900">{resume.title}</h2>
-      <p className="mt-1 text-sm text-gray-600">
-        {[resume.courseTitle, resume.modeLabel, resume.seriesLabel].filter(Boolean).join(" · ")}
-      </p>
-      <p className="mt-2 text-xs font-medium text-gray-500">{suggestedNextStep(resume.modeLabel)}</p>
+    <Link
+      to={coursePath(firstCourse, "/pre-assessment")}
+      className="mb-6 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-ucla-blue/25 bg-ucla-light/50 px-4 py-3 transition-colors hover:bg-ucla-light focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+    >
+      <span className="min-w-0 text-sm text-gray-700">
+        <span className="font-semibold text-ucla-dark">New here?</span> Capture your baseline first —
+        a short quiz and confidence survey.
+      </span>
+      <span className="flex shrink-0 items-center gap-1 text-sm font-semibold text-ucla-blue">
+        Start
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </span>
+    </Link>
+  );
+}
+
+/** Only rendered when a resume actually exists — the caller handles the empty case. */
+function ResumePanel({ resume }: { resume: LearnerResumeState }) {
+  return (
+    <section className="rounded-xl border border-ucla-blue/20 bg-white p-5 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-4">
+      <div className="min-w-0">
+        <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Resume</p>
+        <h2 className="mt-1.5 text-lg font-bold text-gray-900">{resume.title}</h2>
+        <p className="mt-1 text-sm text-gray-600">
+          {[resume.courseTitle, resume.modeLabel, resume.seriesLabel].filter(Boolean).join(" · ")}
+        </p>
+        <p className="mt-1.5 text-xs font-medium text-gray-500">{suggestedNextStep(resume.modeLabel)}</p>
+      </div>
       <Link
         to={resume.path}
-        className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:w-auto"
+        className="mt-4 inline-flex min-h-11 w-full shrink-0 items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:mt-0 sm:w-auto"
       >
         Continue learning
       </Link>
@@ -149,7 +177,9 @@ function CourseCard({ course }: { course: CourseDefinition }) {
       aria-label={`Open ${course.dashboardTitle}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-ucla-blue/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
     >
-      <div className={`relative h-24 bg-gradient-to-br ${courseRegionAccent(course.bodyRegion)}`}>
+      {/* Shorter accent band + tighter padding on phones so more of the picker
+          fits in the first screen; full size returns at sm+. */}
+      <div className={`relative h-16 bg-gradient-to-br sm:h-24 ${courseRegionAccent(course.bodyRegion)}`}>
         <RegionIcon region={course.bodyRegion} />
         {building && (
           <span className="absolute right-3 top-3 rounded-full bg-amber-400/90 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-950">
@@ -157,9 +187,9 @@ function CourseCard({ course }: { course: CourseDefinition }) {
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         <h2 className="text-lg font-bold text-gray-900 group-hover:text-ucla-blue">{course.dashboardTitle}</h2>
-        <p className="mt-1.5 flex-1 text-sm text-gray-500">{course.description}</p>
+        <p className="mt-1.5 line-clamp-2 flex-1 text-sm text-gray-500 sm:line-clamp-none">{course.description}</p>
         <p className="mt-3 flex items-center gap-1.5 text-xs font-medium text-gray-500">
           <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />

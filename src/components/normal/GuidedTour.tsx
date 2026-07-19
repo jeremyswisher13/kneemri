@@ -15,6 +15,7 @@ export default function GuidedTour({
   structureCorrelate = {},
   caseImageById = {},
   caseBasePath = "/cases",
+  isCaseAvailable,
   focusTarget,
   onContextChange,
 }: {
@@ -32,6 +33,13 @@ export default function GuidedTour({
   caseImageById?: Record<string, { src: string; caption: string }>;
   /** Course-scoped base path for case links (e.g. "/courses/shoulder-mri/cases"). */
   caseBasePath?: string;
+  /**
+   * Whether the current role may actually OPEN a case. Residents are hard-gated
+   * out of `residentVisible: false` cases by CasePage, so without this the
+   * "See it injured" bridge sent them to a "Not Available" dead end.
+   * Defaults to allowing everything (fellows/admins).
+   */
+  isCaseAvailable?: (caseId: string) => boolean;
   /** Missed knowledge-check item to open directly in the tour. */
   focusTarget?: TourFocusTarget | null;
   /** Supplies the active authored landmark to the structured issue reporter. */
@@ -91,7 +99,10 @@ export default function GuidedTour({
     setReadingOpen(false);
   }
 
-  const bridge = structureCase[step.title];
+  // Hide the pathology bridge entirely when the target case is not openable by
+  // this role — a visible link to a "Not Available" screen is worse than no link.
+  const rawBridge = structureCase[step.title];
+  const bridge = rawBridge && (isCaseAvailable?.(rawBridge.caseId) ?? true) ? rawBridge : undefined;
   const abnormal = bridge ? caseImageById[bridge.caseId] : undefined;
   const correlate = structureCorrelate[step.title];
   const reading = structureReading[step.title];
@@ -107,7 +118,7 @@ export default function GuidedTour({
           pulse
           alt={`MRI slice ${step.sliceIndex + 1} highlighting ${step.title}`}
         />
-        {abnormal && compareOpen && (
+        {bridge && abnormal && compareOpen && (
           <figure className="overflow-hidden rounded-xl border border-rose-200 bg-white shadow-sm">
             <div className="border-b border-rose-100 bg-rose-50 px-3 py-2">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-700">

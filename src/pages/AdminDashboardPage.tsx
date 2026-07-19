@@ -558,6 +558,10 @@ export default function AdminDashboardPage() {
     setExpandedFellow(null);
     // Statuses are course-specific, so a carried-over funnel filter would be stale.
     setStatusFilter(null);
+    // Certificates are course-scoped, so a "Certificate sent!" message must not
+    // follow the same learner into another cohort where none was sent.
+    setCertResult(null);
+    setSendingCertIds(new Set());
     getAllFellows(selectedCourse)
       .then((data) => { if (active) setFellows(data as unknown as Fellow[]); })
       .catch((err) => { if (active) setError(err.message); })
@@ -614,12 +618,16 @@ export default function AdminDashboardPage() {
     });
   }, []);
 
-  // Send certificate state
-  const [sendingCertFor, setSendingCertFor] = useState<string | null>(null);
+  // Send certificate state. A SET of in-flight ids, not a single id: with a
+  // scalar, starting a send for a second learner cleared the flag for the first
+  // and re-enabled that row's button while its request was still in flight —
+  // one double-click away from a duplicate certificate email.
+  const [sendingCertIds, setSendingCertIds] = useState<Set<string>>(new Set());
   const [certResult, setCertResult] = useState<{ type: "success" | "error"; message: string; userId: string; canForce?: boolean } | null>(null);
 
   const handleSendCertificate = useCallback(async (userId: string, force = false) => {
-    setSendingCertFor(userId);
+    // Functional updates so concurrent sends can't clobber each other's entry.
+    setSendingCertIds((prev) => new Set(prev).add(userId));
     setCertResult(null);
     try {
       // Send the certificate for the currently selected course cohort. `force`
@@ -633,7 +641,11 @@ export default function AdminDashboardPage() {
       // A completion-gate rejection can be overridden once with "Send anyway".
       setCertResult({ type: "error", message: (err as Error).message, userId, canForce: !force });
     } finally {
-      setSendingCertFor(null);
+      setSendingCertIds((prev) => {
+        const next = new Set(prev);
+        next.delete(userId);
+        return next;
+      });
     }
   }, [selectedCourse]);
 
@@ -1121,7 +1133,7 @@ export default function AdminDashboardPage() {
                                 {status === "Complete" && (
                                   <button
                                     onClick={(e) => { e.stopPropagation(); handleSendCertificate(f.id); }}
-                                    disabled={sendingCertFor === f.id}
+                                    disabled={sendingCertIds.has(f.id)}
                                     className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-[10px] font-medium transition-colors ${
                                       f.certificateSent
                                         ? "bg-green-50 text-green-600 border border-green-200 hover:bg-green-100"
@@ -1129,7 +1141,7 @@ export default function AdminDashboardPage() {
                                     } disabled:opacity-50`}
                                     title={f.certificateSent ? "Resend certificate email" : "Send certificate email"}
                                   >
-                                    {sendingCertFor === f.id ? (
+                                    {sendingCertIds.has(f.id) ? (
                                       <span className="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
                                     ) : (
                                       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -1147,7 +1159,7 @@ export default function AdminDashboardPage() {
                                 {certResult?.userId === f.id && certResult.type === "error" && certResult.canForce && (
                                   <button
                                     onClick={(e) => { e.stopPropagation(); handleSendCertificate(f.id, true); }}
-                                    disabled={sendingCertFor === f.id}
+                                    disabled={sendingCertIds.has(f.id)}
                                     className="rounded border border-red-200 bg-red-50 px-2 py-0.5 text-[10px] font-medium text-red-700 transition-colors hover:bg-red-100 disabled:opacity-50"
                                     title="Send the certificate despite incomplete requirements (recorded as an override)"
                                   >
@@ -1549,9 +1561,12 @@ function FellowDetail({ fellow, course }: { fellow: Fellow; course: CourseDefini
                   <span className={`flex-1 ${completed ? "text-gray-900" : "text-gray-500"}`}>
                     {mod.number}. {mod.title}
                   </span>
-                  {mp?.quizScore !== null && mp?.quizScore !== undefined && (
-                    <span className="font-semibold" style={{ color: pct(mp.quizScore, mp.quizTotal || 5) >= 70 ? "#16a34a" : "#d97706" }}>
-                      {mp.quizScore}/{mp.quizTotal || 5}
+                  {mp?.quizScore != null && mp?.quizTotal != null && mp.quizTotal > 0 && (
+                    /* Only show a score when the real denominator is known. A
+                       `|| 5` fallback invented a length and produced a bogus
+                       pass/fail colour (Force-Complete writes quizTotal=0). */
+                    <span className="font-semibold" style={{ color: pct(mp.quizScore, mp.quizTotal) >= 70 ? "#16a34a" : "#d97706" }}>
+                      {mp.quizScore}/{mp.quizTotal}
                     </span>
                   )}
                 </div>

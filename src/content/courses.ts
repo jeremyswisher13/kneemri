@@ -225,6 +225,21 @@ export function getVisibleAdvancedCases(course: CourseDefinition, isResident: bo
   return isResident ? course.advancedCases.filter((c) => c.residentVisible) : course.advancedCases;
 }
 
+/**
+ * Ids of every case (core + advanced) this role may actually open.
+ *
+ * Use this to gate LINKS to cases, not just case lists — CasePage hard-gates a
+ * resident on `residentVisible`, so any unfiltered link is a dead end that lands
+ * them on "Not Available".
+ */
+export function visibleCaseIdsFor(course: CourseDefinition, isResident: boolean): Set<string> {
+  return new Set(
+    [...getVisibleCoreCases(course, isResident), ...getVisibleAdvancedCases(course, isResident)].map(
+      (c) => c.id,
+    ),
+  );
+}
+
 /** The subset of items administered on the PRE quiz for a course. */
 export function getPreQuizQuestions(course: CourseDefinition): QuizQuestion[] {
   return course.prePostQuizQuestions.filter(
