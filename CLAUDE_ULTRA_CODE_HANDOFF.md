@@ -1,18 +1,19 @@
 # Handoff to Claude Ultra Code - UCLA Sports MRI App
 
-Last updated: July 10, 2026 (Codex session)
+Last updated: July 19, 2026 (Codex readiness and handoff pass)
 
 Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
 
 Branch: `main`
 
-Current app HEAD before this handoff-only update: `128a78f Fix desktop scrolling over MRI viewers`
+Current product HEAD before this handoff update: `be2f5ea Fix 6 bugs + 9 mobile/PWA polish gaps from the whole-app audit`
 
 Production:
 
 - Custom domain: `https://jeremyswisherkneemri.com`
 - Firebase Hosting: `https://ucla-knee-mri.web.app`
 - Firebase project: `ucla-knee-mri`
+- Both production domains returned the same healthy app artifact during the July 19 handoff check.
 
 The web/PWA is the active shipping surface. Native iOS submission remains paused; read the iOS section before touching `ios/` or any App Store evidence tooling.
 
@@ -33,12 +34,14 @@ npm run build
 Expected baseline at handoff:
 
 - `main` is synchronized with `origin/main`.
-- Full suite: 48 test files, 398 tests passing.
-- Normal MRI suite: 10 test files, 45 tests passing.
+- Full suite: 56 test files, 427 tests passing.
+- Normal MRI suite: 12 test files, 53 tests passing.
+- Playwright: 15 passing, 1 intentional desktop skip across desktop and mobile projects.
 - `npm run lint`: clean.
 - `npm run build`: clean.
+- Performance gate: 209.4 KiB initial gzip; 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
 - `npm audit --omit=dev`: zero vulnerabilities.
-- `npm run qa:medical`: zero automated diagnostics.
+- `npm run qa:medical`: 2,768 review items, 1,359 high-risk items, 1,586 source checks, and zero automated diagnostics.
 
 If any of those differ, reconcile the working tree and recent commits before assuming this document is still exact. Do not discard uncommitted user work.
 
@@ -63,7 +66,49 @@ Each course has a real-image interactive normal MRI workstation with:
 
 The app is optimized for fellows using a mobile home-screen PWA, while retaining a desktop workstation experience. It also includes course modules, search patterns, cases, pre/post assessments, progress, spaced review, reference material, certificates, and an admin dashboard.
 
-## Work Completed by Codex After the Previous Handoff
+## Changes Since the July 10 Handoff
+
+### Curriculum and mastery: `4a08f69`
+
+- Unified the learner-facing course journey and learning-path data across all four courses.
+- Reworked normal MRI Knowledge Check into explicit Identify and Locate rounds with tested per-plane mastery logic.
+- Normal MRI completion remains tied to passing every required plane at 70 percent.
+- Added client/server completion-contract regression tests so certificate and progress calculations cannot silently drift.
+- Expanded elbow normal-MRI learning content and regenerated medical-QA data.
+
+### Pilot operations and PWA release gates: `ac99667`
+
+- Added in-context issue reporting from the normal MRI workstations and a course-filtered admin resolution panel.
+- Reports preserve the exact route, mode, series, slice, marker/question context, and optional learner note without putting private learner identifiers into source code.
+- Added Playwright coverage for the learner journey, all four workstations, issue reporting, mobile routes, and PWA offline/update recovery.
+- Added service-worker update UX and stronger local preview/App Review guards.
+- Added Firestore rules and indexes for the reporting workflow.
+
+### Mobile, medical-language, and performance polish: `6fcfecf`
+
+- Fixed guided-tour mobile clipping, toolbar/FAQ overlap, comparison control labels, install-prompt expiry, and learner resume copy.
+- Added mobile route sweeps, guided-tour layout checks, cross-plane accessibility checks, PWA icon/install tests, and a production performance budget.
+- Replaced overconfident medical wording around the meniscal two-slice rule, magic angle, extrusion/root tears, SIFK, Segond/arcuate findings, FAI, and related teaching points.
+- Regenerated the medical-QA packets after those wording changes.
+
+### Claude adversarial fixes: `9e299c8` and `be2f5ea`
+
+- Prevented an offline issue-report submission from trapping the user in a permanently locked modal.
+- Stopped module Knowledge Check answers from reshuffling after a learner answered.
+- Made PWA update, FAQ positioning, and course-filtered admin issue loading resilient.
+- Preserved the installed-PWA auth constraint: popup failure must not fall back to a redirect that opens Safari in a separate storage context.
+- Standardized spaced-review summary dates on UTC.
+- Kept long flashcard actions visible, restored MRI viewer focus indication, fixed search pointer/keyboard competition, and announced Image CAQ feedback to assistive technology.
+- Added pathname-based scroll reset, corrected mobile sticky-action spacing and quiz wrapping, enlarged undersized touch targets, paused cine on manual scrub, and preserved original quiz numbering under filters.
+
+### July 19 handoff-readiness fixes
+
+- Updated the vulnerable Firebase transitive dependency `websocket-driver` from 0.7.4 to patched 0.7.5. Do not add it as a direct application dependency.
+- Made `ios-evidence-audit.test.ts` execute its expensive evidence subprocess once per suite with a 30-second setup allowance. The previous implementation ran it twice and could exceed Vitest's five-second test timeout under concurrent load.
+- Regenerated medical-QA packets on July 19; content totals and zero-diagnostic status are unchanged.
+- Re-ran lint, all unit/component tests, the focused normal-MRI suite, production build/performance budget, production dependency audit, medical QA, and full desktop/mobile Playwright suite.
+
+## Earlier Work Preserved from the July 10 Handoff
 
 ### `8200592 Polish PWA workflows and strengthen MRI workstation QA`
 
@@ -132,7 +177,9 @@ Two shoulder case captions were updated so their instructions match the new cont
 
 ## Browser QA Evidence
 
-Codex used the in-app browser with local preview authentication and real input events.
+The July 19 Playwright run exercised both desktop and mobile projects: 15 tests passed and the mobile-only route sweep was intentionally skipped in the desktop project. It covered the five-step elbow learner journey, exact-context issue reporting and admin resolution, PWA recovery/update behavior, and every plane/mode in all four normal MRI workstations.
+
+Earlier Codex and Claude passes also used local preview authentication and real input events.
 
 ### Whole app
 
@@ -166,9 +213,9 @@ Codex used the in-app browser with local preview authentication and real input e
 
 Generated summary: `medical-qa/summary.json`
 
-- Review items: 2,754
+- Review items: 2,768
 - High-risk items: 1,359
-- Source-check items: 1,584
+- Source-check items: 1,586
 - Automated diagnostics: 0
 - Diagnostic errors: 0
 - Diagnostic warnings: 0
@@ -213,34 +260,38 @@ Standing rule: do not move a marker from a single AI image read. Require consist
 
 Priority order:
 
-1. **Authenticated admin visual QA**
+1. **Real-device authentication acceptance test**
+   - Test Google sign-in on Safari, Chrome desktop, and the installed iOS home-screen PWA.
+   - Confirm the exact `returnTo` page survives login and the session remains available after closing/reopening the PWA.
+   - Exercise popup cancellation/failure while installed and confirm the app shows the actionable retry message instead of redirecting into Safari.
+   - Test Apple sign-in only if its provider configuration is actually complete; do not infer production behavior from localhost.
+
+2. **Authenticated admin and issue-report pilot QA**
    - Log in with a real admin account.
    - Verify the Riley/Sonal/Lilian matching cards against the real Firestore profiles.
    - Check desktop and mobile wrapping, long emails/names, missing accounts, zero-progress accounts, inactivity, and Open row behavior.
+   - Submit, filter, open, and resolve one real non-PHI test issue for each course; confirm the stored route/mode/series/slice context is exact.
    - Do not expose learner email/UID data in screenshots or commits.
 
-2. **Faculty medical sign-off workflow**
+3. **Faculty medical sign-off workflow**
    - Start with the ulnar-nerve marker and the highest-risk rows in `medical-qa/review-items.csv`.
    - Record reviewer, date, source notes, and decision rather than making unsourced bulk edits.
    - Regenerate with `npm run qa:medical` after source changes.
 
-3. **Real-device authentication acceptance test**
-   - Test Google and Apple sign-in on Safari, Chrome desktop, and the installed iOS PWA.
-   - Confirm the exact `returnTo` page survives login and the session remains available after closing/reopening the PWA.
-   - Do not change auth strategy solely from localhost behavior.
-
 4. **PHI/provenance audit of teaching stacks**
    - Run an OCR and visual sweep of `public/images/teaching/stacks/`.
    - Create a durable provenance/PHI-review record for each stack.
-
-5. **Trust and attribution cleanup**
    - Add complete source/license links for permissively licensed teaching images.
-   - Consider a persistent authenticated educational-use disclaimer with Jeremy's approval.
 
-6. **Admin analytics after the above**
-   - Pace/time-to-completion.
-   - Distractor-to-module remediation links.
-   - Keep analytics actionable for three fellows rather than building a generic enterprise dashboard.
+5. **Observe the three-fellow pilot before adding broad features**
+   - Use issue reports, completion friction, inactivity, and repeated misses to choose the next app change.
+   - Favor targeted remediation links and pace/time-to-completion views over a generic enterprise analytics dashboard.
+   - Keep the current five-step curriculum comprehensible; avoid adding another top-level learning mode without pilot evidence.
+
+6. **Dependency and function maintenance**
+   - `npm audit --omit=dev` is clean. Plain `npm audit` still reports eight moderate advisories in the dev-only `firebase-admin` toolchain.
+   - Do not run `npm audit fix --force`; the proposed resolution changes `firebase-admin` across a breaking boundary.
+   - Firebase deploy also warns that the Functions package uses an older `firebase-functions` version. Upgrade Functions separately with emulator/tests rather than mixing it into learner-facing work.
 
 ## Critical Behavior Contracts
 
@@ -249,7 +300,15 @@ Priority order:
 - Every normal MRI course requires passing each plane knowledge check at 70% for normal-MRI completion.
 - Knee cases remain optional for certificate completion; non-knee course requirements follow existing course definitions.
 - `MriStackViewer` must not trap ordinary vertical desktop scrolling.
+- On mobile, vertical touch scrubs the MRI; the approximately 40 px side gutters remain available for reliable page scrolling.
+- Double-tap zoom must be armed only by a stationary single-finger tap, never by rapid scrub flicks.
+- Manual scrub/slider/previous/next input pauses cine playback.
 - Search and lightbox dialogs must restore body scrolling on close/unmount.
+- Offline Firestore profile reads must not erase a signed-in fellow's cached role.
+- Spaced-review due-day comparisons stay UTC throughout the pipeline.
+- Issue-report dialogs must always remain dismissible and an offline queued write must not leave `submitting` stuck.
+- A PWA update must not force-reload other clients and destroy in-progress quiz state.
+- Installed standalone PWA auth must not fall back from popup failure to cross-context redirect sign-in.
 - Do not weaken local-preview/App Review demo guards or expose those paths as normal production login options.
 - Do not claim all medical markers are exact without faculty confirmation.
 - Do not modify or delete user changes encountered in the working tree.
@@ -266,6 +325,12 @@ npm run build
 npm audit --omit=dev
 git diff --check
 git status --short
+```
+
+For interaction, routing, authentication-shell, PWA, or normal-MRI changes, also run:
+
+```bash
+npm run test:e2e
 ```
 
 For medical content changes, also run:
@@ -294,7 +359,7 @@ The pause is intentional and based on unresolved risks:
 2. The app uses UCLA branding, certificates, and copyright language while the Apple developer account and bundle ownership are personal. UCLA Trademarks & Licensing and department authorization, or a UCLA-owned Apple organization account, should be resolved before submission.
 3. App Store distribution signing/provisioning and App Store Connect evidence remain incomplete.
 
-Last known native submission gate state remains 5/28 verified. The native project and evidence scripts are retained but dormant:
+The July 19 evidence audit reports 1/7 audited groups ready: screenshots are 3/3; archive signing, Apple/Firebase auth (0/6), real-device/account deletion (0/5), App Store Connect (0/10), hard submission, and release evidence (0/3) remain TODO. The native project and evidence scripts are retained but dormant:
 
 - Bundle ID: `com.jeremyswisher.uclasportsmri`
 - Team ID: `X578T4K65B`
@@ -313,4 +378,4 @@ Never commit Apple private keys, `.p8` files, API keys, issuer IDs, app-specific
 
 ## One-Paragraph Executive Summary
 
-The web/PWA is live, clean, and materially more polished. All four interactive normal MRI workstations have passed exhaustive series/mode interaction sweeps; structural marker, slice, answer-key, and bank integrity is covered by regression tests; Cross-Plane free response is keyboard accessible; the named-fellow admin tracking panel is implemented; login and mobile mode navigation are improved; and the desktop MRI viewer no longer traps vertical scrolling. The current release is `128a78f`, with 398 tests passing and zero automated medical-QA diagnostics. The next highest-value work is a real-admin visual/data pass, faculty source-and-marker sign-off, and real-device authentication acceptance testing. Native iOS submission remains intentionally paused.
+The web/PWA is live at the current product release `be2f5ea` before this handoff commit and is substantially hardened for the three-fellow pilot. All four interactive normal MRI workstations have passed complete desktop/mobile plane-and-mode sweeps; the five-step course journey, issue-report workflow, PWA recovery, structural marker/slice/answer-key integrity, and performance budgets are under automated coverage. The July 19 baseline is 427 unit/component tests, 53 focused normal-MRI tests, 15 passing Playwright tests with one intentional skip, zero production dependency vulnerabilities, and zero automated medical-QA diagnostics. The next highest-value work is real-device authentication, authenticated admin/pilot validation, and faculty source-and-marker sign-off. Native iOS submission remains intentionally paused.

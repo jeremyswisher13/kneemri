@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 const APPLE_TEAM_ID = "X578T4K65B";
 const BUNDLE_ID = "com.jeremyswisher.uclasportsmri";
@@ -16,6 +16,13 @@ describe("iOS evidence audit", () => {
   const auditScript = readFileSync("scripts/ios-evidence-audit.mjs", "utf8");
   const preflight = readFileSync("scripts/ios-app-store-preflight.mjs", "utf8");
   const gateReport = readFileSync("scripts/ios-gate-report.mjs", "utf8");
+  let auditOutput = "";
+
+  beforeAll(() => {
+    auditOutput = execFileSync(process.execPath, ["scripts/ios-evidence-audit.mjs"], {
+      encoding: "utf8",
+    });
+  }, 30_000);
 
   it("exposes and documents the consolidated evidence audit", () => {
     expect(packageJson).toContain('"evidence:ios": "node scripts/ios-evidence-audit.mjs"');
@@ -60,33 +67,25 @@ describe("iOS evidence audit", () => {
       expect(auditScript).toContain(value);
     }
 
-    const output = execFileSync(process.execPath, ["scripts/ios-evidence-audit.mjs"], {
-      encoding: "utf8",
-    });
-
     for (const value of [APPLE_TEAM_ID, BUNDLE_ID, FIREBASE_PROJECT_ID, APPLE_SERVICE_ID, PRIMARY_RETURN_URL, ...AUTHORIZED_DOMAINS]) {
-      expect(output).toContain(value);
+      expect(auditOutput).toContain(value);
     }
 
-    expect(output).toContain(`create Services ID ${APPLE_SERVICE_ID}`);
-    expect(output).toContain(`Firebase project ${FIREBASE_PROJECT_ID}`);
+    expect(auditOutput).toContain(`create Services ID ${APPLE_SERVICE_ID}`);
+    expect(auditOutput).toContain(`Firebase project ${FIREBASE_PROJECT_ID}`);
   });
 
   it("can print a non-failing consolidated readiness report", () => {
-    const output = execFileSync(process.execPath, ["scripts/ios-evidence-audit.mjs"], {
-      encoding: "utf8",
-    });
-
-    expect(output).toContain("iOS Evidence Audit");
-    expect(output).toContain("Archive/export signing");
-    expect(output).toContain("Apple/Firebase auth evidence");
-    expect(output).toContain("Real-device/account-deletion evidence");
-    expect(output).toContain("App Store Connect evidence");
-    expect(output).toContain("App Store release evidence");
-    expect(output).toContain("Suggested Order");
-    expect(output).toContain("Audited groups ready:");
-    expect(output).toContain("App Store export signing ready:");
-    expect(output).toContain("IOS_ASC_API_KEY_PATH");
-    expect(output).not.toContain("Manage Certificates");
+    expect(auditOutput).toContain("iOS Evidence Audit");
+    expect(auditOutput).toContain("Archive/export signing");
+    expect(auditOutput).toContain("Apple/Firebase auth evidence");
+    expect(auditOutput).toContain("Real-device/account-deletion evidence");
+    expect(auditOutput).toContain("App Store Connect evidence");
+    expect(auditOutput).toContain("App Store release evidence");
+    expect(auditOutput).toContain("Suggested Order");
+    expect(auditOutput).toContain("Audited groups ready:");
+    expect(auditOutput).toContain("App Store export signing ready:");
+    expect(auditOutput).toContain("IOS_ASC_API_KEY_PATH");
+    expect(auditOutput).not.toContain("Manage Certificates");
   });
 });
