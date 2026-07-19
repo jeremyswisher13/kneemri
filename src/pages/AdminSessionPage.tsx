@@ -405,10 +405,30 @@ function HourTwoPanel({
 
   return (
     <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      <h2 className="text-lg font-bold text-gray-900">Hour 2 · 2:00 – 3:00</h2>
+      <h2 className="text-lg font-bold text-gray-900">Hour 2 · 2:05 – 3:00</h2>
       <p className="mt-0.5 text-sm text-gray-600">
-        Three cases, ~20 minutes each. One fellow leads; the other two supply evidence.
+        One fellow leads; the other two supply evidence. Case 3 is the short one — Hour 2 is
+        48 minutes of case time, not 60.
       </p>
+
+      {!projectorSafe && (
+        <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3">
+          <p className="text-xs font-bold uppercase tracking-wide text-red-800">
+            Read this before 2:05
+          </p>
+          <p className="mt-1.5 text-sm text-red-900">
+            <strong>Case steps 1–7 show no images.</strong> The app shows images on the first
+            screen and again on the answer key; the steps in between are a checklist and a text
+            box. Drive the images from your device on the projector — and do not say &ldquo;scroll
+            to&rdquo; or &ldquo;trace the.&rdquo; The Radiopaedia button on the first screen is the
+            only scrollable stack; pre-flight it.
+          </p>
+          <p className="mt-2 text-sm text-red-900">
+            The case also <strong>names its own diagnosis</strong> in the title, the tags and the
+            thumbnail captions. Reframe it out loud: they are not guessing it, they are proving it.
+          </p>
+        </div>
+      )}
 
       <div className="mt-4 space-y-4">
         {SESSION_CASES.map((plan, index) => (
@@ -416,6 +436,9 @@ function HourTwoPanel({
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="rounded-md bg-ucla-blue px-2 py-0.5 text-xs font-bold text-white">
                 Case {index + 1}
+              </span>
+              <span className="rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
+                {plan.window}
               </span>
               <h3 className="font-semibold text-gray-900">
                 {projectorSafe ? `Case ${index + 1}` : plan.title}

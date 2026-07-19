@@ -1,143 +1,493 @@
-# Knee MRI — Fellows Teaching Session
+# Knee MRI — Fellows Teaching Session · Faculty Run-Sheet
 
-**Friday, July 24, 2026 · 1:00 – 3:00 PM**
-Drs. Jeremy Swisher & Kimberly Burbank · 3 sports medicine fellows
+**Friday, July 24, 2026 · 1:00 – 3:00 PM** · Drs. Jeremy Swisher & Kimberly Burbank · 3 sports medicine fellows
 
-> **Faculty copy — contains the diagnoses.** Do not hand this to the fellows and do not
-> project it. The live version is in the app at **/admin/session**, which has a
-> **Projector-safe** toggle that hides everything below the "faculty only" lines.
+> **Faculty copy. Contains every answer.** Do not hand this to the fellows and do not project it.
+> The live version is in the app at **`/admin/session`** — same plan, with a **Projector-safe** toggle that hides everything faculty-only.
 
-App link for the fellows: <https://jeremyswisherkneemri.com/courses/knee-mri>
+App: <https://jeremyswisherkneemri.com/courses/knee-mri>
 
 ---
 
-## Before Friday
+## READ THIS FIRST — three things that change how you teach
 
-- [ ] Invite sent (copy-paste text is on the `/admin/session` page — "Copy invite")
-- [ ] Riley Coon — signed in · baseline quiz · confidence survey
-- [ ] Sonal Singh — signed in · baseline quiz · confidence survey
-- [ ] Lilian Toaspern — signed in · baseline quiz · confidence survey
-- [ ] Check the roster the morning of — `/admin/session` shows live status
-- [ ] Room: confirm Wi-Fi, and that at least one fellow has a laptop or iPad
-- [ ] Pre-open the three cases on the teaching machine so nothing loads cold
+**1. Hour 2 has no images to scroll.** This is the single most important operational fact in this document. In a case, the app shows images on the **first screen** (4 thumbnails, tappable to full size) and again on the **answer-key screen**. **Steps 1–7 render a checklist, a pearl box, and a text box — no image.** The fellows read the images up front, then reason from memory and notes. So:
 
-**Why the baseline has to happen first:** the pre/post pair is what measures whether
-the session changed anything. A baseline taken after the teaching measures nothing.
+  - Do **not** say "scroll to," "trace the," or "put your cursor on" during Hour 2. There is nothing to scroll.
+  - **The plan: you drive the images from your device on the projector while the fellows work the checklist on theirs.** Open the case on your machine, stay on the first screen, and enlarge whichever image the current step needs.
+  - The **"Open the full scrollable MRI on Radiopaedia"** button on the first screen is the only true scrollable stack. **Pre-flight it Wednesday** — it is an external site and it is the one thing that can fail in front of the room.
+  - Image counts: Case 1 has 13, Case 2 has **2**, Case 3 has 6. Case 2 is image-poor — plan to lean on the projector and the Radiopaedia link there.
+
+**2. The case spoils its own diagnosis on the opening screen.** The title reads "ACL Tear + Pivot-Shift Pattern," the tag chips read `acl`, `pivot-shift`, and the thumbnail captions read "Complete ACL tear — abnormal angulation, mid-substance rupture." **Do not fight this.** Reframe the exercise out loud at 2:05:
+
+  > "You are not guessing the diagnosis — the app already told you. Your job is to **prove it and act on it**: find the evidence, name the companion injuries, and give me an impression a surgeon can use."
+
+  That is the app's own pedagogy (its three-step card reads *Anchor normal → Commit findings → Clinical hinge*). It is a better exercise than guess-the-diagnosis anyway.
+
+**3. The app's "match" indicator cannot detect negation.** It checks whether your text *mentions* related terms, and its own UI says "mentioned," not "correct." Short expected findings are the hole: `PCL intact` is one significant term, so typing *"PCL is not intact"* still registers. Say this once so nobody trusts the checkmark:
+
+  > "Green means you used the right words. It does not mean you were right. I'm the grader."
 
 ---
 
-## Hour 1 · 1:00 – 2:00 — Normal knee MRI, together
+## Canonical timeline
 
-Fellows drive on their own devices; we navigate with them.
-Workstation: **Knee MRI → Normal Knee MRI**.
+Everything below, and the `/admin/session` page, use these times. **Hour 2 is 48 minutes of case time, not 60** — three 20-minute cases do not fit, so Case 3 is deliberately the short one.
 
-| Time | Plane / mode | What we're doing |
+| Time | Block | Where |
 |---|---|---|
-| 1:00 – 1:10 | Sagittal PD-FS · Explore | Everyone signed in, course open, workstation loaded. Confirm baselines are done. |
-| 1:10 – 1:30 | Sagittal PD-FS · Guided Tour | Drive the tour together. Stop at the ACL and have a fellow describe normal fiber orientation before advancing. |
-| 1:30 – 1:45 | Coronal PD-FS · Guided Tour | The plane that pays off in case 2. Make them find the posterior medial root and the normal tibial-margin relationship **now**. |
-| 1:45 – 2:00 | Axial T2-FS · Knowledge Check | MPFL and the retinacula, then each fellow runs the Knowledge Check on their own device. Sets up case 3. |
+| 12:50 | Pre-flight | — |
+| 1:00 – 1:08 | Get in + orientation contract | Sagittal PD-FS · **Explore** |
+| 1:08 – 1:26 | Sagittal PD-FS — Guided Tour (11 stops) | **Guided Tour** |
+| 1:26 – 1:38 | Coronal PD-FS — roots, MCL, lateral corner | **Guided Tour → Explore** |
+| 1:38 – 1:50 | Axial T2-FS — patellofemoral (9 stops) | **Guided Tour** |
+| 1:50 – 1:58 | Knowledge Check — axial | **Knowledge Check** |
+| 1:58 – 2:05 | Bridge + **5-minute** break | — |
+| 2:05 – 2:22 | **Case 1** — ACL / pivot shift | Cases |
+| 2:22 – 2:40 | **Case 2** — medial root tear | Cases |
+| 2:40 – 2:53 | **Case 3** — patellar dislocation *(short case)* | Cases |
+| 2:53 – 3:00 | Close | — |
 
-Facilitation notes:
-
-- Let them scroll. The single most common failure is reading one slice instead of a stack.
-- Every time a fellow names a structure, ask **which plane confirms it**. That habit is the
-  whole point of hour 1.
-- If someone is far behind, pair them with a partner rather than stopping the group.
-
----
-
-## Hour 2 · 2:00 – 3:00 — Three cases
-
-~20 minutes each. One fellow leads; the other two supply evidence. Each case closes with a
-two-sentence impression from the leader before we move on.
-
-Lead assignment (adjustable on the `/admin/session` page — it remembers your change):
-
-| Case | Lead |
-|---|---|
-| 1 | Riley Coon |
-| 2 | Sonal Singh |
-| 3 | Lilian Toaspern |
+**Hard checkpoints.** 1:26 coronal starts · 1:38 axial starts · 2:05 Case 1 opens · 2:22 Case 2 opens · 2:40 Case 3 opens. If you are late at any of them, cut from the block you are in, not from the next one.
 
 ---
 
-### Case 1 · 2:00 – 2:20
+## The two-faculty split
 
-**Presented to the room:** 22-year-old soccer player, noncontact pivoting injury, rapid
-effusion within 2 hours.
+Fixed roles for the whole session. Swap only at the break.
 
-**FACULTY ONLY — ACL Tear + Pivot-Shift Pattern**
+| | **Driver** | **Floor** |
+|---|---|---|
+| Owns | The projector and the pace | The three fellows |
+| Hour 1 | Calls every tour stop; nobody advances alone | Watches screens, catches whoever is lost, fixes devices |
+| Hour 2 | Drives the case images on the projector; asks the step questions | Runs the two non-leading fellows; keeps the clock and calls "move on" |
+| Says "we're moving on" | No | **Yes** — the Driver is mid-thought and will always run long |
 
-- Primary ACL signs: fiber discontinuity, abnormal Blumensaat angle, empty notch
-- Secondary signs: the pivot-shift contusion pair — lateral femoral condyle + posterolateral tibia
-- Anterior tibial translation; the deep lateral femoral notch sign
-- Search pattern for the associated lateral meniscal root / posterior horn tear
-
-**The other two:** find one piece of imaging evidence the leader did not name, and say which
-plane you found it on.
-
-**Closing impression:** *In two sentences — what is torn, what is the secondary evidence, and
-what does it change for this athlete?*
+Recommendation: **Dr. Swisher drives** (owns the content and the app), **Dr. Burbank floors** (owns the room and the clock). The Floor holds this run-sheet open at the timeline table.
 
 ---
 
-### Case 2 · 2:20 – 2:40
+## Pre-flight
 
-**Presented to the room:** 55-year-old recreational runner, 3 months of worsening medial
-pain, no single injury. Mild medial joint-space narrowing on weight-bearing films.
+**Wednesday (do not leave for Friday):**
 
-**FACULTY ONLY — Medial Meniscal Root Tear + Extrusion**
+- [ ] All three accounts are role **`fellow`**, not `resident` — **Case 2 is `residentVisible: false`** and dead-ends on a "Not Available" page. This is the single most likely way to lose 18 minutes.
+- [ ] Open the Radiopaedia link on each of the three cases and confirm the stack loads.
+- [ ] Check `/admin/session` roster: signed in · baseline quiz · confidence survey, all three.
 
-- Where the posterior medial root actually inserts, and the coronal slice that shows it
-- The ghost sign on sagittal; the truncated-triangle / cleft on coronal
-- Measuring extrusion — >3 mm past the tibial margin is the threshold that matters
-- Why this is a functional total meniscectomy, not a degenerative tear to observe
+**Friday 12:50:**
 
-**The other two:** measure the extrusion yourself and state your number *before* the leader
-gives theirs.
+- [ ] Each device loads the workstation and the sagittal stack renders (first load needs network; offline caching only helps afterward).
+- [ ] Projector mirrors **your** device, never a fellow's.
+- [ ] Cases 1–3 pre-opened in tabs on the Driver's machine so nothing loads cold.
+- [ ] If mirroring `/admin/session`, **Projector-safe ON**.
 
-**Closing impression:** *In two sentences — name the tear and its location, give the
-extrusion, and say why this is time-sensitive.*
+**Say once at 1:00, never again:**
 
----
-
-### Case 3 · 2:40 – 2:55
-
-**Presented to the room:** 17-year-old basketball player — the knee "popped out" while
-cutting and reduced on its own. Medial tenderness, moderate effusion.
-
-**FACULTY ONLY — Transient Patellar Dislocation**
-
-- MPFL: which axial slice shows it, and where it fails (patellar vs femoral vs mid-substance)
-- The mirror-image contusion pair: medial patellar facet + anterolateral femoral condyle
-- Osteochondral injury — the donor site, and hunting the loose body in the recesses
-- Predisposing anatomy: trochlear dysplasia, patella alta, TT-TG
-
-**The other two:** one tracks the bone-injury pattern, the other searches every recess for
-the fragment.
-
-**Closing impression:** *In two sentences — state the mechanism the imaging proves, where the
-MPFL failed, and whether there is a surgical fragment.*
+> "Ground rule: nobody clicks anything blue that says 'See it injured.' Those are this afternoon's cases."
 
 ---
 
-## Last 5 minutes · 2:55 – 3:00
+# HOUR 1 · 1:00 – 2:00 — Normal knee MRI
 
-1. Each fellow names the one search-pattern change they will make on Monday.
-2. Point them at the post-assessment — same structure as the baseline, so the pair measures
-   the change. It does not have to be done today.
-3. Remind them the rest of the course stays open, works offline, and installs to the home
-   screen.
+Fellows work on their own devices. The Driver calls every stop.
+
+**Slice numbers below are what the fellows see on screen** (the counter is 1-based: `22 / 29`). Sagittal 29 slices, coronal 19, axial 28.
+
+**A structural fact worth knowing:** the **coronal and axial tours never change slice** — all 9 coronal stops sit on 8/19 and all 9 axial stops on 14/28. Only the sagittal tour moves. So anything posterior — including the meniscal roots — is **not on the tour** and requires dropping to Explore.
 
 ---
 
-## If something breaks
+## 1:00 – 1:08 · Get in + the orientation contract
+
+**Say:**
+
+> "Knee course → Normal Knee MRI → **Explore** → Sagittal PD-FS. Don't touch Guided Tour yet."
+
+> "Sagittal: **anterior is image-left, and scrolling takes you medial → lateral.** That part is convention. What is *not* convention: on this study medial is image-left on both coronal and axial — that's a property of which knee this is. **Check laterality first on every new study**, then keep the side consistent between coronal and axial."
+
+> "This is **PD fat-sat**: fluid bright, fat dark. Bright = water — effusion, edema, a tear filling with fluid. On T1, bright = fat and the finding is a *dark* line in the marrow. Don't carry the habit across."
+
+> "Find your slice counter — it reads *number of 29*. When I say a number, get to that number."
+
+**Done when:** all three on the same series, each has said the orientation sentence back, each can point to their slice counter. **Do not proceed on two of three.**
+
+---
+
+## 1:08 – 1:26 · Sagittal PD-FS — Guided Tour
+
+Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
+
+**Spend the time on three stops:**
+
+| Stop (on-screen slice) | Min | Hour-2 payoff |
+|---|---|---|
+| **3 · Tibial plateau** (14/29) | 2 | The app's own pearl names the posterolateral plateau as the pivot-shift site. Plant it now and Case 1's bruise is recall, not discovery. |
+| **7 · Meniscus — bow-ties** (9/29) | 4 | Longest note in the tour; three pseudotears live here. Pays off in Case 1 step 4 and Case 2. |
+| **9 · ACL** (22/29) | 4 | Case 1's entire step 5. |
+
+**Say — stop 3, tibial plateau:**
+> "Uniform marrow. Nothing to see. Remember what nothing looks like — in an hour one of you is looking at this exact corner, the **posterolateral plateau**, and it will be full of bright signal."
+
+**Say — stop 7, menisci (slice 9/29, a medial slice):**
+> "Two appearances, two slice levels. **Peripherally the meniscus is a continuous band — the bow-tie.** Scroll centrally and it opens into **two dark triangles**, anterior and posterior horn."
+
+> "Count your bow-ties. A normal meniscus gives you **at least two consecutive bow-tie images**. Fewer than two is the **absent-bow-tie sign** — a displaced bucket-handle. That one has a surgeon on the other end."
+
+> "Medially the posterior horn is normally the **bigger** one. A small squashed medial posterior horn is a finding, not anatomy."
+
+> "The rule: **grade 3 signal has to reach an articular surface.** Requiring it on **two consecutive images** raises PPV to 94% medial / 96% lateral (De Smet & Tuite, *AJR* 2006). A touch on **one image only** is 'possibly torn' — usually volume averaging or a pseudotear."
+
+> "And three normal structures fake a lateral tear: the **popliteomeniscal fascicles / popliteus hiatus**, the **transverse intermeniscal ligament** where it meets the anterior horn, and the **meniscofemoral ligament** (Humphrey/Wrisberg) next to the posterior horn. Before you call a lateral tear, actively exclude all three."
+
+**Say — stop 9, ACL (slice 22/29):**
+> "Taut, continuous, **parallel to Blumensaat's line**. Fibers, not a blur. Trace it across at least three slices before you're allowed an opinion — a single slice through a normal ACL can look convincingly torn."
+
+> "Normal ACL striations are fine. **Diffuse thickening with intact fibers is mucoid degeneration, not a tear** — it's the commonest ACL over-call."
+
+🔑 **Highest-yield sagittal move:** make every fellow trace the ACL across ≥3 slices and say "parallel to Blumensaat" out loud. That one habit is most of Case 1.
+
+**Done when:** each fellow has traced the ACL across ≥3 slices and said it.
+
+---
+
+## 1:26 – 1:38 · Coronal PD-FS — roots, MCL, lateral corner
+
+Orientation 30 s → stops 2–5 at 2:30 → **stop 6 wedges 2:30** → **the root detour 4:00** → stop 8 MCL 1:30 → **stop 9 LCL/PLC 45 s**.
+
+**Say — stop 6, the wedges:**
+> "Coronal gives you the meniscus as a **triangle** — sharp free edge pointing into the joint. Blunted, truncated, or signal reaching the surface is your tear."
+
+**Say — the root detour (the important four minutes):**
+> "Leave the tour. Go to **Explore** and scroll **posteriorly**. The tour never leaves slice 8, and the posterior root is not on slice 8 — which is exactly why root tears get missed."
+
+> "Find where the posterior horn of the medial meniscus attaches to bone just lateral to the PCL. That attachment is the **posterior medial root**. Now measure how far the meniscal body sits past the tibial margin. **>3 mm is major extrusion** — Costa (*AJR* 2004) found a root tear in **42%** of major-extrusion knees vs **3%** of minor. Extrusion doesn't prove a root tear; it tells you to go inspect the root."
+
+> "Everyone give me a millimetre number. Out loud."
+
+**Say — stop 9, LCL / posterolateral corner (45 seconds, do not skip):**
+> "Trace the LCL to the fibular head, then the popliteus tendon through its hiatus. The app's own pearl says the **posterolateral corner is commonly missed** — and a missed PLC is the classic reason an ACL graft fails. You look here every time."
+
+**Coronal traps:** the **popliteus hiatus** mimicking a lateral meniscal tear; the normal **meniscofemoral ligament**; **magic-angle** signal in the LCL/popliteus at ~55° to B₀ (short-TE PD only — check it on T2).
+
+🔑 **Highest-yield coronal move:** the root detour in Explore, with every fellow stating an extrusion number.
+
+**Done when:** all three found the posterior medial root *in Explore* and said a millimetre number.
+
+---
+
+## 1:38 – 1:50 · Axial T2-FS — patellofemoral
+
+All 9 stops sit on slice 14/28. Three matter: **trochlea (3)**, **trochlear groove (4)**, **MPFL (6)**.
+
+**Say — stops 3–4, trochlea and groove:**
+> "The trochlea is the grooved anterior femur the patella rides in, and the **lateral facet is normally longer** — that's the buttress that stops the patella going laterally. The deepest central point is the **groove**. Flatten this groove and you have **trochlear dysplasia**, which is the single strongest anatomic risk factor for dislocation."
+
+**Say — stop 6, MPFL:**
+> "Medial side, running toward the adductor tubercle. **This is the structure that tears in a lateral patellar dislocation — 90–100% of first-timers.** Point at it now so that in an hour you're recognising it, not hunting it."
+
+**Axial traps:** normal patellar cartilage signal called chondromalacia; the **medial plica**; **magic-angle** in the retinacula.
+
+🔑 **Highest-yield axial move:** every fellow points to the MPFL unprompted before the block ends.
+
+---
+
+## 1:50 – 1:58 · Knowledge Check — axial
+
+Each fellow runs it on their own device. The axial bank is **11 items**; Practice & Mastery samples only **5 of 11** per round, so the Knowledge Check is the fuller pass — use it, not Mastery.
+
+**Two items to ask out loud afterward**, because they are Case 3's answers: the trochlear-groove item (flattening = dysplasia) and the MPFL item (*"the structure torn after a lateral patellar dislocation"*).
+
+## 1:58 – 2:05 · Bridge + break
+
+Screens closed. **Five minutes, not ten.** The break is where Hour 2's time gets stolen.
+
+**Running behind?** Cut in this order: (1) the Knowledge Check block — replace with 90 seconds of you asking the two items aloud; (2) axial stops 7–9; (3) sagittal stops 4–6. **Never cut the coronal root detour** — Case 2 depends on it.
+
+---
+
+# HOUR 2 · 2:05 – 3:00 — Three cases
+
+**Format each time:** the leader drives; the other two have assigned jobs; you drive images on the projector; the leader closes with a two-sentence impression **before** anyone opens the answer key.
+
+**Keeping the other two working** — assign these out loud, every case:
+- **Observer A — the plane.** For every finding the leader names, A states which plane/sequence proves it.
+- **Observer B — the consequence.** For every finding, B states what it changes in management.
+- **The negative.** Both owe one deliberate negative — something they looked for and did not find.
+
+| Case | Lead | Window |
+|---|---|---|
+| 1 · ACL / pivot shift | Riley Coon | 2:05 – 2:22 |
+| 2 · Medial root tear | Sonal Singh | 2:22 – 2:40 |
+| 3 · Patellar dislocation | Lilian Toaspern | 2:40 – 2:53 |
+
+---
+
+## CASE 1 · 2:05 – 2:22 — ACL tear + pivot-shift pattern
+
+*22-year-old soccer player, noncontact pivot, effusion within 2 hours.*
+
+**Open with (before images):**
+> "Noncontact pivot, swollen in two hours. Before you look at anything — what do you expect to find, and where? Commit out loud."
+
+### Walking the steps
+
+| Step | Expected | Ask → Answer | Typical wrong answer |
+|---|---|---|---|
+| 1 Verify | Large hemarthrosis; **no** fat–fluid level | *"Why do I care about a fat–fluid level?"* → It means an intra-articular fracture. **Look on a non-fat-sat sequence** — fat-sat nulls the fat and the level vanishes. | "Check the axial" — the axial here is T2-**FS**, where it can disappear |
+| 2 Bones | Edema **posterolateral tibial plateau + lateral femoral condyle** | *"Name the two bones, then name the mechanism."* → Pivot shift → ACL | Calling it a "clip injury." Posterolateral plateau edema is the pivot-shift footprint — that fellow just missed an ACL |
+| 3 Cartilage | Contusion without chondral injury | *"Bruise or defect?"* → Marrow signal ≠ cartilage loss | Over-calling a defect under a bruise |
+| 4 Menisci | **No answer key — three search instructions** | *"Lateral root, ramp, bucket-handle: which did you look at?"* | Silence, then "menisci unremarkable" |
+| 5 Ligaments | **Complete ACL tear**; PCL/MCL/LCL intact | *"What proves it — the signal or the fibers?"* → **Discontinuity.** Secondary signs are specific but insensitive; discontinuous fibers is a tear regardless | "It's bright" — bright is not torn |
+| 6 Extensor | Intact | — | — |
+| 7 Other | Lateral soft-tissue edema; **check for Segond** | *"Tell me the lateral tibial cortex is intact — and that you looked."* | Assuming |
+
+### The three must-see findings
+
+1. **Complete ACL tear — discontinuity**, sagittal, confirmed on coronal. Not "bright signal."
+2. **The pivot-shift pair** — posterolateral tibial plateau + lateral femoral condyle (terminal sulcus), named by bone and side.
+3. **Large hemarthrosis with no fat–fluid level** — the deliberate negative that excludes a fracture.
+
+### The missable — say the prompt verbatim
+
+- **Ramp lesion** (posteromedial meniscocapsular junction). ~17% of ACL knees; **MRI sensitivity ~48%** off the preoperative report (DePhillipo, *AJSM* 2017), ~65% pooled. *Roughly half get missed — say that out loud.*
+  > *"Present, absent, or equivocal — and if equivocal, what do you write?"* Answer: an explicit statement recommending intraoperative posteromedial assessment.
+- **Lateral meniscal posterior root tear.** ~7–12% of ACL knees. It sits directly beneath the bruise everyone is staring at.
+- **Segond fracture.** Lateral tibial rim just distal to the plateau. Classically associated with ACL tear in the large majority of series; treat as an ACL tear until the ACL is directly assessed.
+
+> **The unifying line:** *"Every one of these is fixed by going to look, not by knowing more. The knowledge isn't the bottleneck — the scroll is."*
+
+### So what (three sentences, not more)
+
+Reconstruction is standard; **primary repair is narrow** — proximal avulsion-type tears with good remnant tissue, selected patients. **Your imaging job is to report the tear location**, because that is what decides whether repair is even discussable. And the companion injuries are the reason the MRI was ordered at all: the Lachman already told you the ACL is torn.
+
+### The close
+
+> "Close the laptop. You're on the phone with the ortho attending and you get **two sentences**."
+
+**Model answer:** *"Complete ACL tear with the classic pivot-shift contusion pattern — lateral femoral condyle and posterolateral tibial plateau — and a large hemarthrosis without a fat–fluid level. I specifically looked at the lateral meniscal root, the posteromedial meniscocapsular junction and the lateral tibial rim; [findings], and there is no Segond fracture."*
+
+**Then make the point:** sentence 2 is what makes you useful. *A surgeon can act on sentence 2. Nobody can act on "menisci unremarkable."*
+
+### If a fellow asks
+
+- **"Does the bone bruise change anything?"** Diagnostically yes (confirms mechanism, dates it as acute — bruises fade over ~3–12 months). Prognostically no: not a validated return-to-play gate.
+- **"Why MRI if the Lachman is positive?"** Not for the ACL — for the ramp, the root, a bucket-handle that will lock the knee, a Segond, a PLC injury, a chondral fragment. Those change the operation.
+- **"Repair or reconstruct?"** Reconstruct, unless it's a proximal avulsion with good tissue in a selected patient. Report the location.
+
+---
+
+## CASE 2 · 2:22 – 2:40 — Medial meniscal root tear + extrusion
+
+*55-year-old recreational runner, 3 months of medial pain, no injury, mild medial JSN on weight-bearing films.*
+
+⚠️ **Fellow-only case** (`residentVisible: false`) — verified Wednesday.
+⚠️ **Only 2 teaching images.** Lean on the projector and the Radiopaedia link.
+
+**Open with:**
+> "This is the case that looks boring and isn't. Middle-aged, gradual, no trauma — everything about the history says 'degenerative tear, treat it non-operatively.' By the end I want you to tell me why that would be the wrong call."
+
+### The distinction that is the whole case
+
+**A degenerative posterior-horn tear** is common, usually non-operative, and gets a shrug. **A root tear** detaches the meniscus from bone, destroys hoop stress, and is **biomechanically equivalent to a total meniscectomy — peak contact pressure +25%** (Allaire, *JBJS* 2008). Same patient, same age, completely different conversation. Make them say the difference back to you.
+
+### Walking the steps
+
+| Step | Expected | Ask → Answer | Typical wrong answer |
+|---|---|---|---|
+| 1 Verify | Small effusion | *"Does a small effusion argue against anything serious?"* → No | Reassurance from a small effusion |
+| 2 Bones | Subchondral edema **medial femoral condyle + medial tibial plateau**, no fracture line | *"Edema without trauma — why?"* → Overload. And rule out a **subchondral insufficiency fracture** — a *line* on T1, not just edema | Calling edema a bruise in an atraumatic knee |
+| 3 Cartilage | Grade 2–3 medial thinning; other compartments preserved | *"Which compartment, and does that fit the meniscus?"* | Grading globally instead of by compartment |
+| 4 **Menisci** | **Posterior medial root tear (ghost sign); extrusion >3 mm; lateral meniscus intact** | *"Is the meniscus attached to bone?"* → Ghost sign on sagittal, confirmed by a radial cleft on coronal/axial | "Degenerative posterior horn tear" |
+| 5 Ligaments | All intact | *"Anything here to explain 3 months of pain?"* → No — which is the point | Hunting a ligament |
+| 6 Extensor | Intact | — | — |
+| 7 Other | Nothing significant — **but look for a Baker's cyst** | *"Where does a Baker's cyst live?"* → Between medial gastrocnemius and semimembranosus, posteromedially | — |
+
+### The three must-see findings
+
+1. **Complete radial tear at the posterior medial root** — ghost sign on sagittal, radial cleft confirmed on coronal.
+2. **Extrusion >3 mm** — measured on **coronal, mid-body**, excluding osteophyte.
+3. **Early medial overload** — grade 2–3 chondral thinning with subchondral edema. This is the finding that dates the problem and shapes the fork below.
+
+### The missable
+
+Root tears are among the most-missed findings in knee MRI, and the reason is mechanical: **the roots are posterior, and the coronal guided tour never leaves one slice.** The fix is the routine you built in Hour 1 — drop to Explore, scroll posteriorly, find the attachment adjacent to the PCL.
+
+> ⚠️ **The app's only ghost-sign image is a LATERAL root tear.** This case is a **medial** root. Say that before a fellow anchors to the wrong compartment.
+
+### So what — the management fork
+
+Root repair is most defensible with **KL ≤2 / Outerbridge ≤2 cartilage and neutral or correctable alignment**. Extrusion ≥3 mm predicts failure to restore meniscal position. **Varus prompts consideration of osteotomy ± repair.** Established KL3–4 medial OA is generally not a repair knee. **Arthroscopic partial meniscectomy is the wrong answer** — it removes what little hoop function remains.
+
+**At 55 with joint-space narrowing already on weight-bearing films, this patient sits exactly where outcomes deteriorate.** That is what makes it time-sensitive.
+
+For scale: in Krych's non-operative cohort (*KSSTA* 2017, n=52, mean age 58), **87% failed non-operative management**, radiographic arthritis progressed from 51% to 78%, and **31% underwent arthroplasty at a mean of 30 months.**
+
+### The close
+
+**Model answer:** *"Complete radial tear at the posterior root attachment of the medial meniscus, with a ghost root on sagittal and medial body extrusion greater than 3 mm on coronal. This is functionally a total meniscectomy and early medial overload is already present, so refer for surgical assessment — candidacy for root repair depends on OA grade, alignment and extrusion, not on the tear alone."*
+
+### If a fellow asks
+
+- **"Isn't this just a degenerative tear?"** No — it's detached from bone. Hoop stress is gone. That's a different disease from a degenerative flap.
+- **"Does repair actually prevent arthritis?"** It improves function and slows progression in appropriately selected knees; it is not proven to prevent arthritis. Selection is everything.
+- **"What do I tell them about running?"** Reassess with **weight-bearing films**, not symptoms.
+
+---
+
+## CASE 3 · 2:40 – 2:53 — Transient lateral patellar dislocation
+
+*17-year-old basketball player, knee "popped out" while cutting, reduced spontaneously. Medial tenderness, moderate effusion.*
+
+⏱ **This is the short case — 13 minutes.** Run steps **1 → 2 → 3 → 5 → 6** and skip the numbers chapter; the thresholds are on the quick-reference card if anyone asks.
+
+**Open with:**
+> "The patella is already back where it belongs. Nothing on this MRI is dislocated. Your job is to convict a dislocation nobody witnessed — from the wreckage it left behind. What evidence would convict?"
+
+### Walking the steps
+
+| Step | Expected | Ask → Answer | Typical wrong answer |
+|---|---|---|---|
+| 1 Verify | Moderate–large effusion, possible hemarthrosis | — | — |
+| 2 Bones | **Medial patellar facet + anterolateral lateral femoral condyle** — "kissing contusions" | *"Two bones. Why those two?"* → The medial patella strikes the LFC as it relocates | Naming only one |
+| 3 Cartilage | Osteochondral defect medial patella; **search every recess for a loose body** | *"Where do fragments hide?"* → Notch, gutters, suprapatellar pouch, posterior recesses | Stopping at the patella |
+| 5 Ligaments | **MPFL tear — name the site**; medial retinacular disruption; cruciates/collaterals intact | *"Femoral, midsubstance, or patellar?"* | "The MPFL is torn" without a site |
+| 6 Extensor | Patella alta assessment; VMO edema | *"Is this knee built to do this again?"* | Skipping predisposing anatomy |
+
+### The three must-see findings
+
+1. **The kissing contusion pair** — medial patellar facet + anterolateral LFC.
+2. **MPFL tear with the site named.** Torn in ~90–100% of first-time dislocators. *Note: the tear site is genuinely split across series (patellar-sided predominates in several, femoral 34–50%); **this case is femoral** — don't generalise from it.*
+3. **Osteochondral injury — and a deliberate statement about a loose body.** Present or absent.
+
+### The missable — the fragment
+
+This is the finding that turns a brace into an operation. **Sweep every recess on the fluid-sensitive sequences: notch, medial and lateral gutters, suprapatellar pouch, posterior recesses.** A fellow who says "osteochondral defect of the medial patellar facet" and stops has done half the job — the donor site is only half; where the fragment *went* is the other half.
+
+### So what
+
+- **First-time dislocator, no fragment:** non-operative — brace, quad and hip rehab. That is still the default.
+- **What pushes toward surgery:** a **displaced osteochondral fragment or loose body**. Bone-containing fragments are fixable and earlier is better, though there is no validated cutoff — fragment quality and cartilage viability drive the decision.
+- **Recurrence** is driven by age (skeletally immature highest), **trochlear dysplasia**, patella alta, and a **femoral-sided MPFL tear**.
+- **The randomised data on acute MPFL repair are mixed** — Palmu (*JBJS* 2008, adolescents) found no difference vs non-operative. Don't state it as settled either way. MPFL **reconstruction** is the workhorse for recurrent instability; a tubercle osteotomy is *added* for genuinely elevated TT-TG, not substituted.
+
+### The close
+
+**Model answer:** *"Transient lateral patellar dislocation — complete MPFL tear at the femoral insertion with the classic kissing contusions at the inferomedial patellar facet and anterolateral femoral condyle, plus a full-thickness osteochondral defect of the medial patellar facet. [A displaced fragment in the lateral gutter makes this operative rather than braced / No loose body identified]; predisposing anatomy is present, and TT-TG measured on MRI runs lower than on CT, so confirm before anyone plans a tubercle procedure."*
+
+### If a fellow asks
+
+- **"Brace or surgery for a first-timer?"** Brace and rehab, unless there's a displaced osteochondral fragment.
+- **"Will they re-dislocate?"** Risk rises with youth, trochlear dysplasia, alta, and a femoral-sided MPFL tear. A dysplastic 17-year-old is high-risk.
+- **"Does the MPFL heal?"** It heals, but often lax — which is why recurrence is common and why reconstruction (not repair) is the durable option.
+
+---
+
+## 2:53 – 3:00 · Close
+
+1. **Each fellow names one search-pattern change** they will make on Monday. Go around the room; don't accept "be more systematic."
+2. **The post-assessment.** Say why: *"Same structure as the baseline. The pair is the only thing that measures whether this afternoon did anything. It doesn't have to be today — but it does have to be this week."*
+3. The course stays open, works offline, installs to the home screen.
+
+---
+
+# QUICK REFERENCE
+
+## Numbers
+
+| Measure | Number | How / caveat |
+|---|---|---|
+| **Meniscal extrusion** | **>3 mm** = major | Coronal, mid-body, excluding osteophyte. Costa *AJR* 2004: root tear in **42%** of major- vs **3%** of minor-extrusion knees. Extrusion alone does not prove a root tear |
+| **Two-slice-touch** | PPV **94%** medial / **96%** lateral | Grade 3 signal reaching a surface on ≥2 consecutive images (De Smet & Tuite, *AJR* 2006). One image only = "possibly torn" |
+| **Meniscal signal grades** | 1 globular · 2 linear intrasubstance · **3 reaches a surface = tear** | Grade 2 is common over 40 — degeneration, not a tear |
+| **Anterior tibial translation** | **≥5 mm** = 58% sens / **93% spec** | Vahey, *Radiology* 1993. >7 mm = Chan, *AJR* 1994. 5–7 mm supportive, not diagnostic |
+| **Deep lateral femoral sulcus** | **>1.5 mm** (>2 mm highly specific) | Cobby, *Radiology* 1992 — derived on **lateral radiographs**; carried over to sagittal MRI |
+| **Segond fracture** | ACL tear in the large majority of series | Present in ~9–12% of ACL tears. Treat as ACL tear until the ACL is directly assessed |
+| **Ramp lesion with ACL** | **~17%** at arthroscopy | MRI sens **~48%** off the preop report (DePhillipo *AJSM* 2017); ~65% pooled. **Roughly half missed** |
+| **Lateral root tear with ACL** | **~7–12%** | Feucht *KSSTA* 2015 (15%); SANTI (~7%) |
+| **Bone bruise in acute ACL tear** | **~80%** | Fades over 3–12 months — a chronic ACL knee may have none |
+| **Root tear biomechanics** | Contact pressure **+25%** = total meniscectomy | Allaire, *JBJS* 2008 |
+| **TT-TG (CT)** | **>20 mm** abnormal, 15–20 borderline | Dejour. A **risk factor, not an indication** |
+| **TT-TG (MRI)** | Runs **~2–4 mm lower than CT** | Camp *AJSM* 2013. **Never apply the CT >20 mm rule to an MRI number** |
+| **Insall-Salvati** | Normal 0.8–1.2; **>1.2 = alta** | Tendon length ÷ patellar diagonal, sagittal |
+| **Caton-Deschamps** | Normal 0.6–1.2; **>1.2 = alta** | The ratio surgeons use to plan distalization |
+| **Trochlear depth** | **<3 mm** = dysplastic | Axial, 3 cm above the joint line (Pfirrmann, *Radiology* 2000) |
+| **Lateral trochlear inclination** | **<11°** | Most cranial slice showing the full cartilaginous trochlea (Carrillon, 2000) — a **different slice level** from Pfirrmann |
+| **Sulcus angle** | **>145°** dysplastic (normal 138° ± 6) | Merchant *JBJS* 1974 — **45°-flexion radiographs**. Use qualitatively on MRI |
+| **Lateral patellar tilt** | **>20°** abnormal | Patellar transverse axis vs posterior condylar line |
+| **MPFL after first dislocation** | Torn in **~90–100%** | **Name the site.** Femoral-sided carries higher recurrence risk |
+| **Cartilage grading** | Modified Outerbridge 0–4 | 1 signal change · 2 <50% · 3 >50%, bone not exposed · 4 full-thickness, bone exposed. **Don't call it ICRS to a surgeon** |
+
+## Bone bruise → mechanism → ligament
+
+| Pattern | The two bones | Predicts |
+|---|---|---|
+| **Pivot shift** | **Posterolateral tibial plateau + lateral femoral condyle** (terminal sulcus) | **ACL** — then hunt lateral root / ramp / bucket-handle |
+| **Dashboard** | **Anterior proximal tibia** (single bone) | **PCL**, posterior capsule |
+| **Patellar dislocation** | **Medial patellar facet + anterolateral LFC** | **MPFL — name the site**, osteochondral fragment, loose body |
+| **Clip / valgus** | **Prominent lateral femoral condyle + a smaller medial-sided bruise** | **MCL** — interrogate both menisci |
+| **Hyperextension** | **Anterior femoral condyles + anterior tibial plateau** | ACL and/or PCL, posterior capsule |
+
+*The bruise is the fingerprint — name the two bones first, then go prove the ligament.*
+⚠️ **Clip ≠ pivot shift.** Posterolateral plateau edema is the pivot-shift footprint. A fellow who calls it a clip injury has just missed an ACL.
+
+## Sequence logic
+
+| Sequence | For | Best single thing |
+|---|---|---|
+| **T1** | Anatomy and marrow, no fat sat | A **fracture line** — dark line in bright fatty marrow. Also marrow replacement |
+| **PD-FS** | The workhorse — meniscus, cartilage, marrow edema at once | **Internal meniscal signal** — where you diagnose tears |
+| **T2-FS** | Fluid | **True fluid** — cleft, cyst, effusion |
+
+**Lipohemarthrosis needs a NON-fat-suppressed sequence.** Fat-sat nulls the fat and the level vanishes. The session's axial is T2-**FS**.
+
+## The 7 steps
+
+1 **Verify & Orient** — right patient, right side, planes, sequences, the clinical question in one sentence
+2 **Bones & Marrow** — alignment, then edema; for every bruise ask *which pattern*
+3 **Cartilage & Osteochondral** — by compartment + sweep the recesses for loose bodies
+4 **Menisci** — AH → body → PH both sides, **both roots**, two-slice-touch, extrusion on coronal
+5 **Ligaments** — ACL primary + secondary, PCL, MCL layers, **LCL/PLC**, MPFL
+6 **Extensor Mechanism** — quad, patella, patellar tendon, retinacula; patellar height lives here
+7 **Synovium/Bursae & Other** — effusion, **fat–fluid level**, Baker's cyst, popliteal fossa
+
+## Don't-miss list
+
+1 Posterior medial root tear · 2 Ramp lesion in an ACL knee · 3 Displaced bucket-handle (double-PCL, absent bow-tie) · 4 Osteochondral fragment after patellar dislocation · 5 **Posterolateral corner** (missed PLC = failed ACL graft) · 6 Segond / tibial spine / arcuate avulsions · 7 Subchondral insufficiency fracture or marrow-replacing lesion · 8 Bicruciate injury = spontaneously reduced knee dislocation → **vascular assessment today**
+
+## Impression language
+
+> **Sentence 1 (the lesion):** structure + precise location + grade/completeness + the one secondary sign that proves it.
+> **Sentence 2 (the hinge):** what it does to the joint or what it changes in management — plus the one thing imaging cannot answer.
+
+Enforce: name the **compartment** and the **third** (root/horn/body), never just "medial meniscal tear." Put **one number** in sentence 1. Hedge only where MRI genuinely can't answer. **Ban "clinical correlation recommended"** as the whole second sentence — it must say *correlate for what decision*.
+
+---
+
+# WHERE THE APP IS WRONG — correct these at the projector
+
+| Where | What it says | Say instead |
+|---|---|---|
+| Module 4 bruise table | Clip injury = LFC + **lateral tibial plateau** | Clip = prominent **lateral femoral condyle** + a smaller **medial-sided** bruise. Lateral plateau edema belongs to the pivot shift |
+| Module 4 bruise table | Pivot shift = "valgus + internal rotation" | Say "valgus with rotation." Sanders (*RadioGraphics* 2000) describes external tibial rotation; the pivot-shift *test* describes internal. Specify the frame only if pressed |
+| Case 2 ghost-sign image | Ghost sign shown on a **lateral** root tear | Case 2 is a **medial** root — flag it before anyone anchors |
+| Case 1 step 4 | No expected findings to reveal | It's three search instructions, not a finding. Frame it as discipline |
+| Case 1 answer key | The read-out pulls from steps 2–3 and **never shows the ACL tear** | *"The app proves the mechanism. You still have to say the diagnosis."* |
+| Sulcus angle FAQ | "<144°" | Merchant's number is from radiographs; use qualitatively on MRI |
+
+---
+
+# FAILURE MODES
 
 | Problem | Fix |
 |---|---|
-| A fellow can't sign in on iPhone | Use Safari or Chrome directly, not an in-app browser. Sign-in uses a popup. |
-| Images won't load | The app caches offline; a hard reload (pull down / Cmd-Shift-R) re-fetches. |
-| A fellow never did the baseline | Have them do it at 1:00 — 10 minutes — rather than skip it. The pair is the measurement. |
-| Case won't open | Cases are role-gated. Confirm the account role is *fellow*, not *resident* (case 2 is fellow-only). |
-| Projector is mirroring the run-sheet | Turn on **Projector-safe** at the top of `/admin/session`. |
+| **Case 2 won't open for a fellow** | Their role is `resident`. Change it in `/admin` — this is why you check Wednesday |
+| Fellow can't sign in on iPhone | Safari or Chrome directly, not an in-app browser. Sign-in uses a popup |
+| Images won't load | Hard reload (pull down / Cmd-Shift-R). First load needs network |
+| Radiopaedia link dead | Fall back to projecting the case's own teaching images from your device |
+| A fellow never did the baseline | Have them do it at 1:00 — 10 minutes — rather than skip it. The pair is the measurement |
+| Device dies | Pair them onto a neighbour's screen. Do not stop the room |
+| Room goes quiet | Go to the assigned jobs: *"Observer A — which plane proves that?"* |
+| Projector mirroring the run-sheet | **Projector-safe ON** at the top of `/admin/session` |
+| Running behind in Hour 1 | Cut the Knowledge Check block, then axial stops 7–9, then sagittal 4–6. **Never the coronal root detour** |
+| Running behind in Hour 2 | Case 3 is already the short one. Cut its steps 1 and 6, keep 2, 3, 5 |

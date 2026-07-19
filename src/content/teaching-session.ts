@@ -19,6 +19,13 @@ export const TEACHING_SESSION = {
 export interface SessionCasePlan {
   /** Must match a case id in the knee course registry. */
   caseId: string;
+  /**
+   * Wall-clock window. Hour 2 is 55 minutes after a 5-minute break, not 60, so
+   * three "20-minute" cases do not fit — case 3 is deliberately the short one.
+   * These windows are the SINGLE canonical timeline; the printed run-sheet is
+   * asserted against them by teaching-session.test.ts.
+   */
+  window: string;
   title: string;
   /** Shown to everyone — no diagnosis, safe to project. */
   scenario: string;
@@ -36,6 +43,7 @@ export interface SessionCasePlan {
 export const SESSION_CASES: SessionCasePlan[] = [
   {
     caseId: "acl-pivot-shift",
+    window: "2:05 – 2:22",
     title: "ACL Tear + Pivot-Shift Pattern",
     scenario:
       "22-year-old soccer player, noncontact pivoting injury, rapid effusion within 2 hours.",
@@ -52,6 +60,7 @@ export const SESSION_CASES: SessionCasePlan[] = [
   },
   {
     caseId: "medial-root-tear",
+    window: "2:22 – 2:40",
     title: "Medial Meniscal Root Tear + Extrusion",
     scenario:
       "55-year-old recreational runner, 3 months of worsening medial pain, no single injury. Mild medial joint-space narrowing on weight-bearing films.",
@@ -68,6 +77,7 @@ export const SESSION_CASES: SessionCasePlan[] = [
   },
   {
     caseId: "patellar-dislocation-mpfl",
+    window: "2:40 – 2:53",
     title: "Transient Patellar Dislocation",
     scenario:
       '17-year-old basketball player — the knee "popped out" while cutting and reduced on its own. Medial tenderness, moderate effusion.',
@@ -92,38 +102,57 @@ export const SESSION_CASES: SessionCasePlan[] = [
  */
 export const SESSION_HOUR_ONE = [
   {
-    minutes: "1:00 – 1:10",
-    label: "Get everyone in",
+    minutes: "1:00 – 1:08",
+    label: "Get in + the orientation contract",
     facultyNote:
-      "All three signed in on their own device, knee course open, Normal Knee MRI workstation loaded. Confirm the baseline is done (see the roster check above).",
+      "All three signed in on their own device, workstation loaded, slice counter visible. Everyone says the orientation sentence back before you advance — do not proceed on two of three.",
     seriesId: "sag-pdfs",
     mode: "explore",
   },
   {
-    minutes: "1:10 – 1:30",
-    label: "Sagittal PD-FS — Guided Tour",
+    minutes: "1:08 – 1:26",
+    label: "Sagittal PD-FS — Guided Tour (11 stops)",
     facultyNote:
-      "Drive the tour together. Stop at the ACL and have a fellow describe the normal fiber orientation before advancing.",
+      "Stops 1-6 are naming (6 min); stops 7-11 are reading (12 min). Spend the time on stop 3 (tibial plateau — plants Case 1's bruise), stop 7 (menisci, slice 9/29) and stop 9 (ACL, slice 22/29).",
     seriesId: "sag-pdfs",
     mode: "tour",
   },
   {
-    minutes: "1:30 – 1:45",
+    minutes: "1:26 – 1:38",
     label: "Coronal PD-FS — roots, MCL, lateral corner",
     facultyNote:
-      "This is the plane that pays off in case 2. Make them find the posterior medial root and the normal tibial margin relationship now.",
+      "All 9 coronal stops sit on slice 8/19 and never move, so the posterior root is NOT on the tour — you must drop to Explore and scroll posteriorly. That detour is what pays off in Case 2. Do not skip stop 9 (LCL/PLC).",
     seriesId: "cor-pdfs",
     mode: "tour",
   },
   {
-    minutes: "1:45 – 2:00",
-    label: "Axial T2-FS — patellofemoral + Knowledge Check",
+    minutes: "1:38 – 1:50",
+    label: "Axial T2-FS — patellofemoral (9 stops)",
     facultyNote:
-      "MPFL and the retinacula, then let each fellow run the Knowledge Check on their own device. This sets up case 3.",
+      "All 9 axial stops sit on slice 14/28. Trochlea, trochlear groove and MPFL are the three that set up Case 3.",
+    seriesId: "axi-t2fs",
+    mode: "tour",
+  },
+  {
+    minutes: "1:50 – 1:58",
+    label: "Knowledge Check — axial",
+    facultyNote:
+      "Each fellow runs it on their own device. The axial bank is 11 items; Practice & Mastery samples only 5 of them per round, so the Knowledge Check is the fuller pass.",
     seriesId: "axi-t2fs",
     mode: "check",
   },
+  {
+    minutes: "1:58 – 2:05",
+    label: "Bridge + 5-minute break",
+    facultyNote:
+      "Screens closed. FIVE minutes, not ten — Hour 2 is over-committed and the break is where it gets stolen from.",
+    seriesId: "axi-t2fs",
+    mode: "explore",
+  },
 ] as const;
+
+/** Hour 2 wall-clock, kept beside the case windows so the close is not forgotten. */
+export const SESSION_CLOSE_WINDOW = "2:53 – 3:00";
 
 /** Copy-paste text sent to the fellows ahead of the session. */
 export function fellowInviteText(): string {

@@ -1,8 +1,10 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getCourseById } from "./courses";
 import { normalKneeSeries } from "./normal-workstation-series";
 import { isRestorableNormalMode } from "@/lib/normal-workstation-url";
 import {
+  SESSION_CLOSE_WINDOW,
   SESSION_CASES,
   SESSION_HOUR_ONE,
   TEACHING_SESSION,
@@ -95,5 +97,50 @@ describe("teaching session run-sheet", () => {
 
   it("invite text carries the live course URL", () => {
     expect(fellowInviteText()).toContain(TEACHING_SESSION.appUrl);
+  });
+
+  /**
+   * The printed faculty run-sheet and the live /admin/session page drifted apart
+   * once already: the doc said the coronal block ran 1:26-1:38 while the app said
+   * 1:30-1:45, and the Floor was told to keep the app open. Times now live in
+   * teaching-session.ts and the doc is asserted against them.
+   */
+  describe("printed run-sheet stays in sync", () => {
+    const runsheet = readFileSync(
+      new URL("../../SESSION_2026-07-24_KNEE_RUNSHEET.md", import.meta.url),
+      "utf8",
+    );
+
+    it("prints every hour-1 block time", () => {
+      for (const step of SESSION_HOUR_ONE) {
+        expect(runsheet, `run-sheet is missing hour-1 block "${step.minutes}"`).toContain(
+          step.minutes,
+        );
+      }
+    });
+
+    it("prints every hour-2 case window and the close", () => {
+      for (const plan of SESSION_CASES) {
+        expect(runsheet, `run-sheet is missing case window "${plan.window}"`).toContain(
+          plan.window,
+        );
+      }
+      expect(runsheet).toContain(SESSION_CLOSE_WINDOW);
+    });
+
+    it("hour-2 case windows do not overlap and fit before the close", () => {
+      const toMin = (t: string) => {
+        const [h, m] = t.split(":").map(Number);
+        return (h === 12 ? 12 : h + 12) * 60 + m; // afternoon clock
+      };
+      const spans = SESSION_CASES.map((c) => c.window.split(" – ").map(toMin));
+      for (let i = 1; i < spans.length; i++) {
+        expect(spans[i][0], `case ${i + 1} starts before case ${i} ends`).toBeGreaterThanOrEqual(
+          spans[i - 1][1],
+        );
+      }
+      const closeStart = toMin(SESSION_CLOSE_WINDOW.split(" – ")[0]);
+      expect(spans[spans.length - 1][1]).toBeLessThanOrEqual(closeStart);
+    });
   });
 });
