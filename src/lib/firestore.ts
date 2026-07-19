@@ -2,6 +2,35 @@ import {
   collection, doc, getDoc, getDocs, setDoc, addDoc, query, where, serverTimestamp
 } from "firebase/firestore";
 import { db } from "./db";
+
+/**
+ * How long to wait for a Firestore write to be ACKNOWLEDGED by the server before
+ * treating it as "durably queued and good enough to proceed".
+ *
+ * WHY THIS EXISTS: we enable `persistentLocalCache` (see db.ts), so a write is
+ * durably persisted to IndexedDB immediately, but the promise returned by
+ * addDoc/setDoc only settles on SERVER acknowledgement. Offline it never settles
+ * — it neither resolves nor rejects. Any `await` on it therefore hangs forever,
+ * which previously left learners stuck on "Submitting..." with their score
+ * unreachable even though the attempt was safely saved.
+ *
+ * Never `await` a learner-facing write directly. Wrap it in `settleWrite` so the
+ * UI can proceed once the write is queued. Real errors (permission-denied, bad
+ * data) still reject inside the window and propagate normally.
+ */
+export const WRITE_ACK_TIMEOUT_MS = 4000;
+
+export async function settleWrite<T>(write: Promise<T>, queuedValue: T): Promise<T> {
+  // Attach a handler up front so an eventual offline rejection can never surface
+  // as an unhandled promise rejection after we've already moved on.
+  write.catch(() => {});
+  return Promise.race([
+    write,
+    new Promise<T>((resolve) => {
+      setTimeout(() => resolve(queuedValue), WRITE_ACK_TIMEOUT_MS);
+    }),
+  ]);
+}
 import { logAuditEvent } from "./audit";
 import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
 import { certificateFieldsForCourse } from "@/lib/course-certificate";
@@ -120,20 +149,25 @@ export async function submitQuiz(
     return { score, totalQuestions: questions.length, results, attemptId: "preview" };
   }
 
-  // Save to Firestore
-  const attemptRef = await addDoc(collection(db, "users", userId, "quizAttempts"), {
-    courseId,
-    quizType,
-    answers,
-    score,
-    totalQuestions: questions.length,
-    completedAt: serverTimestamp(),
-  });
+  // Save to Firestore. Scoring above is entirely client-side, so the results
+  // screen has no real dependency on the server ack — don't make the learner
+  // wait for one (offline it would never come). See settleWrite.
+  const attemptId = await settleWrite(
+    addDoc(collection(db, "users", userId, "quizAttempts"), {
+      courseId,
+      quizType,
+      answers,
+      score,
+      totalQuestions: questions.length,
+      completedAt: serverTimestamp(),
+    }).then((ref) => ref.id),
+    "queued",
+  );
 
   logAuditEvent(userId, userEmail, "quiz_submitted", { courseId, quizType, score, totalQuestions: questions.length }).catch(() => {});
   touchLastActive(userId).catch(() => {});
 
-  return { score, totalQuestions: questions.length, results, attemptId: attemptRef.id };
+  return { score, totalQuestions: questions.length, results, attemptId };
 }
 
 // --- Survey ---
@@ -155,13 +189,17 @@ export async function submitSurvey(
   }
 
   if (isAdminPreview() || skipWrite) return { success: true };
-  await addDoc(collection(db, "users", userId, "surveyResponses"), {
-    courseId,
-    surveyType,
-    responses,
-    ...(retroResponses && retroResponses.length > 0 ? { retroResponses } : {}),
-    completedAt: serverTimestamp(),
-  });
+  // Queued-is-good-enough: don't strand the learner on a server ack. See settleWrite.
+  await settleWrite(
+    addDoc(collection(db, "users", userId, "surveyResponses"), {
+      courseId,
+      surveyType,
+      responses,
+      ...(retroResponses && retroResponses.length > 0 ? { retroResponses } : {}),
+      completedAt: serverTimestamp(),
+    }).then(() => undefined),
+    undefined,
+  );
 
   logAuditEvent(userId, userEmail, "survey_submitted", { courseId, surveyType }).catch(() => {});
   touchLastActive(userId).catch(() => {});
@@ -203,13 +241,18 @@ export async function completeModule(
 
   if (isAdminPreview()) return { success: true };
   const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);
-  await setDoc(moduleRef, {
-    courseId,
-    completed: true,
-    quizScore: quizScore ?? null,
-    quizTotal: quizTotal ?? null,
-    completedAt: serverTimestamp(),
-  }, { merge: true });
+  // Queued-is-good-enough: the module-complete screen must not be gated on a
+  // server ack that never arrives offline. See settleWrite.
+  await settleWrite(
+    setDoc(moduleRef, {
+      courseId,
+      completed: true,
+      quizScore: quizScore ?? null,
+      quizTotal: quizTotal ?? null,
+      completedAt: serverTimestamp(),
+    }, { merge: true }),
+    undefined,
+  );
 
   // Non-blocking: don't let audit/activity tracking failures prevent module completion
   logAuditEvent(userId, userEmail, "module_completed", { courseId, moduleId, quizScore, quizTotal }).catch(() => {});

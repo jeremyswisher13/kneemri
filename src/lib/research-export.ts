@@ -49,14 +49,45 @@ export interface ResearchFellow {
 }
 
 /**
- * Stable de-identified participant ids (P001, P002, …), assigned by sorting on
- * the opaque user id so the SAME learner always maps to the SAME code across
- * re-exports — without ever exposing the id, name, or email.
+ * Stable de-identified participant ids, derived from a hash of the opaque user
+ * id — so the SAME learner always maps to the SAME code, without ever exposing
+ * the id, name, or email.
+ *
+ * The code MUST be a property of the learner, not of their position in a list.
+ * A previous version assigned P001…Pnnn by index after sorting the passed-in
+ * array, which meant the mapping depended on cohort membership: flipping the
+ * Learners role filter, or one new learner enrolling, shifted every code. Merging
+ * two exports on "Participant ID" — the documented longitudinal use case — would
+ * then silently attribute one learner's pre/post scores to a different person.
+ *
+ * Collisions are resolved deterministically (by sorted uid) so a given roster
+ * always produces the same codes; the suffix keeps the space large enough that
+ * collisions are rare for a fellowship-sized cohort.
  */
 export function participantIds(fellows: ResearchFellow[]): Map<string, string> {
-  const sorted = [...fellows].sort((a, b) => a.id.localeCompare(b.id));
+  const hash = (uid: string): number => {
+    // FNV-1a — deterministic across runs and platforms (unlike a seeded RNG).
+    let h = 0x811c9dc5;
+    for (let i = 0; i < uid.length; i++) {
+      h ^= uid.charCodeAt(i);
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return h >>> 0;
+  };
+
   const m = new Map<string, string>();
-  sorted.forEach((f, i) => m.set(f.id, `P${String(i + 1).padStart(3, "0")}`));
+  const taken = new Set<string>();
+  // Sort only to make collision resolution deterministic — the code itself does
+  // NOT depend on position.
+  for (const f of [...fellows].sort((a, b) => a.id.localeCompare(b.id))) {
+    const base = hash(f.id) % 100000;
+    let code = `P${String(base).padStart(5, "0")}`;
+    for (let bump = 1; taken.has(code); bump++) {
+      code = `P${String((base + bump) % 100000).padStart(5, "0")}`;
+    }
+    taken.add(code);
+    m.set(f.id, code);
+  }
   return m;
 }
 

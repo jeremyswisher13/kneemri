@@ -73,16 +73,29 @@ const fellows: ResearchFellow[] = [
 ];
 
 describe("participantIds", () => {
-  it("assigns stable, sequential, sorted-by-id codes", () => {
+  it("assigns a stable code per learner", () => {
     const ids = participantIds(fellows);
-    expect(ids.get("uid-aaa")).toBe("P001");
-    expect(ids.get("uid-mmm")).toBe("P002");
-    expect(ids.get("uid-zzz")).toBe("P003");
+    for (const f of fellows) expect(ids.get(f.id)).toMatch(/^P\d{5}$/);
+    expect(new Set([...ids.values()]).size).toBe(fellows.length); // unique
   });
   it("is order-independent (same code regardless of input order)", () => {
     const a = participantIds(fellows);
     const b = participantIds([...fellows].reverse());
     expect(a.get("uid-zzz")).toBe(b.get("uid-zzz"));
+  });
+  // The whole point of the code: exports taken from DIFFERENT cohort subsets must
+  // still line up, or merging them on "Participant ID" attributes one learner's
+  // pre/post data to another person.
+  it("is COHORT-independent — filtering the roster does not reassign codes", () => {
+    const all = participantIds(fellows);
+    const filtered = participantIds(fellows.filter((f) => f.id !== "uid-mmm"));
+    expect(filtered.get("uid-aaa")).toBe(all.get("uid-aaa"));
+    expect(filtered.get("uid-zzz")).toBe(all.get("uid-zzz"));
+  });
+  it("is enrollment-independent — a new learner does not shift existing codes", () => {
+    const before = participantIds(fellows);
+    const after = participantIds([...fellows, fellow("uid-000", 3, 9)]);
+    for (const f of fellows) expect(after.get(f.id)).toBe(before.get(f.id));
   });
 });
 
@@ -102,7 +115,15 @@ describe("buildResearchDataset (de-identification)", () => {
 
   it("emits one row per learner, keyed by participant code", () => {
     expect(rows).toHaveLength(3);
-    expect(rows.map((r) => r[0])).toEqual(["P001", "P002", "P003"]);
+    const codes = rows.map((r) => String(r[0]));
+    // Codes are hash-derived (a property of the learner), NOT sequential by
+    // position — asserting P001/P002/P003 would re-pin the cohort-dependent bug.
+    for (const code of codes) expect(code).toMatch(/^P\d{5}$/);
+    expect(new Set(codes).size).toBe(3);
+    // Every emitted code must be the one participantIds assigns for that uid
+    // (row ORDER is an implementation detail, so compare as sets).
+    const expected = participantIds(fellows);
+    expect([...codes].sort()).toEqual(fellows.map((f) => expected.get(f.id)!).sort());
   });
 
   it("includes overall and per-domain gain columns", () => {

@@ -74,10 +74,25 @@ function isSameOrigin(request) {
   return new URL(request.url).origin === self.location.origin;
 }
 
-function isStaticAsset(request) {
+/**
+ * Build output under /assets/ is CONTENT-HASHED — a changed file gets a new
+ * filename — so it is safe (and fastest) to serve cache-first and never
+ * revalidate.
+ */
+function isImmutableAsset(request) {
+  return new URL(request.url).pathname.startsWith("/assets/");
+}
+
+/**
+ * Teaching images have STABLE filenames (e.g. /images/teaching/stacks/.../slice_09.jpg).
+ * Cache-first would pin the old bytes forever on an installed device, because
+ * CACHE_VERSION is hardcoded and a deploy does not bump it — so a CORRECTED MRI
+ * image would never reach fellows who already have it cached. These must
+ * revalidate in the background instead.
+ */
+function isRevalidatingImage(request) {
   const url = new URL(request.url);
   return (
-    url.pathname.startsWith("/assets/") ||
     url.pathname.startsWith("/images/") ||
     url.pathname.endsWith(".svg") ||
     url.pathname.endsWith(".jpg") ||
@@ -85,6 +100,24 @@ function isStaticAsset(request) {
     url.pathname.endsWith(".png") ||
     url.pathname.endsWith(".webp")
   );
+}
+
+/**
+ * Cache-first for speed, but always refetch in the background so corrected
+ * images land on the next view. Deliberately has NO offline.html fallback —
+ * an <img> must never be handed an HTML document.
+ */
+async function staleWhileRevalidateImage(request) {
+  const cache = await caches.open(CACHE_VERSION);
+  const cached = await cache.match(request);
+  const network = fetch(request)
+    .then((response) => {
+      if (response.ok) cache.put(request, response.clone());
+      return response;
+    })
+    .catch(() => undefined);
+  if (cached) return cached;
+  return (await network) || Response.error();
 }
 
 async function cacheFirst(request) {
@@ -135,8 +168,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (isStaticAsset(request)) {
+  if (isImmutableAsset(request)) {
     event.respondWith(cacheFirst(request));
+    return;
+  }
+
+  if (isRevalidatingImage(request)) {
+    event.respondWith(staleWhileRevalidateImage(request));
     return;
   }
 
