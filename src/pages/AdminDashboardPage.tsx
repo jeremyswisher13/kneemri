@@ -23,6 +23,7 @@ import {
   type SurveyResponse,
   type CaseAttemptItem,
 } from "@/components/admin/shared";
+import { matchTrackedFellows } from "@/lib/tracked-fellows";
 import StatusFunnel from "@/components/admin/StatusFunnel";
 import NeedsAttentionPanel from "@/components/admin/NeedsAttentionPanel";
 import DomainMasteryPanel from "@/components/admin/DomainMasteryPanel";
@@ -359,12 +360,6 @@ function HBar({ value, max, color, label }: { value: number; max: number; color:
   );
 }
 
-const TRACKED_FELLOW_TARGETS = [
-  { name: "Riley Coon", aliases: ["riley coon"] },
-  { name: "Sonal Singh", aliases: ["sonal singh"] },
-  { name: "Lilian Toaspern", aliases: ["lilian toaspern", "lillian toaspern"] },
-] as const;
-
 type NextStepTone = "done" | "attention" | "steady" | "waiting";
 
 interface TrackedFellowRow {
@@ -376,28 +371,6 @@ interface TrackedFellowRow {
   nextStepTone: NextStepTone;
   normalMri: string;
   daysInactive: number | null;
-}
-
-function normalizePersonText(value?: string | null): string {
-  return (value ?? "")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-function fellowMatchesAlias(fellow: Fellow, alias: string): boolean {
-  const normalizedAlias = normalizePersonText(alias);
-  const searchable = normalizePersonText([fellowName(fellow), fellow.email ?? ""].join(" "));
-  if (!normalizedAlias || !searchable) return false;
-  // Match on whole normalized tokens (word boundaries), not raw substrings, so a
-  // short alias like "Sonal Singh" can't collide with a superstring name like
-  // "Sonali Singhania". Every alias token must appear as a full token in the
-  // learner's normalized name + email.
-  const haystack = new Set(searchable.split(" ").filter(Boolean));
-  const aliasParts = normalizedAlias.split(" ").filter(Boolean);
-  return aliasParts.length > 0 && aliasParts.every((part) => haystack.has(part));
 }
 
 function normalMriProgressLabel(fellow: Fellow, course: CourseDefinition): string {
@@ -482,16 +455,10 @@ function buildTrackedFellowRows(
   totalCasesForFellow: (fellow: Fellow) => number,
   postQuizTotal: number,
 ): TrackedFellowRow[] {
-  const usedIds = new Set<string>();
-  return TRACKED_FELLOW_TARGETS.map((target) => {
-    const fellow =
-      fellows.find((candidate) => {
-        if (usedIds.has(candidate.id)) return false;
-        return target.aliases.some((alias) => fellowMatchesAlias(candidate, alias));
-      }) ?? null;
+  return matchTrackedFellows(fellows).map(({ targetName, fellow }) => {
     if (!fellow) {
       return {
-        targetName: target.name,
+        targetName,
         fellow: null,
         status: null,
         progressPct: 0,
@@ -502,11 +469,10 @@ function buildTrackedFellowRows(
       };
     }
 
-    usedIds.add(fellow.id);
     const totalCases = totalCasesForFellow(fellow);
     const next = nextStepForFellow(fellow, course, totalModules, totalCases, postQuizTotal);
     return {
-      targetName: target.name,
+      targetName,
       fellow,
       status: fellowStatus(fellow, totalModules, totalCases, course, postQuizTotal),
       progressPct: learnerProgressPct(fellow, course, totalModules, totalCases),
