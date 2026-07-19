@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "@/components/ui/Card";
 import type { CaseMeta } from "@/content/case-metas";
@@ -17,11 +18,15 @@ const difficultyConfig = {
   advanced: { label: "Advanced", bg: "bg-red-100", text: "text-red-700" },
 } as const;
 
+type StatusFilter = "all" | "todo" | "done";
+
 export default function CasesPage() {
   const { role } = useAuth();
   const activeCourse = useActiveCourse();
   const { progress, loading } = useProgress(activeCourse);
   const isResident = role === "resident";
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [query, setQuery] = useState("");
 
   // For residents: only show core cases that are residentVisible
   // For fellows: show all core + all advanced
@@ -30,6 +35,37 @@ export default function CasesPage() {
 
   function isCaseCompleted(caseId: string) {
     return progress?.caseAttempts?.some((a) => a.caseId === caseId) ?? false;
+  }
+
+  /**
+   * SPOILER-SAFE search. An unopened case deliberately hides its title and
+   * diagnoses (it renders as "Case 3: Foundational"), so matching those would let
+   * a learner type "ACL" and be told which case is the ACL tear — defeating the
+   * point of the exercise. Only ever match text the learner can ALREADY see on
+   * that card: scenario + tags while unopened, plus title/diagnoses once done.
+   */
+  function matchesQuery(caseItem: CaseMeta, completed: boolean) {
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    const visibleText = completed
+      ? [caseItem.title, ...caseItem.keyDiagnoses, caseItem.clinicalScenario, ...caseItem.tags]
+      : [caseItem.clinicalScenario, ...caseItem.tags];
+    return visibleText.join(" ").toLowerCase().includes(q);
+  }
+
+  /**
+   * Filter while PRESERVING each case's original position, so the "Case N" label
+   * keeps matching the full list instead of renumbering under a filter.
+   */
+  function applyFilters(cases: CaseMeta[]) {
+    return cases
+      .map((caseItem, index) => ({ caseItem, index }))
+      .filter(({ caseItem }) => {
+        const completed = isCaseCompleted(caseItem.id);
+        if (statusFilter === "todo" && completed) return false;
+        if (statusFilter === "done" && !completed) return false;
+        return matchesQuery(caseItem, completed);
+      });
   }
 
   if (loading) {
@@ -48,6 +84,11 @@ export default function CasesPage() {
   ).length;
   const totalCompleted = coreCompletedCount + advancedCompletedCount;
   const totalVisible = visibleCoreCases.length + visibleAdvancedCases.length;
+
+  // NOTE: the counts above deliberately stay whole-course (they drive the course
+  // requirement and the milestone banners); only the rendered lists are filtered.
+  const filteredCore = applyFilters(visibleCoreCases);
+  const filteredAdvanced = applyFilters(visibleAdvancedCases);
 
   const requiredCoreCount = requiredCoreCaseCount(activeCourse, isResident);
   const requiredCoreDone = coreCompletedCount >= requiredCoreCount;
@@ -94,26 +135,6 @@ export default function CasesPage() {
         </div>
       </Link>}
 
-      <div className="mt-4 grid gap-2 sm:grid-cols-3">
-        {[
-          ["1", "Normal baseline", "Anchor the exam against expected anatomy before naming pathology."],
-          ["2", "Structured search", "Work region by region so subtle secondary signs are not skipped."],
-          ["3", "Report comparison", "Compare your read with the model findings and teaching points."],
-        ].map(([number, title, copy]) => (
-          <div key={title} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
-            <div className="flex items-start gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
-                {number}
-              </span>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-gray-900">{title}</p>
-                <p className="mt-1 text-xs leading-relaxed text-gray-500">{copy}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
       {/* Milestone encouragement banners */}
       {coreCompletedCount > 0 && !requiredCoreDone && (
         <div className="mt-4 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
@@ -136,34 +157,138 @@ export default function CasesPage() {
         </div>
       )}
 
-      {/* Core Cases Section */}
-      <div className="mt-8">
-        <h2 className="text-lg font-semibold text-gray-900">Core Cases</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          {Math.min(coreCompletedCount, requiredCoreCount)}/{requiredCoreCount} required · {coreCompletedCount}/{visibleCoreCases.length} explored
-        </p>
-        <div className="mt-4 grid gap-6 md:grid-cols-2">
-          {visibleCoreCases.map((caseItem, caseIndex) =>
-            renderCaseCard(caseItem, caseIndex, isCaseCompleted, activeCourse)
-          )}
+      {/* Find-a-case controls. This list runs several screens long, so "which
+          ones haven't I done?" needs to be one tap, not a scroll-and-scan. */}
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter cases by status">
+          {([
+            ["all", "All", totalVisible],
+            ["todo", "Not started", totalVisible - totalCompleted],
+            ["done", "Completed", totalCompleted],
+          ] as const).map(([value, label, count]) => {
+            const active = statusFilter === value;
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setStatusFilter(value)}
+                aria-pressed={active}
+                className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors sm:min-h-9 ${
+                  active
+                    ? "border-ucla-blue bg-ucla-blue text-white"
+                    : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                {label}
+                <span className={active ? "text-white/80" : "text-gray-400"}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="relative sm:w-64">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search presentations…"
+            aria-label="Search cases by clinical presentation"
+            /* text-base on mobile: <16px triggers iOS zoom-on-focus. */
+            className="min-h-11 w-full rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-base text-gray-900 placeholder-gray-400 outline-none focus:border-ucla-blue focus-visible:ring-2 focus-visible:ring-ucla-blue/40 sm:min-h-9 sm:text-sm"
+          />
+          <svg
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
       </div>
-
-      {/* Advanced Cases Section (fellows only) */}
-      {visibleAdvancedCases.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-lg font-semibold text-gray-900">Advanced Cases</h2>
-          <p className="mt-1 text-sm text-gray-500">
-            Optional deep dives for additional practice.{" "}
-            {advancedCompletedCount}/{visibleAdvancedCases.length} completed
-          </p>
-          <div className="mt-4 grid gap-6 md:grid-cols-2">
-            {visibleAdvancedCases.map((caseItem, caseIndex) =>
-              renderCaseCard(caseItem, caseIndex, isCaseCompleted, activeCourse)
-            )}
-          </div>
-        </div>
+      {query.trim() !== "" && (
+        <p className="mt-2 text-xs text-gray-500">
+          Searching presentations and tags only — a case&apos;s diagnosis stays hidden until you complete it.
+        </p>
       )}
+
+      {filteredCore.length === 0 && filteredAdvanced.length === 0 ? (
+        <div className="mt-6 rounded-lg border border-dashed border-gray-300 bg-white px-4 py-10 text-center">
+          <p className="text-sm font-medium text-gray-700">No cases match this filter.</p>
+          <button
+            type="button"
+            onClick={() => {
+              setStatusFilter("all");
+              setQuery("");
+            }}
+            className="mt-2 min-h-11 text-sm font-semibold text-ucla-blue hover:underline"
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* Core Cases Section */}
+          {filteredCore.length > 0 && (
+            <div className="mt-6">
+              <h2 className="text-lg font-semibold text-gray-900">Core Cases</h2>
+              <p className="mt-1 text-sm text-gray-500">
+                {Math.min(coreCompletedCount, requiredCoreCount)}/{requiredCoreCount} required · {coreCompletedCount}/{visibleCoreCases.length} explored
+                {filteredCore.length !== visibleCoreCases.length && (
+                  <span className="text-gray-400"> · showing {filteredCore.length}</span>
+                )}
+              </p>
+              <div className="mt-4 grid gap-6 md:grid-cols-2">
+                {filteredCore.map(({ caseItem, index }) =>
+                  renderCaseCard(caseItem, index, isCaseCompleted, activeCourse)
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Advanced Cases Section (fellows only) */}
+          {filteredAdvanced.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-lg font-semibold text-gray-900">Advanced Cases</h2>
+              <p className="mt-1 text-sm text-gray-500">
+                Optional deep dives for additional practice.{" "}
+                {advancedCompletedCount}/{visibleAdvancedCases.length} completed
+                {filteredAdvanced.length !== visibleAdvancedCases.length && (
+                  <span className="text-gray-400"> · showing {filteredAdvanced.length}</span>
+                )}
+              </p>
+              <div className="mt-4 grid gap-6 md:grid-cols-2">
+                {filteredAdvanced.map(({ caseItem, index }) =>
+                  renderCaseCard(caseItem, index, isCaseCompleted, activeCourse)
+                )}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      {/* How-it-works explainer: evergreen guidance, so it sits BELOW the case
+          list rather than pushing the filter and cases off the first screen. */}
+      <div className="mt-12 grid gap-2 sm:grid-cols-3">
+        {[
+          ["1", "Normal baseline", "Anchor the exam against expected anatomy before naming pathology."],
+          ["2", "Structured search", "Work region by region so subtle secondary signs are not skipped."],
+          ["3", "Report comparison", "Compare your read with the model findings and teaching points."],
+        ].map(([number, title, copy]) => (
+          <div key={title} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+            <div className="flex items-start gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
+                {number}
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900">{title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-gray-500">{copy}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 }
