@@ -62,6 +62,14 @@ describe("login return paths", () => {
     expect(safeInternalPath("/login?next=/admin")).toBe("/");
   });
 
+  it("rejects backslash escapes that browsers normalize off-origin", () => {
+    // "/\evil.com" → browsers resolve as "//evil.com" → off-origin redirect.
+    expect(safeInternalPath("/\\evil.com")).toBe("/");
+    expect(safeInternalPath("/\\/evil.com")).toBe("/");
+    expect(safeInternalPath("/courses\\..\\evil")).toBe("/");
+    expect(returnPathFromSearch("?returnTo=%2F%5Cevil.com")).toBe("/");
+  });
+
   it("builds login URLs with durable return targets for full-page reloads", () => {
     expect(loginPathForReturnTo("/courses/elbow-mri/normal-elbow-mri?mode=tour#ucl")).toBe(
       "/login?returnTo=%2Fcourses%2Felbow-mri%2Fnormal-elbow-mri%3Fmode%3Dtour%23ucl",

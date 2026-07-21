@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Card from "@/components/ui/Card";
+import { csvCell } from "@/lib/csv-cell";
 import { useAuth } from "@/contexts/AuthContext";
 import { courseRegistry } from "@/content/courses";
 import {
@@ -89,9 +90,7 @@ function compactFlags(flags: string[]): string {
   return flags.map((flag) => flag.replaceAll("-", " ")).join(", ");
 }
 
-function csvEscape(value: unknown): string {
-  return `"${String(value ?? "").replace(/"/g, '""')}"`;
-}
+const csvEscape = csvCell;
 
 function downloadCsv(csvContent: string, filename: string) {
   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });

@@ -14,7 +14,17 @@ export type LoginLocationState = {
 type ReturnPathStorage = Pick<Storage, "getItem" | "removeItem" | "setItem">;
 
 export function safeInternalPath(path: string | null | undefined): string {
-  if (!path || !path.startsWith("/") || path.startsWith("//") || path.startsWith("/login")) {
+  // Reject anything that isn't an on-origin absolute path. Backslashes are the
+  // key one: browsers normalize "/\evil.com" to "//evil.com" → an off-origin
+  // open redirect, and "//" alone doesn't catch it. A real path never contains a
+  // raw backslash (it would be percent-encoded), so any backslash is hostile.
+  if (
+    !path ||
+    !path.startsWith("/") ||
+    path.startsWith("//") ||
+    path.includes("\\") ||
+    path.startsWith("/login")
+  ) {
     return "/";
   }
   return path;

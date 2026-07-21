@@ -212,8 +212,11 @@ export async function submitSurvey(
 export async function completeModuleAdmin(
   userId: string,
   moduleId: string,
-  quizScore: number,
-  quizTotal: number,
+  // null when an admin force-completes without a real attempt — a fabricated
+  // "100%" would pollute cohort analytics and suppress the "needs review" flag,
+  // and every aggregation already suppresses null/0-total scores.
+  quizScore: number | null,
+  quizTotal: number | null,
   courseId: CourseId = defaultCourse.id
 ) {
   const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);

@@ -6,6 +6,7 @@ import { moduleContentById } from "@/content/modules/content-by-id";
 import { caseContentById } from "@/content/cases/content-by-id";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
+import { useProgress } from "@/hooks/useProgress";
 import { coursePath, getVisibleCoreCases, getVisibleAdvancedCases, type CourseDefinition } from "@/content/courses";
 import { moduleTopicSearchRoute, referenceSectionsForCourse } from "@/lib/course-search";
 
@@ -89,7 +90,17 @@ const CATEGORY_ORDER: SearchCategory[] = [
 // Build search index
 // ---------------------------------------------------------------------------
 
-function buildIndex(role: string | null, course: CourseDefinition): SearchItem[] {
+const DIFFICULTY_LABEL: Record<string, string> = {
+  foundational: "Foundational",
+  intermediate: "Intermediate",
+  advanced: "Advanced",
+};
+
+function buildIndex(
+  role: string | null,
+  course: CourseDefinition,
+  completedCaseIds: Set<string>,
+): SearchItem[] {
   const items: SearchItem[] = [];
   const isResident = role === 'resident';
   const courseModuleIds = new Set(course.modules.map((mod) => mod.id));
@@ -123,24 +134,40 @@ function buildIndex(role: string | null, course: CourseDefinition): SearchItem[]
     });
   });
 
-  // Cases (filter by role)
-  const visibleCases = [
-    ...getVisibleCoreCases(course, isResident),
-    ...getVisibleAdvancedCases(course, isResident),
-  ];
-  visibleCases.forEach((c) => {
-    const full = caseContentById[c.id];
-    const deep = full
-      ? `${full.teachingPoints.join(" ")} ${full.modelReport.findings} ${full.modelReport.impression}`
-      : "";
-    items.push({
-      id: `case-${c.id}`,
-      title: c.title,
-      body: `${c.title} ${c.clinicalScenario} ${c.keyDiagnoses.join(" ")} ${c.tags.join(" ")} ${deep}`,
-      category: "case",
-      route: coursePath(course, `/cases/${c.id}`),
-    });
-  });
+  // Cases (filter by role). SPOILER-SAFE: an unopened case must not reveal its
+  // diagnosis. CasesPage renders it as "Case N: Difficulty" and matches only on
+  // scenario+tags until completed — mirror that here, or global search becomes a
+  // back door to every answer (type "acl" → the ACL case surfaces by title).
+  // Number within the case's OWN group (core / advanced), 1-based, to match
+  // CasesPage's "Case N" label.
+  const indexCase = (c: ReturnType<typeof getVisibleCoreCases>[number], caseNumber: number) => {
+    const completed = completedCaseIds.has(c.id);
+    if (completed) {
+      const full = caseContentById[c.id];
+      const deep = full
+        ? `${full.teachingPoints.join(" ")} ${full.modelReport.findings} ${full.modelReport.impression}`
+        : "";
+      items.push({
+        id: `case-${c.id}`,
+        title: c.title,
+        body: `${c.title} ${c.clinicalScenario} ${c.keyDiagnoses.join(" ")} ${c.tags.join(" ")} ${deep}`,
+        category: "case",
+        route: coursePath(course, `/cases/${c.id}`),
+      });
+    } else {
+      items.push({
+        id: `case-${c.id}`,
+        title: `Case ${caseNumber}: ${DIFFICULTY_LABEL[c.difficulty] ?? "Case"}`,
+        body: `${c.clinicalScenario} ${c.tags.join(" ")}`,
+        category: "case",
+        route: coursePath(course, `/cases/${c.id}`),
+      });
+    }
+  };
+  let caseGroup = getVisibleCoreCases(course, isResident);
+  caseGroup.forEach((c, i) => indexCase(c, i + 1));
+  caseGroup = getVisibleAdvancedCases(course, isResident);
+  caseGroup.forEach((c, i) => indexCase(c, i + 1));
 
   // Daily pearls (course-scoped to the active body region)
   getPearlsForRegion(course.bodyRegion).forEach((p) => {
@@ -292,6 +319,7 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
   const navigate = useNavigate();
   const { role } = useAuth();
   const activeCourse = useActiveCourse();
+  const { progress } = useProgress(activeCourse);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -299,8 +327,17 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Build index once (rebuild if role changes)
-  const index = useMemo(() => buildIndex(role, activeCourse), [role, activeCourse]);
+  // Completed cases may be fully indexed; unopened ones stay spoiler-safe.
+  const completedCaseIds = useMemo(
+    () => new Set((progress?.caseAttempts ?? []).map((a) => a.caseId)),
+    [progress],
+  );
+
+  // Build index (rebuild if role, course, or completed-case set changes)
+  const index = useMemo(
+    () => buildIndex(role, activeCourse, completedCaseIds),
+    [role, activeCourse, completedCaseIds],
+  );
 
   // Search results
   const results = useMemo(() => search(index, query), [index, query]);

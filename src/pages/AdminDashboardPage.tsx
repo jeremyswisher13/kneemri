@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo, useCallback, Fragment } from "react";
 import { getAllFellows, setUserRole, completeModuleAdmin } from "@/lib/firestore";
 import { sendCertificateCallable } from "@/lib/functions";
+import { csvCell } from "@/lib/csv-cell";
 import { moduleQuizzes } from "@/content/quizzes/module-quizzes";
 import {
   courseRegistry,
@@ -115,7 +116,7 @@ function exportCSV(fellows: Fellow[], course: CourseDefinition) {
   });
 
   const csvContent = [headers, ...rows]
-    .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+    .map((row) => row.map((cell) => csvCell(cell)).join(","))
     .join("\n");
 
   downloadCsv(csvContent, `${course.id}-cohort-${new Date().toISOString().slice(0, 10)}.csv`);
@@ -131,9 +132,7 @@ function downloadCsv(csvContent: string, filename: string) {
   URL.revokeObjectURL(url);
 }
 
-function csvEscape(value: unknown): string {
-  return `"${String(value ?? "").replace(/"/g, '""')}"`;
-}
+const csvEscape = csvCell;
 
 function isoDate(ts?: { seconds: number } | null): string {
   if (!ts) return "";
@@ -558,10 +557,11 @@ export default function AdminDashboardPage() {
     setFcResult(null);
     try {
       for (const moduleId of fcSelectedModules) {
-        const questions = moduleQuizzes[moduleId] ?? [];
-        const quizTotal = questions.length;
-        const quizScore = quizTotal; // perfect score
-        await completeModuleAdmin(fcSelectedFellow, moduleId, quizScore, quizTotal, selectedCourse.id);
+        // Mark complete WITHOUT a fabricated quiz score. Writing a fake 100%
+        // was indistinguishable from an earned score: it inflated the module
+        // heatmap/CSV and could flip a struggling module's "needs review" flag
+        // off. null/null is suppressed by every aggregation.
+        await completeModuleAdmin(fcSelectedFellow, moduleId, null, null, selectedCourse.id);
       }
       // Refresh fellows data
       const refreshed = await getAllFellows(selectedCourse);
@@ -1528,9 +1528,10 @@ function FellowDetail({ fellow, course }: { fellow: Fellow; course: CourseDefini
                     {mod.number}. {mod.title}
                   </span>
                   {mp?.quizScore != null && mp?.quizTotal != null && mp.quizTotal > 0 && (
-                    /* Only show a score when the real denominator is known. A
-                       `|| 5` fallback invented a length and produced a bogus
-                       pass/fail colour (Force-Complete writes quizTotal=0). */
+                    /* Only show a score when a real attempt exists. A `|| 5`
+                       fallback invented a length and produced a bogus pass/fail
+                       colour; force-complete writes null score/total so this
+                       (and the heatmap/CSV aggregations) correctly show nothing. */
                     <span className="font-semibold" style={{ color: pct(mp.quizScore, mp.quizTotal) >= 70 ? "#16a34a" : "#d97706" }}>
                       {mp.quizScore}/{mp.quizTotal}
                     </span>

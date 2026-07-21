@@ -11,7 +11,12 @@ interface DomainRow {
   postN: number;
   prePct: number | null;
   postPct: number | null;
+  /** PAIRED gain: mean of each fellow's own pre→post change, over fellows who
+      answered both. NOT postPct − prePct (that subtracts two different
+      populations and is misleading before the whole cohort finishes). */
   delta: number | null;
+  /** How many fellows the paired delta is based on. */
+  deltaN: number;
 }
 
 const PRE_COLOR = "#d97706";
@@ -49,16 +54,49 @@ export default function DomainMasteryPanel({
       }
     };
 
+    // Paired gains: domain → list of each fellow's own (postPct − prePct),
+    // included only when that fellow answered both pre and post in the domain.
+    const pairedGains = new Map<string, number[]>();
+
     for (const f of fellows) {
       for (const r of f.preQuizResponses ?? []) bump(r.questionId, r.selectedAnswer, "pre");
       for (const r of f.postQuizResponses ?? []) bump(r.questionId, r.selectedAnswer, "post");
+
+      // Per-fellow, per-domain tallies for the paired delta.
+      type FT = { c: number; n: number };
+      const fPre = new Map<string, FT>();
+      const fPost = new Map<string, FT>();
+      const tally = (map: Map<string, FT>, questionId: string, selected: string) => {
+        const q = byId.get(questionId);
+        if (!q) return;
+        const d = q.domain ?? "";
+        const e = map.get(d) ?? { c: 0, n: 0 };
+        e.n++;
+        if (selected === q.correctAnswer) e.c++;
+        map.set(d, e);
+      };
+      for (const r of f.preQuizResponses ?? []) tally(fPre, r.questionId, r.selectedAnswer);
+      for (const r of f.postQuizResponses ?? []) tally(fPost, r.questionId, r.selectedAnswer);
+      for (const d of new Set([...fPre.keys(), ...fPost.keys()])) {
+        const pre = fPre.get(d);
+        const post = fPost.get(d);
+        if (pre && post && pre.n > 0 && post.n > 0) {
+          const gain = Math.round((post.c / post.n) * 100) - Math.round((pre.c / pre.n) * 100);
+          const list = pairedGains.get(d) ?? [];
+          list.push(gain);
+          pairedGains.set(d, list);
+        }
+      }
     }
 
     return [...byDomain.entries()]
       .map(([domain, agg]) => {
         const prePct = agg.preN ? Math.round((agg.preC / agg.preN) * 100) : null;
         const postPct = agg.postN ? Math.round((agg.postC / agg.postN) * 100) : null;
-        const delta = prePct !== null && postPct !== null ? postPct - prePct : null;
+        const gains = pairedGains.get(domain) ?? [];
+        const delta = gains.length
+          ? Math.round(gains.reduce((s, g) => s + g, 0) / gains.length)
+          : null;
         return {
           domain,
           label: domainLabel(domain),
@@ -69,6 +107,7 @@ export default function DomainMasteryPanel({
           prePct,
           postPct,
           delta,
+          deltaN: gains.length,
         };
       })
       .sort((a, b) => (a.postPct ?? 101) - (b.postPct ?? 101));
@@ -81,7 +120,8 @@ export default function DomainMasteryPanel({
       <div className="mb-4">
         <h2 className="text-lg font-bold text-gray-900">Knowledge Mastery by Domain</h2>
         <p className="text-sm text-gray-500 mt-0.5">
-          Actual % correct on the pre/post assessment by domain — where the cohort's knowledge moved
+          Actual % correct on the pre/post assessment by domain. Bars are the pooled cohort;
+          the chip is the mean <em>paired</em> gain (only fellows who took both).
         </p>
       </div>
 
@@ -96,7 +136,7 @@ export default function DomainMasteryPanel({
               <div key={row.domain}>
                 <div className="mb-1 flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-700">{row.label}</span>
-                  <DeltaChip delta={row.delta} />
+                  <DeltaChip delta={row.delta} n={row.deltaN} />
                 </div>
                 <PhaseBar
                   label="Pre"
@@ -161,10 +201,13 @@ function PhaseBar({
   );
 }
 
-function DeltaChip({ delta }: { delta: number | null }) {
+function DeltaChip({ delta, n }: { delta: number | null; n: number }) {
   if (delta === null) {
     return (
-      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-500">
+      <span
+        className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-500"
+        title="No fellow has completed both the pre and post assessment in this domain yet."
+      >
         —
       </span>
     );
@@ -175,6 +218,7 @@ function DeltaChip({ delta }: { delta: number | null }) {
     <span
       className="rounded-full px-2 py-0.5 text-[11px] font-bold"
       style={{ color, backgroundColor: positive ? "#dcfce7" : "#fee2e2" }}
+      title={`Mean paired gain across ${n} fellow${n === 1 ? "" : "s"} who took both the pre and post assessment.`}
     >
       {positive ? "+" : ""}
       {delta} pts
