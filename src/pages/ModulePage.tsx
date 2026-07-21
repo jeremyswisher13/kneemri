@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useParams, useSearchParams, Link, Navigate } from "react-router-dom";
+import { useParams, useSearchParams, Link, Navigate, useBlocker } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import MarkdownContent from "@/components/ui/MarkdownContent";
@@ -55,6 +55,7 @@ export default function ModulePage() {
   const [quizError, setQuizError] = useState<string | null>(null);
 
   const quizSectionRef = useRef<HTMLDivElement>(null);
+  const leaveQuizCancelRef = useRef<HTMLButtonElement>(null);
   // Per-topic section refs (keyed by the topic's original index) so the quiz
   // "Review this topic" link and the inbound ?topic=N param can scroll to a section.
   const topicSectionRefs = useRef<Map<number, HTMLDivElement>>(new Map());
@@ -93,24 +94,26 @@ export default function ModulePage() {
   }
 
   // A quiz is "in progress" once the learner has answered anything but not
-  // submitted. Used to guard BOTH hard unload (beforeunload, below) and in-app
-  // React Router navigation (the breadcrumb / prev-next / skip links call
-  // confirmLeaveQuiz onClick) — beforeunload alone does not fire on SPA nav, so
-  // those links would otherwise silently discard answers on the reset effect.
+  // submitted. Guard both hard unloads and every React Router navigation; a
+  // page-local Link handler misses sidebar/search links and browser Back.
   const quizInProgress = Object.keys(answers).length > 0 && !quizResults;
-  const confirmLeaveQuiz = useCallback(
-    (e: { preventDefault: () => void }) => {
-      if (quizInProgress && !window.confirm("You have unsaved quiz answers on this module. Leave anyway?")) {
-        e.preventDefault();
-      }
-    },
-    [quizInProgress],
-  );
+  const blocker = useBlocker(quizInProgress);
+
+  useEffect(() => {
+    if (blocker.state !== "blocked") return;
+    leaveQuizCancelRef.current?.focus();
+    const reset = blocker.reset;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") reset();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [blocker]);
 
   useEffect(() => {
     if (!quizInProgress) return;
     // returnValue is required for the prompt to fire in most browsers (iOS Safari
-    // ignores beforeunload entirely — the in-app confirmLeaveQuiz covers SPA nav).
+    // ignores beforeunload; the router blocker still covers in-app navigation).
     const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ""; };
     window.addEventListener('beforeunload', handler);
     return () => window.removeEventListener('beforeunload', handler);
@@ -293,9 +296,44 @@ export default function ModulePage() {
 
   return (
     <div>
+      {blocker.state === "blocked" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="leave-quiz-title"
+            aria-describedby="leave-quiz-description"
+            className="w-full max-w-sm rounded-lg bg-white p-6 shadow-xl"
+          >
+            <h2 id="leave-quiz-title" className="text-lg font-semibold text-gray-900">
+              Leave this quiz?
+            </h2>
+            <p id="leave-quiz-description" className="mt-2 text-sm text-gray-600">
+              Your answers on this module have not been submitted and will be lost.
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <Button
+                ref={leaveQuizCancelRef}
+                variant="secondary"
+                className="min-h-11 w-full sm:w-auto"
+                onClick={() => blocker.reset()}
+              >
+                Stay on quiz
+              </Button>
+              <Button
+                className="min-h-11 w-full sm:w-auto"
+                onClick={() => blocker.proceed()}
+              >
+                Leave quiz
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-        <Link to={coursePath(activeCourse, "/modules")} onClick={confirmLeaveQuiz} className="hover:text-ucla-blue transition-colors">
+        <Link to={coursePath(activeCourse, "/modules")} className="hover:text-ucla-blue transition-colors">
           Modules
         </Link>
         <span>/</span>
@@ -620,7 +658,7 @@ export default function ModulePage() {
 
               {/* Continue to next module button */}
               {nextModule ? (
-                <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} onClick={confirmLeaveQuiz} className="mt-5 inline-block">
+                <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} className="mt-5 inline-block">
                   <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
                     Continue to Module {nextModule.number}: {nextModule.title}
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -629,7 +667,7 @@ export default function ModulePage() {
                   </button>
                 </Link>
               ) : (
-                <Link to={coursePath(activeCourse, "/cases")} onClick={confirmLeaveQuiz} className="mt-5 inline-block">
+                <Link to={coursePath(activeCourse, "/cases")} className="mt-5 inline-block">
                   <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
                     All modules complete! Continue to Cases
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -715,7 +753,6 @@ export default function ModulePage() {
                 </span>
                 <Link
                   to={nextModule ? coursePath(activeCourse, `/modules/${nextModule.id}`) : coursePath(activeCourse, "/cases")}
-                  onClick={confirmLeaveQuiz}
                 >
                   <Button variant="secondary" size="sm">
                     Skip quiz (admin) →
@@ -896,13 +933,13 @@ export default function ModulePage() {
       <div className="mt-8 flex items-center justify-between">
         <div>
           {prevModule ? (
-            <Link to={coursePath(activeCourse, `/modules/${prevModule.id}`)} onClick={confirmLeaveQuiz}>
+            <Link to={coursePath(activeCourse, `/modules/${prevModule.id}`)}>
               <Button variant="secondary" size="sm">
                 &larr; Module {prevModule.number}: {prevModule.title}
               </Button>
             </Link>
           ) : (
-            <Link to={coursePath(activeCourse, "/modules")} onClick={confirmLeaveQuiz}>
+            <Link to={coursePath(activeCourse, "/modules")}>
               <Button variant="secondary" size="sm">
                 &larr; Back to Modules
               </Button>
@@ -911,7 +948,7 @@ export default function ModulePage() {
         </div>
         <div>
           {nextModule && (
-            <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} onClick={confirmLeaveQuiz}>
+            <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)}>
               <Button size="sm">
                 Module {nextModule.number}: {nextModule.title} &rarr;
               </Button>

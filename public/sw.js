@@ -107,16 +107,33 @@ function isRevalidatingImage(request) {
  * images land on the next view. Deliberately has NO offline.html fallback —
  * an <img> must never be handed an HTML document.
  */
-async function staleWhileRevalidateImage(request) {
-  const cache = await caches.open(CACHE_VERSION);
+async function fetchAndCache(request, cache) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      // Complete the cache write before declaring background revalidation done.
+      // A cache quota failure must not discard an otherwise valid response.
+      await cache.put(request, response.clone()).catch(() => {});
+    }
+    return response;
+  } catch {
+    return undefined;
+  }
+}
+
+async function staleWhileRevalidateImage(request, event) {
+  const cachePromise = caches.open(CACHE_VERSION);
+  const network = cachePromise.then((cache) => fetchAndCache(request, cache));
+
+  // Register this before the first await. Safari and other engines may reject
+  // waitUntil() once dispatch has returned, even while respondWith() is pending.
+  event.waitUntil(network.then(() => undefined));
+
+  const cache = await cachePromise;
   const cached = await cache.match(request);
-  const network = fetch(request)
-    .then((response) => {
-      if (response.ok) cache.put(request, response.clone());
-      return response;
-    })
-    .catch(() => undefined);
-  if (cached) return cached;
+  if (cached) {
+    return cached;
+  }
   return (await network) || Response.error();
 }
 
@@ -126,24 +143,22 @@ async function cacheFirst(request) {
   const response = await fetch(request);
   if (response.ok) {
     const cache = await caches.open(CACHE_VERSION);
-    cache.put(request, response.clone());
+    await cache.put(request, response.clone()).catch(() => {});
   }
   return response;
 }
 
-async function staleWhileRevalidate(request) {
-  const cache = await caches.open(CACHE_VERSION);
+async function staleWhileRevalidate(request, event) {
+  const cachePromise = caches.open(CACHE_VERSION);
+  const network = cachePromise.then((cache) => fetchAndCache(request, cache));
+  event.waitUntil(network.then(() => undefined));
+
+  const cache = await cachePromise;
   const cached = await cache.match(request);
-  const network = fetch(request)
-    .then((response) => {
-      if (response.ok) cache.put(request, response.clone());
-      return response;
-    })
-    .catch(() => undefined);
-  // `network` is a promise; it must be awaited before the `||` chain, otherwise
-  // a cache-miss returns the pending promise and the offline fallback is skipped
-  // when the network request ultimately fails.
-  return cached || (await network) || caches.match("/offline.html");
+  if (cached) {
+    return cached;
+  }
+  return (await network) || caches.match("/offline.html");
 }
 
 async function navigationFirst(request) {
@@ -151,7 +166,7 @@ async function navigationFirst(request) {
     const response = await fetch(request);
     if (response.ok) {
       const cache = await caches.open(CACHE_VERSION);
-      cache.put("/index.html", response.clone());
+      await cache.put("/index.html", response.clone()).catch(() => {});
     }
     return response;
   } catch {
@@ -174,11 +189,11 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (isRevalidatingImage(request)) {
-    event.respondWith(staleWhileRevalidateImage(request));
+    event.respondWith(staleWhileRevalidateImage(request, event));
     return;
   }
 
   if (request.destination === "script" || request.destination === "style") {
-    event.respondWith(staleWhileRevalidate(request));
+    event.respondWith(staleWhileRevalidate(request, event));
   }
 });

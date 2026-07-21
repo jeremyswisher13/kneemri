@@ -142,5 +142,22 @@ describe("teaching session run-sheet", () => {
       const closeStart = toMin(SESSION_CLOSE_WINDOW.split(" – ")[0]);
       expect(spans[spans.length - 1][1]).toBeLessThanOrEqual(closeStart);
     });
+
+    it("does not teach MPFL tear site as an independent recurrence predictor", () => {
+      const lower = runsheet.toLowerCase();
+      const prose = lower.replaceAll("*", "");
+      expect(prose).toContain("tear site does not reliably predict recurrence");
+      expect(lower).not.toContain("femoral-sided mpfl tear");
+      expect(lower).not.toContain("femoral-sided carries higher recurrence");
+      expect(lower).not.toContain("femoral-sided carries higher *recurrence*");
+    });
+
+    it("lists only unresolved projector caveats", () => {
+      const caveats = runsheet.split("# KNOWN PROJECTOR CAVEATS")[1]?.split("\n---")[0] ?? "";
+      expect(caveats).toContain("Case 2 ghost-sign image");
+      expect(caveats).not.toContain("Module 4 bruise table");
+      expect(caveats).not.toContain("Sulcus angle FAQ");
+      expect(caveats).not.toContain("MPFL teaching");
+    });
   });
 });

@@ -732,14 +732,17 @@ export async function saveReviewCard(userId: string, card: ReviewCard): Promise<
 
   if (isAdminPreview()) return;
   const cardRef = doc(db, "users", userId, "reviewCards", card.questionId);
-  await setDoc(cardRef, {
-    moduleId: card.moduleId,
-    ...(card.courseId ? { courseId: card.courseId } : {}),
-    easeFactor: card.easeFactor,
-    interval: card.interval,
-    repetitions: card.repetitions,
-    nextReviewDate: card.nextReviewDate,
-  }, { merge: true });
+  await settleWrite(
+    setDoc(cardRef, {
+      moduleId: card.moduleId,
+      ...(card.courseId ? { courseId: card.courseId } : {}),
+      easeFactor: card.easeFactor,
+      interval: card.interval,
+      repetitions: card.repetitions,
+      nextReviewDate: card.nextReviewDate,
+    }, { merge: true }),
+    undefined,
+  );
 }
 
 /**

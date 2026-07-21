@@ -155,6 +155,25 @@ describe("pwa helpers", () => {
     expect(favicon).not.toContain("#863bff");
   });
 
+  it("keeps stale-while-revalidate work alive through completed cache writes", () => {
+    const sw = readFileSync(resolve("public/sw.js"), "utf8");
+    const imageStrategy = sw.slice(
+      sw.indexOf("async function staleWhileRevalidateImage"),
+      sw.indexOf("async function cacheFirst"),
+    );
+    const assetStrategy = sw.slice(
+      sw.indexOf("async function staleWhileRevalidate(request"),
+      sw.indexOf("async function navigationFirst"),
+    );
+
+    expect(sw).toContain("staleWhileRevalidateImage(request, event)");
+    expect(sw).toContain("staleWhileRevalidate(request, event)");
+    expect(sw.match(/event\.waitUntil\(network\.then/g)).toHaveLength(2);
+    expect(sw).toContain("await cache.put(request, response.clone())");
+    expect(imageStrategy.indexOf("event.waitUntil")).toBeLessThan(imageStrategy.indexOf("await cachePromise"));
+    expect(assetStrategy.indexOf("event.waitUntil")).toBeLessThan(assetStrategy.indexOf("await cachePromise"));
+  });
+
   it("keeps home-screen PNG icons opaque and at their declared dimensions", () => {
     expect(pngMetadata("public/pwa-icon-192.png")).toEqual({
       width: 192,

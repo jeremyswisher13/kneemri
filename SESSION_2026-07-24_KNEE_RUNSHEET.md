@@ -368,7 +368,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 - **First-time dislocator, no fragment:** non-operative is reasonable first-line **for a low-risk knee** — PT-guided quad and gluteal rehab, brace only briefly and only for comfort (ESSKA 2024 found *no* evidence a brace beats no brace). It's no longer a universal default, and it's explicitly *not* the gold standard in skeletally immature knees. Name the risk being accepted: recurrence after conservative care is ≥25%, up to ~70% in children/adolescents.
 - **What pushes toward surgery:** a **displaced osteochondral fragment or loose body**. ESSKA 2024 repairs a chondral *or* osteochondral fracture ≥**1 cm²** in the patellofemoral contact area (expert consensus, Grade C — not outcome-validated); purely chondral flakes count, and the threshold is lower in skeletally immature knees. Refixation is first-line, and **delayed refixation is preferred over discarding the fragment** — timing is the document's weakest recommendation. A concomitant MPFL reconstruction is recommended when a fragment is fixed.
-- **Recurrence** is driven by age (skeletally immature highest), **trochlear dysplasia**, patella alta, and a **femoral-sided MPFL tear**.
+- **Recurrence** is driven mainly by age (skeletally immature highest), **trochlear dysplasia**, patella alta, and elevated TT-TG. Name the MPFL tear site for injury mapping, but do **not** use the site as an independent recurrence predictor; pooled data found no significant difference by femoral, patellar, or combined location.
 - **The randomised data on acute MPFL repair are mixed** — Palmu (*JBJS* 2008, adolescents) found no difference vs non-operative. Don't state it as settled either way. MPFL **reconstruction** is the workhorse for recurrent instability; a tubercle osteotomy is *added* for genuinely elevated TT-TG, not substituted.
 
 ### The close
@@ -377,9 +377,9 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 ### If a fellow asks
 
-- **"Brace or surgery for a first-timer?"** Brace and rehab, unless there's a displaced osteochondral fragment.
-- **"Will they re-dislocate?"** Risk rises with youth, trochlear dysplasia, alta, and a femoral-sided MPFL tear. A dysplastic 17-year-old is high-risk.
-- **"Does the MPFL heal?"** It heals, but often lax — which is why recurrence is common and why reconstruction (not repair) is the durable option.
+- **"Brace or surgery for a first-timer?"** Non-operative rehabilitation is reasonable for a low-risk first-time dislocator. A displaced repairable chondral/osteochondral fragment or loose body is the clearest acute surgical trigger; recurrent instability and high-risk skeletally immature anatomy require individualized surgical evaluation.
+- **"Will they re-dislocate?"** Risk rises with youth, trochlear dysplasia, alta, and elevated TT-TG. A dysplastic 17-year-old is high-risk; MPFL tear site alone does not reliably stratify recurrence.
+- **"Does the MPFL heal?"** Healing can occur, but morphology and function are variable. Do not infer prognosis from tear site; when surgery is indicated for recurrent instability, reconstruction is generally favored over repair and must be planned around the patient's predisposing anatomy.
 
 ---
 
@@ -415,7 +415,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 | **Lateral trochlear inclination** | **<11°** | Most cranial slice where trochlear cartilage first appears; both lines on **subchondral bone** (Carrillon, 2000) — a **different slice level** from Pfirrmann. Single-image LTI under-calls; recheck a borderline value |
 | **Sulcus angle** | **>145°** (Merchant view) dysplastic; normal ≈137–138° | The *view* is Merchant *JBJS* 1974; the *numbers* are later (Tecklenburg, Dejour). **On MRI the cutoff is landmark-specific: ~145° on bone but ~154° on cartilage** (Tanaka *AJSM* 2023) — match the cutoff to what you traced |
 | **Lateral patellar tilt** | **>20°** abnormal | Patellar transverse axis vs posterior condylar line |
-| **MPFL after first dislocation** | Torn in **~90–100%** | **Name the site.** Tear site is *split* — patellar-sided predominates (~48%) over femoral (~34%) in pooled MRI data (Migliorini 2021); femoral-sided carries higher recurrence risk |
+| **MPFL after first dislocation** | Torn in **~90–100%** | **Name the site.** Tear site is *split* — patellar-sided predominates (~48%) over femoral (~34%) in pooled MRI data (Migliorini 2021), but tear site does **not** reliably predict recurrence (Jiang 2020 meta-analysis, p=0.17) |
 | **Cartilage grading** | Modified Outerbridge 0–4 | 1 signal change · 2 <50% · 3 >50%, bone not exposed · 4 full-thickness, bone exposed. **Don't call it ICRS to a surgeon** |
 
 ## Bone bruise → mechanism → ligament
@@ -464,17 +464,13 @@ Enforce: name the **compartment** and the **third** (root/horn/body), never just
 
 ---
 
-# WHERE THE APP IS WRONG — correct these at the projector
+# KNOWN PROJECTOR CAVEATS — frame these explicitly
 
-| Where | What it says | Say instead |
+| Where | Current limitation | Faculty framing |
 |---|---|---|
-| Module 4 bruise table | Clip injury = LFC + **lateral tibial plateau** | Clip (pure valgus) = prominent **lateral femoral condyle** + a smaller **medial *femoral condyle*** focus (avulsive, at the MCL) — Sanders 2000. LFC + *lateral tibial plateau* is the **pivot-shift** footprint, and should trigger a hard ACL look |
-| Module 4 bruise table | Pivot shift = "valgus + internal rotation" | Say "valgus with rotation." Sanders (*RadioGraphics* 2000) describes external tibial rotation; the pivot-shift *test* describes internal. Specify the frame only if pressed |
 | Case 2 ghost-sign image | The ghost-sign teaching image (`33_..._GhostMeniscus.jpg`) is a **lateral** root tear, used in a **medial**-root case | Say it before anyone anchors — and it's on the fix list to swap for the medial image (`32_..._Coronal.jpg`) once faculty confirm the JPEG |
 | Case 1 step 4 | No expected findings to reveal | It's three search instructions, not a finding. Frame it as discipline |
 | Case 1 answer key | The read-out pulls from steps 2–3 and **never shows the ACL tear** | *"The app proves the mechanism. You still have to say the diagnosis."* |
-| Sulcus angle FAQ ("<144°") | Number is fine on MRI **bone**, but unlabeled | It's defensible on MRI using *bony* landmarks (~145° by ROC; Tanaka 2023) — **not** a radiographic error. Add: cartilage landmarks run higher (~154°). Match the cutoff to the landmark |
-| MPFL teaching (workstation + module) | Tear site taught as **femoral-predominant** | Pooled MRI data are **patellar-predominant** (~48% vs ~34% femoral; Migliorini 2021). Femoral-sided carries higher *recurrence* — true, but it's not the commonest site |
 
 ---
 

@@ -1,5 +1,13 @@
 import { lazy } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import AppLayout from "@/components/layout/AppLayout";
@@ -50,12 +58,9 @@ function LegacyRedirect({ to, param }: { to: string; param?: string }) {
   return <Navigate to={`${to}${suffix}${location.search}${location.hash}`} replace />;
 }
 
-export default function App() {
+function AppRoutes() {
   return (
-    <ErrorBoundary>
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
+    <Routes>
           <Route element={<AppLayout />}>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/accessibility" element={<AccessibilityPage />} />
@@ -124,9 +129,21 @@ export default function App() {
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    </Routes>
+  );
+}
+
+// The data-router shell enables route-wide navigation blocking. Module quizzes
+// use it to protect in-progress answers from sidebar/search links and browser
+// Back/Forward, which a page-local Link handler cannot cover.
+const router = createBrowserRouter([{ path: "*", element: <AppRoutes /> }]);
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ErrorBoundary>
   );
 }

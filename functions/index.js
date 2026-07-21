@@ -2,12 +2,13 @@ const { onDocumentWritten } = require("firebase-functions/v2/firestore");
 const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const { onSchedule } = require("firebase-functions/v2/scheduler");
 const { defineSecret } = require("firebase-functions/params");
-const admin = require("firebase-admin");
+const { initializeApp } = require("firebase-admin/app");
+const { FieldValue, getFirestore } = require("firebase-admin/firestore");
 const nodemailer = require("nodemailer");
 const { PDFDocument, rgb, StandardFonts } = require("pdf-lib");
 
-admin.initializeApp();
-const db = admin.firestore();
+initializeApp();
+const db = getFirestore();
 
 // Gmail App Password for the sending account (jeremyswisher13@gmail.com).
 // Requires 2-Step Verification on that account; generate at
@@ -579,7 +580,7 @@ exports.onCourseCompletion = onDocumentWritten(
     // Mark this course's certificate as sent
     await userRef.update({
       [course.sentField]: true,
-      [course.sentAtField]: admin.firestore.FieldValue.serverTimestamp(),
+      [course.sentAtField]: FieldValue.serverTimestamp(),
     });
 
     // Notify admin
@@ -725,7 +726,7 @@ exports.sendCertificate = onCall(
 
     await userRef.update({
       [course.sentField]: true,
-      [course.sentAtField]: admin.firestore.FieldValue.serverTimestamp(),
+      [course.sentAtField]: FieldValue.serverTimestamp(),
       // Audit trail: if this send overrode an incomplete completion gate, record
       // that it was forced and which admin did it.
       ...(force
@@ -755,7 +756,7 @@ exports.trackAnalytics = onDocumentWritten(
     const userRef = db.collection("users").doc(userId);
     const analyticsRef = db.collection("analytics").doc("aggregate");
 
-    const timestamp = admin.firestore.FieldValue.serverTimestamp();
+    const timestamp = FieldValue.serverTimestamp();
 
     // Track individual event
     await db.collection("analytics").doc("events").collection("log").add({
@@ -780,9 +781,9 @@ exports.trackAnalytics = onDocumentWritten(
       const key = `${data.courseId || "knee-mri"}_${data.quizType}_${data.moduleId || "assessment"}`;
       batch.set(quizStatsRef, {
         [key]: {
-          totalAttempts: admin.firestore.FieldValue.increment(1),
-          totalScore: admin.firestore.FieldValue.increment(data.score || 0),
-          totalQuestions: admin.firestore.FieldValue.increment(data.totalQuestions || 0),
+          totalAttempts: FieldValue.increment(1),
+          totalScore: FieldValue.increment(data.score || 0),
+          totalQuestions: FieldValue.increment(data.totalQuestions || 0),
           lastUpdated: new Date().toISOString(),
         },
       }, { merge: true });
@@ -797,7 +798,7 @@ exports.trackAnalytics = onDocumentWritten(
       const moduleStatsRef = db.collection("analytics").doc("moduleStats");
       batch.set(moduleStatsRef, {
         [data.moduleId || event.params.docId]: {
-          completions: admin.firestore.FieldValue.increment(1),
+          completions: FieldValue.increment(1),
           lastCompleted: new Date().toISOString(),
         },
       }, { merge: true });
@@ -808,7 +809,7 @@ exports.trackAnalytics = onDocumentWritten(
       const caseStatsRef = db.collection("analytics").doc("caseStats");
       batch.set(caseStatsRef, {
         [data.caseId || event.params.docId]: {
-          attempts: admin.firestore.FieldValue.increment(1),
+          attempts: FieldValue.increment(1),
           lastAttempted: new Date().toISOString(),
         },
       }, { merge: true });
