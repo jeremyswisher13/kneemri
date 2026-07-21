@@ -141,7 +141,7 @@ Carefully search for an occult fracture, most commonly involving:
 - May impede venous return, causing **periarticular soft tissue edema**
 
 The presence and character of the effusion should be **documented in every knee MRI report**.`,
-    pearl: `A lipohemarthrosis (fat-fluid level in the suprapatellar bursa) is pathognomonic for an intra-articular fracture. When identified, perform a systematic search for occult fractures of the tibial plateau, patella, and femoral condyles. This finding is particularly important because the fracture may not be visible on initial radiographs.`,
+    pearl: `A lipohemarthrosis (fat-fluid level in the suprapatellar bursa) indicates an intra-articular fracture until proven otherwise. When identified, perform a systematic search for occult fractures of the tibial plateau, patella, and femoral condyles. It is best seen on a non-fat-suppressed sequence — fat saturation nulls the fatty layer and the level can vanish. This finding is particularly important because the fracture may not be visible on initial radiographs.`,
   },
   {
     content: `### Baker's Cysts (Popliteal Cysts)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19",
+  "generatedAt": "2026-07-21",
   "course": {
     "id": "knee-mri",
     "title": "UCLA Knee MRI Interpretation Course",
@@ -296,7 +296,7 @@
       ],
       "topicContent": [
         {
-          "content": "### Bone Marrow Edema (BME)\n\n**BME** appears as ill-defined areas of **low signal on T1** and **high signal on PD FS/STIR**, reflecting increased water content in the marrow space. In the trauma setting, BME represents **microtrabecular injury** (bone contusion or bone bruise).\n\nThe location and pattern of bone marrow edema is one of the most **powerful diagnostic clues** on knee MRI — specific injury mechanisms produce characteristic edema patterns.\n\n### Three Questions When You See BME\n\n1. **Where** is the edema?\n2. **One side or both?** — one side suggests compressive injury on that side (or traction on the opposite side); both sides suggests impaction\n3. **Does the pattern match a known injury mechanism?**\n\nThe answers guide you to **associated soft tissue injuries** that you need to actively seek.\n\n### Prognostic Significance\n\n- Extensive edema is associated with **longer recovery times**\n- **Subchondral edema** adjacent to a cartilage defect suggests **mechanical overload**\n\n### Contusion Pattern Summary\n\n| Pattern | Mechanism | Edema Location | Associated Injuries |\n|---|---|---|---|\n| **Pivot-shift** | Valgus + internal rotation | Posterolateral tibial plateau + lateral femoral condyle | **ACL tear**, lateral meniscal tear, PLC injury |\n| **Dashboard** | Anterior blow, knee flexed | Anterior proximal tibia | **PCL tear**, posterior capsule/tibial fracture |\n| **Patellar dislocation** | Lateral patellar subluxation | Medial patellar facet + anterolateral femoral condyle | **MPFL tear**, osteochondral fragments, loose bodies |\n| **Clip/valgus** | Direct lateral blow (valgus) | Lateral femoral condyle + lateral tibial plateau | **MCL tear**, medial meniscal tear |\n| **Hyperextension** | Forced hyperextension | Anterior femoral condyles + anterior tibial plateau | **ACL tear**, **PCL tear**, posterior capsule injury |",
+          "content": "### Bone Marrow Edema (BME)\n\n**BME** appears as ill-defined areas of **low signal on T1** and **high signal on PD FS/STIR**, reflecting increased water content in the marrow space. In the trauma setting, BME represents **microtrabecular injury** (bone contusion or bone bruise).\n\nThe location and pattern of bone marrow edema is one of the most **powerful diagnostic clues** on knee MRI — specific injury mechanisms produce characteristic edema patterns.\n\n### Three Questions When You See BME\n\n1. **Where** is the edema?\n2. **One side or both?** — one side suggests compressive injury on that side (or traction on the opposite side); both sides suggests impaction\n3. **Does the pattern match a known injury mechanism?**\n\nThe answers guide you to **associated soft tissue injuries** that you need to actively seek.\n\n### Prognostic Significance\n\n- Extensive edema is associated with **longer recovery times**\n- **Subchondral edema** adjacent to a cartilage defect suggests **mechanical overload**\n\n### Contusion Pattern Summary\n\n| Pattern | Mechanism | Edema Location | Associated Injuries |\n|---|---|---|---|\n| **Pivot-shift** | Valgus + rotation | Posterolateral tibial plateau + lateral femoral condyle | **ACL tear**, lateral meniscal tear, PLC injury |\n| **Dashboard** | Anterior blow, knee flexed | Anterior proximal tibia | **PCL tear**, posterior capsule/tibial fracture |\n| **Patellar dislocation** | Lateral patellar subluxation | Medial patellar facet + anterolateral femoral condyle | **MPFL tear**, osteochondral fragments, loose bodies |\n| **Clip/valgus** | Direct lateral blow (valgus) | Lateral femoral condyle (larger, direct impaction) + medial femoral condyle (smaller, avulsive at the MCL) | **MCL tear**, medial meniscal tear |\n| **Hyperextension** | Forced hyperextension | Anterior femoral condyles + anterior tibial plateau | **ACL tear**, **PCL tear**, posterior capsule injury |",
           "pearl": "Always evaluate bone marrow edema on both T1 and PD FS. The T1 sequence helps you determine if there is a discrete fracture line (which appears as a low-signal line within the edema) versus diffuse contusion (ill-defined low signal without a discrete line). This distinction matters: fractures may need protected weight-bearing.",
           "images": [
             {
@@ -722,7 +722,7 @@
       ],
       "topicContent": [
         {
-          "content": "### ACL Tears: Primary Signs\n\nThe **ACL** is diagnosed as torn on MRI using a combination of **primary and secondary signs**.\n\n**Primary signs of ACL tear:**\n- **Discontinuity** of the ligament fibers\n- **Abnormal morphology** -- wavy, lax, or horizontally oriented fibers\n- **Abnormal signal intensity** -- edema or hemorrhage within the ligament substance on T2-weighted sequences\n\nOn sagittal images, the intact ACL should appear as a **taut, low-signal band** extending from the lateral femoral condyle to the anterior tibial plateau with a slope approximately parallel to the **Blumensaat line**. A complete tear typically shows a mass of **amorphous, edematous tissue** replacing the normal ligament, often with retraction and an **empty femoral notch**.\n\n### ACL Tears: Secondary Signs\n\nSecondary signs are critical when the primary signs are equivocal:\n\n| Secondary Sign | Description |\n|---------------|-------------|\n| **Pivot-shift bone contusions** | Lateral femoral condyle sulcus + posterolateral tibial plateau |\n| **Anterior tibial translation** | > 5 mm on lateral sagittal image through mid-lateral compartment |\n| **Deepened lateral femoral sulcus** | > 1.5 mm depth |\n| **Segond fracture** | Avulsion of the lateral tibial rim |\n| **Uncovered posterior horn sign** | Lateral meniscus posterior horn uncovered |\n| **PCL buckling / decreased PCL angle** | Secondary sign of anterior tibial translation from ACL insufficiency |\n\nThe combination of **pivot-shift bone bruise pattern** with a disrupted ACL is **highly specific** for ACL tear.",
+          "content": "### ACL Tears: Primary Signs\n\nThe **ACL** is diagnosed as torn on MRI using a combination of **primary and secondary signs**.\n\n**Primary signs of ACL tear:**\n- **Discontinuity** of the ligament fibers\n- **Abnormal morphology** -- wavy, lax, or horizontally oriented fibers\n- **Abnormal signal intensity** -- edema or hemorrhage within the ligament substance on T2-weighted sequences\n\nOn sagittal images, the intact ACL should appear as a **taut, low-signal band** extending from the lateral femoral condyle to the anterior tibial plateau with a slope approximately parallel to the **Blumensaat line**. A complete tear typically shows a mass of **amorphous, edematous tissue** replacing the normal ligament, often with retraction and an **empty femoral notch**.\n\n### ACL Tears: Secondary Signs\n\nSecondary signs are critical when the primary signs are equivocal:\n\n| Secondary Sign | Description |\n|---------------|-------------|\n| **Pivot-shift bone contusions** | Lateral femoral condyle sulcus + posterolateral tibial plateau |\n| **Anterior tibial translation** | ≥ 5 mm (mid-lateral condyle) — ~93% specific, ~58% sensitive (Vahey 1993) |\n| **Deepened lateral femoral sulcus** | > 1.5 mm depth — cut-off from **lateral radiographs** (Cobby 1992); qualitative on MRI |\n| **Segond fracture** | Avulsion of the lateral tibial rim |\n| **Uncovered posterior horn sign** | Lateral meniscus posterior horn uncovered |\n| **PCL buckling / decreased PCL angle** | Secondary sign of anterior tibial translation from ACL insufficiency |\n\nThe combination of **pivot-shift bone bruise pattern** with a disrupted ACL is **highly specific** for ACL tear.",
           "pearl": "Pivot-shift bone contusions on the posterolateral tibial plateau and lateral femoral condyle sulcus are present in up to 80% of acute ACL tears. When you see this bruise pattern, evaluate the ACL with heightened suspicion even if the ligament appears partially intact.",
           "images": [
             {
@@ -822,7 +822,7 @@
           "pearl": "When you see an MCL tear with an ACL injury, always evaluate the posteromedial corner structures (posterior oblique ligament, semimembranosus expansions). Combined ACL + MCL + PMC injury creates anteromedial rotatory instability that may require PMC repair or reconstruction in addition to ACL surgery."
         },
         {
-          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\n| Location | Frequency |\n|----------|-----------|\n| **Femoral attachment** | ~50% of cases |\n| **Patellar attachment** | ~20--30% |\n| **Midsubstance** | ~20--30% |\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** (measured on axial images, **> 20 mm** is pathologic)",
+          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\nThe tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value of 15–20 mm may already be at the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (MRI equivalent ≈ 13 mm).",
           "pearl": "The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.",
           "images": [
             {
@@ -914,7 +914,7 @@
         },
         {
           "content": "### Joint Effusion\n\n**Joint effusion** on MRI provides diagnostic information beyond simply noting its presence.\n\n### Effusion Types\n- **Simple effusions:** Homogeneously bright on T2-weighted sequences and dark on T1-weighted sequences\n- **Complex effusions:** Contain debris, septations, or layering components suggesting **hemarthrosis**, **infection**, or **inflammatory arthropathy**\n\n### Lipohemarthrosis\n\n**Lipohemarthrosis** is a critical finding that indicates an **intra-articular fracture until proven otherwise**.\n\nMRI appearance:\n- **Fat-fluid level** within the suprapatellar bursa (best seen on sagittal or axial T2-weighted or STIR sequences with the knee in extension)\n- **Superior layer:** Fat signal (bright on T1, intermediate on T2)\n- **Inferior layer:** Serous or hemorrhagic fluid\n- **Gradient echo sequences** may show susceptibility (\"blooming\") in the dependent hemorrhagic layer from acute-to-early-subacute blood products (deoxyhemoglobin and intracellular methemoglobin) — not hemosiderin, which is a chronic blood product (e.g., PVNS)\n\n### Fracture Search When Lipohemarthrosis is Identified\nCarefully search for an occult fracture, most commonly involving:\n- **Tibial plateau** (especially the lateral plateau in association with ACL tears)\n- **Patella**\n- **Femoral condyles**\n\n### Secondary Effects of Large Effusions\n- Distension of the **suprapatellar bursa**\n- Displacement of the **prefemoral and infrapatellar fat pads**\n- May impede venous return, causing **periarticular soft tissue edema**\n\nThe presence and character of the effusion should be **documented in every knee MRI report**.",
-          "pearl": "A lipohemarthrosis (fat-fluid level in the suprapatellar bursa) is pathognomonic for an intra-articular fracture. When identified, perform a systematic search for occult fractures of the tibial plateau, patella, and femoral condyles. This finding is particularly important because the fracture may not be visible on initial radiographs."
+          "pearl": "A lipohemarthrosis (fat-fluid level in the suprapatellar bursa) indicates an intra-articular fracture until proven otherwise. When identified, perform a systematic search for occult fractures of the tibial plateau, patella, and femoral condyles. It is best seen on a non-fat-suppressed sequence — fat saturation nulls the fatty layer and the level can vanish. This finding is particularly important because the fracture may not be visible on initial radiographs."
         },
         {
           "content": "### Baker's Cysts (Popliteal Cysts)\n\n**Baker's cysts** arise from the **posteromedial aspect** of the knee between the **medial head of the gastrocnemius** and the **semimembranosus tendon**. They communicate with the joint through a valve-like mechanism at the gastrocnemius-semimembranosus bursa.\n\nBaker's cysts are **commonly secondary** to underlying intra-articular pathology:\n- **Meniscal tears**\n- **Cartilage degeneration**\n- **Inflammatory arthropathy**\n\n### MRI Appearance\n\n**Uncomplicated Baker's cyst:**\n- Well-defined, thin-walled, **fluid-signal collection** in the posteromedial popliteal fossa\n- Characteristic **\"speech bubble\"** or comma shape on axial images\n- The neck can be traced to the interval between the **medial gastrocnemius** and **semimembranosus tendons**\n\n**Ruptured Baker's cyst:**\n- Inferior extension of fluid along the fascial planes of the **medial gastrocnemius**\n- Resembles an **inverted \"U\"** on sagittal images\n- Surrounding edema in the calf\n- Can mimic **deep venous thrombosis** clinically (**pseudothrombophlebitis**)\n\n### Important Mimics and Complications\n- **Complicated cysts:** Internal debris, hemorrhage, loose bodies, or thick walls suggesting **PVNS** or **synovial chondromatosis**\n- **Popliteal artery aneurysm** -- check for flow void\n- **Synovial sarcoma** -- most common malignant mass in the popliteal fossa\n- **Ganglia** arising from the proximal tibiofibular joint",
@@ -1029,11 +1029,11 @@
           "pearl": "Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is a strong marker that should prompt direct evaluation of the full PLC."
         },
         {
-          "content": "### MPFL Tear with Osteochondral Injury\n\n**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.\n\n### Classic Injury Triad\n1. **MPFL tear**\n2. **Osteochondral injury** to the medial patellar facet or lateral femoral condyle\n3. **Possible loose body** from the osteochondral shear injury\n\n### Diagnostic Bone Bruise Pattern\n**Medial patellar facet edema + anterolateral femoral condyle edema** is a **classic, highly suggestive** pattern for transient lateral patellar dislocation, even if the patella has spontaneously reduced at the time of MRI.\n\n### Evaluation Checklist\n\n- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique\n- **Osteochondral injury** -- search for chondral or osteochondral fragments in:\n  - Suprapatellar pouch\n  - Lateral gutter\n  - Posterior recesses\n- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)\n\n### Predisposing Anatomy Assessment\n- **Trochlear dysplasia** (Dejour classification)\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm**)\n\nRecurrent dislocation risk is **high** when multiple anatomic risk factors are present.",
+          "content": "### MPFL Tear with Osteochondral Injury\n\n**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.\n\n### Classic Injury Triad\n1. **MPFL tear**\n2. **Osteochondral injury** to the medial patellar facet or lateral femoral condyle\n3. **Possible loose body** from the osteochondral shear injury\n\n### Diagnostic Bone Bruise Pattern\n**Medial patellar facet edema + anterolateral femoral condyle edema** is a **classic, highly suggestive** pattern for transient lateral patellar dislocation, even if the patella has spontaneously reduced at the time of MRI.\n\n### Evaluation Checklist\n\n- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique\n- **Osteochondral injury** -- search for chondral or osteochondral fragments in:\n  - Suprapatellar pouch\n  - Lateral gutter\n  - Posterior recesses\n- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)\n\n### Predisposing Anatomy Assessment\n- **Trochlear dysplasia** (Dejour classification)\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT**; MRI reads ~3–4 mm lower, so use ~13 mm on MRI — always state the modality)\n\nRecurrent dislocation risk is **high** when multiple anatomic risk factors are present.",
           "pearl": "When you see medial patellar facet + anterolateral femoral condyle bone bruises, the diagnosis is lateral patellar dislocation. Your checklist: (1) MPFL tear location, (2) osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patella alta, (5) TT-TG distance. Missing the loose body can result in ongoing mechanical symptoms."
         },
         {
-          "content": "### Lipohemarthrosis\n\n**Lipohemarthrosis** on knee MRI is **pathognomonic for an intra-articular fracture** and requires an immediate systematic search for the fracture source.\n\nThe **fat-fluid level** is caused by marrow fat released from a fracture line communicating with the joint space, mixing with hemorrhagic joint fluid. Best visualized on **sagittal or axial T2-weighted or STIR images** through the suprapatellar bursa.\n\n### Most Common Associated Fractures\n- **Tibial plateau fractures** (particularly the lateral plateau in ACL tear mechanisms)\n- **Distal femoral fractures**\n- **Patellar fractures**\n\n### Subtle Tibial Plateau Fractures\n**Tibial plateau fractures** may be subtle on MRI:\n- Look for **cortical step-off**\n- **Impaction of subchondral bone**\n- **Linear low-signal fracture lines** on T1-weighted images surrounded by bone marrow edema\n- **Depression fractures** of the lateral tibial plateau are particularly easy to miss (subtle depression, edema pattern mimics a bone contusion)\n\n### Second-Look Search Protocol\n\nWhen a lipohemarthrosis is identified but no obvious fracture is seen, perform a **dedicated second-look search**:\n- **Tibial plateaus** -- sagittal and coronal images for cortical irregularity and subchondral impaction\n- **Patella** -- transverse or vertical fracture lines\n- **Femoral condyles** -- osteochondral fractures\n- **Fibular head** -- avulsion fractures\n\n**CT** may be recommended for surgical planning if a tibial plateau fracture is identified, as MRI can underestimate the degree of articular depression and comminution.",
+          "content": "### Lipohemarthrosis\n\n**Lipohemarthrosis** (a fat–fluid level) on knee MRI indicates an **intra-articular fracture until proven otherwise** and requires an immediate systematic search for the fracture source. It is best seen on a **non–fat-suppressed** sequence — fat saturation nulls the fatty layer and the level can disappear.\n\nThe **fat-fluid level** is caused by marrow fat released from a fracture line communicating with the joint space, mixing with hemorrhagic joint fluid. Best visualized on **sagittal or axial T2-weighted or STIR images** through the suprapatellar bursa.\n\n### Most Common Associated Fractures\n- **Tibial plateau fractures** (particularly the lateral plateau in ACL tear mechanisms)\n- **Distal femoral fractures**\n- **Patellar fractures**\n\n### Subtle Tibial Plateau Fractures\n**Tibial plateau fractures** may be subtle on MRI:\n- Look for **cortical step-off**\n- **Impaction of subchondral bone**\n- **Linear low-signal fracture lines** on T1-weighted images surrounded by bone marrow edema\n- **Depression fractures** of the lateral tibial plateau are particularly easy to miss (subtle depression, edema pattern mimics a bone contusion)\n\n### Second-Look Search Protocol\n\nWhen a lipohemarthrosis is identified but no obvious fracture is seen, perform a **dedicated second-look search**:\n- **Tibial plateaus** -- sagittal and coronal images for cortical irregularity and subchondral impaction\n- **Patella** -- transverse or vertical fracture lines\n- **Femoral condyles** -- osteochondral fractures\n- **Fibular head** -- avulsion fractures\n\n**CT** may be recommended for surgical planning if a tibial plateau fracture is identified, as MRI can underestimate the degree of articular depression and comminution.",
           "pearl": "A lipohemarthrosis without an identified fracture should prompt a second dedicated search. The most commonly missed fractures are subtle lateral tibial plateau depression fractures -- look for cortical irregularity and subchondral impaction on coronal images. If a plateau fracture is found, recommend CT for surgical planning."
         },
         {
@@ -1617,8 +1617,8 @@
         },
         {
           "src": "/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg",
-          "alt": "Lateral meniscal root tear with ghost meniscus sign",
-          "caption": "Lateral meniscal root tear — ghost meniscus sign",
+          "alt": "Ghost meniscus sign of a posterior root tear (lateral example)",
+          "caption": "Ghost meniscus sign of a posterior root tear. This published example is a LATERAL root tear; this case is a MEDIAL root tear — the sign looks the same, but the finding sits at the medial root, anteromedial to the PCL.",
           "attribution": "Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.",
           "step": 4
         }
@@ -3550,7 +3550,7 @@
               "Medial femoral condyle alone"
             ],
             "answer": 0,
-            "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL, most often at its femoral (adductor tubercle) origin (patellar-sided and mid-substance tears also occur)."
+            "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk)."
           }
         ]
       },
@@ -4923,7 +4923,7 @@
       {
         "id": "patellofemoral-2",
         "topic": "Patellofemoral & extensor",
-        "prompt": "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau?",
+        "prompt": "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
         "options": [
           "Insall-Salvati ratio",
           "Caton-Deschamps index",
@@ -4931,7 +4931,7 @@
           "Modified Insall-Salvati ratio measured to the inferior pole of the patella"
         ],
         "answer": 1,
-        "explanation": "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) is favored because it avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio."
+        "explanation": "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio. Note it is a RADIOGRAPHIC index — measure it on a lateral radiograph, since single-slice MRI inflates it by up to ~9%. It is not the most cross-modality-reliable index overall (Insall-Salvati is more reproducible across modalities); it is simply the one least affected by tendon variability."
       },
       {
         "id": "patellofemoral-3",
@@ -5022,7 +5022,7 @@
           "Anterior tibia and anterior femur with patellar contusion"
         ],
         "answer": 0,
-        "explanation": "The pivot-shift (valgus + internal tibial rotation + anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign."
+        "explanation": "The pivot-shift (a valgus load on the flexed knee with rotation and anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign. (The exact rotation direction is described inconsistently — the injury source describes external tibial rotation, the clinical pivot-shift test internal — so 'valgus with rotation' is the safe phrasing.)"
       },
       {
         "id": "marrow-2",
@@ -5585,7 +5585,7 @@
         },
         {
           "key": "B",
-          "text": "It abolishes hoop-stress generation, transferring load directly to articular cartilage as in a meniscectomized knee"
+          "text": "It eliminates effective hoop-stress transmission, transferring load onto the articular cartilage as in a meniscectomized knee"
         },
         {
           "key": "C",
@@ -5597,7 +5597,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "Detachment of the posterior root releases the circumferential fibers, so axial compressive load is no longer converted into hoop stress and is instead dumped onto the chondral surface — the same biomechanical state as a total meniscectomy, which is why extrusion (here 5 mm) is reported. Option A understates the lesion by treating a complete root avulsion as a partial stiffening change. Options C and D reflect misconceptions that the root governs only rotation or is merely an inflammatory finding, when in fact it is the principal anchor for compartment load-bearing.",
+      "explanation": "Detachment of the posterior root releases the circumferential fibers so axial load is no longer converted into hoop stress and is dumped onto the chondral surface. In cadaveric testing, a medial posterior root tear raised medial-compartment peak contact pressure by 25% with no detectable difference from total medial meniscectomy, and root repair restored pressures to normal (Allaire 2008) — which is why the finding is reported as functionally equivalent to a meniscectomy and why repair, not observation, is the surgical goal. Option A understates the lesion by treating a complete root avulsion as a partial stiffening change. Options C and D reflect misconceptions that the root governs only rotation or is merely an inflammatory finding, when in fact it is the principal anchor for compartment load-bearing.",
       "cognitiveLevel": "analyze"
     },
     {
@@ -5800,7 +5800,7 @@
         }
       ],
       "correctAnswer": "D",
-      "explanation": "Fluid signal filling a defect that spans the entire cartilage depth to the subchondral bone, but with the bone plate intact, is a full-thickness (modified Outerbridge/ICRS grade 4) chondral lesion — it is reported as full-thickness because cartilage loss reaches the plate, yet it remains a chondral, not osteochondral, injury. Option A undercalls a full-thickness defect as a partial one (<50% depth). Option C overcalls it as an osteochondral fracture; the subchondral bone is preserved here, distinguishing a pure chondral defect from an osteochondral one. Option B ignores the visible cartilage defect entirely.",
+      "explanation": "Fluid signal filling a defect that spans the entire cartilage depth down to the subchondral bone, with the bone plate intact, is a full-thickness chondral defect. Watch the grading system, because the two label this differently: it is modified Outerbridge grade IV (full-thickness loss with the plate exposed), but ICRS grade 3 — specifically ICRS 3C, 'down to but not through the subchondral bone' — because ICRS reserves grade 4 for a defect that breaches the subchondral plate into bone. Either way it remains a chondral, not osteochondral, injury. Option A undercalls a full-thickness defect as a partial one (<50% depth). Option C overcalls it as an osteochondral fracture; the subchondral bone is preserved here, distinguishing a pure chondral defect from an osteochondral one. Option B ignores the visible cartilage defect entirely.",
       "cognitiveLevel": "apply"
     },
     {
@@ -6826,11 +6826,11 @@
           },
           {
             "key": "D",
-            "text": "By cases 40-50, residents complete the search pattern in 8-10 minutes with no increase in errors; the pattern has become automatic and reading speed actually increases because they no longer waste time deciding what to evaluate next."
+            "text": "With repetition, residents complete the search pattern without an increase in errors; the pattern becomes automatic and reading speed increases because they no longer spend time deciding what to evaluate next."
           }
         ],
         "correctAnswer": "D",
-        "explanation": "Systematic search patterns require deliberate practice (50-100 cases) to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.",
+        "explanation": "Systematic search patterns take sustained repetition to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. (The specific number of cases and minutes varies by reader and is offered as faculty experience, not a published benchmark.) Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.",
         "topicIndex": 3
       },
       {
@@ -7147,7 +7147,7 @@
           },
           {
             "key": "B",
-            "text": "Lateral aspect of the medial femoral condyle (~70–80%); fragment stability"
+            "text": "Lateral (posterolateral) aspect of the medial femoral condyle; fragment stability"
           },
           {
             "key": "C",
@@ -7159,7 +7159,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "The classic OCD location is the lateral aspect of the MEDIAL femoral condyle (~70–80% of knee OCD). Size and location are reported, but fragment STABILITY is the key determination driving management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.",
+        "explanation": "The classic OCD location is the lateral/posterolateral, relatively non-weight-bearing aspect of the MEDIAL femoral condyle; published series put medial-femoral-condyle involvement somewhere between about 70% and 85% of knee OCD, with the classic sub-site accounting for much but not all of that — quote the location, not a precise percentage. Size and location are reported, but fragment STABILITY is the key determinant of management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.",
         "topicIndex": 2
       },
       {
@@ -7228,7 +7228,7 @@
           },
           {
             "key": "C",
-            "text": "Grade 3 signal must contact an articular surface on at least two consecutive images to confidently diagnose a tear"
+            "text": "Grade 3 signal must contact an articular surface on at least two images to confidently diagnose a tear"
           },
           {
             "key": "D",
@@ -7236,7 +7236,7 @@
           }
         ],
         "correctAnswer": "C",
-        "explanation": "The two-slice-touch rule states that to confidently diagnose a meniscal tear, grade 3 signal (contacting an articular surface) should be identified on at least two consecutive sagittal images. This rule improves specificity and helps avoid false-positive diagnoses from volume averaging or magic angle artifact on a single slice.",
+        "explanation": "The two-slice-touch rule states that a meniscus is called torn when grade 3 signal contacts an articular surface on two or more MR images (the images need not be contiguous, and cross-plane corroboration — e.g., one sagittal plus one coronal at the same spot — counts); one image alone is reported as \"possibly torn.\" Applying it raised positive predictive value from 83% to 96% for the lateral meniscus and from 91% to 94% for the medial meniscus (De Smet & Tuite, AJR 2006). It improves specificity by avoiding false positives from volume averaging or magic-angle on a single slice. Exception: a meniscal root on one image still warrants the call.",
         "topicIndex": 1
       },
       {
@@ -7336,7 +7336,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (≈16–24% of ACL-deficient knees) and is notoriously underdiagnosed on MRI (sensitivity ~48–65%). In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences; it can be repaired at the time of ACL reconstruction.",
+        "explanation": "A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (reported prevalence in ACL-deficient knees varies widely, roughly 9–40%, rising with chronicity) and is easily missed on MRI: pooled sensitivity is only about 65–71% at 88–94% specificity across systematic reviews, so a NEGATIVE MRI does not exclude a ramp lesion. In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences (look for the posteromedial tibial bruise as a secondary clue); it can be repaired at the time of ACL reconstruction.",
         "topicIndex": 4
       },
       {
@@ -7361,7 +7361,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "Extrusion >3 mm beyond the tibial plateau margin (coronal mid-body slice, reference line at the tibial margin) is pathologic; >5 mm is severe. Significant extrusion should trigger a careful search for a meniscal ROOT tear, which abolishes hoop-stress and is functionally equivalent to a total meniscectomy. Medial extrusion is more clinically significant than lateral.",
+        "explanation": "Extrusion >3 mm beyond the tibial plateau margin on the coronal mid-body slice is the conventional cut-off for \"major\" (pathologic) extrusion (Gale 1999; Costa 2004) — root tears were present in 42% of knees with major extrusion vs 3% with minor. It is sensitive but not specific (mean medial extrusion is already ~2.6 mm in the general older population), so treat it as a search trigger, report the measured value rather than assigning a \"severe\" tier (no validated separate cut-off exists), and use it to prompt a careful search for a meniscal ROOT tear, which releases hoop-stress and loads the compartment like a total meniscectomy. Do NOT apply the 3 mm rule to the lateral meniscus, which barely extrudes even with a complete lateral root tear. Medial extrusion is more clinically significant than lateral.",
         "topicIndex": 6
       },
       {
@@ -7411,7 +7411,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — the most reliable test in the post-operative meniscus.",
+        "explanation": "Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — which outperforms conventional MRI in the post-operative meniscus (accuracy ~85–93% vs ~57–80%), chiefly after meniscal REPAIR or resection of more than ~25% of the meniscus; with minimal resection, conventional MRI usually suffices.",
         "topicIndex": 8
       }
     ],
@@ -7438,7 +7438,7 @@
           }
         ],
         "correctAnswer": "D",
-        "explanation": "Secondary signs of ACL tear include anterior tibial translation (>5 mm), a deep lateral femoral sulcus (notch sign >1.5 mm), uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings increase diagnostic confidence when the ACL is difficult to evaluate directly.",
+        "explanation": "Secondary signs of ACL tear include anterior tibial translation measured at the mid-lateral femoral condyle (≥5 mm is ~93% specific but only ~58% sensitive; ≥7 mm was 100% specific in the original series — Vahey 1993), a deep lateral femoral (condylopatellar) sulcus — the classic >1.5 mm cut-off was derived on LATERAL RADIOGRAPHS (Cobby 1992), so on MRI treat it as a qualitative \"unusually deep sulcus\"; it is highly specific but insensitive — uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings are specific but insensitive; they increase confidence when the ACL is hard to evaluate directly, but their absence does not exclude a tear.",
         "topicIndex": 0
       },
       {
@@ -7665,7 +7665,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). Partial tears most commonly involve the deep (vastus intermedius) layer near the patellar insertion. Because the robust superficial rectus femoris fibers often remain intact, the patient may still actively extend the knee, making the injury deceptively subtle — scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images.",
+        "explanation": "The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). The superficial and middle layers actually tear more often than the deep layer — but what is distinctive about the deep vastus intermedius layer is that when injured the tear is more often PARTIAL than complete, and an isolated deep-layer partial tear is the one most easily missed: the intact superficial rectus femoris fibers preserve active extension, so scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images even when the superficial layer looks normal.",
         "topicIndex": 0
       },
       {
@@ -7690,7 +7690,7 @@
           }
         ],
         "correctAnswer": "C",
-        "explanation": "In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Reporting the degree of retraction and the gap size helps the surgeon plan repair. An Insall-Salvati ratio greater than 1.2 supports the diagnosis of patella alta, though comparison with the contralateral side is ideal.",
+        "explanation": "In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Patella alta can be quantified with the Insall-Salvati ratio (>1.2), but that index was defined on lateral radiographs at ~30° of flexion and is unreliable when the patellar tendon itself is disrupted — in a complete rupture, simply report the patellar position, the gap size, and the degree of tendon retraction, ideally compared with the contralateral side.",
         "topicIndex": 1
       },
       {
@@ -9322,11 +9322,11 @@
         },
         {
           "key": "D",
-          "text": "By cases 40-50, residents complete the search pattern in 8-10 minutes with no increase in errors; the pattern has become automatic and reading speed actually increases because they no longer waste time deciding what to evaluate next."
+          "text": "With repetition, residents complete the search pattern without an increase in errors; the pattern becomes automatic and reading speed increases because they no longer spend time deciding what to evaluate next."
         }
       ],
       "correctAnswer": "D",
-      "explanation": "Systematic search patterns require deliberate practice (50-100 cases) to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.",
+      "explanation": "Systematic search patterns take sustained repetition to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. (The specific number of cases and minutes varies by reader and is offered as faculty experience, not a published benchmark.) Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.",
       "source": "Module quiz",
       "moduleId": "search-pattern-overview",
       "topicIndex": 3,
@@ -9665,7 +9665,7 @@
         },
         {
           "key": "B",
-          "text": "Lateral aspect of the medial femoral condyle (~70–80%); fragment stability"
+          "text": "Lateral (posterolateral) aspect of the medial femoral condyle; fragment stability"
         },
         {
           "key": "C",
@@ -9677,7 +9677,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The classic OCD location is the lateral aspect of the MEDIAL femoral condyle (~70–80% of knee OCD). Size and location are reported, but fragment STABILITY is the key determination driving management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.",
+      "explanation": "The classic OCD location is the lateral/posterolateral, relatively non-weight-bearing aspect of the MEDIAL femoral condyle; published series put medial-femoral-condyle involvement somewhere between about 70% and 85% of knee OCD, with the classic sub-site accounting for much but not all of that — quote the location, not a precise percentage. Size and location are reported, but fragment STABILITY is the key determinant of management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.",
       "source": "Module quiz",
       "moduleId": "cartilage-osteochondral",
       "topicIndex": 2,
@@ -9750,7 +9750,7 @@
         },
         {
           "key": "C",
-          "text": "Grade 3 signal must contact an articular surface on at least two consecutive images to confidently diagnose a tear"
+          "text": "Grade 3 signal must contact an articular surface on at least two images to confidently diagnose a tear"
         },
         {
           "key": "D",
@@ -9758,7 +9758,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "The two-slice-touch rule states that to confidently diagnose a meniscal tear, grade 3 signal (contacting an articular surface) should be identified on at least two consecutive sagittal images. This rule improves specificity and helps avoid false-positive diagnoses from volume averaging or magic angle artifact on a single slice.",
+      "explanation": "The two-slice-touch rule states that a meniscus is called torn when grade 3 signal contacts an articular surface on two or more MR images (the images need not be contiguous, and cross-plane corroboration — e.g., one sagittal plus one coronal at the same spot — counts); one image alone is reported as \"possibly torn.\" Applying it raised positive predictive value from 83% to 96% for the lateral meniscus and from 91% to 94% for the medial meniscus (De Smet & Tuite, AJR 2006). It improves specificity by avoiding false positives from volume averaging or magic-angle on a single slice. Exception: a meniscal root on one image still warrants the call.",
       "source": "Module quiz",
       "moduleId": "menisci",
       "topicIndex": 1,
@@ -9866,7 +9866,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (≈16–24% of ACL-deficient knees) and is notoriously underdiagnosed on MRI (sensitivity ~48–65%). In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences; it can be repaired at the time of ACL reconstruction.",
+      "explanation": "A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (reported prevalence in ACL-deficient knees varies widely, roughly 9–40%, rising with chronicity) and is easily missed on MRI: pooled sensitivity is only about 65–71% at 88–94% specificity across systematic reviews, so a NEGATIVE MRI does not exclude a ramp lesion. In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences (look for the posteromedial tibial bruise as a secondary clue); it can be repaired at the time of ACL reconstruction.",
       "source": "Module quiz",
       "moduleId": "menisci",
       "topicIndex": 4,
@@ -9893,7 +9893,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "Extrusion >3 mm beyond the tibial plateau margin (coronal mid-body slice, reference line at the tibial margin) is pathologic; >5 mm is severe. Significant extrusion should trigger a careful search for a meniscal ROOT tear, which abolishes hoop-stress and is functionally equivalent to a total meniscectomy. Medial extrusion is more clinically significant than lateral.",
+      "explanation": "Extrusion >3 mm beyond the tibial plateau margin on the coronal mid-body slice is the conventional cut-off for \"major\" (pathologic) extrusion (Gale 1999; Costa 2004) — root tears were present in 42% of knees with major extrusion vs 3% with minor. It is sensitive but not specific (mean medial extrusion is already ~2.6 mm in the general older population), so treat it as a search trigger, report the measured value rather than assigning a \"severe\" tier (no validated separate cut-off exists), and use it to prompt a careful search for a meniscal ROOT tear, which releases hoop-stress and loads the compartment like a total meniscectomy. Do NOT apply the 3 mm rule to the lateral meniscus, which barely extrudes even with a complete lateral root tear. Medial extrusion is more clinically significant than lateral.",
       "source": "Module quiz",
       "moduleId": "menisci",
       "topicIndex": 6,
@@ -9947,7 +9947,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — the most reliable test in the post-operative meniscus.",
+      "explanation": "Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — which outperforms conventional MRI in the post-operative meniscus (accuracy ~85–93% vs ~57–80%), chiefly after meniscal REPAIR or resection of more than ~25% of the meniscus; with minimal resection, conventional MRI usually suffices.",
       "source": "Module quiz",
       "moduleId": "menisci",
       "topicIndex": 8,
@@ -9974,7 +9974,7 @@
         }
       ],
       "correctAnswer": "D",
-      "explanation": "Secondary signs of ACL tear include anterior tibial translation (>5 mm), a deep lateral femoral sulcus (notch sign >1.5 mm), uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings increase diagnostic confidence when the ACL is difficult to evaluate directly.",
+      "explanation": "Secondary signs of ACL tear include anterior tibial translation measured at the mid-lateral femoral condyle (≥5 mm is ~93% specific but only ~58% sensitive; ≥7 mm was 100% specific in the original series — Vahey 1993), a deep lateral femoral (condylopatellar) sulcus — the classic >1.5 mm cut-off was derived on LATERAL RADIOGRAPHS (Cobby 1992), so on MRI treat it as a qualitative \"unusually deep sulcus\"; it is highly specific but insensitive — uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings are specific but insensitive; they increase confidence when the ACL is hard to evaluate directly, but their absence does not exclude a tear.",
       "source": "Module quiz",
       "moduleId": "ligaments",
       "topicIndex": 0,
@@ -10217,7 +10217,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). Partial tears most commonly involve the deep (vastus intermedius) layer near the patellar insertion. Because the robust superficial rectus femoris fibers often remain intact, the patient may still actively extend the knee, making the injury deceptively subtle — scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images.",
+      "explanation": "The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). The superficial and middle layers actually tear more often than the deep layer — but what is distinctive about the deep vastus intermedius layer is that when injured the tear is more often PARTIAL than complete, and an isolated deep-layer partial tear is the one most easily missed: the intact superficial rectus femoris fibers preserve active extension, so scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images even when the superficial layer looks normal.",
       "source": "Module quiz",
       "moduleId": "extensor-synovium",
       "topicIndex": 0,
@@ -10244,7 +10244,7 @@
         }
       ],
       "correctAnswer": "C",
-      "explanation": "In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Reporting the degree of retraction and the gap size helps the surgeon plan repair. An Insall-Salvati ratio greater than 1.2 supports the diagnosis of patella alta, though comparison with the contralateral side is ideal.",
+      "explanation": "In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Patella alta can be quantified with the Insall-Salvati ratio (>1.2), but that index was defined on lateral radiographs at ~30° of flexion and is unreliable when the patellar tendon itself is disrupted — in a complete rupture, simply report the patellar position, the gap size, and the degree of tendon retraction, ideally compared with the contralateral side.",
       "source": "Module quiz",
       "moduleId": "extensor-synovium",
       "topicIndex": 1,
@@ -11618,7 +11618,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL, most often at its femoral (adductor tubercle) origin (patellar-sided and mid-substance tears also occur).",
+      "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk).",
       "source": "Knee MRI · Axial",
       "courseId": "knee-mri",
       "image": {
@@ -12470,7 +12470,7 @@
       "courseId": "knee-mri"
     },
     "knee-mri::patellofemoral-2": {
-      "stem": "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau?",
+      "stem": "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
       "options": [
         {
           "key": "A",
@@ -12490,7 +12490,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) is favored because it avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio.",
+      "explanation": "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio. Note it is a RADIOGRAPHIC index — measure it on a lateral radiograph, since single-slice MRI inflates it by up to ~9%. It is not the most cross-modality-reliable index overall (Insall-Salvati is more reproducible across modalities); it is simply the one least affected by tendon variability.",
       "source": "Knee MRI · Advanced",
       "courseId": "knee-mri"
     },
@@ -12665,7 +12665,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "The pivot-shift (valgus + internal tibial rotation + anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign.",
+      "explanation": "The pivot-shift (a valgus load on the flexed knee with rotation and anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign. (The exact rotation direction is described inconsistently — the injury source describes external tibial rotation, the clinical pivot-shift test internal — so 'valgus with rotation' is the safe phrasing.)",
       "source": "Knee MRI · Advanced",
       "courseId": "knee-mri"
     },
@@ -14840,7 +14840,7 @@
         },
         {
           "key": "B",
-          "text": "It abolishes hoop-stress generation, transferring load directly to articular cartilage as in a meniscectomized knee"
+          "text": "It eliminates effective hoop-stress transmission, transferring load onto the articular cartilage as in a meniscectomized knee"
         },
         {
           "key": "C",
@@ -14852,7 +14852,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "Detachment of the posterior root releases the circumferential fibers, so axial compressive load is no longer converted into hoop stress and is instead dumped onto the chondral surface — the same biomechanical state as a total meniscectomy, which is why extrusion (here 5 mm) is reported. Option A understates the lesion by treating a complete root avulsion as a partial stiffening change. Options C and D reflect misconceptions that the root governs only rotation or is merely an inflammatory finding, when in fact it is the principal anchor for compartment load-bearing.",
+      "explanation": "Detachment of the posterior root releases the circumferential fibers so axial load is no longer converted into hoop stress and is dumped onto the chondral surface. In cadaveric testing, a medial posterior root tear raised medial-compartment peak contact pressure by 25% with no detectable difference from total medial meniscectomy, and root repair restored pressures to normal (Allaire 2008) — which is why the finding is reported as functionally equivalent to a meniscectomy and why repair, not observation, is the surgical goal. Option A understates the lesion by treating a complete root avulsion as a partial stiffening change. Options C and D reflect misconceptions that the root governs only rotation or is merely an inflammatory finding, when in fact it is the principal anchor for compartment load-bearing.",
       "source": "Pre/Post assessment",
       "courseId": "knee-mri"
     },
@@ -15027,7 +15027,7 @@
         }
       ],
       "correctAnswer": "D",
-      "explanation": "Fluid signal filling a defect that spans the entire cartilage depth to the subchondral bone, but with the bone plate intact, is a full-thickness (modified Outerbridge/ICRS grade 4) chondral lesion — it is reported as full-thickness because cartilage loss reaches the plate, yet it remains a chondral, not osteochondral, injury. Option A undercalls a full-thickness defect as a partial one (<50% depth). Option C overcalls it as an osteochondral fracture; the subchondral bone is preserved here, distinguishing a pure chondral defect from an osteochondral one. Option B ignores the visible cartilage defect entirely.",
+      "explanation": "Fluid signal filling a defect that spans the entire cartilage depth down to the subchondral bone, with the bone plate intact, is a full-thickness chondral defect. Watch the grading system, because the two label this differently: it is modified Outerbridge grade IV (full-thickness loss with the plate exposed), but ICRS grade 3 — specifically ICRS 3C, 'down to but not through the subchondral bone' — because ICRS reserves grade 4 for a defect that breaches the subchondral plate into bone. Either way it remains a chondral, not osteochondral, injury. Option A undercalls a full-thickness defect as a partial one (<50% depth). Option C overcalls it as an osteochondral fracture; the subchondral bone is preserved here, distinguishing a pure chondral defect from an osteochondral one. Option B ignores the visible cartilage defect entirely.",
       "source": "Pre/Post assessment",
       "courseId": "knee-mri"
     },

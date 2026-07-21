@@ -4669,7 +4669,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/quizzes/module-quizzes.ts",
-    "textPreview": "What is the classic location of knee osteochondritis dissecans (OCD), and which feature most drives surgical decision-making? | A. Patellar median ridge; lesion size | B. Lateral aspect of the medial femoral condyle (~70–80%); fragment stability | C. Central weight-bearing lat..."
+    "textPreview": "What is the classic location of knee osteochondritis dissecans (OCD), and which feature most drives surgical decision-making? | A. Patellar median ridge; lesion size | B. Lateral (posterolateral) aspect of the medial femoral condyle; fragment stability | C. Central weight-bear..."
   },
   {
     "courseId": "knee-mri",
@@ -4811,7 +4811,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/quizzes/module-quizzes.ts",
     "textPreview": "A 40-year-old male presents with inability to extend the knee after jumping. MRI shows complete discontinuity of the patellar tendon with retraction and a superiorly displaced patella. What additional finding should you evaluate for? | A. ACL tear | B. Associated meniscal tear..."
@@ -6108,7 +6109,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What is the classic location of knee osteochondritis dissecans (OCD), and which feature most drives surgical decision-making? | A. Patellar median ridge; lesion size | B. Lateral aspect of the medial femoral condyle (~70–80%); fragment stability | C. Central weight-bearing lat..."
+    "textPreview": "What is the classic location of knee osteochondritis dissecans (OCD), and which feature most drives surgical decision-making? | A. Patellar median ridge; lesion size | B. Lateral (posterolateral) aspect of the medial femoral condyle; fragment stability | C. Central weight-bear..."
   },
   {
     "courseId": "knee-mri",
@@ -6250,7 +6251,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "A 40-year-old male presents with inability to extend the knee after jumping. MRI shows complete discontinuity of the patellar tendon with retraction and a superiorly displaced patella. What additional finding should you evaluate for? | A. ACL tear | B. Associated meniscal tear..."
@@ -17830,7 +17832,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What is trochlear dysplasia? | Trochlear dysplasia is a shallow or flat trochlear groove that predisposes to patellar instability. On axial images, look for a flat or convex trochlear sulcus instead of the normal concavity. The sulcus angle (normally less than 144 degrees) and..."
+    "textPreview": "What is trochlear dysplasia? | Trochlear dysplasia is a shallow or flat trochlear groove that predisposes to patellar instability. On axial images, look for a flat or convex trochlear sulcus instead of the normal concavity. The sulcus angle and trochlear depth can be measured ..."
   },
   {
     "courseId": "knee-mri",
@@ -19350,7 +19352,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/modules/index.ts",
-    "textPreview": "### Lipohemarthrosis **Lipohemarthrosis** on knee MRI is **pathognomonic for an intra-articular fracture** and requires an immediate systematic search for the fracture source. The **fat-fluid level** is caused by marrow fat released from a fracture line communicating with the ..."
+    "textPreview": "### Lipohemarthrosis **Lipohemarthrosis** (a fat–fluid level) on knee MRI indicates an **intra-articular fracture until proven otherwise** and requires an immediate systematic search for the fracture source. It is best seen on a **non–fat-suppressed** sequence — fat saturation..."
   },
   {
     "courseId": "knee-mri",
@@ -22043,7 +22045,7 @@
     "itemType": "normal-advanced-question",
     "itemId": "patellofemoral-2",
     "section": "normal-mri",
-    "title": "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau?",
+    "title": "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -22051,7 +22053,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "Patellofemoral & extensor | Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial p..."
+    "textPreview": "Patellofemoral & extensor | Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon? | Insall-Salvati ratio | Caton-Deschamps index | Blackburne-Peel..."
   },
   {
     "courseId": "knee-mri",
@@ -22399,7 +22401,7 @@
     "itemType": "review-registry-question",
     "itemId": "knee-mri::patellofemoral-2",
     "section": "spaced-review-registry",
-    "title": "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau?",
+    "title": "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -22407,7 +22409,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau? | A. Insall-Salvati ..."
+    "textPreview": "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon? | A. Insall-Salvati ratio | B. Caton-Deschamps index | C. Blackburne-Peel index measured to ..."
   },
   {
     "courseId": "knee-mri",

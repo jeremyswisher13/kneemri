@@ -556,10 +556,10 @@ The answers guide you to **associated soft tissue injuries** that you need to ac
 
 | Pattern | Mechanism | Edema Location | Associated Injuries |
 |---|---|---|---|
-| **Pivot-shift** | Valgus + internal rotation | Posterolateral tibial plateau + lateral femoral condyle | **ACL tear**, lateral meniscal tear, PLC injury |
+| **Pivot-shift** | Valgus + rotation | Posterolateral tibial plateau + lateral femoral condyle | **ACL tear**, lateral meniscal tear, PLC injury |
 | **Dashboard** | Anterior blow, knee flexed | Anterior proximal tibia | **PCL tear**, posterior capsule/tibial fracture |
 | **Patellar dislocation** | Lateral patellar subluxation | Medial patellar facet + anterolateral femoral condyle | **MPFL tear**, osteochondral fragments, loose bodies |
-| **Clip/valgus** | Direct lateral blow (valgus) | Lateral femoral condyle + lateral tibial plateau | **MCL tear**, medial meniscal tear |
+| **Clip/valgus** | Direct lateral blow (valgus) | Lateral femoral condyle (larger, direct impaction) + medial femoral condyle (smaller, avulsive at the MCL) | **MCL tear**, medial meniscal tear |
 | **Hyperextension** | Forced hyperextension | Anterior femoral condyles + anterior tibial plateau | **ACL tear**, **PCL tear**, posterior capsule injury |`,
         pearl:
           'Always evaluate bone marrow edema on both T1 and PD FS. The T1 sequence helps you determine if there is a discrete fracture line (which appears as a low-signal line within the edema) versus diffuse contusion (ill-defined low signal without a discrete line). This distinction matters: fractures may need protected weight-bearing.',

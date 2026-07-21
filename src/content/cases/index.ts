@@ -384,8 +384,8 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg',
-        alt: 'Lateral meniscal root tear with ghost meniscus sign',
-        caption: 'Lateral meniscal root tear — ghost meniscus sign',
+        alt: 'Ghost meniscus sign of a posterior root tear (lateral example)',
+        caption: 'Ghost meniscus sign of a posterior root tear. This published example is a LATERAL root tear; this case is a MEDIAL root tear — the sign looks the same, but the finding sits at the medial root, anteromedial to the PCL.',
         attribution: 'Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.',
         step: 4,
       },

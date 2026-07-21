@@ -780,10 +780,10 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "patellofemoral-2",
     topic: "Patellofemoral & extensor",
-    prompt: "Which of the following is the most reliable and reproducible radiographic/MRI index for diagnosing patella alta because it is independent of patellar tendon variability and uses the articular cartilage surface of the patella relative to the tibial plateau?",
+    prompt: "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
     options: ["Insall-Salvati ratio", "Caton-Deschamps index", "Blackburne-Peel index measured to the patellar tendon insertion", "Modified Insall-Salvati ratio measured to the inferior pole of the patella"],
     answer: 1,
-    explanation: "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) is favored because it avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio.",
+    explanation: "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio. Note it is a RADIOGRAPHIC index — measure it on a lateral radiograph, since single-slice MRI inflates it by up to ~9%. It is not the most cross-modality-reliable index overall (Insall-Salvati is more reproducible across modalities); it is simply the one least affected by tendon variability.",
   },
   {
     id: "patellofemoral-3",
@@ -839,7 +839,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 24-year-old presents after a non-contact pivoting injury. MRI shows ACL discontinuity. Regarding the classic pivot-shift contusion pattern, which paired location of marrow edema is MOST specific for this mechanism?",
     options: ["Posterolateral tibial plateau and mid-lateral femoral condyle (near the terminal sulcus)", "Anteromedial femoral condyle and anteromedial tibial plateau", "Posteromedial tibial plateau and medial femoral condyle", "Anterior tibia and anterior femur with patellar contusion"],
     answer: 0,
-    explanation: "The pivot-shift (valgus + internal tibial rotation + anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign.",
+    explanation: "The pivot-shift (a valgus load on the flexed knee with rotation and anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign. (The exact rotation direction is described inconsistently — the injury source describes external tibial rotation, the clinical pivot-shift test internal — so 'valgus with rotation' is the safe phrasing.)",
   },
   {
     id: "marrow-2",
@@ -1438,7 +1438,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         ],
         answer: 0,
         explanation:
-          "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL, most often at its femoral (adductor tubercle) origin (patellar-sided and mid-substance tears also occur).",
+          "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk).",
       },
     ],
   },

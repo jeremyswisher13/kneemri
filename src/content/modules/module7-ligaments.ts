@@ -20,8 +20,8 @@ Secondary signs are critical when the primary signs are equivocal:
 | Secondary Sign | Description |
 |---------------|-------------|
 | **Pivot-shift bone contusions** | Lateral femoral condyle sulcus + posterolateral tibial plateau |
-| **Anterior tibial translation** | > 5 mm on lateral sagittal image through mid-lateral compartment |
-| **Deepened lateral femoral sulcus** | > 1.5 mm depth |
+| **Anterior tibial translation** | ≥ 5 mm (mid-lateral condyle) — ~93% specific, ~58% sensitive (Vahey 1993) |
+| **Deepened lateral femoral sulcus** | > 1.5 mm depth — cut-off from **lateral radiographs** (Cobby 1992); qualitative on MRI |
 | **Segond fracture** | Avulsion of the lateral tibial rim |
 | **Uncovered posterior horn sign** | Lateral meniscus posterior horn uncovered |
 | **PCL buckling / decreased PCL angle** | Secondary sign of anterior tibial translation from ACL insufficiency |
@@ -266,13 +266,9 @@ On MRI, the MPFL is a thin band of tissue extending from the **medial femoral co
 
 ### MPFL Tear Location
 
-| Location | Frequency |
-|----------|-----------|
-| **Femoral attachment** | ~50% of cases |
-| **Patellar attachment** | ~20--30% |
-| **Midsubstance** | ~20--30% |
+The tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.
 
-On MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL.
+On MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.
 
 ### Bone Bruise Pattern
 A bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.
@@ -282,7 +278,7 @@ A bone bruise pattern with edema on the **medial patellar facet** and the **ante
 - **Lateral patellar tilt and subluxation**
 - **Patella alta** (Insall-Salvati ratio **> 1.2**)
 - **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)
-- **Increased TT-TG distance** (measured on axial images, **> 20 mm** is pathologic)`,
+- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value of 15–20 mm may already be at the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (MRI equivalent ≈ 13 mm).`,
     pearl: `The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.`,
     images: [
       {

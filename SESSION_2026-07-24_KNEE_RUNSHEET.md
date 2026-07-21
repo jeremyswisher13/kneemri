@@ -104,7 +104,7 @@ Fellows work on their own devices. The Driver calls every stop.
 
 > "Knee course → Normal Knee MRI → **Explore** → Sagittal PD-FS. Don't touch Guided Tour yet."
 
-> "Sagittal: **anterior is image-left, and scrolling takes you medial → lateral.** That part is convention. What is *not* convention: on this study medial is image-left on both coronal and axial — that's a property of which knee this is. **Check laterality first on every new study**, then keep the side consistent between coronal and axial."
+> "Orientation is something you **verify at the workstation, not assume.** On *this* study, confirm that anterior is image-left and that scrolling runs medial → lateral — neither is a fixed rule: there's no display standard pinning anterior to a side, and because slice order runs along the patient's right–left axis, the medial/lateral scroll direction *flips between a right and a left knee* (and can differ by scanner/PACS). Coronal and axial are the reliable half — they follow the patient-anchored convention, so medial is image-left for a left knee, image-right for a right knee. **So on every new study: check laterality and the DICOM labels first**, confirm scroll direction against something you can name (fibular head = lateral; MCL = medial), then keep that side consistent across all three planes."
 
 > "This is **PD fat-sat**: fluid bright, fat dark. Bright = water — effusion, edema, a tear filling with fluid. On T1, bright = fat and the finding is a *dark* line in the marrow. Don't carry the habit across."
 
@@ -132,18 +132,18 @@ Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
 **Say — stop 7, menisci (slice 9/29, a medial slice):**
 > "Two appearances, two slice levels. **Peripherally the meniscus is a continuous band — the bow-tie.** Scroll centrally and it opens into **two dark triangles**, anterior and posterior horn."
 
-> "Count your bow-ties. A normal meniscus gives you **at least two consecutive bow-tie images**. Fewer than two is the **absent-bow-tie sign** — a displaced bucket-handle. That one has a surgeon on the other end."
+> "Count your bow-ties against your slice thickness — the rule is arithmetic, not biology. A normal body is ~10–12 mm wide, so on **4–5 mm** slices it spans **at least two** bow-ties. Fewer than two is the **absent-bow-tie sign** (Helms 1998). But rescale if you scan thinner — on 3 mm slices a normal body spans more, so 'fewer than two' no longer applies (and the discoid rule rescales with it). Treat it as a **trigger, not a verdict**: confirm with a second sign — fragment in the notch, double-PCL, truncated meniscus on coronals. Two signs together is what puts a surgeon on the other end."
 
 > "Medially the posterior horn is normally the **bigger** one. A small squashed medial posterior horn is a finding, not anatomy."
 
-> "The rule: **grade 3 signal has to reach an articular surface.** Requiring it on **two consecutive images** raises PPV to 94% medial / 96% lateral (De Smet & Tuite, *AJR* 2006). A touch on **one image only** is 'possibly torn' — usually volume averaging or a pseudotear."
+> "The rule is a disjunction: **distortion OR grade-3 signal reaching an articular surface.** Requiring the finding on **two or more images** — *not necessarily consecutive; one sagittal plus one coronal at the same spot counts* — raises PPV to 94% medial / 96% lateral (De Smet & Tuite, *AJR* 2006). A touch on **one image only** is 'possibly torn.' Two exceptions: shape alone (a truncated or absent segment, a radial cleft) is a tear without grade-3 signal, and a **root on one slice still warrants the call**."
 
 > "And three normal structures fake a lateral tear: the **popliteomeniscal fascicles / popliteus hiatus**, the **transverse intermeniscal ligament** where it meets the anterior horn, and the **meniscofemoral ligament** (Humphrey/Wrisberg) next to the posterior horn. Before you call a lateral tear, actively exclude all three."
 
 **Say — stop 9, ACL (slice 22/29):**
 > "Taut, continuous, **parallel to Blumensaat's line**. Fibers, not a blur. Trace it across at least three slices before you're allowed an opinion — a single slice through a normal ACL can look convincingly torn."
 
-> "Normal ACL striations are fine. **Diffuse thickening with intact fibers is mucoid degeneration, not a tear** — it's the commonest ACL over-call."
+> "Normal ACL striations are fine. **Diffuse thickening with intact, continuous fibers is mucoid degeneration, not a tear** — a consequential over-call (6 of 10 such ligaments were read as torn but were intact at arthroscopy; McIntyre 2001). Look for the celery-stalk look: thickened, high signal on all sequences, but *continuous fibers*. The discriminator that carries the weight is **discontinuity** — present in ~97% of complete tears, 0% of mucoid degeneration. Clinically it's *posterior* knee pain with limited terminal flexion, not instability."
 
 🔑 **Highest-yield sagittal move:** make every fellow trace the ACL across ≥3 slices and say "parallel to Blumensaat" out loud. That one habit is most of Case 1.
 
@@ -161,7 +161,7 @@ Orientation 30 s → stops 2–5 at 2:30 → **stop 6 wedges 2:30** → **the ro
 **Say — the root detour (the important four minutes):**
 > "Leave the tour. Go to **Explore** and scroll **posteriorly**. The tour never leaves slice 8, and the posterior root is not on slice 8 — which is exactly why root tears get missed."
 
-> "Find where the posterior horn of the medial meniscus attaches to bone just lateral to the PCL. That attachment is the **posterior medial root**. Now measure how far the meniscal body sits past the tibial margin. **>3 mm is major extrusion** — Costa (*AJR* 2004) found a root tear in **42%** of major-extrusion knees vs **3%** of minor. Extrusion doesn't prove a root tear; it tells you to go inspect the root."
+> "Find where the posterior horn of the medial meniscus attaches to bone. The medial root sits **anteromedial to the PCL's tibial footprint** — on sagittal, immediately anterior to the PCL, along the posterior slope of the tibial eminence. Landmark it off the medial eminence: ~10 mm posterior and ~1 mm lateral to the apex (Johannsen, *AJSM* 2012, cadaveric — an anatomic guide, not an MRI ruler). Counterintuitive point worth saying: it's the *medial* root, not the lateral, that hugs the PCL. Now measure how far the meniscal body sits past the tibial margin on the mid-coronal image. **>3 mm is the conventional 'major' cutoff** (Gale 1999; used as the split by Costa 2004) — but treat it as a *search trigger, not a diagnosis*: it's sensitive and non-specific (mean medial extrusion in the general 50–90 population is 2.6 mm, and 64% of asymptomatic controls already exceed 3 mm; Svensson, *Eur Radiol* 2019). The honest teaching point is a range — pathologic is somewhere between 2 and 4 mm and the literature doesn't agree — and the number is worth more reported as a continuous value than as yes/no. Any extrusion ≥~3 mm sends you to inspect the root and hunt a radial tear; the extrusion is the flag, the root is the diagnosis. **Do not carry 3 mm to the lateral side** — the lateral meniscus barely extrudes normally (mean −0.1 mm) and averages only 2.0 mm even with a *complete* lateral root tear (Kamatsuki, *J Orthop Res* 2018), so 3 mm there misses the tear."
 
 > "Everyone give me a millimetre number. Out loud."
 
@@ -250,7 +250,7 @@ Screens closed. **Five minutes, not ten.** The break is where Hour 2's time gets
 
 ### The missable — say the prompt verbatim
 
-- **Ramp lesion** (posteromedial meniscocapsular junction). ~17% of ACL knees; **MRI sensitivity ~48%** off the preoperative report (DePhillipo, *AJSM* 2017), ~65% pooled. *Roughly half get missed — say that out loud.*
+- **Ramp lesion** (posteromedial meniscocapsular junction). ~17% at arthroscopy, ~22% pooled prevalence; **MRI sensitivity ~48%** off the *real* preoperative report (DePhillipo, *AJSM* 2017), **65–71% pooled** in meta-analyses. *About half are missed on the actual report; even study-level reads miss a third. A negative MRI does not exclude it — say that out loud.* Look for the posteromedial tibial bruise (present in 72% of confirmed ramp lesions).
   > *"Present, absent, or equivocal — and if equivocal, what do you write?"* Answer: an explicit statement recommending intraoperative posteromedial assessment.
 - **Lateral meniscal posterior root tear.** ~7–12% of ACL knees. It sits directly beneath the bruise everyone is staring at.
 - **Segond fracture.** Lateral tibial rim just distal to the plateau. Classically associated with ACL tear in the large majority of series; treat as an ACL tear until the ACL is directly assessed.
@@ -296,7 +296,7 @@ Reconstruction is standard; **primary repair is narrow** — proximal avulsion-t
 | Step | Expected | Ask → Answer | Typical wrong answer |
 |---|---|---|---|
 | 1 Verify | Small effusion | *"Does a small effusion argue against anything serious?"* → No | Reassurance from a small effusion |
-| 2 Bones | Subchondral edema **medial femoral condyle + medial tibial plateau**, no fracture line | *"Edema without trauma — why?"* → Overload. And rule out a **subchondral insufficiency fracture** — a *line* on T1, not just edema | Calling edema a bruise in an atraumatic knee |
+| 2 Bones | Subchondral edema **medial femoral condyle + medial tibial plateau**, no fracture line | *"Edema without trauma — why?"* → Overload. And rule out a **subchondral insufficiency fracture** (SIFK; SONK is its end stage) — a hypointense *line* paralleling the subchondral plate a few mm deep, **dark on T2/PD against the bright edema**, low signal on essentially every sequence. Classic: woman >50, medial femoral condyle, normal films — and very often *with* a medial root tear | Calling edema a bruise in an atraumatic knee |
 | 3 Cartilage | Grade 2–3 medial thinning; other compartments preserved | *"Which compartment, and does that fit the meniscus?"* | Grading globally instead of by compartment |
 | 4 **Menisci** | **Posterior medial root tear (ghost sign); extrusion >3 mm; lateral meniscus intact** | *"Is the meniscus attached to bone?"* → Ghost sign on sagittal, confirmed by a radial cleft on coronal/axial | "Degenerative posterior horn tear" |
 | 5 Ligaments | All intact | *"Anything here to explain 3 months of pain?"* → No — which is the point | Hunting a ligament |
@@ -311,17 +311,15 @@ Reconstruction is standard; **primary repair is narrow** — proximal avulsion-t
 
 ### The missable
 
-Root tears are among the most-missed findings in knee MRI, and the reason is mechanical: **the roots are posterior, and the coronal guided tour never leaves one slice.** The fix is the routine you built in Hour 1 — drop to Explore, scroll posteriorly, find the attachment adjacent to the PCL.
+Root tears are among the most-missed findings in knee MRI, and the reason is mechanical: **the roots are posterior, and the coronal guided tour never leaves one slice.** The fix is the routine you built in Hour 1 — drop to Explore, scroll posteriorly, find the attachment anteromedial to the PCL footprint.
 
 > ⚠️ **The app's only ghost-sign image is a LATERAL root tear.** This case is a **medial** root. Say that before a fellow anchors to the wrong compartment.
 
 ### So what — the management fork
 
-Root repair is most defensible with **KL ≤2 / Outerbridge ≤2 cartilage and neutral or correctable alignment**. Extrusion ≥3 mm predicts failure to restore meniscal position. **Varus prompts consideration of osteotomy ± repair.** Established KL3–4 medial OA is generally not a repair knee. **Arthroscopic partial meniscectomy is the wrong answer** — it removes what little hoop function remains.
+Candidacy turns first on **symptoms** and on **how much OA is already there** (2025 international Delphi consensus, expert opinion): repair a symptomatic tear *without* advanced OA via transtibial pull-out; manage advanced OA non-operatively. **End-stage medial OA — Kellgren-Lawrence grade 4, a weight-bearing *radiographic* grade, not an MRI grade — is a contraindication** (98% agreement). KL 3 is a case-by-case call, not an absolute bar. Significant varus doesn't rule out repair — it may add a high tibial osteotomy. **Arthroscopic partial meniscectomy is the wrong operation** in a repairable root tear — not because it "removes remaining hoop function" (the compartment already loads as if the meniscus were gone) but because it forfeits the only procedure shown to restore hoop stress; in a matched cohort, progression to arthroplasty was 9/15 after meniscectomy vs 0/15 after repair (Bernard, *AJSM* 2020, Level III).
 
-**At 55 with joint-space narrowing already on weight-bearing films, this patient sits exactly where outcomes deteriorate.** That is what makes it time-sensitive.
-
-For scale: in Krych's non-operative cohort (*KSSTA* 2017, n=52, mean age 58), **87% failed non-operative management**, radiographic arthritis progressed from 51% to 78%, and **31% underwent arthroplasty at a mean of 30 months.**
+**What makes this time-sensitive is the natural history, not the birthday.** Age is *not* an independent outcome predictor (Eseonu, *AJSM* 2022); baseline cartilage status, extrusion, and varus are. In the long-term non-operative cohort, **53% reached arthroplasty at a mean of 14 years and 95% failed non-operative care** (Krych, *AJSM* 2023). The corollary for *this* patient: definite joint-space narrowing on weight-bearing films suggests he may already be a marginal repair candidate — a reason for a prompt surgical opinion with long-leg alignment films, not a reason to promise him a repair.
 
 ### The close
 
@@ -331,7 +329,7 @@ For scale: in Krych's non-operative cohort (*KSSTA* 2017, n=52, mean age 58), **
 
 - **"Isn't this just a degenerative tear?"** No — it's detached from bone. Hoop stress is gone. That's a different disease from a degenerative flap.
 - **"Does repair actually prevent arthritis?"** It improves function and slows progression in appropriately selected knees; it is not proven to prevent arthritis. Selection is everything.
-- **"What do I tell them about running?"** Reassess with **weight-bearing films**, not symptoms.
+- **"What do I tell them about running?"** Be honest that return-to-run after a root tear isn't well established. The one published criteria set (Monson & LaPrade 2025, expert opinion) is *functional*, not radiographic: minimal effusion, pain ≤2/10, quad symmetry ≥70%, tolerating a mile of brisk walking without a flare — with return around 6 months. Weight-bearing/long-leg films matter *at diagnosis* to stage cartilage and varus; they don't clear someone to run, and symptoms are not to be ignored. Shared decision with surgeon and PT.
 
 ---
 
@@ -366,8 +364,8 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 ### So what
 
-- **First-time dislocator, no fragment:** non-operative — brace, quad and hip rehab. That is still the default.
-- **What pushes toward surgery:** a **displaced osteochondral fragment or loose body**. Bone-containing fragments are fixable and earlier is better, though there is no validated cutoff — fragment quality and cartilage viability drive the decision.
+- **First-time dislocator, no fragment:** non-operative is reasonable first-line **for a low-risk knee** — PT-guided quad and gluteal rehab, brace only briefly and only for comfort (ESSKA 2024 found *no* evidence a brace beats no brace). It's no longer a universal default, and it's explicitly *not* the gold standard in skeletally immature knees. Name the risk being accepted: recurrence after conservative care is ≥25%, up to ~70% in children/adolescents.
+- **What pushes toward surgery:** a **displaced osteochondral fragment or loose body**. ESSKA 2024 repairs a chondral *or* osteochondral fracture ≥**1 cm²** in the patellofemoral contact area (expert consensus, Grade C — not outcome-validated); purely chondral flakes count, and the threshold is lower in skeletally immature knees. Refixation is first-line, and **delayed refixation is preferred over discarding the fragment** — timing is the document's weakest recommendation. A concomitant MPFL reconstruction is recommended when a fragment is fixed.
 - **Recurrence** is driven by age (skeletally immature highest), **trochlear dysplasia**, patella alta, and a **femoral-sided MPFL tear**.
 - **The randomised data on acute MPFL repair are mixed** — Palmu (*JBJS* 2008, adolescents) found no difference vs non-operative. Don't state it as settled either way. MPFL **reconstruction** is the workhorse for recurrent instability; a tubercle osteotomy is *added* for genuinely elevated TT-TG, not substituted.
 
@@ -397,25 +395,25 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 | Measure | Number | How / caveat |
 |---|---|---|
-| **Meniscal extrusion** | **>3 mm** = major | Coronal, mid-body, excluding osteophyte. Costa *AJR* 2004: root tear in **42%** of major- vs **3%** of minor-extrusion knees. Extrusion alone does not prove a root tear |
-| **Two-slice-touch** | PPV **94%** medial / **96%** lateral | Grade 3 signal reaching a surface on ≥2 consecutive images (De Smet & Tuite, *AJR* 2006). One image only = "possibly torn" |
-| **Meniscal signal grades** | 1 globular · 2 linear intrasubstance · **3 reaches a surface = tear** | Grade 2 is common over 40 — degeneration, not a tear |
-| **Anterior tibial translation** | **≥5 mm** = 58% sens / **93% spec** | Vahey, *Radiology* 1993. >7 mm = Chan, *AJR* 1994. 5–7 mm supportive, not diagnostic |
+| **Meniscal extrusion (medial)** | pathologic ≈ **2–4 mm**, disputed | Coronal, mid-body, excluding osteophyte. 3 mm is the conventional "major" split (Gale 1999; Costa 2004) but is *sensitive, not specific* — mean is 2.6 mm in the 50–90 population, 64% of asymptomatic controls exceed 3 mm (Svensson, *Eur Radiol* 2019). A **search trigger**, best reported as a continuous number. **Do not apply to the lateral meniscus** (normal ≈0; 2.0 mm even with a complete lateral root tear — Kamatsuki 2018) |
+| **Two-image touch** | PPV **94%** medial (NS, p=0.37) / **96%** lateral (p=0.02) | Distortion **or** grade-3 signal on **two or more images** — *not necessarily consecutive*; one sagittal + one coronal at the same spot counts (De Smet & Tuite, *AJR* 2006). One image = "possibly torn." The gain is real only laterally, and it costs sensitivity. **Root exception:** a root on one image still warrants the call (De Smet 2009) |
+| **Meniscal signal grades** | 1 globular · 2 linear intrasubstance · **3 reaches a surface = tear** | Grade 2 is common over 40 — degeneration, not a tear. Shape alone (truncated/absent segment, radial cleft) is also a tear without grade-3 signal |
+| **Anterior tibial translation** | **≥5 mm** = 58% sens / **93% spec** / 69% acc | **Both cutoffs are Vahey, *Radiology* 1993** (midsagittal LFC method). ≥7 mm = every knee torn *in that series* — a small-subgroup observation, **not Chan, not a validated threshold**. Chan (*AJR* 1994) is a *different* measurement (posterior-cortex tangents, 5-mm bins) and endpoint (complete tear): >5 mm, 86%/99%. A high-specificity **rule-in** — state which technique you used |
 | **Deep lateral femoral sulcus** | **>1.5 mm** (>2 mm highly specific) | Cobby, *Radiology* 1992 — derived on **lateral radiographs**; carried over to sagittal MRI |
 | **Segond fracture** | ACL tear in the large majority of series | Present in ~9–12% of ACL tears. Treat as ACL tear until the ACL is directly assessed |
-| **Ramp lesion with ACL** | **~17%** at arthroscopy | MRI sens **~48%** off the preop report (DePhillipo *AJSM* 2017); ~65% pooled. **Roughly half missed** |
+| **Ramp lesion with ACL** | **~17%** arthroscopy; ~22% pooled | 16.6% (DePhillipo *AJSM* 2017); pooled prevalence 21.9% (Kunze *AJSM* 2021). MRI sens **~48%** off the real preop report; **65–71% pooled** in meta-analyses (spec ~88–94%). **A negative MRI does not exclude it** |
 | **Lateral root tear with ACL** | **~7–12%** | Feucht *KSSTA* 2015 (15%); SANTI (~7%) |
 | **Bone bruise in acute ACL tear** | **~80%** | Fades over 3–12 months — a chronic ACL knee may have none |
-| **Root tear biomechanics** | Contact pressure **+25%** = total meniscectomy | Allaire, *JBJS* 2008 |
-| **TT-TG (CT)** | **>20 mm** abnormal, 15–20 borderline | Dejour. A **risk factor, not an indication** |
-| **TT-TG (MRI)** | Runs **~2–4 mm lower than CT** | Camp *AJSM* 2013. **Never apply the CT >20 mm rule to an MRI number** |
-| **Insall-Salvati** | Normal 0.8–1.2; **>1.2 = alta** | Tendon length ÷ patellar diagonal, sagittal |
-| **Caton-Deschamps** | Normal 0.6–1.2; **>1.2 = alta** | The ratio surgeons use to plan distalization |
-| **Trochlear depth** | **<3 mm** = dysplastic | Axial, 3 cm above the joint line (Pfirrmann, *Radiology* 2000) |
-| **Lateral trochlear inclination** | **<11°** | Most cranial slice showing the full cartilaginous trochlea (Carrillon, 2000) — a **different slice level** from Pfirrmann |
-| **Sulcus angle** | **>145°** dysplastic (normal 138° ± 6) | Merchant *JBJS* 1974 — **45°-flexion radiographs**. Use qualitatively on MRI |
+| **Root tear biomechanics** | Contact pressure **+25%** = total meniscectomy | Allaire, *JBJS* 2008 (cadaveric); repair restored it |
+| **TT-TG (CT)** | **≥20 mm** abnormal | Dejour 1994, **measured on CT**. A **risk factor, not an isolated indication** (whether TT-TG alone justifies osteotomy is genuinely contested) |
+| **TT-TG (MRI)** | MRI equivalent **≈13 mm**; runs lower than CT | Dejour's Lyon target; pooled Δ 1.8 mm, up to 3.8 mm in operative knees (Tan 2020; Camp 2013). **Never carry the CT 20 mm number onto an MRI — it under-calls** |
+| **Insall-Salvati** | Normal 0.8–1.2; **>1.2 = alta** | Tendon ÷ patellar diagonal. The one index whose normal values still apply **on MRI** |
+| **Caton-Deschamps** | Normal 0.6–1.2; **>1.2 = alta** | Distalization planning — but **measure on a lateral radiograph, not MRI** (single-slice MRI inflates it up to 9%; Martinez-Cano *KSSTA* 2022) |
+| **Trochlear depth** | **≤3 mm** = dysplastic | Axial, 3 cm above the joint line, off the cartilage contour (Pfirrmann, *Radiology* 2000) |
+| **Lateral trochlear inclination** | **<11°** | Most cranial slice where trochlear cartilage first appears; both lines on **subchondral bone** (Carrillon, 2000) — a **different slice level** from Pfirrmann. Single-image LTI under-calls; recheck a borderline value |
+| **Sulcus angle** | **>145°** (Merchant view) dysplastic; normal ≈137–138° | The *view* is Merchant *JBJS* 1974; the *numbers* are later (Tecklenburg, Dejour). **On MRI the cutoff is landmark-specific: ~145° on bone but ~154° on cartilage** (Tanaka *AJSM* 2023) — match the cutoff to what you traced |
 | **Lateral patellar tilt** | **>20°** abnormal | Patellar transverse axis vs posterior condylar line |
-| **MPFL after first dislocation** | Torn in **~90–100%** | **Name the site.** Femoral-sided carries higher recurrence risk |
+| **MPFL after first dislocation** | Torn in **~90–100%** | **Name the site.** Tear site is *split* — patellar-sided predominates (~48%) over femoral (~34%) in pooled MRI data (Migliorini 2021); femoral-sided carries higher recurrence risk |
 | **Cartilage grading** | Modified Outerbridge 0–4 | 1 signal change · 2 <50% · 3 >50%, bone not exposed · 4 full-thickness, bone exposed. **Don't call it ICRS to a surgeon** |
 
 ## Bone bruise → mechanism → ligament
@@ -425,11 +423,11 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 | **Pivot shift** | **Posterolateral tibial plateau + lateral femoral condyle** (terminal sulcus) | **ACL** — then hunt lateral root / ramp / bucket-handle |
 | **Dashboard** | **Anterior proximal tibia** (single bone) | **PCL**, posterior capsule |
 | **Patellar dislocation** | **Medial patellar facet + anterolateral LFC** | **MPFL — name the site**, osteochondral fragment, loose body |
-| **Clip / valgus** | **Prominent lateral femoral condyle + a smaller medial-sided bruise** | **MCL** — interrogate both menisci |
+| **Clip / valgus** | **Prominent lateral femoral condyle + a smaller *medial femoral condyle* focus** (avulsive, at the MCL) | **MCL** — interrogate both menisci |
 | **Hyperextension** | **Anterior femoral condyles + anterior tibial plateau** | ACL and/or PCL, posterior capsule |
 
-*The bruise is the fingerprint — name the two bones first, then go prove the ligament.*
-⚠️ **Clip ≠ pivot shift.** Posterolateral plateau edema is the pivot-shift footprint. A fellow who calls it a clip injury has just missed an ACL.
+*The bruise is the fingerprint — name the two bones first, then go prove the ligament.* (Sanders, *RadioGraphics* 2000)
+⚠️ **Clip ≠ pivot shift.** LFC + **posterolateral tibial plateau** is the pivot-shift footprint; a fellow who calls that pair a clip injury has missed an ACL. But the reverse trap is bigger: a **medial** focus does *not* exclude a pivot shift — contrecoup posteromedial plateau edema is part of the described pivot-shift pattern, and medial femoral condyle / plateau contusions appear in ~24–26% of arthroscopy-proven ACL ruptures. A medial focus alongside the lateral pair signals a *higher-energy* injury, not a lower chance of ACL tear.
 
 ## Sequence logic
 
@@ -453,7 +451,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 ## Don't-miss list
 
-1 Posterior medial root tear · 2 Ramp lesion in an ACL knee · 3 Displaced bucket-handle (double-PCL, absent bow-tie) · 4 Osteochondral fragment after patellar dislocation · 5 **Posterolateral corner** (missed PLC = failed ACL graft) · 6 Segond / tibial spine / arcuate avulsions · 7 Subchondral insufficiency fracture or marrow-replacing lesion · 8 Bicruciate injury = spontaneously reduced knee dislocation → **vascular assessment today**
+1 Posterior medial root tear · 2 Ramp lesion in an ACL knee · 3 Displaced bucket-handle (double-PCL, absent bow-tie) · 4 Osteochondral fragment after patellar dislocation · 5 **Posterolateral corner** (a recognized contributor to ACL graft failure; caught early on MRI, missed late — 72% missed at first presentation) · 6 Segond / tibial spine / arcuate avulsions · 7 Subchondral insufficiency fracture or marrow-replacing lesion · 8 Bicruciate injury = spontaneously reduced knee dislocation → **vascular assessment today**
 
 ## Impression language
 
@@ -468,12 +466,13 @@ Enforce: name the **compartment** and the **third** (root/horn/body), never just
 
 | Where | What it says | Say instead |
 |---|---|---|
-| Module 4 bruise table | Clip injury = LFC + **lateral tibial plateau** | Clip = prominent **lateral femoral condyle** + a smaller **medial-sided** bruise. Lateral plateau edema belongs to the pivot shift |
+| Module 4 bruise table | Clip injury = LFC + **lateral tibial plateau** | Clip (pure valgus) = prominent **lateral femoral condyle** + a smaller **medial *femoral condyle*** focus (avulsive, at the MCL) — Sanders 2000. LFC + *lateral tibial plateau* is the **pivot-shift** footprint, and should trigger a hard ACL look |
 | Module 4 bruise table | Pivot shift = "valgus + internal rotation" | Say "valgus with rotation." Sanders (*RadioGraphics* 2000) describes external tibial rotation; the pivot-shift *test* describes internal. Specify the frame only if pressed |
-| Case 2 ghost-sign image | Ghost sign shown on a **lateral** root tear | Case 2 is a **medial** root — flag it before anyone anchors |
+| Case 2 ghost-sign image | The ghost-sign teaching image (`33_..._GhostMeniscus.jpg`) is a **lateral** root tear, used in a **medial**-root case | Say it before anyone anchors — and it's on the fix list to swap for the medial image (`32_..._Coronal.jpg`) once faculty confirm the JPEG |
 | Case 1 step 4 | No expected findings to reveal | It's three search instructions, not a finding. Frame it as discipline |
 | Case 1 answer key | The read-out pulls from steps 2–3 and **never shows the ACL tear** | *"The app proves the mechanism. You still have to say the diagnosis."* |
-| Sulcus angle FAQ | "<144°" | Merchant's number is from radiographs; use qualitatively on MRI |
+| Sulcus angle FAQ ("<144°") | Number is fine on MRI **bone**, but unlabeled | It's defensible on MRI using *bony* landmarks (~145° by ROC; Tanaka 2023) — **not** a radiographic error. Add: cartilage landmarks run higher (~154°). Match the cutoff to the landmark |
+| MPFL teaching (workstation + module) | Tear site taught as **femoral-predominant** | Pooled MRI data are **patellar-predominant** (~48% vs ~34% femoral; Migliorini 2021). Femoral-sided carries higher *recurrence* — true, but it's not the commonest site |
 
 ---
 

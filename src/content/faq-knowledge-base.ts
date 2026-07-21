@@ -757,7 +757,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['trochlear dysplasia', 'trochlea', 'sulcus', 'patellar instability', 'trochlear depth'],
     question: 'What is trochlear dysplasia?',
     answer:
-      'Trochlear dysplasia is a shallow or flat trochlear groove that predisposes to patellar instability. On axial images, look for a flat or convex trochlear sulcus instead of the normal concavity. The sulcus angle (normally less than 144 degrees) and trochlear depth can be measured. Trochlear dysplasia is one of the key anatomic risk factors for recurrent patellar dislocation.',
+      'Trochlear dysplasia is a shallow or flat trochlear groove that predisposes to patellar instability. On axial images, look for a flat or convex trochlear sulcus instead of the normal concavity. The sulcus angle and trochlear depth can be measured — but match the cutoff to the modality and landmark: the familiar figures (normal ~138 degrees, dysplastic >=145 degrees) come from Merchant-view radiographs, and on axial MRI the validated cutoffs are higher and landmark-dependent (about >=145 degrees on bony landmarks, >=154 degrees on cartilaginous landmarks). Trochlear depth <3 mm (axial, 3 cm above the joint line) and lateral trochlear inclination <11 degrees are the MRI-native measures. Trochlear dysplasia is one of the key anatomic risk factors for recurrent patellar dislocation.',
     relatedModule: '/modules/extensor-synovium',
     category: 'cartilage',
   },

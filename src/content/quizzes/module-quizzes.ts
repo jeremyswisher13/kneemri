@@ -253,11 +253,11 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
         { key: 'A', text: 'The residents should restrict the search pattern to the clinical question to save time after the first 20 cases.' },
         { key: 'B', text: 'Residents will continue to feel the pattern is slow for the first 100 cases and should expect no improvement in speed until they have completed 200+ studies.' },
         { key: 'C', text: 'Once the pattern is memorized, residents can skip any step if they find an obvious abnormality, since the clinical question has been answered.' },
-        { key: 'D', text: 'By cases 40-50, residents complete the search pattern in 8-10 minutes with no increase in errors; the pattern has become automatic and reading speed actually increases because they no longer waste time deciding what to evaluate next.' },
+        { key: 'D', text: 'With repetition, residents complete the search pattern without an increase in errors; the pattern becomes automatic and reading speed increases because they no longer spend time deciding what to evaluate next.' },
       ],
       correctAnswer: 'D',
       explanation:
-        'Systematic search patterns require deliberate practice (50-100 cases) to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.',
+        'Systematic search patterns take sustained repetition to become automatic. Speed increases with practice as decision-making time is eliminated — the pattern is not a permanent burden but a path to efficiency. (The specific number of cases and minutes varies by reader and is offered as faculty experience, not a published benchmark.) Template-driven reporting reinforces the pattern by aligning the reading workflow with the report structure.',
       topicIndex: 3,
     },
     {
@@ -443,13 +443,13 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       stem: 'What is the classic location of knee osteochondritis dissecans (OCD), and which feature most drives surgical decision-making?',
       options: [
         { key: 'A', text: 'Patellar median ridge; lesion size' },
-        { key: 'B', text: 'Lateral aspect of the medial femoral condyle (~70–80%); fragment stability' },
+        { key: 'B', text: 'Lateral (posterolateral) aspect of the medial femoral condyle; fragment stability' },
         { key: 'C', text: 'Central weight-bearing lateral femoral condyle; patient age' },
         { key: 'D', text: 'Tibial plateau; presence of effusion' },
       ],
       correctAnswer: 'B',
       explanation:
-        'The classic OCD location is the lateral aspect of the MEDIAL femoral condyle (~70–80% of knee OCD). Size and location are reported, but fragment STABILITY is the key determination driving management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.',
+        'The classic OCD location is the lateral/posterolateral, relatively non-weight-bearing aspect of the MEDIAL femoral condyle; published series put medial-femoral-condyle involvement somewhere between about 70% and 85% of knee OCD, with the classic sub-site accounting for much but not all of that — quote the location, not a precise percentage. Size and location are reported, but fragment STABILITY is the key determinant of management — a stable lesion may be treated conservatively (especially with open physes), whereas an unstable fragment usually requires surgery.',
       topicIndex: 2,
     },
     {
@@ -491,12 +491,12 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       options: [
         { key: 'A', text: 'A tear is present if abnormal signal is seen on at least two consecutive sagittal images' },
         { key: 'B', text: 'The meniscus must be visible on at least two sagittal slices to be considered normal' },
-        { key: 'C', text: 'Grade 3 signal must contact an articular surface on at least two consecutive images to confidently diagnose a tear' },
+        { key: 'C', text: 'Grade 3 signal must contact an articular surface on at least two images to confidently diagnose a tear' },
         { key: 'D', text: 'The meniscal body should be seen on exactly two sagittal bow-tie images' },
       ],
       correctAnswer: 'C',
       explanation:
-        'The two-slice-touch rule states that to confidently diagnose a meniscal tear, grade 3 signal (contacting an articular surface) should be identified on at least two consecutive sagittal images. This rule improves specificity and helps avoid false-positive diagnoses from volume averaging or magic angle artifact on a single slice.',
+        'The two-slice-touch rule states that a meniscus is called torn when grade 3 signal contacts an articular surface on two or more MR images (the images need not be contiguous, and cross-plane corroboration — e.g., one sagittal plus one coronal at the same spot — counts); one image alone is reported as "possibly torn." Applying it raised positive predictive value from 83% to 96% for the lateral meniscus and from 91% to 94% for the medial meniscus (De Smet & Tuite, AJR 2006). It improves specificity by avoiding false positives from volume averaging or magic-angle on a single slice. Exception: a meniscal root on one image still warrants the call.',
       topicIndex: 1,
     },
     {
@@ -552,7 +552,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'B',
       explanation:
-        'A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (≈16–24% of ACL-deficient knees) and is notoriously underdiagnosed on MRI (sensitivity ~48–65%). In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences; it can be repaired at the time of ACL reconstruction.',
+        'A ramp lesion — a peripheral longitudinal tear of the posterior horn of the medial meniscus at the meniscocapsular junction — is strongly associated with ACL tears (reported prevalence in ACL-deficient knees varies widely, roughly 9–40%, rising with chronicity) and is easily missed on MRI: pooled sensitivity is only about 65–71% at 88–94% specificity across systematic reviews, so a NEGATIVE MRI does not exclude a ramp lesion. In every ACL case, scrutinize the posteromedial meniscocapsular junction on sagittal and axial fluid-sensitive sequences (look for the posteromedial tibial bruise as a secondary clue); it can be repaired at the time of ACL reconstruction.',
       topicIndex: 4,
     },
     {
@@ -566,7 +566,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'B',
       explanation:
-        'Extrusion >3 mm beyond the tibial plateau margin (coronal mid-body slice, reference line at the tibial margin) is pathologic; >5 mm is severe. Significant extrusion should trigger a careful search for a meniscal ROOT tear, which abolishes hoop-stress and is functionally equivalent to a total meniscectomy. Medial extrusion is more clinically significant than lateral.',
+        'Extrusion >3 mm beyond the tibial plateau margin on the coronal mid-body slice is the conventional cut-off for "major" (pathologic) extrusion (Gale 1999; Costa 2004) — root tears were present in 42% of knees with major extrusion vs 3% with minor. It is sensitive but not specific (mean medial extrusion is already ~2.6 mm in the general older population), so treat it as a search trigger, report the measured value rather than assigning a "severe" tier (no validated separate cut-off exists), and use it to prompt a careful search for a meniscal ROOT tear, which releases hoop-stress and loads the compartment like a total meniscectomy. Do NOT apply the 3 mm rule to the lateral meniscus, which barely extrudes even with a complete lateral root tear. Medial extrusion is more clinically significant than lateral.',
       topicIndex: 6,
     },
     {
@@ -594,7 +594,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'B',
       explanation:
-        'Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — the most reliable test in the post-operative meniscus.',
+        'Repaired menisci normally retain INTERMEDIATE (granulation) signal at the repair site for months to years, so intermediate signal alone does not indicate re-tear. A re-tear is shown by FLUID-BRIGHT (T2) signal extending through the repair to the surface, or by contrast/fluid tracking into the tear on MR arthrography — which outperforms conventional MRI in the post-operative meniscus (accuracy ~85–93% vs ~57–80%), chiefly after meniscal REPAIR or resection of more than ~25% of the meniscus; with minimal resection, conventional MRI usually suffices.',
       topicIndex: 8,
     },
   ],
@@ -613,7 +613,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'D',
       explanation:
-        'Secondary signs of ACL tear include anterior tibial translation (>5 mm), a deep lateral femoral sulcus (notch sign >1.5 mm), uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings increase diagnostic confidence when the ACL is difficult to evaluate directly.',
+        'Secondary signs of ACL tear include anterior tibial translation measured at the mid-lateral femoral condyle (≥5 mm is ~93% specific but only ~58% sensitive; ≥7 mm was 100% specific in the original series — Vahey 1993), a deep lateral femoral (condylopatellar) sulcus — the classic >1.5 mm cut-off was derived on LATERAL RADIOGRAPHS (Cobby 1992), so on MRI treat it as a qualitative "unusually deep sulcus"; it is highly specific but insensitive — uncovering of the posterior horn of the lateral meniscus, Segond fracture (lateral capsular avulsion), and the pivot-shift contusion pattern. These findings are specific but insensitive; they increase confidence when the ACL is hard to evaluate directly, but their absence does not exclude a tear.',
       topicIndex: 0,
     },
     {
@@ -744,7 +744,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'B',
       explanation:
-        'The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). Partial tears most commonly involve the deep (vastus intermedius) layer near the patellar insertion. Because the robust superficial rectus femoris fibers often remain intact, the patient may still actively extend the knee, making the injury deceptively subtle — scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images.',
+        'The quadriceps tendon is trilaminar: superficial (rectus femoris), middle (vastus medialis/lateralis), and deep (vastus intermedius). The superficial and middle layers actually tear more often than the deep layer — but what is distinctive about the deep vastus intermedius layer is that when injured the tear is more often PARTIAL than complete, and an isolated deep-layer partial tear is the one most easily missed: the intact superficial rectus femoris fibers preserve active extension, so scrutinize the deep aspect of the tendon on sagittal PD/PD-FS images even when the superficial layer looks normal.',
       topicIndex: 0,
     },
     {
@@ -758,7 +758,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
       ],
       correctAnswer: 'C',
       explanation:
-        'In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Reporting the degree of retraction and the gap size helps the surgeon plan repair. An Insall-Salvati ratio greater than 1.2 supports the diagnosis of patella alta, though comparison with the contralateral side is ideal.',
+        'In patellar tendon rupture, the patella retracts superiorly (patella alta) due to the unopposed pull of the quadriceps. Patella alta can be quantified with the Insall-Salvati ratio (>1.2), but that index was defined on lateral radiographs at ~30° of flexion and is unreliable when the patellar tendon itself is disrupted — in a complete rupture, simply report the patellar position, the gap size, and the degree of tendon retraction, ideally compared with the contralateral side.',
       topicIndex: 1,
     },
     {

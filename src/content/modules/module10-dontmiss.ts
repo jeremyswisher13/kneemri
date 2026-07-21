@@ -197,7 +197,7 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 ### Predisposing Anatomy Assessment
 - **Trochlear dysplasia** (Dejour classification)
 - **Patella alta** (Insall-Salvati ratio **> 1.2**)
-- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm**)
+- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT**; MRI reads ~3–4 mm lower, so use ~13 mm on MRI — always state the modality)
 
 Recurrent dislocation risk is **high** when multiple anatomic risk factors are present.`,
     pearl: `When you see medial patellar facet + anterolateral femoral condyle bone bruises, the diagnosis is lateral patellar dislocation. Your checklist: (1) MPFL tear location, (2) osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patella alta, (5) TT-TG distance. Missing the loose body can result in ongoing mechanical symptoms.`,
@@ -205,7 +205,7 @@ Recurrent dislocation risk is **high** when multiple anatomic risk factors are p
   {
     content: `### Lipohemarthrosis
 
-**Lipohemarthrosis** on knee MRI is **pathognomonic for an intra-articular fracture** and requires an immediate systematic search for the fracture source.
+**Lipohemarthrosis** (a fat–fluid level) on knee MRI indicates an **intra-articular fracture until proven otherwise** and requires an immediate systematic search for the fracture source. It is best seen on a **non–fat-suppressed** sequence — fat saturation nulls the fatty layer and the level can disappear.
 
 The **fat-fluid level** is caused by marrow fat released from a fracture line communicating with the joint space, mixing with hemorrhagic joint fluid. Best visualized on **sagittal or axial T2-weighted or STIR images** through the suprapatellar bursa.
 
