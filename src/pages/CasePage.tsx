@@ -174,6 +174,7 @@ export default function CasePage() {
     setRevealedSteps(new Set());
     setSubmitted(false);
     setSubmitError(null);
+    setSubmitting(false);
     setShowTryAgain(false);
   }, []);
 
@@ -187,6 +188,10 @@ export default function CasePage() {
     setRevealedSteps(new Set());
     setSubmitted(false);
     setSubmitError(null);
+    // Clear submitting too: if a prior case's submit is still in-flight (e.g. a
+    // dropped connection before settleWrite resolves), a stale submitting=true
+    // would block the next case's submit guard.
+    setSubmitting(false);
     setExpandedImage(null);
     setShowTryAgain(false);
   }, [caseId]);
@@ -820,15 +825,23 @@ export default function CasePage() {
                         <li
                           key={i}
                           className={`flex items-start gap-2 text-sm ${
-                            matched ? "text-green-700" : "text-amber-700"
+                            matched ? "text-gray-800" : "text-amber-700"
                           }`}
                         >
+                          {/* A word-overlap match is "you mentioned this," NOT
+                              "you were correct" — mentionsFinding can't detect
+                              negation, so a green check would validate "no
+                              hemarthrosis." Use a neutral dot the fellow verifies. */}
                           {matched ? (
-                            <span className="mt-0.5 text-green-500 shrink-0">
-                              <CheckIcon className="h-4 w-4" />
+                            <span
+                              className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-ucla-blue/15 text-ucla-blue text-[13px] leading-none"
+                              title="You mentioned related terms — verify against your read"
+                              aria-label="mentioned"
+                            >
+                              •
                             </span>
                           ) : (
-                            <span className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-amber-200 text-amber-700 text-xs font-bold">
+                            <span className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-amber-200 text-amber-700 text-xs font-bold" aria-label="not mentioned">
                               !
                             </span>
                           )}

@@ -309,18 +309,25 @@ export async function submitCaseAttempt(
   }
 
   if (isAdminPreview()) return { success: true, attemptId: "preview" };
-  const ref = await addDoc(collection(db, "users", userId, "caseAttempts"), {
-    courseId,
-    caseId,
-    searchPatternChecklist,
-    report,
-    completedAt: serverTimestamp(),
-  });
+  // settleWrite so an offline submit resolves (to "queued") instead of hanging
+  // forever — with persistentLocalCache an addDoc only settles on server ack.
+  // Matches submitQuiz/submitSurvey/completeModule; without it CasePage's await
+  // never returns and every later case is blocked. See settleWrite() docstring.
+  const attemptId = await settleWrite(
+    addDoc(collection(db, "users", userId, "caseAttempts"), {
+      courseId,
+      caseId,
+      searchPatternChecklist,
+      report,
+      completedAt: serverTimestamp(),
+    }).then((ref) => ref.id),
+    "queued",
+  );
 
   logAuditEvent(userId, userEmail, "case_submitted", { courseId, caseId }).catch(() => {});
   touchLastActive(userId).catch(() => {});
 
-  return { success: true, attemptId: ref.id };
+  return { success: true, attemptId };
 }
 
 // --- Progress ---

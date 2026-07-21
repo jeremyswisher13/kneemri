@@ -41,7 +41,7 @@ Everything below, and the `/admin/session` page, use these times. **Hour 2 is 48
 | 1:08 – 1:26 | Sagittal PD-FS — Guided Tour (11 stops) | **Guided Tour** |
 | 1:26 – 1:38 | Coronal PD-FS — roots, MCL, lateral corner | **Guided Tour → Explore** |
 | 1:38 – 1:50 | Axial T2-FS — patellofemoral (9 stops) | **Guided Tour** |
-| 1:50 – 1:58 | Knowledge Check — axial | **Knowledge Check** |
+| 1:50 – 1:58 | Practice & Mastery — axial | **Practice & Mastery** |
 | 1:58 – 2:05 | Bridge + **5-minute** break | — |
 | 2:05 – 2:22 | **Case 1** — ACL / pivot shift | Cases |
 | 2:22 – 2:40 | **Case 2** — medial root tear | Cases |
@@ -92,7 +92,9 @@ Recommendation: **Dr. Swisher drives** (owns the content and the app), **Dr. Bur
 
 Fellows work on their own devices. The Driver calls every stop.
 
-**Slice numbers below are what the fellows see on screen** (the counter is 1-based: `22 / 29`). Sagittal 29 slices, coronal 19, axial 28.
+**Slice numbers below are the app's on-screen counter** (1-based: `22 / 29`, shown in **Explore** mode at the bottom of the viewer). Sagittal 29 slices, coronal 19, axial 28.
+
+> ⚠️ **Two different slice numbers on the screen — head this off out loud.** The scanner's own number is *burned into the image pixels* (e.g. `15 of 30`, top/bottom of the picture) and it is **one higher and out of a different total** than the app's counter (`14 / 29`). Tell the fellows: **"Use the counter at the bottom of the viewer, not the number printed inside the picture."** Also note the app's slice counter only appears in **Explore**; Guided Tour shows "Step N of 11" and jumps to each slice for you.
 
 **A structural fact worth knowing:** the **coronal and axial tours never change slice** — all 9 coronal stops sit on 8/19 and all 9 axial stops on 14/28. Only the sagittal tour moves. So anything posterior — including the meniscal roots — is **not on the tour** and requires dropping to Explore.
 
@@ -108,7 +110,7 @@ Fellows work on their own devices. The Driver calls every stop.
 
 > "This is **PD fat-sat**: fluid bright, fat dark. Bright = water — effusion, edema, a tear filling with fluid. On T1, bright = fat and the finding is a *dark* line in the marrow. Don't carry the habit across."
 
-> "Find your slice counter — it reads *number of 29*. When I say a number, get to that number."
+> "Find your slice counter at the **bottom of the viewer** — it reads *number of 29*. Ignore the number printed *inside* the picture (that's the scanner's own, and it's off by one). When I say a number, get to the one at the bottom."
 
 **Done when:** all three on the same series, each has said the orientation sentence back, each can point to their slice counter. **Do not proceed on two of three.**
 
@@ -192,9 +194,9 @@ All 9 stops sit on slice 14/28. Three matter: **trochlea (3)**, **trochlear groo
 
 ---
 
-## 1:50 – 1:58 · Knowledge Check — axial
+## 1:50 – 1:58 · Practice & Mastery — axial
 
-Each fellow runs it on their own device. The axial bank is **11 items**; Practice & Mastery samples only **5 of 11** per round, so the Knowledge Check is the fuller pass — use it, not Mastery.
+The mode button is labeled **"Practice & Mastery"** (not "Knowledge Check") — sub-tabs are **Identify / Locate / Mastery**. Each fellow runs it on their own device. The axial bank is **11 items**; a **Mastery Check** samples only **5 of 11** per round, so have them run **Identify** for the fuller pass (immediate feedback on all 11), and the blinded **Mastery Check** for the 70% pass.
 
 **Two items to ask out loud afterward**, because they are Case 3's answers: the trochlear-groove item (flattening = dysplasia) and the MPFL item (*"the structure torn after a lateral patellar dislocation"*).
 
@@ -202,7 +204,7 @@ Each fellow runs it on their own device. The axial bank is **11 items**; Practic
 
 Screens closed. **Five minutes, not ten.** The break is where Hour 2's time gets stolen.
 
-**Running behind?** Cut in this order: (1) the Knowledge Check block — replace with 90 seconds of you asking the two items aloud; (2) axial stops 7–9; (3) sagittal stops 4–6. **Never cut the coronal root detour** — Case 2 depends on it.
+**Running behind?** Cut in this order: (1) the Practice & Mastery block — replace with 90 seconds of you asking the two items aloud; (2) axial stops 7–9; (3) sagittal stops 4–6. **Never cut the coronal root detour** — Case 2 depends on it.
 
 ---
 
@@ -488,5 +490,5 @@ Enforce: name the **compartment** and the **third** (root/horn/body), never just
 | Device dies | Pair them onto a neighbour's screen. Do not stop the room |
 | Room goes quiet | Go to the assigned jobs: *"Observer A — which plane proves that?"* |
 | Projector mirroring the run-sheet | **Projector-safe ON** at the top of `/admin/session` |
-| Running behind in Hour 1 | Cut the Knowledge Check block, then axial stops 7–9, then sagittal 4–6. **Never the coronal root detour** |
+| Running behind in Hour 1 | Cut the Practice & Mastery block, then axial stops 7–9, then sagittal 4–6. **Never the coronal root detour** |
 | Running behind in Hour 2 | Case 3 is already the short one. Cut its steps 1 and 6, keep 2, 3, 5 |

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import OfflineStatusBanner from "@/components/ui/OfflineStatusBanner";
 import InstallPrompt from "@/components/ui/InstallPrompt";
 import PwaUpdatePrompt from "@/components/ui/PwaUpdatePrompt";
+import PageLoader from "@/components/ui/PageLoader";
 
 export default function AppLayout() {
   const location = useLocation();
@@ -27,7 +28,13 @@ export default function AppLayout() {
       <OfflineStatusBanner />
       <PwaUpdatePrompt />
       <main className="flex min-h-0 flex-1 flex-col">
-        <Outlet />
+        {/* Lazy pages routed straight through AppLayout (the HomePage course
+            picker, Account, Privacy/Support/Accessibility) have no other Suspense
+            boundary above them — without this a cold chunk fetch paints a blank
+            white frame instead of a loader. */}
+        <Suspense fallback={<PageLoader fullHeight label="Loading…" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <footer className="bg-white border-t border-gray-200 px-6 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 text-center text-sm text-gray-500">
         <div className="flex flex-wrap items-center justify-between gap-2 max-w-5xl mx-auto">

@@ -178,9 +178,14 @@ export default function KnowledgeCheck({
               Return to Practice
             </Button>
           ) : (
-            <Button variant="secondary" onClick={() => changeMode("mastery")} className="min-h-11">
-              Start Mastery Check
-            </Button>
+            // Hide when mastery can't start (fewer than the required locatable
+            // landmarks) — otherwise the button is a silent no-op. Knee planes all
+            // qualify; this only bites other courses' sparse planes.
+            canStartMastery(labeledItems) && (
+              <Button variant="secondary" onClick={() => changeMode("mastery")} className="min-h-11">
+                Start Mastery Check
+              </Button>
+            )
           )}
         </div>
       </div>
@@ -472,7 +477,9 @@ function LocatableSlice({
             : `Location recorded for the ${structure}. The result is hidden until the mastery round ends.`
           : `Locate the ${structure} on this ${planeLabel} MRI. Select the image, or use arrow keys to move the crosshair and press Enter.`
       }
-      className={`relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:max-h-none lg:w-full lg:max-w-[560px] ${
+      // min-h reserves the box height so the per-question img remount (key=trialId)
+      // doesn't collapse to 0 and jump the Back/Next buttons on each new slice (CLS).
+      className={`relative mx-auto block w-fit min-h-[45svh] max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:min-h-0 lg:max-h-none lg:w-full lg:max-w-[560px] ${
         answered ? "" : "cursor-crosshair"
       }`}
     >

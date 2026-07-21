@@ -135,9 +135,9 @@ export const SESSION_HOUR_ONE = [
   },
   {
     minutes: "1:50 – 1:58",
-    label: "Knowledge Check — axial",
+    label: "Practice & Mastery — axial",
     facultyNote:
-      "Each fellow runs it on their own device. The axial bank is 11 items; Practice & Mastery samples only 5 of them per round, so the Knowledge Check is the fuller pass.",
+      "The mode button is labeled 'Practice & Mastery' (sub-tabs: Identify / Locate / Mastery). Have each fellow run Identify (immediate feedback, covers all 11 axial landmarks), then the blinded Mastery Check (70% to pass; it samples 5 landmarks per round).",
     seriesId: "axi-t2fs",
     mode: "check",
   },

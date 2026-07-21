@@ -304,7 +304,7 @@ export default function CrossPlaneDrill({
           <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-ucla-blue/10 px-2.5 py-1 text-xs font-semibold text-ucla-blue">
             From · {item.from.plane}
           </span>
-          <div className="relative mx-auto block w-fit max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black lg:mx-0 lg:max-h-none lg:w-full">
+          <div className="relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full">
             <img
               src={`${item.from.dir}/slice_${pad(item.from.sliceIndex)}.jpg`}
               alt={`${item.from.label} on ${item.from.plane}`}
@@ -345,7 +345,7 @@ export default function CrossPlaneDrill({
                   : `Locate the ${item.from.label} on this ${item.to.plane} MRI. Click the image, or use the arrow keys to move the crosshair (hold Shift for fine steps) and press Enter to place it.`
                 : undefined
             }
-            className={`relative mx-auto block w-fit max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:mx-0 lg:max-h-none lg:w-full ${
+            className={`relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full ${
               diff === "free" && !answered ? "cursor-crosshair" : ""
             }`}
           >

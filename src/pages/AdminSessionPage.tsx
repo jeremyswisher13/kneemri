@@ -269,14 +269,19 @@ function RosterCheck({
 function InviteBlock() {
   const text = useMemo(() => fellowInviteText(), []);
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   async function copy() {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
+      setCopyFailed(false);
       setTimeout(() => setCopied(false), 2000);
     } catch {
+      // Clipboard can reject in an embedded webview or non-secure context —
+      // surface it and point at the manual-copy fallback instead of failing silently.
       setCopied(false);
+      setCopyFailed(true);
     }
   }
 
@@ -297,7 +302,12 @@ function InviteBlock() {
           {copied ? "Copied ✓" : "Copy invite"}
         </button>
       </div>
-      <details className="mt-4 rounded-lg border border-gray-200 bg-gray-50">
+      {copyFailed && (
+        <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+          Couldn't copy automatically — open <strong>Preview the message</strong> below and copy it by hand.
+        </p>
+      )}
+      <details className="mt-4 rounded-lg border border-gray-200 bg-gray-50" open={copyFailed}>
         <summary className="flex min-h-11 cursor-pointer items-center px-4 text-sm font-semibold text-gray-700">
           Preview the message
         </summary>
@@ -381,12 +391,14 @@ function HourTwoPanel({
     typeof localStorage === "undefined" ? {} : readLeads(),
   );
 
-  // Default rotation: one case each, in roster order. Only fills BLANKS, so a
-  // manual reassignment is never overwritten.
+  // Default rotation: one case each, in roster order. Fill only cases whose key
+  // has NEVER been set — testing `in`, not truthiness, so an explicit "" that a
+  // faculty member chose via "Unassigned" is preserved instead of being re-filled
+  // with the roster default on the next render.
   const effectiveLeads = useMemo(() => {
     const next: LeadMap = { ...leads };
     SESSION_CASES.forEach((c, i) => {
-      if (!next[c.caseId]) next[c.caseId] = roster[i]?.targetName ?? "";
+      if (!(c.caseId in next)) next[c.caseId] = roster[i]?.targetName ?? "";
     });
     return next;
   }, [leads, roster]);

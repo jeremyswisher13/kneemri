@@ -34,10 +34,13 @@ export default function AnnotatedSlice({
   const src = `${dir}/slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`;
   const imageAlt = alt ?? `MRI slice ${sliceIndex + 1} with educational annotation markers`;
   return (
+    // min-h reserves the box height before the slice decodes so an uncached image
+    // doesn't collapse to 0 then shove the page down ~335px on load (CLS). Markers
+    // stay aligned: the w-fit wrapper still fits the image after it loads.
     <div
       data-testid="annotated-mri"
       data-screenshot-anchor="mri-viewer"
-      className="relative mx-auto block w-fit max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:max-h-none lg:w-full lg:max-w-[560px]"
+      className="relative mx-auto block w-fit min-h-[45svh] max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:min-h-0 lg:max-h-none lg:w-full lg:max-w-[560px]"
     >
       <img
         src={src}
