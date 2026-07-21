@@ -1,19 +1,19 @@
 # Handoff to Claude Ultra Code - UCLA Sports MRI App
 
-Last updated: July 19, 2026 (Codex readiness and handoff pass)
+Last updated: July 21, 2026 (7/24 teaching-session prep + two knee medical-accuracy passes)
 
 Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
 
 Branch: `main`
 
-Current product HEAD before this handoff update: `be2f5ea Fix 6 bugs + 9 mobile/PWA polish gaps from the whole-app audit`
+Current product HEAD: `106d227 Knee course: second literature-verified medical-accuracy pass (8 corrections)`. The July 19 handoff HEAD was `be2f5ea`; twelve commits of 7/24-teaching-session prep have landed since (`9ed7516`..`106d227`), documented in the new section below.
 
 Production:
 
 - Custom domain: `https://jeremyswisherkneemri.com`
 - Firebase Hosting: `https://ucla-knee-mri.web.app`
 - Firebase project: `ucla-knee-mri`
-- Both production domains returned the same healthy app artifact during the July 19 handoff check.
+- On 2026-07-21, after the latest deploy, both production domains were verified serving the same current bundle `index-CfUWAHBv.js`, and a corrected teaching string was confirmed live in the production JS.
 
 The web/PWA is the active shipping surface. Native iOS submission remains paused; read the iOS section before touching `ios/` or any App Store evidence tooling.
 
@@ -33,15 +33,12 @@ npm run build
 
 Expected baseline at handoff:
 
-- `main` is synchronized with `origin/main`.
-- Full suite: 56 test files, 427 tests passing.
-- Normal MRI suite: 12 test files, 53 tests passing.
-- Playwright: 15 passing, 1 intentional desktop skip across desktop and mobile projects.
-- `npm run lint`: clean.
-- `npm run build`: clean.
-- Performance gate: 209.4 KiB initial gzip; 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
-- `npm audit --omit=dev`: zero vulnerabilities.
-- `npm run qa:medical`: 2,768 review items, 1,359 high-risk items, 1,586 source checks, and zero automated diagnostics.
+- `main` is synchronized with `origin/main` (pushed through `106d227`).
+- Full suite: 59 test files, 450 tests passing (verified 2026-07-21).
+- `npm run lint`, `npm run test:types`, `npm run build`: clean (2026-07-21).
+- Performance gate: 210.9 KiB initial gzip across 11 assets (largest `react-vendor` 57.6 KiB); 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
+- `npm run qa:medical`: 2,768 review items, 1,360 high-risk items, 1,587 source checks, and zero automated diagnostics (2026-07-21).
+- NOT re-run in the 2026-07-21 content-only pass (they carry forward from July 19 — re-run if you touch the relevant surface): `npm run test:normal` (was 12 files / 53 tests), `npm run test:e2e` Playwright (was 15 pass / 1 intentional desktop skip), and `npm audit --omit=dev` (was zero vulnerabilities; no dependencies changed since).
 
 If any of those differ, reconcile the working tree and recent commits before assuming this document is still exact. Do not discard uncommitted user work.
 
@@ -65,6 +62,47 @@ Each course has a real-image interactive normal MRI workstation with:
 - Image CAQ
 
 The app is optimized for fellows using a mobile home-screen PWA, while retaining a desktop workstation experience. It also includes course modules, search patterns, cases, pre/post assessments, progress, spaced review, reference material, certificates, and an admin dashboard.
+
+## Changes Since the July 19 Handoff (7/24 live teaching-session prep)
+
+Twelve commits (`9ed7516`..`106d227`) prepared the app for the **July 24, 2026, 1–3 PM live knee-MRI teaching session** with Dr. Kimberly Burbank and three sports-medicine fellows. Grouped by theme; the individual commit bodies carry the full rationale.
+
+### Live-session faculty tooling: `9a57feb`, `b994789`, `41c1891`
+
+- **`/admin/session`** roster-readiness page: per-fellow signed-in / baseline-quiz / confidence-survey / normal-MRI-plane status, a copy-paste invite, an Hour-1 walkthrough with deep links into the exact series+mode, and Hour-2 case cards with persisted per-fellow lead assignment.
+- **Projector-safe toggle.** The page may be mirrored to a projector while the app deliberately hides case diagnoses from fellows, so the toggle hides every faculty-only field. A test asserts the projector-safe fields contain no finding vocabulary (an early draft leaked "MPFL"/"extrusion" through the impression prompts).
+- **Resident-role flagging.** The roster red-flags resident accounts, because Case 2 (medial-root-tear, `residentVisible:false`) hard-gates residents out and would dead-end them.
+- **`src/content/teaching-session.ts` is the single canonical timeline** — each case carries an explicit non-overlapping `window`; `teaching-session.test.ts` validates every case id and Hour-1 series-id+mode against the real registries and asserts the printed `SESSION_2026-07-24_KNEE_RUNSHEET.md` matches it (a dead deep-link at 2 PM on a Friday is not recoverable).
+- Two structural realities the run-sheet is built around, both verified in `CasePage.tsx`: **case steps 1–7 render no images** (images show only at step 0 and the review step; between them it is a checklist + textarea), and **each case names its own diagnosis on its opening screen**. The plan is therefore projector-driven images, with the Radiopaedia link flagged as the only scrollable stack.
+
+### Knee medical-accuracy hardening: `b994789`, `4a04c36`, `38274fd`, `106d227`
+
+Four escalating literature-verified passes, each retrieving primary sources (PubMed / full text, not model memory) and double-adjudicating every flag before shipping. The knee course content and the faculty run-sheet are now source-checked. The load-bearing facts are recorded in the Claude memory note `knee-content-medical-facts.md`; do not regress them:
+
+- **TT-TG** bands are CT-derived (Dejour); on MRI, abnormal ≈ ≥15 mm and the CT-20 mm cutoff ≈ **16 mm** on MRI (Camp 2013). Never apply the CT >20 mm rule to an MRI number. (An intermediate pass briefly wrote "≈13 mm" — that was wrong and is corrected everywhere.)
+- **Meniscal extrusion** >3 mm is pathologic (Costa 2004); there is **no validated ">5 mm severe" tier** — report the measured value, and it is a medial-meniscus clue (do not apply it laterally).
+- **Cartilage grading**: modified Outerbridge ≠ ICRS. Full-thickness loss with an intact plate = Outerbridge IV = ICRS 3C; ICRS 4 breaches the plate.
+- **MPFL** tear is patellar-predominant on MRI (~47%), and **tear site does not predict recurrence** — Jiang 2020 meta (PMC7541236) found no significant difference (femoral 37.6% vs patellar 32.3%, p=0.17). The earlier "femoral-sided carries higher recurrence risk" was overstated and removed.
+- **Segond** mechanism is internal rotation + varus (not "valgus"); **reverse Segond** is a medial/anteromedial tibial-rim avulsion (not "posteromedial"/"posterior").
+- **Ramp-lesion** MRI sensitivity is pooled ~65–71% at ~88–94% specificity.
+- **Lateral extra-articular tenodesis** is indicated by clinical graft-failure risk (STABILITY RCT, PMID 33208644), not by an MRI-shown ALL injury.
+- Medial meniscal **root** is anteromedial to the PCL (not "lateral to"); anterior-tibial-translation cutoffs are Vahey 1993 (7 mm; 5 mm is 93%-specific, not sensitive).
+- **"Satisfaction of search"** is *a* common cognitive error, not "the most common" (underreading/perceptual miss is #1 at ~42%, Kim & Mansfield, AJR 2014).
+- Answer keys checked with no wrong keys found: 28 pre/post, ~90 module-quiz, 101 workstation knowledge-check.
+
+### Learner-facing UX for the pilot: `62e861a`, `b55e9a8`, `282a55e`
+
+- **Home / Cases above the fold.** The course picker and the case list were buried below full-height start cards and explainers; on a 375×812 phone the first course card began at y≈912 (0 cards visible). Both pages now lead with the primary content, explainers moved below. Measured: first course card y=912→172; first case card y=925→626.
+- **Spoiler-safe case filter + search.** Status chips (All / Not started / Completed) with live counts and a search box that only ever matches text already visible on the card — clinical scenario + tags while a case is unopened, plus title + diagnoses once completed — so a learner cannot type "ACL" and be told which case is the ACL tear. Original "Case N" numbering preserved under filters.
+- **Daily review cap + case commit-gate.** Spaced-review queue capped at 20 (`DAILY_REVIEW_CAP`) with an "N of M · N due total" denominator and most-overdue-first ordering; case pages gate the reveal behind a committed read (typed primary impression + pre-reveal confidence slider, with a "Skip and reveal" escape), stored on the attempt. Plus paired per-fellow domain-mastery delta, an account-deletion request panel, and admin action audit fields.
+
+### Whole-app correctness fixes: `9ed7516`, `62e861a`, `19a7f24`, `276504f`
+
+- **Offline submit hangs.** With `persistentLocalCache`, a write is durably queued to IndexedDB immediately but the `addDoc`/`setDoc` promise only settles on server ack, so awaiting it offline stranded learners on "Submitting…" with their (client-computed) score unreachable. A shared **`settleWrite()`** helper (races the write against a 4 s ack timeout, pre-attaches a catch so a later offline rejection can't surface as unhandled) now backs `submitQuiz`, `submitSurvey`, `completeModule`, and `submitCaseAttempt`.
+- **Stable research-export participant codes.** Codes are now an FNV-1a hash of the uid, not an index into the role-filtered list — the old scheme reassigned every code when the filter flipped or a learner enrolled, which would misattribute one learner's pre/post scores to another on a merged longitudinal export. Cohort- and enrollment-independence regression tests added.
+- **Service worker.** `/images/` teaching stacks (stable filenames) now revalidate in the background instead of staying pinned cache-first forever, so a corrected MRI image reaches installed users; `/assets/` (content-hashed) stays cache-first.
+- **Analytics denominators normalized once** at the read boundary (`getUserProgress`) so psychometrics, growth, the dashboard tables, and the CSV cannot report different n's for the same cohort.
+- Additional audited fixes: certificate double-send guard, restorable-mode set unified so admin "Adjust" survives reload, role-aware "See it injured" bridge, a GlobalSearch spoiler leak closed, CSV formula-injection neutralized, and `safeInternalPath` hardened against backslash.
 
 ## Changes Since the July 10 Handoff
 
@@ -378,4 +416,4 @@ Never commit Apple private keys, `.p8` files, API keys, issuer IDs, app-specific
 
 ## One-Paragraph Executive Summary
 
-The web/PWA is live at the current product release `be2f5ea` before this handoff commit and is substantially hardened for the three-fellow pilot. All four interactive normal MRI workstations have passed complete desktop/mobile plane-and-mode sweeps; the five-step course journey, issue-report workflow, PWA recovery, structural marker/slice/answer-key integrity, and performance budgets are under automated coverage. The July 19 baseline is 427 unit/component tests, 53 focused normal-MRI tests, 15 passing Playwright tests with one intentional skip, zero production dependency vulnerabilities, and zero automated medical-QA diagnostics. The next highest-value work is real-device authentication, authenticated admin/pilot validation, and faculty source-and-marker sign-off. Native iOS submission remains intentionally paused.
+The web/PWA is live at the current product release `106d227` and is substantially hardened for the three-fellow pilot and the July 24 live knee-MRI teaching session with Dr. Burbank. Since the July 19 handoff, twelve commits added the `/admin/session` faculty tooling and canonical `teaching-session.ts` timeline, four escalating literature-verified knee medical-accuracy passes (all recurring facts recorded in `knee-content-medical-facts.md`), pilot UX (home/cases above the fold, spoiler-safe case search, daily review cap, case commit-gate), and a set of whole-app correctness fixes (offline `settleWrite`, stable research-export IDs, service-worker image revalidation, normalized analytics denominators). All four interactive normal MRI workstations have passed complete desktop/mobile plane-and-mode sweeps; the course journey, issue-report workflow, PWA recovery, structural marker/slice/answer-key integrity, and performance budgets are under automated coverage. The 2026-07-21 verified baseline is 450 unit/component tests passing, clean lint/type-check/build, a 210.9 KiB initial-gzip performance budget, and zero automated medical-QA diagnostics; Playwright, `test:normal`, and `npm audit` were not re-run in this content-only pass and carry forward from July 19. The next highest-value work is real-device authentication, authenticated admin/pilot validation, and faculty source-and-marker sign-off. Native iOS submission remains intentionally paused.
