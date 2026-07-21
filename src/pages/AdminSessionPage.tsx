@@ -224,25 +224,36 @@ function RosterCheck({
             </div>
 
             {fellow ? (
-              <div className="mt-2.5 flex flex-wrap gap-2">
-                {readinessFor(fellow).map((flag) => (
-                  <span
-                    key={flag.label}
-                    className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
-                      flag.done
-                        ? "bg-green-100 text-green-800"
-                        : "bg-amber-100 text-amber-900"
-                    }`}
-                  >
-                    {flag.done ? "✓" : "•"} {flag.label}
-                  </span>
-                ))}
-                {fellow.totalNormalPlanes ? (
-                  <span className="inline-flex items-center rounded-full bg-gray-200 px-2.5 py-1 text-xs font-semibold text-gray-700">
-                    Normal MRI {fellow.normalPlanesPassed ?? 0}/{fellow.totalNormalPlanes} planes
-                  </span>
-                ) : null}
-              </div>
+              <>
+                <div className="mt-2.5 flex flex-wrap gap-2">
+                  {readinessFor(fellow).map((flag) => (
+                    <span
+                      key={flag.label}
+                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                        flag.done
+                          ? "bg-green-100 text-green-800"
+                          : "bg-amber-100 text-amber-900"
+                      }`}
+                    >
+                      {flag.done ? "✓" : "•"} {flag.label}
+                    </span>
+                  ))}
+                  {fellow.totalNormalPlanes ? (
+                    <span className="inline-flex items-center rounded-full bg-gray-200 px-2.5 py-1 text-xs font-semibold text-gray-700">
+                      Normal MRI {fellow.normalPlanesPassed ?? 0}/{fellow.totalNormalPlanes} planes
+                    </span>
+                  ) : null}
+                </div>
+                {/* Case 2 (medial-root-tear) is residentVisible:false, so a
+                    resident-role account dead-ends on it live. Surface it here
+                    instead of discovering it at 2:22 PM. */}
+                {fellow.role === "resident" && (
+                  <p className="mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-900">
+                    ⚠️ This account is a <strong>resident</strong> — Case 2 (medial root tear) will not
+                    open for them. Change the role to <strong>fellow</strong> in the admin dashboard before Friday.
+                  </p>
+                )}
+              </>
             ) : (
               !loading && (
                 <p className="mt-2 text-sm text-gray-600">
