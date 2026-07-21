@@ -49,7 +49,7 @@ const KNEE_TRACKS: LearningTrack[] = [
     cases: [
       { id: "degenerative-knee-oa", label: "Tricompartmental OA" },
       { id: "ocd-stability", label: "OCD stability" },
-      { id: "sifk-sonk", label: "SIFK / SONK" },
+      { id: "sifk-sonk", label: "SIF / SIF-ON" },
     ],
   },
   {

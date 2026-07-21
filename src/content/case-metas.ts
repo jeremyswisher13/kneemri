@@ -47,8 +47,7 @@ export const kneeCaseMetas: CaseMeta[] = [
     "clinicalScenario": "A 22-year-old soccer player presents with acute knee pain and instability after a noncontact pivoting injury during a game. The knee swelled rapidly within 2 hours.",
     "keyDiagnoses": [
       "Complete ACL tear",
-      "Pivot-shift bone contusion pattern",
-      "Possible lateral meniscal root tear"
+      "Pivot-shift bone contusion pattern"
     ],
     "tags": [
       "acl",
@@ -147,8 +146,7 @@ export const kneeCaseMetas: CaseMeta[] = [
     "clinicalScenario": "A 16-year-old multi-sport athlete presents with activity-related medial knee pain for 4 months. Radiographs show an osteochondral lesion at the medial femoral condyle. Physes remain open.",
     "keyDiagnoses": [
       "Juvenile osteochondritis dissecans (OCD)",
-      "Stability assessment with juvenile-specific criteria",
-      "Possible loose body"
+      "Stability assessment with juvenile-specific criteria"
     ],
     "tags": [
       "ocd",
@@ -160,13 +158,13 @@ export const kneeCaseMetas: CaseMeta[] = [
   },
   {
     "id": "sifk-sonk",
-    "title": "SIFK / SONK",
+    "title": "Subchondral Insufficiency Fracture (SIF)",
     "difficulty": "intermediate",
     "tier": "advanced",
     "residentVisible": true,
     "clinicalScenario": "A 68-year-old woman presents with sudden onset of severe medial knee pain without a specific traumatic event. She has difficulty bearing weight and exam reveals medial femoral condyle tenderness.",
     "keyDiagnoses": [
-      "Subchondral insufficiency fracture of the knee (SIFK)",
+      "Subchondral insufficiency fracture of the knee (SIF)",
       "Subchondral fracture line",
       "Associated meniscal pathology"
     ],
@@ -208,7 +206,7 @@ export const kneeCaseMetas: CaseMeta[] = [
     "keyDiagnoses": [
       "Knee dislocation (ACL + PCL tears)",
       "Posterolateral corner disruption",
-      "Possible popliteal artery injury",
+      "Popliteal artery injury must be urgently excluded",
       "Multiple meniscal and chondral injuries"
     ],
     "tags": [
@@ -227,18 +225,17 @@ export const kneeCaseMetas: CaseMeta[] = [
     "difficulty": "foundational",
     "tier": "advanced",
     "residentVisible": false,
-    "clinicalScenario": "A 32-year-old basketball player felt a pop and sharp pain while landing from a jump. He is unable to perform a straight leg raise. Patella alta is suspected on lateral radiograph.",
+    "clinicalScenario": "A 58-year-old man has anterior knee pain and swelling after a road-traffic injury. He has a palpable patellar-tendon defect and cannot actively extend the knee. Patella alta is present on the lateral radiograph.",
     "keyDiagnoses": [
-      "Complete patellar tendon rupture",
-      "Patella alta",
-      "Possible bony avulsion fragment from the inferior patellar pole"
+      "Complete distal patellar tendon avulsion from the tibial tubercle",
+      "Patella alta"
     ],
     "tags": [
       "extensor-mechanism",
       "patellar-tendon",
       "rupture",
       "patella-alta",
-      "sports-injury"
+      "trauma"
     ]
   },
   {

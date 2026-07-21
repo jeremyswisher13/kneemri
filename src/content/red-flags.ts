@@ -19,26 +19,26 @@ export const redFlagsByRegion: Record<string, RedFlag[]> = {
     {
       finding: "Bicruciate injury / knee dislocation",
       action:
-        "Even if spontaneously reduced — clear the popliteal artery (flow voids) and common peroneal nerve. A missed vascular injury threatens the limb. Urgent.",
+        "Treat as a possible spontaneously reduced knee dislocation. A routine knee MRI cannot exclude popliteal-artery injury: prompt vascular examination and ankle-brachial index are required, with CT angiography and serial assessment according to the trauma pathway. Also assess the common peroneal nerve. Urgent.",
     },
     {
       finding: "Locked knee + displaced bucket-handle tear",
       action:
-        "Double-PCL sign or fewer than two meniscal bow-ties = a fragment in the notch blocking extension — mechanical, needs surgery, not a brace.",
+        "A displaced fragment in the notch can produce mechanical locking. Correlate the double-PCL, absent bow-tie, donor-site, and orthogonal-plane findings with the examination, and communicate promptly for orthopedic assessment.",
     },
     {
       finding: "Extensor mechanism rupture (quadriceps / patellar tendon)",
-      action: "Full-thickness gap + can't extend = surgical repair. Don't undercall a high-grade partial tear.",
+      action: "A full-thickness gap with clinical loss of active extension needs prompt orthopedic assessment and is commonly repaired. Report tendon, tear extent, gap/retraction, retinacular involvement, and any postoperative context.",
     },
     {
       finding: "Marrow-replacing lesion",
       action:
-        "Low-T1 marrow that isn't a contusion — tumor or infiltration until proven otherwise. Don't write it off as edema.",
+        "Marrow signal that is disproportionately low on T1, replaces rather than intersperses fat, or has aggressive features needs dedicated characterization and prompt workup. Low T1 signal alone is not specific for tumor.",
     },
     {
       finding: "Segond / reverse Segond fracture",
       action:
-        "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a medial (reverse Segond) rim avulsion points to the PCL. The fracture flags the ligament — go look.",
+        "A lateral tibial-rim Segond fracture strongly flags ACL injury. A medial-rim reverse Segond fracture flags a potentially complex injury involving the PCL and medial/posteromedial structures. Map every ligament and confirm injuries directly.",
     },
   ],
   shoulder: [
@@ -80,7 +80,7 @@ export const redFlagsByRegion: Record<string, RedFlag[]> = {
         "A radiograph-negative double-line is ARCO I — the joint-preservation window. Refer promptly and image the contralateral hip (often bilateral).",
     },
     {
-      finding: "Subchondral insufficiency fracture (SIFK)",
+      finding: "Subchondral insufficiency fracture (SIF)",
       action:
         "A subchondral low-signal fracture line (± flattening) carries collapse risk — it is NOT benign transient marrow edema. Offload and refer.",
     },

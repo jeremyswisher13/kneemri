@@ -12,8 +12,8 @@
       "imageCaqItems": 7,
       "redFlags": 5,
       "reviewItems": 1102,
-      "highRiskItems": 442,
-      "sourceCheckItems": 525,
+      "highRiskItems": 420,
+      "sourceCheckItems": 498,
       "diagnostics": 0
     },
     "shoulder-mri": {
@@ -64,8 +64,8 @@
   },
   "totals": {
     "reviewItems": 2768,
-    "highRiskItems": 1360,
-    "sourceCheckItems": 1587,
+    "highRiskItems": 1338,
+    "sourceCheckItems": 1560,
     "diagnostics": 0,
     "diagnosticErrors": 0,
     "diagnosticWarnings": 0

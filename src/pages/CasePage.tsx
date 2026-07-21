@@ -8,7 +8,7 @@ import MriStackViewer from "@/components/ui/MriStackViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
-import { coursePath, courseRegistry } from "@/content/courses";
+import { coursePath, courseRegionTitle, courseRegistry } from "@/content/courses";
 import { submitCaseAttempt } from "@/lib/firestore";
 
 /* ------------------------------------------------------------------ */
@@ -87,6 +87,7 @@ export default function CasePage() {
   const { caseId } = useParams<{ caseId: string }>();
   const { user, role } = useAuth();
   const activeCourse = useActiveCourse();
+  const unrevealedCaseTitle = `${courseRegionTitle(activeCourse)} MRI Case`;
   const isAdminView = useIsAdminView();
   const searchPatternSteps = activeCourse.searchPatternSteps;
   const isResident = role === "resident";
@@ -437,7 +438,7 @@ export default function CasePage() {
         </Link>
         <span>/</span>
         <span className="min-w-0 flex-1 text-gray-600 line-clamp-1">
-          {currentStep === reviewStep ? caseItem.title : `Case: ${diff.label}`}
+          {currentStep === reviewStep ? caseItem.title : unrevealedCaseTitle}
         </span>
       </nav>
 
@@ -457,7 +458,7 @@ export default function CasePage() {
           )}
         </div>
         <h1 className="text-2xl font-bold text-gray-900">
-          {currentStep === reviewStep ? caseItem.title : `Case: ${diff.label}`}
+          {currentStep === reviewStep ? caseItem.title : unrevealedCaseTitle}
         </h1>
       </div>
 

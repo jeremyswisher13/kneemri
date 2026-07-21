@@ -65,8 +65,8 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg',
-        alt: 'Segond fracture — anterolateral ligament avulsion',
-        caption: 'Segond fracture — anterolateral ligament avulsion',
+        alt: 'Segond fracture — anterolateral tibial-rim avulsion',
+        caption: 'Segond fracture — anterolateral tibial-rim avulsion involving the anterolateral capsular complex',
         attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
       },
     ],
@@ -85,14 +85,14 @@ The ligament appears **"celery stalk-like"** with interdigitated high signal bet
 | **Fiber continuity** | Intact from femur to tibia | Disrupted |
 | **Orientation/tension** | Preserved, not lax | Horizontally oriented or lax |
 | **Morphology** | Bulging but organized | Amorphous mass |
-| **Secondary signs** | Absent (no bone contusions, no tibial translation) | Present |
+| **Secondary signs** | Typically absent from mucoid change itself | May support an acute or functionally insufficient tear |
 
 ### Clinical Context
 - Patients are typically **middle-aged**
 - May present with **deep/posterior knee pain** and restricted motion: **limited flexion** (the more common deficit) from the thickened ligament impinging posteriorly in flexion, and/or **limited extension** from the anteriorly thickened ligament impinging against the roof of the intercondylar notch (roof/notch impingement)
 - An associated **ganglion cyst** arising from the ACL is common and supports the diagnosis
-- If **clinical instability is absent**, manage conservatively`,
-    pearl: `The hallmark of mucoid degeneration is a thickened ACL with increased signal but intact, continuous fibers -- the "celery stalk" appearance. Unlike an acute tear, there are no secondary signs (bone bruises, tibial translation, or meniscal tears) and the patient is clinically stable.`,
+- If **clinical instability is absent**, the MRI appearance does not imply ACL reconstruction; management is symptom- and examination-driven and is usually nonoperative initially`,
+    pearl: `The hallmark of mucoid degeneration is a thickened ACL with increased signal but intact, continuous fibers -- the "celery stalk" appearance. Acute secondary signs such as pivot-shift bruises and anterior tibial translation are absent, but unrelated meniscal or degenerative abnormalities may coexist. Correlate with clinical stability.`,
     images: [
       {
         src: '/images/teaching/modules/module7-ligaments/07_ACL_Chronic_Tear_Mucoid.jpg',
@@ -108,26 +108,26 @@ The ligament appears **"celery stalk-like"** with interdigitated high signal bet
 ACL graft evaluation requires familiarity with the expected MRI appearance at different time points and the specific tunnel positions for different graft types.
 
 ### Graft Maturation Timeline
-- **First 6--12 months:** Graft undergoes **"ligamentization"** -- increased signal on T2-weighted sequences due to revascularization and remodeling (do not confuse with graft failure)
-- **By 12--24 months:** A mature, intact graft should appear as a **uniformly low-signal structure** on all sequences
+- Graft signal evolves during **ligamentization** and varies by graft type, sequence, and patient; increased signal can be normal during the first year and may persist longer
+- Later grafts generally become lower in signal, but timing alone cannot establish integrity; morphology, continuity, tunnel position, examination, and secondary signs remain essential
 
 ### Four Key Elements of Graft Assessment
 
 1. **Fiber continuity** -- from the femoral to the tibial tunnel
-2. **Signal characteristics** -- a mature graft should be uniformly low signal; **fluid-signal intensity** within the graft substance suggests tearing
-3. **Tunnel position** -- the femoral tunnel should be in the **posterior-superior quadrant** of the notch on sagittal images; a too-anterior or vertical **femoral tunnel** causes a non-isometric/vertical graft (rotational/pivot-shift instability), while an anterior **tibial tunnel** causes roof (notch) impingement
-4. **Tunnel complications** -- widening > 2 mm from the immediate postoperative size, cyst formation, or hardware complications
+2. **Signal characteristics** -- signal generally trends lower with maturation but varies by graft, sequence, and patient; increased or even fluid-like signal is not diagnostic of failure without morphologic and clinical support
+3. **Tunnel position and graft trajectory** -- assess whether the intra-articular apertures capture the native ACL footprints. An anterior femoral aperture outside the footprint can produce excessive graft tension in flexion; a vertically oriented femoral graft may control anterior translation yet leave rotational instability; and an anterior tibial aperture outside the footprint can predispose to roof impingement in extension. Interpret the paired tunnels and graft trajectory together
+4. **Tunnel complications** -- interval widening, cyst formation, hardware migration, or fixation complications; compare with prior studies because measurement technique and expected remodeling vary
 
 ### Signs of Graft Failure
 
 **Partial graft tear:**
-- Focal increased signal or thinning with some intact fibers
+- Focal fiber disruption or abnormal thinning with some continuous fibers; increased signal alone is insufficient
 
 **Complete graft tear:**
 - Discontinuity
 - Lax or horizontally oriented graft
 - Recurrence of secondary signs (anterior tibial translation, pivot-shift bone contusions)`,
-    pearl: `Tunnel malposition is a leading technical cause of ACL graft failure, via two distinct mechanisms. A too-anterior or vertical FEMORAL tunnel produces a vertical graft that fails to control rotational (pivot-shift) instability — on sagittal MRI the femoral tunnel should sit in the posterior aspect of the notch. Roof (notch) impingement of the graft in extension, by contrast, is caused by an anterior TIBIAL tunnel. Either malposition predicts failure even if the graft looks intact.`,
+    pearl: `Tunnel malposition is an important technical contributor to ACL graft dysfunction. Keep the mechanisms separate: an anterior femoral aperture can over-tension the graft in flexion; a vertical femoral graft may leave rotational laxity; and an anterior tibial aperture can predispose to roof impingement in extension, depending on the paired femoral trajectory and notch anatomy. Describe the apertures, trajectory, continuity, secondary signs, and examination context rather than declaring failure from tunnel position alone.`,
   },
   {
     content: `### PCL Tears
@@ -153,13 +153,13 @@ The PCL may **buckle anteriorly** in the setting of an ACL tear with anterior ti
 - **Popliteal artery injury** -- particularly with combined PCL/PLC disruption and knee dislocation
 - **Meniscal tears**
 
-A **PCL tear combined with a posterolateral corner injury** is a particularly unstable pattern that requires **surgical reconstruction**.`,
+A **PCL tear combined with a posterolateral corner injury** is a particularly unstable pattern that warrants prompt specialist evaluation. Operative versus nonoperative treatment depends on injury grade, chronicity, alignment, examination, associated injuries, and patient goals.`,
     pearl: `A PCL that is thickened and diffusely increased in signal but maintains its general contour may represent a partial or interstitial tear rather than simple contusion. Correlate with the clinical posterior drawer test. Also remember that apparent PCL "buckling" can be secondary to anterior tibial translation from an ACL tear, not a primary PCL injury.`,
     images: [
       {
         src: '/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg',
         alt: 'PCL intrasubstance tear — sagittal',
-        caption: 'PCL intrasubstance tear — the PCL is thickened with diffusely increased internal signal but a preserved overall contour (a partial/interstitial tear rather than a simple contusion).',
+        caption: 'Possible PCL intrasubstance injury — thickening and diffuse internal signal with preserved overall contour can represent a partial/interstitial tear; correlate with trauma timing and posterior-laxity examination.',
         attribution: 'Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.',
       },
     ],
@@ -187,10 +187,10 @@ A **PCL tear combined with a posterolateral corner injury** is a particularly un
 
 - **Deep MCL injury** can result in **peripheral detachment of the medial meniscus** (meniscocapsular separation)
 - On coronal images, look for **fluid signal between the deep MCL and the meniscal body**, indicating meniscocapsular injury
-- **Distal tibial-sided** MCL tears can result in a **Stener-like lesion**, where the torn distal sMCL displaces superficial to the pes anserine tendons, preventing healing
+- **Distal tibial-sided** MCL tears can result in a **Stener-like lesion**, where the torn distal sMCL displaces superficial to the pes anserine tendons and may impede anatomic healing
 - Combined **MCL/ACL injuries** are common
 - When a **grade III MCL tear** is present, always evaluate for associated **cruciate and posterolateral corner injuries** suggesting a multiligament knee injury`,
-    pearl: `Always specify whether the MCL injury involves the superficial layer, the deep layer (meniscofemoral/meniscotibial ligaments), or both. Deep MCL tears can cause meniscocapsular separation, which may be an indication for surgical repair that would otherwise be unnecessary for an isolated superficial MCL sprain.`,
+    pearl: `Always specify whether the MCL injury involves the superficial layer, the deep layer (meniscofemoral/meniscotibial ligaments), or both. Deep MCL disruption can accompany meniscocapsular separation and may alter treatment compared with an isolated superficial MCL sprain.`,
     images: [
       {
         src: '/images/teaching/modules/module6-menisci/15_Meniscus_Meniscotibial_MCL_Normal.jpg',
@@ -216,7 +216,7 @@ The **lateral collateral ligament (LCL)** and **posterolateral corner (PLC)** st
 - **Popliteus tendon**
 - **Popliteofibular ligament**
 
-Injury to the PLC is **frequently missed** on initial clinical evaluation and MRI interpretation, leading to **failed cruciate ligament reconstructions**.
+PLC injury is **frequently missed** on initial clinical evaluation and MRI interpretation; unrecognized instability can overload and compromise a cruciate reconstruction.
 
 ### Imaging by Plane
 
@@ -227,10 +227,10 @@ Injury to the PLC is **frequently missed** on initial clinical evaluation and MR
 ### Signs of PLC Injury
 - Edema and disruption of any PLC component, particularly at the **fibular head attachments**
 - **Arcuate fracture** (avulsion of the fibular styloid) -- a **strong marker** of PLC injury that should trigger evaluation of every PLC component
-- Bone contusions on the **anteromedial femoral condyle** and **anteromedial tibial plateau** (varus mechanism)
+- Medial-compartment contact contusions may accompany a varus mechanism, but distribution varies and should be treated as supportive rather than diagnostic
 - PLC injuries typically occur with **varus or hyperextension forces**
 - Commonly associated with **cruciate ligament tears** (particularly PCL)`,
-    pearl: `The PLC injury triad to report is: LCL disruption + popliteus tendon tear + popliteofibular ligament injury. Failure to diagnose PLC injury is a major cause of ACL or PCL graft failure due to persistent rotational instability. An arcuate (fibular styloid) fracture is a strong PLC injury marker; define the injured structures directly.`,
+    pearl: `For a high-grade PLC pattern, report the LCL, popliteus tendon, and popliteofibular ligament individually, plus the biceps femoris, arcuate complex, peroneal nerve, and cruciates. Missed PLC instability can overload a cruciate graft. An arcuate (fibular-styloid) fracture is a strong search trigger, but define the injured structures directly.`,
   },
   {
     content: `### Posteromedial Corner (PMC)
@@ -255,7 +255,7 @@ The **POL** functions as a secondary restraint to **valgus stress** and a primar
 - When an ACL tear is present with a PMC injury, the **rotational instability is greater** than with an isolated ACL tear, potentially affecting surgical planning
 - **Chronic PMC insufficiency** can lead to persistent instability despite successful ACL reconstruction
 - Reporting should include specification of **which structures are involved** and the **grade of disruption**`,
-    pearl: `When you see an MCL tear with an ACL injury, always evaluate the posteromedial corner structures (posterior oblique ligament, semimembranosus expansions). Combined ACL + MCL + PMC injury creates anteromedial rotatory instability that may require PMC repair or reconstruction in addition to ACL surgery.`,
+    pearl: `When you see an MCL tear with an ACL injury, evaluate the posteromedial corner structures (posterior oblique ligament and semimembranosus expansions). Combined ACL + MCL + PMC injury can create anteromedial rotatory instability and may change the surgical plan.`,
   },
   {
     content: `### MPFL and Lateral Patellar Dislocation
@@ -276,9 +276,9 @@ A bone bruise pattern with edema on the **medial patellar facet** and the **ante
 ### Associated Findings Checklist
 - **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)
 - **Lateral patellar tilt and subluxation**
-- **Patella alta** (Insall-Salvati ratio **> 1.2**)
+- **Patella alta** (Insall-Salvati **>1.2** is a classic true-lateral-radiograph threshold; on MRI, name the method and use modality-appropriate technique/reference data)
 - **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)
-- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value in the mid-to-high teens may already be approaching the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (the MRI equivalent of the CT 20 mm cutoff is ≈ 16 mm — Camp et al. found MRI reads ~3.8 mm lower than CT — and MRI values ≥ ~15 mm are generally considered abnormal).`,
+- **Increased TT-TG distance** — the classic **>20 mm** threshold is CT-derived. MRI commonly yields lower values, but the difference is protocol- and landmark-dependent; state the modality and method, compare with modality-appropriate reference data, and do not turn one value into a standalone surgical indication.`,
     pearl: `The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.`,
     images: [
       {
@@ -296,9 +296,9 @@ A bone bruise pattern with edema on the **medial patellar facet** and the **ante
 
 ### Common Combined Patterns
 - **ACL + MCL** -- most common overall
-- **ACL + PCL** -- true dislocation
+- **ACL + PCL** -- a knee-dislocation pattern, including a potentially spontaneously reduced dislocation
 - **PCL + PLC** -- high-energy varus/hyperextension
-- **ACL + PCL + PLC or PMC** -- complete dislocation
+- **ACL + PCL + PLC or PMC** -- higher-grade knee-dislocation pattern
 
 ### Systematic Evaluation Checklist
 
@@ -317,8 +317,8 @@ When evaluating a multiligament knee injury, report **every ligament and stabili
 ### Vascular and Nerve Assessment
 
 - **Popliteal artery injury** is uncommon but limb-threatening, can be occult after spontaneous reduction, and requires urgent vascular assessment
-- Indirect MRI signs: loss of the normal **flow void** in the popliteal artery on spin echo sequences, **perivascular hematoma**, or intimal irregularity
+- Routine knee MRI may show **perivascular hematoma**, abrupt flow-related signal change, or gross vessel abnormality, but normal flow voids do **not** exclude an intimal injury and MRI must not delay or replace the trauma vascular pathway
 - **Common peroneal nerve injury** should be suspected with PLC injury patterns; the nerve can be traced on **axial images** around the fibular neck`,
-    pearl: `Any knee with combined ACL + PCL disruption should be considered a knee dislocation pattern until proven otherwise, even if the knee has spontaneously reduced. These injuries carry a limb-threatening risk of occult popliteal artery injury and require urgent vascular assessment (vascular exam/ABI, with CTA/MRA when abnormal or equivocal, or per trauma protocol). Always report all injured structures individually and recommend vascular evaluation if not already performed.`,
+    pearl: `Any knee with combined ACL + PCL disruption should be treated as a knee-dislocation pattern, even if it has spontaneously reduced. These injuries carry a limb-threatening risk of occult popliteal-artery injury and require urgent vascular assessment: examination and ankle-brachial index, CT angiography for abnormal/equivocal findings or according to the trauma pathway, and serial examinations when indicated. Routine knee MRI cannot provide vascular clearance. Report all injured structures individually and recommend vascular evaluation if it is not already documented.`,
   },
 ];

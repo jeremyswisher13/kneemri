@@ -33,7 +33,7 @@ const STEP_TARGETS: Record<string, Record<number, StepTarget>> = {
     2: { dir: KNEE_COR, count: 19, plane: "Coronal PD-FS", sliceIndex: 7 },
     3: { dir: KNEE_COR, count: 19, plane: "Coronal PD-FS", sliceIndex: 7 },
     4: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 8 },
-    5: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 21 },
+    5: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 12 },
     6: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 13 },
     7: { dir: KNEE_SAG, count: 29, plane: "Sagittal PD-FS", sliceIndex: 14 },
   },
@@ -121,6 +121,13 @@ export default function SearchPatternPage() {
   function toggleItem(stepNumber: number, itemIndex: number) {
     const key = `${stepNumber}-${itemIndex}`;
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function selectStep(stepIndex: number) {
+    setCurrentStep(stepIndex);
+    const step = searchPatternSteps[stepIndex];
+    if (!step) return;
+    setActiveTargetStep(courseTargets[step.number] ? step.number : null);
   }
 
   function isItemChecked(stepNumber: number, itemIndex: number) {
@@ -319,9 +326,10 @@ export default function SearchPatternPage() {
               {/* Step Header */}
               <button
                 onClick={() => {
-                  setCurrentStep(isActive ? -1 : stepIdx);
-                  if (courseTargets[step.number]) {
-                    setActiveTargetStep(step.number);
+                  if (isActive) {
+                    setCurrentStep(-1);
+                  } else {
+                    selectStep(stepIdx);
                     setViewerOpen(true);
                   }
                 }}
@@ -491,14 +499,14 @@ export default function SearchPatternPage() {
                       variant="secondary"
                       size="sm"
                       disabled={stepIdx === 0}
-                      onClick={() => setCurrentStep(stepIdx - 1)}
+                      onClick={() => selectStep(stepIdx - 1)}
                     >
                       Previous Step
                     </Button>
                     {stepIdx < searchPatternSteps.length - 1 ? (
                       <Button
                         size="sm"
-                        onClick={() => setCurrentStep(stepIdx + 1)}
+                        onClick={() => selectStep(stepIdx + 1)}
                       >
                         Next Step
                       </Button>
@@ -521,6 +529,7 @@ export default function SearchPatternPage() {
           onClick={() => {
             setCheckedItems({});
             setCurrentStep(0);
+            setActiveTargetStep(null);
           }}
           className="text-sm text-gray-500 hover:text-gray-600"
         >

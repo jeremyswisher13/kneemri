@@ -2481,7 +2481,7 @@ Explanation: A complete three-tendon proximal hamstring avulsion with significan
 
 - **Tension-side femoral-neck stress fracture:** A line on the SUPEROLATERAL (tension) cortex is the surgical-urgency pattern — prone to displacement and AVN. Protected/non-weight-bearing + prompt ortho.
 - **AVN pre-collapse (double-line sign):** A radiograph-negative double-line is ARCO I — the joint-preservation window. Refer promptly and image the contralateral hip (often bilateral).
-- **Subchondral insufficiency fracture (SIFK):** A subchondral low-signal fracture line (± flattening) carries collapse risk — it is NOT benign transient marrow edema. Offload and refer.
+- **Subchondral insufficiency fracture (SIF):** A subchondral low-signal fracture line (± flattening) carries collapse risk — it is NOT benign transient marrow edema. Offload and refer.
 - **Marrow-replacing lesion:** Low-T1 marrow that isn't a stress/edema pattern — tumor or infiltration until proven otherwise.
 - **Proximal hamstring avulsion:** ≥2 tendons torn AND ≥2 cm retraction meets the surgical-referral window (the sciatic nerve sits right there) — flag it before retraction worsens.
 

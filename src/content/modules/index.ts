@@ -92,10 +92,10 @@ When you sit down to read a knee MRI, start by orienting yourself:
 The three sequences you must understand for knee MRI:
 
 - **T1-weighted** — excellent anatomic detail. Fat is **bright** (high signal), fluid is **dark** (low signal), cortical bone is dark. Best for detecting **fracture lines** (low-signal lines against bright marrow fat) and evaluating **marrow replacement** processes.
-- **PD FS (proton density fat-suppressed)** — the **single most important sequence** for knee MRI. Fat suppression removes bright fat signal, so **edema and fluid** stand out as bright signal against a dark background. Detects most pathology: **bone marrow edema**, **meniscal tears**, **ligament injuries**, **cartilage defects**, and **joint effusion**.
+- **PD FS (proton density fat-suppressed)** — a principal **workhorse sequence** for knee MRI. Fat suppression makes increased water content and fluid conspicuous. It is sensitive for marrow edema-like signal, meniscal and ligament injury, cartilage defects, and joint fluid, but it must be interpreted with T1 and orthogonal planes.
 - **T2-weighted** — similar to PD FS (fluid is bright), but with higher contrast between fluid and soft tissue. Useful for characterizing **cysts** and **effusions**.`,
         pearl:
-          'If you only had one sequence to read, it should be the sagittal PD FS. This single series can show you ACL tears, meniscal tears, bone bruises, cartilage lesions, and effusion. But never read just one sequence — always cross-reference findings across sequences and planes.',
+          'No single sequence or plane is sufficient for a knee MRI. Use fluid-sensitive images to find increased water content, T1 to assess marrow composition and fracture lines, and orthogonal planes to confirm morphology and continuity.',
       },
       {
         content: `### Sequence Roles in Your Diagnostic Toolkit
@@ -108,7 +108,7 @@ Normal marrow is fatty and therefore **bright on T1**. Any process that replaces
 - Infection
 - Edema
 
-This makes T1 highly sensitive for marrow pathology when you compare it to the expected bright signal.
+This makes T1 sensitive to loss of the expected fat-rich marrow signal, but the finding remains nonspecific and must be interpreted by distribution, morphology, and fluid-sensitive correlation.
 
 **PD FS — Edema & Soft Tissue Pathology**
 
@@ -121,7 +121,7 @@ Because fat signal is suppressed, any edema or fluid "lights up" as bright signa
 
 Excellent for characterizing **fluid collections**. Often used in coronal and axial planes.`,
         pearl:
-          'A finding that is dark on T1 and bright on PD FS is almost always edema or fluid. A finding that is bright on both T1 and PD FS could be subacute blood (methemoglobin) or proteinaceous fluid. Always correlate signal characteristics across sequences before making your diagnosis.',
+          'Low T1 plus high fluid-sensitive signal is a nonspecific increased-water or marrow-replacement pattern. Trauma, stress injury, insufficiency fracture, infection, inflammation, and neoplasm remain in the differential; use distribution, morphology, clinical context, and the other sequences before naming it.',
       },
       {
         content: `### Common Artifacts and Pitfalls
@@ -131,7 +131,7 @@ Excellent for characterizing **fluid collections**. Often used in coronal and ax
 - **Popliteus tendon**
 - Portions of the **cruciate ligaments**
 
-Key rule: **magic angle artifact disappears on T2**. If increased signal in a meniscus on PD disappears on T2, it is likely artifact, not a tear.
+Magic-angle signal is strongest on short-TE sequences and usually **decreases on longer-TE T2-weighted images**. Signal reduction supports artifact, but it does not exclude a tear; surface contact and morphology on adjacent and orthogonal images remain decisive.
 
 **Truncation Artifact (Gibbs Artifact)** — produces alternating bright and dark lines parallel to high-contrast interfaces. Classically produces a **linear bright line through the meniscus** on sagittal images, mimicking a horizontal tear. Distinguishing clue: the truncation line runs parallel to, and at a fixed short distance from, the meniscal surface and does **NOT contact the articular surface** (a true tear's signal reaches a surface). It can be reduced by increasing the acquisition matrix or changing the phase-encode direction; confirm on a second plane.
 
@@ -153,12 +153,12 @@ Most PACS viewers allow real-time adjustment by clicking and dragging.
 ### Optimal Settings by Structure
 
 - **Bone marrow** (T1 or PD FS) — moderate window, level set to make marrow intermediate grey. Reveals subtle signal changes.
-- **Meniscus** — widen the window slightly so the normally dark meniscus shows internal contrast, making **intrasubstance signal changes** easier to detect.
-- **Cartilage** (PD FS) — narrow the window to maximize contrast between cartilage and adjacent fluid.
+- **Meniscus** — center the level over the low-signal range and adjust width so the meniscus is not clipped to uniform black; a narrower local range can reveal subtle internal gradations.
+- **Cartilage** (PD FS) — adjust width and level to preserve both the cartilage surface and bright joint fluid without saturation.
 
 Develop the habit of adjusting window/level as you move through your search pattern, optimizing for each structure you evaluate.`,
         pearl:
-          'When evaluating the meniscus, briefly widen your window to see the internal signal of the meniscus better. When evaluating cartilage, narrow your window to maximize contrast between the cartilage surface and any adjacent fluid that would indicate a defect.',
+          'Window/level is a display optimization, not a fixed recipe. For menisci, bring the low-signal tissue into the visible gray range without clipping it black; for cartilage, preserve the cartilage-fluid interface. Recheck the native display before deciding a subtle finding is real.',
       },
     ],
   },
@@ -231,16 +231,18 @@ Organize your cartilage and osteochondral findings by compartment when reporting
       {
         content: `### Key Bony Landmarks
 
-- **Tibial eminences** (medial and lateral intercondylar spines) — visible on coronal images; attachment sites for cruciate ligaments and meniscal roots. **Tibial eminence fractures** are common in adolescents and represent an **avulsion equivalent of an ACL tear**.
+- **Tibial eminences** (medial and lateral intercondylar spines) — visible on coronal images; landmarks beside the cruciate and meniscal-root attachment areas. A **tibial eminence fracture** in a child or adolescent is an osseous ACL-attachment injury; report fragment displacement/comminution and associated soft-tissue injury rather than assuming the same morphology as an intrasubstance ACL tear.
 - **Segond fracture** — a small avulsion off the lateral tibial plateau and a **highly specific marker of associated ACL injury**. Best seen on coronal images; confirm the ACL directly.
 - **Femoral intercondylar notch** — the "home" of the cruciate ligaments. **Notch stenosis** (narrow or A-frame notch) is a risk factor for ACL tears.
 - **Tibial tubercle** — insertion of the patellar tendon; site of **Osgood-Schlatter disease** in adolescents.
 
 ### Alignment
 
-The **mechanical axis** should pass through the center of the knee on coronal images:
-- **Varus** malalignment — shifts load to the **medial** compartment
-- **Valgus** malalignment — shifts load to the **lateral** compartment`,
+Routine limited-field, non-weight-bearing knee MRI cannot determine the true hip-to-ankle **mechanical axis**. It can show a compartment-overload pattern:
+- **Varus overload** — changes predominate in the **medial** compartment
+- **Valgus overload** — changes predominate in the **lateral** compartment
+
+Quantify alignment with standing full-length hip-to-ankle radiographs when it will affect management.`,
         pearl:
           'On coronal images, look for small cortical avulsions at the lateral tibial plateau (Segond fracture), medial tibial plateau (reverse Segond/deep MCL avulsion), and the fibular head (arcuate sign, indicating PLC injury). These small fractures are often more important than the bone they break off — they tell you about the ligament injury.',
         images: [
@@ -266,7 +268,7 @@ The roots are critical structures anchoring the meniscus to the tibial plateau:
 - **Posterior root of the medial meniscus** — attaches just anterior to the PCL tibial insertion
 - **Anterior root of the lateral meniscus** — attaches adjacent to the ACL tibial insertion
 
-**Root tears** are functionally equivalent to a **total meniscectomy** — they eliminate the meniscus's ability to distribute hoop stresses. Best evaluated on coronal and axial images; look for normal dark root fibers inserting on the tibial plateau. A **"ghost meniscus" sign** (absent meniscal tissue on sagittal images) combined with **meniscal extrusion** suggests a root tear.`,
+Complete root-disrupting radial tears or avulsions can abolish hoop-stress function; in a cadaveric medial posterior-root model, contact mechanics approached those after total medial meniscectomy. Evaluate roots in multiple planes, especially sagittal and coronal images with axial confirmation. A **"ghost meniscus" sign** plus extrusion is supportive, but neither extrusion nor one plane alone establishes a root tear.`,
         pearl:
           'On sagittal images, the normal posterior horn of the medial meniscus should be approximately twice the size (AP dimension) of the anterior horn. If the posterior horn appears small or absent, think about a displaced tear (bucket-handle) or a root tear. Always cross-reference with coronal images to evaluate the root.',
         images: [
@@ -295,7 +297,7 @@ The roots are critical structures anchoring the meniscus to the tibial plateau:
 
 **LCL (fibular collateral ligament)** — cord-like structure from the lateral femoral epicondyle to the **fibular head**. Best seen on coronal images.`,
         pearl:
-          'When reading the ACL on sagittal images, use the lateral femoral condyle as your starting point and scroll medially until you see the ACL fibers. The normal ACL should be visualized across at least 2-3 consecutive sagittal slices. If you cannot identify intact fibers on any sagittal slice, assume it is torn until proven otherwise on coronal images.',
+          'When reading the ACL, start at the lateral femoral condyle and trace the fibers toward the anterior tibial intercondylar area across adjacent sagittal images. If continuity is uncertain, inspect coronal and axial planes, image quality, and secondary signs; never declare a tear solely because one sagittal image does not show the full ligament.',
         images: [
           {
             src: '/images/modules/cruciate-ligaments.svg',
@@ -317,7 +319,7 @@ The roots are critical structures anchoring the meniscus to the tibial plateau:
 
 **Transverse Meniscal Ligament** — connects the anterior horns of both menisci. Can mimic a tear of the **anterior horn of the lateral meniscus** on sagittal images.`,
         pearl:
-          'The popliteal hiatus is the single most common normal variant that mimics a lateral meniscal tear. The key: on sagittal images at the posterolateral corner, if you see the round popliteus tendon sitting in the "gap" in the meniscus, it is the hiatus, not a tear. Confirm by following the tendon on consecutive slices.',
+          'The popliteal hiatus is an important normal relationship that can mimic a lateral meniscal tear. At the posterolateral corner, identify the popliteus tendon and trace the smooth hiatus and popliteomeniscal fascicles across adjacent images before calling a tear.',
       },
       {
         content: `### Extensor Mechanism
@@ -343,7 +345,7 @@ Should be **uniformly low signal** on all sequences, with a normal AP thickness 
 
 The **primary restraint to lateral patellar translation** — key structure in **patellar instability**. Runs from the **adductor tubercle** region to the superomedial border of the patella. Best seen on **axial images**.`,
         pearl:
-          'When evaluating the quadriceps tendon, remember it has layers. Partial tears most commonly involve the deep (vastus intermedius) layer and can be subtle. On sagittal PD FS images, look for fluid signal interposed within the tendon layers at the superior patellar pole. Complete tears will show retraction of the tendon with a gap filled by hemorrhage or fluid.',
+          'The quadriceps tendon is multilayered, and a partial tear can involve one layer while other fibers remain intact. Inspect every layer in sagittal and axial planes for a fluid-signal gap, fiber discontinuity, and retraction; do not infer tendon function from MRI alone.',
         images: [
           {
             src: '/images/modules/extensor-mechanism.svg',
@@ -381,15 +383,15 @@ The **primary restraint to lateral patellar translation** — key structure in *
         correction: 'Complete all 7 steps before dictating. The clinical question may focus on the ACL, but the ramp lesion or root tear you find at step 4 changes surgical planning.',
       },
       {
-        mistake: "Skipping Step 6 (synovium/bursae) because 'nothing is usually there'",
-        correction: 'Baker cyst rupture, PVNS, plicae, and periarticular bursitis are often incidental but clinically important findings that change management.',
+        mistake: "Skipping Step 7 (synovium/bursae and other soft tissues) because 'nothing is usually there'",
+        correction: 'Baker cyst rupture, diffuse-type TGCT, plicae, periarticular bursae, calf structures, and the neurovascular bundle can contain clinically relevant findings. Report them in proportion to the clinical context.',
       },
     ],
     topicContent: [
       {
         content: `### Why Systematic Reading Prevents Missed Findings
 
-A **systematic search pattern** is the single most effective tool for preventing missed diagnoses on knee MRI. Studies consistently show that missed findings are rarely due to the lesion being invisible — in most cases, the reader simply **never looked at the area** where the lesion was located.
+A **systematic search pattern** reduces perceptual and cognitive misses on knee MRI by ensuring that every compartment and tissue class is reviewed, even after an obvious abnormality is found.
 
 A search pattern forces you to evaluate **every structure in every compartment, every time**, regardless of clinical history or obvious findings.
 
@@ -423,13 +425,15 @@ A search pattern forces you to evaluate **every structure in every compartment, 
       {
         content: `### The 7-Step Search Pattern
 
-1. **Overall assessment** — effusion, alignment, and global marrow signal
+1. **Verify and orient** — patient, side, sequences, clinical question, and anchor slice
 2. **Bones and marrow** — contusion patterns, fractures, marrow lesions
 3. **Cartilage and osteochondral surfaces** — all three compartments
 4. **Menisci** — medial and lateral, including roots
 5. **Ligaments** — cruciates, collaterals, posterolateral corner, MPFL
-6. **Extensor mechanism and soft tissues** — tendons, bursae, synovium, cysts
-7. **Final review** — return to the clinical question and ensure it is answered
+6. **Extensor mechanism** — quadriceps tendon, patella, patellar tendon, retinacula
+7. **Synovium, bursae, and other soft tissues** — effusion, cysts, bursae, popliteal fossa, tendons, and neurovascular structures
+
+After step 7, return to the clinical question and perform a final satisfaction-of-search check.
 
 ### Why Step-by-Step Works
 
@@ -440,12 +444,12 @@ Each step focuses your attention on a **specific tissue type**, allowing you to:
 
 When you are looking at cartilage, you are not trying to also evaluate ligaments — you are entirely focused on cartilage surfaces across all three compartments.`,
         pearl:
-          'The 7-step pattern moves from "big picture" (effusion, alignment) to "specific structures" (menisci, ligaments) to "final check" (clinical correlation). If you find yourself jumping around — looking at the ACL, then cartilage, then back to the meniscus, then the ACL again — you are not using a systematic approach and you will miss things.',
+          'Use the same seven steps every time, then perform a separate final review of the clinical question and associated-injury checklist. The fixed order is a memory aid; careful multiplanar correlation remains essential.',
         images: [
           {
             src: '/images/modules/search-pattern-flowchart.svg',
             alt: 'Flowchart of the 7-step knee MRI search pattern',
-            caption: 'The 7-step systematic search pattern: from overall assessment through final review',
+            caption: 'The 7-step systematic search pattern: verify/orient through synovium, bursae, and other soft tissues, followed by a separate final review',
           },
         ],
       },
@@ -508,49 +512,49 @@ Developing familiarity with your anchor slices accelerates reading because you s
       'Patellar dislocation contusion pattern',
       'Insufficiency and stress fractures',
       'Alignment assessment: varus/valgus',
-      'SIFK/SONK pattern recognition',
+      'Subchondral insufficiency fracture (SIF/SIF-ON) pattern recognition',
     ],
     learningObjectives: [
       'Recognize the pivot-shift, dashboard, and patellar dislocation contusion patterns',
       'Differentiate contusion from fracture using T1 signal characteristics',
       'Identify insufficiency and stress fractures on MRI',
-      'Distinguish SIFK from OCD and AVN based on age, location, and imaging features',
-      'Assess alignment on coronal images',
+      'Distinguish SIF from OCD and systemic osteonecrosis using age, location, morphology, and clinical context',
+      'Recognize compartment-overload patterns on MRI and know when standing long-leg radiographs are needed for alignment',
     ],
     commonMistakes: [
       {
         mistake: "Seeing bone marrow edema and stopping at 'bone contusion' without describing the pattern",
-        correction: 'The edema PATTERN is the diagnosis. Posterolateral tibial plateau + lateral femoral condyle = pivot-shift = ACL tear until proven otherwise.',
+        correction: 'The edema distribution suggests a mechanism and directs a targeted search. Posterolateral tibial plateau plus lateral femoral condyle strongly supports a pivot-shift injury, but the ACL still requires direct multiplanar assessment.',
       },
       {
         mistake: 'Missing a subtle fracture line within bone marrow edema',
-        correction: 'Always check T1 for a discrete low-signal line within the edema. Edema alone is a contusion; a line within edema is a fracture — which changes weight-bearing status.',
+        correction: 'Always check T1 and the subchondral plate for a low-signal fracture line or depression. Edema-like signal without a visible line is nonspecific and does not by itself prove a contusion or exclude an occult/subchondral fracture.',
       },
       {
         mistake: "Calling all subchondral femoral condyle lesions 'OCD'",
-        correction: 'SIFK in a 60-year-old woman is NOT OCD. Check age, location, onset, and associated meniscal root tear. The differential (SIFK vs OCD vs AVN) has completely different management.',
+        correction: 'In an older adult, favor SIF over OCD when location, onset, and subchondral morphology fit, but do not diagnose by age alone. Assess the meniscal root/extrusion, cartilage, overload pattern, and osteonecrosis risk factors.',
       },
     ],
     topicContent: [
       {
         content: `### Bone Marrow Edema (BME)
 
-**BME** appears as ill-defined areas of **low signal on T1** and **high signal on PD FS/STIR**, reflecting increased water content in the marrow space. In the trauma setting, BME represents **microtrabecular injury** (bone contusion or bone bruise).
+**BME-like signal** appears as ill-defined **low signal on T1** and **high signal on PD FS/STIR**, reflecting increased water content and/or marrow replacement. In trauma it often represents microtrabecular injury, but the pattern is nonspecific and can also accompany stress/insufficiency injury, degeneration, inflammation, infection, or neoplasm.
 
-The location and pattern of bone marrow edema is one of the most **powerful diagnostic clues** on knee MRI — specific injury mechanisms produce characteristic edema patterns.
+The location and pattern of bone marrow edema is a useful diagnostic clue on knee MRI — several injury mechanisms produce characteristic distributions, but the pattern remains supportive rather than definitive.
 
 ### Three Questions When You See BME
 
 1. **Where** is the edema?
-2. **One side or both?** — one side suggests compressive injury on that side (or traction on the opposite side); both sides suggests impaction
+2. **One surface or opposing surfaces?** — paired contact lesions can support an impaction mechanism, but a one-sided or bipolar pattern is not diagnostic by itself
 3. **Does the pattern match a known injury mechanism?**
 
 The answers guide you to **associated soft tissue injuries** that you need to actively seek.
 
 ### Prognostic Significance
 
-- Extensive edema is associated with **longer recovery times**
-- **Subchondral edema** adjacent to a cartilage defect suggests **mechanical overload**
+- Edema extent may correlate with symptoms and recovery in some injuries, but is not a standalone prognosis measure
+- **Subchondral edema-like signal** adjacent to a cartilage defect can support **mechanical overload**, while fracture, inflammation, and other causes remain context-dependent considerations
 
 ### Contusion Pattern Summary
 
@@ -559,10 +563,10 @@ The answers guide you to **associated soft tissue injuries** that you need to ac
 | **Pivot-shift** | Valgus + rotation | Posterolateral tibial plateau + lateral femoral condyle | **ACL tear**, lateral meniscal tear, PLC injury |
 | **Dashboard** | Anterior blow, knee flexed | Anterior proximal tibia | **PCL tear**, posterior capsule/tibial fracture |
 | **Patellar dislocation** | Lateral patellar subluxation | Medial patellar facet + anterolateral femoral condyle | **MPFL tear**, osteochondral fragments, loose bodies |
-| **Clip/valgus** | Direct lateral blow (valgus) | Lateral femoral condyle (larger, direct impaction) + medial femoral condyle (smaller, avulsive at the MCL) | **MCL tear**, medial meniscal tear |
+| **Direct lateral blow / valgus** | Lateral impact with valgus opening medially | Lateral-compartment contact edema may occur; medial-sided traction/soft-tissue findings vary | **MCL complex injury**; assess cruciates, menisci, and contact surfaces directly |
 | **Hyperextension** | Forced hyperextension | Anterior femoral condyles + anterior tibial plateau | **ACL tear**, **PCL tear**, posterior capsule injury |`,
         pearl:
-          'Always evaluate bone marrow edema on both T1 and PD FS. The T1 sequence helps you determine if there is a discrete fracture line (which appears as a low-signal line within the edema) versus diffuse contusion (ill-defined low signal without a discrete line). This distinction matters: fractures may need protected weight-bearing.',
+          'Evaluate marrow abnormalities on both T1 and fluid-sensitive images. A discrete low-signal line or subchondral deformity supports fracture, but diffuse edema-like signal without a visible line is nonspecific and can still reflect occult stress/SIF injury. Integrate morphology, mechanism, symptoms, and CT or follow-up when needed.',
         images: [
           {
             src: '/images/modules/contusion-patterns.svg',
@@ -593,7 +597,7 @@ The answers guide you to **associated soft tissue injuries** that you need to ac
 
 The **pivot-shift contusion pattern** is the most recognizable BME pattern on knee MRI and is **highly specific for ACL injury**.
 
-**Mechanism:** Valgus load + internal tibial rotation + anterior tibial translation — the lateral femoral condyle subluxates over the posterolateral tibial plateau, creating impaction contusions in both locations. (Hyperextension is a *different* mechanism — it produces anterior kissing contusions of the tibia and femur, not this pattern.)
+**Mechanism:** Valgus load + rotation + anterior tibial translation — the lateral femoral condyle and posterolateral tibial plateau impact during the subluxation/reduction event. (Hyperextension is a *different* mechanism — it produces anterior kissing contusions of the tibia and femur, not this pattern.)
 
 **MRI findings:**
 - **Posterolateral tibial plateau** edema (often the sulcus region, just posterior to the midpoint)
@@ -601,11 +605,11 @@ The **pivot-shift contusion pattern** is the most recognizable BME pattern on kn
 
 ### Clinical Implications
 
-This pattern is so characteristic that when you see it, **assume the ACL is torn until proven otherwise**. If the edema pattern is present but the ACL looks intact on sagittal images:
+This pattern should create **high suspicion for ACL injury**. If it is present but the ACL looks intact on sagittal images:
 - The tear may be **partial**
 - The ACL fibers may be **draped over the PCL** (giving a false appearance of continuity)
 
-**Deep contusions** extending to the subchondral plate are associated with higher rates of **cartilage damage** and may predict worse long-term outcomes.`,
+**Deep contusions** extending to the subchondral plate can accompany osteochondral injury, but edema depth alone is not a deterministic long-term prognosis.`,
         pearl:
           'The posterolateral tibial plateau contusion in an ACL injury often has a geographic, sharp anterior margin — this represents the leading edge of the femoral condyle as it impacted during the pivot-shift event. If you see this sharp contusion edge, ACL injury becomes highly likely, but still confirm the ligament directly and check for associated meniscal injury.',
         images: [
@@ -658,11 +662,11 @@ PCL injuries are less common than ACL injuries and are more frequently associate
 ### Associated Injuries Checklist
 
 1. **MPFL/medial retinacular injury** — present in approximately **90%** of acute traumatic patellar dislocations. Best seen on axial images as disruption and edema along the medial patellar retinacular region.
-2. **Osteochondral injury** — look for cartilage/bone fragments off the **medial patellar facet** or **lateral femoral condyle**. This is the **most surgically urgent finding**.
+2. **Osteochondral injury** — look for cartilage/bone fragments off the **medial patella** or **lateral femoral condyle**. A displaced fragment is a time-sensitive, management-changing finding.
 3. **Loose bodies** — search the **suprapatellar pouch**, **intercondylar notch**, and **posterior recesses**
 4. **Medial retinacular tear** — thickening and edema of the medial retinaculum on axial images`,
         pearl:
-          'After identifying the patellar dislocation contusion pattern, immediately look at the axial images through the suprapatellar pouch and the intercondylar notch for loose bodies. Osteochondral fragments from the medial patellar facet are present in up to 50% of first-time patellar dislocations, and if they are displaced into the joint, they require surgical removal.',
+          'After identifying the patellar dislocation contusion pattern, search the suprapatellar pouch, gutters, notch, and posterior recesses for chondral or osteochondral fragments. Report their size, composition, location, and donor site; when feasible, fragment fixation or cartilage restoration may be preferred to routine excision.',
         images: [
           {
             src: '/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg',
@@ -673,12 +677,12 @@ PCL injuries are less common than ACL injuries and are more frequently associate
         ],
       },
       {
-        content: `### Insufficiency vs. Stress Fractures
+        content: `### Insufficiency vs. Fatigue Stress Fractures
 
 - **Insufficiency fractures** — occur in **weakened bone** (typically osteoporotic) under normal physiologic loading
-- **Stress fractures** — occur in **normal bone** subjected to repetitive abnormal loading
+- **Fatigue stress fractures** — occur in **normal bone** subjected to repetitive excessive loading; insufficiency and fatigue injuries are both stress injuries
 
-Both present as **linear low-signal lines on T1** surrounded by marrow edema.
+When a fracture line is visible, both can show a **linear low-signal line on T1/non-fat-suppressed images** with surrounding edema-like signal. Early stress injury or SIF may show edema-like signal before a discrete line becomes conspicuous.
 
 ### Common Locations
 
@@ -687,66 +691,66 @@ Both present as **linear low-signal lines on T1** surrounded by marrow edema.
 
 ### Key Distinguishing Feature
 
-A **discrete, linear low-signal line on T1** within the area of marrow edema = fracture. **Diffuse marrow signal change** without a discrete line = contusion.
+A discrete low-signal line or subchondral-plate deformity within edema-like signal strongly supports fracture. Diffuse signal without a visible line remains nonspecific; early stress injury and SIF can be occult, so integrate location, symptoms, follow-up, and CT when appropriate.
 
 ### What to Look For
 
 - **Proximal tibial stress fractures** — linear band of low signal **perpendicular to the cortex**, often in the posterior medial tibial metaphysis. Subtle; best seen on **coronal T1**.
 - **Tibial plateau insufficiency fractures** — may progress to **articular surface depression** if not protected with weight-bearing restrictions.`,
         pearl:
-          'A subtle tibial plateau insufficiency fracture can be easily missed. The clue is a band of low T1 signal running parallel to and just below the subchondral plate of the medial tibial plateau, with surrounding edema on PD FS. If you see this pattern in an older patient with sudden onset of medial knee pain, report it as a possible insufficiency fracture and recommend protected weight-bearing.',
+          'A subtle tibial plateau insufficiency fracture can be easily missed. The clue is a low-T1 band parallel to and just below the subchondral plate with surrounding edema-like signal. If this pattern fits the symptoms and location, communicate the suspected insufficiency fracture promptly so the treating team can determine weight-bearing precautions and follow-up.',
       },
       {
         content: `### Alignment Assessment on MRI
 
 Alignment assessment on MRI is a **secondary evaluation** — weight-bearing radiographs are the standard for true alignment. However, coronal MRI images can demonstrate the **consequences of malalignment**.
 
-**Varus-aligned knee** (medial compartment overload):
+**Medial compartment-overload pattern** (which may accompany varus mechanical alignment):
 - Medial compartment **cartilage loss**
 - **Meniscal degeneration**
 - **Subchondral sclerosis** and **osteophytes**
 
-**Valgus-aligned knee** — same changes predominate **laterally**.
+**Lateral compartment-overload pattern** may accompany valgus mechanical alignment.
 
 ### Practical Assessment
 
 - Evaluate the **"bone-on-bone" pattern**: severe cartilage loss with subchondral contact in one compartment + relatively preserved cartilage in the other
-- Report this compartment pattern — it influences surgical decision-making (**unicompartmental vs. total knee arthroplasty**)
-- Evaluate the **tibial plateau slopes** on sagittal images — an increased **posterior tibial slope** is a risk factor for ACL injury`,
+- Report this compartment pattern, while recognizing that arthroplasty selection also requires standing alignment, symptoms, examination, and radiographs
+- Evaluate **posterior tibial slope** only with a named, reproducible method when it is clinically relevant; increased slope is one ACL-injury/graft-risk factor among many`,
         pearl:
           'When reporting alignment on MRI, do not provide angle measurements — MRI is not reliable for this. Instead, describe the compartmental pattern: "Findings are consistent with varus overload, with near-complete cartilage loss in the medial compartment and relative preservation of the lateral compartment." Recommend weight-bearing radiographs if alignment quantification is needed.',
       },
       {
-        content: `### SIFK / SONK Pattern Recognition
+        content: `### SIF / SIF-ON Pattern Recognition
 
-**Spontaneous osteonecrosis of the knee (SONK)**, now more accurately termed **subchondral insufficiency fracture of the knee (SIFK)**, most commonly affects the **weight-bearing surface of the medial femoral condyle** in patients **over 55**, presenting with **acute onset** of medial knee pain.
+Many lesions historically labeled **spontaneous osteonecrosis of the knee (SONK)** are now understood within the **subchondral insufficiency fracture (SIF)** spectrum. Some SIFs heal, while others develop secondary osteonecrosis (**SIF-ON**) and may progress to collapse. The medial femoral condyle is the most common site, but the tibial plateau and lateral compartment can also be involved.
 
 **Classic MRI appearance:** Focal, well-defined area of **low T1 signal** in the subchondral bone of the medial femoral condyle with surrounding **diffuse marrow edema** on PD FS.
 
-### Key Distinguishing Features of SIFK
+### Key Distinguishing Features of SIF
 
-1. **Location** — almost always the weight-bearing surface of the medial femoral condyle (can occur in the medial tibial plateau)
+1. **Location** — usually the weight-bearing medial femoral condyle, while recognizing tibial and lateral-compartment lesions
 2. **Subchondral fracture line** or subchondral plate depression, best seen on T1 or T2
 3. **Disproportionate surrounding edema** — extensive edema relative to the small subchondral lesion
 4. **Demographics** — older patients with acute pain onset
 
-### SIFK vs. OCD vs. AVN
+### SIF vs. OCD vs. Systemic Osteonecrosis
 
-| Feature | SIFK | OCD | AVN |
+| Feature | SIF | OCD | Systemic osteonecrosis |
 |---|---|---|---|
-| **Age** | >55 years | Adolescents/young adults | Variable |
+| **Age** | Typically skeletally mature/older | Adolescents/young adults | Variable |
 | **Location** | Weight-bearing MFC | Lateral aspect of MFC | Weight-bearing condyle |
 | **Onset** | Acute | Insidious | Variable |
 | **Edema** | Disproportionately extensive | Less in chronic phase | Variable |
 | **Key clue** | Subchondral fracture line | Well-defined fragment | Double-line sign on T2 |
-| **Risk factors** | Osteoporosis, meniscal root tear | Activity-related | Steroids, alcohol, SLE |`,
+| **Associations/risk** | Older age, meniscal root tear/extrusion, compartment overload; bone density may be normal or reduced | Activity-related | Steroids, alcohol, SLE |`,
         pearl:
-          'Lesion size and morphology on MRI predict outcome. Higher risk of progression to subchondral collapse is signaled by larger anteroposterior/transverse lesion dimensions, a subchondral low-signal fracture line longer than ~14 mm or thicker than ~4 mm on T2 (Lecouvet), articular-surface collapse, and an associated medial meniscus posterior root tear with extrusion. (The classic ">40% of condylar width" figure is a radiographic width ratio, not an MRI area — do not apply it as a sagittal-MRI area cutoff.) Small lesions without collapse often respond to protected weight-bearing; always measure and report AP and transverse dimensions and note any surface collapse.',
+          'Lesion size and morphology inform prognosis. Poorer-prognosis features include larger AP/transverse dimensions, a low-signal subchondral zone thicker than about 4 mm or longer than about 14 mm on fluid-sensitive imaging, and articular-surface flattening/collapse. Meniscal root tear/extrusion can contribute to compartment overload but is not the sole prognostic determinant. (The classic ">40% of condylar width" figure is a radiographic width ratio, not an MRI-area cutoff.) Report lesion dimensions, the low-signal zone, and the articular contour.',
         images: [
           {
             src: '/images/teaching/cases/sifk-sonk/26_ESSR_SIFK_SubchondralFracture_Edema.jpg',
-            alt: 'SIFK — medial condyle edema + subchondral fracture line',
-            caption: 'SIFK — medial condyle edema + subchondral fracture line',
+            alt: 'SIF — medial-condyle edema-like signal with a subchondral fracture line',
+            caption: 'SIF — medial-condyle edema-like signal with a subchondral fracture line',
             attribution: 'ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.',
           },
         ],
@@ -757,7 +761,7 @@ Alignment assessment on MRI is a **secondary evaluation** — weight-bearing rad
     id: 'cartilage-osteochondral',
     number: 5,
     title: 'Cartilage & Osteochondral',
-    subtitle: 'Grading, OCD stability, SIFK, and loose bodies',
+    subtitle: 'Grading, OCD stability, SIF, and loose bodies',
     searchPatternStep: 3,
     estimatedMinutes: 20,
     essentialTopics: [0, 1, 2, 6],
@@ -767,14 +771,14 @@ Alignment assessment on MRI is a **secondary evaluation** — weight-bearing rad
       'OCD: location, sizing, and stability criteria',
       'Juvenile vs adult OCD differences',
       'MRI signs of fragment instability',
-      'SIFK vs OCD vs AVN differentiation',
+      'SIF vs OCD vs systemic osteonecrosis differentiation',
       'Loose body identification and reporting',
     ],
     learningObjectives: [
-      'Grade cartilage lesions using the modified ICRS classification on MRI',
+      'Grade cartilage lesions using a named system and distinguish modified Outerbridge from ICRS',
       'Identify OCD lesions and assess stability using MRI criteria',
       'Differentiate juvenile from adult OCD based on imaging and prognosis',
-      'Distinguish SIFK, OCD, and AVN using a systematic comparison approach',
+      'Distinguish SIF, OCD, and systemic osteonecrosis using a systematic comparison approach',
       'Detect loose bodies and identify their source',
     ],
     commonMistakes: [
@@ -784,7 +788,7 @@ Alignment assessment on MRI is a **secondary evaluation** — weight-bearing rad
       },
       {
         mistake: "Calling an OCD 'unstable' based on surrounding edema alone",
-        correction: 'Edema is common in both stable and unstable lesions. Instability requires fluid signal between the fragment and parent bone, cystic change at the interface, or a displaced fragment.',
+        correction: 'Edema is nonspecific. Use skeletal maturity and age-specific criteria: joint-fluid-equivalent undermining, cartilage breach, displacement, and the appropriate cyst/subchondral-plate pattern.',
       },
       {
         mistake: 'Missing loose bodies in the posterior recesses',
@@ -814,9 +818,9 @@ Evaluate cartilage systematically by compartment, assessing both surfaces indepe
 - **Narrow your window** to maximize contrast
 - Scroll **slowly** through each compartment
 - Focus on the **weight-bearing zone** of the femoral condyles — the central-to-distal surface that contacts the tibia in extension (the more posterior condyle bears load in flexion, so don't neglect it when symptoms are flexion-related)
-- Defects in the posterior condyles are **most clinically important** and more likely to be symptomatic`,
+- Inspect posterior condylar cartilage as well as the extension weight-bearing surface; lesion relevance depends on location, size, depth, mechanics, and symptoms.`,
         pearl:
-          'Patellofemoral cartilage is best evaluated on axial images, not sagittal. On axial PD FS, you can see the entire patellar articular surface and the opposing trochlear surface. The most common location for patellar cartilage loss is the lateral patellar facet — always look here.',
+          'Axial images are primary for comparing patellar facets, the median ridge, and trochlear morphology, while sagittal images are complementary for craniocaudal extent and focal defects. Confirm suspected patellofemoral lesions in both planes.',
       },
       {
         content: `### Cartilage Grading System (Modified Outerbridge, MRI)
@@ -841,14 +845,14 @@ When reporting cartilage lesions, specify:
 
 ### Surgical Relevance
 
-For surgical planning, size and location are as important as the grade. Full-thickness weight-bearing femoral-condyle defects are candidates for **cartilage restoration**, with technique guided by size: **microfracture for small lesions (<2 cm²)**, OATS/mosaicplasty for small-to-mid lesions (~2–4 cm²), and ACI/MACI or fresh osteochondral allograft for larger lesions (>~2–4 cm²). Accurate AP and transverse measurement matters because it drives the choice.`,
+For treatment planning, size and location are as important as depth. Procedure selection is individualized using lesion size, containment, bone involvement, compartment, alignment, age, activity, symptoms, and prior treatment. Size ranges sometimes used for marrow stimulation, osteochondral transfer, cell-based repair, or allograft overlap substantially and should not be presented as MRI-only treatment rules. Report AP and transverse dimensions, depth, containment, and subchondral change.`,
         pearl:
-          'The distinction between grade 2 and grade 3 lesions is clinically important: grade 3 and 4 defects in the weight-bearing femoral condyle may be candidates for surgical cartilage restoration (microfracture, OATS, ACI/MACI), while grade 2 lesions are generally managed conservatively. Report the thickness involvement as precisely as you can.',
+          'Report the named grade, percentage depth, dimensions, location, containment, and subchondral changes. MRI describes the lesion; symptoms, examination, alignment, patient factors, and prior treatment determine whether an operation is appropriate.',
       },
       {
         content: `### Osteochondritis Dissecans (OCD)
 
-A segment of **subchondral bone** and its overlying **cartilage** separates from the surrounding bone. On MRI: a well-defined osteochondral fragment separated from the parent bone by a line of **high signal** (fluid or fibrous tissue) on PD FS or T2.
+OCD is a focal disorder of subchondral bone that can affect the overlying cartilage and may progress to fragment instability. MRI evaluates the lesion bed, cartilage, interface, and any displacement; interface high signal can represent fluid or healing tissue, so its significance depends on skeletal maturity and the complete pattern.
 
 ### OCD Locations
 
@@ -860,9 +864,9 @@ A segment of **subchondral bone** and its overlying **cartilage** separates from
 
 1. **Location** — specify the condyle and zone (e.g., "lateral aspect of the medial femoral condyle")
 2. **Size** — measure in two dimensions (sagittal and coronal); report both the **bony fragment size** and the **overlying cartilage involvement**
-3. **Stability** — the **most important determination**. Guides whether the patient needs surgery:
-   - **Stable OCD** → conservative management (especially in juveniles)
-   - **Unstable OCD** → generally requires **surgical intervention**`,
+3. **Stability** — a central determination that guides treatment urgency and options:
+   - **Stable juvenile OCD** often begins with activity modification and follow-up
+   - **Unstable lesions** merit orthopedic evaluation for fixation or other treatment, integrated with symptoms and skeletal maturity`,
         pearl:
           'The "classic" OCD location on the lateral aspect of the medial femoral condyle corresponds to the contact area of the tibial eminence during knee flexion. When you see a lesion here, trace the tibial eminence on coronal images — the tip of the eminence often points directly at the OCD, which can help distinguish OCD from other subchondral lesions.',
       },
@@ -876,16 +880,16 @@ The distinction is **clinically critical** — it determines treatment approach 
 | **Physes** | Open | Closed |
 | **Prognosis** | Much better | Significantly worse |
 | **Healing** | Higher rates of spontaneous healing | Less likely to heal conservatively |
-| **Stable lesion management** | Conservative (high success rate) | Lower threshold for surgery |
+| **Stable lesion management** | Often begins nonoperatively | Individualized; lower healing potential than juvenile disease |
 
 ### Key Imaging Step
 
 When you identify an OCD, **look at the distal femoral physis** on coronal images to determine skeletal maturity:
 - **Open physes** = juvenile OCD = note in your report (changes the clinical pathway)
-- **Closed physes** = adult OCD = lower healing potential, earlier surgical intervention
+- **Closed physes** = adult OCD = lower spontaneous-healing potential and a different treatment discussion
 - **Partially closed physes** = transition zone, more nuanced management decisions`,
         pearl:
-          'Check the distal femoral physis on every OCD case. Open physes = juvenile OCD = better prognosis, more likely to heal conservatively. Closed physes = adult OCD = lower healing potential, earlier surgical intervention. This single observation can change the entire treatment plan.',
+          'Check the distal femoral physis on every OCD case. Open physes define juvenile OCD and generally confer better healing potential; closed physes lower spontaneous-healing potential. Stability, symptoms, lesion size/location, and clinical follow-up still drive management.',
       },
       {
         content: `### OCD Stability Criteria on MRI
@@ -904,11 +908,11 @@ Determining fragment stability is arguably the **most important assessment** whe
 
 ### Age-Specific Considerations
 
-- **Juvenile patients** — the most reliable sign of instability is a high-signal rim **completely surrounding** the fragment on T2. A **partial rim** may represent **granulation tissue** at the healing interface (not true instability).
-- **Adult patients** — any high-signal rim is **more concerning** for instability.
-- **When in doubt** — report stability as **"indeterminate"** and recommend clinical correlation or arthroscopy.`,
+- **Juvenile patients** — an isolated T2-bright interface rim has poor specificity because vascular granulation tissue can be normal at the healing interface. Stronger criteria include a rim that matches joint-fluid signal with an outer low-signal rim, multiple breaks in the subchondral plate, or multiple/large (>5 mm) interface cysts; displacement is unequivocal.
+- **Adults** — the classic fluid-rim, cyst, cartilage-breach, and displacement criteria are more specific than in juveniles.
+- **When in doubt** — report stability as **indeterminate** and recommend orthopedic/clinical correlation rather than routinely prescribing arthrography.`,
         pearl:
-          'A thin, partial-signal rim around an OCD in a juvenile patient may actually represent healing granulation tissue, not instability. The rim must be complete (surrounding the entire fragment) and clearly fluid-bright to confidently call it unstable. When the rim is equivocal, report it as "possible instability" and suggest close follow-up or arthrogram for further evaluation.',
+          'Do not apply adult De Smet criteria unchanged to juvenile OCD. A T2-bright rim alone is unreliable in an open-physis knee; look for the more specific fluid-equivalent rim plus outer low-signal rim, multiple subchondral-plate breaks, multiple/large cysts, cartilage breach, or displacement.',
         images: [
           {
             src: '/images/modules/ocd-stability-mri.svg',
@@ -918,11 +922,11 @@ Determining fragment stability is arguably the **most important assessment** whe
         ],
       },
       {
-        content: `### SIFK vs. OCD vs. AVN Differentiation
+        content: `### SIF vs. OCD vs. Systemic Osteonecrosis
 
 All three involve subchondral bone pathology and can be challenging to differentiate. The clinical context — **patient age**, **symptom onset**, and **risk factors** — is essential.
 
-| Feature | SIFK | OCD | AVN |
+| Feature | SIF | OCD | Systemic osteonecrosis |
 |---|---|---|---|
 | **Age** | >55 years | Adolescents / young adults | Variable |
 | **Location** | Weight-bearing MFC surface | Lateral aspect of MFC (non-weight-bearing in extension) | Weight-bearing condylar surface |
@@ -930,16 +934,16 @@ All three involve subchondral bone pathology and can be challenging to different
 | **Fragment** | Subchondral fracture line | Well-defined osteochondral fragment | Band pattern on T1 |
 | **Edema** | Disproportionately extensive | Less in chronic phase | Variable |
 | **T2 sign** | Subchondral plate depression | Fluid rim around fragment | **Double-line sign** |
-| **Associations** | Meniscal root tear (may be inciting event) | Activity, repetitive loading | Steroids, alcohol, SLE, sickle cell |
+| **Associations** | Meniscal root tear/extrusion and compartment overload may contribute | Activity, repetitive loading | Steroids, alcohol, SLE, sickle cell |
 | **Bilateral?** | Rarely | Sometimes | Often |
 
 ### Three Key Discriminators
 
-1. **Patient age** — under 20 suggests OCD, over 55 suggests SIFK
-2. **Location** — lateral aspect of MFC = classic OCD; central weight-bearing surface = SIFK or AVN
-3. **Risk factors** — steroid use or alcohol points to AVN`,
+1. **Skeletal maturity and age** — open physes support juvenile OCD; older age supports SIF, but neither is an absolute cutoff
+2. **Location and morphology** — lateral aspect of the MFC is classic for OCD; a weight-bearing subchondral fracture band supports SIF; a serpiginous geographic rim supports systemic osteonecrosis
+3. **Risk factors and onset** — acute/subacute pain without major trauma supports SIF, while glucocorticoid exposure, heavy alcohol use, or systemic disease supports osteonecrosis`,
         pearl:
-          'When you see subchondral bone pathology in the medial femoral condyle, use three key discriminators: (1) Patient age — under 20 suggests OCD, over 55 suggests SIFK; (2) Location — lateral aspect of the MFC is classic OCD, central weight-bearing surface is SIFK or AVN; (3) Risk factors — steroid use or alcohol points to AVN. Always state your differential and the reasoning in the report.',
+          'For medial-femoral-condyle subchondral disease, combine skeletal maturity, age, exact location, fracture-band versus serpiginous morphology, onset, and osteonecrosis risk factors. These are weighted clues rather than hard age cutoffs; state the reasoning when the pattern is not definitive.',
       },
       {
         content: `### Loose Body Identification
@@ -970,7 +974,7 @@ Loose bodies collect in dependent or recessed areas:
 - Look for a **"donor site"** — a focal osteochondral defect where the fragment originated
 - If in a **Baker cyst**, note this (surgical approach may differ)`,
         pearl:
-          'After identifying any osteochondral injury (patellar dislocation contusion pattern, OCD, or cartilage flap), actively search the suprapatellar pouch, intercondylar notch, and posterior recesses for loose bodies. These are frequently missed findings with direct surgical implications — a loose body in the joint needs to be removed.',
+          'After identifying an osteochondral injury, actively search the suprapatellar pouch, gutters, notch, and posterior recesses for loose bodies. Report number, size, composition, location, and donor site; treatment depends on symptoms, fragment characteristics, and whether fixation or cartilage restoration is feasible.',
         images: [
           {
             src: '/images/teaching/modules/module5-cartilage/25_ESSR_Osteochondral_Defect_LooseBody.jpg',
@@ -1004,7 +1008,7 @@ Loose bodies collect in dependent or recessed areas:
     learningObjectives: [
       'Grade meniscal signal (1, 2, 3) and apply the two-slice-touch rule',
       'Classify meniscal tears by morphology and understand their biomechanical significance',
-      'Identify root tears and understand their functional equivalence to total meniscectomy',
+      'Identify root tears and explain how a complete medial posterior-root disruption altered contact mechanics in the cadaveric model',
       'Recognize ramp lesions and their association with ACL injuries',
       'Identify bucket-handle tears using the three cardinal signs',
       'Measure meniscal extrusion and interpret its clinical significance',
@@ -1012,7 +1016,7 @@ Loose bodies collect in dependent or recessed areas:
     commonMistakes: [
       {
         mistake: 'Calling grade 2 intrasubstance signal a tear',
-        correction: 'Grade 3 signal unequivocally reaches an articular surface; seeing that contact on two consecutive standard slices markedly increases confidence. Grade 2 signal remains intrasubstance and is common over age 40. A one-slice surface finding needs morphologic and orthogonal correlation rather than automatic dismissal or overcall.',
+        correction: 'Grade 3 signal unequivocally reaches an articular surface; seeing that contact on two or more matching images markedly increases confidence. The images need not be contiguous and may be matching orthogonal images. Grade 2 remains intrasubstance; a one-image surface finding needs morphologic and orthogonal correlation.',
       },
       {
         mistake: "Missing a radial tear because it's only visible on one or two images",
@@ -1020,7 +1024,7 @@ Loose bodies collect in dependent or recessed areas:
       },
       {
         mistake: 'Not checking the meniscal root when you see extrusion >3mm',
-        correction: 'Extrusion >3mm is pathologic and should trigger a careful root-tear search, especially when there is medial compartment overload or SIFK. Trace the root on coronal and axial images.',
+        correction: 'At least 3 mm is a conventional major medial-extrusion threshold, not a diagnosis. Exclude osteophytes, report the continuous measurement, and search for root/radial tear and cartilage loss in multiple planes; smaller extrusion does not exclude dysfunction.',
       },
       {
         mistake: 'Forgetting to look for a ramp lesion in every ACL tear',
@@ -1066,7 +1070,7 @@ Loose bodies collect in dependent or recessed areas:
       },
       {
         mistake: 'Grading an MCL injury without specifying superficial vs deep layer involvement',
-        correction: 'The deep MCL (meniscotibial ligament) attaches to the meniscus. Its injury can cause meniscal displacement and has different surgical implications than superficial MCL injury.',
+        correction: 'The deep MCL includes meniscofemoral and meniscotibial attachments to the medial meniscus. Describe involved layers, location, displacement, and associated meniscocapsular injury because these can alter prognosis and treatment planning.',
       },
     ],
     topicContent: module7Content,
@@ -1086,7 +1090,7 @@ Loose bodies collect in dependent or recessed areas:
       'Effusion characterization and lipohemarthrosis',
       "Baker's cyst: anatomy, rupture, mimics",
       'Bursitis patterns: prepatellar, infrapatellar, pes anserine',
-      'Synovial pathology: PVNS, synovial chondromatosis',
+      'Synovial pathology: tenosynovial giant cell tumor (formerly PVNS), synovial chondromatosis',
       "Muscle Strains, Myotendinous Injuries & Avulsions",
     ],
     learningObjectives: [
@@ -1094,13 +1098,13 @@ Loose bodies collect in dependent or recessed areas:
       'Assess patellar tendon integrity and diagnose tendinopathy vs tear',
       'Differentiate bipartite patella from fracture',
       'Recognize common bursitis patterns around the knee',
-      'Identify PVNS and synovial chondromatosis',
-      "Apply the universal three-grade MRI muscle-strain framework to knee-region myotendinous injuries — proximal hamstring avulsion, medial gastrocnemius \"tennis leg,\" and adductor/rectus femoris strains — and generate a surgically actionable report that includes tear grade, percent cross-sectional involvement, retraction distance, and the relevant differential (DVT, Baker's cyst rupture).",
+      'Identify tenosynovial giant cell tumor and synovial chondromatosis',
+      "Apply a practical three-grade descriptive muscle-strain framework within the knee field of view, report structure/extent/retraction/hematoma, and recognize that routine knee MRI cannot exclude DVT in a patient with calf pain.",
     ],
     commonMistakes: [
       {
         mistake: 'Missing a deep-layer quadriceps tendon partial tear',
-        correction: 'The vastus intermedius (deepest layer) is the layer most often involved in a partial tear. Look for fluid signal between tendon layers at the superior patellar pole on sagittal PD FS.',
+        correction: 'A partial tear may involve only one quadriceps-tendon layer while the remaining fibers stay intact. Inspect superficial, middle, and deep contributions on sagittal and axial images for a discrete fluid-signal gap and fiber discontinuity.',
       },
       {
         mistake: 'Calling patellar tendinopathy a tear',
@@ -1116,7 +1120,7 @@ Loose bodies collect in dependent or recessed areas:
   {
     id: 'top-10-dont-miss',
     number: 9,
-    title: "Top 10 Don't Miss",
+    title: "12 Don't-Miss Findings",
     subtitle: 'High-yield findings that change management',
     searchPatternStep: null,
     estimatedMinutes: 15,
@@ -1149,7 +1153,7 @@ Loose bodies collect in dependent or recessed areas:
       },
       {
         mistake: 'Calling intermediate signal in a repaired meniscus a re-tear',
-        correction: 'Post-repair signal can persist for 12+ months. Only fluid-bright signal (matching joint fluid on T2) reaching the surface is a definitive re-tear. When in doubt, recommend MR arthrography.',
+        correction: 'Post-repair signal can persist for years. Re-tear is favored by new fluid-equivalent surface signal plus changed morphology, displaced tissue, or interval change; use operative details and prior images, and reserve MR arthrography for selected equivocal cases when it will change care.',
       },
       {
         mistake: 'Missing a posterolateral corner injury because you focused on the ACL',

@@ -35,7 +35,7 @@ export const caseTeachingImageById: Record<string, CasePreviewImage> = {
   },
   "sifk-sonk": {
     "src": "/images/teaching/cases/sifk-sonk/sifk_coronal.jpg",
-    "caption": "SIFK coronal — subchondral fracture line (arrow) with surrounding marrow edema (asterisk)."
+    "caption": "Subchondral insufficiency fracture (SIF) — coronal MRI shows a subchondral fracture line (arrow) with surrounding edema-like marrow signal (asterisk)."
   },
   "mcl-distal-avulsion": {
     "src": "/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg",
@@ -43,7 +43,7 @@ export const caseTeachingImageById: Record<string, CasePreviewImage> = {
   },
   "patellar-tendon-rupture": {
     "src": "/images/teaching/cases/patellar-tendon-rupture/patellar_tendon_rupture_sagittal_t2.jpg",
-    "caption": "Patellar tendon rupture (illustrative) — sagittal T2 shows tendon discontinuity at the distal tibial-tubercle insertion. Rupture can occur at either end; this case describes the more common proximal (inferior-pole) avulsion."
+    "caption": "Complete distal patellar tendon avulsion — sagittal MRI shows discontinuity at the tibial-tubercle insertion with proximal tendon retraction."
   },
   "shoulder-cuff-tendinosis-bursitis": {
     "src": "/images/teaching/shoulder/tendinosis-real.jpg",

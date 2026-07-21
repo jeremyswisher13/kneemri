@@ -75,9 +75,9 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         plane: "Sagittal PD-FS",
         startIndex: 8,
         instruction:
-          "Scroll medial → lateral through the real stack. Watch the meniscus change shape, and count the bow-ties.",
+          "Scroll lateral → medial through the real stack. Watch each meniscus change shape, and count the bow-ties.",
         teaching:
-          "On a compartment slice the meniscus is two dark triangles (the anterior and posterior horns); on the peripheral body slices it becomes a single solid dark BOW-TIE. The normal meniscal body spans at least two consecutive bow-tie slices. TWO-SLICE-TOUCH RULE: only call a tear when abnormal signal reaches the articular surface on ≥2 consecutive images — signal on a single slice is usually volume averaging or a pseudotear. Fewer than two consecutive bow-ties is the “absent bow-tie” sign — a bucket-handle tear until proven otherwise.",
+          "On a compartment slice the meniscus is two dark triangles (the anterior and posterior horns); on the peripheral body slices it becomes a single solid dark BOW-TIE. A normal meniscal body usually spans at least two consecutive bow-tie slices. TWO-SLICE-TOUCH RULE: surface-reaching signal on ≥2 matching images gives high confidence for a tear; those images need not be contiguous and may be one sagittal plus one coronal image at the same site. A single-image finding has lower predictive value and needs morphology and orthogonal correlation. Fewer than two consecutive bow-ties is the absent-bow-tie sign of a displaced tear, provided prior meniscectomy and slice-thickness effects are excluded.",
         compare: {
           src: "/images/teaching/cases/bucket-handle/bh_donor_site.jpg",
           caption:
@@ -90,7 +90,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
       {
         kind: "shape-shift",
         title: "Same meniscus, two shapes — flip between planes",
-        instruction: "Toggle between the sagittal and coronal view of the same medial meniscus.",
+        instruction: "Toggle between the sagittal and coronal view of the same lateral meniscus.",
         teaching:
           "The meniscus is one C-shaped structure, but each plane cuts it differently — a low-signal triangle (or bow-tie on the body slices) on the SAGITTAL, and a WEDGE pointing into the joint on the CORONAL. Seek an orthogonal correlate for a suspected tear because continuity across planes increases confidence and helps expose pseudotears or volume averaging. A subtle real tear may still be conspicuous in only one plane, so also use surface contact, morphology, and adjacent slices.",
         views: [
@@ -98,13 +98,13 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             planeLabel: "Sagittal — triangle / bow-tie",
             dir: SAG,
             sliceIndex: 8,
-            marker: { x: 66.6, y: 59.2, label: "Posterior horn (medial meniscus)" },
+            marker: { x: 61, y: 59.2, label: "Posterior horn (lateral meniscus)" },
           },
           {
             planeLabel: "Coronal — wedge",
             dir: COR,
             sliceIndex: 7,
-            marker: { x: 27, y: 56, label: "Medial meniscus (wedge)" },
+            marker: { x: 69, y: 55, label: "Lateral meniscus (wedge)" },
           },
         ],
       },
@@ -119,16 +119,16 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             id: "men-int-q1",
             sliceIndex: 8,
             marker: { x: 40, y: 61 },
-            prompt: "On this medial compartment slice, what is the marked anterior structure?",
+            prompt: "On this lateral-compartment slice, what is the marked anterior structure?",
             options: [
-              "Anterior horn (medial meniscus)",
+              "Anterior horn (lateral meniscus)",
               "Posterior horn",
               "Transverse (intermeniscal) ligament",
               "Anterior cruciate ligament",
             ],
             answer: 0,
             explanation:
-              "The anterior horn of the medial meniscus — a low-signal triangle anteriorly. PITFALL: the transverse (intermeniscal) ligament crosses the front of the joint to meet the anterior horns; the cleft where it inserts is a PSEUDOTEAR — trace the round band across the fat before calling a tear.",
+              "The anterior horn of the lateral meniscus — a low-signal triangle anteriorly. PITFALL: the transverse (intermeniscal) ligament crosses the front of the joint to meet the anterior horns; the cleft where it inserts can mimic a tear, so trace the round band across the fat.",
           },
           {
             id: "men-int-q2",
@@ -136,14 +136,14 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             marker: { x: 66.6, y: 59.2 },
             prompt: "What is the marked posterior structure?",
             options: [
-              "Posterior horn (medial meniscus)",
+              "Posterior horn (lateral meniscus)",
               "Anterior horn",
               "Meniscofemoral ligament",
               "Posterior cruciate ligament",
             ],
             answer: 0,
             explanation:
-              "The posterior horn of the medial meniscus — normally the LARGER horn medially. Only call a tear when bright signal reaches the articular surface on ≥2 consecutive slices; intrasubstance signal that does not reach a surface is degeneration (grade 1-2), not a tear. (At the lateral meniscus, the meniscofemoral ligament near the PCL makes a similar pseudotear.)",
+              "The posterior horn of the lateral meniscus. The adjacent meniscofemoral ligament and popliteal hiatus can mimic tears. Surface-reaching signal on two or more matching images gives high confidence; the images need not be contiguous, and intrasubstance signal that does not reach a surface is degeneration rather than a tear.",
           },
         ],
       },
@@ -160,7 +160,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         instruction:
           "Reveal the four landmarks, then learn where each classic contusion pattern lands.",
         teaching:
-          "Bone-marrow edema is ill-defined LOW signal on T1 and HIGH signal on PD-FS/STIR — and on a knee MRI its LOCATION is the diagnosis. Anchor yourself on the coronal: the medial and lateral femoral condyles above the joint line, the tibial plateau below it, and the central tibial spines. PIVOT-SHIFT (ACL tear): edema at the LATERAL femoral condyle + posterolateral tibial plateau. CLIP/valgus (MCL): LATERAL condyle + lateral plateau. Compare medial vs lateral side-by-side here — bipolar (both-sides-of-the-joint) edema means an impaction injury. Always re-check T1: a discrete dark LINE inside the edema is a fracture (changes weight-bearing), edema without a line is a contusion.",
+          "Bone-marrow edema-like signal is ill-defined LOW signal on T1 and HIGH signal on PD-FS/STIR; its DISTRIBUTION suggests a mechanism and directs the rest of the search. Anchor yourself on the coronal: the medial and lateral femoral condyles above the joint line, the tibial plateau below it, and the central tibial spines. PIVOT-SHIFT: lateral femoral condyle + posterolateral tibial plateau. A direct lateral blow/valgus mechanism may produce lateral-compartment contact edema plus medial-sided soft-tissue injury, but distribution varies. Paired opposing-surface edema supports an impaction mechanism. Re-check T1/non-fat-suppressed images for a fracture line, while remembering that edema without a visible line is nonspecific and does not by itself prove a contusion or exclude an occult/subchondral fracture.",
         dir: COR,
         sliceIndex: 7,
         planeLabel: "Coronal PD-FS",
@@ -192,7 +192,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             ],
             answer: 0,
             explanation:
-              "The lateral femoral condyle (image-right). Its mid-weight-bearing surface + the posterolateral tibial plateau is the pivot-shift kissing-contusion pattern — assume the ACL is torn until proven otherwise.",
+              "The lateral femoral condyle (image-right). Its mid-weight-bearing surface plus the posterolateral tibial plateau is the pivot-shift contusion pattern, which should trigger careful direct assessment of the ACL in every plane.",
           },
           {
             id: "bones-int-q2",
@@ -207,7 +207,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             ],
             answer: 0,
             explanation:
-              "The tibial plateau. Scan its marrow for a discrete dark fracture LINE on T1 (a depressed plateau fracture) versus diffuse contusion edema — the distinction changes weight-bearing status.",
+              "The tibial plateau. Scan its marrow for a discrete low-signal fracture line on T1 and inspect the articular surface for depression. Diffuse edema-like signal is nonspecific, so use the clinical mechanism, T1 appearance, morphology, and CT when needed.",
           },
         ],
       },
@@ -247,13 +247,13 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         dir: SAG,
         count: 29,
         plane: "Sagittal PD-FS",
-        startIndex: 21,
+        startIndex: 12,
         instruction: "Scroll to the lateral notch slices and trace the ACL from the lateral femoral condyle down to the anterior tibia.",
         teaching:
-          "A normal ACL is a straight, striated band running PARALLEL to Blumensaat's line (the roof of the intercondylar notch). It is volume-averaged on any one slice, so trace it across a couple: normal fibers stay continuous and parallel to the roof. If the fibers bow, sag below the roof, or go wavy/edematous — suspect a tear. Then confirm with the SECONDARY signs: a deep lateral femoral notch (terminal sulcus) sign, anterior tibial translation (>5 mm), and the pivot-shift bone contusions (posterolateral tibial plateau + mid lateral femoral condyle).",
+          "A normal ACL is a continuous, taut, low-signal fascicular band with an expected oblique course near the notch roof. Because it is volume-averaged on any one slice, trace femoral attachment, midsubstance, and tibial attachment across adjacent images and confirm continuity in another plane. Discontinuity, abnormal orientation/laxity, or edema with disrupted fibers are primary tear findings. A deep lateral femoral-notch contour, increased anterior tibial translation (thresholds vary by method), PCL buckling, and pivot-shift contusions are supportive secondary signs, not independent proof.",
         compare: {
           src: "/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg",
-          caption: "Abnormal — complete ACL tear: the fibers are discontinuous and no longer parallel to Blumensaat's line. Compare with the straight, taut normal ACL on the stack above.",
+          caption: "Abnormal — complete ACL tear: the fibers are discontinuous with abnormal orientation. Compare with the continuous, taut normal ACL on the stack above.",
         },
       },
     ],
@@ -264,7 +264,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         title: "Find the PCL — the smooth dark arc",
         instruction: "Reveal the PCL on this midline sagittal slice, then trace its smooth curve.",
         teaching:
-          "The PCL is a thick, smooth, uniformly LOW-signal band arcing through the posterior notch — darker and more uniform than the striated ACL. Loss of its smooth arc, a buckled (wavy) contour, or focal thickening/edema suggests injury. A buckled PCL is also a SECONDARY sign of anterior tibial translation from an ACL tear. Pitfall: a second dark band paralleling the PCL in the notch is the DOUBLE PCL sign of a displaced bucket-handle meniscal fragment — not a second ligament.",
+          "The PCL is a thick, smooth, low-signal band arcing through the posterior notch — darker and more uniform than the striated ACL. Fiber discontinuity is a direct tear sign; focal thickening and increased fluid-sensitive signal can support a partial/interstitial injury in the right clinical context. Buckling by itself is not a primary PCL-tear sign because it can reflect anterior tibial translation from ACL insufficiency. Pitfall: a second dark band paralleling the PCL in the notch can be the double-PCL sign of a displaced bucket-handle meniscal fragment.",
         dir: SAG,
         sliceIndex: 16,
         planeLabel: "Sagittal PD-FS",
@@ -288,7 +288,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             options: ["Medial collateral ligament (MCL)", "Lateral collateral ligament", "Medial meniscus", "Iliotibial band"],
             answer: 0,
             explanation:
-              "The MCL — a vertical band along the medial joint line. Grade it by depth (superficial vs deep) and level: proximal/femoral injuries tend to scar and heal, while distal (Stener-like) injuries may not. The deep MCL blends with the medial meniscus via its meniscofemoral and meniscotibial portions.",
+              "The MCL — a vertical band along the medial joint line. Grade it by layer (superficial vs deep), level, and displacement. A distal superficial-MCL tear displaced over the pes tendons is a Stener-like pattern that can impede anatomic healing. The deep MCL blends with the medial meniscus through its meniscofemoral and meniscotibial portions.",
           },
           {
             id: "lig-int-q2",
@@ -308,7 +308,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
             options: ["Tibial spines (intercondylar eminence)", "The cruciate ligaments themselves", "Medial femoral condyle", "Trochlear groove"],
             answer: 0,
             explanation:
-              "The tibial spines (intercondylar eminence) are the central bony peaks and your midline coronal landmark. The cruciates attach in the intercondylar AREAS just beside the spines — the ACL anteriorly, the PCL far posteriorly — not on the peaks themselves. A tibial-eminence avulsion is the pediatric ACL-equivalent injury.",
+              "The tibial spines (intercondylar eminence) are the central bony peaks and your midline coronal landmark. The cruciates attach in the intercondylar AREAS just beside the spines — the ACL anteriorly, the PCL far posteriorly — not on the peaks themselves. A tibial-eminence avulsion in a child or adolescent is an osseous ACL-attachment injury; assess displacement, comminution, and associated soft-tissue injury.",
           },
         ],
       },
@@ -324,7 +324,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
         title: "Trace the extensor mechanism",
         instruction: "Reveal the structures, then trace the extensor mechanism from the quadriceps tendon to the tibial tubercle.",
         teaching:
-          "Follow the extensor mechanism on the sagittal. The QUADRICEPS TENDON is striated and trilaminar — partial tears most often involve the DEEP (vastus intermedius) layer with intact superficial fibers, so they can be clinically subtle; it inserts on the superior pole of the patella. The PATELLAR TENDON runs from the inferior pole to the tibial tubercle, normally a few mm thick and uniformly dark — focal thickening (usually proximal) = tendinopathy, a fluid-filled gap with patella alta = rupture. HOFFA'S fat pad sits behind the patellar tendon; focal superolateral edema is the clue to anterior (Hoffa) impingement.",
+          "Follow the extensor mechanism on the sagittal. The QUADRICEPS TENDON is striated and multilayered — a partial tear can involve only one layer, including the deep vastus-intermedius contribution, while other fibers remain intact; it inserts on the superior pole of the patella. The PATELLAR TENDON runs from the inferior pole to the tibial tubercle, normally a few mm thick and uniformly dark — focal thickening (usually proximal) supports tendinopathy, while a fluid-filled fiber gap supports rupture. HOFFA'S fat pad sits behind the patellar tendon; focal superolateral edema can accompany patellofemoral maltracking/impingement but is not specific in isolation.",
         dir: SAG,
         sliceIndex: 13,
         planeLabel: "Sagittal PD-FS",

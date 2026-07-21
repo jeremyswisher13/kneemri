@@ -69,14 +69,14 @@ export const kneeModuleMetas: ModuleMeta[] = [
       "Patellar dislocation contusion pattern",
       "Insufficiency and stress fractures",
       "Alignment assessment: varus/valgus",
-      "SIFK/SONK pattern recognition"
+      "Subchondral insufficiency fracture (SIF/SIF-ON) pattern recognition"
     ]
   },
   {
     "id": "cartilage-osteochondral",
     "number": 5,
     "title": "Cartilage & Osteochondral",
-    "subtitle": "Grading, OCD stability, SIFK, and loose bodies",
+    "subtitle": "Grading, OCD stability, SIF, and loose bodies",
     "estimatedMinutes": 20,
     "topics": [
       "Cartilage evaluation by compartment",
@@ -84,7 +84,7 @@ export const kneeModuleMetas: ModuleMeta[] = [
       "OCD: location, sizing, and stability criteria",
       "Juvenile vs adult OCD differences",
       "MRI signs of fragment instability",
-      "SIFK vs OCD vs AVN differentiation",
+      "SIF vs OCD vs systemic osteonecrosis differentiation",
       "Loose body identification and reporting"
     ]
   },
@@ -137,14 +137,14 @@ export const kneeModuleMetas: ModuleMeta[] = [
       "Effusion characterization and lipohemarthrosis",
       "Baker's cyst: anatomy, rupture, mimics",
       "Bursitis patterns: prepatellar, infrapatellar, pes anserine",
-      "Synovial pathology: PVNS, synovial chondromatosis",
+      "Synovial pathology: tenosynovial giant cell tumor (formerly PVNS), synovial chondromatosis",
       "Muscle Strains, Myotendinous Injuries & Avulsions"
     ]
   },
   {
     "id": "top-10-dont-miss",
     "number": 9,
-    "title": "Top 10 Don't Miss",
+    "title": "12 Don't-Miss Findings",
     "subtitle": "High-yield findings that change management",
     "estimatedMinutes": 15,
     "topics": [

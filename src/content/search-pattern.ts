@@ -23,16 +23,16 @@ export const searchPatternSteps: SearchPatternStep[] = [
     name: 'Bones & Marrow',
     shortName: 'Bones',
     description:
-      'Evaluate alignment, marrow signal, fracture lines, and subchondral changes. Identify bone bruise patterns that point to specific injury mechanisms.',
+      'Evaluate compartment loading, marrow signal, fracture lines, and subchondral changes. Use bone-bruise patterns as mechanism clues, then confirm the implicated structures directly.',
     checklistItems: [
-      'Alignment: varus/valgus, patellar tracking',
+      'Compartment-overload pattern and patellar tracking (quantify mechanical axis on standing long-leg radiographs, not limited-field MRI)',
       'Marrow edema: location and pattern',
-      'Fracture lines (best on T1)',
+      'Fracture lines (review non-fat-suppressed/T1-weighted and fluid-sensitive images together)',
       'Subchondral changes',
       'Bone bruise pattern (pivot-shift? dashboard? dislocation?)',
     ],
     pearls: [
-      'In acute ACL injury, expect bone bruises at LFC + posterolateral tibial plateau',
+      'A lateral-femoral-condyle plus posterolateral-tibial-plateau bruise pattern commonly supports an acute pivot-shift/ACL mechanism, but its absence does not exclude ACL injury',
       "If edema is present, always ask 'why?': Trauma? OA? Stress? Infection?",
     ],
   },
@@ -50,7 +50,7 @@ export const searchPatternSteps: SearchPatternStep[] = [
       'Assess OCD: location, size, stability signs',
     ],
     pearls: [
-      'Full-thickness defect + marrow edema is often clinically significant',
+      'For a full-thickness defect, report the subchondral response; edema-like signal is nonspecific and must be interpreted in context',
       'Always report location + depth + size + edema + loose bodies',
     ],
   },
@@ -66,13 +66,13 @@ export const searchPatternSteps: SearchPatternStep[] = [
       'Check both roots (posterior medial and posterior lateral)',
       'Apply two-slice-touch rule for tear diagnosis',
       'Assess for displacement: bucket-handle, flipped meniscus',
-      'Measure extrusion on coronal images',
+      'Measure extrusion on coronal images, excluding osteophytes',
       'Look for parameniscal cysts',
     ],
     pearls: [
-      'A true tear: grade 3 signal on \u22652 images reaching a surface',
-      'If ACL is torn: look lateral, look posterior, look at the root',
-      'Significant extrusion? Actively search for a root tear',
+      'High confidence: grade 3 signal reaches a surface on \u22652 matching images (not necessarily contiguous; orthogonal images may count)',
+      'If the ACL is torn, inspect both menisci deliberately, including the lateral posterior horn, posteromedial ramp region, and both posterior roots',
+      'Major medial extrusion (commonly \u22653 mm)? Search directly for a root/radial tear and compartment degeneration; do not transfer that threshold uncritically to the lateral meniscus',
     ],
   },
   {
@@ -108,7 +108,7 @@ export const searchPatternSteps: SearchPatternStep[] = [
     ],
     pearls: [
       'If indication is patellar instability: prioritize MPFL and osteochondral fragments',
-      "Don't call patellar tendinopathy unless signal + thickening localizes to the tendon",
+      'Patellar tendinopathy is a clinical load-related diagnosis supported by localized tendon thickening and intrasubstance signal with preserved continuity; signal alone is nonspecific',
     ],
   },
   {
@@ -119,7 +119,7 @@ export const searchPatternSteps: SearchPatternStep[] = [
       'Assess the joint effusion, bursae, Baker\'s cyst, popliteal fossa, surrounding tendons, and neurovascular structures.',
     checklistItems: [
       'Effusion: quantify (small/moderate/large)',
-      'Fat-fluid level (lipohemarthrosis \u2192 fracture)',
+      'Fat-fluid level (in acute nonoperative trauma, strongly indicates an intra-articular fracture)',
       'Bursae: prepatellar, infrapatellar, pes anserine',
       "Baker's cyst: location, rupture, complexity",
       'Popliteal fossa: masses, collections',
@@ -128,7 +128,7 @@ export const searchPatternSteps: SearchPatternStep[] = [
     ],
     pearls: [
       "Baker's cyst sits between semimembranosus and medial gastrocnemius",
-      "If painful calf swelling, consider Baker's cyst rupture",
+      "Painful calf swelling: Baker-cyst rupture can mimic DVT; if DVT is a concern, follow the clinical pathway with dedicated venous ultrasonography rather than trying to exclude it on routine knee MRI",
     ],
   },
 ];

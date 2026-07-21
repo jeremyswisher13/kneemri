@@ -4,9 +4,9 @@ export const module10Content: TopicContent[] = [
   {
     content: `### Posterior Medial Meniscal Root Tears
 
-**Posterior medial meniscal root tears with extrusion** are among the most consequential diagnoses to identify on knee MRI because they are **functionally equivalent to total meniscectomy** and lead to rapid, progressive medial compartment arthritis if untreated.
+**Posterior medial meniscal root tears with extrusion** are consequential diagnoses because a complete root-disrupting tear can abolish hoop-stress function and accelerate medial-compartment overload. In a cadaveric medial-root model, contact mechanics approached those after total medial meniscectomy; this comparison is not a universal equivalence for every partial or degenerative root abnormality.
 
-The root tear disrupts the **circumferential hoop stress mechanism**, rendering the meniscus unable to distribute axial load across the tibial plateau.
+A **complete root-disrupting tear** can severely impair circumferential hoop-stress transmission and reduce meniscal load distribution.
 
 ### MRI Signs by Plane
 
@@ -15,16 +15,16 @@ The root tear disrupts the **circumferential hoop stress mechanism**, rendering 
 
 **Coronal images:**
 - Measure **meniscal extrusion** at the mid-body level
-- **> 3 mm** = pathologic/major extrusion (validated threshold) — report the measured value; there is no separately validated "> 5 mm severe" tier
+- **≥3 mm** is a commonly used major medial-extrusion threshold. Exclude osteophytes from the tibial reference margin, report the measured value, and remember extrusion is neither specific for nor required by a root tear
 
 **Axial images:**
 - Direct visualization of the root and any **radial cleft** at the attachment
 
-### Downstream Consequences of Missed Root Tears
-- **Subchondral insufficiency fractures** of the medial femoral condyle or tibial plateau (often the presenting finding)
-- **Accelerated cartilage loss**
-- **Progressive varus malalignment**
-- Eventual need for **arthroplasty**
+### Associated Risks and Whole-Joint Findings
+- **Subchondral insufficiency fracture** of the medial femoral condyle or tibial plateau
+- **Cartilage loss** and compartment overload
+- **Varus loading/alignment**, assessed definitively with standing long-leg radiographs when relevant
+- Osteoarthritis progression risk, without implying that arthroplasty is inevitable
 
 ### Reporting Checklist
 When reporting a root tear, always include:
@@ -32,8 +32,8 @@ When reporting a root tear, always include:
 - **Status of articular cartilage**
 - **Subchondral bone changes**
 
-These factors determine whether **root repair is viable**. Early identification and repair can prevent the cascade of joint degeneration.`,
-    pearl: `The triad of posterior medial root tear + meniscal extrusion greater than 3 mm + subchondral insufficiency fracture is a pattern you must recognize. The root tear is the cause, and if you only report the fracture without identifying the root tear, the underlying problem will not be addressed.`,
+These factors help determine whether **root repair is viable**. Timely identification preserves treatment options, but MRI alone cannot promise that repair will prevent osteoarthritis progression.`,
+    pearl: `Posterior medial root tear, major extrusion, and subchondral insufficiency fracture form an important overload pattern. The root tear may be a major biomechanical contributor, but do not present it as the sole cause; report cartilage, alignment/overload, and subchondral findings together.`,
   },
   {
     content: `### Ramp Lesions
@@ -59,17 +59,17 @@ The key to detection is knowing where to look and **actively searching** in ever
 
 ### Surgical Significance
 - Contribute to **anterior tibial translation** and **rotational instability**
-- If unrepaired at the time of ACL reconstruction, may **increase the risk of graft failure**
+- May contribute to residual instability depending on lesion type and stability; treatment is determined arthroscopically and clinically rather than from MRI wording alone
 
 ### Reporting Recommendation
-- **Specifically state** the presence or absence of a ramp lesion in **every ACL tear case**
-- When equivocal, recommend **intraoperative assessment** through a **posteromedial portal** or **trans-notch approach** (standard anterior arthroscopic portals frequently miss these lesions)`,
-    pearl: `Make it a habit to include a specific statement about the presence or absence of a ramp lesion in every ACL tear report. The sensitivity of MRI for ramp lesions is modest (pooled ~65-71% at ~88-94% specificity; missed in up to half of cases in some series), so when findings are equivocal, recommend intraoperative assessment through a posteromedial portal.`,
+- Clearly describe a **seen or suspected** ramp lesion and the involved meniscocapsular/meniscotibial structures
+- A negative MRI does not reliably exclude a ramp lesion. When clinical or surgical concern persists, targeted arthroscopic inspection may require a **posteromedial** or **trans-notch** view because standard anterior portals can miss the lesion`,
+    pearl: `Actively inspect the posteromedial meniscocapsular junction in every ACL tear. MRI sensitivity for ramp lesions is modest, so report a seen or suspected lesion clearly and recognize that a negative study does not exclude one. The treating surgeon may use targeted posteromedial or trans-notch visualization when concern persists.`,
   },
   {
     content: `### Bucket-Handle Tears
 
-**Bucket-handle tears** represent displaced vertical longitudinal meniscal tears where the central fragment flips into the **intercondylar notch**. They cause **mechanical locking** and require **urgent surgical intervention**. Missing a bucket-handle tear can result in unnecessary delay while the displaced fragment causes **progressive cartilage damage**.
+**Bucket-handle tears** are displaced vertical longitudinal meniscal tears in which the inner fragment displaces centrally, often into the **intercondylar notch**. A displaced tear may cause true mechanical locking or loss of extension. A clinically locked knee warrants prompt orthopedic assessment; imaging alone does not make every bucket-handle tear an emergency.
 
 ### Three Cardinal Signs
 
@@ -91,7 +91,7 @@ The key to detection is knowing where to look and **actively searching** in ever
 - **Donor site** location
 - **Fragment position**
 - **Approximate length** of the tear
-- Associated findings: joint effusion (often large), clinical locking, inability to achieve full extension`,
+- Associated findings: effusion, ACL or other ligament injury, and documented clinical locking or loss of extension`,
     pearl: `If you see fewer than two sagittal bow-tie images through the meniscal body, immediately suspect a bucket-handle tear and search for the displaced fragment in the intercondylar notch (double PCL sign) or flipped against the anterior horn. Always report the donor site and fragment location.`,
     images: [
       {
@@ -102,20 +102,20 @@ The key to detection is knowing where to look and **actively searching** in ever
     ],
   },
   {
-    content: `### Unstable Osteochondral Defects (OCD)
+    content: `### Unstable Osteochondritis Dissecans (OCD)
 
-**Unstable osteochondral defects** are critical to identify because they determine whether surgical intervention is needed. The distinction between **stable** and **unstable** fundamentally changes management:
+**Unstable osteochondral defects** are critical to identify because stability strongly informs treatment. The distinction between **stable** and **unstable** changes management:
 - **Stable** lesions may be managed **conservatively** (especially in skeletally immature patients)
-- **Unstable** lesions typically require **surgical fixation or reconstruction**
+- **Unstable** lesions warrant orthopedic evaluation for fixation or another procedure, integrated with symptoms, skeletal maturity, and lesion characteristics
 
 ### MRI Signs of Instability
-- **High-signal-intensity line** (fluid signal on T2) at the interface between the OCD fragment and the parent bone -- indicating fluid undermining the fragment
-- **Fluid-filled cyst** beneath the lesion
+- **Joint-fluid-equivalent signal** that undermines the fragment, particularly in a skeletally mature patient
+- Concerning **subchondral cysts**; in juvenile OCD, multiple cysts or a cyst larger than about 5 mm are more specific than a solitary small cyst
 - **Displaced or partially displaced** fragment
 - **Disruption** of the overlying articular cartilage surface
 - **Loose bodies** in the joint
 
-The **most reliable sign** of instability is a **high-signal rim surrounding the fragment on T2-weighted sequences**, representing fluid undermining the lesion.
+In adults, a fluid-equivalent high-signal rim undermining the fragment is a strong sign of instability. In juveniles, an isolated bright rim has poor specificity and may represent vascular granulation tissue.
 
 On T1-weighted images, a low-signal rim may represent either **fibrous healing** or a **cleavage plane** -- making **T2 assessment essential**.
 
@@ -135,7 +135,7 @@ On T1-weighted images, a low-signal rim may represent either **fibrous healing**
 - Presence of any **instability signs**
 - Whether **loose bodies** are present
 - For **juvenile OCD** (open physes): prognosis is generally better with conservative management than for adult OCD`,
-    pearl: `The most reliable MRI sign of OCD instability is fluid-signal intensity (matching joint fluid on T2) at the interface between the fragment and parent bone, indicating undermining. A low-signal rim on T1 is non-specific and can represent either healing fibrous tissue or an unstable cleavage plane. Always use T2 sequences to assess stability.`,
+    pearl: `Apply age-specific OCD criteria. In an open-physis knee, a bright interface rim alone is unreliable; look for a fluid-equivalent rim with an outer low-signal rim, multiple subchondral-plate breaks, multiple or >5 mm cysts, cartilage breach, or displacement. A low-signal T1 rim is nonspecific.`,
     images: [
       {
         src: '/images/modules/ocd-stability.svg',
@@ -149,7 +149,7 @@ On T1-weighted images, a low-signal rim may represent either **fibrous healing**
 
 **Posterolateral corner injuries** involving the **LCL** and **popliteus tendon complex** are among the most commonly missed diagnoses on knee MRI, yet their identification is essential for successful ligament reconstruction.
 
-An unrecognized PLC injury is a **major and frequently overlooked cause of ACL and PCL graft failure** because persistent external rotation and varus laxity overload the reconstruction (the most common *technical* cause of ACL graft failure is non-anatomic tunnel placement).
+An unrecognized PLC injury can leave external-rotation and varus laxity that overloads and compromises an ACL or PCL reconstruction. Tunnel malposition remains an important technical cause of ACL graft dysfunction.
 
 ### Three Key Structures to Evaluate
 
@@ -162,19 +162,19 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 ### Signs of PLC Injury
 - **Edema and disruption** of any of the three structures
 - **Arcuate fracture** (fibular styloid avulsion) -- a **strong PLC injury marker**
-- Bone contusions on the **anteromedial tibia and femoral condyle** (varus mechanism)
+- Medial-compartment contact contusions may support a varus mechanism, but their distribution is variable and not diagnostic
 - **Peroneal nerve** edema or displacement around the fibular neck
 
 ### Associations
 - Commonly accompany **PCL tears** (up to **60%** of grade III PCL injuries)
 - Also seen with **ACL tears** with varus mechanism
 - Always report PLC injuries explicitly with **specification of each involved structure**`,
-    pearl: `Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is a strong marker that should prompt direct evaluation of the full PLC.`,
+    pearl: `In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament, plus the biceps femoris, arcuate complex, and peroneal nerve when the pattern warrants. Missed PLC instability can compromise a cruciate graft. An arcuate fracture is a strong search trigger, but define the injured structures directly.`,
   },
   {
     content: `### MPFL Tear with Osteochondral Injury
 
-**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.
+**MPFL/medial-retinacular injury with an associated osteochondral fragment** is a classic, management-changing pattern after **lateral patellar dislocation**. A dislocation may occur without a visible ligament discontinuity or fragment, so use the full mechanism pattern rather than requiring this triad.
 
 ### Classic Injury Triad
 1. **MPFL tear**
@@ -186,27 +186,27 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 
 ### Evaluation Checklist
 
-- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique
+- **MPFL tear location** (patellar attachment, femoral attachment, midsubstance, or combined) -- report it, while recognizing recurrence risk and reconstruction planning depend more on the full anatomy and clinical instability than on tear site alone
 - **Osteochondral injury** -- search for chondral or osteochondral fragments in:
   - Suprapatellar pouch
   - Lateral gutter
   - Posterior recesses
-- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)
+- **Size and location** of any defect on the medial patella or lateral femoral condyle/trochlear surface (larger repairable fragments may alter treatment)
 
 ### Predisposing Anatomy Assessment
 - **Trochlear dysplasia** (Dejour classification)
-- **Patella alta** (Insall-Salvati ratio **> 1.2**)
-- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT** is abnormal, 15–20 mm borderline; MRI measures ~3–4 mm lower, so the corresponding **MRI abnormal threshold is ~15 mm** — always state the modality)
+- **Patella alta** (Insall-Salvati **>1.2** is a classic true-lateral-radiograph threshold; name the method and use modality-appropriate technique/reference data on MRI)
+- **Lateralized tibial tubercle** (the classic **>20 mm** threshold is CT-derived; MRI values are often lower but vary by protocol and landmarks, so state the modality/method and use modality-appropriate reference data)
 
 Recurrent dislocation risk is **high** when multiple anatomic risk factors are present.`,
-    pearl: `When you see medial patellar facet + anterolateral femoral condyle bone bruises, the diagnosis is lateral patellar dislocation. Your checklist: (1) MPFL tear location, (2) osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patella alta, (5) TT-TG distance. Missing the loose body can result in ongoing mechanical symptoms.`,
+    pearl: `Medial-patellar plus anterolateral-femoral contact contusions are highly suggestive of transient lateral patellar dislocation. Confirm the full pattern and report: (1) medial stabilizer injury, (2) chondral/osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patellar height, and (5) TT-TG with modality/method stated. Missing a loose body can leave ongoing mechanical symptoms.`,
   },
   {
     content: `### Lipohemarthrosis
 
-**Lipohemarthrosis** (a fat–fluid level) on knee MRI indicates an **intra-articular fracture until proven otherwise** and requires an immediate systematic search for the fracture source. It is best seen on a **non–fat-suppressed** sequence — fat saturation nulls the fatty layer and the level can disappear.
+In acute nonoperative trauma, **lipohemarthrosis** (a fat–fluid level) strongly indicates an **intra-articular fracture** and should trigger a systematic source search. Recent surgery, aspiration, or another intra-articular procedure is an important exception. It is best seen on a **non–fat-suppressed** sequence because fat saturation can erase the fatty layer.
 
-The **fat-fluid level** is caused by marrow fat released from a fracture line communicating with the joint space, mixing with hemorrhagic joint fluid. Best visualized on **sagittal or axial T2-weighted or STIR images** through the suprapatellar bursa.
+The **fat-fluid level** is caused by marrow fat entering the joint and layering above hemorrhagic fluid. It is best appreciated on non-fat-suppressed T1- or intermediate-weighted sagittal/axial images after layering; fat-suppressed/STIR sequences can suppress the fat layer and obscure the level.
 
 ### Most Common Associated Fractures
 - **Tibial plateau fractures** (particularly the lateral plateau in ACL tear mechanisms)
@@ -228,8 +228,8 @@ When a lipohemarthrosis is identified but no obvious fracture is seen, perform a
 - **Femoral condyles** -- osteochondral fractures
 - **Fibular head** -- avulsion fractures
 
-**CT** may be recommended for surgical planning if a tibial plateau fracture is identified, as MRI can underestimate the degree of articular depression and comminution.`,
-    pearl: `A lipohemarthrosis without an identified fracture should prompt a second dedicated search. The most commonly missed fractures are subtle lateral tibial plateau depression fractures -- look for cortical irregularity and subchondral impaction on coronal images. If a plateau fracture is found, recommend CT for surgical planning.`,
+**CT** is often useful for detailed characterization and operative planning when a tibial plateau fracture is identified, especially when depression or comminution is incompletely defined on MRI.`,
+    pearl: `A lipohemarthrosis without an identified fracture should prompt a second dedicated search. Subtle lateral tibial plateau depression fractures are an important miss -- look for cortical irregularity and subchondral impaction in multiple planes. If a plateau fracture is found, consider CT when additional osseous detail will change management.`,
   },
   {
     content: `### Segond Fracture
@@ -246,16 +246,16 @@ Despite its small size, this fracture has **enormous diagnostic significance** a
 
 ### Reverse Segond Fracture
 - Avulsion of the **medial tibial rim**
-- Associated with **PCL tears** rather than ACL tears
+- Classically associated with **PCL injury** and may accompany medial meniscal/capsular injury and other multiligament trauma
 - Less common but equally important as an indicator of cruciate injury
 
 ### Associated Findings to Evaluate
-- **ACL status** (should be torn)
+- **ACL status** (highly associated injury, but assess directly)
 - **Meniscal tears** (particularly the lateral meniscus)
 - **Posterolateral corner injury**
 
 The Segond fracture is often **more conspicuous on radiographs** than on MRI, so do not assume prior imaging has identified it.`,
-    pearl: `A Segond fracture (lateral tibial rim avulsion) is highly specific for associated ACL injury. Even a tiny bone fragment at the anterolateral tibial plateau should prompt direct ACL evaluation. The reverse Segond fracture (medial tibial rim avulsion) is associated with PCL tears. These fractures are small but carry enormous diagnostic weight.`,
+    pearl: `A Segond fracture (lateral tibial-rim avulsion) strongly flags associated ACL injury and should prompt direct ACL and meniscal evaluation. A reverse Segond fracture (medial tibial-rim avulsion) can accompany PCL plus medial/posteromedial and other multiligament injuries, so map the complete injury rather than treating it as a one-to-one PCL sign.`,
     images: [
       {
         src: '/images/modules/segond-fracture.svg',
@@ -275,12 +275,12 @@ The Segond fracture is often **more conspicuous on radiographs** than on MRI, so
 
 **Multiligament injury patterns** indicate severe knee trauma and potential knee dislocation, carrying significant risk of **vascular and neurological injury**. Any combination of **two or more major ligament tears** (ACL, PCL, MCL, LCL/PLC) constitutes a multiligament knee injury.
 
-**ACL + PCL disruption = knee dislocation until proven otherwise**, even if the knee has spontaneously reduced.
+**ACL + PCL disruption is a knee-dislocation pattern** and should trigger urgent vascular-risk assessment even when the joint is reduced and no dislocation was documented.
 
 ### Vascular and Nerve Assessment
 
 - **Popliteal artery injury** occurs in a clinically important minority of knee dislocations -- can lead to **limb loss** if not identified promptly
-- MRI signs: **perivascular hematoma**, loss of the normal **popliteal artery flow void**, or intimal irregularity
+- Routine MRI may show **perivascular hematoma** or gross vessel abnormality, but normal flow-related signal does not exclude intimal injury and conventional knee MRI is not a vascular clearance test
 - **Common peroneal nerve injury** accompanies PLC injuries in **25--40%** of cases; trace the nerve on **axial images** around the fibular neck
 
 ### Systematic Reporting Checklist
@@ -299,7 +299,7 @@ Address **every stabilizing structure individually**:
 - **Bone injuries**
 
 This comprehensive assessment is essential for **surgical planning**, as multiligament reconstruction is staged in many centers and the surgeon needs to **prioritize structures** based on your report.`,
-    pearl: `ACL + PCL disruption = knee dislocation pattern until proven otherwise. Recommend urgent vascular assessment if not already documented; vascular exam/ABI plus CTA/MRA when abnormal or equivocal, or per trauma protocol. Always include a recommendation for vascular evaluation in your report when you identify combined cruciate tears. Document every injured structure individually for surgical planning.`,
+    pearl: `ACL + PCL disruption is a knee-dislocation pattern even after spontaneous reduction. Recommend urgent vascular assessment if it is not already documented: examination and ankle-brachial index, CT angiography for abnormal/equivocal findings or according to the trauma pathway, and serial examinations when indicated. Routine knee MRI cannot exclude arterial injury. Document every injured structure individually for surgical planning.`,
   },
   {
     content: `### Post-Surgical Re-Tear vs. Expected Appearance
@@ -310,31 +310,31 @@ Distinguishing **post-surgical re-tear from expected postoperative appearance** 
 
 | Signal | Interpretation |
 |--------|---------------|
-| **Intermediate signal** at repair site | **Expected healing** -- granulation tissue (do not overcall) |
-| **Fluid-bright signal** (matching joint fluid on T2) reaching articular surface | **Re-tear** |
+| **Intermediate signal** at repair site | Can reflect expected granulation/scar; not diagnostic of healing or re-tear by itself |
+| **Fluid-bright signal** extending into the repair site with changed morphology or a displaced fragment | Favors **re-tear** |
 
-- Increased intrameniscal signal is expected for at least **12 months** after surgery
+- Increased intrameniscal signal may persist for years after successful repair and is not diagnostic by itself
 
 ### ACL Graft
 
 | Timeframe | Expected Appearance | Signs of Failure |
 |-----------|-------------------|-----------------|
-| **0--12 months** | Increased signal (ligamentization phase) | N/A -- expected |
-| **> 12--18 months** | **Uniformly low signal** | **Fluid-signal** within graft, discontinuity, lax/horizontal graft, recurrent secondary signs |
+| **Early postoperative period** | Variable increased signal during ligamentization | Failure can still occur; look for fiber discontinuity, laxity, malposition, and recurrent secondary signs |
+| **Later follow-up** | Signal generally decreases, with graft- and sequence-dependent variability | Discontinuity, abnormal orientation/laxity, tunnel complication, and recurrent secondary signs |
 
-**Partial graft tear:** Focal thinning or signal change with some intact fibers
-**Complete graft failure:** Discontinuity + recurrence of secondary signs (anterior tibial translation, new pivot-shift bone contusions) + tunnel widening
+**Possible partial graft tear:** Focal fiber disruption or abnormal thinning/orientation with some intact fibers; signal change alone is insufficient
+**Complete graft failure:** Fiber discontinuity or grossly abnormal orientation/tension, integrated with clinical instability, tunnel/hardware findings, and secondary signs; tunnel widening is neither required nor sufficient by itself
 
 ### Meniscectomy Sites
-- Residual rim should have a **smooth, well-corticated free edge** with **uniformly low signal**
-- New **grade 3 signal** extending to the articular surface of the residual rim = **re-tear**
+- The residual rim is expected to be smaller/truncated with a **smooth contour**; meniscal tissue is not corticated
+- Surface-reaching signal alone loses specificity after surgery. Favor re-tear when there is new/changed fluid-signal extension, morphology not explained by resection, or a displaced fragment
 
 ### Cartilage Repair Sites (Microfracture, OATS, ACI)
-- Repair tissue signal **evolves over time** and should progressively mature to approximate normal hyaline cartilage signal
+- Repair tissue signal and fill **evolve over time** according to procedure and sequence; compare with expected technique-specific appearance and prior studies rather than requiring normal hyaline-cartilage signal by a fixed date
 - Report: **fill percentage**, **surface congruity**, **integration** with adjacent cartilage, and **subchondral bone status**
 
-When findings are equivocal, **MR arthrography** can significantly improve diagnostic accuracy.`,
-    pearl: `The critical distinction for post-surgical meniscus: fluid-bright signal (matching joint fluid on T2) at the surface = re-tear; intermediate signal at the repair site = expected healing. For ACL grafts: uniform low signal by 12-18 months is normal; fluid-signal within the graft or recurrence of secondary signs indicates failure. When in doubt, recommend MR arthrography.`,
+In selected equivocal postoperative menisci, **direct MR arthrography** can improve accuracy, particularly after substantial resection or when conventional MRI lacks a helpful effusion. It is not a routine next step for every equivocal graft or meniscus.`,
+    pearl: `Use the operative report and prior imaging. Persistent meniscal signal alone is not a re-tear; prioritize changed morphology, new fluid extension, or a displaced fragment. Graft integrity can fail at any time and is judged by continuity, orientation, tunnels, and secondary signs. Reserve MR arthrography for selected equivocal postoperative menisci when the result will change care.`,
   },
   {
     content: `### What Surgeons Need from Your MRI Read
@@ -343,9 +343,9 @@ Understanding what findings **change surgical management** transforms a descript
 
 ### Findings That Change the Surgical Plan
 
-**Meniscal tear characteristics that determine repair vs. resection:**
-- **Location** (peripheral red-red zone = repairable; central white-white zone = resection)
-- **Morphology** (vertical longitudinal = repairable; complex degenerative = usually resection)
+**Meniscal tear characteristics that inform repairability:**
+- **Location and vascular zone**, together with tissue quality, chronicity, age, alignment, and patient goals; a central location does not automatically mandate resection
+- **Morphology**, length, displacement, reducibility, associated root/ramp injury, and remaining meniscal tissue
 - **Displacement** (bucket-handle with locked knee = urgent)
 
 **ACL tear nuances:**
@@ -353,9 +353,9 @@ Understanding what findings **change surgical management** transforms a descript
 - **Associated injuries** that expand the surgical plan (ramp lesion, PLC injury, root tear)
 
 **Cartilage lesion details that guide treatment:**
-- **Size of the defect** (in centimeters) -- determines microfracture vs. OATS vs. ACI
+- **Size of the defect** (in centimeters) -- informs but does not by itself determine marrow stimulation, osteochondral transfer, cell-based repair, or allograft
 - **Location** (weight-bearing vs. non-weight-bearing surface)
-- **Subchondral bone status** -- cysts or edema affect reconstruction options
+- **Subchondral bone status** -- report cysts, fracture, contour change, and edema-like signal; these findings inform but do not alone select a reconstruction
 
 **Post-surgical assessment:**
 - **Graft integrity** (intact fibers vs. partial vs. complete failure)
@@ -365,7 +365,7 @@ Understanding what findings **change surgical management** transforms a descript
 ### The Bottom Line
 
 Your report should answer the surgeon's three key questions: (1) **What is the diagnosis?** (2) **What associated injuries are present?** (3) **Does anything change my planned approach?** Anticipating these questions and addressing them proactively makes your report significantly more valuable.`,
-    pearl: `Think like the surgeon reading your report. For meniscal tears, address repairability (location, morphology, acuity). For cartilage lesions, specify size, location, and subchondral bone status. For ACL tears, highlight associated injuries that expand the surgery. Answer the clinical question, not just describe the anatomy.`,
+    pearl: `For meniscal tears, report location, pattern, displacement, tissue loss/quality clues, root or ramp involvement, and associated cartilage/alignment findings. For cartilage lesions, specify size, depth, stability, and subchondral bone. For ACL tears, highlight associated injuries that may expand treatment. Answer the clinical question without implying that MRI alone selects the operation.`,
   },
   {
     content: `### Critical Findings Requiring Direct Communication
@@ -374,15 +374,15 @@ Certain MRI findings require **direct communication** with the referring clinici
 
 ### Emergent Findings (Communicate Immediately)
 
-- **Knee dislocation or multiligament injury** (ACL + PCL = dislocation until proven otherwise) -- requires urgent **vascular assessment** because popliteal artery injury can be occult
-- **Locked knee from displaced bucket-handle tear** -- may require **urgent surgery** to prevent progressive cartilage damage
-- **Suspected septic arthritis** -- complex effusion with synovial enhancement and periarticular changes
+- **Knee-dislocation-pattern multiligament injury**, including ACL + PCL disruption -- requires urgent **vascular assessment** because popliteal artery injury can be occult
+- **Clinically locked knee with a displaced meniscal fragment** -- prompt orthopedic assessment because reduction/repair may be time-sensitive
+- **Clinical concern for septic arthritis** with a complex effusion/synovitis or adjacent infection -- MRI is nonspecific and cannot exclude or confirm infection; urgent aspiration and laboratory/clinical assessment are decisive
 
 ### Urgent Findings (Communicate Same Day)
 
 - **Aggressive bone lesion or suspected tumor** identified incidentally -- delays in oncologic workup can be consequential
 - **Displaced osteochondral fragments** in a weight-bearing compartment -- loose bodies cause ongoing cartilage damage
-- **Unexpected findings that change the planned surgery** -- e.g., a patient scheduled for isolated ACL reconstruction who has a concurrent PLC injury requiring repair, or a meniscal root tear requiring a different approach
+- **Unexpected findings that may expand the planned procedure** -- e.g., a patient scheduled for isolated ACL reconstruction who has a concurrent PLC injury or meniscal root tear requiring specialist assessment
 
 ### Documentation
 
@@ -392,7 +392,7 @@ Per **ACR practice parameters**, when you directly communicate a significant fin
 - Document the **time**
 
 Even for non-emergent findings, a brief call to highlight an unexpected result that could change management demonstrates excellent clinical partnership and ensures nothing falls through the cracks.`,
-    pearl: `Always pick up the phone for these findings: multiligament knee injury (dislocation risk requiring vascular assessment), locked bucket-handle tear, suspected septic arthritis, incidental aggressive bone lesion, and any unexpected finding that would change the planned surgery. Document every direct communication in your report.`,
+    pearl: `Use direct communication for findings that demand time-sensitive action: a dislocation-pattern multiligament injury needing vascular assessment, a clinically locked knee with a displaced fragment, clinical concern for septic arthritis needing aspiration, an aggressive lesion, or an unexpected finding that changes planned surgery. Follow local policy and document the communication.`,
     images: [
       {
         src: '/images/modules/critical-findings-checklist.svg',

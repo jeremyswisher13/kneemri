@@ -115,7 +115,7 @@ const workstations: WorkstationContract[] = [
     expectedQuizCounts: { "sag-pdfs": 12, "cor-pdfs": 11, "axi-t2fs": 11, "sag-t1": 11 },
     crossPlane,
     expectedCrossPlaneCount: 13,
-    firstCrossPlaneTarget: { x: 27, y: 56 },
+    firstCrossPlaneTarget: { x: 69, y: 55 },
     advanced: advancedChallenge,
     expectedAdvancedCount: 36,
     imageCaq: kneeImageCaq,
@@ -328,6 +328,25 @@ describe("normal MRI workstation regression contract", () => {
 const contentText = (...sources: unknown[]) => JSON.stringify(sources).toLowerCase();
 
 describe("normal MRI must-not-overcall teaching safeguards", () => {
+  it("locks the vision-reviewed knee ACL and lateral-meniscus targets", () => {
+    const sagittal = normalKneeLearn["sag-pdfs"];
+    const aclTour = sagittal.tour.find((step) => step.title === "Anterior cruciate ligament");
+    const aclQuiz = sagittal.quiz.find((item) => item.id === "sag-sid-1");
+    const aclCrossPlane = crossPlane.find((item) => item.id === "xp-acl-origin");
+    const meniscusCrossPlane = crossPlane.find((item) => item.id === "xp-meniscus");
+    const poplitealTour = sagittal.tour.find((step) => step.title === "Popliteal vessels");
+
+    expect(aclTour?.sliceIndex).toBe(12);
+    expect(aclTour?.markers[0]).toMatchObject({ x: 49, y: 55 });
+    expect(aclQuiz).toMatchObject({ sliceIndex: 12, marker: { x: 49, y: 55 } });
+    expect(aclCrossPlane?.from).toMatchObject({ sliceIndex: 12, x: 49, y: 55 });
+    expect(kneeImageCaq.find((item) => item.id === "icaq-1")?.startIndex).toBe(12);
+
+    expect(meniscusCrossPlane?.from.label.toLowerCase()).toContain("lateral meniscus");
+    expect(meniscusCrossPlane?.to.candidates[meniscusCrossPlane.to.answer]).toEqual({ x: 69, y: 55 });
+    expect(poplitealTour?.markers[0]).toMatchObject({ x: 66, y: 55 });
+  });
+
   it("keeps the knee root, TT-TG, and MCL caveats", () => {
     const text = contentText(
       normalKneeLearn,
@@ -337,7 +356,7 @@ describe("normal MRI must-not-overcall teaching safeguards", () => {
       crossPlane,
       kneeImageCaq,
     );
-    expect(text).toContain("extrusion alone does not prove a root tear");
+    expect(text).toContain("extrusion alone neither proves nor excludes a root tear");
     expect(text).toContain("as a standalone surgical rule");
     expect(text).toContain("deep mcl");
   });

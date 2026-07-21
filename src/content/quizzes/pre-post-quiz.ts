@@ -7,8 +7,8 @@ import type { QuizQuestion } from '@/types/content';
  * equivalent-but-different vignette (shared parallelId, parallel-pre / parallel-post),
  * so growth is measurable per domain while resisting answer memorization. 14 pairs
  * across 9 blueprint domains, each mapped to its source module (moduleId). Single
- * best answer, application/analysis level. Authored + adversarially verified
- * (MSK-radiologist + psychometrician) against the course blueprint.
+ * best answer, application/analysis level. Authored and internally audited
+ * against the course blueprint; formal faculty validation remains separate.
  */
 export const prePostQuizQuestions: QuizQuestion[] = [
   {
@@ -54,7 +54,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     prePostMapping: "parallel-post",
     parallelId: "kn-normal-variants-1",
     stem: "On sagittal images a thin low-signal structure runs obliquely from the posterior horn of the lateral meniscus toward the medial femoral condyle, with a cleft at its meniscal origin that looks like a posterior horn tear. How do you confirm this is a normal variant?",
-    options: [{ key: "A", text: "Trace it to its femoral attachment near the PCL, identifying a meniscofemoral ligament (Humphrey or Wrisberg)" }, { key: "B", text: "Confirm grade-3 signal reaching the surface on two consecutive slices" }, { key: "C", text: "Note that the cleft disappears only on the coronal plane" }, { key: "D", text: "Identify the popliteus tendon passing through the popliteal hiatus" }],
+    options: [{ key: "A", text: "Trace it to its femoral attachment near the PCL, identifying a meniscofemoral ligament (Humphrey or Wrisberg)" }, { key: "B", text: "Confirm grade-3 signal reaching the surface on two matching images" }, { key: "C", text: "Note that the cleft disappears only on the coronal plane" }, { key: "D", text: "Identify the popliteus tendon passing through the popliteal hiatus" }],
     correctAnswer: "A",
     explanation: "The meniscofemoral ligaments of Humphrey (anterior to PCL) and Wrisberg (posterior to PCL) arise from the posterior horn of the lateral meniscus and insert on the medial femoral condyle; the fat cleft at their meniscal origin mimics a posterior horn tear, and tracing the band to its femoral attachment confirms the variant. Option B describes criteria for a true tear (the wrong conclusion here), and option D names a different lateral-meniscus pseudotear (popliteal hiatus) rather than the structure described.",
     cognitiveLevel: "analyze",
@@ -92,7 +92,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     stem: "A 19-year-old soccer player felt a pop while cutting. MRI shows kissing contusions at the lateral femoral condyle (sulcus terminalis region) and the posterolateral tibial plateau. Which ligament is most likely torn and should be scrutinized?",
     options: [{ key: "A", text: "Posterior cruciate ligament" }, { key: "B", text: "Anterior cruciate ligament" }, { key: "C", text: "Medial patellofemoral ligament" }, { key: "D", text: "Deep medial collateral ligament" }],
     correctAnswer: "B",
-    explanation: "The pivot-shift mechanism drives the lateral femoral condyle and posterolateral tibial plateau together, producing this kissing-contusion pattern that is the hallmark of ACL rupture. The PCL (option A) is associated with an anterior proximal tibia contusion from a dashboard blow, and the MPFL (option C) pairs with a medial patella plus anterolateral femoral condyle pattern of transient patellar dislocation, both distinct mechanisms.",
+    explanation: "The pivot-shift mechanism can drive the lateral femoral condyle and posterolateral tibial plateau together, producing a characteristic contusion pattern that strongly supports ACL injury and should trigger direct ligament inspection. The PCL (option A) is associated with an anterior proximal tibia contusion after posteriorly directed force, and the MPFL (option C) belongs to the medial-patella/anterolateral-femoral-condyle pattern of transient lateral patellar dislocation. Marrow distribution is a mechanism clue, not independent proof of a ligament tear.",
     cognitiveLevel: "apply",
   },
   {
@@ -104,7 +104,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     stem: "A teenager dislocated the patella while pivoting, then it spontaneously reduced. Which combination of marrow edema and the associated structure to evaluate fits this mechanism?",
     options: [{ key: "A", text: "Anterior proximal tibia edema; evaluate the PCL" }, { key: "B", text: "Lateral femoral condyle and posterolateral plateau edema; evaluate the ACL" }, { key: "C", text: "Medial patellar facet and anterolateral femoral condyle edema; evaluate the medial patellofemoral ligament" }, { key: "D", text: "Medial femoral condyle subchondral edema; evaluate the deep MCL" }],
     correctAnswer: "C",
-    explanation: "Transient lateral patellar dislocation produces a characteristic bone-bruise pair on the medial patellar facet (from MPFL avulsion impaction) and the anterolateral femoral condyle (from contact during relocation), so the MPFL must be assessed along with the search for osteochondral fragments. Option B is the pivot-shift/ACL pattern and option A is the dashboard/PCL pattern, both representing different injury mechanisms that trainees often conflate with patellar dislocation.",
+    explanation: "Transient lateral patellar dislocation produces a characteristic contact-contusion pair at the medial patella and anterolateral lateral femoral condyle, so the medial patellofemoral stabilizers must be assessed separately along with the search for chondral or osteochondral fragments. Option B is the pivot-shift/ACL pattern and option A is the dashboard/PCL pattern, both representing different injury mechanisms.",
     cognitiveLevel: "analyze",
   },
   {
@@ -113,10 +113,10 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     moduleId: "bones-marrow",
     prePostMapping: "parallel-pre",
     parallelId: "kn-marrow-mechanism-2",
-    stem: "A 68-year-old woman has acute medial knee pain with no significant trauma. MRI shows a focal subchondral low-signal line paralleling the medial femoral condyle articular surface with surrounding marrow edema. Which feature best distinguishes a subchondral insufficiency fracture (SIFK) from a simple traumatic contusion?",
+    stem: "A 68-year-old woman has acute medial knee pain with no significant trauma. MRI shows a focal subchondral low-signal line paralleling the medial femoral condyle articular surface with surrounding marrow edema. Which feature best supports a subchondral insufficiency fracture (SIF) rather than a simple traumatic contusion?",
     options: [{ key: "A", text: "Diffuse, ill-defined marrow edema with no discrete subchondral line and an antecedent impact" }, { key: "B", text: "A discrete subchondral low-signal fracture line subjacent to the articular surface with adjacent edema, often without notable trauma" }, { key: "C", text: "Edema confined to the patella after a dashboard injury" }, { key: "D", text: "Bright T1 fatty signal replacing the subchondral bone" }],
     correctAnswer: "B",
-    explanation: "SIFK is defined by a discrete subchondral fracture line (low signal on all sequences) hugging the articular surface with surrounding edema, typically in older or osteoporotic patients without significant trauma. A traumatic contusion (option A) shows geographic, ill-defined edema WITHOUT a subchondral line and follows a known impact; option D describes benign fatty marrow, not an acute insufficiency fracture, a distinction trainees frequently miss.",
+    explanation: "A subchondral low-signal line or band parallel to the articular surface, surrounding edema-like signal, minimal trauma, and the typical location strongly support SIF. The fracture line can be subtle or occult, so its absence does not automatically prove a contusion; mechanism, morphology, and follow-up matter. Option D describes fatty marrow rather than an acute subchondral injury.",
     cognitiveLevel: "analyze",
   },
   {
@@ -125,10 +125,10 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     moduleId: "bones-marrow",
     prePostMapping: "parallel-post",
     parallelId: "kn-marrow-mechanism-2",
-    stem: "A 70-year-old man develops sudden medial knee pain. MRI shows extensive medial femoral condyle marrow edema, a subchondral focus, and overlying articular surface flattening. Which finding most supports subchondral insufficiency fracture (formerly 'spontaneous osteonecrosis,' SONK) rather than true avascular osteonecrosis?",
-    options: [{ key: "A", text: "A linear subchondral fracture line with adjacent edema and articular surface collapse, in an osteoporotic patient without steroid or alcohol history" }, { key: "B", text: "A serpentine double-line sign demarcating a wedge-shaped epiphyseal infarct" }, { key: "C", text: "Diffuse patchy marrow signal sparing the subchondral region" }, { key: "D", text: "Bilateral symmetric metaphyseal infarcts" }],
+    stem: "A 70-year-old man develops sudden medial knee pain. MRI shows extensive medial femoral condyle marrow edema, a subchondral low-signal zone, and overlying articular-surface flattening. Which finding most supports the subchondral insufficiency fracture/SIF-with-osteonecrosis (SIF-ON) spectrum rather than systemic osteonecrosis?",
+    options: [{ key: "A", text: "A subchondral fracture-line pattern with adjacent edema and surface deformity, without a serpiginous infarct margin" }, { key: "B", text: "A serpiginous geographic rim or double-line pattern demarcating an epiphyseal infarct" }, { key: "C", text: "Diffuse patchy marrow signal sparing the subchondral region" }, { key: "D", text: "Bilateral symmetric metaphyseal infarcts" }],
     correctAnswer: "A",
-    explanation: "Current teaching reframes 'SONK' as a subchondral insufficiency fracture: a linear subchondral fracture with adjacent edema and possible surface collapse in an older/osteoporotic patient, without the classic AVN risk factors. The serpentine double-line sign and discrete wedge-shaped or metaphyseal infarcts (options B and D) characterize true avascular necrosis, which trainees often incorrectly equate with this insufficiency-fracture presentation.",
+    explanation: "Many lesions formerly called SONK are now understood as subchondral insufficiency fracture, sometimes progressing to SIF with osteonecrosis and collapse. A subchondral fracture line with adjacent edema and surface deformity supports that spectrum; bone density may be normal or reduced. A serpentine infarct/double-line pattern favors systemic osteonecrosis.",
     cognitiveLevel: "analyze",
   },
   {
@@ -138,9 +138,9 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     prePostMapping: "parallel-pre",
     parallelId: "kn-menisci-1",
     stem: "A 58-year-old presents after a deep squat with acute medial knee pain. Coronal PD fat-sat MRI shows a radial-oriented avulsion at the posterior root insertion of the medial meniscus, and on the coronal image the meniscal body is displaced 4 mm beyond the tibial margin. Functionally, how should this finding be characterized in your report?",
-    options: [{ key: "A", text: "A stable degenerative intrasubstance change that requires no specific comment" }, { key: "B", text: "A peripheral longitudinal tear that is likely to heal given the vascular zone" }, { key: "C", text: "Loss of meniscal hoop-stress function, biomechanically equivalent to a near-total meniscectomy" }, { key: "D", text: "An isolated meniscocapsular separation without effect on load distribution" }],
+    options: [{ key: "A", text: "A stable degenerative intrasubstance change that requires no specific comment" }, { key: "B", text: "A peripheral longitudinal tear that is likely to heal given the vascular zone" }, { key: "C", text: "Loss of hoop-stress function with contact mechanics that can approach total medial meniscectomy in a complete medial-root model" }, { key: "D", text: "An isolated meniscocapsular separation without effect on load distribution" }],
     correctAnswer: "C",
-    explanation: "A posterior root avulsion uncouples the circumferential collagen ring, so the meniscus can no longer convert axial load into hoop (circumferential) stress; the joint then behaves as if the meniscus were absent, producing rapid compartment overload \u2014 hence the report must flag it as functionally a meniscectomy. Option B reflects the common error of treating a root avulsion like a healable peripheral longitudinal tear; the root is an avulsion of the anchor, not a vertical tear in vascular tissue. Option A misclassifies a mechanically catastrophic lesion as benign degeneration, and D confuses a meniscocapsular (ramp-type) injury with the root, which has very different load consequences.",
+    explanation: "A complete posterior medial root avulsion uncouples the circumferential collagen ring and markedly impairs hoop-stress transmission. Cadaveric medial-root data show contact mechanics approaching total medial meniscectomy, so the report should emphasize compartment overload while avoiding a blanket equivalence for every partial or lateral root abnormality.",
     cognitiveLevel: "analyze",
   },
   {
@@ -150,9 +150,9 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     prePostMapping: "parallel-post",
     parallelId: "kn-menisci-1",
     stem: "A 61-year-old reports a pop while gardening. Sagittal images show fluid signal cleaving the posterior horn of the medial meniscus at its tibial insertion, and on the coronal image the body extrudes 5 mm medial to the tibial plateau edge. How does this lesion alter the biomechanics of the involved compartment?",
-    options: [{ key: "A", text: "It mildly stiffens the meniscus but preserves overall load transmission" }, { key: "B", text: "It eliminates effective hoop-stress transmission, transferring load onto the articular cartilage as in a meniscectomized knee" }, { key: "C", text: "It only affects rotational stability, leaving axial load distribution intact" }, { key: "D", text: "It produces a self-limited synovitis without measurable load redistribution" }],
+    options: [{ key: "A", text: "It mildly stiffens the meniscus but preserves overall load transmission" }, { key: "B", text: "A complete posterior medial-root disruption can abolish hoop-stress transmission and approach total medial-meniscectomy contact mechanics in a cadaveric model" }, { key: "C", text: "It only affects rotational stability, leaving axial load distribution intact" }, { key: "D", text: "It produces a self-limited synovitis without measurable load redistribution" }],
     correctAnswer: "B",
-    explanation: "Detachment of the posterior root releases the circumferential fibers so axial load is no longer converted into hoop stress and is dumped onto the chondral surface. In cadaveric testing, a medial posterior root tear raised medial-compartment peak contact pressure by 25% with no detectable difference from total medial meniscectomy, and root repair restored pressures to normal (Allaire 2008) \u2014 which is why the finding is reported as functionally equivalent to a meniscectomy and why repair, not observation, is the surgical goal. Option A understates the lesion by treating a complete root avulsion as a partial stiffening change. Options C and D reflect misconceptions that the root governs only rotation or is merely an inflammatory finding, when in fact it is the principal anchor for compartment load-bearing.",
+    explanation: "Detachment of the posterior medial root releases circumferential fibers so axial load is no longer effectively converted into hoop stress. In a cadaveric model, peak contact pressure rose 25% with no detected difference from total medial meniscectomy, and repair restored pressure. This explains the biomechanical urgency, while actual treatment still depends on cartilage, alignment, chronicity, symptoms, and patient factors.",
     cognitiveLevel: "analyze",
   },
   {
@@ -176,7 +176,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     stem: "On a knee MRI, the medial meniscus body shows fluid-bright signal oriented perpendicular to its free margin on the coronal image, and on the adjacent sagittal slice the meniscus body looks shortened with a missing segment. The remaining meniscus is otherwise normal in position. How is this lesion best classified, and what is its key biomechanical consequence?",
     options: [{ key: "A", text: "A peripheral longitudinal tear; it usually preserves hoop-stress function" }, { key: "B", text: "A parameniscal cyst; it indicates a horizontal-cleavage tear with fluid tracking" }, { key: "C", text: "A bucket-handle tear; the fragment has displaced into the notch" }, { key: "D", text: "A radial tear extending to the free edge; it disrupts circumferential fibers and compromises hoop-stress distribution" }],
     correctAnswer: "D",
-    explanation: "A cleft perpendicular to the free edge with a truncated/absent meniscal segment on the orthogonal plane is the signature of a radial tear; because it transects the circumferential collagen bundles, a full-thickness radial tear disrupts hoop-stress generation much like a root tear and predisposes to extrusion and chondral overload. Option A mislabels the perpendicular cleft as a longitudinal tear, which parallels the fibers and does preserve hoop stress; option C invents a displaced bucket-handle fragment in the notch that is not described here. Option B mistakes a through-substance radial cleft for a parameniscal cyst, which would be a rounded T2-bright collection adjacent to a horizontal tear.",
+    explanation: "A cleft perpendicular to the free edge with a truncated/absent meniscal segment on the orthogonal plane is the signature of a radial tear. A complete or near-complete radial tear substantially disrupts circumferential fibers, compromises hoop-stress generation, and can promote extrusion and chondral overload; the biomechanical effect depends on tear width and location. The other options describe different morphology or displacement.",
     cognitiveLevel: "analyze",
   },
   {
@@ -188,7 +188,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     stem: "A 19-year-old soccer player has a locked knee. Sagittal MRI shows a second low-signal band lying anterior and parallel to the posterior cruciate ligament within the intercondylar notch. The medial meniscus appears truncated. Which diagnosis does this fragment configuration indicate?",
     options: [{ key: "A", text: "A bucket-handle meniscal tear with the fragment displaced into the intercondylar notch" }, { key: "B", text: "A mucoid-degenerated PCL producing a thickened ligament" }, { key: "C", text: "A meniscal root tear with posterior extrusion of the meniscal body" }, { key: "D", text: "A torn meniscofemoral ligament of Wrisberg mimicking a second ligament" }],
     correctAnswer: "A",
-    explanation: "A fragment lying parallel and anterior to the PCL \u2014 the 'double-PCL sign' \u2014 is the hallmark of a displaced bucket-handle tear, with the inner meniscal fragment flipped into the notch and a correspondingly truncated parent meniscus. Option B reflects the misconception that a doubled appearance equals PCL pathology, but mucoid degeneration thickens the PCL itself rather than adding a separate band. Option C describes extrusion (peripheral, not into the notch), and D confuses a normal meniscofemoral ligament with a displaced fragment; the Wrisberg ligament runs posterior to the PCL and is much thinner than a bucket-handle fragment.",
+    explanation: "A meniscal-sized fragment lying parallel and anterior to the PCL, together with a truncated parent meniscus, strongly supports a displaced bucket-handle tear and produces the 'double-PCL sign.' The sign should still be confirmed by tracing the fragment and donor site in multiple planes. Option B reflects the misconception that a doubled appearance equals PCL pathology, while option D confuses a normal meniscofemoral ligament with a displaced fragment; the Wrisberg ligament runs posterior to the PCL and is much thinner.",
     cognitiveLevel: "analyze",
   },
   {
@@ -198,9 +198,9 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     prePostMapping: "parallel-post",
     parallelId: "kn-menisci-3",
     stem: "Reviewing a knee MRI, you see grade-3 linear signal reaching the inferior articular surface of the medial meniscus posterior horn on two consecutive sagittal images, and the same defect is again visible reaching the surface on the coronal sequence. How should this be reported under the two-slice-touch criterion?",
-    options: [{ key: "A", text: "Indeterminate, because surface signal must be confirmed on three or more contiguous slices" }, { key: "B", text: "A normal magic-angle artifact, since linear signal can be artifactual at the posterior horn" }, { key: "C", text: "A definite meniscal tear, since surface-reaching signal is present on two images and corroborated on a second plane" }, { key: "D", text: "An intrasubstance grade-2 signal that does not warrant a tear diagnosis" }],
+    options: [{ key: "A", text: "Indeterminate, because surface signal must be confirmed on three or more contiguous slices" }, { key: "B", text: "A normal magic-angle artifact, since linear signal can be artifactual at the posterior horn" }, { key: "C", text: "A high-confidence meniscal tear, since surface-reaching signal is present on at least two matching images and corroborated in another plane" }, { key: "D", text: "An intrasubstance grade-2 signal that does not warrant a tear diagnosis" }],
     correctAnswer: "C",
-    explanation: "The two-slice-touch rule diagnoses a tear when grade-3 signal contacts a meniscal surface on at least two images, and cross-plane confirmation (here on the coronal) further increases confidence \u2014 so this is a definite tear. Option A overstates the threshold by demanding three slices, and option D mislabels surface-reaching grade-3 signal as intrasubstance grade-2, which by definition does not reach the surface. Option B invokes magic-angle artifact, which occurs at ~55 degrees to B0 on short-TE sequences and does not reach an articular surface on fluid-sensitive images across two planes.",
+    explanation: "Surface-reaching meniscal signal on at least two matching images gives high diagnostic confidence, and orthogonal-plane confirmation increases it further. The qualifying images need not be contiguous or even in the same plane. This is a confidence rule rather than an absolute gate, so morphology and artifacts still matter.",
     cognitiveLevel: "analyze",
   },
   {
@@ -224,7 +224,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     stem: "A 13-year-old gymnast with open physes has a medial femoral condyle osteochondral lesion showing a thin band of high T2 signal at the fragment interface. There is no subchondral cyst, the overlying cartilage is intact, and the fragment is in situ. How should you interpret the interface signal in this patient?",
     options: [{ key: "A", text: "The interface signal indicates an unstable lesion warranting surgical fixation" }, { key: "B", text: "The lesion is stable because skeletally immature patients heal reliably" }, { key: "C", text: "Interface hyperintensity is less specific for instability in juveniles, so combine it with other signs and clinical findings before calling it unstable" }, { key: "D", text: "Open physes make MRI uninterpretable for osteochondral lesions" }],
     correctAnswer: "C",
-    explanation: "In juvenile osteochondritis dissecans with open physes, T2 interface hyperintensity can reflect vascular granulation tissue in a healing, still-stable lesion, so it is less specific than in adults; the call requires corroborating signs (a surrounding cyst, encircling fluid rim, cartilage breach, or displacement) plus clinical correlation. Option A applies the adult fluid-rim rule too rigidly to a child, the most common pediatric pitfall, while option B errs the opposite way by assuming immaturity guarantees stability. Option D is incorrect because MRI remains the primary tool \u2014 it simply must be interpreted with the juvenile caveat in mind.",
+    explanation: "In juvenile OCD with open physes, isolated T2 interface hyperintensity can reflect vascular granulation tissue and is poorly specific for instability. More specific juvenile findings include a fluid-equivalent rim plus an outer low-signal rim, multiple subchondral-plate breaks, multiple cysts or a cyst larger than about 5 mm, cartilage breach, or displacement. MRI remains central, but skeletal maturity changes interpretation.",
     cognitiveLevel: "analyze",
   },
   {

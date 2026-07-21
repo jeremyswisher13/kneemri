@@ -51,8 +51,8 @@ export const medicalQaGeneratedAt = "2026-07-21";
 
 export const medicalQaTotals: MedicalQaTotals = {
   "reviewItems": 2768,
-  "highRiskItems": 1360,
-  "sourceCheckItems": 1587,
+  "highRiskItems": 1338,
+  "sourceCheckItems": 1560,
   "diagnostics": 0,
   "diagnosticErrors": 0,
   "diagnosticWarnings": 0
@@ -70,8 +70,8 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "imageCaqItems": 7,
     "redFlags": 5,
     "reviewItems": 1102,
-    "highRiskItems": 442,
-    "sourceCheckItems": 525,
+    "highRiskItems": 420,
+    "sourceCheckItems": 498,
     "diagnostics": 0
   },
   "shoulder-mri": {
@@ -124,9 +124,9 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
 export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> = {
   "knee-mri": {
     "risks": {
-      "high": 442,
-      "medium": 83,
-      "standard": 577
+      "high": 420,
+      "medium": 78,
+      "standard": 604
     },
     "itemTypes": {
       "course-overview": 1,
@@ -157,28 +157,28 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
     },
     "sourceCheckByType": {
       "search-pattern-step": 4,
-      "module-topic": 56,
-      "module-common-mistake": 8,
+      "module-topic": 53,
+      "module-common-mistake": 6,
       "module-summary": 5,
-      "module-quiz": 40,
-      "case-summary": 9,
+      "module-quiz": 38,
+      "case-summary": 8,
       "case-model-report": 11,
-      "case-teaching-point": 19,
-      "case-search-finding": 22,
-      "normal-tour-step": 10,
-      "normal-plane-quiz": 12,
+      "case-teaching-point": 15,
+      "case-search-finding": 24,
+      "normal-tour-step": 9,
+      "normal-plane-quiz": 11,
       "normal-structure-pearl": 6,
       "normal-structure-reading": 7,
       "normal-structure-correlate": 5,
-      "normal-advanced-question": 28,
+      "normal-advanced-question": 26,
       "normal-image-caq": 7,
       "normal-cross-plane": 5,
-      "pre-post-quiz": 21,
-      "red-flag": 5,
+      "pre-post-quiz": 20,
+      "red-flag": 3,
       "surgical-correlate": 2,
       "daily-pearl": 11,
-      "flashcard": 45,
-      "review-registry-question": 153,
+      "flashcard": 43,
+      "review-registry-question": 145,
       "faq": 34
     }
   },
@@ -366,4 +366,4 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   }
 };
 
-export const medicalQaPriorityItemCount = 1587;
+export const medicalQaPriorityItemCount = 1560;

@@ -24,17 +24,17 @@ export const surgicalCorrelatesByRegion: Record<string, SurgicalCorrelate[]> = {
     {
       structure: "Anterior cruciate ligament",
       title: "ACL — MRI band ↔ arthroscopic view",
-      body: "On sagittal PD-FS the ACL is a straight, taut band paralleling Blumensaat's line. At arthroscopy it is the broad, fan-shaped ligament running from the lateral wall of the notch to the tibial footprint; a tear that reads 'empty notch' on MRI shows a bare lateral wall and a balled-up stump that the probe displaces.",
+      body: "On sagittal PD-FS the normal ACL is a continuous, taut, low-signal band with an expected oblique course near the notch roof. At arthroscopy it is the broad, fan-shaped ligament running from the lateral notch wall to the tibial footprint. MRI may show discontinuity, abnormal course, or an empty-notch appearance in a complete tear; arthroscopy directly assesses the remnant and functional continuity.",
     },
     {
       structure: "Articular cartilage",
-      title: "Cartilage — MRI grade ↔ Outerbridge at arthroscopy",
-      body: "Fluid-sensitive MRI grades chondral loss from fissure to full-thickness; arthroscopy grades the same surface Outerbridge I–IV by probing (softening → fissuring/fragmentation, graded II vs III by lesion size → exposed bone). The MRI tells you where to look; the probe confirms depth and fragment stability.",
+      title: "Cartilage — MRI description ↔ arthroscopic grading",
+      body: "MRI maps lesion location, surface area, and estimated depth, but MRI grading schemes are not interchangeable with arthroscopic Outerbridge grading. Arthroscopy adds direct surface inspection and probing for softening, fissuring, unstable margins, and exposed bone. State the grading system used and describe the lesion rather than implying exact MRI-to-arthroscopy equivalence.",
     },
     {
       structure: "Meniscus",
       title: "Meniscal tear — MRI signal ↔ probing",
-      body: "A tear is signal reaching the meniscal surface on MRI; at arthroscopy the probe is the arbiter — it catches and displaces an unstable flap or a bucket-handle fragment, which decides repair vs partial meniscectomy.",
+      body: "Surface-reaching signal on at least two matching images, or convincing morphologic distortion, supports a meniscal tear on MRI. Arthroscopy adds direct inspection and probing, although some peripheral lesions can be difficult to see from standard portals. Repairability depends on tear pattern, location, tissue quality, chronicity, stability, alignment, and patient context, not one MRI sign alone.",
     },
   ],
   shoulder: [

@@ -10,7 +10,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 2,
-    text: "Meniscal signal that unequivocally reaches an articular surface is suspicious for a tear. Surface contact on two consecutive standard slices greatly increases confidence, but a one-slice finding still requires morphology and orthogonal-plane correlation rather than automatic dismissal.",
+    text: "Meniscal signal that unequivocally reaches an articular surface is suspicious for a tear. Contact on two or more matching images greatly increases confidence; the images need not be contiguous and may be in orthogonal planes. A one-image finding still requires morphologic correlation.",
   },
   {
     id: 3,
@@ -18,19 +18,19 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 4,
-    text: "Meniscal extrusion >3 mm is abnormal and should trigger a careful search for root or radial tears and degeneration; extrusion alone does not diagnose a root tear. Trace the root on coronal and axial images.",
+    text: "Medial meniscal extrusion ≥3 mm is a common major-extrusion threshold and should trigger a root, radial-tear, and cartilage search; extrusion alone does not diagnose a root tear. Measure without osteophytes and trace the root in every plane.",
   },
   {
     id: 5,
-    text: "The \u2018absent bow-tie sign\u2019 (fewer than two consecutive sagittal body segments) indicates a bucket-handle tear with fragment displacement.",
+    text: "The absent-bow-tie sign (fewer than two consecutive sagittal body segments) suggests a displaced meniscal tear; confirm a fragment and exclude prior meniscectomy and slice-thickness effects.",
   },
   {
     id: 6,
-    text: "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; tear site does not reliably predict recurrence (no significant difference by site on meta-analysis) — that is driven more by trochlear dysplasia, patella alta, elevated TT-TG, and young age. Check the medial patellar margin, the femoral origin, and mid-substance on axial images.",
+    text: "The MPFL tear site is variable by cohort and method, and combined sites occur. Trace the full medial patellofemoral complex from the medial patella through the mid-substance to the femoral/adductor-tubercle region; recurrence risk depends on the complete anatomy and clinical context, not tear site alone.",
   },
   {
     id: 7,
-    text: "A finding that is dark on T1 and bright on PD FS is almost always edema or fluid. Bright on both suggests subacute blood or proteinaceous fluid.",
+    text: "Low T1 plus high fluid-sensitive marrow signal is nonspecific increased water or marrow replacement. Use distribution, morphology, clinical context, and all sequences to distinguish trauma, stress/SIF, degeneration, infection, inflammation, and neoplasm.",
   },
   {
     id: 8,
@@ -42,27 +42,27 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 10,
-    text: "Radial tears disrupt circumferential hoop fibers and are biomechanically significant even when small. Look for the \u2018ghost meniscus\u2019 sign.",
+    text: "Radial tears cross circumferential hoop fibers. Complete or near-complete tears, especially near a root, can markedly impair load distribution; describe tear width and location rather than assuming every small radial defect is equivalent.",
   },
   {
     id: 11,
-    text: "After patellar dislocation, search for an osteochondral fracture (medial patellar facet / lateral femoral condyle), seen in up to ~50% of cases, AND for a displaced loose body in the suprapatellar pouch or notch — less frequent (~15–30%) but management-changing.",
+    text: "After patellar dislocation, search the medial patella and lateral femoral condyle for chondral or osteochondral injury, then search every recess for a displaced fragment. Fragment size, composition, donor site, and location are management-changing.",
   },
   {
     id: 12,
-    text: "SIFK (subchondral insufficiency fracture of the knee) is associated with posterior medial meniscal root tears and extrusion, which can increase compartment loading \u2014 always check the root.",
+    text: "Subchondral insufficiency fracture of the knee is associated with posterior medial meniscal root tears and extrusion, which can increase compartment loading. Check the root, cartilage, extrusion, overload pattern, and subchondral morphology together.",
   },
   {
     id: 13,
-    text: "A \u2018thick PCL\u2019 or loss of its normal smooth arc on sagittal images suggests PCL injury. Dashboard mechanism = check the PCL.",
+    text: "PCL thickening, increased fluid-sensitive signal, or loss of fiber continuity can support injury after a dashboard mechanism. Buckling alone may instead be secondary to anterior tibial translation from ACL insufficiency.",
   },
   {
     id: 14,
-    text: "Mucoid degeneration of the ACL shows a bulky, hyperintense but continuous ligament (\u2018celery stalk\u2019 appearance). It\u2019s not the same as a tear.",
+    text: "Mucoid degeneration of the ACL shows a bulky ligament with increased signal interspersed among continuous longitudinal fibers (the \u2018celery stalk\u2019 appearance). Preserved continuity favors mucoid change, but clinical stability and the possibility of superimposed injury still matter.",
   },
   {
     id: 15,
-    text: "Most parameniscal cysts have an underlying meniscal tear acting as a one-way valve. Trace the cyst back to the meniscus to find the likely causative tear.",
+    text: "Most parameniscal cysts are associated with an underlying meniscal tear. Trace the neck back to the meniscus and report the tear pattern without implying that every adjacent cyst proves one visible tear.",
   },
   {
     id: 16,
@@ -70,15 +70,15 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 17,
-    text: "Post-meniscal repair: only fluid-bright signal matching joint fluid on T2 that reaches the surface is a definitive re-tear. Intermediate signal may represent healing.",
+    text: "After meniscal repair, signal can persist for years. Re-tear is favored by new fluid-equivalent surface signal plus changed morphology, displaced tissue, or interval change; compare the operative history and prior images.",
   },
   {
     id: 18,
-    text: "Count your meniscal body segments on sagittal images. Fewer than two bow-ties = absent bow-tie sign = bucket-handle until proven otherwise.",
+    text: "Fewer than two expected sagittal bow-tie body images should trigger a displaced-fragment search. Confirm a donor site and fragment, and exclude prior meniscectomy, a small meniscus, and slice-thickness effects before calling a bucket-handle tear.",
   },
   {
     id: 19,
-    text: "Satisfaction of search: after finding the obvious ACL tear, force yourself to complete all 7 steps. 30\u201340% of cases have additional clinically relevant pathology.",
+    text: "Satisfaction of search: after finding an obvious ACL tear, complete all seven steps and the associated-injury checklist before finalizing the report.",
   },
   {
     id: 20,
@@ -86,11 +86,11 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 21,
-    text: "Bone marrow edema on T1 appears dark, but a discrete low-signal LINE within the edema = fracture (not just contusion). This changes weight-bearing protocol.",
+    text: "A discrete low-signal fracture line, cortical disruption, depression, or characteristic subchondral band within edema-like signal strongly supports fracture. Absence of a visible line does not automatically prove contusion.",
   },
   {
     id: 22,
-    text: "OCD stability: fluid signal at the fragment-parent bone interface, cystic change, or displacement = unstable. Surrounding edema alone does NOT mean unstable.",
+    text: "OCD stability criteria are age-specific. Joint-fluid-equivalent undermining, cartilage breach, and displacement are concerning; in juvenile OCD, an isolated bright rim is unreliable and multiple/large cysts or subchondral-plate breaks are more specific.",
   },
   {
     id: 23,
@@ -106,23 +106,23 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 26,
-    text: "Bipartite patella: smooth, corticated margins, classically superolateral. Fracture: irregular, non-corticated margins with edema and effusion.",
+    text: "Bipartite patella is classically superolateral with smooth corticated margins. Acute fracture more often has an irregular noncorticated line and traumatic edema, but a symptomatic bipartite synchondrosis can also be edematous, so use morphology and history together.",
   },
   {
     id: 27,
-    text: "The quadriceps tendon is trilaminar. Partial tears most commonly involve the deep (vastus intermedius) layer; the robust superficial rectus femoris fibers often remain intact, so the tear can preserve active extension and be deceptively subtle.",
+    text: "The quadriceps tendon is multilayered. A partial tear can involve one contribution while other fibers remain intact and preserve some extensor function, so inspect every layer on sagittal and axial images.",
   },
   {
     id: 28,
-    text: "When measuring meniscal extrusion, use the coronal image where the medial meniscal body is widest, with a reference line at the tibial plateau margin.",
+    text: "Measure medial meniscal extrusion on the coronal mid-body image from the tibial plateau margin, excluding osteophytes; report the continuous value rather than only a threshold category.",
   },
   {
     id: 29,
-    text: "Lipohemarthrosis (fat-fluid level on axial images) indicates an intra-articular fracture, even if you can\u2019t see the fracture line.",
+    text: "In acute nonoperative trauma, lipohemarthrosis strongly indicates an intra-articular fracture even if the line is occult. Look on non-fat-suppressed images and remember recent surgery/procedure as an exception.",
   },
   {
     id: 30,
-    text: "Window/level: widen for meniscal internal signal evaluation, narrow for cartilage surface defects. Adjusting as you move through your search pattern improves sensitivity.",
+    text: "Window/level has no one-direction rule. Center the low-signal meniscus so it is not clipped to black, and preserve the cartilage-fluid interface without saturation; confirm subtle findings on the native display and other planes.",
   },
 ];
 

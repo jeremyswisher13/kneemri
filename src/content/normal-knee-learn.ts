@@ -8,9 +8,9 @@
  * Marker coordinates are PERCENTAGES of the displayed slice image (x = left, y = top).
  * sliceIndex is 0-based into that plane's stack (slice_01.jpg = index 0).
  *
- * NOTE: marker positions are a first pass to be verified/adjusted by the course
- * director. The cruciate markers in particular should be confirmed on the exact
- * slice before this is treated as final.
+ * Marker positions have been reviewed against the exact de-identified source
+ * stacks. They remain teaching annotations rather than diagnostic overlays and
+ * should retain faculty sign-off when the source images are replaced.
  */
 
 import type {
@@ -57,20 +57,20 @@ export const structureCase: Record<string, { caseId: string; label: string }> = 
   "Cartilage & joint fluid": { caseId: "degenerative-knee-oa", label: "Tricompartmental osteoarthritis" },
   "Weight-bearing cartilage": { caseId: "degenerative-knee-oa", label: "Tricompartmental osteoarthritis" },
   "Tibial plateau": { caseId: "acl-pivot-shift", label: "ACL tear + pivot-shift contusions" },
-  "Bone marrow — T1's job": { caseId: "sifk-sonk", label: "Subchondral insufficiency fracture (SIFK)" },
+  "Bone marrow — T1's job": { caseId: "sifk-sonk", label: "Subchondral insufficiency fracture (SIF)" },
 };
 
 /** title → inline "reading point" (variant + measurement) woven into the tour. */
 export const structureReading: Record<string, StructureReading> = {
   "Anterior cruciate ligament": {
     variant:
-      "A thick, bulbous ACL with increased signal but CONTINUOUS, parallel 'celery-stalk' fibers and no secondary signs is mucoid degeneration, not a tear — don't operate.",
+      "A thick, bulbous ACL with increased signal but CONTINUOUS, parallel 'celery-stalk' fibers favors mucoid degeneration rather than fiber disruption. Correlate with morphology, secondary signs, and the examination instead of diagnosing a tear from signal alone.",
     measure:
-      "Quantify the secondary signs of a tear: anterior tibial translation >5 mm (lateral sagittal through the mid-lateral compartment) or a lateral femoral sulcus >1.5 mm deep.",
+      "Secondary signs include anterior tibial translation >5 mm on a lateral sagittal compartment image and a deep lateral femoral sulcus. The classic >1.5 mm sulcus cutoff was established on lateral radiographs; on MRI, use it as supportive morphology rather than a standalone rule.",
   },
   "Posterior cruciate ligament": {
     variant:
-      "A PCL that is thickened with diffusely increased signal but keeps its general contour is a partial/interstitial tear, not simple contusion — correlate with the posterior drawer.",
+      "A PCL that is thickened with diffusely increased signal but keeps its general contour may represent a partial/interstitial tear. Correlate with fiber continuity, trauma timing, other planes, and the posterior-drawer examination.",
   },
   "Medial collateral ligament": {
     measure:
@@ -78,11 +78,11 @@ export const structureReading: Record<string, StructureReading> = {
   },
   "Meniscus — the dark bow-ties": {
     measure:
-      "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >15 mm (or a meniscal-to-tibial-plateau-width ratio >20%) — is a discoid meniscus, not normal.",
+      "Three or more contiguous bow-tie body segments on 4–5 mm sagittal images — or a central coronal body width >15 mm (or meniscal-to-tibial-plateau-width ratio >20%) — supports a discoid meniscus; account for slice thickness and confirm morphology in both planes.",
   },
   Meniscus: {
     variant:
-      "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40. Surface-reaching signal on two consecutive standard slices (two-slice-touch) gives high confidence for a tear; a one-slice finding is lower confidence and needs morphologic and orthogonal correlation. At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.",
+      "Linear grade-2 signal that does NOT reach an articular surface is intrasubstance degeneration, common after 40. Surface-reaching signal on two or more matching images gives high confidence for a tear; the images need not be contiguous and may be matching sagittal and coronal images. A one-image finding is lower confidence and needs morphologic and orthogonal correlation. At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal.",
   },
   Patella: {
     variant:
@@ -90,23 +90,23 @@ export const structureReading: Record<string, StructureReading> = {
   },
   "Femoral trochlea": {
     measure:
-      "Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic abnormal cutoff, but MRI values vary with landmarks, slice choice, and knee position — do not use one number as a standalone surgical rule.",
+      "Trochlear dysplasia and elevated TT-TG are separate instability risk markers. TT-TG >20 mm is the classic CT-based cutoff; MRI measurements often run lower and vary with landmarks, slice choice, and knee position. Report the modality and method, and never use one number as a standalone surgical rule.",
   },
   "Trochlear groove": {
     measure:
-      "Read the crossing sign on the sagittal/lateral view — the trochlear-floor line crossing the anterior cortex of the lateral femoral condyle marks a flat (dysplastic) groove.",
+      "The crossing sign is a true-lateral-radiograph sign: the trochlear-floor line crosses the anterior cortex of the lateral femoral condyle. On MRI, assess trochlear morphology directly with method-specific axial and sagittal measurements.",
   },
   "MPFL / medial retinaculum": {
     measure:
-      "Screen for predisposing anatomy: patella alta (Insall-Salvati >1.2) and elevated TT-TG. The classic >20 mm TT-TG cutoff is a risk marker, but MRI technique and landmarks can shift the value by a few millimeters.",
+      "Screen for patella alta and elevated TT-TG using named, modality-appropriate methods. An Insall-Salvati ratio >1.2 is a classic true-lateral-radiograph threshold; the classic >20 mm TT-TG cutoff is CT-derived. State the modality/method and never let one measurement dictate treatment.",
   },
   "Bone marrow — T1's job": {
     variant:
-      "Patchy marrow that stays BRIGHTER than muscle and disc on T1, is symmetric, and spares the epiphyses is benign red-marrow reconversion — signal at/below muscle is the red flag for infiltration.",
+      "Patchy marrow that remains brighter than skeletal muscle on T1, is lower than subcutaneous fat, and follows a symmetric expected distribution supports red-marrow reconversion. Signal at or below muscle, focal aggressive morphology, or an asymmetric distribution warrants further evaluation.",
   },
   "Femoral condyle": {
     variant:
-      "An OCD interface line only as bright as cartilage (not fluid), especially in a skeletally immature knee, suggests granulation tissue and a STABLE fragment; a fluid-bright (T2) rim fully undercutting it means unstable.",
+      "In juvenile OCD, an isolated bright interface can represent vascular granulation tissue and is not enough to classify instability. More specific MRI signs include a fluid-equivalent rim with an outer low-signal rim, multiple subchondral-plate breaks, multiple or >5 mm cysts, cartilage breach, or displacement.",
   },
   "Cartilage & joint fluid": {
     variant:
@@ -126,13 +126,13 @@ export const structureReading: Record<string, StructureReading> = {
 export const structurePearl: Record<string, string> = {
   "Femoral condyle": "Trace the cartilage as an even gray layer over the condyle — focal thinning, a fissure, or a flap is a chondral injury.",
   "Tibial plateau": "Scan the marrow for a discrete dark fracture line; pivot-shift contusions sit at the posterolateral plateau.",
-  "Extensor mechanism — top": "The quadriceps tendon is trilaminar — partial tears hide in the DEEP (vastus intermedius) layer with intact superficial fibers.",
+  "Extensor mechanism — top": "The quadriceps tendon is multilayered — a partial tear can involve only one layer, including the deep vastus-intermedius contribution, while other fibers remain intact.",
   "Patellar tendon": "Normally a few mm thick and uniformly dark; focal thickening = tendinopathy (usually proximal), a fluid-filled gap = rupture.",
   "Hoffa's fat pad": "Edema in the superolateral fat pad is the clue to anterior (Hoffa) impingement — easy to overlook.",
   "Meniscus — the dark bow-ties": "Count the bow-ties on the body slices, then trace the lateral transverse/meniscofemoral/popliteal-hiatus relationships before calling a tear.",
   Meniscus: "Count the bow-ties on the body slices, then inspect the lateral popliteal hiatus so a normal fascicle/hiatus does not become a false-positive tear.",
-  "Cartilage & joint fluid": "A small effusion is physiologic; the cartilage surface should be smooth and uniform — follow it slice to slice.",
-  "Anterior cruciate ligament": "A normal ACL parallels Blumensaat's line; if the fibers bow, sag below the roof, or go wavy/edematous, suspect a tear. Secondary signs — a deep lateral notch sign, anterior tibial translation, and pivot-shift contusions — clinch it.",
+  "Cartilage & joint fluid": "A trace or small amount of joint fluid may be physiologic depending on the clinical setting; the cartilage surface should be smooth and uniform — follow it slice to slice.",
+  "Anterior cruciate ligament": "A normal ACL generally parallels Blumensaat's line; if the fibers bow, sag below the roof, or become wavy/edematous, scrutinize the ligament in every plane. A deep lateral notch, anterior tibial translation, and pivot-shift contusions support a tear but do not replace direct assessment of fiber continuity.",
   "Posterior cruciate ligament": "Loss of the smooth PCL arc or a buckled contour points to anterior tibial translation from an ACL tear.",
   "Popliteal vessels": "Don't mistake flow-related signal for thrombus; a Baker's cyst sits medially, between the medial gastrocnemius and semimembranosus.",
   "Tibial spines (intercondylar eminence)": "Use the spines as your landmark for the true mid-joint slice and the cruciate origins.",
@@ -144,8 +144,8 @@ export const structurePearl: Record<string, string> = {
   "Femoral trochlea": "A shallow or flat trochlea (dysplasia) is the key predisposing factor for lateral patellar dislocation.",
   "Trochlear groove": "Flattening of the sulcus is the cardinal dysplasia sign — assess the sulcus angle.",
   "Patellofemoral cartilage": "Scrutinize the median ridge for fissures; patellar chondral loss is a common cause of anterior knee pain.",
-  "MPFL / medial retinaculum": "After a dislocation the MPFL tears at the medial patella or the femoral (adductor tubercle) end — look at both.",
-  "Bone marrow — T1's job": "A dark band within bright marrow = fracture; diffuse marrow darkening = infiltration. T1 is your marrow sequence.",
+  "MPFL / medial retinaculum": "After lateral patellar dislocation, inspect the full MPFL/medial-retinacular complex; injury may be patellar-sided, femoral-sided, midsubstance, multifocal, or occasionally not visible as a discrete tear.",
+  "Bone marrow — T1's job": "A dark band within bright marrow raises concern for a fracture line; diffuse or focal T1 marrow replacement has a broad differential. Compare T1 with fluid-sensitive sequences and the distribution rather than assigning a diagnosis from signal alone.",
 };
 
 /**
@@ -177,7 +177,7 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: true,
       appearance:
-        "A striated, three-layer band over the medial joint line running from the medial femoral condyle to the proximal tibia — the superficial MCL is the key layer. A tear shows hypoechoic swelling, fibre disruption, or valgus laxity.",
+        "A fibrillar band over the medial joint line running from the medial femoral condyle to the proximal tibia. Trace the superficial MCL separately from the deeper meniscofemoral/meniscotibial complex. Hypoechoic swelling, fiber disruption, and dynamic valgus laxity support injury when they fit the clinical context.",
       tip: "Coronal long-axis over the medial joint line; gentle valgus stress can unmask laxity.",
       image: {
         src: "/images/teaching/us/mcl.jpg",
@@ -203,7 +203,7 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: true,
       appearance:
-        "A fibrillar, hyperechoic, trilaminar tendon inserting on the superior pole of the patella; partial tears hide in the deep (vastus intermedius) layer. Tilt the probe to defeat anisotropy (an artefactual hypoechoic band that mimics a tear).",
+        "A fibrillar, hyperechoic, multilayered tendon inserting on the superior pole of the patella; a partial tear may involve only one layer while other fibers remain intact. Tilt the probe to defeat anisotropy (an artefactual hypoechoic band that mimics a tear).",
       tip: "Longitudinal over the suprapatellar region, knee slightly flexed to put the tendon under tension.",
       image: {
         src: "/images/teaching/us/quad-tendon.jpg",
@@ -216,7 +216,7 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: true,
       appearance:
-        "A uniform fibrillar band a few millimetres thick from the inferior patella to the tibial tubercle. Focal proximal hypoechoic thickening — often with neovascularity on Doppler — is patellar tendinopathy (jumper's knee); a fluid-filled gap is a tear.",
+        "A uniform fibrillar band a few millimetres thick from the inferior patella to the tibial tubercle. Focal proximal hypoechoic thickening with loss of fibrillar architecture and possible Doppler hyperemia supports patellar tendinopathy in the appropriate clinical setting; a fiber-disrupting fluid gap supports a tear.",
       tip: "Longitudinal from the inferior patellar pole down to the tibial tubercle; flex the knee to reduce anisotropy.",
       image: {
         src: "/images/teaching/us/patellar-tendon.jpg",
@@ -229,7 +229,7 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: true,
       appearance:
-        "US shows the patellar cortex and the attached quadriceps and patellar tendons; the retropatellar cartilage and patellar tracking are MRI/CT questions, not US.",
+        "US shows the accessible patellar cortex and attached quadriceps/patellar tendons. Radiographs and MRI/CT provide the standard assessment of retropatellar cartilage, alignment, and instability anatomy; dynamic US can supplement selected tracking questions but is not a substitute for that evaluation.",
       tip: "Slide longitudinally from the quadriceps tendon across the patella to the patellar tendon.",
     },
   },
@@ -295,7 +295,7 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: false,
       appearance:
-        "The weight-bearing femoral condylar cartilage is screened behind the patella and tibia on US — only the anterior trochlear cartilage is reachable (knee flexed). MRI is the modality for weight-bearing chondral loss.",
+        "The weight-bearing femoral condylar cartilage is largely obscured from standard US by the patella and tibia; the accessible anterior trochlear cartilage can be seen with knee flexion. MRI evaluates the full weight-bearing chondral surface.",
     },
   },
   "Femoral condyle": {
@@ -309,22 +309,22 @@ export const structureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: false,
       appearance:
-        "Subchondral and marrow injury of the plateau are MRI findings; US sees only the cortical surface and adjacent soft tissue, not the marrow or a non-displaced fracture line.",
+        "US sees the accessible cortical surface and adjacent soft tissue but cannot assess tibial-plateau marrow. MRI is sensitive to occult marrow/subchondral injury, while radiographs or CT define cortical fracture morphology when indicated.",
     },
   },
   "Bone marrow — T1's job": {
     ultrasound: {
       seen: false,
       appearance:
-        "Ultrasound cannot assess marrow — sound does not penetrate cortical bone. Marrow oedema, contusions, and occult fractures are MRI-only (T1 plus a fluid-sensitive sequence).",
+        "Ultrasound cannot assess marrow because sound does not penetrate cortical bone. MRI (non-fat-suppressed/T1 plus fluid-sensitive imaging) is the principal modality for edema-like marrow signal and occult trabecular injury; radiographs and CT remain complementary for fracture assessment.",
     },
   },
   "Popliteal vessels": {
     ultrasound: {
       seen: true,
       appearance:
-        "US is first-line here: the popliteal vein and artery (compress the vein to exclude DVT), and a Baker's cyst — an anechoic collection with a neck between the medial gastrocnemius and semimembranosus. Look for rupture (fluid dissecting distally), a classic DVT mimic.",
-      tip: "Transverse in the popliteal fossa; compress the vein to assess for thrombus.",
+        "US can evaluate the popliteal vessels and a Baker's cyst — an anechoic collection with a neck between the medial gastrocnemius and semimembranosus. A ruptured cyst can dissect distally and mimic DVT. When DVT is a clinical concern, use a validated limited or whole-leg venous-ultrasound protocol with the required follow-up pathway; a single popliteal image does not exclude DVT.",
+      tip: "Transverse in the popliteal fossa; demonstrate venous compressibility as one component of a complete DVT protocol.",
       image: {
         src: "/images/teaching/us/bakers-cyst.jpg",
         caption: "Baker's (popliteal) cyst — well-defined anechoic fluid collection on B-mode US.",
@@ -355,18 +355,18 @@ const SAG_T1 = "/images/teaching/stacks/normal-knee-sagittal-t1";
 export const crossPlane: CorrelationItem[] = [
   {
     id: "xp-meniscus",
-    prompt: "This is a meniscus on the sagittal — a low-signal “bow-tie.” Find the same meniscus on the coronal.",
+    prompt: "This is the lateral meniscus on the sagittal — a low-signal “bow-tie.” Find the lateral meniscus on the coronal.",
     explanation:
       "Same structure, different shape: the sagittal “bow-tie” becomes a triangular WEDGE pointing into the joint on the coronal. Flipping between the two views is how you build a 3-D model of each structure.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 8, x: 61, y: 59.2, label: "Meniscus (bow-tie)" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 8, x: 61, y: 59.2, label: "Lateral meniscus (bow-tie)" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
       sliceIndex: 7,
       candidates: [
-        { x: 27, y: 56 }, // medial meniscus wedge ✓
+        { x: 69, y: 55 }, // lateral meniscus wedge ✓
         { x: 48, y: 49 }, // tibial spines
-        { x: 66.6, y: 44.9 }, // lateral femoral condyle
+        { x: 27, y: 56 }, // medial meniscus (side distractor)
         { x: 40, y: 61.5 }, // tibial plateau
       ],
       answer: 0,
@@ -454,7 +454,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt: "These are the popliteal vessels behind the knee on the sagittal. Find them on the axial.",
     explanation:
       "The popliteal artery and vein sit in the popliteal fossa posteriorly — the bottom of the axial image. A reliable posterior landmark on every plane.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 14, x: 64.3, y: 65.4, label: "Popliteal vessels" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 14, x: 66, y: 55, label: "Popliteal vessels" },
     to: {
       plane: "Axial T2-FS",
       dir: AXI,
@@ -513,7 +513,7 @@ export const crossPlane: CorrelationItem[] = [
       "This is the ACL on the sagittal, attaching in the anterior intercondylar area. Find that region on the coronal - just in front of the central eminence.",
     explanation:
       "The ACL is volume-averaged on coronal, so localize it to the anterior intercondylar area, in front of and between the tibial spines - not on a condyle. The PCL inserts far posteriorly, not here. Don't mistake normal spines for a tibial eminence avulsion and overcall.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 21, x: 54, y: 29, label: "Anterior cruciate ligament" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 12, x: 49, y: 55, label: "Anterior cruciate ligament" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
@@ -552,7 +552,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt:
       "This is FEMORAL CONDYLE marrow on the PD-FS. Find the same condyle on the T1 - same slice, switched sequence.",
     explanation:
-      "Same shape, same plane - only the contrast flips. On T1 (no fat-sat) marrow fat is BRIGHT: your marrow and anatomy sequence. A discrete dark band = fracture; diffuse darkening = infiltration. Read marrow only on fat-suppressed and you overcall edema.",
+      "Same shape, same plane - only the contrast flips. On T1 (no fat-sat) marrow fat is BRIGHT, which makes it the key sequence for marrow composition and anatomy. A discrete dark band raises concern for fracture; diffuse or focal replacement has a broad differential. Reading only the fat-suppressed sequence can overcall nonspecific bright marrow signal as traumatic edema.",
     from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 13, x: 37, y: 48, label: "Femoral condyle marrow" },
     to: {
       plane: "Sagittal T1",
@@ -572,7 +572,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt:
       "This is the LATERAL femoral condyle on the axial (image-right). Find the lateral femoral condyle on the coronal - mind the side.",
     explanation:
-      "Image-right is lateral on both planes. The rounded condyle cross-section on axial maps to the lateral of two side-by-side condyles on coronal - grab the right one. Coronal best assesses lateral compartment cartilage and tibiofemoral alignment.",
+      "Image-right is lateral on both planes. The rounded condyle cross-section on axial maps to the lateral of two side-by-side condyles on coronal - grab the right one. Coronal MRI compares the compartments and overload pattern; quantify the true mechanical axis on standing hip-to-ankle radiographs.",
     from: { plane: "Axial T2-FS", dir: AXI, sliceIndex: 13, x: 63, y: 52, label: "Lateral femoral condyle" },
     to: {
       plane: "Coronal PD-FS",
@@ -612,9 +612,7 @@ export const crossPlane: CorrelationItem[] = [
 // ── Advanced challenge bank ──────────────────────────────────────────────────
 // Higher-level, board-style questions for fellows who want to push past normal
 // anatomy — measurements, normal variants that mimic pathology, secondary signs,
-// grading/stability criteria, technique pitfalls. Each item was authored by an
-// MSK-radiologist agent, then literature-fact-checked and single-best-answer
-// audited (see the advanced-knee-mri-questions workflow). Optional by design.
+// grading/stability criteria, and technique pitfalls. Optional by design.
 
 export const advancedChallenge: AdvancedQ[] = [
   {
@@ -623,15 +621,15 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 19-year-old soccer player sustains a non-contact pivoting injury. Radiographs show a small vertically oriented cortical avulsion off the proximal lateral tibia just below the joint line. Which intra-articular injury is most strongly associated with this radiographic finding?",
     options: ["Anterior cruciate ligament tear", "Posterior cruciate ligament tear", "Quadriceps tendon rupture", "Lateral meniscus discoid variant"],
     answer: 0,
-    explanation: "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a medial (reverse Segond) tibial rim avulsion, not this lateral fragment, so it is the weaker association.",
+    explanation: "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion of the anterolateral complex that is highly associated with ACL rupture. A reverse Segond is a different medial tibial-rim avulsion associated with a variable pattern of PCL, medial-meniscal, and medial/posteromedial injury; it does not explain this lateral fragment.",
   },
   {
     id: "caq-2",
     topic: "PCL — dashboard mechanism / next step",
-    prompt: "A 28-year-old restrained front-seat passenger strikes the dashboard with a flexed knee in a head-on collision. He has a posterior sag of the tibia on exam and a posterior drawer is positive. Which finding on MRI would best confirm the suspected primary ligament injury?",
+    prompt: "A 28-year-old restrained front-seat passenger strikes the dashboard with a flexed knee in a head-on collision. He has a posterior sag of the tibia on exam and a posterior drawer is positive. Which MRI finding most directly demonstrates the suspected primary ligament injury?",
     options: ["Discontinuity and increased signal within the thick curved band in the posterior intercondylar notch", "A straight striated band paralleling Blumensaat's line that is wavy and lax", "Fluid signal at the posteromedial meniscocapsular junction", "A cortical avulsion at the anterolateral tibia"],
     answer: 0,
-    explanation: "The dashboard mechanism drives the proximal tibia posteriorly and tears the PCL, the thick curved low-signal band in the posterior notch; disruption or increased intrasubstance signal there confirms it. A wavy band along Blumensaat's line describes the ACL, and the anterolateral tibial avulsion is a Segond fracture tied to ACL rather than PCL injury.",
+    explanation: "The dashboard mechanism drives the proximal tibia posteriorly and can tear the PCL, the thick curved low-signal band in the posterior notch. Fiber discontinuity with abnormal morphology establishes a tear; increased intrasubstance signal is supportive but not independently diagnostic. A wavy band along Blumensaat's line describes the ACL, and the anterolateral tibial avulsion is a Segond fracture associated with ACL injury.",
   },
   {
     id: "caq-3",
@@ -639,7 +637,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 23-year-old with a locked knee that will not fully extend has a sagittal MRI showing a low-signal band lying anteriorly within the intercondylar notch, paralleling and just inferior to the PCL. Body-slice images show fewer than two consecutive meniscal bow-ties. What is the most likely diagnosis?",
     options: ["Bucket-handle meniscal tear with a displaced fragment", "Mucoid degeneration of the ACL", "Normal meniscofemoral ligament of Humphry", "Cyclops lesion after ACL reconstruction"],
     answer: 0,
-    explanation: "A displaced inner meniscal fragment lying in the notch inferior and parallel to the PCL produces the double-PCL sign, and an absent bow-tie (fewer than two consecutive) confirms a bucket-handle tear that mechanically blocks extension. The meniscofemoral ligament of Humphry runs anterior to the PCL but is a thin discrete band that does not abolish the bow-tie count or lock the knee.",
+    explanation: "A displaced inner meniscal fragment lying in the notch inferior and parallel to the PCL produces the double-PCL sign. Fewer than two consecutive body segments on standard-thickness images is a supportive absent-bow-tie sign, but the diagnosis rests on tracing the displaced fragment and donor site across planes. The meniscofemoral ligament of Humphry is a thinner normal band anterior to the PCL and should be traced to its expected attachments.",
   },
   {
     id: "caq-4",
@@ -647,23 +645,23 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 56-year-old reports a pop while rising from a squat and now has medial joint-line pain. Coronal MRI shows the medial meniscus body displaced 5 mm beyond the tibial margin, and the posterior horn near the root appears truncated. Which feature most reliably supports a posterior medial meniscal root tear?",
     options: ["Coronal extrusion of 5 mm with a truncated (ghost) posterior root", "Intrasubstance grade 2 signal not reaching a surface", "A double-PCL sign in the notch", "A parameniscal cyst at the anterior horn"],
     answer: 0,
-    explanation: "Medial coronal extrusion of at least 3 mm together with an absent or truncated 'ghost' root at the posterior attachment is the signature of a posterior root tear, which functionally behaves like a total meniscectomy. Intrasubstance grade 2 signal that does not reach a surface is degeneration, not a full-thickness root detachment, so it does not establish the diagnosis.",
+    explanation: "Medial coronal extrusion of at least 3 mm plus an absent/truncated root is highly suggestive of a posterior medial root tear. A complete root-disrupting tear can abolish hoop-stress function; a cadaveric medial-root model approached total medial-meniscectomy contact mechanics, but that comparison is not universal for every root abnormality.",
   },
   {
     id: "caq-5",
     topic: "Cartilage / OCD stability",
-    prompt: "A 15-year-old gymnast has an osteochondritis dissecans lesion at the lateral aspect of the medial femoral condyle. On fluid-sensitive fat-suppressed images, which finding would most specifically indicate that the fragment is unstable and may warrant surgical fixation?",
-    options: ["A fluid-signal-intensity line completely encircling and undercutting the fragment", "Mild marrow edema in the parent bone deep to the lesion", "A granulation interface line only as bright as articular cartilage", "An en-face fragment diameter of 6 mm with intact overlying cartilage"],
+    prompt: "A 15-year-old gymnast has an osteochondritis dissecans lesion at the lateral aspect of the medial femoral condyle. On fluid-sensitive fat-suppressed images, which finding would most specifically indicate instability and prompt specialist treatment planning?",
+    options: ["A fluid-equivalent rim with an outer low-signal rim, multiple subchondral-plate breaks, or multiple/large (>5 mm) interface cysts", "Mild marrow edema in the parent bone deep to the lesion", "An isolated high-T2 interface line without another instability sign", "An en-face fragment diameter of 6 mm with intact overlying cartilage"],
     answer: 0,
-    explanation: "A rim of fluid-intensity signal that completely surrounds and undercuts the fragment indicates synovial fluid dissecting the interface and is the most reliable De Smet sign of instability. A high-signal interface line only as bright as cartilage usually reflects vascular granulation tissue, especially in skeletally immature patients, and is not by itself a sign of instability.",
+    explanation: "Juvenile OCD requires age-specific criteria because an isolated T2-bright rim often represents vascular granulation tissue. A fluid-equivalent rim with an outer low-signal rim, multiple subchondral-plate breaks, multiple or >5 mm cysts, cartilage breach, or displacement is more specific for instability.",
   },
   {
     id: "caq-6",
-    topic: "SIFK vs osteonecrosis / marrow",
+    topic: "SIF vs systemic osteonecrosis / marrow",
     prompt: "A 65-year-old woman has sudden atraumatic medial knee pain. MRI shows a subchondral low-signal line in the weight-bearing medial femoral condyle paralleling and concave toward the articular surface, with surrounding diffuse marrow edema. What is the best diagnosis?",
-    options: ["Subchondral insufficiency fracture", "Primary spontaneous osteonecrosis with epiphyseal infarct", "Transient bone marrow edema syndrome", "Medial femoral condyle osteochondroma"],
+    options: ["Subchondral insufficiency fracture", "Systemic osteonecrosis with a serpiginous epiphyseal infarct", "Transient bone marrow edema syndrome", "Medial femoral condyle osteochondroma"],
     answer: 0,
-    explanation: "A subchondral fracture line paralleling the articular surface with adjacent marrow edema in an older patient with atraumatic pain is a subchondral insufficiency fracture (SIFK). Primary osteonecrosis instead shows a serpentine double-line sign demarcating an infarct away from the subchondral plate, so the subchondral, surface-parallel line favors SIFK over a true epiphyseal infarct.",
+    explanation: "A subchondral fracture line paralleling the articular surface with adjacent edema-like signal in an older patient with atraumatic pain supports a subchondral insufficiency fracture (SIF). Systemic osteonecrosis more often shows a serpiginous geographic rim/double-line pattern around an epiphyseal infarct, so morphology and clinical risk factors should be interpreted together.",
   },
   {
     id: "caq-7",
@@ -671,15 +669,15 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 16-year-old sustains a first-time lateral patellar dislocation that has spontaneously reduced. MRI shows an inferomedial patellar facet and anterolateral femoral condyle bone bruise and an MPFL tear, with no displaced osteochondral fragment and a TT-TG distance of 12 mm. What is the most appropriate initial management?",
     options: ["Nonoperative rehabilitation with bracing and quadriceps strengthening", "Acute MPFL reconstruction with tibial tubercle osteotomy", "Lateral retinacular release alone", "Immediate patellectomy"],
     answer: 0,
-    explanation: "A first-time dislocation without a loose osteochondral body and with a normal TT-TG (well under the ~20 mm threshold) is managed nonoperatively with bracing and rehabilitation. Tibial tubercle osteotomy is reserved for an elevated TT-TG, so adding it here would be over-treatment given the normal alignment measurement.",
+    explanation: "A first-time dislocation without a displaced osteochondral fragment and without a markedly elevated modality-appropriate TT-TG commonly begins with nonoperative rehabilitation. The classic 20 mm cutoff is CT-derived, and no single MRI measurement independently determines tibial-tubercle surgery.",
   },
   {
     id: "caq-8",
     topic: "Posterolateral corner — combined injury / graft failure",
     prompt: "A 27-year-old has an MRI-confirmed posterolateral corner injury with fibular collateral ligament, popliteus, and popliteofibular ligament disruption after a varus hyperextension blow. The surgeon plans cruciate reconstruction. Why is recognizing and addressing this posterolateral corner injury before isolated cruciate surgery most important?",
-    options: ["Unrecognized posterolateral corner injury is a leading cause of cruciate graft failure from residual rotational and varus instability", "Posterolateral corner injuries reliably heal nonoperatively, so cruciate surgery can simply be delayed", "The posterolateral corner has no effect on cruciate graft loading once the cruciate is reconstructed", "Posterolateral corner injuries occur in isolation, so they rarely change the surgical plan"],
+    options: ["Unrecognized posterolateral-corner injury can leave rotational/varus instability that overloads a cruciate graft", "Posterolateral-corner injuries reliably heal nonoperatively, so cruciate surgery can simply be delayed", "The posterolateral corner has no effect on cruciate graft loading once the cruciate is reconstructed", "Posterolateral-corner injuries occur in isolation, so they rarely change the surgical plan"],
     answer: 0,
-    explanation: "The posterolateral corner is the primary restraint to varus and external-rotation, and a missed combined injury leaves residual rotational/varus laxity that overloads and stretches out a cruciate graft, a recognized cause of reconstruction failure, so it must be addressed concurrently. The distractors are wrong because high-grade posterolateral corner injuries usually require repair or reconstruction rather than healing alone, and they very commonly accompany (rather than spare) cruciate injury.",
+    explanation: "The posterolateral corner restrains varus and external rotation. A missed combined injury can leave residual laxity that overloads a cruciate graft and compromises reconstruction. PLC injury grade, chronicity, alignment, examination, and the complete multiligament pattern determine whether and how it is addressed operatively.",
   },
   {
     id: "cruciates-1",
@@ -692,10 +690,10 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "cruciates-2",
     topic: "Cruciate ligaments (ACL/PCL)",
-    prompt: "On MRI of a knee with an acute ACL tear, you measure anterior tibial translation by referencing the posterior margins of the lateral femoral condyle and lateral tibial plateau on a sagittal image. Which threshold of anterior tibial subluxation is most specific for a complete ACL tear?",
-    options: ["≥ 1 mm", "≥ 3 mm", "≥ 5 mm", "≥ 10 mm"],
+    prompt: "On MRI you measure anterior tibial translation at the midsagittal plane of the lateral femoral condyle, using lines through the posterior lateral-femoral-condyle and lateral-tibial-plateau margins. Which threshold was completely specific for ACL tear in the original validation cohort and remains a strong secondary sign?",
+    options: ["≥ 1 mm", "≥ 3 mm", "≥ 7 mm", "≥ 15 mm"],
     answer: 2,
-    explanation: "Anterior translation of the lateral tibial plateau of ≥ 5 mm relative to the lateral femoral condyle is highly specific (though not very sensitive) for a complete ACL tear; smaller degrees overlap with normal laxity.",
+    explanation: "In the original study, at least 5 mm had 93% specificity and 58% sensitivity for ACL tear, while every knee with at least 7 mm had a torn ACL. Translation remains a secondary sign whose value depends on the stated measurement method; directly assess ACL continuity, morphology, and the rest of the injury pattern.",
   },
   {
     id: "cruciates-3",
@@ -711,7 +709,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "Reviewing the radiograph and MRI of an acute knee injury, you identify a deep lateral femoral notch (terminal/condylopatellar sulcus). Beyond simply suggesting an ACL tear, an abnormally deep notch is considered a useful marker. Which depth threshold is the accepted cutoff that strongly suggests an associated ACL injury?",
     options: ["Greater than 0.5 mm", "Greater than 1.5 mm", "Greater than 4 mm", "Greater than 8 mm"],
     answer: 1,
-    explanation: "A lateral femoral (condylopatellar) sulcus depth greater than 1.5 mm is the classic threshold strongly associated with ACL disruption, reflecting an osteochondral impaction injury as the anteriorly subluxed tibia engages the lateral femoral condyle.",
+    explanation: "Greater than 1.5 mm is the classic lateral-radiograph threshold for a deep lateral femoral sulcus associated with ACL injury. On MRI, describe the impaction morphology and use it as a secondary sign rather than transferring the radiographic measurement as a standalone diagnostic rule.",
   },
   {
     id: "menisci-1",
@@ -725,9 +723,9 @@ export const advancedChallenge: AdvancedQ[] = [
     id: "menisci-2",
     topic: "Menisci",
     prompt: "A 58-year-old has acute medial knee pain. Coronal MRI shows the posterior root signal disrupted with the meniscal body displaced 4 mm beyond the tibial margin. Regarding the 3 mm extrusion threshold for a medial meniscal posterior root tear, which statement is most accurate?",
-    options: ["The 3 mm threshold is a useful high-specificity clue but relatively insensitive, so extrusion <3 mm does not exclude a root tear", "The 3 mm threshold is both highly sensitive and highly specific for root tears", "Extrusion is best and most reproducibly measured on sagittal rather than coronal images", "Meniscal extrusion of this degree is a normal finding and requires no root evaluation"],
+    options: ["The 3 mm threshold defines major medial extrusion and is a useful but imperfect clue; it neither proves nor excludes a root tear", "The 3 mm threshold is both highly sensitive and highly specific for root tears", "Extrusion is best and most reproducibly measured on sagittal rather than coronal images", "Meniscal extrusion of this degree is a normal finding and requires no root evaluation"],
     answer: 0,
-    explanation: "Coronal medial meniscal extrusion >=3 mm is a significant clue in many root-tear studies, but it is only modestly sensitive and should not be treated as diagnostic by itself. Sub-3 mm extrusion does not exclude a root tear; the 'ghost' (absent/blunted root) sign should also be sought.",
+    explanation: "Coronal medial extrusion ≥3 mm is a common major-extrusion threshold and a useful search trigger, but it is not diagnostic by itself. A smaller value does not exclude a root tear. Exclude osteophytes from the reference margin and assess the root directly in multiple planes.",
   },
   {
     id: "menisci-3",
@@ -740,18 +738,18 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "menisci-4",
     topic: "Menisci",
-    prompt: "On sagittal MRI of a knee with an ACL tear, you see vertical signal at the junction of the posterior horn lateral meniscus and an obliquely coursing structure passing toward the PCL. Which feature best favors a true posterior horn tear over a meniscofemoral (Wrisberg) ligament pseudotear?",
-    options: ["The vertical signal can be traced contiguously into the PCL through the intercondylar notch", "The apparent meniscal cleft persists 4 or more sagittal images lateral to the PCL", "The structure lies posterior to the PCL on the Wrisberg side", "The signal is seen on only a single sagittal image near the midline"],
-    answer: 1,
-    explanation: "A Wrisberg/Humphrey pseudotear is created where the meniscofemoral ligament inserts on the posterior horn; an apparent cleft extending >=4 sagittal images lateral to the PCL exceeds the ligament's reach and should be treated as a true tear, especially with an ACL injury.",
+    prompt: "On sagittal MRI you see an apparent cleft where a meniscofemoral ligament leaves the posterior horn of the lateral meniscus and courses toward the PCL. Which feature best supports a normal meniscofemoral-ligament interface rather than a true posterior-horn tear?",
+    options: ["A thin low-signal band can be followed from the posterior horn toward the PCL, with a smooth interface and no independent meniscal defect", "A surface-reaching meniscal defect persists on matching images and is accompanied by abnormal meniscal morphology", "A displaced fragment is present in the intercondylar notch", "A parameniscal cyst communicates with the apparent cleft"],
+    answer: 0,
+    explanation: "Humphry and Wrisberg ligaments can create a normal pseudotear where they separate from the lateral posterior horn. Trace the low-signal ligament to the PCL/femur in multiple planes and look for a smooth meniscal contour. A reproducible surface-reaching defect, altered morphology, displaced tissue, or a communicating cyst favors a true tear; no universal four-slice cutoff replaces that correlation.",
   },
   {
     id: "cartilage-1",
     topic: "Cartilage & osteochondral",
     prompt: "A 16-year-old soccer player has a juvenile osteochondritis dissecans (OCD) lesion at the classic lateral aspect of the medial femoral condyle. On fluid-sensitive fat-suppressed sequences, which finding is MOST specific for an UNSTABLE fragment?",
-    options: ["A thin, uninterrupted line of high T2 signal isointense to articular cartilage along the fragment interface", "A high-T2-signal rim completely surrounding the fragment that follows fluid signal intensity and undercuts it", "Mild bone-marrow edema in the parent bone deep to the lesion", "An en-face fragment diameter measuring 6 mm with intact overlying cartilage"],
+    options: ["A thin interface line without another instability sign", "A joint-fluid-equivalent rim with an outer low-signal rim or multiple subchondral-plate breaks", "Mild bone-marrow edema in the parent bone deep to the lesion", "An en-face fragment diameter measuring 6 mm with intact overlying cartilage"],
     answer: 1,
-    explanation: "A fluid-signal-intensity rim that completely encircles and undercuts the fragment indicates synovial fluid dissecting the interface and is the most reliable De Smet sign of instability; a granulation-tissue interface line is only as bright as cartilage, not fluid. Secondary signs include subchondral cysts >5 mm and a focal cartilage defect.",
+    explanation: "In juvenile OCD, an isolated bright interface line is unreliable. A joint-fluid-equivalent rim with an outer low-signal rim, multiple subchondral-plate breaks, multiple or >5 mm cysts, cartilage breach, or displacement is more specific for instability.",
   },
   {
     id: "cartilage-2",
@@ -772,26 +770,26 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "patellofemoral-1",
     topic: "Patellofemoral & extensor",
-    prompt: "A sports-medicine fellow measures a tibial tubercle–trochlear groove (TT-TG) distance of 22 mm on an axial MRI in a patient with recurrent lateral patellar instability. Above which commonly cited threshold does the TT-TG distance become a recognized risk factor for patellar instability and an indication potentially favoring tibial tubercle medialization?",
-    options: ["8 mm", "12 mm", "20 mm", "30 mm"],
+    prompt: "A sports-medicine fellow measures a TT-TG distance of 22 mm on axial MRI in recurrent lateral patellar instability. Which interpretation is most accurate?",
+    options: ["It is normal on every MRI protocol", "It mandates tibial tubercle medialization by itself", "It is elevated, but must be reported with the MRI method and integrated with modality-appropriate references and the rest of the instability anatomy", "TT-TG cannot be measured on MRI"],
     answer: 2,
-    explanation: "A TT-TG distance >=20 mm is the classic abnormal threshold associated with patellar instability, but it is a risk marker rather than a standalone surgical rule. MRI values measured on cartilaginous landmarks tend to run a few millimeters lower than CT-based bony measurements, so landmarks and clinical context matter.",
+    explanation: "The classic >20 mm threshold is CT-derived. MRI commonly yields lower values, but the difference depends on landmarks, slice selection, knee position, and protocol. A 22 mm MRI value is elevated, yet it remains one risk factor and never mandates an operation by itself.",
   },
   {
     id: "patellofemoral-2",
     topic: "Patellofemoral & extensor",
-    prompt: "Which patella-alta index is least confounded by patellar tendon length variability because it uses the patellar articular surface relative to the tibial plateau rather than the tendon?",
+    prompt: "On a true lateral radiograph, which patella-alta index avoids patellar-tendon length by comparing the inferior patellar articular margin with the anterosuperior tibial plateau?",
     options: ["Insall-Salvati ratio", "Caton-Deschamps index", "Blackburne-Peel index measured to the patellar tendon insertion", "Modified Insall-Salvati ratio measured to the inferior pole of the patella"],
     answer: 1,
-    explanation: "The Caton-Deschamps index (distance from the inferior articular margin of the patella to the anterosuperior tibial plateau divided by patellar articular surface length; alta if >1.2) avoids errors from a variable or thickened patellar tendon that confound the Insall-Salvati ratio. Note it is a RADIOGRAPHIC index — measure it on a lateral radiograph, since single-slice MRI inflates it by up to ~9%. It is not the most cross-modality-reliable index overall (Insall-Salvati is more reproducible across modalities); it is simply the one least affected by tendon variability.",
+    explanation: "The Caton-Deschamps index divides the distance from the inferior patellar articular margin to the anterosuperior tibial plateau by patellar articular-surface length; a radiographic value above 1.2 supports patella alta. It was developed for true lateral radiographs. If an MRI-based method is used, state the method and apply MRI-validated reference values rather than silently transferring a radiographic cutoff.",
   },
   {
     id: "patellofemoral-3",
     topic: "Patellofemoral & extensor",
-    prompt: "On a true lateral radiograph or sagittal MRI of a knee with trochlear dysplasia, the 'crossing sign' refers to which specific finding indicating a flat or shallow trochlea?",
+    prompt: "On a true lateral knee radiograph, the 'crossing sign' refers to which finding indicating a flat or shallow trochlea?",
     options: ["The line of the trochlear floor crosses the anterior cortex of the lateral femoral condyle", "The patellar tendon crosses the physeal scar at the level of the tibial tubercle", "The medial and lateral trochlear facet lines cross at the superior pole of the patella", "The supratrochlear spur crosses the Blumensaat line"],
     answer: 0,
-    explanation: "The crossing sign is present when the line representing the floor of the trochlear groove crosses the anterior border of the lateral femoral condyle, meaning the groove becomes flat (flush with the condyle) at that point—a hallmark of trochlear dysplasia. A supratrochlear spur and double contour are additional Dejour signs of higher-grade dysplasia.",
+    explanation: "The crossing sign is present when the radiographic line representing the trochlear floor crosses the anterior cortex of the lateral femoral condyle, indicating loss of normal groove depth. A supratrochlear spur and double contour are additional Dejour radiographic signs. On MRI, assess trochlear morphology directly on appropriate axial and sagittal images with method-specific measurements.",
   },
   {
     id: "patellofemoral-4",
@@ -804,10 +802,10 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "corners-1",
     topic: "Collaterals & posterolateral corner",
-    prompt: "On a coronal MRI of an acutely injured knee, you identify a curvilinear bone fragment avulsed from the fibula and displaced superomedially, accompanied by edema in the popliteus and fibular collateral ligament. Which anatomic structure is most specifically responsible for this 'arcuate sign' avulsion fragment?",
-    options: ["The arcuate ligament / conjoined insertion of the posterolateral corner at the fibular styloid", "The proximal tibiofibular ligament at the fibular head", "The fibular insertion of the lateral head of gastrocnemius", "The fabellofibular ligament alone at the fibular apex"],
+    prompt: "On a coronal MRI of an acutely injured knee, you identify a small avulsion fragment from the posterior-medial fibular styloid, the classic 'arcuate sign.' Which insertions most directly localize to this small-fragment pattern?",
+    options: ["Popliteofibular and arcuate-ligament insertions", "The lateral fibular-head conjoined FCL/biceps-femoris insertion", "The iliotibial-band insertion at Gerdy tubercle", "The lateral head of gastrocnemius alone"],
     answer: 0,
-    explanation: "The arcuate sign is a small avulsion at the fibular styloid, the conjoined attachment site of the posterolateral corner (arcuate ligament complex), which is why it signals a high rate of associated cruciate (especially PCL) injury and should never be dismissed as trivial.",
+    explanation: "The popliteofibular and arcuate ligaments attach to the posterior/medial fibular styloid and produce the classic small-fragment pattern. The FCL and biceps femoris attach together farther lateral, anterior, and inferior; their avulsion tends to be larger with broader proximal-fibular edema. Either pattern should trigger a complete PLC, cruciate, proximal-tibiofibular-joint, and peroneal-nerve assessment.",
   },
   {
     id: "corners-2",
@@ -815,7 +813,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A fellow shows you a coronal proton-density image with ossification along the expected course of the proximal MCL, paralleling the medial femoral condyle, in a patient with a remote valgus injury and no acute edema. To distinguish a healed grade I-II MCL injury (Pellegrini-Stieda) from an acute deep MCL tear, which feature most reliably indicates the chronic, healed process?",
     options: ["Curvilinear ossification at the femoral origin without surrounding marrow or soft-tissue edema", "Fluid signal interposed between the deep MCL and the medial meniscus", "A wavy, lax superficial MCL with surrounding T2-hyperintense fluid", "High T2 signal tracking along the meniscofemoral and meniscotibial ligaments"],
     answer: 0,
-    explanation: "Pellegrini-Stieda represents post-traumatic ossification/calcification at the femoral attachment of the MCL; the absence of marrow and soft-tissue edema confirms a chronic healed lesion rather than acute injury, where edema and fluid would dominate.",
+    explanation: "Pellegrini-Stieda describes post-traumatic ossification/calcification near the medial femoral condyle, commonly related to the proximal MCL complex. Mature corticated mineralization without adjacent edema supports a chronic process; radiographs help confirm mineralization, and acute-on-chronic injury still requires assessment of the fibers and surrounding soft tissues.",
   },
   {
     id: "corners-3",
@@ -836,7 +834,7 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "marrow-1",
     topic: "Bone marrow & fractures",
-    prompt: "A 24-year-old presents after a non-contact pivoting injury. MRI shows ACL discontinuity. Regarding the classic pivot-shift contusion pattern, which paired location of marrow edema is MOST specific for this mechanism?",
+    prompt: "A 24-year-old presents after a non-contact pivoting injury. MRI shows ACL discontinuity. Which paired distribution is the characteristic pivot-shift contusion pattern?",
     options: ["Posterolateral tibial plateau and mid-lateral femoral condyle (near the terminal sulcus)", "Anteromedial femoral condyle and anteromedial tibial plateau", "Posteromedial tibial plateau and medial femoral condyle", "Anterior tibia and anterior femur with patellar contusion"],
     answer: 0,
     explanation: "The pivot-shift (a valgus load on the flexed knee with rotation and anterior translation) drives the posterolateral tibial plateau against the mid-portion of the lateral femoral condyle at the condylopatellar (terminal) sulcus, producing the kissing contusions highly associated with ACL tears. A reciprocal posteromedial tibial plateau bruise from the tibia snapping back is a secondary sign. (The exact rotation direction is described inconsistently — the injury source describes external tibial rotation, the clinical pivot-shift test internal — so 'valgus with rotation' is the safe phrasing.)",
@@ -844,18 +842,18 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "marrow-2",
     topic: "Bone marrow & fractures",
-    prompt: "A 67-year-old woman has acute medial knee pain without trauma. MRI shows a subchondral focus in the weight-bearing medial femoral condyle. Which finding BEST distinguishes a subchondral insufficiency fracture (SIFK/SONK) from primary osteonecrosis (AVN)?",
+    prompt: "A 67-year-old woman has acute medial knee pain without trauma. MRI shows a subchondral focus in the weight-bearing medial femoral condyle. Which finding most strongly favors subchondral insufficiency fracture (SIF) over systemic osteonecrosis?",
     options: ["A subchondral T2-hypointense/low-signal line that is concave toward and roughly parallel to the subchondral plate, with adjacent diffuse marrow edema", "A serpentine double-line sign enclosing a fat-signal center remote from the articular surface", "Geographic fat-equivalent marrow signal bounded by a sclerotic rim", "Diffuse homogeneous marrow edema with no discrete line and an intact cortex"],
     answer: 0,
-    explanation: "SIFK is identified by a subchondral low-signal fracture line paralleling the articular surface with surrounding marrow edema, whereas primary AVN shows the serpiginous double-line sign demarcating an epiphyseal infarct away from the subchondral plate. Line length/depth and overlying condylar collapse predict progression.",
+    explanation: "SIF is supported by a subchondral low-signal fracture line paralleling the articular surface with surrounding edema-like signal. Systemic osteonecrosis more often has a serpiginous geographic rim/double-line pattern and relevant risk factors. Report the dimensions of the low-signal subchondral zone and any articular flattening or collapse because those features carry prognostic value.",
   },
   {
     id: "marrow-3",
     topic: "Bone marrow & fractures",
-    prompt: "A 31-year-old marathon runner has knee MRI showing patchy, slightly T1-hypointense marrow in the bilateral distal femoral and proximal tibial metadiaphyses, sparing the epiphyses. To confirm this is benign red-marrow reconversion rather than infiltrative disease, the MOST reliable feature is that the marrow signal remains:",
-    options: ["Higher (brighter) than adjacent skeletal muscle and intervertebral disc on T1-weighted images", "Markedly lower than muscle on T1 but suppresses completely on STIR", "Isointense to fluid on T2 with avid homogeneous enhancement", "Lower than muscle on T1 with diffuse restricted diffusion"],
+    prompt: "A 31-year-old marathon runner has knee MRI showing symmetric patchy T1-intermediate marrow in the distal femoral and proximal tibial metadiaphyses. Which T1 relationship most strongly supports benign red-marrow reconversion rather than a marrow-replacing process?",
+    options: ["Higher signal than adjacent skeletal muscle but lower than subcutaneous fat", "Markedly lower signal than skeletal muscle", "The same signal as joint fluid", "Complete loss of all internal fat signal"],
     answer: 0,
-    explanation: "Normal hematopoietic (red) marrow always retains interspersed fat, so on T1 it stays brighter than skeletal muscle and disc; signal at or below muscle should raise concern for marrow-replacing infiltration. Reconversion is also typically symmetric, spares the epiphyses/apophyses, and follows the reverse order of normal conversion.",
+    explanation: "Red marrow retains interspersed fat, so on T1 it should remain brighter than skeletal muscle while staying darker than subcutaneous fat. Symmetry and an expected distribution support reconversion; signal at or below muscle, aggressive focal morphology, cortical change, or an atypical asymmetric pattern raises concern for replacement and requires clinical correlation.",
   },
   {
     id: "marrow-4",
@@ -871,7 +869,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "On a sagittal intermediate-TE PD sequence, the posterior horn of the lateral meniscus shows a focal increase in internal signal that does not extend to an articular surface. The signal is most conspicuous where the meniscus curves and the collagen fibers are oriented near 55 degrees to the main magnetic field. Which feature most reliably distinguishes this magic-angle phenomenon from a true intrasubstance degeneration/tear?",
     options: ["The signal reaches an articular surface on at least one image", "The increased signal disappears or markedly decreases on a long-TE (T2-weighted) sequence", "The signal is brightest on the fat-suppressed T2 image", "The signal is associated with a parameniscal cyst"],
     answer: 1,
-    explanation: "Magic-angle signal arises from T2 lengthening in collagen oriented near 55 degrees and is seen only at short/intermediate TE; it fades or vanishes at long TE, whereas a true tear/degeneration persists. This is why a meniscal signal that does not extend to the surface and resolves on T2 should not be called a tear.",
+    explanation: "Magic-angle signal arises when ordered collagen lies near 55 degrees to the main field and is most conspicuous at short/intermediate TE; it markedly decreases at longer TE. A non-surface-reaching focus that fades on T2 favors artifact, while a tear requires reproducible surface communication or definite morphologic disruption with multiplanar correlation.",
   },
   {
     id: "technique-2",
@@ -900,10 +898,10 @@ export const advancedChallenge: AdvancedQ[] = [
   {
     id: "measurements-3",
     topic: "Measurements & normal values",
-    prompt: "A 24-year-old gymnast has lateral patellar maltracking on physical exam. On a sagittal MRI you measure the patellar tendon length and the greatest diagonal length of the patella to calculate the Insall-Salvati ratio. Which value confirms patella alta?",
+    prompt: "On a true lateral radiograph, which Insall-Salvati ratio supports patella alta?",
     options: [">1.2", ">0.8", ">1.0", ">2.0"],
     answer: 0,
-    explanation: "An Insall-Salvati ratio (patellar tendon length divided by patellar length) >1.2 indicates patella alta, a predisposing factor for instability; <0.8 indicates patella baja, and the normal range is approximately 0.8-1.2.",
+    explanation: "On a true lateral radiograph, an Insall-Salvati ratio (patellar tendon length divided by patellar length) above 1.2 supports patella alta; below 0.8 supports patella baja. MRI can use patellar-height measurements, but the report should name the method and use modality-appropriate technique and reference values.",
   },
 ];
 
@@ -917,7 +915,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [],
         title: "Get oriented",
-        note: "Sagittal PD fat-sat. Anterior is to the LEFT, posterior to the RIGHT; fluid is bright, fat is suppressed. You scroll medial → lateral. This slice is through the intercondylar notch — the deepest part of the joint.",
+        note: "Sagittal PD fat-sat. Anterior is to the LEFT, posterior to the RIGHT; fluid is bright, fat is suppressed. As the slice number increases, this stack scrolls lateral → medial. This slice is through the intercondylar notch — the deepest part of the joint.",
       },
       {
         sliceIndex: 13,
@@ -929,7 +927,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [{ x: 36.9, y: 64.5, label: "Tibial plateau" }],
         title: "Tibial plateau",
-        note: "The flat top of the tibia below the joint line. Marrow signal should be uniform — a discrete dark line within it would signal a fracture.",
+        note: "The flat top of the tibia below the joint line. Assess marrow on T1/non-fat-suppressed and fluid-sensitive images together; a discrete low-signal subchondral line raises concern for fracture but still requires morphologic and multiplanar correlation.",
       },
       {
         sliceIndex: 13,
@@ -950,16 +948,16 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [{ x: 24, y: 60, label: "Hoffa's (infrapatellar) fat pad" }],
         title: "Hoffa's fat pad",
-        note: "The fat behind the patellar tendon and in front of the joint. Normally homogeneous; edema here is a clue to anterior impingement.",
+        note: "The fat behind the patellar tendon and in front of the joint. Edema-like signal here is nonspecific and can reflect trauma, synovitis, postoperative change, or an impingement pattern depending on its distribution and the clinical context.",
       },
       {
         sliceIndex: 8,
         markers: [
-          { x: 40, y: 61, label: "Anterior horn (meniscus)" },
-          { x: 61, y: 59.2, label: "Posterior horn (meniscus)" },
+          { x: 40, y: 61, label: "Anterior horn (lateral meniscus)" },
+          { x: 61, y: 59.2, label: "Posterior horn (lateral meniscus)" },
         ],
         title: "Meniscus — the dark bow-ties",
-        note: "On a compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). The posterior horn is normally the larger of the two medially. Persistent high signal that reaches an articular surface on adjacent slices favors a tear; isolated single-slice clefts deserve correlation. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
+        note: "This is the LATERAL compartment: on a sagittal compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). Surface-reaching signal on two or more matching images favors a tear; the images need not be contiguous and may be in different planes. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.",
       },
       {
         sliceIndex: 7,
@@ -968,10 +966,10 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         note: "Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal.",
       },
       {
-        sliceIndex: 21,
-        markers: [{ x: 54, y: 29, label: "Anterior cruciate ligament" }],
+        sliceIndex: 12,
+        markers: [{ x: 49, y: 55, label: "Anterior cruciate ligament" }],
         title: "Anterior cruciate ligament",
-        note: "On this lateral notch slice the ACL is a straight, striated band running parallel to the roof of the notch (Blumensaat line), from the lateral femoral condyle down to the anterior tibial spine — more fibrillar and a touch brighter than the smooth, dark PCL. It is partly volume-averaged on any one slice, so trace it across a couple: normal fibers stay continuous and parallel to the notch roof.",
+        note: "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. It is partly volume-averaged on any one image, so trace it across adjacent slices and correlate all planes before calling it intact or torn.",
       },
       {
         sliceIndex: 16,
@@ -981,7 +979,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 14,
-        markers: [{ x: 64.3, y: 65.4, label: "Popliteal vessels" }],
+        markers: [{ x: 66, y: 55, label: "Popliteal vessels" }],
         title: "Popliteal vessels",
         note: "The popliteal artery and vein run vertically in the popliteal fossa behind the joint — a useful posterior landmark. Don't mistake the flow-related signal for pathology.",
       },
@@ -989,12 +987,12 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
     quiz: [
       {
         id: "sag-sid-1",
-        sliceIndex: 21,
-        marker: { x: 54, y: 29 },
+        sliceIndex: 12,
+        marker: { x: 49, y: 55 },
         prompt: "What is the straight striated band marked here, paralleling the roof of the intercondylar notch?",
         options: ["Anterior cruciate ligament", "Posterior cruciate ligament", "Meniscofemoral ligament", "Posterior joint capsule"],
         answer: 0,
-        explanation: "On this lateral notch slice, the straight, slightly striated band running parallel to Blumensaat's line from the lateral femoral condyle to the anterior tibial spine is the ACL. The PCL is smoother, darker, more sharply curved, and sits more posteriorly and medially in the notch, so it would not lie along the notch roof on this lateral slice.",
+        explanation: "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. Trace the ACL across adjacent slices and correlate all planes rather than judging it from this image alone.",
       },
       {
         id: "sag-q1",
@@ -1057,7 +1055,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         prompt: WHAT,
         options: ["Posterior horn of the meniscus", "PCL", "Posterior joint capsule", "Popliteus tendon"],
         answer: 0,
-        explanation: "The low-signal triangle at the posterior joint line is the posterior horn of the meniscus.",
+        explanation: "The low-signal triangle at the posterior joint line is the posterior horn of the lateral meniscus on this lateral-compartment slice.",
       },
       {
         id: "sag-q8",
@@ -1066,7 +1064,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         prompt: WHAT,
         options: ["Anterior horn of the meniscus", "Hoffa's fat pad", "ACL", "Transverse ligament"],
         answer: 0,
-        explanation: "The low-signal triangle at the anterior joint line is the anterior horn of the meniscus.",
+        explanation: "The low-signal triangle at the anterior joint line is the anterior horn of the lateral meniscus on this lateral-compartment slice.",
       },
       {
         id: "sag-q9",
@@ -1080,7 +1078,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "sag-q10",
         sliceIndex: 14,
-        marker: { x: 64.3, y: 65.4 },
+        marker: { x: 66, y: 55 },
         prompt: WHAT,
         options: ["Popliteal vessels", "PCL", "Baker's cyst", "Semimembranosus tendon"],
         answer: 0,
@@ -1095,7 +1093,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         options: ["Coronal", "Axial", "A different sagittal slice", "Extrusion can't be measured on MRI"],
         answer: 0,
         explanation:
-          "Meniscal extrusion is graded on the CORONAL image at the mid-body — >3 mm past the tibial margin is significant and should trigger a deliberate posterior-root search. Build the habit of correlating planes.",
+          "Meniscal body position and extrusion are assessed on CORONAL images. For the medial meniscus, at least 3 mm beyond the tibial margin (excluding osteophytes) is a commonly used major-extrusion threshold and should prompt a deliberate root and cartilage search, but extrusion is neither specific for nor required by a root tear.",
       },
     ],
   },
@@ -1143,7 +1141,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
           { x: 69, y: 55, label: "Lateral meniscus (body)" },
         ],
         title: "Menisci — the wedges",
-        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal, check that the medial body doesn't extrude past the tibial margin — >3 mm is significant, but it is a clue to inspect the posterior root rather than a root-tear diagnosis by itself. Laterally, do not mistake the normal popliteus hiatus/popliteomeniscal fascicle region for a peripheral tear.",
+        note: "Each meniscus is a low-signal triangle pointing into the joint. On coronal images, measure medial extrusion from the tibial margin while excluding osteophytes; at least 3 mm is a conventional major-extrusion threshold and a root/radial-tear search trigger, not a diagnosis. Do not transfer that threshold uncritically to the lateral meniscus or mistake the normal popliteus-hiatus/fascicle region for a tear.",
       },
       {
         sliceIndex: 7,
@@ -1155,7 +1153,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 7,
         markers: [{ x: 14, y: 54, label: "Medial collateral ligament" }],
         title: "Medial collateral ligament",
-        note: "A thin, taut low-signal band along the medial edge from the femoral epicondyle to the proximal tibia. It has two layers — the superficial MCL (the long outer band) and the deep MCL (meniscofemoral + meniscotibial fibers anchoring the meniscus); fluid between the layers is the first sign of a sprain.",
+        note: "A thin, taut low-signal band along the medial edge from the femoral epicondyle to the proximal tibia. Distinguish the long superficial MCL from the deep meniscofemoral and meniscotibial fibers. Periligamentous edema with preserved fibers can support a low-grade sprain; partial or complete fiber disruption determines higher grade.",
       },
       {
         sliceIndex: 7,
@@ -1250,10 +1248,10 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         id: "cor-q10",
         sliceIndex: 7,
         marker: { x: 27, y: 56 },
-        prompt: "This is the medial meniscus. Beyond how much extrusion past the tibial margin is considered significant and should trigger a root search?",
-        options: [">3 mm", ">1 mm", ">8 mm", "Any extrusion at all"],
+        prompt: "This is the medial meniscus. At least how much extrusion past the tibial margin is a conventional major-extrusion threshold that should trigger a root/radial-tear search?",
+        options: ["3 mm", "1 mm", "8 mm", "Any extrusion at all"],
         answer: 0,
-        explanation: "Medial meniscal extrusion >3 mm beyond the tibial margin is significant and should make you inspect the posterior root, but extrusion alone does not prove a root tear.",
+        explanation: "Medial meniscal extrusion of at least 3 mm beyond the tibial margin, measured without osteophytes, is a common major-extrusion threshold. It should prompt direct root/radial-tear and cartilage assessment, but extrusion alone neither proves nor excludes a root tear.",
       },
       {
         id: "cor-q11",
@@ -1271,7 +1269,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
 
   // ───────────────────────────────────────────────────────────────────────
   // AXIAL T2-FS  (stack: normal-knee-axial, 28 slices; patellofemoral ~ index 13)
-  // SIDE NOTE: image-left assigned MEDIAL, image-right LATERAL — confirm.
+  // Orientation verified: image-left = MEDIAL, image-right = LATERAL.
   // ───────────────────────────────────────────────────────────────────────
   "axi-t2fs": {
     tour: [
@@ -1309,7 +1307,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [{ x: 32, y: 24, label: "MPFL / medial retinaculum" }],
         title: "MPFL / medial retinaculum",
-        note: "The medial patellofemoral ligament runs from the medial patella toward the adductor tubercle — the main restraint against lateral dislocation, and what tears after a patellar dislocation.",
+        note: "The medial patellofemoral ligament runs from the superomedial patella toward the region between the adductor tubercle and medial epicondyle. It is the principal passive restraint in early lateral translation and is commonly injured after lateral patellar dislocation; inspect its full course because the tear site varies.",
       },
       {
         sliceIndex: 13,
@@ -1383,10 +1381,10 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         id: "axi-q5",
         sliceIndex: 13,
         marker: { x: 32, y: 24 },
-        prompt: "Which medial restraint of the patella is marked (the structure torn after a lateral patellar dislocation)?",
+        prompt: "Which principal medial restraint of the patella is marked (a structure commonly injured after lateral patellar dislocation)?",
         options: ["MPFL / medial retinaculum", "Lateral retinaculum", "Patellar tendon", "Iliotibial band"],
         answer: 0,
-        explanation: "The medial patellofemoral ligament (MPFL) is the main restraint against lateral dislocation and the structure injured after a patellar dislocation.",
+        explanation: "The medial patellofemoral ligament (MPFL) is the principal passive restraint to early lateral patellar translation and is commonly injured after lateral patellar dislocation. The injury may be patellar-sided, femoral-sided, midsubstance, or multifocal.",
       },
       {
         id: "axi-q7",
@@ -1438,7 +1436,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         ],
         answer: 0,
         explanation:
-          "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (tear site does not reliably predict recurrence — a meta-analysis found no significant difference by site, p=0.17).",
+          "Lateral patellar dislocation classically bruises the inferomedial patella and anterolateral femoral condyle as the patella relocates, commonly with MPFL/medial-retinacular injury. Tear location varies, so inspect the patellar attachment, femoral attachment, and midsubstance rather than assuming one site from the bruise pattern.",
       },
     ],
   },
@@ -1459,13 +1457,13 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [{ x: 34, y: 41, label: "Femoral condyle" }],
         title: "Femoral condyle",
-        note: "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the key sequence for marrow COMPOSITION — a focal dark line (fracture) or diffuse darkening (infiltration/replacement) stands out against the bright fat. For marrow EDEMA/contusion (the commonest acute finding), the fat-suppressed fluid-sensitive sequence (PD/T2-FS or STIR) is more sensitive — read them together.",
+        note: "Low-signal cortex surrounds bright fatty marrow on T1. A focal dark line raises concern for fracture, while focal or diffuse marrow replacement has a broad differential. Fluid-sensitive sequences are more sensitive to increased water content, but bright signal is nonspecific; read both sequence types together.",
       },
       {
         sliceIndex: 13,
         markers: [{ x: 37.5, y: 62, label: "Tibial plateau" }],
         title: "Tibial plateau",
-        note: "Uniform bright marrow below the joint. A discrete DARK line within the bright marrow is the classic T1 sign of a fracture.",
+        note: "Predominantly bright fatty marrow lies below the joint. A discrete low-signal line can be a fracture clue, but correlate its shape across planes and look for surrounding edema-like signal because sclerosis, vascular channels, and other low-signal structures can mimic a line.",
       },
       {
         sliceIndex: 13,
@@ -1491,17 +1489,17 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         sliceIndex: 8,
         markers: [
-          { x: 40, y: 61, label: "Anterior horn (meniscus)" },
-          { x: 61, y: 59.2, label: "Posterior horn (meniscus)" },
+          { x: 40, y: 61, label: "Anterior horn (lateral meniscus)" },
+          { x: 61, y: 59.2, label: "Posterior horn (lateral meniscus)" },
         ],
         title: "Meniscus",
-        note: "Low-signal triangles at the joint line — dark on T1, as on PD-FS.",
+        note: "Low-signal triangles of the lateral meniscus at the joint line — dark on T1, as on PD-FS.",
       },
       {
         sliceIndex: 13,
         markers: [{ x: 34, y: 41, label: "Bone marrow" }],
         title: "Bone marrow — T1's job",
-        note: "Normal marrow is uniformly bright (fatty) on T1. The key abnormal finding is FOCAL DARK signal — a fracture line, infiltration, or a lesion. (Joint fluid is dark on T1, so it is the PD-FS — not T1 — that you use for cartilage and effusion.)",
+        note: "Adult knee marrow is usually predominantly bright on T1, but residual or reconverted red marrow can be heterogeneous and should remain brighter than skeletal muscle. Assess unexpected focal low signal by its distribution, margin, relation to the cortex/subchondral plate, and fluid-sensitive correlate rather than labeling every dark focus as a lesion. Joint fluid is dark on T1, so use fluid-sensitive images for edema-like signal and effusion.",
       },
       {
         sliceIndex: 16,
@@ -1511,7 +1509,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 14,
-        markers: [{ x: 64.3, y: 65.4, label: "Popliteal vessels" }],
+        markers: [{ x: 66, y: 55, label: "Popliteal vessels" }],
         title: "Popliteal vessels",
         note: "The popliteal artery and vein in the popliteal fossa posteriorly.",
       },
@@ -1578,7 +1576,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         prompt: WHAT,
         options: ["Posterior horn of the meniscus", "PCL", "Posterior joint capsule", "Popliteus tendon"],
         answer: 0,
-        explanation: "The low-signal triangle at the posterior joint line is the posterior horn of the meniscus.",
+        explanation: "The low-signal triangle at the posterior joint line is the posterior horn of the lateral meniscus on this lateral-compartment slice.",
       },
       {
         id: "t1-q8",
@@ -1587,7 +1585,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         prompt: WHAT,
         options: ["Anterior horn of the meniscus", "Hoffa's fat pad", "ACL", "Transverse ligament"],
         answer: 0,
-        explanation: "The low-signal triangle at the anterior joint line is the anterior horn of the meniscus.",
+        explanation: "The low-signal triangle at the anterior joint line is the anterior horn of the lateral meniscus on this lateral-compartment slice.",
       },
       {
         id: "t1-q9",
@@ -1596,12 +1594,12 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         prompt: "On this T1 image, how does normal bone marrow appear?",
         options: ["Bright (fatty)", "Dark (low signal)", "The same signal as joint fluid", "Bright only with fat suppression"],
         answer: 0,
-        explanation: "Normal marrow is bright on T1 because fatty marrow is not suppressed. Focal DARK marrow signal (e.g., a fracture line) is the key abnormality T1 detects.",
+        explanation: "Fatty marrow is bright on T1 because it is not suppressed. Residual or reconverted red marrow may be less bright but normally retains enough fat to remain brighter than skeletal muscle; suspicious low signal must be interpreted by pattern and with fluid-sensitive images.",
       },
       {
         id: "t1-q10",
         sliceIndex: 14,
-        marker: { x: 64.3, y: 65.4 },
+        marker: { x: 66, y: 55 },
         prompt: WHAT,
         options: ["Popliteal vessels", "PCL", "Baker's cyst", "Semimembranosus tendon"],
         answer: 0,
@@ -1616,7 +1614,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         options: ["Fluid-sensitive PD/T2 fat-sat", "T1 (this sequence)", "Gradient echo", "The localizer"],
         answer: 0,
         explanation:
-          "T1 shows the fracture line and marrow replacement; the fat-suppressed fluid-sensitive sequence (PD/T2 FS) best shows the surrounding bright edema. Read marrow on both.",
+          "T1/non-fat-suppressed images help define a fracture line and marrow composition; fat-suppressed fluid-sensitive images best show surrounding edema-like signal. Read both together, because neither finding alone is specific.",
       },
     ],
   },
@@ -1629,7 +1627,7 @@ export const kneeImageCaq: ImageCaqQ[] = [
     topic: "ACL tear — pivot-shift secondary signs",
     dir: "/images/teaching/stacks/normal-knee-sagittal",
     count: 29,
-    startIndex: 21,
+    startIndex: 12,
     plane: "Sagittal PD-FS",
     vignette: "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
     options: ["Posterolateral tibial plateau bone contusion", "Anteromedial femoral condyle fracture", "Medial patellar facet bruise", "Quadriceps tendon avulsion"],
@@ -1646,7 +1644,7 @@ export const kneeImageCaq: ImageCaqQ[] = [
     vignette: "On this midline sagittal slice, find the thick curved low-signal band arcing through the posterior notch — the PCL. In a patient after a non-contact knee injury, if this intact band took on an exaggerated, buckled curve, what would that contour most likely indicate?",
     options: ["Anterior tibial translation from an ACL tear", "An acute complete tear of this band", "Mucoid degeneration of this band", "A normal variant requiring no further evaluation"],
     answer: 0,
-    explanation: "This band is the PCL; an intact but abnormally buckled PCL arc is a recognized secondary sign of anterior tibial translation caused by an ACL tear, not a PCL injury itself. An acute PCL tear would instead show discontinuity or increased intrasubstance signal.",
+    explanation: "This band is the PCL; an intact but abnormally buckled PCL arc is a recognized secondary sign of anterior tibial translation associated with ACL insufficiency. A PCL tear is established by abnormal fiber continuity or morphology, with increased internal signal as a supportive finding rather than a diagnosis by itself.",
   },
   {
     id: "icaq-3",
@@ -1670,7 +1668,7 @@ export const kneeImageCaq: ImageCaqQ[] = [
     vignette: "A 16-year-old presents after the kneecap briefly slipped out laterally and snapped back. On this axial patellofemoral slice, identify the medial patellar restraint (MPFL) along the medial patellar margin. If it were thickened with surrounding edema and fiber disruption, which paired bone-bruise pattern would most support the suspected mechanism?",
     options: ["Inferomedial patellar facet and anterolateral femoral condyle", "Posterolateral tibial plateau and mid-lateral femoral condyle", "Medial femoral condyle and medial tibial plateau", "Lateral patellar facet and lateral tibial plateau"],
     answer: 0,
-    explanation: "The MPFL is the medial patellar restraint, and it tears during transient lateral patellar dislocation; the characteristic kissing contusions are at the inferomedial patellar facet and the anterolateral femoral condyle as the patella relocates. The posterolateral tibia/lateral femoral condyle pattern is the pivot-shift signature of an ACL tear, a different mechanism.",
+    explanation: "The MPFL is the principal medial patellar restraint and is commonly injured during transient lateral patellar dislocation. The characteristic contact contusions are at the inferomedial patella and anterolateral femoral condyle as the patella relocates. The posterolateral tibia/lateral femoral condyle pattern instead supports a pivot-shift ACL mechanism.",
   },
   {
     id: "icaq-5",
@@ -1705,12 +1703,12 @@ export const kneeImageCaq: ImageCaqQ[] = [
     plane: "Sagittal PD-FS",
     vignette: "On this sagittal compartment slice, identify the dark meniscal horns. A fellow sees a small cleft at the lateral meniscus near the popliteus tendon region and wants to call a tear. What should they do before making that diagnosis?",
     options: [
-      "Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then require surface-reaching tear signal or abnormal fascicle disruption",
+      "Trace the popliteal hiatus/popliteomeniscal fascicles and meniscofemoral/transverse ligaments across adjacent slices, then look for reproducible surface-reaching signal or definite morphologic/fascicle disruption",
       "Call any cleft near the lateral meniscus a tear because normal ligaments do not contact the meniscus",
       "Ignore the finding entirely because lateral meniscal tears cannot occur at the posterior horn",
       "Measure medial meniscal extrusion; if it is under 3 mm, the lateral cleft is normal by definition",
     ],
     answer: 0,
-    explanation: "The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across slices and call a tear only when the signal behaves like a true surface-reaching tear or the fascicles/meniscocapsular support are disrupted.",
+    explanation: "The lateral meniscus has several normal relationships that create pseudotears: the anterior transverse intermeniscal ligament, the meniscofemoral ligaments near the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles near the popliteus tendon. Trace them across planes and require reproducible surface communication on matching images or definite morphologic/fascicle disruption before diagnosing a tear at that interface.",
   },
 ];

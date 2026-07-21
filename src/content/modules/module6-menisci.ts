@@ -4,21 +4,21 @@ export const module6Content: TopicContent[] = [
   {
     content: `### Meniscal Signal Grading
 
-Meniscal signal on MRI is graded using a **three-tier system** that directly guides clinical decision-making.
+Meniscal signal can be described with a **three-tier system**. It supports diagnosis, but morphology, symptoms, examination, age, tear pattern, tissue quality, and patient goals determine treatment.
 
 | Grade | Signal Pattern | Clinical Significance |
 |-------|---------------|----------------------|
-| **Grade 1** | Small focus of intrameniscal signal, does not extend to articular surface | Early **mucinous degeneration** -- not surgical |
-| **Grade 2** | More extensive linear intrameniscal signal (often horizontal), does not reach articular surface | **Degenerative** change -- not surgical |
-| **Grade 3** | Increased signal unequivocally extending to at least one articular surface (assessed on PD / short-TE images) | **True meniscal tear** -- surgical consideration |
+| **Grade 1** | Small focus of intrameniscal signal, does not extend to articular surface | Intrasubstance degeneration, not a tear by signal criteria |
+| **Grade 2** | More extensive linear intrameniscal signal (often horizontal), does not reach articular surface | Intrasubstance degeneration, not a tear by signal criteria |
+| **Grade 3** | Increased signal unequivocally extending to at least one articular surface (assessed on PD / short-TE images) | MRI criterion for a tear; not an automatic indication for surgery |
 
 ### Diagnosing Grade 3 Signal
 
 - **Grade 3 signal** is defined as increased signal intensity that **unequivocally extends to at least one articular surface**, best assessed on **proton density / intermediate-weighted (short-TE) sequences** -- the most sensitive sequences for meniscal signal
-- Surface extension on **at least two consecutive standard slices** (the **two-slice-touch rule**) greatly increases specificity and helps avoid false positives from volume averaging; a one-slice finding is lower confidence, not automatically degeneration
+- Surface extension on **at least two matching images** (the **two-slice-touch rule**) greatly increases positive predictive value. The images need not be consecutive and may be one sagittal plus one coronal image through the same site; a one-image finding is lower confidence, not automatically degeneration
 - On **PD / short-TE** images, surface-reaching **intermediate-to-high** signal is enough — it need **not** approach fluid intensity. (Requiring fluid-bright signal is the **T2 / long-TE** criterion, which is exactly why T2 is *less* sensitive for tears and degeneration.)
 - Low-grade signal that barely touches a surface on a single image should be correlated with morphology, adjacent slices, and orthogonal planes before it is called a tear`,
-    pearl: `Grade 2 signal in the posterior horn of the medial meniscus is extremely common in patients over 40 and should not be overcalled as a tear. Surface contact on two consecutive standard slices markedly increases confidence; treat a one-slice finding cautiously and look for orthogonal or morphologic corroboration.`,
+    pearl: `Grade 2 signal in the posterior horn of the medial meniscus is common with aging and should not be overcalled as a tear. Surface contact on two or more matching images markedly increases confidence; those images need not be contiguous. Treat a one-image finding cautiously and look for orthogonal or morphologic corroboration.`,
     images: [
       {
         src: '/images/modules/meniscal-anatomy.svg',
@@ -46,7 +46,7 @@ Meniscal signal on MRI is graded using a **three-tier system** that directly gui
   {
     content: `### The Two-Slice-Touch Confidence Rule
 
-The **two-slice-touch rule** is a high-specificity confidence rule for meniscal tears: surface-reaching signal on **at least two consecutive images** (using standard 3--4 mm slice thickness) has a much higher positive predictive value than contact on one image. It is not an absolute gate; a small or radial tear may be conspicuous on only one slice or primarily in an orthogonal plane.
+The **two-slice-touch rule** is a high-confidence rule for meniscal tears: surface-reaching signal on **at least two matching images** has a much higher positive predictive value than contact on one image. The images do not have to be consecutive; matching sagittal and coronal images can satisfy the rule. It is not an absolute gate, because a small or radial tear may be conspicuous on only one image.
 
 This criterion was developed to reduce false-positive diagnoses caused by:
 - **Partial volume averaging**
@@ -149,11 +149,11 @@ Meniscal tear morphology is classified into several distinct patterns, each with
   {
     content: `### Meniscal Root Tears
 
-**Meniscal root tears** are avulsions or radial tears occurring **within 1 cm of the meniscal root attachment**. They are **functionally equivalent to a total meniscectomy** because they completely disrupt the circumferential hoop stresses that allow the meniscus to distribute axial load.
+**Meniscal root tears** are avulsions or radial tears occurring **within 1 cm of the meniscal root attachment**. A complete root-disrupting tear can abolish hoop-stress function. In a cadaveric medial posterior-root model, contact mechanics approached those after total medial meniscectomy; this biomechanical comparison should not be generalized to every partial, lateral, or degenerative root abnormality.
 
 - The **posterior root of the medial meniscus** is the most commonly affected
 - Often seen in **middle-aged women** with an acute-on-chronic mechanism
-- Associated with **rapid progression of osteoarthritis** if untreated
+- Complete function-disrupting root tears are associated with accelerated compartment overload and osteoarthritis progression; rate and treatment response vary with cartilage, alignment/loading, chronicity, and patient factors
 
 ### MRI Signs by Plane
 
@@ -162,11 +162,11 @@ Meniscal tear morphology is classified into several distinct patterns, each with
 
 **Coronal images:**
 - Vertical linear cleft at the tibial attachment or radial disruption near the root
-- **Meniscal extrusion > 3 mm** is a strong secondary sign of root tear
+- **Medial meniscal extrusion ≥3 mm** is a common major-extrusion threshold and a useful secondary clue, but it is neither specific for nor required by a root tear
 
 **Axial images:**
 - Direct visualization of the root
-- Disruption of the normal **low-signal root attachment** is diagnostic
+- Direct disruption of the normal **low-signal root attachment** is a primary tear sign; confirm the exact root and morphology across planes
 
 ### The Root Tear Triad
 
@@ -174,7 +174,7 @@ Meniscal tear morphology is classified into several distinct patterns, each with
 - **Root tear**
 - **Extrusion**
 - **Subchondral fracture**`,
-    pearl: `When you see a subchondral insufficiency fracture of the medial femoral condyle or medial tibial plateau, scrutinize the posterior medial meniscal root. A root tear is often a key biomechanical driver; if missed, ongoing compartment overload may persist or progress.`,
+    pearl: `When you see a subchondral insufficiency fracture of the medial femoral condyle or medial tibial plateau, scrutinize the posterior medial meniscal root and measure extrusion. A complete root tear can be an important contributor to compartment overload, but cartilage, alignment/loading, bone quality, and other whole-joint factors also matter.`,
     images: [
       {
         src: '/images/modules/meniscal-extrusion.svg',
@@ -210,7 +210,7 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 - **Notoriously underdiagnosed** on preoperative MRI — pooled sensitivity only **~65--71%** (specificity ~88--94%), and missed in **up to half** of cases in some series
 - In the setting of an ACL tear, **carefully evaluate the posterior meniscocapsular junction on every sequence**
 - Arthroscopic examination through a standard anterior portal may also miss these lesions, requiring a **posteromedial portal** or **trans-notch view** for diagnosis`,
-    pearl: `In every ACL tear case, actively search for a ramp lesion by scrutinizing the posterior meniscocapsular junction of the medial meniscus on sagittal and axial sequences. These lesions are missed on up to half of preoperative MRIs and can be repaired at the time of ACL reconstruction.`,
+    pearl: `In every ACL tear case, actively search for a ramp lesion by scrutinizing the posterior meniscocapsular junction of the medial meniscus in multiple planes. MRI sensitivity is limited; a seen or suspected lesion should be reported clearly, and repairability is determined at targeted arthroscopic assessment in the full clinical context.`,
     images: [
       {
         src: '/images/teaching/modules/module6-menisci/15_Meniscus_Meniscotibial_MCL_Normal.jpg',
@@ -242,7 +242,7 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 - Report the **donor site location**
 - Report the **fragment position**
 - Report the **approximate length** of the tear`,
-    pearl: `The "absent bow-tie sign" is a reliable indicator of a displaced meniscal tear. Normally, on sagittal images through the meniscal body, you should see at least two consecutive images with a bow-tie configuration. Fewer than two body segments suggests a bucket-handle tear with displacement of the central fragment.`,
+    pearl: `The absent-bow-tie sign suggests a displaced meniscal tear. Normally, standard sagittal images show at least two consecutive body segments. Fewer than two should trigger a fragment search, while prior meniscectomy, a very small meniscus, and slice thickness must be considered before calling a bucket-handle tear.`,
     images: [
       {
         src: '/images/teaching/cases/bucket-handle/bh_double_pcl_sign.jpg',
@@ -255,34 +255,34 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
   {
     content: `### Meniscal Extrusion
 
-**Meniscal extrusion** is measured on **coronal images** at the level of the mid-body of the meniscus.
+**Meniscal extrusion** is measured on **coronal images** at the level of the mid-body. The conventional 3 mm threshold is best established for the medial meniscus and should not be transferred mechanically to the lateral meniscus.
 
 ### How to Measure
-- Draw a vertical line along the **outer margin of the tibial plateau**
+- Draw a vertical line along the **outer margin of the tibial plateau**, excluding osteophytes from the reference margin
 - Measure the distance from this line to the **outermost edge of the meniscal body**
-- **> 3 mm** = pathologic
-- **> 3 mm** is the validated pathologic (major) threshold — report the measured value; there is no separately validated "> 5 mm severe" cut-off
+- **≥3 mm** is commonly termed major medial extrusion; report the continuous measurement and clinical context
+- There is no separately validated universal ">5 mm severe" tier
 
 ### Clinical Significance
 
 | Extrusion | Significance |
 |-----------|-------------|
-| **< 3 mm** | Normal |
-| **> 3 mm** | Pathologic (validated threshold): search for a root/radial tear and cartilage loss. Larger values indicate greater dysfunction — report the measured number; no separate validated ">5 mm severe" tier exists |
+| **< 3 mm** | Below the conventional major medial-extrusion threshold; does not exclude a root tear or dysfunction |
+| **≥ 3 mm** | Major medial extrusion: search for a root/radial tear and cartilage loss, while recognizing extrusion is not diagnostic by itself |
 
-**Medial meniscal extrusion** is more clinically significant than lateral extrusion because the medial meniscus bears a greater role in **load distribution**. Extrusion effectively converts the meniscus from a functional load-sharing structure to a **non-functional extruded body**, accelerating cartilage wear.
+Medial and lateral extrusion have different normal ranges, mechanisms, and evidence bases. Major medial extrusion is associated with loss of coverage and osteoarthritis progression, but the meniscus is not necessarily completely nonfunctional and the measurement alone does not establish a root tear.
 
 ### Reporting Extrusion
 - Specify the measurement in **millimeters**
 - Search for and report any associated **root tear** (this combination has important prognostic implications and may alter surgical management)
 - Measure with the knee in **non-weight-bearing position** as obtained during standard MRI
 - On weight-bearing or semi-flexed MRI, extrusion values may be greater`,
-    pearl: `Measure meniscal extrusion on the coronal image where the medial meniscal body is widest, using a reference line at the tibial plateau margin. Greater than 3 mm is pathologic and should trigger a careful root-tear search; report the measured value rather than assigning a "severe" tier, as no separate validated cut-off exists.`,
+    pearl: `Measure medial extrusion on the coronal mid-body image from the tibial margin, excluding osteophytes. At least 3 mm is a useful major-extrusion threshold and should trigger a root, radial-tear, and cartilage search, but it is not synonymous with a root tear and a smaller value does not exclude one.`,
     images: [
       {
         src: '/images/teaching/modules/module6-menisci/09_Meniscus_Displacement_Coronal.jpg',
         alt: 'Medial meniscal extrusion — coronal',
-        caption: 'Medial meniscal body extruded beyond the medial tibial plateau margin on a coronal image (arrows). Measure perpendicular to the plateau edge — > 3 mm is pathologic.',
+        caption: 'Medial meniscal body extruded beyond the medial tibial plateau margin on a coronal image (arrows). Measure perpendicular to the tibial margin while excluding osteophytes; at least 3 mm is a conventional major medial-extrusion threshold, not a standalone root-tear diagnosis.',
         attribution: 'Insights Imaging, 2016. PMC4877346. CC-BY 4.0.',
       },
     ],
@@ -292,13 +292,13 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 
 **Parameniscal cysts** are fluid collections that form adjacent to the meniscus, most commonly in association with an **underlying meniscal tear** that serves as a **one-way valve** allowing joint fluid to decompress through the tear into the parameniscal soft tissues.
 
-- Reported **medial-vs-lateral predominance varies** in the literature (several series find medial parameniscal cysts somewhat more common); either way, the cyst overlies an underlying meniscal tear
+- Reported **medial-vs-lateral predominance varies** in the literature. Most parameniscal cysts communicate with an underlying meniscal tear, but a communication may be subtle or occult on routine MRI
 - Lateral parameniscal cysts are classically associated with **horizontal cleavage tears** of the lateral meniscus
 
 ### MRI Appearance
 - Well-defined **lobulated fluid-signal collections** (high T2, low T1) at the periphery of the meniscus, often at the joint line
 - May extend into adjacent soft tissues and can become quite large
-- **Key diagnostic step:** identify the underlying meniscal tear -- the cyst will recur if only the cyst is treated without addressing the tear
+- **Key diagnostic step:** identify an underlying meniscal tear; recurrence risk is higher when the tear communication is not addressed
 
 ### Important Distinctions
 - **Lateral parameniscal cysts** vs. **popliteal (Baker's) cysts** -- Baker's cysts arise from the posteromedial joint
@@ -313,15 +313,15 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 Evaluating the **post-surgical meniscus** requires understanding the expected appearances after different procedures.
 
 ### After Partial Meniscectomy
-- Meniscal remnant will be **truncated and blunted** but should have a **smooth, well-defined free edge** with **uniformly low signal**
-- Persistent or recurrent **grade 3 signal** extending to the new articular surface suggests a **re-tear**
+- The remnant is expected to be **truncated or reduced in size**, ideally with a smooth contour
+- Conventional surface-signal criteria lose specificity after surgery. Favor re-tear when there is a displaced fragment, a new or changed surface-reaching fluid-signal line compared with prior imaging, or morphology not explained by the operation
 
 ### After Meniscal Repair
-- Increased intrameniscal signal is **expected for the first 6--12 months** and may persist indefinitely without clinical significance
+- Increased intrameniscal signal can persist for years after repair and is not diagnostic of failure by itself
 - Criteria for **re-tear** are more stringent:
-  - **Fluid-signal intensity** (equivalent to joint fluid on T2-weighted sequences) that **unequivocally reaches the articular surface**
+  - **Fluid-signal intensity** extending into the repair/tear site, especially when new or accompanied by changed morphology or a displaced fragment
   - Grade 2-type signal at the repair site may represent **healing granulation tissue** -- do not call this a re-tear
-- **MR arthrography** with dilute gadolinium can improve accuracy in equivocal cases (contrast extending into the repair site is more specific for a persistent or recurrent tear)
+- **Direct MR arthrography** can improve accuracy in selected equivocal postoperative cases, particularly after resection of more than 25% of the meniscus or when conventional MRI lacks a helpful joint effusion; it is not required for every postoperative meniscus
 
 ### After Meniscal Transplant
 - Evaluate for:
@@ -329,6 +329,6 @@ Evaluating the **post-surgical meniscus** requires understanding the expected ap
   - **Sizing** (extrusion)
   - **Horn attachment integrity**
 - The transplant will demonstrate some increased signal as it incorporates but should **not show fluid-signal clefts** reaching the surface`,
-    pearl: `After meniscal repair, do not overcall intermediate signal at the repair site as a re-tear. Only fluid-bright signal (matching joint fluid on T2) that clearly extends to the articular surface should be considered a definite re-tear. When in doubt, recommend MR arthrography.`,
+    pearl: `After meniscal surgery, compare with the operative report and prior MRI. Persistent signal alone is not a re-tear; prioritize new fluid-signal extension, changed morphology, or a displaced fragment. Consider MR arthrography selectively when conventional MRI remains equivocal and the answer will change management.`,
   },
 ];
