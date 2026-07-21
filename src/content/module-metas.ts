@@ -50,7 +50,7 @@ export const kneeModuleMetas: ModuleMeta[] = [
     "estimatedMinutes": 10,
     "topics": [
       "Why systematic reading prevents missed findings",
-      "Satisfaction of search: the most common cognitive error",
+      "Satisfaction of search: a common cognitive error",
       "Overview of the 7-step search pattern",
       "How to build the pattern into daily workflow",
       "Anchor slice concept"

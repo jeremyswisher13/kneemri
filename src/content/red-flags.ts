@@ -38,7 +38,7 @@ export const redFlagsByRegion: Record<string, RedFlag[]> = {
     {
       finding: "Segond / reverse Segond fracture",
       action:
-        "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a posteromedial avulsion points to the PCL. The fracture flags the ligament — go look.",
+        "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a medial (reverse Segond) rim avulsion points to the PCL. The fracture flags the ligament — go look.",
     },
   ],
   shoulder: [

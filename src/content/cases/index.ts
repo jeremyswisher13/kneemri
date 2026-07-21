@@ -281,7 +281,7 @@ export const caseRegistry: CaseMetadata[] = [
     },
     teachingPoints: [
       'The patellar dislocation contusion pattern is medial patellar facet + anterolateral LFC — these are "kissing contusions."',
-      'The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Femoral-sided tears carry higher recurrence risk.',
+      'The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Tear site does not reliably predict recurrence (a meta-analysis found no significant difference — femoral 37.6% vs patellar 32.3%, p=0.17); recurrence is driven more by trochlear dysplasia, patella alta, elevated TT-TG, and younger age.',
       'Always look for osteochondral fragments and loose bodies after patellar dislocation.',
       'Report predisposing factors: trochlear dysplasia, patella alta, increased TT-TG distance, and lateral patellar tilt / excessive lateral patellar translation.',
     ],

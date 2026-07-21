@@ -305,7 +305,7 @@ export const prePostQuizQuestions: QuizQuestion[] = [
     moduleId: "ligaments",
     prePostMapping: "parallel-pre",
     parallelId: "kn-collateral-corner-1",
-    stem: "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
+    stem: "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
     options: [{ key: "A", text: "The medial patellofemoral ligament" }, { key: "B", text: "The quadriceps tendon insertion" }, { key: "C", text: "The pes anserinus tendons" }, { key: "D", text: "The anterior cruciate ligament" }],
     correctAnswer: "D",
     explanation: "The described fragment is a Segond fracture, an avulsion of the lateral capsular/anterolateral ligament complex that carries a very high association with ACL tears (and often meniscal injury); seeing it mandates a careful look at the ACL. The quadriceps tendon (B) and pes anserinus (C) are unrelated to this lateral capsular avulsion. The MPFL (A) is implicated in patellar dislocation, a different mechanism; trainees sometimes confuse the lateral Segond avulsion with patellofemoral injuries, but the Segond's key teaching point is its ACL association.",

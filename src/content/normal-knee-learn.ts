@@ -78,7 +78,7 @@ export const structureReading: Record<string, StructureReading> = {
   },
   "Meniscus — the dark bow-ties": {
     measure:
-      "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal.",
+      "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >15 mm (or a meniscal-to-tibial-plateau-width ratio >20%) — is a discoid meniscus, not normal.",
   },
   Meniscus: {
     variant:
@@ -623,7 +623,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "A 19-year-old soccer player sustains a non-contact pivoting injury. Radiographs show a small vertically oriented cortical avulsion off the proximal lateral tibia just below the joint line. Which intra-articular injury is most strongly associated with this radiographic finding?",
     options: ["Anterior cruciate ligament tear", "Posterior cruciate ligament tear", "Quadriceps tendon rupture", "Lateral meniscus discoid variant"],
     answer: 0,
-    explanation: "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a posterior (reverse Segond) medial tibial avulsion, not this lateral fragment, so it is the weaker association.",
+    explanation: "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a medial (reverse Segond) tibial rim avulsion, not this lateral fragment, so it is the weaker association.",
   },
   {
     id: "caq-2",
@@ -719,7 +719,7 @@ export const advancedChallenge: AdvancedQ[] = [
     prompt: "On sagittal MR images with 4-5 mm slice thickness, which finding most reliably distinguishes a discoid lateral meniscus from a normal lateral meniscus?",
     options: ["A minimum coronal body width of 6-8 mm on the central coronal image", "The 'bow-tie' (continuous body) appearance on 3 or more contiguous sagittal slices", "Absence of the normal meniscofemoral ligament on the Wrisberg side", "Increased intrameniscal grade 2 signal in the posterior horn"],
     answer: 1,
-    explanation: "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >13-15 mm) indicates a discoid meniscus.",
+    explanation: "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >15 mm, or a meniscal-to-tibial-width ratio >20%) indicates a discoid meniscus.",
   },
   {
     id: "menisci-2",
@@ -1438,7 +1438,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         ],
         answer: 0,
         explanation:
-          "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk).",
+          "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (tear site does not reliably predict recurrence — a meta-analysis found no significant difference by site, p=0.17).",
       },
     ],
   },

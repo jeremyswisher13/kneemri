@@ -5765,7 +5765,7 @@
     "itemType": "pre-post-quiz",
     "itemId": "kn-collateral-corner-1-pre",
     "section": "assessment",
-    "title": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
+    "title": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -5773,7 +5773,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/quizzes/pre-post-quiz.ts",
-    "textPreview": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure? | A. T..."
+    "textPreview": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutin..."
   },
   {
     "courseId": "knee-mri",
@@ -7788,7 +7788,7 @@
     "itemType": "review-registry-question",
     "itemId": "knee-mri::prepost-kn-collateral-corner-1-pre",
     "section": "spaced-review-registry",
-    "title": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
+    "title": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -7796,7 +7796,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure? | A. T..."
+    "textPreview": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutin..."
   },
   {
     "courseId": "knee-mri",
@@ -19914,7 +19914,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/red-flags.ts",
-    "textPreview": "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a posteromedial avulsion points to the PCL. The fracture flags the ligament — go look."
+    "textPreview": "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a medial (reverse Segond) rim avulsion points to the PCL. The fracture flags the ligament — go look."
   },
   {
     "courseId": "knee-mri",
@@ -24440,7 +24440,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "measure: Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal."
+    "textPreview": "measure: Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >15 mm (or a meniscal-to-tibial-plateau-width ratio >20%) — is a discoid meniscus, not normal."
   },
   {
     "courseId": "knee-mri",

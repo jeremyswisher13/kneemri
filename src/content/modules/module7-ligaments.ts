@@ -266,7 +266,7 @@ On MRI, the MPFL is a thin band of tissue extending from the **medial femoral co
 
 ### MPFL Tear Location
 
-The tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.
+The tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: **tear site does not reliably predict recurrence** (a meta-analysis found no significant difference between femoral, patellar, and combined tears, p=0.17) and it is not reliably the commonest site — so report the site but drive prognosis off trochlear dysplasia, patella alta, TT-TG, and age.
 
 On MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.
 

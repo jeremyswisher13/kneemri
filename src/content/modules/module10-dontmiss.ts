@@ -64,7 +64,7 @@ The key to detection is knowing where to look and **actively searching** in ever
 ### Reporting Recommendation
 - **Specifically state** the presence or absence of a ramp lesion in **every ACL tear case**
 - When equivocal, recommend **intraoperative assessment** through a **posteromedial portal** or **trans-notch approach** (standard anterior arthroscopic portals frequently miss these lesions)`,
-    pearl: `Make it a habit to include a specific statement about the presence or absence of a ramp lesion in every ACL tear report. The sensitivity of MRI for ramp lesions is modest (around 50-65%), so when findings are equivocal, recommend intraoperative assessment through a posteromedial portal.`,
+    pearl: `Make it a habit to include a specific statement about the presence or absence of a ramp lesion in every ACL tear report. The sensitivity of MRI for ramp lesions is modest (pooled ~65-71% at ~88-94% specificity; missed in up to half of cases in some series), so when findings are equivocal, recommend intraoperative assessment through a posteromedial portal.`,
   },
   {
     content: `### Bucket-Handle Tears

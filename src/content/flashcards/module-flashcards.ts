@@ -430,7 +430,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-menisci-t4-2',
           question: 'What is the reported MRI sensitivity for detecting ramp lesions?',
-          answer: 'Only 48-65%. Ramp lesions are notoriously underdiagnosed on preoperative MRI, missed in up to half of cases. In every ACL tear, actively search the posterior meniscocapsular junction.',
+          answer: 'Pooled MRI sensitivity is only ~65-71% (specificity ~88-94%); ramp lesions are notoriously underdiagnosed and missed in up to half of cases in some series. In every ACL tear, actively search the posterior meniscocapsular junction.',
         },
       ],
     },
@@ -787,7 +787,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-top-10-dont-miss-t1-1',
           question: 'What should you include in every ACL tear report regarding ramp lesions?',
-          answer: 'A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~50-65%, recommend intraoperative assessment through a posteromedial portal when findings are equivocal.',
+          answer: 'A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~65-71% (missed in up to half of cases in some series), recommend intraoperative assessment through a posteromedial portal when findings are equivocal.',
         },
       ],
     },

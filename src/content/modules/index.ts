@@ -364,7 +364,7 @@ The **primary restraint to lateral patellar translation** — key structure in *
     essentialTopics: [0, 1, 2],
     topics: [
       'Why systematic reading prevents missed findings',
-      'Satisfaction of search: the most common cognitive error',
+      'Satisfaction of search: a common cognitive error',
       'Overview of the 7-step search pattern',
       'How to build the pattern into daily workflow',
       'Anchor slice concept',
@@ -405,7 +405,7 @@ A search pattern forces you to evaluate **every structure in every compartment, 
       {
         content: `### Satisfaction of Search
 
-**Satisfaction of search** is the most common cognitive error in image interpretation. Once you find a significant abnormality, your brain becomes **psychologically "satisfied"** and less attentive to additional findings. This is not laziness — it is a well-documented cognitive bias.
+**Satisfaction of search** is a common cognitive error in image interpretation. Once you find a significant abnormality, your brain becomes **psychologically "satisfied"** and less attentive to additional findings. This is not laziness — it is a well-documented cognitive bias.
 
 **Classic scenario:** You correctly diagnose the ACL tear but miss:
 - **Lateral meniscus posterior root tear** (or a **medial meniscal ramp lesion**) — the meniscal injuries classically associated with acute ACL tears

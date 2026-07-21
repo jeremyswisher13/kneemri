@@ -633,7 +633,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['anterolateral', 'ALL', 'anterolateral ligament', 'rotatory instability'],
     question: 'What is the anterolateral ligament?',
     answer:
-      'The anterolateral ligament (ALL) is a structure on the anterolateral aspect of the knee that resists internal rotation and contributes to rotational stability. It is closely associated with the Segond fracture avulsion site. Injury to the ALL combined with ACL tear may contribute to persistent rotational instability. Some surgeons now perform lateral extra-articular tenodesis in addition to ACL reconstruction when the ALL is injured.',
+      'The anterolateral ligament (ALL) is a structure on the anterolateral aspect of the knee that resists internal rotation and contributes to rotational stability. It is closely associated with the Segond fracture avulsion site. Injury to the ALL combined with ACL tear may contribute to persistent rotational instability. Some surgeons now add a lateral extra-articular tenodesis to ACL reconstruction in patients at high risk of graft failure (young age, high-grade pivot shift, generalized ligamentous laxity, revision surgery, high posterior tibial slope, pivoting-sport athletes) — a decision driven by these clinical risk factors rather than by an MRI-demonstrated ALL injury alone.',
     relatedModule: '/modules/ligaments',
     category: 'ligaments',
   },

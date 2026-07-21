@@ -207,7 +207,7 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 - Coronal images may show **fluid interposed** between the peripheral meniscus and capsule
 
 ### Diagnostic Challenges
-- **Notoriously underdiagnosed** on preoperative MRI, with sensitivity reported as low as **48--65%**
+- **Notoriously underdiagnosed** on preoperative MRI — pooled sensitivity only **~65--71%** (specificity ~88--94%), and missed in **up to half** of cases in some series
 - In the setting of an ACL tear, **carefully evaluate the posterior meniscocapsular junction on every sequence**
 - Arthroscopic examination through a standard anterior portal may also miss these lesions, requiring a **posteromedial portal** or **trans-notch view** for diagnosis`,
     pearl: `In every ACL tear case, actively search for a ramp lesion by scrutinizing the posterior meniscocapsular junction of the medial meniscus on sagittal and axial sequences. These lesions are missed on up to half of preoperative MRIs and can be repaired at the time of ACL reconstruction.`,

@@ -26,7 +26,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 6,
-    text: "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; femoral-sided tears carry higher recurrence risk. Check the medial patellar margin, the femoral origin, and mid-substance on axial images.",
+    text: "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; tear site does not reliably predict recurrence (no significant difference by site on meta-analysis) — that is driven more by trochlear dysplasia, patella alta, elevated TT-TG, and young age. Check the medial patellar margin, the femoral origin, and mid-substance on axial images.",
   },
   {
     id: 7,

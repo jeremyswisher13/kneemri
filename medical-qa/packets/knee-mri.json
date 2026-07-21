@@ -199,7 +199,7 @@
       ],
       "topics": [
         "Why systematic reading prevents missed findings",
-        "Satisfaction of search: the most common cognitive error",
+        "Satisfaction of search: a common cognitive error",
         "Overview of the 7-step search pattern",
         "How to build the pattern into daily workflow",
         "Anchor slice concept"
@@ -226,7 +226,7 @@
           "pearl": "Develop a search pattern that you use identically every time, regardless of the clinical question. The pattern should become automatic — like a pilot's pre-flight checklist. You should not have to think about what to look at next; it should be reflexive."
         },
         {
-          "content": "### Satisfaction of Search\n\n**Satisfaction of search** is the most common cognitive error in image interpretation. Once you find a significant abnormality, your brain becomes **psychologically \"satisfied\"** and less attentive to additional findings. This is not laziness — it is a well-documented cognitive bias.\n\n**Classic scenario:** You correctly diagnose the ACL tear but miss:\n- **Lateral meniscus posterior root tear** (or a **medial meniscal ramp lesion**) — the meniscal injuries classically associated with acute ACL tears\n- **Posterolateral corner injury**\n- Both are surgically relevant\n\n### The Antidote\n\n- After finding the first abnormality, **resist the urge to stop reading and start dictating**\n- Complete your **entire search pattern**, then construct your report\n- Many experienced readers note the obvious finding, then **deliberately set it aside** and continue their systematic review before returning to characterize it in detail",
+          "content": "### Satisfaction of Search\n\n**Satisfaction of search** is a common cognitive error in image interpretation. Once you find a significant abnormality, your brain becomes **psychologically \"satisfied\"** and less attentive to additional findings. This is not laziness — it is a well-documented cognitive bias.\n\n**Classic scenario:** You correctly diagnose the ACL tear but miss:\n- **Lateral meniscus posterior root tear** (or a **medial meniscal ramp lesion**) — the meniscal injuries classically associated with acute ACL tears\n- **Posterolateral corner injury**\n- Both are surgically relevant\n\n### The Antidote\n\n- After finding the first abnormality, **resist the urge to stop reading and start dictating**\n- Complete your **entire search pattern**, then construct your report\n- Many experienced readers note the obvious finding, then **deliberately set it aside** and continue their systematic review before returning to characterize it in detail",
           "pearl": "When you find an ACL tear, you are only halfway done. ACL injuries have well-known associated injuries: lateral meniscal posterior horn tears, medial meniscal ramp lesions, bone contusions in the lateral compartment, posterolateral corner injuries, and cartilage damage. After diagnosing the ACL tear, actively hunt for each of these associated findings."
         },
         {
@@ -627,7 +627,7 @@
           ]
         },
         {
-          "content": "### Ramp Lesions\n\n**Ramp lesions** are peripheral longitudinal tears of the **posterior horn of the medial meniscus** at the **meniscocapsular junction** (the \"ramp\" zone). They occur at the attachment of the meniscus to the posterior capsule.\n\n### Association with ACL Injuries\n- Strongly associated with **ACL injuries**, found in approximately **16--24% of ACL-deficient knees**\n- Mechanism: **anterior tibial translation** and **rotational forces** stress the meniscocapsular junction posteriorly\n\n### MRI Detection\n\nRamp lesions can be subtle and are best identified on **sagittal and axial images** through the posterior horn of the medial meniscus. Key findings:\n- **Fluid signal or irregularity** at the meniscocapsular junction\n- **Separation** of the meniscus from the capsule\n- **Focal edema** at the posterior medial capsule\n- Coronal images may show **fluid interposed** between the peripheral meniscus and capsule\n\n### Diagnostic Challenges\n- **Notoriously underdiagnosed** on preoperative MRI, with sensitivity reported as low as **48--65%**\n- In the setting of an ACL tear, **carefully evaluate the posterior meniscocapsular junction on every sequence**\n- Arthroscopic examination through a standard anterior portal may also miss these lesions, requiring a **posteromedial portal** or **trans-notch view** for diagnosis",
+          "content": "### Ramp Lesions\n\n**Ramp lesions** are peripheral longitudinal tears of the **posterior horn of the medial meniscus** at the **meniscocapsular junction** (the \"ramp\" zone). They occur at the attachment of the meniscus to the posterior capsule.\n\n### Association with ACL Injuries\n- Strongly associated with **ACL injuries**, found in approximately **16--24% of ACL-deficient knees**\n- Mechanism: **anterior tibial translation** and **rotational forces** stress the meniscocapsular junction posteriorly\n\n### MRI Detection\n\nRamp lesions can be subtle and are best identified on **sagittal and axial images** through the posterior horn of the medial meniscus. Key findings:\n- **Fluid signal or irregularity** at the meniscocapsular junction\n- **Separation** of the meniscus from the capsule\n- **Focal edema** at the posterior medial capsule\n- Coronal images may show **fluid interposed** between the peripheral meniscus and capsule\n\n### Diagnostic Challenges\n- **Notoriously underdiagnosed** on preoperative MRI — pooled sensitivity only **~65--71%** (specificity ~88--94%), and missed in **up to half** of cases in some series\n- In the setting of an ACL tear, **carefully evaluate the posterior meniscocapsular junction on every sequence**\n- Arthroscopic examination through a standard anterior portal may also miss these lesions, requiring a **posteromedial portal** or **trans-notch view** for diagnosis",
           "pearl": "In every ACL tear case, actively search for a ramp lesion by scrutinizing the posterior meniscocapsular junction of the medial meniscus on sagittal and axial sequences. These lesions are missed on up to half of preoperative MRIs and can be repaired at the time of ACL reconstruction.",
           "images": [
             {
@@ -822,7 +822,7 @@
           "pearl": "When you see an MCL tear with an ACL injury, always evaluate the posteromedial corner structures (posterior oblique ligament, semimembranosus expansions). Combined ACL + MCL + PMC injury creates anteromedial rotatory instability that may require PMC repair or reconstruction in addition to ACL surgery."
         },
         {
-          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\nThe tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value in the mid-to-high teens may already be approaching the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (the MRI equivalent of the CT 20 mm cutoff is ≈ 16 mm — Camp et al. found MRI reads ~3.8 mm lower than CT — and MRI values ≥ ~15 mm are generally considered abnormal).",
+          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\nThe tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: **tear site does not reliably predict recurrence** (a meta-analysis found no significant difference between femoral, patellar, and combined tears, p=0.17) and it is not reliably the commonest site — so report the site but drive prognosis off trochlear dysplasia, patella alta, TT-TG, and age.\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value in the mid-to-high teens may already be approaching the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (the MRI equivalent of the CT 20 mm cutoff is ≈ 16 mm — Camp et al. found MRI reads ~3.8 mm lower than CT — and MRI values ≥ ~15 mm are generally considered abnormal).",
           "pearl": "The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.",
           "images": [
             {
@@ -1000,7 +1000,7 @@
         },
         {
           "content": "### Ramp Lesions\n\n**Ramp lesions** (meniscocapsular tears of the posterior medial meniscus) are missed on preoperative MRI in **up to 50% of cases**, making them one of the most underdiagnosed findings in knee imaging. They are present in approximately **16--24% of ACL-injured knees**.\n\n### Where to Look\n\nThe key to detection is knowing where to look and **actively searching** in every ACL tear case.\n\n**Sagittal images:**\n- Fluid signal or irregularity at the **meniscocapsular junction** of the posterior medial meniscus, posterior to the MCL attachment\n\n**Axial images:**\n- Fluid interposed between the **peripheral meniscus** and the **capsule**\n\n**Coronal images:**\n- Subtle separation at the **inferior meniscocapsular junction**\n\n**Secondary signs:**\n- Focal edema at the **posterior medial capsule**\n- Small amount of fluid tracking along the capsular attachment\n\n### Surgical Significance\n- Contribute to **anterior tibial translation** and **rotational instability**\n- If unrepaired at the time of ACL reconstruction, may **increase the risk of graft failure**\n\n### Reporting Recommendation\n- **Specifically state** the presence or absence of a ramp lesion in **every ACL tear case**\n- When equivocal, recommend **intraoperative assessment** through a **posteromedial portal** or **trans-notch approach** (standard anterior arthroscopic portals frequently miss these lesions)",
-          "pearl": "Make it a habit to include a specific statement about the presence or absence of a ramp lesion in every ACL tear report. The sensitivity of MRI for ramp lesions is modest (around 50-65%), so when findings are equivocal, recommend intraoperative assessment through a posteromedial portal."
+          "pearl": "Make it a habit to include a specific statement about the presence or absence of a ramp lesion in every ACL tear report. The sensitivity of MRI for ramp lesions is modest (pooled ~65-71% at ~88-94% specificity; missed in up to half of cases in some series), so when findings are equivocal, recommend intraoperative assessment through a posteromedial portal."
         },
         {
           "content": "### Bucket-Handle Tears\n\n**Bucket-handle tears** represent displaced vertical longitudinal meniscal tears where the central fragment flips into the **intercondylar notch**. They cause **mechanical locking** and require **urgent surgical intervention**. Missing a bucket-handle tear can result in unnecessary delay while the displaced fragment causes **progressive cartilage damage**.\n\n### Three Cardinal Signs\n\n| # | Sign | What to Look For |\n|---|------|-----------------|\n| 1 | **Absent bow-tie sign** | Fewer than 2 consecutive sagittal images with the bow-tie configuration of the meniscal body |\n| 2 | **Double PCL sign** | Displaced fragment in the notch parallel to and anterior to the PCL on sagittal images |\n| 3 | **Flipped meniscus sign** | Displaced fragment adjacent to the anterior horn, making it appear disproportionately large |\n\n### Coronal Image Confirmation\n- **Truncated donor site** -- shortened, blunted residual meniscal tissue\n- **Fragment in the intercondylar notch**\n\n### Key Details\n- The **medial meniscus** is most commonly affected\n- Always **trace the displaced fragment** to determine its extent and location (guides the surgical approach)\n\n### Reporting Checklist\n- **Donor site** location\n- **Fragment position**\n- **Approximate length** of the tear\n- Associated findings: joint effusion (often large), clinical locking, inability to achieve full extension",
@@ -1411,7 +1411,7 @@
       },
       "teachingPoints": [
         "The patellar dislocation contusion pattern is medial patellar facet + anterolateral LFC — these are \"kissing contusions.\"",
-        "The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Femoral-sided tears carry higher recurrence risk.",
+        "The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Tear site does not reliably predict recurrence (a meta-analysis found no significant difference — femoral 37.6% vs patellar 32.3%, p=0.17); recurrence is driven more by trochlear dysplasia, patella alta, elevated TT-TG, and younger age.",
         "Always look for osteochondral fragments and loose bodies after patellar dislocation.",
         "Report predisposing factors: trochlear dysplasia, patella alta, increased TT-TG distance, and lateral patellar tilt / excessive lateral patellar translation."
       ],
@@ -3550,7 +3550,7 @@
               "Medial femoral condyle alone"
             ],
             "answer": 0,
-            "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk)."
+            "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (tear site does not reliably predict recurrence — a meta-analysis found no significant difference by site, p=0.17)."
           }
         ]
       },
@@ -3908,7 +3908,7 @@
         "measure": "The superficial MCL runs from the medial femoral epicondyle to ~5–7 cm below the joint line on the tibia — trace its full length on coronal before calling it intact."
       },
       "Meniscus — the dark bow-ties": {
-        "measure": "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >13–15 mm — is a discoid meniscus, not normal."
+        "measure": "Three or more contiguous bow-tie slices (4–5 mm sagittal) — or a central coronal body width >15 mm (or a meniscal-to-tibial-plateau-width ratio >20%) — is a discoid meniscus, not normal."
       },
       "Meniscus": {
         "variant": "Linear grade-2 signal that does NOT reach an articular surface is degeneration, common after 40. Surface-reaching signal on two consecutive standard slices (two-slice-touch) gives high confidence for a tear; a one-slice finding is lower confidence and needs morphologic and orthogonal correlation. At the lateral meniscus, the popliteal hiatus and popliteomeniscal fascicles can create a smooth normal gap near the popliteus tendon; loss of fascicles, peripheral fluid, or hypermobile-meniscus context is abnormal."
@@ -4671,7 +4671,7 @@
           "Lateral meniscus discoid variant"
         ],
         "answer": 0,
-        "explanation": "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a posterior (reverse Segond) medial tibial avulsion, not this lateral fragment, so it is the weaker association."
+        "explanation": "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a medial (reverse Segond) tibial rim avulsion, not this lateral fragment, so it is the weaker association."
       },
       {
         "id": "caq-2",
@@ -4827,7 +4827,7 @@
           "Increased intrameniscal grade 2 signal in the posterior horn"
         ],
         "answer": 1,
-        "explanation": "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >13-15 mm) indicates a discoid meniscus."
+        "explanation": "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >15 mm, or a meniscal-to-tibial-width ratio >20%) indicates a discoid meniscus."
       },
       {
         "id": "menisci-2",
@@ -5954,7 +5954,7 @@
       "moduleId": "ligaments",
       "prePostMapping": "parallel-pre",
       "parallelId": "kn-collateral-corner-1",
-      "stem": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
+      "stem": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
       "options": [
         {
           "key": "A",
@@ -6256,7 +6256,7 @@
     },
     {
       "finding": "Segond / reverse Segond fracture",
-      "action": "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a posteromedial avulsion points to the PCL. The fracture flags the ligament — go look."
+      "action": "A lateral tibial rim avulsion points to an ACL tear (~75–100%); a medial (reverse Segond) rim avulsion points to the PCL. The fracture flags the ligament — go look."
     }
   ],
   "surgicalCorrelates": [
@@ -6299,7 +6299,7 @@
     },
     {
       "id": 6,
-      "text": "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; femoral-sided tears carry higher recurrence risk. Check the medial patellar margin, the femoral origin, and mid-substance on axial images."
+      "text": "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; tear site does not reliably predict recurrence (no significant difference by site on meta-analysis) — that is driven more by trochlear dysplasia, patella alta, elevated TT-TG, and young age. Check the medial patellar margin, the femoral origin, and mid-substance on axial images."
     },
     {
       "id": 7,
@@ -8395,7 +8395,7 @@
           {
             "id": "fc-menisci-t4-2",
             "question": "What is the reported MRI sensitivity for detecting ramp lesions?",
-            "answer": "Only 48-65%. Ramp lesions are notoriously underdiagnosed on preoperative MRI, missed in up to half of cases. In every ACL tear, actively search the posterior meniscocapsular junction."
+            "answer": "Pooled MRI sensitivity is only ~65-71% (specificity ~88-94%); ramp lesions are notoriously underdiagnosed and missed in up to half of cases in some series. In every ACL tear, actively search the posterior meniscocapsular junction."
           }
         ]
       },
@@ -8746,7 +8746,7 @@
           {
             "id": "fc-top-10-dont-miss-t1-1",
             "question": "What should you include in every ACL tear report regarding ramp lesions?",
-            "answer": "A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~50-65%, recommend intraoperative assessment through a posteromedial portal when findings are equivocal."
+            "answer": "A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~65-71% (missed in up to half of cases in some series), recommend intraoperative assessment through a posteromedial portal when findings are equivocal."
           }
         ]
       },
@@ -11618,7 +11618,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (femoral-sided tears do carry a higher recurrence risk).",
+      "explanation": "Lateral patellar dislocation classically bruises the INFEROMEDIAL patellar facet and the ANTEROLATERAL femoral condyle as the patella relocates — and tears the MPFL. In pooled first-time-dislocation MRI data the tear is at the patellar attachment in ~48%, the femoral (adductor-tubercle) origin in ~34%, and mid-substance in ~18%, so inspect BOTH ends rather than assuming a femoral-sided tear (tear site does not reliably predict recurrence — a meta-analysis found no significant difference by site, p=0.17).",
       "source": "Knee MRI · Axial",
       "courseId": "knee-mri",
       "image": {
@@ -11990,7 +11990,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a posterior (reverse Segond) medial tibial avulsion, not this lateral fragment, so it is the weaker association.",
+      "explanation": "A vertical cortical avulsion of the lateral tibia just below the joint line is a Segond fracture, an avulsion at the anterolateral capsular/iliotibial attachment that is highly associated (>75-90%) with ACL rupture. A PCL tear is instead linked with a medial (reverse Segond) tibial rim avulsion, not this lateral fragment, so it is the weaker association.",
       "source": "Knee MRI · Advanced",
       "courseId": "knee-mri"
     },
@@ -12290,7 +12290,7 @@
         }
       ],
       "correctAnswer": "B",
-      "explanation": "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >13-15 mm) indicates a discoid meniscus.",
+      "explanation": "A normal meniscus shows the contiguous 'bow-tie' body on at most 2 consecutive 4-5 mm sagittal slices; 3 or more contiguous bow-tie segments (or a central coronal width >15 mm, or a meniscal-to-tibial-width ratio >20%) indicates a discoid meniscus.",
       "source": "Knee MRI · Advanced",
       "courseId": "knee-mri"
     },
@@ -13710,7 +13710,7 @@
       "source": "Flashcard · Menisci",
       "flashcard": {
         "front": "What is the reported MRI sensitivity for detecting ramp lesions?",
-        "back": "Only 48-65%. Ramp lesions are notoriously underdiagnosed on preoperative MRI, missed in up to half of cases. In every ACL tear, actively search the posterior meniscocapsular junction."
+        "back": "Pooled MRI sensitivity is only ~65-71% (specificity ~88-94%); ramp lesions are notoriously underdiagnosed and missed in up to half of cases in some series. In every ACL tear, actively search the posterior meniscocapsular junction."
       },
       "moduleId": "menisci",
       "topicIndex": 4,
@@ -14354,7 +14354,7 @@
       "source": "Flashcard · Top 10 Don't Miss",
       "flashcard": {
         "front": "What should you include in every ACL tear report regarding ramp lesions?",
-        "back": "A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~50-65%, recommend intraoperative assessment through a posteromedial portal when findings are equivocal."
+        "back": "A specific statement about the presence or absence of a ramp lesion. Since MRI sensitivity is only ~65-71% (missed in up to half of cases in some series), recommend intraoperative assessment through a posteromedial portal when findings are equivocal."
       },
       "moduleId": "top-10-dont-miss",
       "topicIndex": 1,
@@ -15157,7 +15157,7 @@
       "courseId": "knee-mri"
     },
     "knee-mri::prepost-kn-collateral-corner-1-pre": {
-      "stem": "A 25-year-old skier has an acute valgus-and-rotation injury. MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
+      "stem": "A 25-year-old skier has an acute pivoting injury (internal rotation with varus stress). MRI shows a curvilinear bony fragment avulsed from the lateral margin of the proximal tibia just below the joint line. Recognizing this finding should most prompt the radiologist to scrutinize which structure?",
       "options": [
         {
           "key": "A",
