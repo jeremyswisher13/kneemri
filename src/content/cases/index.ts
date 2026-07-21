@@ -70,7 +70,7 @@ export const caseRegistry: CaseMetadata[] = [
       'Degenerative meniscal tears in the setting of OA rarely benefit from arthroscopic surgery — multiple RCTs show no benefit over physical therapy.',
       'Meniscal extrusion >3mm is a marker of root tear or severe degeneration and correlates with accelerated OA progression.',
       'Mucoid ACL degeneration is common in OA knees and should not be reported as an ACL tear.',
-      'Subchondral cysts (geodes) form from synovial fluid intrusion through damaged cartilage.',
+      'Subchondral cysts (geodes) are thought to form either by synovial-fluid intrusion through damaged cartilage or by microfracture/necrosis of denuded subchondral bone (bony-contusion theory); the exact mechanism remains debated.',
       'When reporting OA, describe compartment-by-compartment severity to help surgical planning (unicompartmental vs total knee arthroplasty).',
       'Baker cysts are commonly secondary to intra-articular pathology, so look for an underlying cause.',
     ],
@@ -281,7 +281,7 @@ export const caseRegistry: CaseMetadata[] = [
     },
     teachingPoints: [
       'The patellar dislocation contusion pattern is medial patellar facet + anterolateral LFC — these are "kissing contusions."',
-      'MPFL tears most commonly occur at the femoral insertion (adductor tubercle region).',
+      'The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Femoral-sided tears carry higher recurrence risk.',
       'Always look for osteochondral fragments and loose bodies after patellar dislocation.',
       'Report predisposing factors: trochlear dysplasia, patella alta, increased TT-TG distance, and lateral patellar tilt / excessive lateral patellar translation.',
     ],
@@ -415,7 +415,7 @@ export const caseRegistry: CaseMetadata[] = [
       'The dashboard contusion pattern (anterior proximal tibia) results from a posteriorly directed force on the flexed knee — think PCL injury.',
       'PLC injuries are present in up to 60% of PCL ruptures — always evaluate the posterolateral corner when you see a PCL tear.',
       'PLC structures to evaluate: LCL, popliteus tendon, popliteofibular ligament, arcuate ligament, biceps femoris.',
-      'Untreated PLC injuries are the #1 cause of ACL and PCL reconstruction graft failure.',
+      'Unrecognized PLC injury is possibly the most common IDENTIFIABLE cause of ACL and PCL reconstruction graft failure — always address it, because residual posterolateral/varus laxity overloads the cruciate graft. (The most common cause of ACL graft failure overall is technical error, chiefly femoral tunnel malposition.)',
     ],
     searchPatternFindings: [
       { step: 1, stepName: 'Verify & Orient', expectedFindings: ['Moderate joint effusion'] },
@@ -730,7 +730,7 @@ export const caseRegistry: CaseMetadata[] = [
       impression: '1. Knee dislocation pattern with bicruciate tear (ACL + PCL).\n2. Posterolateral corner disruption (LCL, popliteus, popliteofibular ligament).\n3. MCL high-grade partial tear — this is a KD-IV multiligament knee injury (both cruciates plus both collaterals; the medial-side injury places it beyond KD-IIIL, which requires an intact MCL).\n4. Multiple meniscal and chondral injuries.\n5. CRITICAL: Recommend urgent vascular assessment of the popliteal artery if not already performed.',
     },
     teachingPoints: [
-      'A knee dislocation is defined by bicruciate injury (ACL + PCL) regardless of whether the knee is currently reduced.',
+      'A knee dislocation is usually a bicruciate injury (ACL + PCL) and still counts when the knee has spontaneously reduced; the uncommon Schenck KD-I pattern is a documented tibiofemoral dislocation with only one cruciate torn.',
       'The Schenck (KD) classification: KD-I (single cruciate torn — ACL or PCL — with the other cruciate intact; ± collateral), KD-II (both cruciates, collaterals intact), KD-III (both cruciates + one collateral; IIIM = medial, IIIL = lateral), KD-IV (both cruciates + both collaterals), KD-V (fracture-dislocation).',
       'Popliteal artery injury can be occult in knee dislocation — urgent vascular assessment is required; CTA/MRA is appropriate when pulses, ABI, or clinical findings are abnormal or equivocal.',
       'Report every structure systematically — missing a PLC injury in a multiligament knee leads to graft failure.',
@@ -763,7 +763,7 @@ export const caseRegistry: CaseMetadata[] = [
     radiopaediaTitle: 'Patellar tendon rupture - complete',
     modelReport: {
       findings: 'Extensor mechanism: Complete rupture of the patellar tendon at its proximal attachment (inferior pole of patella). The torn tendon is retracted distally and may form a "ball" of tissue. Gap between the inferior patella and the proximal tendon stump filled with fluid/hemorrhage.\n\nPatella: Patella alta — the patella rides superiorly due to loss of the distal tether. Insall-Salvati ratio markedly elevated.\n\nQuadriceps tendon: Intact but assess carefully for concomitant injury.\n\nBones: Possible small avulsion fragment from the inferior pole of the patella.\n\nEffusion: Moderate joint effusion with prepatellar and infrapatellar soft tissue edema.',
-      impression: '1. Complete patellar tendon rupture at its proximal attachment with tendon retraction.\n2. Patella alta secondary to the tendon rupture.\n3. Intact quadriceps tendon.\n4. This is a surgical emergency for the extensor mechanism — urgent repair is recommended.',
+      impression: '1. Complete patellar tendon rupture at its proximal attachment with tendon retraction.\n2. Patella alta secondary to the tendon rupture.\n3. Intact quadriceps tendon.\n4. This is an urgent extensor-mechanism injury — early primary repair (ideally within ~2–3 weeks, before tendon retraction) is recommended; delayed repair (past ~6 weeks) often requires graft augmentation or reconstruction.',
     },
     teachingPoints: [
       'Patellar tendon rupture is more common in patients <40; quadriceps tendon rupture is more common >40.',

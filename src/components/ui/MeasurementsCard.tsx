@@ -13,7 +13,7 @@ export const measurementSections: MeasurementSection[] = [
       {
         label: "Meniscal extrusion",
         detail:
-          ">3 mm = pathologic; >5 mm suggests severe extrusion with major loss of hoop function. Measure on coronal image at mid-body, referenced to tibial plateau margin.",
+          ">3 mm = pathologic (Costa 2004) and should trigger a root/radial-tear and cartilage search. Report the measured value rather than assigning a 'severe' tier — no separate validated cutoff (e.g. >5 mm) exists. Measure on coronal image at mid-body, referenced to tibial plateau margin.",
       },
       {
         label: "Two-slice-touch rule",
@@ -112,7 +112,7 @@ export const measurementSections: MeasurementSection[] = [
       {
         label: "TT-TG distance",
         detail:
-          "<15 mm normal, 15\u201320 mm borderline, >20 mm = increased risk of patellar instability. Measure on axial images.",
+          "TT-TG distance: the <15 / 15\u201320 / >20 mm bands are CT-derived (Dejour). On MRI the value runs ~2\u20134 mm lower than CT and the two are not interchangeable (the gap widens at higher values; Camp 2013). Use MRI-specific cutoffs (~\u226515 mm concerning) \u2014 do not require >20 mm on MRI \u2014 and always state the modality. Measure on axial images.",
       },
       {
         label: "Trochlear dysplasia",
@@ -192,7 +192,7 @@ export const measurementSections: MeasurementSection[] = [
       {
         label: "Notch width index",
         detail:
-          "<0.2 suggests notch stenosis and increased risk of ACL impingement. Measure on coronal image at level of popliteal groove.",
+          "Notch width ÷ bicondylar width at the popliteal-groove level. The <0.20 cutoff is a RISK marker for ACL injury derived on notch-view radiographs (Souryal), not MRI, and is a modest/inconsistent predictor — not a diagnosis of impingement. Interpret with caution; favor notch shape/volume on MRI.",
       },
       {
         label: "Contusion pattern recognition",

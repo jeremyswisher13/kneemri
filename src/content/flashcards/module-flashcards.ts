@@ -85,7 +85,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-mri-basics-t4-1',
           question: 'How should you adjust window/level differently when evaluating menisci versus cartilage?',
-          answer: 'Widen the window for meniscal evaluation to reveal internal signal changes within the dark meniscus. Narrow the window for cartilage to maximize contrast between the cartilage surface and adjacent fluid.',
+          answer: 'Narrow the window for meniscal evaluation, centering the level low on the dark meniscus, so the small range of low signal is spread across the gray scale and faint intrasubstance signal becomes visible (widening compresses contrast and hides it). Narrow the window for cartilage as well, to maximize contrast between the cartilage surface and adjacent fluid.',
         },
       ],
     },
@@ -286,7 +286,7 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-cartilage-osteochondral-t1-1',
           question: 'What are the modified ICRS grades for cartilage loss on MRI?',
-          answer: 'Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: partial-thickness defect (>50%) or full-thickness without bone exposure. Grade 4: full-thickness with subchondral bone exposure.',
+          answer: 'Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: >50% partial-thickness, OR full-thickness down to but not through the (intact) subchondral bone plate — ICRS 3C. Grade 4: defect that penetrates THROUGH the subchondral bone plate (osteochondral). (Note: modified Outerbridge instead calls full-thickness cartilage loss with exposed bone "grade IV" — state which system you are using.)',
         },
       ],
     },
@@ -455,12 +455,12 @@ export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: 'fc-menisci-t6-1',
           question: 'How is meniscal extrusion measured, and what threshold is pathologic?',
-          answer: 'Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm is pathologic; greater than 5 mm suggests severe extrusion with major loss of hoop stress function.',
+          answer: 'Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm beyond the tibial plateau margin is the conventional pathologic cut-off (Costa 2004) and should trigger a search for a meniscal root tear; report the measured value rather than assigning a "severe" tier, as no separate validated cut-off exists.',
         },
         {
           id: 'fc-menisci-t6-2',
           question: 'At what meniscal extrusion threshold should you actively search for a meniscal root tear?',
-          answer: 'Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; >5 mm indicates severe meniscal dysfunction with major loss of hoop-stress function.',
+          answer: 'Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; report the measured value rather than assigning a separate ">5 mm severe" tier, which is not validated.',
         },
       ],
     },

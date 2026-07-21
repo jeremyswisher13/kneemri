@@ -18,7 +18,9 @@ const SH_COR = "/images/teaching/stacks/normal-shoulder-coronal"; // 24 slices
 const SH_AXI = "/images/teaching/stacks/normal-shoulder-axial"; // 30 slices
 
 /** Shared attribution for the de-identified teaching stacks (matches the workstation). */
-export const STACK_ATTR = "De-identified normal knee MRI · UCLA Sports Medicine teaching collection";
+// Region-neutral: this attribution is shared across knee AND shoulder scroll-drills,
+// so it must not name a body region (a shoulder stack was reading "knee").
+export const STACK_ATTR = "De-identified normal MRI · UCLA Sports Medicine teaching collection";
 
 export type InteractiveBlock =
   | {

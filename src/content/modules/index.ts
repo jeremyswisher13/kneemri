@@ -137,7 +137,7 @@ Key rule: **magic angle artifact disappears on T2**. If increased signal in a me
 
 **Motion Artifact** — produces ghosting in the phase-encoding direction and degrades overall image quality. Always note significant motion artifact in your report as it **limits diagnostic confidence**.`,
         pearl:
-          'When you see increased signal in the posterior horn of the lateral meniscus on a single sagittal PD image — before calling it a tear, check the T2 sequence at the same location. If the signal goes away, it is magic angle artifact. True tears will persist as high signal on T2.',
+          'When you see increased signal in the posterior horn of the lateral meniscus on a single sagittal PD image, check the T2 sequence at the same location: if the signal drops out, it is magic-angle artifact (magic angle affects short-TE sequences and fades at long TE). But confirm a true tear by signal that unequivocally reaches the articular surface on 2 or more images (two-slice-touch) and by orthogonal/morphologic correlation — not by T2 brightness. Do not exclude a tear simply because its signal fades on T2; menisci are read most sensitively on short-TE (PD/intermediate) sequences.',
         images: [],
       },
       {
@@ -467,7 +467,7 @@ Use a **structured reporting template** that mirrors your search pattern:
 - The **report drives the reading**, and the **reading populates the report**
 - This creates a **closed loop** where your search pattern is reinforced every time you dictate`,
         pearl:
-          'For your first 50 cases, keep a tally of how many additional findings you discover after completing your search pattern beyond the first obvious finding. This will convince you of the value of systematic reading — most readers find additional clinically relevant pathology in 30-40% of cases.',
+          'For your first 50 cases, keep a tally of how many additional findings you discover after completing your search pattern beyond the first obvious finding. This will convince you of the value of systematic reading — most readers are surprised how often disciplined review turns up further clinically relevant pathology (satisfaction of search is a well-documented reading bias).',
       },
       {
         content: `### The Anchor Slice Concept
@@ -741,7 +741,7 @@ Alignment assessment on MRI is a **secondary evaluation** — weight-bearing rad
 | **Key clue** | Subchondral fracture line | Well-defined fragment | Double-line sign on T2 |
 | **Risk factors** | Osteoporosis, meniscal root tear | Activity-related | Steroids, alcohol, SLE |`,
         pearl:
-          'The size of the SIFK lesion on MRI predicts outcome. Lesions smaller than 3.5 cm² on sagittal images (roughly less than 40% of the condylar width) generally respond to conservative treatment with protected weight-bearing. Larger lesions are more likely to progress to condylar collapse and may need surgical intervention. Always measure and report the lesion size.',
+          'Lesion size and morphology on MRI predict outcome. Higher risk of progression to subchondral collapse is signaled by larger anteroposterior/transverse lesion dimensions, a subchondral low-signal fracture line longer than ~14 mm or thicker than ~4 mm on T2 (Lecouvet), articular-surface collapse, and an associated medial meniscus posterior root tear with extrusion. (The classic ">40% of condylar width" figure is a radiographic width ratio, not an MRI area — do not apply it as a sagittal-MRI area cutoff.) Small lesions without collapse often respond to protected weight-bearing; always measure and report AP and transverse dimensions and note any surface collapse.',
         images: [
           {
             src: '/images/teaching/cases/sifk-sonk/26_ESSR_SIFK_SubchondralFracture_Edema.jpg',
@@ -819,7 +819,7 @@ Evaluate cartilage systematically by compartment, assessing both surfaces indepe
           'Patellofemoral cartilage is best evaluated on axial images, not sagittal. On axial PD FS, you can see the entire patellar articular surface and the opposing trochlear surface. The most common location for patellar cartilage loss is the lateral patellar facet — always look here.',
       },
       {
-        content: `### Cartilage Grading System (Modified Outerbridge / ICRS)
+        content: `### Cartilage Grading System (Modified Outerbridge, MRI)
 
 | Grade | Description | MRI Appearance |
 |---|---|---|
@@ -828,6 +828,8 @@ Evaluate cartilage systematically by compartment, assessing both surfaces indepe
 | **2** | Partial-thickness defect **<50%** | Shallow surface irregularity, fluid signal partial depth |
 | **3** | Partial-thickness defect **>50%** | Deep fissure or defect, does **not** reach subchondral bone |
 | **4** | Full-thickness defect | **Exposed subchondral bone**, fluid signal extends to bone |
+
+> **Outerbridge vs ICRS diverge at the deepest grades — name the system.** Full-thickness cartilage loss with an **intact** subchondral plate is **ICRS 3C** (modified Outerbridge IV); **ICRS grade 4** requires penetration **through** the subchondral bone plate (osteochondral).
 
 ### Reporting Checklist
 
@@ -839,7 +841,7 @@ When reporting cartilage lesions, specify:
 
 ### Surgical Relevance
 
-For surgical planning, size and location are as important as the grade. **Full-thickness defects >2 cm\u00B2** in the weight-bearing zone of the femoral condyle may be candidates for **cartilage restoration procedures** (microfracture, OATS, ACI/MACI) — accurate measurement matters.`,
+For surgical planning, size and location are as important as the grade. Full-thickness weight-bearing femoral-condyle defects are candidates for **cartilage restoration**, with technique guided by size: **microfracture for small lesions (<2 cm²)**, OATS/mosaicplasty for small-to-mid lesions (~2–4 cm²), and ACI/MACI or fresh osteochondral allograft for larger lesions (>~2–4 cm²). Accurate AP and transverse measurement matters because it drives the choice.`,
         pearl:
           'The distinction between grade 2 and grade 3 lesions is clinically important: grade 3 and 4 defects in the weight-bearing femoral condyle may be candidates for surgical cartilage restoration (microfracture, OATS, ACI/MACI), while grade 2 lesions are generally managed conservatively. Report the thickness involvement as precisely as you can.',
       },

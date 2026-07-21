@@ -92,14 +92,29 @@ export default function ModulePage() {
     setExpandedTopics(new Set());
   }
 
-  // Warn before navigating away from an in-progress quiz
+  // A quiz is "in progress" once the learner has answered anything but not
+  // submitted. Used to guard BOTH hard unload (beforeunload, below) and in-app
+  // React Router navigation (the breadcrumb / prev-next / skip links call
+  // confirmLeaveQuiz onClick) — beforeunload alone does not fire on SPA nav, so
+  // those links would otherwise silently discard answers on the reset effect.
+  const quizInProgress = Object.keys(answers).length > 0 && !quizResults;
+  const confirmLeaveQuiz = useCallback(
+    (e: { preventDefault: () => void }) => {
+      if (quizInProgress && !window.confirm("You have unsaved quiz answers on this module. Leave anyway?")) {
+        e.preventDefault();
+      }
+    },
+    [quizInProgress],
+  );
+
   useEffect(() => {
-    const hasAnswers = Object.keys(answers).length > 0;
-    if (!hasAnswers || quizResults) return;
-    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
+    if (!quizInProgress) return;
+    // returnValue is required for the prompt to fire in most browsers (iOS Safari
+    // ignores beforeunload entirely — the in-app confirmLeaveQuiz covers SPA nav).
+    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ""; };
     window.addEventListener('beforeunload', handler);
     return () => window.removeEventListener('beforeunload', handler);
-  }, [answers, quizResults]);
+  }, [quizInProgress]);
 
   // Scroll to top when navigating between modules
   useEffect(() => {
@@ -280,7 +295,7 @@ export default function ModulePage() {
     <div>
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-        <Link to={coursePath(activeCourse, "/modules")} className="hover:text-ucla-blue transition-colors">
+        <Link to={coursePath(activeCourse, "/modules")} onClick={confirmLeaveQuiz} className="hover:text-ucla-blue transition-colors">
           Modules
         </Link>
         <span>/</span>
@@ -605,7 +620,7 @@ export default function ModulePage() {
 
               {/* Continue to next module button */}
               {nextModule ? (
-                <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} className="mt-5 inline-block">
+                <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} onClick={confirmLeaveQuiz} className="mt-5 inline-block">
                   <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
                     Continue to Module {nextModule.number}: {nextModule.title}
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -614,7 +629,7 @@ export default function ModulePage() {
                   </button>
                 </Link>
               ) : (
-                <Link to={coursePath(activeCourse, "/cases")} className="mt-5 inline-block">
+                <Link to={coursePath(activeCourse, "/cases")} onClick={confirmLeaveQuiz} className="mt-5 inline-block">
                   <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
                     All modules complete! Continue to Cases
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -700,6 +715,7 @@ export default function ModulePage() {
                 </span>
                 <Link
                   to={nextModule ? coursePath(activeCourse, `/modules/${nextModule.id}`) : coursePath(activeCourse, "/cases")}
+                  onClick={confirmLeaveQuiz}
                 >
                   <Button variant="secondary" size="sm">
                     Skip quiz (admin) →
@@ -880,13 +896,13 @@ export default function ModulePage() {
       <div className="mt-8 flex items-center justify-between">
         <div>
           {prevModule ? (
-            <Link to={coursePath(activeCourse, `/modules/${prevModule.id}`)}>
+            <Link to={coursePath(activeCourse, `/modules/${prevModule.id}`)} onClick={confirmLeaveQuiz}>
               <Button variant="secondary" size="sm">
                 &larr; Module {prevModule.number}: {prevModule.title}
               </Button>
             </Link>
           ) : (
-            <Link to={coursePath(activeCourse, "/modules")}>
+            <Link to={coursePath(activeCourse, "/modules")} onClick={confirmLeaveQuiz}>
               <Button variant="secondary" size="sm">
                 &larr; Back to Modules
               </Button>
@@ -895,7 +911,7 @@ export default function ModulePage() {
         </div>
         <div>
           {nextModule && (
-            <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)}>
+            <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} onClick={confirmLeaveQuiz}>
               <Button size="sm">
                 Module {nextModule.number}: {nextModule.title} &rarr;
               </Button>

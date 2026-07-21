@@ -408,7 +408,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 | **Bone bruise in acute ACL tear** | **~80%** | Fades over 3–12 months — a chronic ACL knee may have none |
 | **Root tear biomechanics** | Contact pressure **+25%** = total meniscectomy | Allaire, *JBJS* 2008 (cadaveric); repair restored it |
 | **TT-TG (CT)** | **≥20 mm** abnormal | Dejour 1994, **measured on CT**. A **risk factor, not an isolated indication** (whether TT-TG alone justifies osteotomy is genuinely contested) |
-| **TT-TG (MRI)** | MRI equivalent **≈13 mm**; runs lower than CT | Dejour's Lyon target; pooled Δ 1.8 mm, up to 3.8 mm in operative knees (Tan 2020; Camp 2013). **Never carry the CT 20 mm number onto an MRI — it under-calls** |
+| **TT-TG (MRI)** | MRI abnormal ≈ **≥15 mm**; the CT 20 mm cutoff ≈ **16 mm** on MRI | MRI runs ~2–4 mm lower than CT (pooled Δ 1.8 mm, 3.8 mm in operative knees — Camp 2013; Tan 2020). **Never carry the CT 20 mm number onto an MRI — it under-calls.** State the modality |
 | **Insall-Salvati** | Normal 0.8–1.2; **>1.2 = alta** | Tendon ÷ patellar diagonal. The one index whose normal values still apply **on MRI** |
 | **Caton-Deschamps** | Normal 0.6–1.2; **>1.2 = alta** | Distalization planning — but **measure on a lateral radiograph, not MRI** (single-slice MRI inflates it up to 9%; Martinez-Cano *KSSTA* 2022) |
 | **Trochlear depth** | **≤3 mm** = dysplastic | Axial, 3 cm above the joint line, off the cartilage contour (Pfirrmann, *Radiology* 2000) |

@@ -72,7 +72,7 @@
         },
         {
           "content": "### Common Artifacts and Pitfalls\n\n**Magic Angle Artifact** — the most clinically important artifact. Structures oriented at **55 degrees to the main magnetic field** show artifactually increased signal on **short TE sequences** (T1 and PD). Commonly affects:\n- **Posterior horn of the lateral meniscus** (where it curves upward)\n- **Popliteus tendon**\n- Portions of the **cruciate ligaments**\n\nKey rule: **magic angle artifact disappears on T2**. If increased signal in a meniscus on PD disappears on T2, it is likely artifact, not a tear.\n\n**Truncation Artifact (Gibbs Artifact)** — produces alternating bright and dark lines parallel to high-contrast interfaces. Classically produces a **linear bright line through the meniscus** on sagittal images, mimicking a horizontal tear. Distinguishing clue: the truncation line runs parallel to, and at a fixed short distance from, the meniscal surface and does **NOT contact the articular surface** (a true tear's signal reaches a surface). It can be reduced by increasing the acquisition matrix or changing the phase-encode direction; confirm on a second plane.\n\n**Motion Artifact** — produces ghosting in the phase-encoding direction and degrades overall image quality. Always note significant motion artifact in your report as it **limits diagnostic confidence**.",
-          "pearl": "When you see increased signal in the posterior horn of the lateral meniscus on a single sagittal PD image — before calling it a tear, check the T2 sequence at the same location. If the signal goes away, it is magic angle artifact. True tears will persist as high signal on T2.",
+          "pearl": "When you see increased signal in the posterior horn of the lateral meniscus on a single sagittal PD image, check the T2 sequence at the same location: if the signal drops out, it is magic-angle artifact (magic angle affects short-TE sequences and fades at long TE). But confirm a true tear by signal that unequivocally reaches the articular surface on 2 or more images (two-slice-touch) and by orthogonal/morphologic correlation — not by T2 brightness. Do not exclude a tear simply because its signal fades on T2; menisci are read most sensitively on short-TE (PD/intermediate) sequences.",
           "images": []
         },
         {
@@ -242,7 +242,7 @@
         },
         {
           "content": "### Building the Pattern Into Daily Workflow\n\nBuilding a search pattern into your daily workflow requires **deliberate practice**:\n\n- For the first **50-100 cases**, use a physical or mental checklist — literally check off each step as you complete it\n- It will feel slow at first — that is expected\n- With practice, the pattern becomes **automatic**, and reading speed actually **increases** because you are not wasting time deciding what to look at next\n\n### Template-Driven Reading\n\nUse a **structured reporting template** that mirrors your search pattern:\n\n- Report template moves through **bones → cartilage → menisci → ligaments → soft tissues**\n- Your reading pattern naturally follows the same sequence\n- The **report drives the reading**, and the **reading populates the report**\n- This creates a **closed loop** where your search pattern is reinforced every time you dictate",
-          "pearl": "For your first 50 cases, keep a tally of how many additional findings you discover after completing your search pattern beyond the first obvious finding. This will convince you of the value of systematic reading — most readers find additional clinically relevant pathology in 30-40% of cases."
+          "pearl": "For your first 50 cases, keep a tally of how many additional findings you discover after completing your search pattern beyond the first obvious finding. This will convince you of the value of systematic reading — most readers are surprised how often disciplined review turns up further clinically relevant pathology (satisfaction of search is a well-documented reading bias)."
         },
         {
           "content": "### The Anchor Slice Concept\n\nAn **anchor slice** is a specific slice in a specific plane where you know exactly what normal anatomy looks like, and from which you can navigate to evaluate surrounding structures. Starting at your anchor slice lets you immediately orient yourself and scroll in both directions with confidence.\n\n### Key Anchor Slices\n\n**Sagittal — midline intercondylar notch:**\n- See the **PCL** in its entirety and the **ACL** (whose oblique course is best fully profiled on a slightly more lateral sagittal slice), the **intercondylar roof**, and the **tibial eminences**\n- Scroll **laterally** → lateral compartment (lateral meniscus, lateral cartilage, LCL region)\n- Scroll **medially** → medial compartment (medial meniscus, medial cartilage, MCL)\n\n**Coronal — mid-condylar slice:**\n- Both **meniscal bodies**, both **collateral ligaments**, and the **cruciates** in cross-section\n\n**Axial — patellofemoral joint:**\n- **Patellar articular surface**, **trochlea**, **MPFL**, and **patellar retinacula**\n\nDeveloping familiarity with your anchor slices accelerates reading because you spend less time \"getting oriented\" on each case.",
@@ -375,7 +375,7 @@
         },
         {
           "content": "### SIFK / SONK Pattern Recognition\n\n**Spontaneous osteonecrosis of the knee (SONK)**, now more accurately termed **subchondral insufficiency fracture of the knee (SIFK)**, most commonly affects the **weight-bearing surface of the medial femoral condyle** in patients **over 55**, presenting with **acute onset** of medial knee pain.\n\n**Classic MRI appearance:** Focal, well-defined area of **low T1 signal** in the subchondral bone of the medial femoral condyle with surrounding **diffuse marrow edema** on PD FS.\n\n### Key Distinguishing Features of SIFK\n\n1. **Location** — almost always the weight-bearing surface of the medial femoral condyle (can occur in the medial tibial plateau)\n2. **Subchondral fracture line** or subchondral plate depression, best seen on T1 or T2\n3. **Disproportionate surrounding edema** — extensive edema relative to the small subchondral lesion\n4. **Demographics** — older patients with acute pain onset\n\n### SIFK vs. OCD vs. AVN\n\n| Feature | SIFK | OCD | AVN |\n|---|---|---|---|\n| **Age** | >55 years | Adolescents/young adults | Variable |\n| **Location** | Weight-bearing MFC | Lateral aspect of MFC | Weight-bearing condyle |\n| **Onset** | Acute | Insidious | Variable |\n| **Edema** | Disproportionately extensive | Less in chronic phase | Variable |\n| **Key clue** | Subchondral fracture line | Well-defined fragment | Double-line sign on T2 |\n| **Risk factors** | Osteoporosis, meniscal root tear | Activity-related | Steroids, alcohol, SLE |",
-          "pearl": "The size of the SIFK lesion on MRI predicts outcome. Lesions smaller than 3.5 cm² on sagittal images (roughly less than 40% of the condylar width) generally respond to conservative treatment with protected weight-bearing. Larger lesions are more likely to progress to condylar collapse and may need surgical intervention. Always measure and report the lesion size.",
+          "pearl": "Lesion size and morphology on MRI predict outcome. Higher risk of progression to subchondral collapse is signaled by larger anteroposterior/transverse lesion dimensions, a subchondral low-signal fracture line longer than ~14 mm or thicker than ~4 mm on T2 (Lecouvet), articular-surface collapse, and an associated medial meniscus posterior root tear with extrusion. (The classic \">40% of condylar width\" figure is a radiographic width ratio, not an MRI area — do not apply it as a sagittal-MRI area cutoff.) Small lesions without collapse often respond to protected weight-bearing; always measure and report AP and transverse dimensions and note any surface collapse.",
           "images": [
             {
               "src": "/images/teaching/cases/sifk-sonk/26_ESSR_SIFK_SubchondralFracture_Edema.jpg",
@@ -436,7 +436,7 @@
           "pearl": "Patellofemoral cartilage is best evaluated on axial images, not sagittal. On axial PD FS, you can see the entire patellar articular surface and the opposing trochlear surface. The most common location for patellar cartilage loss is the lateral patellar facet — always look here."
         },
         {
-          "content": "### Cartilage Grading System (Modified Outerbridge / ICRS)\n\n| Grade | Description | MRI Appearance |\n|---|---|---|\n| **0** | Normal | Homogeneous intermediate signal, smooth surface |\n| **1** | Signal heterogeneity with intact surface | Swollen or internal signal change, **surface intact** |\n| **2** | Partial-thickness defect **<50%** | Shallow surface irregularity, fluid signal partial depth |\n| **3** | Partial-thickness defect **>50%** | Deep fissure or defect, does **not** reach subchondral bone |\n| **4** | Full-thickness defect | **Exposed subchondral bone**, fluid signal extends to bone |\n\n### Reporting Checklist\n\nWhen reporting cartilage lesions, specify:\n- **Grade** (0-4)\n- **Compartment and surface** (e.g., \"medial femoral condyle\")\n- **Location within surface** (e.g., \"weight-bearing zone\")\n- **Approximate size** (AP and transverse dimensions)\n\n### Surgical Relevance\n\nFor surgical planning, size and location are as important as the grade. **Full-thickness defects >2 cm²** in the weight-bearing zone of the femoral condyle may be candidates for **cartilage restoration procedures** (microfracture, OATS, ACI/MACI) — accurate measurement matters.",
+          "content": "### Cartilage Grading System (Modified Outerbridge, MRI)\n\n| Grade | Description | MRI Appearance |\n|---|---|---|\n| **0** | Normal | Homogeneous intermediate signal, smooth surface |\n| **1** | Signal heterogeneity with intact surface | Swollen or internal signal change, **surface intact** |\n| **2** | Partial-thickness defect **<50%** | Shallow surface irregularity, fluid signal partial depth |\n| **3** | Partial-thickness defect **>50%** | Deep fissure or defect, does **not** reach subchondral bone |\n| **4** | Full-thickness defect | **Exposed subchondral bone**, fluid signal extends to bone |\n\n> **Outerbridge vs ICRS diverge at the deepest grades — name the system.** Full-thickness cartilage loss with an **intact** subchondral plate is **ICRS 3C** (modified Outerbridge IV); **ICRS grade 4** requires penetration **through** the subchondral bone plate (osteochondral).\n\n### Reporting Checklist\n\nWhen reporting cartilage lesions, specify:\n- **Grade** (0-4)\n- **Compartment and surface** (e.g., \"medial femoral condyle\")\n- **Location within surface** (e.g., \"weight-bearing zone\")\n- **Approximate size** (AP and transverse dimensions)\n\n### Surgical Relevance\n\nFor surgical planning, size and location are as important as the grade. Full-thickness weight-bearing femoral-condyle defects are candidates for **cartilage restoration**, with technique guided by size: **microfracture for small lesions (<2 cm²)**, OATS/mosaicplasty for small-to-mid lesions (~2–4 cm²), and ACI/MACI or fresh osteochondral allograft for larger lesions (>~2–4 cm²). Accurate AP and transverse measurement matters because it drives the choice.",
           "pearl": "The distinction between grade 2 and grade 3 lesions is clinically important: grade 3 and 4 defects in the weight-bearing femoral condyle may be candidates for surgical cartilage restoration (microfracture, OATS, ACI/MACI), while grade 2 lesions are generally managed conservatively. Report the thickness involvement as precisely as you can."
         },
         {
@@ -651,8 +651,8 @@
           ]
         },
         {
-          "content": "### Meniscal Extrusion\n\n**Meniscal extrusion** is measured on **coronal images** at the level of the mid-body of the meniscus.\n\n### How to Measure\n- Draw a vertical line along the **outer margin of the tibial plateau**\n- Measure the distance from this line to the **outermost edge of the meniscal body**\n- **> 3 mm** = pathologic\n- **> 5 mm** = severe extrusion, suggesting major loss of hoop stress function\n\n### Clinical Significance\n\n| Extrusion | Significance |\n|-----------|-------------|\n| **< 3 mm** | Normal |\n| **3--5 mm** | Pathologic; associated with root tears, advanced degeneration, and cartilage loss progression |\n| **> 5 mm** | Severe extrusion; strongly suggests root tear, advanced degeneration, or major meniscal dysfunction |\n\n**Medial meniscal extrusion** is more clinically significant than lateral extrusion because the medial meniscus bears a greater role in **load distribution**. Extrusion effectively converts the meniscus from a functional load-sharing structure to a **non-functional extruded body**, accelerating cartilage wear.\n\n### Reporting Extrusion\n- Specify the measurement in **millimeters**\n- Search for and report any associated **root tear** (this combination has important prognostic implications and may alter surgical management)\n- Measure with the knee in **non-weight-bearing position** as obtained during standard MRI\n- On weight-bearing or semi-flexed MRI, extrusion values may be greater",
-          "pearl": "Measure meniscal extrusion on the coronal image where the medial meniscal body is widest, using a reference line at the tibial plateau margin. Greater than 3 mm is pathologic; greater than 5 mm suggests severe loss of meniscal function and should trigger a careful root-tear search.",
+          "content": "### Meniscal Extrusion\n\n**Meniscal extrusion** is measured on **coronal images** at the level of the mid-body of the meniscus.\n\n### How to Measure\n- Draw a vertical line along the **outer margin of the tibial plateau**\n- Measure the distance from this line to the **outermost edge of the meniscal body**\n- **> 3 mm** = pathologic\n- **> 3 mm** is the validated pathologic (major) threshold — report the measured value; there is no separately validated \"> 5 mm severe\" cut-off\n\n### Clinical Significance\n\n| Extrusion | Significance |\n|-----------|-------------|\n| **< 3 mm** | Normal |\n| **> 3 mm** | Pathologic (validated threshold): search for a root/radial tear and cartilage loss. Larger values indicate greater dysfunction — report the measured number; no separate validated \">5 mm severe\" tier exists |\n\n**Medial meniscal extrusion** is more clinically significant than lateral extrusion because the medial meniscus bears a greater role in **load distribution**. Extrusion effectively converts the meniscus from a functional load-sharing structure to a **non-functional extruded body**, accelerating cartilage wear.\n\n### Reporting Extrusion\n- Specify the measurement in **millimeters**\n- Search for and report any associated **root tear** (this combination has important prognostic implications and may alter surgical management)\n- Measure with the knee in **non-weight-bearing position** as obtained during standard MRI\n- On weight-bearing or semi-flexed MRI, extrusion values may be greater",
+          "pearl": "Measure meniscal extrusion on the coronal image where the medial meniscal body is widest, using a reference line at the tibial plateau margin. Greater than 3 mm is pathologic and should trigger a careful root-tear search; report the measured value rather than assigning a \"severe\" tier, as no separate validated cut-off exists.",
           "images": [
             {
               "src": "/images/teaching/modules/module6-menisci/09_Meniscus_Displacement_Coronal.jpg",
@@ -822,7 +822,7 @@
           "pearl": "When you see an MCL tear with an ACL injury, always evaluate the posteromedial corner structures (posterior oblique ligament, semimembranosus expansions). Combined ACL + MCL + PMC injury creates anteromedial rotatory instability that may require PMC repair or reconstruction in addition to ACL surgery."
         },
         {
-          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\nThe tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value of 15–20 mm may already be at the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (MRI equivalent ≈ 13 mm).",
+          "content": "### MPFL and Lateral Patellar Dislocation\n\nThe **medial patellofemoral ligament (MPFL)** is the primary soft tissue restraint preventing lateral patellar translation and is injured in **most acute lateral patellar dislocations**.\n\nOn MRI, the MPFL is a thin band of tissue extending from the **medial femoral condyle** (between the adductor tubercle and the medial epicondyle) to the **superomedial patella**. It is best visualized on **axial images** as a low-signal structure along the medial retinaculum.\n\n### MPFL Tear Location\n\nThe tear site is **genuinely split across series and shifts with age**, so inspect *both* ends rather than assuming a location. In pooled MRI data from first-time dislocations the patellar attachment predominates (~48%), with the femoral origin ~34% and mid-substance ~18% (Migliorini 2021); some adult series instead report a femoral or combined predominance, and adolescents skew patellar. The practical point: a **femoral-sided tear carries a higher recurrence risk**, but it is not reliably the commonest site.\n\nOn MRI, look for **discontinuity, edema, and hemorrhage** along the expected course of the MPFL — from the medial patella to the adductor tubercle — and check the patellar insertion, the femoral origin, and the mid-substance.\n\n### Bone Bruise Pattern\nA bone bruise pattern with edema on the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle** is the classic pattern seen after transient lateral patellar dislocation and should prompt focused MPFL evaluation.\n\n### Associated Findings Checklist\n- **Osteochondral injury** to the medial patellar facet or lateral femoral condyle (look for **loose bodies**)\n- **Lateral patellar tilt and subluxation**\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)\n- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value in the mid-to-high teens may already be approaching the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (the MRI equivalent of the CT 20 mm cutoff is ≈ 16 mm — Camp et al. found MRI reads ~3.8 mm lower than CT — and MRI values ≥ ~15 mm are generally considered abnormal).",
           "pearl": "The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.",
           "images": [
             {
@@ -995,7 +995,7 @@
       ],
       "topicContent": [
         {
-          "content": "### Posterior Medial Meniscal Root Tears\n\n**Posterior medial meniscal root tears with extrusion** are among the most consequential diagnoses to identify on knee MRI because they are **functionally equivalent to total meniscectomy** and lead to rapid, progressive medial compartment arthritis if untreated.\n\nThe root tear disrupts the **circumferential hoop stress mechanism**, rendering the meniscus unable to distribute axial load across the tibial plateau.\n\n### MRI Signs by Plane\n\n**Sagittal images:**\n- **\"Ghost sign\"** -- absence of the normal dark posterior horn root attachment adjacent to the **PCL insertion**\n\n**Coronal images:**\n- Measure **meniscal extrusion** at the mid-body level\n- **> 3 mm** = pathologic\n- **> 5 mm** = severe extrusion with major loss of meniscal function\n\n**Axial images:**\n- Direct visualization of the root and any **radial cleft** at the attachment\n\n### Downstream Consequences of Missed Root Tears\n- **Subchondral insufficiency fractures** of the medial femoral condyle or tibial plateau (often the presenting finding)\n- **Accelerated cartilage loss**\n- **Progressive varus malalignment**\n- Eventual need for **arthroplasty**\n\n### Reporting Checklist\nWhen reporting a root tear, always include:\n- **Extrusion measurement**\n- **Status of articular cartilage**\n- **Subchondral bone changes**\n\nThese factors determine whether **root repair is viable**. Early identification and repair can prevent the cascade of joint degeneration.",
+          "content": "### Posterior Medial Meniscal Root Tears\n\n**Posterior medial meniscal root tears with extrusion** are among the most consequential diagnoses to identify on knee MRI because they are **functionally equivalent to total meniscectomy** and lead to rapid, progressive medial compartment arthritis if untreated.\n\nThe root tear disrupts the **circumferential hoop stress mechanism**, rendering the meniscus unable to distribute axial load across the tibial plateau.\n\n### MRI Signs by Plane\n\n**Sagittal images:**\n- **\"Ghost sign\"** -- absence of the normal dark posterior horn root attachment adjacent to the **PCL insertion**\n\n**Coronal images:**\n- Measure **meniscal extrusion** at the mid-body level\n- **> 3 mm** = pathologic/major extrusion (validated threshold) — report the measured value; there is no separately validated \"> 5 mm severe\" tier\n\n**Axial images:**\n- Direct visualization of the root and any **radial cleft** at the attachment\n\n### Downstream Consequences of Missed Root Tears\n- **Subchondral insufficiency fractures** of the medial femoral condyle or tibial plateau (often the presenting finding)\n- **Accelerated cartilage loss**\n- **Progressive varus malalignment**\n- Eventual need for **arthroplasty**\n\n### Reporting Checklist\nWhen reporting a root tear, always include:\n- **Extrusion measurement**\n- **Status of articular cartilage**\n- **Subchondral bone changes**\n\nThese factors determine whether **root repair is viable**. Early identification and repair can prevent the cascade of joint degeneration.",
           "pearl": "The triad of posterior medial root tear + meniscal extrusion greater than 3 mm + subchondral insufficiency fracture is a pattern you must recognize. The root tear is the cause, and if you only report the fracture without identifying the root tear, the underlying problem will not be addressed."
         },
         {
@@ -1029,7 +1029,7 @@
           "pearl": "Failure to diagnose a PLC injury is a major and commonly overlooked cause of cruciate ligament graft failure. In every knee with a cruciate tear, systematically evaluate the LCL, popliteus tendon, and popliteofibular ligament. An arcuate fracture (fibular styloid avulsion) is a strong marker that should prompt direct evaluation of the full PLC."
         },
         {
-          "content": "### MPFL Tear with Osteochondral Injury\n\n**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.\n\n### Classic Injury Triad\n1. **MPFL tear**\n2. **Osteochondral injury** to the medial patellar facet or lateral femoral condyle\n3. **Possible loose body** from the osteochondral shear injury\n\n### Diagnostic Bone Bruise Pattern\n**Medial patellar facet edema + anterolateral femoral condyle edema** is a **classic, highly suggestive** pattern for transient lateral patellar dislocation, even if the patella has spontaneously reduced at the time of MRI.\n\n### Evaluation Checklist\n\n- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique\n- **Osteochondral injury** -- search for chondral or osteochondral fragments in:\n  - Suprapatellar pouch\n  - Lateral gutter\n  - Posterior recesses\n- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)\n\n### Predisposing Anatomy Assessment\n- **Trochlear dysplasia** (Dejour classification)\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT**; MRI reads ~3–4 mm lower, so use ~13 mm on MRI — always state the modality)\n\nRecurrent dislocation risk is **high** when multiple anatomic risk factors are present.",
+          "content": "### MPFL Tear with Osteochondral Injury\n\n**MPFL tear with an associated osteochondral fragment** is the hallmark of **lateral patellar dislocation**, a diagnosis that requires identification of all components to guide management.\n\n### Classic Injury Triad\n1. **MPFL tear**\n2. **Osteochondral injury** to the medial patellar facet or lateral femoral condyle\n3. **Possible loose body** from the osteochondral shear injury\n\n### Diagnostic Bone Bruise Pattern\n**Medial patellar facet edema + anterolateral femoral condyle edema** is a **classic, highly suggestive** pattern for transient lateral patellar dislocation, even if the patella has spontaneously reduced at the time of MRI.\n\n### Evaluation Checklist\n\n- **MPFL tear location** (femoral attachment, patellar attachment, or midsubstance) -- influences surgical reconstruction technique\n- **Osteochondral injury** -- search for chondral or osteochondral fragments in:\n  - Suprapatellar pouch\n  - Lateral gutter\n  - Posterior recesses\n- **Size and location** of any defect on the medial patella or lateral trochlea (large defects may require osteochondral repair)\n\n### Predisposing Anatomy Assessment\n- **Trochlear dysplasia** (Dejour classification)\n- **Patella alta** (Insall-Salvati ratio **> 1.2**)\n- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT** is abnormal, 15–20 mm borderline; MRI measures ~3–4 mm lower, so the corresponding **MRI abnormal threshold is ~15 mm** — always state the modality)\n\nRecurrent dislocation risk is **high** when multiple anatomic risk factors are present.",
           "pearl": "When you see medial patellar facet + anterolateral femoral condyle bone bruises, the diagnosis is lateral patellar dislocation. Your checklist: (1) MPFL tear location, (2) osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patella alta, (5) TT-TG distance. Missing the loose body can result in ongoing mechanical symptoms."
         },
         {
@@ -1111,7 +1111,7 @@
         "Degenerative meniscal tears in the setting of OA rarely benefit from arthroscopic surgery — multiple RCTs show no benefit over physical therapy.",
         "Meniscal extrusion >3mm is a marker of root tear or severe degeneration and correlates with accelerated OA progression.",
         "Mucoid ACL degeneration is common in OA knees and should not be reported as an ACL tear.",
-        "Subchondral cysts (geodes) form from synovial fluid intrusion through damaged cartilage.",
+        "Subchondral cysts (geodes) are thought to form either by synovial-fluid intrusion through damaged cartilage or by microfracture/necrosis of denuded subchondral bone (bony-contusion theory); the exact mechanism remains debated.",
         "When reporting OA, describe compartment-by-compartment severity to help surgical planning (unicompartmental vs total knee arthroplasty).",
         "Baker cysts are commonly secondary to intra-articular pathology, so look for an underlying cause."
       ],
@@ -1411,7 +1411,7 @@
       },
       "teachingPoints": [
         "The patellar dislocation contusion pattern is medial patellar facet + anterolateral LFC — these are \"kissing contusions.\"",
-        "MPFL tears most commonly occur at the femoral insertion (adductor tubercle region).",
+        "The MPFL tear site is variable — on MRI it is most often patellar-sided (~47%), with femoral (adductor-tubercle) and mid-substance tears also common; inspect both ends. Femoral-sided tears carry higher recurrence risk.",
         "Always look for osteochondral fragments and loose bodies after patellar dislocation.",
         "Report predisposing factors: trochlear dysplasia, patella alta, increased TT-TG distance, and lateral patellar tilt / excessive lateral patellar translation."
       ],
@@ -1653,7 +1653,7 @@
         "The dashboard contusion pattern (anterior proximal tibia) results from a posteriorly directed force on the flexed knee — think PCL injury.",
         "PLC injuries are present in up to 60% of PCL ruptures — always evaluate the posterolateral corner when you see a PCL tear.",
         "PLC structures to evaluate: LCL, popliteus tendon, popliteofibular ligament, arcuate ligament, biceps femoris.",
-        "Untreated PLC injuries are the #1 cause of ACL and PCL reconstruction graft failure."
+        "Unrecognized PLC injury is possibly the most common IDENTIFIABLE cause of ACL and PCL reconstruction graft failure — always address it, because residual posterolateral/varus laxity overloads the cruciate graft. (The most common cause of ACL graft failure overall is technical error, chiefly femoral tunnel malposition.)"
       ],
       "searchPatternFindings": [
         {
@@ -2255,7 +2255,7 @@
         "impression": "1. Knee dislocation pattern with bicruciate tear (ACL + PCL).\n2. Posterolateral corner disruption (LCL, popliteus, popliteofibular ligament).\n3. MCL high-grade partial tear — this is a KD-IV multiligament knee injury (both cruciates plus both collaterals; the medial-side injury places it beyond KD-IIIL, which requires an intact MCL).\n4. Multiple meniscal and chondral injuries.\n5. CRITICAL: Recommend urgent vascular assessment of the popliteal artery if not already performed."
       },
       "teachingPoints": [
-        "A knee dislocation is defined by bicruciate injury (ACL + PCL) regardless of whether the knee is currently reduced.",
+        "A knee dislocation is usually a bicruciate injury (ACL + PCL) and still counts when the knee has spontaneously reduced; the uncommon Schenck KD-I pattern is a documented tibiofemoral dislocation with only one cruciate torn.",
         "The Schenck (KD) classification: KD-I (single cruciate torn — ACL or PCL — with the other cruciate intact; ± collateral), KD-II (both cruciates, collaterals intact), KD-III (both cruciates + one collateral; IIIM = medial, IIIL = lateral), KD-IV (both cruciates + both collaterals), KD-V (fracture-dislocation).",
         "Popliteal artery injury can be occult in knee dislocation — urgent vascular assessment is required; CTA/MRA is appropriate when pulses, ABI, or clinical findings are abnormal or equivocal.",
         "Report every structure systematically — missing a PLC injury in a multiligament knee leads to graft failure."
@@ -2346,7 +2346,7 @@
       "radiopaediaTitle": "Patellar tendon rupture - complete",
       "modelReport": {
         "findings": "Extensor mechanism: Complete rupture of the patellar tendon at its proximal attachment (inferior pole of patella). The torn tendon is retracted distally and may form a \"ball\" of tissue. Gap between the inferior patella and the proximal tendon stump filled with fluid/hemorrhage.\n\nPatella: Patella alta — the patella rides superiorly due to loss of the distal tether. Insall-Salvati ratio markedly elevated.\n\nQuadriceps tendon: Intact but assess carefully for concomitant injury.\n\nBones: Possible small avulsion fragment from the inferior pole of the patella.\n\nEffusion: Moderate joint effusion with prepatellar and infrapatellar soft tissue edema.",
-        "impression": "1. Complete patellar tendon rupture at its proximal attachment with tendon retraction.\n2. Patella alta secondary to the tendon rupture.\n3. Intact quadriceps tendon.\n4. This is a surgical emergency for the extensor mechanism — urgent repair is recommended."
+        "impression": "1. Complete patellar tendon rupture at its proximal attachment with tendon retraction.\n2. Patella alta secondary to the tendon rupture.\n3. Intact quadriceps tendon.\n4. This is an urgent extensor-mechanism injury — early primary repair (ideally within ~2–3 weeks, before tendon retraction) is recommended; delayed repair (past ~6 weeks) often requires graft augmentation or reconstruction."
       },
       "teachingPoints": [
         "Patellar tendon rupture is more common in patients <40; quadriceps tendon rupture is more common >40.",
@@ -3572,7 +3572,7 @@
               }
             ],
             "title": "Femoral condyle",
-            "note": "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the most sensitive sequence for the marrow itself."
+            "note": "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the key sequence for marrow COMPOSITION — a focal dark line (fracture) or diffuse darkening (infiltration/replacement) stands out against the bright fat. For marrow EDEMA/contusion (the commonest acute finding), the fat-suppressed fluid-sensitive sequence (PD/T2-FS or STIR) is more sensitive — read them together."
           },
           {
             "sliceIndex": 13,
@@ -4901,7 +4901,7 @@
         "options": [
           "A linear high-signal cleft extending perpendicularly from the articular surface into but not through the cartilage",
           "A fluid-signal line at the cartilage-bone (osteochondral) junction with the overlying cartilage surface still intact",
-          "Focal full-thickness cartilage loss exposing subchondral bone (ICRS grade 4)",
+          "Focal full-thickness cartilage loss with exposed but intact subchondral bone plate (ICRS grade 3C; modified Outerbridge IV)",
           "Diffuse intrachondral T2 hyperintensity without a discrete defect"
         ],
         "answer": 1,
@@ -6299,7 +6299,7 @@
     },
     {
       "id": 6,
-      "text": "The MPFL most commonly tears at its femoral insertion (~50% of cases), though mid-substance and patellar-sided tears also occur. Check the adductor tubercle region on axial images."
+      "text": "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; femoral-sided tears carry higher recurrence risk. Check the medial patellar margin, the femoral origin, and mid-substance on axial images."
     },
     {
       "id": 7,
@@ -6319,7 +6319,7 @@
     },
     {
       "id": 11,
-      "text": "After patellar dislocation, immediately search for loose bodies in the suprapatellar pouch and intercondylar notch — present in up to 50% of cases."
+      "text": "After patellar dislocation, search for an osteochondral fracture (medial patellar facet / lateral femoral condyle), seen in up to ~50% of cases, AND for a displaced loose body in the suprapatellar pouch or notch — less frequent (~15–30%) but management-changing."
     },
     {
       "id": 12,
@@ -8060,7 +8060,7 @@
           {
             "id": "fc-mri-basics-t4-1",
             "question": "How should you adjust window/level differently when evaluating menisci versus cartilage?",
-            "answer": "Widen the window for meniscal evaluation to reveal internal signal changes within the dark meniscus. Narrow the window for cartilage to maximize contrast between the cartilage surface and adjacent fluid."
+            "answer": "Narrow the window for meniscal evaluation, centering the level low on the dark meniscus, so the small range of low signal is spread across the gray scale and faint intrasubstance signal becomes visible (widening compresses contrast and hides it). Narrow the window for cartilage as well, to maximize contrast between the cartilage surface and adjacent fluid."
           }
         ]
       }
@@ -8253,7 +8253,7 @@
           {
             "id": "fc-cartilage-osteochondral-t1-1",
             "question": "What are the modified ICRS grades for cartilage loss on MRI?",
-            "answer": "Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: partial-thickness defect (>50%) or full-thickness without bone exposure. Grade 4: full-thickness with subchondral bone exposure."
+            "answer": "Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: >50% partial-thickness, OR full-thickness down to but not through the (intact) subchondral bone plate — ICRS 3C. Grade 4: defect that penetrates THROUGH the subchondral bone plate (osteochondral). (Note: modified Outerbridge instead calls full-thickness cartilage loss with exposed bone \"grade IV\" — state which system you are using.)"
           }
         ]
       },
@@ -8420,12 +8420,12 @@
           {
             "id": "fc-menisci-t6-1",
             "question": "How is meniscal extrusion measured, and what threshold is pathologic?",
-            "answer": "Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm is pathologic; greater than 5 mm suggests severe extrusion with major loss of hoop stress function."
+            "answer": "Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm beyond the tibial plateau margin is the conventional pathologic cut-off (Costa 2004) and should trigger a search for a meniscal root tear; report the measured value rather than assigning a \"severe\" tier, as no separate validated cut-off exists."
           },
           {
             "id": "fc-menisci-t6-2",
             "question": "At what meniscal extrusion threshold should you actively search for a meniscal root tear?",
-            "answer": "Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; >5 mm indicates severe meniscal dysfunction with major loss of hoop-stress function."
+            "answer": "Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; report the measured value rather than assigning a separate \">5 mm severe\" tier, which is not validated."
           }
         ]
       },
@@ -12432,7 +12432,7 @@
         },
         {
           "key": "C",
-          "text": "Focal full-thickness cartilage loss exposing subchondral bone (ICRS grade 4)"
+          "text": "Focal full-thickness cartilage loss with exposed but intact subchondral bone plate (ICRS grade 3C; modified Outerbridge IV)"
         },
         {
           "key": "D",
@@ -13150,7 +13150,7 @@
       "source": "Flashcard · MRI Basics",
       "flashcard": {
         "front": "How should you adjust window/level differently when evaluating menisci versus cartilage?",
-        "back": "Widen the window for meniscal evaluation to reveal internal signal changes within the dark meniscus. Narrow the window for cartilage to maximize contrast between the cartilage surface and adjacent fluid."
+        "back": "Narrow the window for meniscal evaluation, centering the level low on the dark meniscus, so the small range of low signal is spread across the gray scale and faint intrasubstance signal becomes visible (widening compresses contrast and hides it). Narrow the window for cartilage as well, to maximize contrast between the cartilage surface and adjacent fluid."
       },
       "moduleId": "mri-basics",
       "topicIndex": 4,
@@ -13458,7 +13458,7 @@
       "source": "Flashcard · Cartilage & Osteochondral",
       "flashcard": {
         "front": "What are the modified ICRS grades for cartilage loss on MRI?",
-        "back": "Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: partial-thickness defect (>50%) or full-thickness without bone exposure. Grade 4: full-thickness with subchondral bone exposure."
+        "back": "Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: >50% partial-thickness, OR full-thickness down to but not through the (intact) subchondral bone plate — ICRS 3C. Grade 4: defect that penetrates THROUGH the subchondral bone plate (osteochondral). (Note: modified Outerbridge instead calls full-thickness cartilage loss with exposed bone \"grade IV\" — state which system you are using.)"
       },
       "moduleId": "cartilage-osteochondral",
       "topicIndex": 1,
@@ -13752,7 +13752,7 @@
       "source": "Flashcard · Menisci",
       "flashcard": {
         "front": "How is meniscal extrusion measured, and what threshold is pathologic?",
-        "back": "Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm is pathologic; greater than 5 mm suggests severe extrusion with major loss of hoop stress function."
+        "back": "Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm beyond the tibial plateau margin is the conventional pathologic cut-off (Costa 2004) and should trigger a search for a meniscal root tear; report the measured value rather than assigning a \"severe\" tier, as no separate validated cut-off exists."
       },
       "moduleId": "menisci",
       "topicIndex": 6,
@@ -13766,7 +13766,7 @@
       "source": "Flashcard · Menisci",
       "flashcard": {
         "front": "At what meniscal extrusion threshold should you actively search for a meniscal root tear?",
-        "back": "Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; >5 mm indicates severe meniscal dysfunction with major loss of hoop-stress function."
+        "back": "Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; report the measured value rather than assigning a separate \">5 mm severe\" tier, which is not validated."
       },
       "moduleId": "menisci",
       "topicIndex": 6,

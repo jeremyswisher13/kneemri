@@ -305,7 +305,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['MPFL', 'medial patellofemoral ligament', 'patellar', 'stabilizer', 'patella ligament'],
     question: 'What is the MPFL?',
     answer:
-      'The medial patellofemoral ligament (MPFL) is the primary restraint to lateral patellar displacement, providing approximately 50-60% of the total restraining force. It runs from the medial femoral epicondyle to the medial border of the patella. It is best seen on axial images. MPFL injury is a hallmark of patellar dislocation and tears most commonly at the femoral attachment.',
+      'The medial patellofemoral ligament (MPFL) is the primary restraint to lateral patellar displacement, providing approximately 50-60% of the total restraining force. It runs from the medial femoral epicondyle to the medial border of the patella. It is best seen on axial images. MPFL injury is a hallmark of patellar dislocation; the tear site is variable and often patellar-sided on MRI (femoral, mid-substance, or both also occur), so evaluate the full course from the medial patella to the adductor tubercle.',
     relatedModule: '/modules/extensor-synovium',
     category: 'anatomy',
   },
@@ -450,7 +450,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['extrusion', 'meniscal extrusion', 'measure extrusion', 'how much extrusion', '3mm'],
     question: 'What is meniscal extrusion and how do I measure it?',
     answer:
-      'Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is clinically significant and should prompt a deliberate search for a root tear, radial tear, or advanced cartilage/degenerative change; extrusion alone is not diagnostic of a root tear. Greater than 5 mm suggests severe extrusion with major loss of meniscal function.',
+      'Meniscal extrusion is the displacement of the meniscal body beyond the tibial margin, measured on coronal images at the mid-body level. Greater than 3 mm is clinically significant and should prompt a deliberate search for a root tear, radial tear, or advanced cartilage/degenerative change; extrusion alone is not diagnostic of a root tear. Report the measured value; there is no separately validated "> 5 mm severe" cut-off.',
     relatedModule: '/modules/menisci',
     category: 'menisci',
   },
@@ -725,7 +725,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['cartilage grading', 'cartilage grade', 'cartilage classification', 'modified Outerbridge', 'ICRS'],
     question: 'How do I grade cartilage damage?',
     answer:
-      'Cartilage damage is commonly graded using a modified Outerbridge or ICRS scale: Grade 0 = normal, Grade 1 = softening or swelling (signal change without surface defect), Grade 2 = partial-thickness defect less than 50% depth, Grade 3 = partial-thickness defect greater than 50% depth, Grade 4 = full-thickness defect with exposed subchondral bone. Report location, size, depth, and associated bone changes.',
+      'Cartilage is graded by modified Outerbridge and by ICRS — they diverge at the deepest lesions, so name the system. Grade 0 normal; 1 signal change, intact surface; 2 defect <50% depth; 3 defect >50% depth (ICRS 3 also includes full-thickness loss down to but not through the intact subchondral plate). Grade 4: modified Outerbridge = full-thickness cartilage loss with exposed subchondral bone; ICRS grade 4 = penetration THROUGH the subchondral bone plate (osteochondral). Report location, size, depth, and associated bone changes.',
     category: 'cartilage',
   },
   {
@@ -804,7 +804,7 @@ export const faqKnowledgeBase: FAQEntry[] = [
     keywords: ['patellar dislocation', 'patella dislocation', 'lateral dislocation', 'MPFL tear', 'transient dislocation'],
     question: 'What MRI findings indicate patellar dislocation?',
     answer:
-      'The classic MRI pattern after lateral patellar dislocation includes: MPFL tear (usually at the femoral attachment), bone contusions at the medial patellar facet and anterolateral femoral condyle (from the patella impacting the condyle during relocation), osteochondral injury, joint effusion, and lateral retinacular disruption. Always search for osteochondral loose bodies when you see this pattern.',
+      'The classic MRI pattern after lateral patellar dislocation includes: MPFL tear (variable site — often patellar-sided on MRI; check both patellar and femoral ends), bone contusions at the medial patellar facet and anterolateral femoral condyle (from the patella impacting the condyle during relocation), osteochondral injury, joint effusion, and lateral retinacular disruption. Always search for osteochondral loose bodies when you see this pattern.',
     relatedModule: '/modules/extensor-synovium',
     category: 'extensor',
   },

@@ -15,8 +15,7 @@ The root tear disrupts the **circumferential hoop stress mechanism**, rendering 
 
 **Coronal images:**
 - Measure **meniscal extrusion** at the mid-body level
-- **> 3 mm** = pathologic
-- **> 5 mm** = severe extrusion with major loss of meniscal function
+- **> 3 mm** = pathologic/major extrusion (validated threshold) — report the measured value; there is no separately validated "> 5 mm severe" tier
 
 **Axial images:**
 - Direct visualization of the root and any **radial cleft** at the attachment
@@ -197,7 +196,7 @@ An unrecognized PLC injury is a **major and frequently overlooked cause of ACL a
 ### Predisposing Anatomy Assessment
 - **Trochlear dysplasia** (Dejour classification)
 - **Patella alta** (Insall-Salvati ratio **> 1.2**)
-- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT**; MRI reads ~3–4 mm lower, so use ~13 mm on MRI — always state the modality)
+- **Lateralized tibial tubercle** (TT-TG distance **> 20 mm on CT** is abnormal, 15–20 mm borderline; MRI measures ~3–4 mm lower, so the corresponding **MRI abnormal threshold is ~15 mm** — always state the modality)
 
 Recurrent dislocation risk is **high** when multiple anatomic risk factors are present.`,
     pearl: `When you see medial patellar facet + anterolateral femoral condyle bone bruises, the diagnosis is lateral patellar dislocation. Your checklist: (1) MPFL tear location, (2) osteochondral injury and loose bodies, (3) trochlear dysplasia, (4) patella alta, (5) TT-TG distance. Missing the loose body can result in ongoing mechanical symptoms.`,

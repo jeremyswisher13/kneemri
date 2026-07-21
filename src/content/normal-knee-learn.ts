@@ -765,7 +765,7 @@ export const advancedChallenge: AdvancedQ[] = [
     id: "cartilage-4",
     topic: "Cartilage & osteochondral",
     prompt: "A surgeon asks you to distinguish chondral DELAMINATION from a simple partial-thickness fissure on knee MRI. Which finding is MOST characteristic of delamination?",
-    options: ["A linear high-signal cleft extending perpendicularly from the articular surface into but not through the cartilage", "A fluid-signal line at the cartilage-bone (osteochondral) junction with the overlying cartilage surface still intact", "Focal full-thickness cartilage loss exposing subchondral bone (ICRS grade 4)", "Diffuse intrachondral T2 hyperintensity without a discrete defect"],
+    options: ["A linear high-signal cleft extending perpendicularly from the articular surface into but not through the cartilage", "A fluid-signal line at the cartilage-bone (osteochondral) junction with the overlying cartilage surface still intact", "Focal full-thickness cartilage loss with exposed but intact subchondral bone plate (ICRS grade 3C; modified Outerbridge IV)", "Diffuse intrachondral T2 hyperintensity without a discrete defect"],
     answer: 1,
     explanation: "Delamination is a shear separation of cartilage from subchondral bone at the deep tidemark/calcified-cartilage zone, seen as a fluid-signal line paralleling the bone with a deceptively intact articular surface; it can be missed at arthroscopic probing of the surface.",
   },
@@ -1459,7 +1459,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
         sliceIndex: 13,
         markers: [{ x: 34, y: 41, label: "Femoral condyle" }],
         title: "Femoral condyle",
-        note: "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the most sensitive sequence for the marrow itself.",
+        note: "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the key sequence for marrow COMPOSITION — a focal dark line (fracture) or diffuse darkening (infiltration/replacement) stands out against the bright fat. For marrow EDEMA/contusion (the commonest acute finding), the fat-suppressed fluid-sensitive sequence (PD/T2-FS or STIR) is more sensitive — read them together.",
       },
       {
         sliceIndex: 13,

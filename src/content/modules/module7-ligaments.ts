@@ -278,7 +278,7 @@ A bone bruise pattern with edema on the **medial patellar facet** and the **ante
 - **Lateral patellar tilt and subluxation**
 - **Patella alta** (Insall-Salvati ratio **> 1.2**)
 - **Trochlear dysplasia** (shallow or flat trochlea, measured by trochlear depth or **Dejour classification**)
-- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value of 15–20 mm may already be at the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (MRI equivalent ≈ 13 mm).`,
+- **Increased TT-TG distance** — the classic **> 20 mm** threshold was derived on axial **CT** (Dejour). MRI reads **~3–4 mm lower** than CT for the same knee, so an MRI value in the mid-to-high teens may already be approaching the surgical threshold; state the modality with the number and do not carry the CT cutoff directly onto MRI (the MRI equivalent of the CT 20 mm cutoff is ≈ 16 mm — Camp et al. found MRI reads ~3.8 mm lower than CT — and MRI values ≥ ~15 mm are generally considered abnormal).`,
     pearl: `The bone bruise pattern of medial patellar facet + anterolateral femoral condyle is the hallmark of transient lateral patellar dislocation. Always evaluate the MPFL, look for osteochondral fragments (loose bodies), and assess for predisposing anatomy: patella alta, trochlear dysplasia, and increased TT-TG distance.`,
     images: [
       {

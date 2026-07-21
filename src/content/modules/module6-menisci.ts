@@ -261,15 +261,14 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 - Draw a vertical line along the **outer margin of the tibial plateau**
 - Measure the distance from this line to the **outermost edge of the meniscal body**
 - **> 3 mm** = pathologic
-- **> 5 mm** = severe extrusion, suggesting major loss of hoop stress function
+- **> 3 mm** is the validated pathologic (major) threshold — report the measured value; there is no separately validated "> 5 mm severe" cut-off
 
 ### Clinical Significance
 
 | Extrusion | Significance |
 |-----------|-------------|
 | **< 3 mm** | Normal |
-| **3--5 mm** | Pathologic; associated with root tears, advanced degeneration, and cartilage loss progression |
-| **> 5 mm** | Severe extrusion; strongly suggests root tear, advanced degeneration, or major meniscal dysfunction |
+| **> 3 mm** | Pathologic (validated threshold): search for a root/radial tear and cartilage loss. Larger values indicate greater dysfunction — report the measured number; no separate validated ">5 mm severe" tier exists |
 
 **Medial meniscal extrusion** is more clinically significant than lateral extrusion because the medial meniscus bears a greater role in **load distribution**. Extrusion effectively converts the meniscus from a functional load-sharing structure to a **non-functional extruded body**, accelerating cartilage wear.
 
@@ -278,7 +277,7 @@ Ramp lesions can be subtle and are best identified on **sagittal and axial image
 - Search for and report any associated **root tear** (this combination has important prognostic implications and may alter surgical management)
 - Measure with the knee in **non-weight-bearing position** as obtained during standard MRI
 - On weight-bearing or semi-flexed MRI, extrusion values may be greater`,
-    pearl: `Measure meniscal extrusion on the coronal image where the medial meniscal body is widest, using a reference line at the tibial plateau margin. Greater than 3 mm is pathologic; greater than 5 mm suggests severe loss of meniscal function and should trigger a careful root-tear search.`,
+    pearl: `Measure meniscal extrusion on the coronal image where the medial meniscal body is widest, using a reference line at the tibial plateau margin. Greater than 3 mm is pathologic and should trigger a careful root-tear search; report the measured value rather than assigning a "severe" tier, as no separate validated cut-off exists.`,
     images: [
       {
         src: '/images/teaching/modules/module6-menisci/09_Meniscus_Displacement_Coronal.jpg',

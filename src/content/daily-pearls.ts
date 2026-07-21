@@ -26,7 +26,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 6,
-    text: "The MPFL most commonly tears at its femoral insertion (~50% of cases), though mid-substance and patellar-sided tears also occur. Check the adductor tubercle region on axial images.",
+    text: "The MPFL tear site is variable — inspect BOTH ends. On MRI it is most often patellar-sided (~47%, Guerrero; up to ~80–95% in children), with femoral (adductor-tubercle) tears ~26–34% and mid-substance/combined tears also common; femoral-sided tears carry higher recurrence risk. Check the medial patellar margin, the femoral origin, and mid-substance on axial images.",
   },
   {
     id: 7,
@@ -46,7 +46,7 @@ export const dailyPearls: DailyPearl[] = [
   },
   {
     id: 11,
-    text: "After patellar dislocation, immediately search for loose bodies in the suprapatellar pouch and intercondylar notch \u2014 present in up to 50% of cases.",
+    text: "After patellar dislocation, search for an osteochondral fracture (medial patellar facet / lateral femoral condyle), seen in up to ~50% of cases, AND for a displaced loose body in the suprapatellar pouch or notch — less frequent (~15–30%) but management-changing.",
   },
   {
     id: 12,

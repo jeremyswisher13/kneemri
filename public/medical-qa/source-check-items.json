@@ -5123,7 +5123,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
     "textPreview": "Cartilage & osteochondral | A surgeon asks you to distinguish chondral DELAMINATION from a simple partial-thickness fissure on knee MRI. Which finding is MOST characteristic of delamination? | A linear high-signal cleft extending perpendicularly from the articular surface into..."
@@ -6723,7 +6724,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "A surgeon asks you to distinguish chondral DELAMINATION from a simple partial-thickness fissure on knee MRI. Which finding is MOST characteristic of delamination? | A. A linear high-signal cleft extending perpendicularly from the articular surface into but not through the cart..."
@@ -17272,7 +17274,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/cases/index.ts",
-    "textPreview": "A knee dislocation is defined by bicruciate injury (ACL + PCL) regardless of whether the knee is currently reduced."
+    "textPreview": "A knee dislocation is usually a bicruciate injury (ACL + PCL) and still counts when the knee has spontaneously reduced; the uncommon Schenck KD-I pattern is a documented tibiofemoral dislocation with only one cruciate torn."
   },
   {
     "courseId": "knee-mri",
@@ -17364,7 +17366,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "After patellar dislocation, immediately search for loose bodies in the suprapatellar pouch and intercondylar notch — present in up to 50% of cases."
+    "textPreview": "After patellar dislocation, search for an osteochondral fracture (medial patellar facet / lateral femoral condyle), seen in up to ~50% of cases, AND for a displaced loose body in the suprapatellar pouch or notch — less frequent (~15–30%) but management-changing."
   },
   {
     "courseId": "knee-mri",
@@ -17847,7 +17849,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "What MRI findings indicate patellar dislocation? | The classic MRI pattern after lateral patellar dislocation includes: MPFL tear (usually at the femoral attachment), bone contusions at the medial patellar facet and anterolateral femoral condyle (from the patella impacting the..."
+    "textPreview": "What MRI findings indicate patellar dislocation? | The classic MRI pattern after lateral patellar dislocation includes: MPFL tear (variable site — often patellar-sided on MRI; check both patellar and femoral ends), bone contusions at the medial patellar facet and anterolateral..."
   },
   {
     "courseId": "knee-mri",
@@ -18845,7 +18847,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/modules/index.ts",
-    "textPreview": "### Cartilage Grading System (Modified Outerbridge / ICRS) | Grade | Description | MRI Appearance | |---|---|---| | **0** | Normal | Homogeneous intermediate signal, smooth surface | | **1** | Signal heterogeneity with intact surface | Swollen or internal signal change, **surf..."
+    "textPreview": "### Cartilage Grading System (Modified Outerbridge, MRI) | Grade | Description | MRI Appearance | |---|---|---| | **0** | Normal | Homogeneous intermediate signal, smooth surface | | **1** | Signal heterogeneity with intact surface | Swollen or internal signal change, **surfac..."
   },
   {
     "courseId": "knee-mri",
@@ -19769,6 +19771,22 @@
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
     "textPreview": "The popliteal artery and vein in the popliteal fossa posteriorly — a reliable posterior landmark. | Popliteal vessels"
+  },
+  {
+    "courseId": "knee-mri",
+    "courseTitle": "UCLA Knee MRI Interpretation Course",
+    "itemType": "normal-tour-step",
+    "itemId": "sag-t1:tour:2",
+    "section": "normal-mri",
+    "title": "Femoral condyle",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-knee-learn.ts",
+    "textPreview": "Low-signal cortex with BRIGHT fatty marrow (unsuppressed on T1). T1 is the key sequence for marrow COMPOSITION — a focal dark line (fracture) or diffuse darkening (infiltration/replacement) stands out against the bright fat. For marrow EDEMA/contusion (the commonest acute find..."
   },
   {
     "courseId": "knee-mri",
@@ -22537,7 +22555,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "What are the modified ICRS grades for cartilage loss on MRI? | front: What are the modified ICRS grades for cartilage loss on MRI? | back: Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: partial-thickness defect (>50%) or ful..."
+    "textPreview": "What are the modified ICRS grades for cartilage loss on MRI? | front: What are the modified ICRS grades for cartilage loss on MRI? | back: Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: >50% partial-thickness, OR full-thickn..."
   },
   {
     "courseId": "knee-mri",
@@ -24121,7 +24139,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/faq-knowledge-base.ts",
-    "textPreview": "How do I grade cartilage damage? | Cartilage damage is commonly graded using a modified Outerbridge or ICRS scale: Grade 0 = normal, Grade 1 = softening or swelling (signal change without surface defect), Grade 2 = partial-thickness defect less than 50% depth, Grade 3 = partia..."
+    "textPreview": "How do I grade cartilage damage? | Cartilage is graded by modified Outerbridge and by ICRS — they diverge at the deepest lesions, so name the system. Grade 0 normal; 1 signal change, intact surface; 2 defect <50% depth; 3 defect >50% depth (ICRS 3 also includes full-thickness ..."
   },
   {
     "courseId": "knee-mri",
@@ -24166,7 +24184,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "What are the modified ICRS grades for cartilage loss on MRI? | Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: partial-thickness defect (>50%) or full-thickness without bone exposure. Grade 4: full-thickness with subchondral ..."
+    "textPreview": "What are the modified ICRS grades for cartilage loss on MRI? | Grade 1: signal abnormality with intact surface. Grade 2: partial-thickness defect (<50%). Grade 3: >50% partial-thickness, OR full-thickness down to but not through the (intact) subchondral bone plate — ICRS 3C. G..."
   },
   {
     "courseId": "knee-mri",
@@ -24211,7 +24229,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "How is meniscal extrusion measured, and what threshold is pathologic? | Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm is pathologic; greater than 5 mm suggests severe extrusi..."
+    "textPreview": "How is meniscal extrusion measured, and what threshold is pathologic? | Measured on coronal images at the meniscal mid-body: distance from the outer tibial plateau margin to the outermost meniscal edge. Greater than 3 mm beyond the tibial plateau margin is the conventional pat..."
   },
   {
     "courseId": "knee-mri",
@@ -24226,7 +24244,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/flashcards/module-flashcards.ts",
-    "textPreview": "At what meniscal extrusion threshold should you actively search for a meniscal root tear? | Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; >5 mm indicates severe meniscal dysfunction with major loss of hoo..."
+    "textPreview": "At what meniscal extrusion threshold should you actively search for a meniscal root tear? | Extrusion >3 mm is pathologic and should prompt an active search for a meniscal root tear on coronal and axial images; report the measured value rather than assigning a separate \">5 mm ..."
   },
   {
     "courseId": "knee-mri",
