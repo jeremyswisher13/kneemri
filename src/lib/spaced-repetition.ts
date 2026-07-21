@@ -26,6 +26,28 @@ export interface ReviewCard {
 }
 
 /**
+ * Cards to surface in a single day's review session. A learner returning after a
+ * gap can have dozens of cards due at once; showing all of them is the classic
+ * "review debt" wall that makes people quit. Cap the session and carry the rest
+ * to the next day (the badge/count still shows the true backlog).
+ */
+export const DAILY_REVIEW_CAP = 20;
+
+/**
+ * Order due cards hardest-first so a capped session spends the day's attention
+ * where it matters: most overdue (oldest nextReviewDate) first, then lowest ease
+ * (most difficult). Ties broken deterministically by questionId so the session
+ * is stable across reloads.
+ */
+export function orderDueCards(cards: ReviewCard[]): ReviewCard[] {
+  return [...cards].sort((a, b) => {
+    if (a.nextReviewDate !== b.nextReviewDate) return a.nextReviewDate < b.nextReviewDate ? -1 : 1;
+    if (a.easeFactor !== b.easeFactor) return a.easeFactor - b.easeFactor;
+    return a.questionId < b.questionId ? -1 : a.questionId > b.questionId ? 1 : 0;
+  });
+}
+
+/**
  * Calculate the next review schedule for a card using the SM-2 algorithm.
  *
  * @param card  The current review card state

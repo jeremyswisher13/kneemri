@@ -120,6 +120,12 @@ export default function CasePage() {
   // Which steps have had their expected findings revealed
   const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
 
+  // The committed read, captured BEFORE the answer key is revealed — the
+  // "commit, then compare" mechanic. `committed` gates the reveal.
+  const [primaryImpression, setPrimaryImpression] = useState("");
+  const [confidence, setConfidence] = useState(50);
+  const [committed, setCommitted] = useState(false);
+
   // Submit state
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -172,6 +178,9 @@ export default function CasePage() {
     setCheckedItems({});
     setStepFindings({});
     setRevealedSteps(new Set());
+    setPrimaryImpression("");
+    setConfidence(50);
+    setCommitted(false);
     setSubmitted(false);
     setSubmitError(null);
     setSubmitting(false);
@@ -186,6 +195,9 @@ export default function CasePage() {
     setCheckedItems({});
     setStepFindings({});
     setRevealedSteps(new Set());
+    setPrimaryImpression("");
+    setConfidence(50);
+    setCommitted(false);
     setSubmitted(false);
     setSubmitError(null);
     // Clear submitting too: if a prior case's submit is still in-flight (e.g. a
@@ -284,10 +296,15 @@ export default function CasePage() {
     if (next >= totalSteps) return;
     setCurrentStep(next);
     setHighestStep((prev) => Math.max(prev, next));
-    // Auto-submit when advancing to the review step
-    if (next === reviewStep && !submitted) {
-      submitCase();
-    }
+    // No auto-submit here anymore: reaching the review step shows the commit
+    // panel (impression + pre-reveal confidence) first, and committing is what
+    // fires submitCase — so the "commit, then compare" order is enforced.
+  }
+
+  // Called from the commit panel: capture the read, then reveal the answer key.
+  function commitAndReveal() {
+    setCommitted(true);
+    if (!submitted) submitCase();
   }
 
   function toggleItem(stepNumber: number, itemIndex: number) {
@@ -315,7 +332,15 @@ export default function CasePage() {
     setSubmitting(true);
     try {
       if (!isAdminView) {
-        await submitCaseAttempt(user.uid, user.email || "", caseId, checkedItems, "", activeCourse.id);
+        await submitCaseAttempt(
+          user.uid,
+          user.email || "",
+          caseId,
+          checkedItems,
+          primaryImpression.trim(),
+          primaryImpression.trim() ? confidence : null,
+          activeCourse.id,
+        );
       }
       setSubmitted(true);
     } catch {
@@ -915,16 +940,101 @@ export default function CasePage() {
                 &larr; Back
               </Button>
               <Button className="min-h-11 w-full sm:w-auto" onClick={advanceStep}>
-                {currentStep === searchPatternSteps.length ? "View Answer Key" : "Next Step"} &rarr;
+                {currentStep === searchPatternSteps.length ? "Commit your read" : "Next Step"} &rarr;
               </Button>
             </div>
           </div>
         );
       })()}
 
-      {/* ---- Answer Key & Review ---- */}
-      {currentStep === reviewStep && (
+      {/* ---- Commit gate: capture the read BEFORE revealing the answer ---- */}
+      {currentStep === reviewStep && !committed && (
         <div className="space-y-6">
+          <div className="rounded-xl border border-ucla-blue/30 bg-ucla-light/40 px-5 py-4">
+            <h3 className="text-lg font-semibold text-gray-900">Commit your read</h3>
+            <p className="mt-1 text-sm text-gray-600">
+              Before the answer key — write your leading impression and rate how sure you are.
+              Committing first is what makes the comparison stick (and it&apos;s never shown to
+              anyone but you).
+            </p>
+
+            <label className="mt-4 block text-sm font-medium text-gray-700" htmlFor="primary-impression">
+              Your one-line impression
+            </label>
+            <textarea
+              id="primary-impression"
+              value={primaryImpression}
+              onChange={(e) => setPrimaryImpression(e.target.value)}
+              rows={2}
+              placeholder="e.g. Complete ACL tear with pivot-shift contusions; check the lateral meniscal root."
+              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900 focus:border-ucla-blue focus:outline-none focus:ring-1 focus:ring-ucla-blue sm:text-sm"
+            />
+
+            <div className="mt-4">
+              <label className="flex items-center justify-between text-sm font-medium text-gray-700" htmlFor="confidence">
+                <span>How confident are you?</span>
+                <span className="font-semibold text-ucla-blue">{confidence}%</span>
+              </label>
+              <input
+                id="confidence"
+                type="range"
+                min={0}
+                max={100}
+                step={5}
+                value={confidence}
+                onChange={(e) => setConfidence(Number(e.target.value))}
+                className="mt-2 w-full accent-ucla-blue"
+              />
+              <div className="flex justify-between text-[11px] text-gray-400">
+                <span>Guessing</span>
+                <span>Certain</span>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="button"
+                onClick={() => goToStep(currentStep - 1)}
+                className="text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                &larr; Back to the search pattern
+              </button>
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <button
+                  type="button"
+                  onClick={commitAndReveal}
+                  className="text-sm font-medium text-gray-400 hover:text-gray-600"
+                >
+                  Skip and reveal
+                </button>
+                <Button
+                  className="min-h-11 w-full sm:w-auto"
+                  onClick={commitAndReveal}
+                  disabled={!primaryImpression.trim()}
+                >
+                  Lock it in &amp; reveal &rarr;
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---- Answer Key & Review ---- */}
+      {currentStep === reviewStep && committed && (
+        <div className="space-y-6">
+          {primaryImpression.trim() && (
+            <div className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">
+                Your committed read {" · "} confidence {confidence}%
+              </p>
+              <p className="mt-1 text-sm text-gray-800">{primaryImpression.trim()}</p>
+              <p className="mt-1.5 text-xs text-gray-500">
+                Compare it against the key diagnoses and model report below — were you right, and
+                was your confidence calibrated?
+              </p>
+            </div>
+          )}
           {submitError && (
             <div className="flex flex-col gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 sm:flex-row sm:items-center sm:justify-between">
               <span>{submitError}</span>

@@ -182,10 +182,18 @@ function FellowLayoutContent() {
       return;
     }
     setDueCardCount(0);
-    import("@/lib/firestore")
-      .then(({ getDueCards }) => getDueCards(user.uid, activeCourse))
-      .then((cards) => {
-        if (dueCardRequestRef.current === requestId) setDueCardCount(cards.length);
+    Promise.all([import("@/lib/firestore"), import("@/content/review-registry")])
+      .then(([{ getDueCards }, { reviewQuestionById }]) =>
+        getDueCards(user.uid, activeCourse).then((cards) =>
+          // Count only cards ReviewPage can actually present: a card whose
+          // questionId was removed/renamed from the registry is filtered out of
+          // the session, so counting it would leave the badge stuck above zero
+          // forever while ReviewPage shows "caught up."
+          cards.filter((c) => reviewQuestionById[c.questionId]).length,
+        ),
+      )
+      .then((count) => {
+        if (dueCardRequestRef.current === requestId) setDueCardCount(count);
       })
       .catch(() => {});
   }, [user, activeCourse]);
@@ -195,7 +203,14 @@ function FellowLayoutContent() {
   }, [refreshDueCount]);
   useEffect(() => {
     window.addEventListener("focus", refreshDueCount);
-    return () => window.removeEventListener("focus", refreshDueCount);
+    // Also refresh when a review session finishes — an in-app SPA navigation back
+    // to the dashboard fires no focus event, so the badge would otherwise show the
+    // stale pre-session backlog until the next blur/focus.
+    window.addEventListener("reviewcards:changed", refreshDueCount);
+    return () => {
+      window.removeEventListener("focus", refreshDueCount);
+      window.removeEventListener("reviewcards:changed", refreshDueCount);
+    };
   }, [refreshDueCount]);
 
   function progressBadge(completed: number, total: number, active: boolean) {

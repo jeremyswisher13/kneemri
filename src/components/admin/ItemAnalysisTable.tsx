@@ -2,6 +2,18 @@ import { Fragment, useMemo, useState } from "react";
 import type { CourseDefinition } from "@/content/courses";
 import { domainLabel, UCLA_BLUE, type Fellow } from "@/components/admin/shared";
 import { pointBiserial, interpretDiscrimination } from "@/lib/psychometrics";
+import { csvCell } from "@/lib/csv-cell";
+
+/** The closing action a flagged item suggests — the whole point of surfacing it. */
+function suggestedAction(item: { needsRevision: boolean; tooEasy: boolean; discrimination: number | null }): string {
+  if (item.needsRevision) {
+    return item.discrimination !== null && item.discrimination < 0
+      ? "Revise or retire — negative discrimination (stronger students miss it)"
+      : "Revise — weak discrimination or very low post-test accuracy";
+  }
+  if (item.tooEasy) return "Consider retiring — near-ceiling, carries little information";
+  return "";
+}
 
 interface ItemAnalysisTableProps {
   fellows: Fellow[];
@@ -239,14 +251,68 @@ export default function ItemAnalysisTable({ fellows, course }: ItemAnalysisTable
     setSort((prev) => (prev && prev.key === key ? { key, dir: prev.dir === 1 ? -1 : 1 } : { key, dir: 1 }));
   };
 
+  // Item-retirement rollup: the flagged items with a suggested closing action.
+  const flagged = useMemo(
+    () => allItems.filter((q) => q.needsRevision || q.tooEasy),
+    [allItems],
+  );
+  const revisionCount = flagged.filter((q) => q.needsRevision).length;
+  const tooEasyCount = flagged.filter((q) => q.tooEasy && !q.needsRevision).length;
+
+  const downloadFlaggedCsv = () => {
+    const headers = ["Question", "Domain", "Pre %", "Post %", "Discrimination", "Flag", "Suggested action"];
+    const rows = flagged.map((q) => [
+      q.stem,
+      domainLabel(q.domain),
+      q.prePct ?? "",
+      q.postPct ?? "",
+      q.discrimination !== null ? q.discrimination.toFixed(2) : "",
+      q.needsRevision ? "Needs revision" : "Too easy",
+      suggestedAction(q),
+    ]);
+    const csv = [headers, ...rows].map((row) => row.map((c) => csvCell(c)).join(",")).join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${course.id}-flagged-items-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="mb-4">
-        <h2 className="text-lg font-bold text-gray-900">Item Analysis</h2>
-        <p className="text-sm text-gray-500">
-          Question quality workbench — click a row for options and distractor analysis
-        </p>
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-bold text-gray-900">Item Analysis</h2>
+          <p className="text-sm text-gray-500">
+            Question quality workbench — click a row for options and distractor analysis
+          </p>
+        </div>
+        {flagged.length > 0 && (
+          <button
+            type="button"
+            onClick={downloadFlaggedCsv}
+            className="shrink-0 rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Download {flagged.length} flagged →
+          </button>
+        )}
       </div>
+
+      {flagged.length > 0 && (
+        <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+          <p className="text-sm font-semibold text-amber-900">
+            {flagged.length} flagged {flagged.length === 1 ? "item" : "items"}
+            {revisionCount > 0 && ` · ${revisionCount} need revision`}
+            {tooEasyCount > 0 && ` · ${tooEasyCount} too easy`}
+          </p>
+          <p className="mt-0.5 text-xs text-amber-800">
+            Retiring or revising the weakest items is the single biggest lever on KR-20 — export the
+            list, then schedule any change at a cohort boundary so the pre/post comparison stays consistent.
+          </p>
+        </div>
+      )}
 
       {allItems.length === 0 ? (
         <p className="py-8 text-center text-sm text-gray-500">No assessment items in this course.</p>

@@ -212,6 +212,19 @@ async function normalMriComplete(userId, course) {
   return planeIds.every((id) => passed.has(id));
 }
 
+// Both "complete" (all planes) and "started" (any plane) from a single read, so
+// the digest can tell a partial-progress learner from one who never began.
+async function normalMriStatus(userId, course) {
+  const planeIds = course.normalPlaneIds || [];
+  if (planeIds.length === 0) return { complete: true, started: false };
+  const snap = await db.collection("users").doc(userId).collection("normalKnee").get();
+  const passed = new Set(snap.docs.filter((d) => d.data().passed === true).map((d) => d.id));
+  return {
+    complete: planeIds.every((id) => passed.has(id)),
+    started: planeIds.some((id) => passed.has(id)),
+  };
+}
+
 // Single completion predicate so the certificate trigger and weekly digest stay
 // aligned with src/lib/completion.ts: baseline quiz + survey, Normal MRI mastery,
 // all modules, any three role-visible core cases, and post quiz + survey with a
@@ -830,71 +843,91 @@ exports.weeklyDigest = onSchedule(
     secrets: [GMAIL_APP_PASSWORD],
   },
   async () => {
-    // Get all users
+    // Every live course gets its own section — previously this was knee-only, so
+    // stalled learners in shoulder/hip/elbow were invisible in the only automated
+    // faculty report. Each user's subcollections are fetched ONCE and filtered
+    // per course (docs with no courseId predate multi-course and count as knee).
+    const DIGEST_COURSE_IDS = ["knee-mri", "shoulder-mri", "hip-mri", "elbow-mri"];
     const usersSnap = await db.collection("users").get();
-    const fellows = [];
-    const residents = [];
+
+    // byCourse[courseId] = { fellows: [], residents: [] }
+    const byCourse = {};
+    for (const cid of DIGEST_COURSE_IDS) byCourse[cid] = { fellows: [], residents: [] };
 
     for (const userDoc of usersSnap.docs) {
       const data = userDoc.data();
       if (data.role === "admin") continue;
 
-      // This digest is the KNEE course report, so count knee progress only.
-      // (Docs written before multi-course support have no courseId = knee.)
-      const isKnee = (d) => (d.data().courseId || "knee-mri") === "knee-mri";
-      const moduleSnap = await db.collection("users").doc(userDoc.id).collection("moduleProgress").get();
-      const caseSnap = await db.collection("users").doc(userDoc.id).collection("caseAttempts").get();
-      const modulesCompleted = moduleSnap.docs.filter((d) => d.data().completed && isKnee(d)).length;
-      const eligibleCaseIds = data.role === "resident" ? RESIDENT_REQUIRED_CASE_IDS : FELLOW_REQUIRED_CASE_IDS;
-      const completedCaseIds = new Set(caseSnap.docs.filter(isKnee).map((d) => d.data().caseId));
-      const casesCompleted = eligibleCaseIds.filter((id) => completedCaseIds.has(id)).length;
-
-      // "Complete" mirrors the certificate definition in src/lib/completion.ts.
-      const normalDone = await normalMriComplete(userDoc.id, COURSE_CONFIG["knee-mri"]);
-      const quizSnap = await db.collection("users").doc(userDoc.id).collection("quizAttempts").get();
-      const surveySnap = await db.collection("users").doc(userDoc.id).collection("surveyResponses").get();
-      const preDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "pre")).find(isKnee);
-      const postDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "post")).find(isKnee);
-      const preSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "pre"))
-        .find(isKnee);
-      const postSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "post"))
-        .find(isKnee);
-      const postPct = postDoc ? postScorePercent(postDoc.data(), COURSE_CONFIG["knee-mri"]) : null;
-      const courseComplete = meetsCompletion({
-        course: COURSE_CONFIG["knee-mri"],
-        modulesCompleted,
-        uniqueCases: completedCaseIds,
-        requiredCaseIds: eligibleCaseIds,
-        normalDone,
-        preAssessmentDone: !!preDoc && !!preSurveyDoc,
-        postAssessmentDone: !!postDoc && !!postSurveyDoc,
-        postPct,
-      });
+      const uid = userDoc.id;
+      const moduleSnap = await db.collection("users").doc(uid).collection("moduleProgress").get();
+      const caseSnap = await db.collection("users").doc(uid).collection("caseAttempts").get();
+      const quizSnap = await db.collection("users").doc(uid).collection("quizAttempts").get();
+      const surveySnap = await db.collection("users").doc(uid).collection("surveyResponses").get();
 
       const lastActive = data.lastActive?.toDate?.() || null;
       const daysSinceActive = lastActive
         ? Math.floor((Date.now() - lastActive.getTime()) / (1000 * 60 * 60 * 24))
         : null;
 
-      const entry = {
-        name: data.displayName || data.email,
-        email: data.email,
-        modulesCompleted,
-        casesCompleted,
-        lastActive: lastActive ? lastActive.toLocaleDateString() : "Never",
-        daysSinceActive,
-        courseComplete,
-      };
+      for (const courseId of DIGEST_COURSE_IDS) {
+        const course = COURSE_CONFIG[courseId];
+        const belongs = (d) => (d.data().courseId || "knee-mri") === courseId;
 
-      if (data.role === "resident") residents.push(entry);
-      else fellows.push(entry);
+        const modulesCompleted = moduleSnap.docs.filter((d) => d.data().completed && belongs(d)).length;
+        const eligibleCaseIds = data.role === "resident" ? course.residentCaseIds : course.fellowCaseIds;
+        const completedCaseIds = new Set(caseSnap.docs.filter(belongs).map((d) => d.data().caseId));
+        const casesCompleted = eligibleCaseIds.filter((id) => completedCaseIds.has(id)).length;
+
+        // "Complete" mirrors the certificate definition in src/lib/completion.ts.
+        const normal = await normalMriStatus(uid, course);
+        const normalDone = normal.complete;
+        const preDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "pre")).find(belongs);
+        const postDoc = newestFirst(quizSnap.docs.filter((d) => d.data().quizType === "post")).find(belongs);
+        const preSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "pre")).find(belongs);
+        const postSurveyDoc = newestFirst(surveySnap.docs.filter((d) => d.data().surveyType === "post")).find(belongs);
+        const postPct = postDoc ? postScorePercent(postDoc.data(), course) : null;
+        const courseComplete = meetsCompletion({
+          course,
+          modulesCompleted,
+          uniqueCases: completedCaseIds,
+          requiredCaseIds: eligibleCaseIds,
+          normalDone,
+          preAssessmentDone: !!preDoc && !!preSurveyDoc,
+          postAssessmentDone: !!postDoc && !!postSurveyDoc,
+          postPct,
+        });
+
+        // Skip learners who have never touched this course, so each section shows
+        // only the people actually enrolled in it (no wall of 0/N rows). "Touched"
+        // = ANY engagement, including a baseline survey or a partial normal-MRI
+        // pass, so stalled learners the digest exists to catch aren't dropped.
+        const startedThisCourse =
+          modulesCompleted > 0 ||
+          casesCompleted > 0 ||
+          !!preDoc ||
+          !!preSurveyDoc ||
+          normal.started;
+        if (!startedThisCourse) continue;
+
+        const entry = {
+          name: data.displayName || data.email,
+          email: data.email,
+          modulesCompleted,
+          moduleCount: course.moduleCount,
+          casesCompleted,
+          lastActive: lastActive ? lastActive.toLocaleDateString() : "Never",
+          daysSinceActive,
+          courseComplete,
+        };
+        if (data.role === "resident") byCourse[courseId].residents.push(entry);
+        else byCourse[courseId].fellows.push(entry);
+      }
     }
 
-    // Build email
     const buildTable = (users, label) => {
-      if (users.length === 0) return `<p>No ${label}s enrolled.</p>`;
+      if (users.length === 0) return `<p style="color:#9CA3AF;font-size:13px;">No ${label}s active in this course.</p>`;
       return `
-        <table style="width:100%;border-collapse:collapse;margin:16px 0;">
+        <table style="width:100%;border-collapse:collapse;margin:8px 0 16px;">
           <tr style="background:#2774AE;color:white;">
             <th style="padding:8px;text-align:left;">Name</th>
             <th style="padding:8px;text-align:center;">Modules</th>
@@ -905,7 +938,7 @@ exports.weeklyDigest = onSchedule(
           ${users.map((u) => `
             <tr style="border-bottom:1px solid #E5E7EB;${u.daysSinceActive > 7 ? "background:#FEF2F2;" : ""}">
               <td style="padding:8px;">${escapeHtml(u.name)}</td>
-              <td style="padding:8px;text-align:center;">${u.modulesCompleted}/${MODULE_COUNT}</td>
+              <td style="padding:8px;text-align:center;">${u.modulesCompleted}/${u.moduleCount}</td>
               <td style="padding:8px;text-align:center;">${u.casesCompleted}</td>
               <td style="padding:8px;text-align:center;">${u.lastActive}${u.daysSinceActive > 7 ? " ⚠️" : ""}</td>
               <td style="padding:8px;text-align:center;">${u.courseComplete ? "✅ Complete" : "In Progress"}</td>
@@ -915,22 +948,33 @@ exports.weeklyDigest = onSchedule(
       `;
     };
 
+    const courseSections = DIGEST_COURSE_IDS.map((courseId) => {
+      const course = COURSE_CONFIG[courseId];
+      const { fellows, residents } = byCourse[courseId];
+      if (fellows.length === 0 && residents.length === 0) return "";
+      return `
+        <h2 style="color:#003B5C;font-size:16px;border-bottom:2px solid #2774AE;padding-bottom:4px;margin-top:28px;">${escapeHtml(course.label)}</h2>
+        <h3 style="color:#4B5563;font-size:13px;margin:12px 0 0;">Fellows (${fellows.length})</h3>
+        ${buildTable(fellows, "fellow")}
+        <h3 style="color:#4B5563;font-size:13px;margin:12px 0 0;">Residents (${residents.length})</h3>
+        ${buildTable(residents, "resident")}
+      `;
+    }).join("");
+
+    const anyActivity = DIGEST_COURSE_IDS.some(
+      (cid) => byCourse[cid].fellows.length > 0 || byCourse[cid].residents.length > 0,
+    );
+
     const html = `
       <div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;">
         <div style="background:#2774AE;padding:20px;text-align:center;">
-          <h1 style="color:white;margin:0;font-size:18px;">UCLA Knee MRI Course — Weekly Report</h1>
+          <h1 style="color:white;margin:0;font-size:18px;">UCLA Sports MRI Courses — Weekly Report</h1>
         </div>
         <div style="padding:24px;background:#f9fafb;">
           <p style="color:#4B5563;">Week of ${new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
-
-          <h2 style="color:#003B5C;font-size:16px;">Sports Medicine Fellows (${fellows.length})</h2>
-          ${buildTable(fellows, "fellow")}
-
-          <h2 style="color:#003B5C;font-size:16px;">Resident Physicians (${residents.length})</h2>
-          ${buildTable(residents, "resident")}
-
+          ${anyActivity ? courseSections : "<p style=\"color:#4B5563;\">No learner activity across any course this week.</p>"}
           <hr style="border:none;border-top:1px solid #E5E7EB;margin:24px 0;" />
-          <p style="color:#9CA3AF;font-size:11px;">Automated weekly digest from UCLA Knee MRI Course</p>
+          <p style="color:#9CA3AF;font-size:11px;">Automated weekly digest — UCLA Sports MRI Courses</p>
         </div>
       </div>
     `;
@@ -938,9 +982,9 @@ exports.weeklyDigest = onSchedule(
     const transporter = createTransporter(GMAIL_APP_PASSWORD.value());
 
     await transporter.sendMail({
-      from: `"UCLA Knee MRI Course" <jeremyswisher13@gmail.com>`,
+      from: `"UCLA Sports MRI Courses" <jeremyswisher13@gmail.com>`,
       to: "jeremyswisher13@gmail.com",
-      subject: `Weekly Report: UCLA Knee MRI Course — ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
+      subject: `Weekly Report: UCLA Sports MRI Courses — ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
       html,
     });
 

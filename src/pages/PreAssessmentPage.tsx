@@ -52,7 +52,8 @@ export default function PreAssessmentPage() {
             Pre-Assessment Complete
           </h2>
           <p className="mt-2 text-green-700">
-            You scored {progress.preQuizScore} on the knowledge quiz. You can
+            You scored {progress.preQuizScore}
+            {progress.preQuizTotal ? ` / ${progress.preQuizTotal}` : ""} on the knowledge quiz. You can
             now proceed to the course modules.
           </p>
           <div className="mt-6">
@@ -131,7 +132,7 @@ export default function PreAssessmentPage() {
                 />
                 <span className="text-sm text-gray-600">
                   {progress.preQuizCompleted
-                    ? `Complete (Score: ${progress.preQuizScore})`
+                    ? `Complete (Score: ${progress.preQuizScore}${progress.preQuizTotal ? ` / ${progress.preQuizTotal}` : ""})`
                     : "Not started"}
                 </span>
               </div>

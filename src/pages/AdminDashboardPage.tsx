@@ -1,8 +1,9 @@
 import { useEffect, useState, useMemo, useCallback, Fragment } from "react";
-import { getAllFellows, setUserRole, completeModuleAdmin } from "@/lib/firestore";
+import { getAllFellows, setUserRole, completeModuleAdmin, getPendingDeletionRequests, type AccountDeletionRequest } from "@/lib/firestore";
 import { sendCertificateCallable } from "@/lib/functions";
 import { csvCell } from "@/lib/csv-cell";
 import { moduleQuizzes } from "@/content/quizzes/module-quizzes";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   courseRegistry,
   defaultCourse,
@@ -495,6 +496,11 @@ const TABS: { id: DashboardTab; label: string }[] = [
 ];
 
 export default function AdminDashboardPage() {
+  const { user: adminUser } = useAuth();
+  const actingAdmin = useMemo(
+    () => (adminUser ? { uid: adminUser.uid, email: adminUser.email || "" } : undefined),
+    [adminUser],
+  );
   const [fellows, setFellows] = useState<Fellow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -544,12 +550,12 @@ export default function AdminDashboardPage() {
 
   const handleRoleChange = useCallback(async (userId: string, newRole: "fellow" | "resident") => {
     try {
-      await setUserRole(userId, newRole);
+      await setUserRole(userId, newRole, actingAdmin);
       setFellows((prev) => prev.map((f) => (f.id === userId ? { ...f, role: newRole } : f)));
     } catch (err) {
       alert("Failed to update role: " + (err as Error).message);
     }
-  }, []);
+  }, [actingAdmin]);
 
   const handleForceComplete = useCallback(async () => {
     if (!fcSelectedFellow || fcSelectedModules.size === 0) return;
@@ -561,7 +567,7 @@ export default function AdminDashboardPage() {
         // was indistinguishable from an earned score: it inflated the module
         // heatmap/CSV and could flip a struggling module's "needs review" flag
         // off. null/null is suppressed by every aggregation.
-        await completeModuleAdmin(fcSelectedFellow, moduleId, null, null, selectedCourse.id);
+        await completeModuleAdmin(fcSelectedFellow, moduleId, null, null, selectedCourse.id, actingAdmin);
       }
       // Refresh fellows data
       const refreshed = await getAllFellows(selectedCourse);
@@ -573,7 +579,7 @@ export default function AdminDashboardPage() {
     } finally {
       setFcBusy(false);
     }
-  }, [fcSelectedFellow, fcSelectedModules, selectedCourse]);
+  }, [fcSelectedFellow, fcSelectedModules, selectedCourse, actingAdmin]);
 
   const toggleFcModule = useCallback((moduleId: string) => {
     setFcSelectedModules((prev) => {
@@ -851,6 +857,8 @@ export default function AdminDashboardPage() {
       {/* ════════ OVERVIEW TAB ════════ */}
       {activeTab === "overview" && (
         <>
+          <DeletionRequestsPanel />
+
           {/* ─── A. COHORT SUMMARY CARDS ─── */}
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
             <SummaryCard label="Learners Enrolled" value={String(fellows.length)} sub={`${fellowCount} Fellows · ${residentCount} Residents`} color="#2774AE" />
@@ -1387,6 +1395,50 @@ function TrackedMetric({ label, value }: { label: string; value: string }) {
     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
       <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">{label}</p>
       <p className="mt-0.5 truncate text-xs font-bold text-gray-900">{value}</p>
+    </div>
+  );
+}
+
+/**
+ * Compliance surface: pending account-deletion requests. Renders NOTHING when
+ * there are none, so it's invisible in the common case and an unmissable red
+ * banner when a request is waiting. Fulfillment still runs via the CLI
+ * (process-account-deletion.mjs); this just removes the "remember to check" gap.
+ */
+function DeletionRequestsPanel() {
+  const [requests, setRequests] = useState<AccountDeletionRequest[] | null>(null);
+  useEffect(() => {
+    let active = true;
+    getPendingDeletionRequests()
+      .then((r) => { if (active) setRequests(r); })
+      .catch(() => { if (active) setRequests([]); });
+    return () => { active = false; };
+  }, []);
+
+  if (!requests || requests.length === 0) return null;
+
+  return (
+    <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-sm font-bold uppercase tracking-wide text-red-800">
+          {requests.length} pending account-deletion {requests.length === 1 ? "request" : "requests"}
+        </h3>
+      </div>
+      <ul className="mt-2 space-y-1.5">
+        {requests.map((r) => (
+          <li key={r.id} className="flex flex-wrap items-baseline justify-between gap-x-3 text-sm text-red-900">
+            <span className="font-medium">{r.displayName || r.email || r.userId}</span>
+            <span className="text-xs text-red-700">
+              {r.email ? `${r.email} · ` : ""}
+              {r.requestedAt ? new Date(r.requestedAt.seconds * 1000).toLocaleDateString() : ""}
+              {r.status && r.status !== "requested" ? ` · ${r.status}` : ""}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-2 text-xs text-red-700">
+        Fulfill with <code className="rounded bg-red-100 px-1">process-account-deletion.mjs</code> (see the repo scripts).
+      </p>
     </div>
   );
 }

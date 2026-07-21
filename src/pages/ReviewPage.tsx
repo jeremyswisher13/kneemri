@@ -5,7 +5,7 @@ import Card from "@/components/ui/Card";
 import AnnotatedSlice from "@/components/normal/AnnotatedSlice";
 import { useAuth } from "@/contexts/AuthContext";
 import { getDueCards, saveReviewCard } from "@/lib/firestore";
-import { calculateNextReview, mapAnswerToQuality, type ReviewCard } from "@/lib/spaced-repetition";
+import { calculateNextReview, mapAnswerToQuality, DAILY_REVIEW_CAP, type ReviewCard } from "@/lib/spaced-repetition";
 import { reviewQuestionById } from "@/content/review-registry";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
 import { coursePath, getCourseById } from "@/content/courses";
@@ -32,6 +32,7 @@ export default function ReviewPage() {
   const workstationPath = coursePath(activeCourse, `/normal-${activeCourse.bodyRegion}-mri`);
 
   const [dueCards, setDueCards] = useState<ReviewCard[]>([]);
+  const [totalDue, setTotalDue] = useState(0);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -60,8 +61,13 @@ export default function ReviewPage() {
         if (cancelled) return;
         // Drop cards whose question no longer exists in any bank.
         const valid = cards.filter((c) => reviewQuestionById[c.questionId]);
-        setDueCards(valid);
-        if (valid.length === 0) setSessionComplete(true);
+        // Cap the day's session so a returning learner isn't buried by a backlog;
+        // getDueCards already ordered hardest-first, so the cap keeps the most
+        // important cards. The remainder carries to the next day.
+        setTotalDue(valid.length);
+        const session = valid.slice(0, DAILY_REVIEW_CAP);
+        setDueCards(session);
+        if (session.length === 0) setSessionComplete(true);
       })
       .catch(() => {
         if (cancelled) return;
@@ -122,6 +128,9 @@ export default function ReviewPage() {
     setSaveError(null);
     try {
       await saveReviewCard(user.uid, updated);
+      // Tell the layout's due-badge to refresh — an in-app nav back to the
+      // dashboard fires no window focus event.
+      window.dispatchEvent(new CustomEvent("reviewcards:changed"));
       const reviewed = [...reviewedCards, updated];
       setReviewedCards(reviewed);
       finishOrAdvance(reviewed);
@@ -189,11 +198,16 @@ export default function ReviewPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">All caught up!</h3>
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              {totalDue > reviewedCards.length ? "Today's session is done" : "All caught up!"}
+            </h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-gray-500">
-              You reviewed all {reviewedCards.length} due {reviewedCards.length === 1 ? "card" : "cards"} for today. Nice work keeping the queue clear.
+              You reviewed {reviewedCards.length} {reviewedCards.length === 1 ? "card" : "cards"}.{" "}
+              {totalDue > reviewedCards.length
+                ? `${totalDue - reviewedCards.length} more ${totalDue - reviewedCards.length === 1 ? "card is" : "cards are"} still due — capped at ${DAILY_REVIEW_CAP} a day so it stays manageable. Come back tomorrow to keep going.`
+                : "Nice work keeping the queue clear."}
             </p>
-            {nextReviewDate && (
+            {nextReviewDate && totalDue <= reviewedCards.length && (
               <p className="mt-3 text-sm text-gray-500">
                 Next review around <span className="font-medium text-gray-600">{nextReviewDate}</span>
               </p>
@@ -236,10 +250,13 @@ export default function ReviewPage() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-bold text-gray-900">Spaced Review</h1>
         <span className="rounded-full bg-ucla-light px-3 py-1 text-sm font-medium text-ucla-blue">
           {reviewedCount} of {dueCards.length} reviewed
+          {totalDue > dueCards.length && (
+            <span className="ml-1 font-normal text-ucla-blue/70">· {totalDue} due total</span>
+          )}
         </span>
       </div>
 

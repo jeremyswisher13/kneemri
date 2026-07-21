@@ -4,7 +4,7 @@ import {
 import { db } from "./db";
 
 import { logAuditEvent } from "./audit";
-import { createNewCard, calculateNextReview, type ReviewCard } from "./spaced-repetition";
+import { createNewCard, calculateNextReview, orderDueCards, type ReviewCard } from "./spaced-repetition";
 import { certificateFieldsForCourse } from "@/lib/course-certificate";
 import {
   defaultCourse,
@@ -102,10 +102,21 @@ async function touchLastActive(uid: string) {
 }
 
 // --- User Role ---
-export async function setUserRole(uid: string, role: 'fellow' | 'resident'): Promise<void> {
+export async function setUserRole(
+  uid: string,
+  role: 'fellow' | 'resident',
+  // The acting admin, for the audit trail. The audit entry is attributed to the
+  // admin (auditLog rules require userId == auth.uid) with the target in details.
+  admin?: { uid: string; email: string },
+): Promise<void> {
   if (isAdminPreview()) return;
   const userRef = doc(db, "users", uid);
   await setDoc(userRef, { role }, { merge: true });
+  // Audit: a role change shifts required-case counts and every downstream
+  // analytic, so record who changed whom (an IRB/program audit wants this).
+  if (admin) {
+    logAuditEvent(admin.uid, admin.email, "role_changed", { targetUid: uid, role }).catch(() => {});
+  }
 }
 
 // --- Quiz ---
@@ -217,7 +228,9 @@ export async function completeModuleAdmin(
   // and every aggregation already suppresses null/0-total scores.
   quizScore: number | null,
   quizTotal: number | null,
-  courseId: CourseId = defaultCourse.id
+  courseId: CourseId = defaultCourse.id,
+  // The acting admin, for the audit trail (attributed to the admin, target in details).
+  admin?: { uid: string; email: string },
 ) {
   const moduleRef = doc(db, "users", userId, "moduleProgress", moduleId);
   await setDoc(moduleRef, {
@@ -225,8 +238,19 @@ export async function completeModuleAdmin(
     completed: true,
     quizScore,
     quizTotal,
+    // Permanent marker that this completion was an admin override, not an earned
+    // pass — so a later analytic can exclude it even if quizScore is ever set.
+    forced: true,
     completedAt: serverTimestamp(),
   }, { merge: true });
+  if (admin) {
+    logAuditEvent(admin.uid, admin.email, "module_force_completed", {
+      targetUid: userId,
+      courseId,
+      moduleId,
+      forced: true,
+    }).catch(() => {});
+  }
 }
 
 // --- Module Progress ---
@@ -304,6 +328,10 @@ export async function submitCaseAttempt(
   caseId: string,
   searchPatternChecklist: Record<string, boolean>,
   report: string,
+  // Pre-reveal 0-100 self-rated confidence in the committed read, or null if the
+  // learner skipped it. Paired with whether they hit the diagnosis, this yields
+  // calibration on actual image interpretation.
+  confidence: number | null = null,
   courseId: CourseId = defaultCourse.id
 ) {
   if (isPreviewAuthSession()) {
@@ -322,6 +350,7 @@ export async function submitCaseAttempt(
       caseId,
       searchPatternChecklist,
       report,
+      confidence,
       completedAt: serverTimestamp(),
     }).then((ref) => ref.id),
     "queued",
@@ -519,6 +548,43 @@ export async function getUserProgress(
 }
 
 // --- Admin ---
+export interface AccountDeletionRequest {
+  id: string;
+  userId: string;
+  email: string | null;
+  displayName: string | null;
+  status: string;
+  requestedAt: { seconds: number } | null;
+  source: string | null;
+}
+
+/**
+ * Pending account-deletion requests (App-Store / privacy compliance). These
+ * otherwise only surface via a CLI (`process-account-deletion.mjs --list`), so
+ * fulfillment depended on remembering a chore; this lets the admin dashboard
+ * show the count. Rules already allow isAdmin() reads.
+ */
+export async function getPendingDeletionRequests(): Promise<AccountDeletionRequest[]> {
+  if (isPreviewAuthSession()) return [];
+  const snap = await getDocs(collection(db, "accountDeletionRequests"));
+  return snap.docs
+    .map((d) => {
+      const data = d.data();
+      return {
+        id: d.id,
+        userId: data.userId ?? d.id,
+        email: data.email ?? null,
+        displayName: data.displayName ?? null,
+        status: data.status ?? "requested",
+        requestedAt: data.requestedAt ?? null,
+        source: data.source ?? null,
+      };
+    })
+    // Anything not yet fulfilled — "completed"/"deleted" are done.
+    .filter((r) => r.status !== "completed" && r.status !== "deleted")
+    .sort((a, b) => (b.requestedAt?.seconds ?? 0) - (a.requestedAt?.seconds ?? 0));
+}
+
 export async function getAllFellows(course: CourseDefinition = defaultCourse) {
   if (isPreviewAuthSession()) return [];
   // Fetch both fellows and residents (exclude admins with no learner role).
@@ -688,7 +754,14 @@ export async function getDueCards(
   course: CourseDefinition = defaultCourse,
 ): Promise<ReviewCard[]> {
   const today = new Date().toISOString().split("T")[0];
-  return (await getCourseCards(userId, course)).filter(card => card.nextReviewDate <= today);
+  // Return ALL due cards, hardest-first. The caller (ReviewPage) caps the day's
+  // session to DAILY_REVIEW_CAP; the due-badge shows the true backlog. Ordering
+  // here makes the capped session deterministic (same top-N across reloads).
+  // Note: callers that surface a count filter out cards whose question is no
+  // longer in the review registry (ReviewPage + the FellowLayout badge both do).
+  return orderDueCards(
+    (await getCourseCards(userId, course)).filter(card => card.nextReviewDate <= today),
+  );
 }
 
 /**
