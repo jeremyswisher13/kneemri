@@ -16,6 +16,18 @@ export const TEACHING_SESSION = {
   appUrl: "https://jeremyswisherkneemri.com/courses/knee-mri",
 } as const;
 
+export function isTeachingSessionLearnerReady(learner: {
+  role?: string | null;
+  preQuizScore: number | null;
+  preSurveyCompleted: boolean;
+}): boolean {
+  return (
+    learner.role === "fellow" &&
+    learner.preQuizScore !== null &&
+    learner.preSurveyCompleted
+  );
+}
+
 export interface SessionCasePlan {
   /** Must match a case id in the knee course registry. */
   caseId: string;
@@ -67,13 +79,13 @@ export const SESSION_CASES: SessionCasePlan[] = [
     teachingFocus: [
       "Where the posterior medial root actually inserts, and the coronal slice that shows it",
       "The ghost sign on sagittal; the truncated-triangle / cleft on coronal",
-      "Measuring extrusion — >3 mm past the tibial margin is the threshold that matters",
-      "Why this is a functional total meniscectomy, not a degenerative tear to observe",
+      "Measuring medial extrusion as a continuous value — around 3 mm is a conventional major clue, not the diagnosis",
+      "Why a complete medial root-disrupting tear can approximate total-meniscectomy mechanics in a cadaver model",
     ],
     supportingRole:
       "Measure the extrusion yourself and state your number before the leader gives theirs.",
     impressionPrompt:
-      "In two sentences: name the tear and its location, give the extrusion, and say why this is time-sensitive.",
+      "In two sentences: name the tear and its location, give the extrusion, and state what determines treatment candidacy.",
   },
   {
     caseId: "patellar-dislocation-mpfl",
@@ -113,7 +125,7 @@ export const SESSION_HOUR_ONE = [
     minutes: "1:08 – 1:26",
     label: "Sagittal PD-FS — Guided Tour (11 stops)",
     facultyNote:
-      "Stops 1-6 are naming (6 min); stops 7-11 are reading (12 min). Spend the time on stop 3 (tibial plateau — plants Case 1's bruise), stop 7 (menisci, slice 9/29) and stop 9 (ACL, slice 22/29).",
+      "Stops 1-6 are naming (6 min); stops 7-11 are reading (12 min). Spend the time on stop 3 (tibial plateau — plants Case 1's bruise), stop 7 (menisci, slice 9/29) and stop 9 (ACL, slice 13/29).",
     seriesId: "sag-pdfs",
     mode: "tour",
   },
@@ -179,8 +191,9 @@ export function fellowInviteText(): string {
     "  Hour 2 — three cases together. Each of you will lead one; the other two find the",
     "  imaging evidence and the clinical implications. Each case ends with a short impression.",
     "",
-    "Tip: on your phone, open the link in Safari or Chrome and choose \"Add to Home Screen\" —",
-    "it installs as an app and works offline.",
+    "Tip: on your phone, open the link in Safari or Chrome and choose \"Add to Home Screen\".",
+    "Open the course and MRI once while online before Friday; previously loaded core screens can",
+    "recover offline, but first-load MRI images still need a reliable connection.",
     "",
     "See you Friday,",
     "Jeremy",

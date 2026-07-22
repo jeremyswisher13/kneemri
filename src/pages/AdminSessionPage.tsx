@@ -14,9 +14,30 @@ import {
   SESSION_HOUR_ONE,
   TEACHING_SESSION,
   fellowInviteText,
+  isTeachingSessionLearnerReady,
 } from "@/content/teaching-session";
 
 const ASSIGNMENT_KEY = "teachingSession.caseLeads.v1";
+const PREFLIGHT_KEY = "teachingSession.preflight.v1";
+
+const PREFLIGHT_ITEMS = [
+  {
+    id: "workstation",
+    label: "Presenter and fellow devices load the sagittal knee stack on the room network",
+  },
+  {
+    id: "tabs",
+    label: "Normal workstation and all three cases are pre-opened in separate presenter tabs",
+  },
+  {
+    id: "external",
+    label: "Optional external stacks were opened once; local case images are ready as fallback",
+  },
+  {
+    id: "room",
+    label: "Projector, power, charger and backup hotspot are ready",
+  },
+] as const;
 
 /**
  * Faculty run-sheet for the live 7/24 knee-MRI session — admin-only.
@@ -25,8 +46,8 @@ const ASSIGNMENT_KEY = "teachingSession.caseLeads.v1";
  *  1. It is used LIVE, standing up, on whatever device is at hand. Big targets,
  *     no nested scrolling, everything on one page in running order.
  *  2. The screen may be PROJECTED. Case diagnoses and teaching points are
- *     spoilers the app deliberately hides from fellows (an unopened case renders
- *     as "Case 3: Foundational"), so a projector-safe toggle masks them.
+ *     spoilers the app deliberately hides from fellows until they commit their
+ *     read, so a projector-safe toggle masks them here too.
  */
 export default function AdminSessionPage() {
   const course = getCourseById(TEACHING_SESSION.courseId);
@@ -72,6 +93,8 @@ export default function AdminSessionPage() {
         course={course}
       />
 
+      <PreflightChecklist />
+
       <InviteBlock />
 
       <HourOnePanel course={course} projectorSafe={projectorSafe} />
@@ -84,6 +107,83 @@ export default function AdminSessionPage() {
 
       <WrapUpPanel course={course} />
     </div>
+  );
+}
+
+/* ───────── Room preflight ───────── */
+
+type PreflightState = Record<(typeof PREFLIGHT_ITEMS)[number]["id"], boolean>;
+
+function emptyPreflight(): PreflightState {
+  return Object.fromEntries(PREFLIGHT_ITEMS.map((item) => [item.id, false])) as PreflightState;
+}
+
+function readPreflight(): PreflightState {
+  try {
+    const saved = JSON.parse(localStorage.getItem(PREFLIGHT_KEY) ?? "{}") as Partial<PreflightState>;
+    return Object.fromEntries(
+      PREFLIGHT_ITEMS.map((item) => [item.id, saved[item.id] === true]),
+    ) as PreflightState;
+  } catch {
+    return emptyPreflight();
+  }
+}
+
+function PreflightChecklist() {
+  const [state, setState] = useState<PreflightState>(() =>
+    typeof localStorage === "undefined" ? emptyPreflight() : readPreflight(),
+  );
+  const done = PREFLIGHT_ITEMS.filter((item) => state[item.id]).length;
+
+  function setItem(id: (typeof PREFLIGHT_ITEMS)[number]["id"], checked: boolean) {
+    const next = { ...state, [id]: checked };
+    setState(next);
+    try {
+      localStorage.setItem(PREFLIGHT_KEY, JSON.stringify(next));
+    } catch {
+      /* private-mode storage refusal must not break the checklist */
+    }
+  }
+
+  return (
+    <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-bold text-gray-900">Friday 12:50 preflight</h2>
+          <p className="mt-0.5 text-sm text-gray-600">
+            Dr. Swisher drives the projector; Dr. Burbank owns the fellows and the clock.
+          </p>
+        </div>
+        <span
+          className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+            done === PREFLIGHT_ITEMS.length
+              ? "bg-green-100 text-green-800"
+              : "bg-amber-100 text-amber-900"
+          }`}
+        >
+          {done}/{PREFLIGHT_ITEMS.length} ready
+        </span>
+      </div>
+
+      <div className="mt-4 space-y-2">
+        {PREFLIGHT_ITEMS.map((item) => (
+          <label
+            key={item.id}
+            className="flex min-h-11 cursor-pointer items-start gap-3 rounded-lg border border-gray-200 px-3 py-2.5 hover:bg-gray-50"
+          >
+            <input
+              type="checkbox"
+              checked={state[item.id]}
+              onChange={(event) => setItem(item.id, event.target.checked)}
+              className="mt-0.5 h-5 w-5 shrink-0 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
+            />
+            <span className={state[item.id] ? "text-sm text-gray-500 line-through" : "text-sm text-gray-800"}>
+              {item.label}
+            </span>
+          </label>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -150,6 +250,7 @@ interface ReadinessFlag {
 function readinessFor(fellow: Fellow): ReadinessFlag[] {
   return [
     { label: "Signed in", done: true },
+    { label: "Fellow access", done: fellow.role === "fellow" },
     { label: "Baseline quiz", done: fellow.preQuizScore !== null },
     { label: "Confidence survey", done: fellow.preSurveyCompleted },
   ];
@@ -180,7 +281,7 @@ function RosterCheck({
   course: ReturnType<typeof getCourseById>;
 }) {
   const ready = roster.filter(
-    (r) => r.fellow && r.fellow.preQuizScore !== null && r.fellow.preSurveyCompleted,
+    (r) => r.fellow && isTeachingSessionLearnerReady(r.fellow),
   ).length;
 
   return (
@@ -365,9 +466,11 @@ function HourOnePanel({
             )}
             <Link
               to={`${base}?${NORMAL_MRI_SERIES_PARAM}=${step.seriesId}&${NORMAL_MRI_MODE_PARAM}=${step.mode}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-ucla-blue/40 bg-ucla-light/40 px-4 text-sm font-semibold text-ucla-dark transition-colors hover:bg-ucla-light"
             >
-              Open {seriesLabel(step.seriesId)} →
+              Open {seriesLabel(step.seriesId)} ↗
             </Link>
           </li>
         ))}
@@ -435,20 +538,19 @@ function HourTwoPanel({
       </p>
 
       {!projectorSafe && (
-        <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3">
-          <p className="text-xs font-bold uppercase tracking-wide text-red-800">
+        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
+          <p className="text-xs font-bold uppercase tracking-wide text-amber-900">
             Read this before 2:05
           </p>
-          <p className="mt-1.5 text-sm text-red-900">
-            <strong>Case steps 1–7 show no images.</strong> The app shows images on the first
-            screen and again on the answer key; the steps in between are a checklist and a text
-            box. Drive the images from your device on the projector — and do not say &ldquo;scroll
-            to&rdquo; or &ldquo;trace the.&rdquo; The Radiopaedia button on the first screen is the
-            only scrollable stack; pre-flight it.
+          <p className="mt-1.5 text-sm text-amber-950">
+            Each search-pattern step now keeps a compact local image rail in view. Use your
+            projector copy for larger comparison and the external stack only when it adds value;
+            pre-flight those external links because they are outside our control.
           </p>
-          <p className="mt-2 text-sm text-red-900">
-            The case also <strong>names its own diagnosis</strong> in the title, the tags and the
-            thumbnail captions. Reframe it out loud: they are not guessing it, they are proving it.
+          <p className="mt-2 text-sm text-amber-950">
+            Image captions, tags, accessibility labels and the diagnosis stay hidden until the
+            fellow commits. A blue &ldquo;mentioned&rdquo; dot only detects related words; it does not
+            understand negation, so faculty still grade the clinical meaning.
           </p>
         </div>
       )}
@@ -521,9 +623,11 @@ function HourTwoPanel({
 
             <Link
               to={coursePath(course, `/cases/${plan.caseId}`)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 inline-flex min-h-11 items-center rounded-lg bg-ucla-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark"
             >
-              Open case {index + 1} →
+              Open case {index + 1} ↗
             </Link>
           </article>
         ))}

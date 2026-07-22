@@ -79,6 +79,54 @@ function CheckIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
+function BlindedCaseImageGrid({
+  images,
+  onOpen,
+  compact = false,
+}: {
+  images: TeachingImage[];
+  onOpen: (image: TeachingImage) => void;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={
+        compact
+          ? "flex snap-x gap-3 overflow-x-auto pb-2"
+          : "flex snap-x gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4"
+      }
+    >
+      {images.map((image, index) => {
+        const label = `Case teaching image ${index + 1}`;
+        return (
+          <button
+            key={`${image.src}-${index}`}
+            type="button"
+            onClick={() => onOpen(image)}
+            aria-label={`Open ${label.toLowerCase()}`}
+            className={`overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-left transition hover:border-ucla-blue/50 hover:shadow-sm ${
+              compact ? "w-44 shrink-0 snap-start" : "w-64 shrink-0 snap-start sm:w-auto"
+            }`}
+          >
+            <div className="aspect-square bg-gray-900">
+              <img
+                src={image.src}
+                alt={label}
+                loading="lazy"
+                className="h-full w-full object-contain"
+                onError={handleTeachingImageError}
+              />
+            </div>
+            <div className="p-2">
+              <p className="text-xs font-medium text-gray-700">{label}</p>
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
@@ -261,26 +309,47 @@ export default function CasePage() {
   const teachingImages = caseItem.teachingImages ?? [];
   const teachingStacks = caseItem.teachingStacks ?? [];
   const previewImages = teachingImages.slice(0, 4);
+  const answersRevealed = currentStep === reviewStep && committed;
+  const expandedImageIndex = expandedImage ? teachingImages.indexOf(expandedImage) : -1;
+  const expandedImageLabel = answersRevealed
+    ? expandedImage?.caption || expandedImage?.alt || "Teaching image"
+    : `Case teaching image ${Math.max(0, expandedImageIndex) + 1}`;
   const hasEmbeddedReferences = teachingImages.length > 0 || teachingStacks.length > 0;
   const readoutDiagnoses = caseItem.keyDiagnoses.slice(0, 3);
   const allReadoutFindingSteps = caseItem.searchPatternFindings ?? [];
   const pathologyReadoutFindingSteps = allReadoutFindingSteps.filter((findingStep) => findingStep.step > 1);
-  const readoutFindings = (pathologyReadoutFindingSteps.length > 0 ? pathologyReadoutFindingSteps : allReadoutFindingSteps)
-    .flatMap((findingStep) =>
-      findingStep.expectedFindings.slice(0, 2).map((finding) => ({
-        step: findingStep.step,
-        stepName: findingStep.stepName,
-        finding,
-      })),
-    )
-    .slice(0, 4);
+  const readoutFindingSteps =
+    pathologyReadoutFindingSteps.length > 0
+      ? pathologyReadoutFindingSteps
+      : allReadoutFindingSteps;
+  // Give the read-out breadth before depth: one finding from successive search
+  // steps ensures a primary ligament or meniscal lesion is not crowded out by
+  // the first two marrow/cartilage steps. Fill any remaining slots with each
+  // step's secondary findings.
+  const primaryReadoutFindings = readoutFindingSteps.flatMap((findingStep) =>
+    findingStep.expectedFindings.slice(0, 1).map((finding) => ({
+      step: findingStep.step,
+      stepName: findingStep.stepName,
+      finding,
+    })),
+  );
+  const secondaryReadoutFindings = readoutFindingSteps.flatMap((findingStep) =>
+    findingStep.expectedFindings.slice(1).map((finding) => ({
+      step: findingStep.step,
+      stepName: findingStep.stepName,
+      finding,
+    })),
+  );
+  const readoutFindings = [...primaryReadoutFindings, ...secondaryReadoutFindings].slice(0, 4);
   const clinicalHinges = (caseItem.teachingPoints ?? []).slice(0, 3);
   const externalCaseLinkLabel = hasEmbeddedReferences
     ? "Open the full scrollable MRI on Radiopaedia"
     : "Open external scrollable MRI examples";
-  const externalCaseLinkCaption = hasEmbeddedReferences
-    ? `${caseItem.radiopaediaTitle} — scroll through every slice like a workstation`
-    : `${caseItem.radiopaediaTitle} — use after committing to the local search pattern`;
+  const externalCaseLinkCaption = answersRevealed
+    ? hasEmbeddedReferences
+      ? `${caseItem.radiopaediaTitle} — scroll through every slice like a workstation`
+      : `${caseItem.radiopaediaTitle} — use after committing to the local search pattern`
+    : "Optional external stack — open after committing to the local findings";
 
   /* ---- Helpers ---- */
 
@@ -403,7 +472,7 @@ export default function CasePage() {
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
-            aria-label={`Teaching image: ${expandedImage.caption || expandedImage.alt}`}
+            aria-label={`Teaching image: ${expandedImageLabel}`}
           >
             <button
               ref={lightboxCloseRef}
@@ -418,13 +487,13 @@ export default function CasePage() {
             <div className="overflow-auto max-h-[75vh] bg-gray-900 flex items-center justify-center">
               <img
                 src={expandedImage.src}
-                alt={expandedImage.alt}
+                alt={expandedImageLabel}
                 className="max-h-[75vh] max-w-full object-contain"
                 onError={handleTeachingImageError}
               />
             </div>
             <div className="p-4">
-              <p className="text-sm text-gray-700">{expandedImage.caption}</p>
+              <p className="text-sm text-gray-700">{expandedImageLabel}</p>
               <p className="mt-1 text-xs text-gray-500">{expandedImage.attribution}</p>
             </div>
           </div>
@@ -438,7 +507,7 @@ export default function CasePage() {
         </Link>
         <span>/</span>
         <span className="min-w-0 flex-1 text-gray-600 line-clamp-1">
-          {currentStep === reviewStep ? caseItem.title : unrevealedCaseTitle}
+          {answersRevealed ? caseItem.title : unrevealedCaseTitle}
         </span>
       </nav>
 
@@ -458,7 +527,7 @@ export default function CasePage() {
           )}
         </div>
         <h1 className="text-2xl font-bold text-gray-900">
-          {currentStep === reviewStep ? caseItem.title : unrevealedCaseTitle}
+          {answersRevealed ? caseItem.title : unrevealedCaseTitle}
         </h1>
       </div>
 
@@ -570,47 +639,20 @@ export default function CasePage() {
                 </p>
 
                 {previewImages.length > 0 && (
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {previewImages.map((image, index) => (
-                      <button
-                        key={`${image.src}-${index}`}
-                        type="button"
-                        onClick={() => setExpandedImage(image)}
-                        className="overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-left transition hover:border-ucla-blue/50 hover:shadow-sm"
-                      >
-                        <div className="aspect-square bg-gray-900">
-                          <img
-                            src={image.src}
-                            alt={image.alt}
-                            loading="lazy"
-                            className="h-full w-full object-contain"
-                            onError={handleTeachingImageError}
-                          />
-                        </div>
-                        <div className="p-2">
-                          <p className="line-clamp-2 text-xs font-medium text-gray-700">
-                            {image.caption}
-                          </p>
-                          {image.step && (
-                            <p className="mt-1 text-[11px] text-ucla-blue">
-                              Search pattern step {image.step}
-                            </p>
-                          )}
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+                  <BlindedCaseImageGrid images={previewImages} onOpen={setExpandedImage} />
                 )}
 
                 {teachingStacks.slice(0, 1).map((stack) => (
                   <MriStackViewer
                     key={stack.id}
-                    slices={stack.slices}
-                    title={stack.title}
+                    slices={stack.slices.map((slice, index) => ({
+                      ...slice,
+                      alt: `Case MRI slice ${index + 1}`,
+                    }))}
+                    title="Case MRI stack"
                     plane={stack.plane}
-                    caption={stack.caption}
+                    caption="Review the stack and record your findings before opening the answer key."
                     attribution={stack.attribution}
-                    sourceUrl={stack.sourceUrl}
                   />
                 ))}
 
@@ -682,20 +724,6 @@ export default function CasePage() {
             )}
           </Card>
 
-          <Card>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Tags</h3>
-            <div className="flex flex-wrap gap-2">
-              {caseItem.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="inline-flex rounded-md bg-gray-100 px-2.5 py-1 text-xs text-gray-600"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </Card>
-
           <div className="flex justify-end">
             <Button size="lg" className="w-full sm:w-auto" onClick={advanceStep}>
               Begin Case Walkthrough &rarr;
@@ -713,6 +741,11 @@ export default function CasePage() {
         const allChecked = step.checklistItems.every((_, i) =>
           isItemChecked(stepNumber, i)
         );
+        const stepSpecificImages = teachingImages
+          .filter((image) => image.step === stepNumber)
+          .slice(0, 4);
+        const referenceImages =
+          stepSpecificImages.length > 0 ? stepSpecificImages : previewImages;
 
         return (
           <div className="space-y-6">
@@ -736,6 +769,24 @@ export default function CasePage() {
                 ))}
               </div>
             </div>
+
+            {referenceImages.length > 0 && (
+              <Card>
+                <div className="mb-3">
+                  <h3 className="text-base font-semibold text-gray-900">Case images</h3>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {stepSpecificImages.length > 0
+                      ? `Reference images for step ${stepNumber}. Inspect them before recording your findings.`
+                      : "Keep the case overview images in view while you work this step."}
+                  </p>
+                </div>
+                <BlindedCaseImageGrid
+                  images={referenceImages}
+                  onOpen={setExpandedImage}
+                  compact
+                />
+              </Card>
+            )}
 
             {/* Step card with checklist */}
             <Card>
@@ -967,7 +1018,7 @@ export default function CasePage() {
               value={primaryImpression}
               onChange={(e) => setPrimaryImpression(e.target.value)}
               rows={2}
-              placeholder="e.g. Complete ACL tear with pivot-shift contusions; check the lateral meniscal root."
+              placeholder="Name the primary lesion, key secondary evidence, and important associated injury."
               className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900 focus:border-ucla-blue focus:outline-none focus:ring-1 focus:ring-ucla-blue sm:text-sm"
             />
 

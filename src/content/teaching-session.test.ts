@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getCourseById } from "./courses";
 import { normalKneeSeries } from "./normal-workstation-series";
+import { normalKneeLearn } from "./normal-knee-learn";
 import { isRestorableNormalMode } from "@/lib/normal-workstation-url";
 import {
   SESSION_CLOSE_WINDOW,
@@ -9,6 +10,7 @@ import {
   SESSION_HOUR_ONE,
   TEACHING_SESSION,
   fellowInviteText,
+  isTeachingSessionLearnerReady,
 } from "./teaching-session";
 
 /**
@@ -33,6 +35,19 @@ describe("teaching session run-sheet", () => {
   it("runs three distinct cases, one per fellow", () => {
     expect(SESSION_CASES).toHaveLength(3);
     expect(new Set(SESSION_CASES.map((c) => c.caseId)).size).toBe(3);
+  });
+
+  it("does not count a resident-role account as lecture-ready", () => {
+    const baselineComplete = { preQuizScore: 8, preSurveyCompleted: true };
+    expect(isTeachingSessionLearnerReady({ ...baselineComplete, role: "fellow" })).toBe(true);
+    expect(isTeachingSessionLearnerReady({ ...baselineComplete, role: "resident" })).toBe(false);
+    expect(
+      isTeachingSessionLearnerReady({
+        role: "fellow",
+        preQuizScore: null,
+        preSurveyCompleted: true,
+      }),
+    ).toBe(false);
   });
 
   it("gives every case a supporting role and a closing impression prompt", () => {
@@ -95,6 +110,26 @@ describe("teaching session run-sheet", () => {
     }
   });
 
+  it("pins the live tour stops and displayed slices used by faculty", () => {
+    const sagittal = normalKneeLearn["sag-pdfs"].tour;
+    const coronal = normalKneeLearn["cor-pdfs"].tour;
+    const axial = normalKneeLearn["axi-t2fs"].tour;
+
+    expect(sagittal).toHaveLength(11);
+    expect(sagittal[6]).toMatchObject({
+      title: "Meniscus — the dark bow-ties",
+      sliceIndex: 8,
+    });
+    expect(sagittal[8]).toMatchObject({
+      title: "Anterior cruciate ligament",
+      sliceIndex: 12,
+    });
+    expect(coronal).toHaveLength(9);
+    expect(new Set(coronal.map((step) => step.sliceIndex))).toEqual(new Set([7]));
+    expect(axial).toHaveLength(9);
+    expect(new Set(axial.map((step) => step.sliceIndex))).toEqual(new Set([13]));
+  });
+
   it("invite text carries the live course URL", () => {
     expect(fellowInviteText()).toContain(TEACHING_SESSION.appUrl);
   });
@@ -150,6 +185,19 @@ describe("teaching session run-sheet", () => {
       expect(lower).not.toContain("femoral-sided mpfl tear");
       expect(lower).not.toContain("femoral-sided carries higher recurrence");
       expect(lower).not.toContain("femoral-sided carries higher *recurrence*");
+    });
+
+    it("matches current image access, ACL slice, and medical safety language", () => {
+      const lower = runsheet.toLowerCase();
+      expect(runsheet).toContain("**9 · ACL** (13/29)");
+      expect(lower).toContain("compact local image rail");
+      expect(lower).toContain("does **not** exclude an intra-articular fracture");
+      expect(lower).toContain("sif with osteonecrosis (sif-on)");
+      expect(lower).not.toContain("22/29");
+      expect(lower).not.toContain("excludes a fracture");
+      expect(lower).not.toContain("sonk is its end stage");
+      expect(lower).not.toContain("functionally a total meniscectomy");
+      expect(lower).not.toContain("the one index whose normal values still apply **on mri**");
     });
 
     it("lists only unresolved projector caveats", () => {

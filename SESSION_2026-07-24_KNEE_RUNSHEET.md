@@ -11,18 +11,18 @@ App: <https://jeremyswisherkneemri.com/courses/knee-mri>
 
 ## READ THIS FIRST — three things that change how you teach
 
-**1. Hour 2 has no images to scroll.** This is the single most important operational fact in this document. In a case, the app shows images on the **first screen** (4 thumbnails, tappable to full size) and again on the **answer-key screen**. **Steps 1–7 render a checklist, a pearl box, and a text box — no image.** The fellows read the images up front, then reason from memory and notes. So:
+**1. Hour 2 keeps the images beside the checklist.** Every search-pattern step now carries a compact local image rail; images tagged to the active step appear first, and a fellow can tap any image to enlarge it. So:
 
-  - Do **not** say "scroll to," "trace the," or "put your cursor on" during Hour 2. There is nothing to scroll.
-  - **The plan: you drive the images from your device on the projector while the fellows work the checklist on theirs.** Open the case on your machine, stay on the first screen, and enlarge whichever image the current step needs.
-  - The **"Open the full scrollable MRI on Radiopaedia"** button on the first screen is the only true scrollable stack. **Pre-flight it Wednesday** — it is an external site and it is the one thing that can fail in front of the room.
-  - Image counts: Case 1 has 13, Case 2 has **2**, Case 3 has 6. Case 2 is image-poor — plan to lean on the projector and the Radiopaedia link there.
+  - Fellows can inspect images and enter findings on the same device throughout steps 1–7.
+  - **You still drive the larger comparison image on the projector** while Dr. Burbank watches the three fellow screens and the clock.
+  - The **external scrollable MRI** is optional enrichment, not the only way to see images. **Pre-flight it Wednesday** because it is outside our control.
+  - Image counts: Case 1 has 13, Case 2 has **2**, Case 3 has 6. Case 2 remains image-light, so use the projector or external stack when it adds value.
 
-**2. The case spoils its own diagnosis on the opening screen.** The title reads "ACL Tear + Pivot-Shift Pattern," the tag chips read `acl`, `pivot-shift`, and the thumbnail captions read "Complete ACL tear — abnormal angulation, mid-substance rupture." **Do not fight this.** Reframe the exercise out loud at 2:05:
+**2. Cases stay diagnostically blind until the fellow commits.** Before the answer key, the title is "Knee MRI Case" and the app hides diagnostic tags, captions, accessibility labels, external-case titles, and the diagnosis at the commit gate. After the fellow locks the impression (or explicitly skips), the diagnosis and teaching captions appear.
 
-  > "You are not guessing the diagnosis — the app already told you. Your job is to **prove it and act on it**: find the evidence, name the companion injuries, and give me an impression a surgeon can use."
+  > "Read the images first. Commit the primary lesion, the evidence that proves it, and the companion injury or deliberate negative before you reveal."
 
-  That is the app's own pedagogy (its three-step card reads *Anchor normal → Commit findings → Clinical hinge*). It is a better exercise than guess-the-diagnosis anyway.
+  Keep `/admin/session` in **Projector-safe** mode whenever that faculty screen is mirrored.
 
 **3. The app's "match" indicator cannot detect negation.** It checks whether your text *mentions* related terms, and its own UI says "mentioned," not "correct." Short expected findings are the hole: `PCL intact` is one significant term, so typing *"PCL is not intact"* still registers. Say this once so nobody trusts the checkmark:
 
@@ -72,10 +72,12 @@ Recommendation: **Dr. Swisher drives** (owns the content and the app), **Dr. Bur
 **Wednesday (do not leave for Friday):**
 
 - [ ] All three accounts are role **`fellow`**, not `resident` — **Case 2 is `residentVisible: false`** and dead-ends on a "Not Available" page. This is the single most likely way to lose 18 minutes.
-- [ ] Open the Radiopaedia link on each of the three cases and confirm the stack loads.
+- [ ] Open the optional external stack on each case and confirm it loads; local images are the fallback.
 - [ ] Check `/admin/session` roster: signed in · baseline quiz · confidence survey, all three.
 
 **Friday 12:50:**
+
+Use the persistent **Friday 12:50 preflight** checklist on `/admin/session` while you do these:
 
 - [ ] Each device loads the workstation and the sagittal stack renders (first load needs network; offline caching only helps afterward).
 - [ ] Projector mirrors **your** device, never a fellow's.
@@ -126,7 +128,7 @@ Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
 |---|---|---|
 | **3 · Tibial plateau** (14/29) | 2 | The app's own pearl names the posterolateral plateau as the pivot-shift site. Plant it now and Case 1's bruise is recall, not discovery. |
 | **7 · Meniscus — bow-ties** (9/29) | 4 | Longest note in the tour; three pseudotears live here. Pays off in Case 1 step 4 and Case 2. |
-| **9 · ACL** (22/29) | 4 | Case 1's entire step 5. |
+| **9 · ACL** (13/29) | 4 | Case 1's entire step 5. |
 
 **Say — stop 3, tibial plateau:**
 > "Uniform marrow. Nothing to see. Remember what nothing looks like — in an hour one of you is looking at this exact corner, the **posterolateral plateau**, and it will be full of bright signal."
@@ -142,7 +144,7 @@ Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
 
 > "And three normal structures fake a lateral tear: the **popliteomeniscal fascicles / popliteus hiatus**, the **transverse intermeniscal ligament** where it meets the anterior horn, and the **meniscofemoral ligament** (Humphrey/Wrisberg) next to the posterior horn. Before you call a lateral tear, actively exclude all three."
 
-**Say — stop 9, ACL (slice 22/29):**
+**Say — stop 9, ACL (slice 13/29):**
 > "Taut, continuous, **parallel to Blumensaat's line**. Fibers, not a blur. Trace it across at least three slices before you're allowed an opinion — a single slice through a normal ACL can look convincingly torn."
 
 > "Normal ACL striations are fine. **Diffuse thickening with intact, continuous fibers is mucoid degeneration, not a tear** — a consequential over-call (6 of 10 such ligaments were read as torn but were intact at arthroscopy; McIntyre 2001). Look for the celery-stalk look: thickened, high signal on all sequences, but *continuous fibers*. The discriminator that carries the weight is **discontinuity** — present in ~97% of complete tears, 0% of mucoid degeneration. Clinically it's *posterior* knee pain with limited terminal flexion, not instability."
@@ -248,7 +250,7 @@ Screens closed. **Five minutes, not ten.** The break is where Hour 2's time gets
 
 1. **Complete ACL tear — discontinuity**, sagittal, confirmed on coronal. Not "bright signal."
 2. **The pivot-shift pair** — posterolateral tibial plateau + lateral femoral condyle (terminal sulcus), named by bone and side.
-3. **Large hemarthrosis with no fat–fluid level** — the deliberate negative that excludes a fracture.
+3. **Large hemarthrosis with no fat–fluid level** — a deliberate negative, but its absence does **not** exclude an intra-articular fracture.
 
 ### The missable — say the prompt verbatim
 
@@ -261,7 +263,7 @@ Screens closed. **Five minutes, not ten.** The break is where Hour 2's time gets
 
 ### So what (three sentences, not more)
 
-Reconstruction is standard; **primary repair is narrow** — proximal avulsion-type tears with good remnant tissue, selected patients. **Your imaging job is to report the tear location**, because that is what decides whether repair is even discussable. And the companion injuries are the reason the MRI was ordered at all: the Lachman already told you the ACL is torn.
+For athletes choosing operative treatment, reconstruction remains the usual standard; **primary repair is selective** — most often proximal avulsion-type tears with favorable remnant tissue in carefully selected patients. Report tear location and tissue morphology because they inform whether repair is discussable, but do not let MRI alone choose treatment. MRI also confirms/characterizes the ACL and, critically, maps the companion injuries that alter operative planning.
 
 ### The close
 
@@ -274,8 +276,8 @@ Reconstruction is standard; **primary repair is narrow** — proximal avulsion-t
 ### If a fellow asks
 
 - **"Does the bone bruise change anything?"** Diagnostically yes (confirms mechanism, dates it as acute — bruises fade over ~3–12 months). Prognostically no: not a validated return-to-play gate.
-- **"Why MRI if the Lachman is positive?"** Not for the ACL — for the ramp, the root, a bucket-handle that will lock the knee, a Segond, a PLC injury, a chondral fragment. Those change the operation.
-- **"Repair or reconstruct?"** Reconstruct, unless it's a proximal avulsion with good tissue in a selected patient. Report the location.
+- **"Why MRI if the Lachman is positive?"** To confirm and characterize the ACL when needed, and especially to find the ramp lesion, root tear, displaced bucket-handle, Segond fracture, PLC injury, or chondral fragment that changes planning.
+- **"Repair or reconstruct?"** That is individualized. If surgery is chosen, reconstruction is typical; selected proximal avulsion-type tears with favorable tissue may be repair candidates. Report location and morphology.
 
 ---
 
@@ -291,14 +293,14 @@ Reconstruction is standard; **primary repair is narrow** — proximal avulsion-t
 
 ### The distinction that is the whole case
 
-**A degenerative posterior-horn tear** is common, usually non-operative, and gets a shrug. **A root tear** detaches the meniscus from bone, destroys hoop stress, and is **biomechanically equivalent to a total meniscectomy — peak contact pressure +25%** (Allaire, *JBJS* 2008). Same patient, same age, completely different conversation. Make them say the difference back to you.
+**A degenerative posterior-horn tear** is common and often managed non-operatively. A **complete posterior medial root-disrupting tear** can abolish hoop-stress function; in the Allaire *JBJS* 2008 cadaver model, contact mechanics approached total medial meniscectomy and peak contact pressure rose about 25%. That analogy applies to the complete medial-root model, not automatically to every partial or lateral root abnormality. Make them say the distinction back to you.
 
 ### Walking the steps
 
 | Step | Expected | Ask → Answer | Typical wrong answer |
 |---|---|---|---|
 | 1 Verify | Small effusion | *"Does a small effusion argue against anything serious?"* → No | Reassurance from a small effusion |
-| 2 Bones | Subchondral edema **medial femoral condyle + medial tibial plateau**, no fracture line | *"Edema without trauma — why?"* → Overload. And rule out a **subchondral insufficiency fracture** (SIFK; SONK is its end stage) — a hypointense *line* paralleling the subchondral plate a few mm deep, **dark on T2/PD against the bright edema**, low signal on essentially every sequence. Classic: woman >50, medial femoral condyle, normal films — and very often *with* a medial root tear | Calling edema a bruise in an atraumatic knee |
+| 2 Bones | Subchondral edema **medial femoral condyle + medial tibial plateau**, no fracture line | *"Edema without trauma — why?"* → Overload. Also rule out **subchondral insufficiency fracture (SIF)**: a subchondral low-signal fracture line within the edema pattern, assessed across T1 and fluid-sensitive images. If the fracture evolves to osteonecrosis/collapse, use **SIF with osteonecrosis (SIF-ON)** rather than treating "SONK" as a separate primary disease | Calling edema a bruise in an atraumatic knee |
 | 3 Cartilage | Grade 2–3 medial thinning; other compartments preserved | *"Which compartment, and does that fit the meniscus?"* | Grading globally instead of by compartment |
 | 4 **Menisci** | **Posterior medial root tear (ghost sign); extrusion >3 mm; lateral meniscus intact** | *"Is the meniscus attached to bone?"* → Ghost sign on sagittal, confirmed by a radial cleft on coronal/axial | "Degenerative posterior horn tear" |
 | 5 Ligaments | All intact | *"Anything here to explain 3 months of pain?"* → No — which is the point | Hunting a ligament |
@@ -308,7 +310,7 @@ Reconstruction is standard; **primary repair is narrow** — proximal avulsion-t
 ### The three must-see findings
 
 1. **Complete radial tear at the posterior medial root** — ghost sign on sagittal, radial cleft confirmed on coronal.
-2. **Extrusion >3 mm** — measured on **coronal, mid-body**, excluding osteophyte.
+2. **Medial extrusion greater than 3 mm in this case** — measured on **coronal, mid-body**, excluding osteophyte. Report the exact value; about 3 mm is a conventional major clue and search trigger, not the diagnosis.
 3. **Early medial overload** — grade 2–3 chondral thinning with subchondral edema. This is the finding that dates the problem and shapes the fork below.
 
 ### The missable
@@ -319,13 +321,13 @@ Root tears are among the most-missed findings in knee MRI, and the reason is mec
 
 ### So what — the management fork
 
-Candidacy turns first on **symptoms** and on **how much OA is already there** (2025 international Delphi consensus, expert opinion): repair a symptomatic tear *without* advanced OA via transtibial pull-out; manage advanced OA non-operatively. **End-stage medial OA — Kellgren-Lawrence grade 4, a weight-bearing *radiographic* grade, not an MRI grade — is a contraindication** (98% agreement). KL 3 is a case-by-case call, not an absolute bar. Significant varus doesn't rule out repair — it may add a high tibial osteotomy. **Arthroscopic partial meniscectomy is the wrong operation** in a repairable root tear — not because it "removes remaining hoop function" (the compartment already loads as if the meniscus were gone) but because it forfeits the only procedure shown to restore hoop stress; in a matched cohort, progression to arthroplasty was 9/15 after meniscectomy vs 0/15 after repair (Bernard, *AJSM* 2020, Level III).
+Candidacy turns first on **symptoms** and on **how much OA is already there** (2025 international Delphi consensus, expert opinion): repair may be considered for a symptomatic tear *without* advanced OA; advanced OA usually shifts management away from root repair. **End-stage medial OA — Kellgren-Lawrence grade 4, a weight-bearing *radiographic* grade, not an MRI grade — was a contraindication in that consensus** (98% agreement). KL 3 is a case-by-case call, not an absolute bar. Significant varus does not automatically rule out repair and may prompt alignment correction. In a repairable root tear and appropriately selected knee, partial meniscectomy is generally not the preferred restorative strategy; a matched cohort reported progression to arthroplasty in 9/15 after meniscectomy versus 0/15 after repair (Bernard, *AJSM* 2020, Level III). Present that as comparative observational evidence, not a guarantee.
 
-**What makes this time-sensitive is the natural history, not the birthday.** Age is *not* an independent outcome predictor (Eseonu, *AJSM* 2022); baseline cartilage status, extrusion, and varus are. In the long-term non-operative cohort, **53% reached arthroplasty at a mean of 14 years and 95% failed non-operative care** (Krych, *AJSM* 2023). The corollary for *this* patient: definite joint-space narrowing on weight-bearing films suggests he may already be a marginal repair candidate — a reason for a prompt surgical opinion with long-leg alignment films, not a reason to promise him a repair.
+**Why prompt evaluation matters:** age alone is not the decision; baseline cartilage status, extrusion, alignment, chronicity, symptoms, and patient goals are. In Krych's selected long-term non-operative cohort, 53% reached arthroplasty at a mean of 14 years and the investigators classified 95% as treatment failures; do not present those cohort figures as every patient's destiny. For this patient, definite joint-space narrowing on weight-bearing films may narrow repair candidacy — a reason for specialist assessment with alignment imaging, not a promise of repair.
 
 ### The close
 
-**Model answer:** *"Complete radial tear at the posterior root attachment of the medial meniscus, with a ghost root on sagittal and medial body extrusion greater than 3 mm on coronal. This is functionally a total meniscectomy and early medial overload is already present, so refer for surgical assessment — candidacy for root repair depends on OA grade, alignment and extrusion, not on the tear alone."*
+**Model answer:** *"Complete radial tear disrupting the posterior root attachment of the medial meniscus, with a ghost root on sagittal and medial body extrusion greater than 3 mm on coronal. Hoop-stress function is severely compromised and early medial overload is present; refer for specialist assessment because treatment candidacy depends on symptoms, cartilage/OA burden, alignment, chronicity, extrusion, and patient factors — not the tear alone."*
 
 ### If a fellow asks
 
@@ -366,7 +368,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 ### So what
 
-- **First-time dislocator, no fragment:** non-operative is reasonable first-line **for a low-risk knee** — PT-guided quad and gluteal rehab, brace only briefly and only for comfort (ESSKA 2024 found *no* evidence a brace beats no brace). It's no longer a universal default, and it's explicitly *not* the gold standard in skeletally immature knees. Name the risk being accepted: recurrence after conservative care is ≥25%, up to ~70% in children/adolescents.
+- **First-time dislocator, no repairable fragment:** non-operative rehabilitation is reasonable for many lower-risk knees. Bracing protocols vary, and ESSKA 2024 found no evidence that bracing is superior to no brace. This is not a universal default for every skeletally immature or high-risk knee; name the recurrence risk and individualize around age and anatomy.
 - **What pushes toward surgery:** a **displaced osteochondral fragment or loose body**. ESSKA 2024 repairs a chondral *or* osteochondral fracture ≥**1 cm²** in the patellofemoral contact area (expert consensus, Grade C — not outcome-validated); purely chondral flakes count, and the threshold is lower in skeletally immature knees. Refixation is first-line, and **delayed refixation is preferred over discarding the fragment** — timing is the document's weakest recommendation. A concomitant MPFL reconstruction is recommended when a fragment is fixed.
 - **Recurrence** is driven mainly by age (skeletally immature highest), **trochlear dysplasia**, patella alta, and elevated TT-TG. Name the MPFL tear site for injury mapping, but do **not** use the site as an independent recurrence predictor; pooled data found no significant difference by femoral, patellar, or combined location.
 - **The randomised data on acute MPFL repair are mixed** — Palmu (*JBJS* 2008, adolescents) found no difference vs non-operative. Don't state it as settled either way. MPFL **reconstruction** is the workhorse for recurrent instability; a tubercle osteotomy is *added* for genuinely elevated TT-TG, not substituted.
@@ -387,7 +389,7 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 
 1. **Each fellow names one search-pattern change** they will make on Monday. Go around the room; don't accept "be more systematic."
 2. **The post-assessment.** Say why: *"Same structure as the baseline. The pair is the only thing that measures whether this afternoon did anything. It doesn't have to be today — but it does have to be this week."*
-3. The course stays open, works offline, installs to the home screen.
+3. The course stays open and installs to the home screen. Previously loaded core screens can recover offline; first-load MRI images still need reliable network access.
 
 ---
 
@@ -406,11 +408,11 @@ This is the finding that turns a brace into an operation. **Sweep every recess o
 | **Ramp lesion with ACL** | **~17%** arthroscopy; ~22% pooled | 16.6% (DePhillipo *AJSM* 2017); pooled prevalence 21.9% (Kunze *AJSM* 2021). MRI sens **~48%** off the real preop report; **65–71% pooled** in meta-analyses (spec ~88–94%). **A negative MRI does not exclude it** |
 | **Lateral root tear with ACL** | **~7–12%** | Feucht *KSSTA* 2015 (15%); SANTI (~7%) |
 | **Bone bruise in acute ACL tear** | **~80%** | Fades over 3–12 months — a chronic ACL knee may have none |
-| **Root tear biomechanics** | Contact pressure **+25%** = total meniscectomy | Allaire, *JBJS* 2008 (cadaveric); repair restored it |
+| **Root tear biomechanics** | Complete posterior medial root-disrupting tear: peak contact pressure **+25%** in the Allaire model | Cadaveric medial-root model; mechanics approached total medial meniscectomy and repair restored contact mechanics. Do not transfer the analogy automatically to partial or lateral root abnormalities |
 | **TT-TG (CT)** | **≥20 mm** abnormal | Dejour 1994, **measured on CT**. A **risk factor, not an isolated indication** (whether TT-TG alone justifies osteotomy is genuinely contested) |
-| **TT-TG (MRI)** | MRI abnormal ≈ **≥15 mm**; the CT 20 mm cutoff ≈ **16 mm** on MRI | MRI runs ~2–4 mm lower than CT (pooled Δ 1.8 mm, 3.8 mm in operative knees — Camp 2013; Tan 2020). **Never carry the CT 20 mm number onto an MRI — it under-calls.** State the modality |
-| **Insall-Salvati** | Normal 0.8–1.2; **>1.2 = alta** | Tendon ÷ patellar diagonal. The one index whose normal values still apply **on MRI** |
-| **Caton-Deschamps** | Normal 0.6–1.2; **>1.2 = alta** | Distalization planning — but **measure on a lateral radiograph, not MRI** (single-slice MRI inflates it up to 9%; Martinez-Cano *KSSTA* 2022) |
+| **TT-TG (MRI)** | Often lower than CT; some studies use approximately **15–16 mm**, but there is no universal cross-protocol conversion | Values vary with landmarks, slice choice and knee position. State modality/method, use modality-appropriate references, and do not apply the CT 20 mm cutoff mechanically or use one number as an isolated surgical indication |
+| **Insall-Salvati** | On a true lateral radiograph, normal 0.8–1.2; **>1.2 supports alta** | Tendon ÷ patellar diagonal. MRI can use patellar-height measurements, but name the method and use modality-appropriate technique and reference values rather than silently carrying over a radiographic cutoff |
+| **Caton-Deschamps** | On a true lateral radiograph, normal 0.6–1.2; **>1.2 supports alta** | Prefer the standardized lateral-radiograph method for radiographic planning. MRI measurements vary with technique and positioning; if MRI is used, name the method and apply MRI-appropriate references |
 | **Trochlear depth** | **≤3 mm** = dysplastic | Axial, 3 cm above the joint line, off the cartilage contour (Pfirrmann, *Radiology* 2000) |
 | **Lateral trochlear inclination** | **<11°** | Most cranial slice where trochlear cartilage first appears; both lines on **subchondral bone** (Carrillon, 2000) — a **different slice level** from Pfirrmann. Single-image LTI under-calls; recheck a borderline value |
 | **Sulcus angle** | **>145°** (Merchant view) dysplastic; normal ≈137–138° | The *view* is Merchant *JBJS* 1974; the *numbers* are later (Tecklenburg, Dejour). **On MRI the cutoff is landmark-specific: ~145° on bone but ~154° on cartilage** (Tanaka *AJSM* 2023) — match the cutoff to what you traced |
@@ -468,9 +470,8 @@ Enforce: name the **compartment** and the **third** (root/horn/body), never just
 
 | Where | Current limitation | Faculty framing |
 |---|---|---|
-| Case 2 ghost-sign image | The ghost-sign teaching image (`33_..._GhostMeniscus.jpg`) is a **lateral** root tear, used in a **medial**-root case | Say it before anyone anchors — and it's on the fix list to swap for the medial image (`32_..._Coronal.jpg`) once faculty confirm the JPEG |
+| Case 2 ghost-sign image | The ghost-sign teaching image (`33_..._GhostMeniscus.jpg`) is a **lateral** root tear, used in a **medial**-root case | Say it before anyone anchors. Use it to teach the sign, then return to the medial-root coronal image and the attachment anteromedial to the PCL |
 | Case 1 step 4 | No expected findings to reveal | It's three search instructions, not a finding. Frame it as discipline |
-| Case 1 answer key | The read-out pulls from steps 2–3 and **never shows the ACL tear** | *"The app proves the mechanism. You still have to say the diagnosis."* |
 
 ---
 
