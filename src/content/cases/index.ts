@@ -143,8 +143,8 @@ export const caseRegistry: CaseMetadata[] = [
       'Pivot-shift bone contusion pattern',
     ],
     tags: ['acl', 'pivot-shift', 'bone-bruise', 'meniscus', 'acute-injury'],
-    radiopaediaUrl: 'https://radiopaedia.org/cases/pivot-shift-injury-of-the-knee-anterior-cruciate-ligament-rupture',
-    radiopaediaTitle: 'Pivot shift injury of the knee - ACL rupture',
+    radiopaediaUrl: 'https://radiopaedia.org/cases/pivot-shift-injury-with-acl-tear?lang=us',
+    radiopaediaTitle: 'Pivot shift injury with ACL tear',
     modelReport: {
       findings: 'ACL: Complete discontinuity of the ACL with abnormal signal and morphology. The ligament fibers are lax and irregular.\n\nBones/Marrow: Characteristic pivot-shift contusion pattern with marrow edema-like signal at the posterolateral tibial plateau and lateral femoral condyle sulcus terminalis region. No fracture line or articular collapse is identified.\n\nMenisci: Evaluate carefully for lateral posterior-root injury and a medial ramp lesion.\n\nCartilage: No focal cartilage defects.\n\nOther ligaments: MCL, LCL, PCL intact. No posterolateral-corner injury.\n\nEffusion: Large hemarthrosis without a fat-fluid level. Absence of lipohemarthrosis does not by itself exclude fracture; no fracture is identified on the available images.',
       impression: '1. Complete ACL tear with classic pivot-shift bone contusion pattern (LFC + posterolateral tibial plateau).\n2. Carefully evaluate for associated meniscal injuries (root tear, ramp lesion, bucket-handle) which are commonly associated.\n3. Large hemarthrosis; no fat-fluid level to indicate an intra-articular fracture.',

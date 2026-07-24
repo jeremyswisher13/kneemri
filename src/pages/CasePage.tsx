@@ -309,7 +309,9 @@ export default function CasePage() {
   const teachingImages = caseItem.teachingImages ?? [];
   const teachingStacks = caseItem.teachingStacks ?? [];
   const previewImages = teachingImages.slice(0, 4);
-  const answersRevealed = currentStep === reviewStep && committed;
+  // Once a learner commits, keep the answer state unlocked while they revisit
+  // earlier steps to compare the teaching images with their original read.
+  const answersRevealed = committed;
   const expandedImageIndex = expandedImage ? teachingImages.indexOf(expandedImage) : -1;
   const expandedImageLabel = answersRevealed
     ? expandedImage?.caption || expandedImage?.alt || "Teaching image"
@@ -345,11 +347,9 @@ export default function CasePage() {
   const externalCaseLinkLabel = hasEmbeddedReferences
     ? "Open the full scrollable MRI on Radiopaedia"
     : "Open external scrollable MRI examples";
-  const externalCaseLinkCaption = answersRevealed
-    ? hasEmbeddedReferences
-      ? `${caseItem.radiopaediaTitle} — scroll through every slice like a workstation`
-      : `${caseItem.radiopaediaTitle} — use after committing to the local search pattern`
-    : "Optional external stack — open after committing to the local findings";
+  const externalCaseLinkCaption = hasEmbeddedReferences
+    ? `${caseItem.radiopaediaTitle} — scroll through every slice like a workstation`
+    : `${caseItem.radiopaediaTitle} — compare with the local search pattern`;
 
   /* ---- Helpers ---- */
 
@@ -699,28 +699,40 @@ export default function CasePage() {
               </div>
             )}
             {caseItem.radiopaediaUrl && (
-              <a
-                href={caseItem.radiopaediaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 flex flex-col items-start gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <span className="flex items-center gap-3">
-                  <svg className="h-6 w-6 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75 12 3l8.25 3.75L12 10.5 3.75 6.75Z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 12 8.25 3.75L20.25 12M3.75 17.25 12 21l8.25-3.75" />
-                  </svg>
-                  <span>
-                    <span className="block text-sm font-semibold text-ucla-dark">
-                      {externalCaseLinkLabel}
-                    </span>
-                    <span className="block text-xs text-gray-500">
-                      {externalCaseLinkCaption}
+              answersRevealed ? (
+                <a
+                  href={caseItem.radiopaediaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex flex-col items-start gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <span className="flex items-center gap-3">
+                    <svg className="h-6 w-6 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75 12 3l8.25 3.75L12 10.5 3.75 6.75Z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 12 8.25 3.75L20.25 12M3.75 17.25 12 21l8.25-3.75" />
+                    </svg>
+                    <span>
+                      <span className="block text-sm font-semibold text-ucla-dark">
+                        {externalCaseLinkLabel}
+                      </span>
+                      <span className="block text-xs text-gray-500">
+                        {externalCaseLinkCaption}
+                      </span>
                     </span>
                   </span>
-                </span>
-                <span className="self-end shrink-0 text-ucla-blue sm:self-center" aria-hidden>&#8599;</span>
-              </a>
+                  <span className="self-end shrink-0 text-ucla-blue sm:self-center" aria-hidden>&#8599;</span>
+                </a>
+              ) : (
+                <div
+                  data-testid="external-case-locked"
+                  className="mt-4 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                >
+                  <p className="text-sm font-semibold text-gray-800">External MRI review</p>
+                  <p className="mt-0.5 text-xs text-gray-500">
+                    Unlocks after you commit your read or choose Skip and reveal.
+                  </p>
+                </div>
+              )
             )}
           </Card>
 

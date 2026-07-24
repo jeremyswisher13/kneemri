@@ -41,15 +41,15 @@ export default function CasesPage() {
    * SPOILER-SAFE search. An unopened case deliberately hides its title and
    * diagnoses (it renders as "Case 3: Foundational"), so matching those would let
    * a learner type "ACL" and be told which case is the ACL tear — defeating the
-   * point of the exercise. Only ever match text the learner can ALREADY see on
-   * that card: scenario + tags while unopened, plus title/diagnoses once done.
+   * point of the exercise. Only match the clinical scenario while unopened;
+   * title, diagnoses, and tags join the search index after completion.
    */
   function matchesQuery(caseItem: CaseMeta, completed: boolean) {
     const q = query.trim().toLowerCase();
     if (!q) return true;
     const visibleText = completed
       ? [caseItem.title, ...caseItem.keyDiagnoses, caseItem.clinicalScenario, ...caseItem.tags]
-      : [caseItem.clinicalScenario, ...caseItem.tags];
+      : [caseItem.clinicalScenario];
     return visibleText.join(" ").toLowerCase().includes(q);
   }
 
@@ -355,7 +355,7 @@ function renderCaseCard(
           {caseItem.clinicalScenario}
         </p>
 
-        {/* Tags (non-spoiling) or Diagnoses (after completion) */}
+        {/* Diagnostic metadata appears only after completion. */}
         <div className="mt-4 flex-1">
           {completed ? (
             <>
@@ -372,16 +372,9 @@ function renderCaseCard(
               </div>
             </>
           ) : (
-            <div className="flex flex-wrap gap-1.5">
-              {caseItem.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="inline-flex rounded-md bg-gray-50 px-2 py-0.5 text-xs text-gray-500"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <p className="text-xs font-medium text-gray-500">
+              Diagnosis hidden until you complete the case.
+            </p>
           )}
         </div>
 
