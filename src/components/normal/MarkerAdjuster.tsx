@@ -192,7 +192,7 @@ export default function MarkerAdjuster({
               <span className="block h-6 w-6 rounded-full border-2 border-ucla-gold bg-ucla-gold/25 shadow-[0_0_0_2px_rgba(0,0,0,0.6)]" />
               <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
               {m.label && (
-                <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/80 px-2 py-0.5 text-[11px] font-semibold text-white">
+                <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/55 px-2 py-0.5 text-[11px] font-semibold text-white">
                   {m.label}
                 </span>
               )}

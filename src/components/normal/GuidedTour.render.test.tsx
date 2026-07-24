@@ -112,6 +112,8 @@ describe("GuidedTour render polish", () => {
     expect(html).toContain("left-0 translate-x-0 text-left");
     expect(html).toContain("right-0 translate-x-0 text-right");
     expect(html).toContain("bottom-[140%]");
+    expect(html).toContain("bg-black/55");
+    expect(html).not.toContain("bg-black/80");
     expect(html).not.toContain("whitespace-nowrap");
   });
 });
