@@ -5,7 +5,7 @@ import { wheelSliceStep } from "@/components/ui/mri-stack-wheel";
  * Scrollable MRI stack viewer.
  *
  * Radiologist-style viewing:
- *   - Horizontal trackpad swipe or Shift+wheel to change slice
+ *   - Mouse wheel or trackpad gesture to change slice
  *   - Click-and-drag (up/down) to scrub
  *   - Touch: drag to scrub, PINCH to zoom, double-tap to zoom, drag to pan when zoomed
  *   - Arrow keys ↑/↓ or ←/→ for one slice at a time; Home/End for first/last
@@ -96,6 +96,7 @@ export default function MriStackViewer({
 
   const maxIndex = Math.max(0, total - 1);
   const safeIndex = Math.min(index, maxIndex);
+  const wheelIndexRef = useRef(safeIndex);
   const onSliceChangeRef = useRef(onSliceChange);
 
   useEffect(() => {
@@ -103,6 +104,7 @@ export default function MriStackViewer({
   }, [onSliceChange]);
 
   useEffect(() => {
+    wheelIndexRef.current = safeIndex;
     onSliceChangeRef.current?.(safeIndex);
   }, [safeIndex, slices]);
 
@@ -157,17 +159,29 @@ export default function MriStackViewer({
     return () => window.clearInterval(id);
   }, [cinePlaying, cineMs, total]);
 
-  // Preserve ordinary vertical page scrolling over the large viewer. Horizontal
-  // trackpad gestures and Shift+wheel retain fast radiology-style stack scrubbing.
+  // Mouse-wheel and trackpad motion over the image scrub the stack. At either
+  // endpoint, outward vertical motion is handed to the document so the page
+  // immediately resumes scrolling instead of trapping the fellow in the viewer.
   useEffect(() => {
     const el = viewportRef.current;
     if (!el || total <= 1) return;
     const onWheelNative = (e: WheelEvent) => {
       const step = wheelSliceStep(e);
       if (step === 0) return;
+      const current = wheelIndexRef.current;
+      const next = Math.min(total - 1, Math.max(0, current + step));
+      if (next === current) {
+        if (Math.abs(e.deltaY) >= Math.abs(e.deltaX) && e.deltaY !== 0) {
+          e.preventDefault();
+          const deltaScale = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1;
+          window.scrollBy({ top: e.deltaY * deltaScale, behavior: "auto" });
+        }
+        return;
+      }
       e.preventDefault();
       setCinePlaying(false);
-      setIndex((i) => Math.min(total - 1, Math.max(0, i + step)));
+      wheelIndexRef.current = next;
+      setIndex(next);
     };
     el.addEventListener("wheel", onWheelNative, { passive: false });
     return () => el.removeEventListener("wheel", onWheelNative);
@@ -397,7 +411,7 @@ export default function MriStackViewer({
         aria-roledescription="MRI stack viewer"
         aria-label={`${[title, plane].filter(Boolean).join(" ") || "Normal"} MRI — ${total} ${
           total === 1 ? "slice" : "slices"
-        }. Arrow keys, horizontal trackpad gestures, or Shift plus mouse wheel change slice; Home and End jump to first and last${
+        }. Arrow keys, mouse wheel, or trackpad gestures change slice; Home and End jump to first and last${
           showPlay ? "; Space plays or pauses the cine loop" : ""
         }.`}
         tabIndex={0}

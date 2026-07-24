@@ -28,17 +28,18 @@ describe("MriStackViewer", () => {
     expect(html).not.toContain("Space to play");
   });
 
-  it("leaves ordinary vertical wheel gestures available for page scrolling", () => {
-    expect(wheelSliceStep({ deltaX: 0, deltaY: 120, shiftKey: false })).toBe(0);
-    expect(wheelSliceStep({ deltaX: 4, deltaY: -120, shiftKey: false })).toBe(0);
-    expect(wheelSliceStep({ deltaX: 5, deltaY: 0, shiftKey: false })).toBe(0);
-    expect(wheelSliceStep({ deltaX: 40, deltaY: 30, shiftKey: false })).toBe(0);
+  it("scrubs slices with an ordinary vertical mouse wheel", () => {
+    expect(wheelSliceStep({ deltaX: 0, deltaY: 120, shiftKey: false })).toBe(1);
+    expect(wheelSliceStep({ deltaX: 0, deltaY: -120, shiftKey: false })).toBe(-1);
+    expect(wheelSliceStep({ deltaX: 0, deltaY: 3, deltaMode: 1, shiftKey: false })).toBe(1);
   });
 
-  it("scrubs slices only for horizontal trackpad gestures or Shift+wheel", () => {
+  it("supports horizontal trackpad gestures without hijacking pinch zoom or subpixel noise", () => {
     expect(wheelSliceStep({ deltaX: 80, deltaY: 5, shiftKey: false })).toBe(1);
     expect(wheelSliceStep({ deltaX: -80, deltaY: 5, shiftKey: false })).toBe(-1);
     expect(wheelSliceStep({ deltaX: 0, deltaY: 120, shiftKey: true })).toBe(1);
     expect(wheelSliceStep({ deltaX: 0, deltaY: -120, shiftKey: true })).toBe(-1);
+    expect(wheelSliceStep({ deltaX: 0.2, deltaY: 0.4, shiftKey: false })).toBe(0);
+    expect(wheelSliceStep({ deltaX: 0, deltaY: 120, ctrlKey: true, shiftKey: false })).toBe(0);
   });
 });

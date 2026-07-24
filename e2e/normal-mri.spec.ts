@@ -344,6 +344,21 @@ for (const fixture of WORKSTATIONS) {
       await expect(viewer).toHaveAttribute("data-slice-index", String(count - 1));
       await viewer.press("Home");
       await expect(viewer).toHaveAttribute("data-slice-index", "0");
+      await viewer.hover();
+      await page.mouse.wheel(0, 120);
+      await expect(viewer).toHaveAttribute("data-slice-index", "1");
+      await page.mouse.wheel(0, -120);
+      await expect(viewer).toHaveAttribute("data-slice-index", "0");
+      if (testInfo.project.name === "desktop-chromium" && series === firstSeries) {
+        await viewer.hover();
+        const scrollBeforeBoundaryWheel = await page.evaluate(() => window.scrollY);
+        expect(scrollBeforeBoundaryWheel).toBeGreaterThan(0);
+        await page.mouse.wheel(0, -500);
+        await expect(viewer).toHaveAttribute("data-slice-index", "0");
+        await expect
+          .poll(() => page.evaluate(() => window.scrollY))
+          .toBeLessThan(scrollBeforeBoundaryWheel);
+      }
       await page.getByRole("button", { name: "Next slice" }).click();
       await expect(viewer).toHaveAttribute("data-slice-index", "1");
 
