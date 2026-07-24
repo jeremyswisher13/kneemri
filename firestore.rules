@@ -17,7 +17,8 @@ service cloud.firestore {
         && request.auth.token.email.lower() in [
           'jeremyswisher13@gmail.com',
           'jeremyswisher@gmail.com',
-          'jswisher@mednet.ucla.edu'
+          'jswisher@mednet.ucla.edu',
+          'kimberlymburbank@gmail.com'
         ];
     }
 

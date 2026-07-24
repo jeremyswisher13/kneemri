@@ -34,4 +34,8 @@ describe("admin email allow-list parity", () => {
   it("firestore.rules isAdminEmail() matches auth.ts ADMIN_EMAILS exactly", () => {
     expect(rulesEmails).toEqual(authEmails);
   });
+
+  it("grants the Friday co-faculty account administrator access", () => {
+    expect(authEmails).toContain("kimberlymburbank@gmail.com");
+  });
 });

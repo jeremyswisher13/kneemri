@@ -26,6 +26,7 @@ const ADMIN_EMAILS = [
   "jeremyswisher13@gmail.com",
   "jeremyswisher@gmail.com",
   "jswisher@mednet.ucla.edu",
+  "kimberlymburbank@gmail.com",
 ];
 
 async function finishFederatedSignIn(user: User, providerId?: string | null) {
