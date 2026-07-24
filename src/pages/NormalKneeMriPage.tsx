@@ -6,6 +6,7 @@ import KnowledgeCheck, { type ShowInLearnArgs } from "@/components/normal/Knowle
 import { isPassingMasteryScore } from "@/components/normal/knowledge-check-logic";
 import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
+import CrossPlaneAdjuster from "@/components/normal/CrossPlaneAdjuster";
 import AdvancedChallenge from "@/components/normal/AdvancedChallenge";
 import ImageCaq from "@/components/normal/ImageCaq";
 import PlaneCompare from "@/components/normal/PlaneCompare";
@@ -309,7 +310,7 @@ export default function NormalKneeMriPage() {
 
       {/* ── Adjust (admin authoring workbench) ──────────────────────── */}
       {mode === "adjust" && isAdmin && (
-        <div className="mt-5">
+        <div className="mt-5 space-y-8">
           {learn ? (
             <MarkerAdjuster
               key={series.id}
@@ -322,6 +323,11 @@ export default function NormalKneeMriPage() {
           ) : (
             <ComingSoonForPlane label={series.label} kind="adjust workbench" />
           )}
+          <CrossPlaneAdjuster
+            workspaceId="knee-mri"
+            items={crossPlane}
+            series={SERIES}
+          />
         </div>
       )}
     </div>

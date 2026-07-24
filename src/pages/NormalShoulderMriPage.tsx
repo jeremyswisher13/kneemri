@@ -10,6 +10,7 @@ import PlaneCompare from "@/components/normal/PlaneCompare";
 import ExploreChecklist from "@/components/normal/ExploreChecklist";
 import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
+import CrossPlaneAdjuster from "@/components/normal/CrossPlaneAdjuster";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
 import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
@@ -312,7 +313,7 @@ export default function NormalShoulderMriPage() {
 
       {/* ── Adjust (admin authoring workbench) ──────────────────────── */}
       {mode === "adjust" && isAdmin && (
-        <div className="mt-5">
+        <div className="mt-5 space-y-8">
           {learn ? (
             <MarkerAdjuster
               key={series.id}
@@ -325,6 +326,11 @@ export default function NormalShoulderMriPage() {
           ) : (
             <ComingSoonForPlane label={series.label} kind="adjust workbench" />
           )}
+          <CrossPlaneAdjuster
+            workspaceId="shoulder-mri"
+            items={shoulderCrossPlane}
+            series={SERIES}
+          />
         </div>
       )}
     </div>

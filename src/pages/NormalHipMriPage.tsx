@@ -10,6 +10,7 @@ import PlaneCompare from "@/components/normal/PlaneCompare";
 import ExploreChecklist from "@/components/normal/ExploreChecklist";
 import CrossPlaneDrill from "@/components/normal/CrossPlaneDrill";
 import CrossPlanePrimer from "@/components/normal/CrossPlanePrimer";
+import CrossPlaneAdjuster from "@/components/normal/CrossPlaneAdjuster";
 import MarkerAdjuster from "@/components/normal/MarkerAdjuster";
 import NormalModeSwitcher from "@/components/normal/NormalModeSwitcher";
 import NormalMriMasteryPanel from "@/components/normal/NormalMriMasteryPanel";
@@ -297,7 +298,7 @@ export default function NormalHipMriPage() {
 
       {/* ── Adjust (admin authoring workbench) ──────────────────────── */}
       {mode === "adjust" && isAdmin && (
-        <div className="mt-5">
+        <div className="mt-5 space-y-8">
           {learn ? (
             <MarkerAdjuster
               key={series.id}
@@ -310,6 +311,11 @@ export default function NormalHipMriPage() {
           ) : (
             <ComingSoonForPlane label={series.label} kind="adjust workbench" />
           )}
+          <CrossPlaneAdjuster
+            workspaceId="hip-mri"
+            items={hipCrossPlane}
+            series={SERIES}
+          />
         </div>
       )}
     </div>
