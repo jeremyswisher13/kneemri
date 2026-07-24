@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
+import { useRouteError } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
@@ -7,6 +8,109 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
+}
+
+function getErrorFallbackCopy(error: Error | null) {
+  const loadingFailure =
+    /chunkloaderror|loading chunk|dynamically imported module|importing a module script failed|failed to fetch module script/i.test(
+      error?.message ?? "",
+    );
+
+  return loadingFailure
+    ? {
+        title: "This page needs a quick refresh",
+        detail:
+          "The app may have updated while this screen was loading, or the connection may have briefly dropped. Reload to open the current version.",
+      }
+    : {
+        title: "We couldn't open this page",
+        detail:
+          "The app encountered an unexpected problem. Reload the page, or return to the course list and try again.",
+      };
+}
+
+export function AppErrorFallback({
+  error,
+  onReload,
+}: {
+  error: Error | null;
+  onReload: () => void;
+}) {
+  const copy = getErrorFallbackCopy(error);
+
+  return (
+    <main className="flex min-h-screen min-h-[100dvh] items-center justify-center bg-ucla-gray px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-[calc(2rem+env(safe-area-inset-top))]">
+      <div
+        role="alert"
+        aria-labelledby="app-error-title"
+        className="w-full max-w-lg text-center"
+      >
+        <img
+          src="/pwa-icon-192.png"
+          alt=""
+          className="mx-auto h-16 w-16 rounded-[18px] shadow-sm ring-1 ring-black/5"
+        />
+        <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-ucla-blue">
+          UCLA Sports MRI Courses
+        </p>
+        <h1 id="app-error-title" className="mt-2 text-2xl font-bold text-gray-900">
+          {copy.title}
+        </h1>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-600">
+          {copy.detail}
+        </p>
+
+        <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={onReload}
+            className="min-h-11 rounded-lg bg-ucla-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+          >
+            Reload app
+          </button>
+          <a
+            href="/"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+          >
+            Return to courses
+          </a>
+        </div>
+
+        <p className="mt-6 text-xs leading-5 text-gray-500">
+          Any progress already recorded to your account remains saved.
+        </p>
+        <a
+          href="/support"
+          className="mt-2 inline-block text-xs font-semibold text-ucla-blue hover:underline"
+        >
+          Get support
+        </a>
+      </div>
+    </main>
+  );
+}
+
+function routeErrorAsError(routeError: unknown) {
+  if (routeError instanceof Error) return routeError;
+  if (
+    routeError &&
+    typeof routeError === "object" &&
+    "message" in routeError &&
+    typeof routeError.message === "string"
+  ) {
+    return new Error(routeError.message);
+  }
+  return new Error("Unexpected route error");
+}
+
+export function RouteErrorFallback() {
+  const routeError = useRouteError();
+  return (
+    <AppErrorFallback
+      error={routeErrorAsError(routeError)}
+      onReload={() => window.location.reload()}
+    />
+  );
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
@@ -30,46 +134,7 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-          <div className="w-full max-w-md text-center">
-            {/* UCLA branding bar */}
-            <div className="mx-auto mb-6 h-1.5 w-24 rounded-full bg-ucla-blue" />
-
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Something went wrong
-            </h1>
-            <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-              An unexpected error occurred. Your progress has been saved. Please
-              reload the page to continue.
-            </p>
-
-            <button
-              onClick={this.handleReload}
-              className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"
-                />
-              </svg>
-              Reload
-            </button>
-
-            <p className="mt-8 text-xs text-gray-300">
-              UCLA Sports MRI Courses
-            </p>
-          </div>
-        </div>
-      );
+      return <AppErrorFallback error={this.state.error} onReload={this.handleReload} />;
     }
 
     return this.props.children;

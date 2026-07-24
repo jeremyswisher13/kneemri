@@ -9,7 +9,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import ErrorBoundary, { RouteErrorFallback } from "@/components/ErrorBoundary";
 import AppLayout from "@/components/layout/AppLayout";
 import FellowLayout from "@/components/layout/FellowLayout";
 import AdminLayout from "@/components/layout/AdminLayout";
@@ -136,7 +136,13 @@ function AppRoutes() {
 // The data-router shell enables route-wide navigation blocking. Module quizzes
 // use it to protect in-progress answers from sidebar/search links and browser
 // Back/Forward, which a page-local Link handler cannot cover.
-const router = createBrowserRouter([{ path: "*", element: <AppRoutes /> }]);
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <AppRoutes />,
+    errorElement: <RouteErrorFallback />,
+  },
+]);
 
 export default function App() {
   return (

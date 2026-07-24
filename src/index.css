@@ -41,6 +41,19 @@ html {
   display: none;
 }
 
+@keyframes page-loader-slide {
+  0% {
+    transform: translateX(-125%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.page-loader-indicator {
+  animation: page-loader-slide 1.35s ease-in-out infinite;
+}
+
 /* Confetti animation */
 @keyframes confetti-fall {
   0% {
@@ -63,6 +76,13 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .page-loader-indicator {
+    animation: none !important;
+    opacity: 0.65;
+    transform: none;
+    width: 100%;
   }
 }
 
