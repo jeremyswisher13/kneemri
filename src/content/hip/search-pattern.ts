@@ -37,7 +37,7 @@ export const hipSearchPatternSteps: SearchPatternStep[] = [
       "Sacrum and pubic rami for insufficiency/stress fracture; T1 review for marrow replacement",
     ],
     pearls: [
-      "Tension-side (superolateral) femoral-neck stress fracture = non-weight-bearing and urgent surgical referral; compression-side is usually conservative. Always state the side.",
+      "Tension-side (superolateral) femoral-neck stress fracture = non-weight-bearing and urgent surgical referral. An incomplete compression-side fracture involving <50% of neck width is often conservative; ≥50% extent or other instability features shift toward fixation. State side and extent.",
       "Isolated femoral-head marrow edema is a differential, not a diagnosis: chase a subchondral line, a double-line rim, or a transient pattern before reassuring. A lesser-trochanter avulsion in an adult without trauma is a tumor red flag.",
     ],
   },
@@ -68,7 +68,7 @@ export const hipSearchPatternSteps: SearchPatternStep[] = [
     checklistItems: [
       "Anterosuperior labrum for a tear; distinguish it from a normal sublabral recess or chondrolabral variant",
       "Paralabral cyst as a secondary sign pointing to an underlying tear",
-      "Cam: anterosuperior head-neck bump and elevated alpha angle (>55 degrees) on oblique-axial/radial images",
+      "Cam: anterosuperior head-neck bump and measured alpha angle on oblique-axial/radial images (historic >55-degree cutoff; ≥60 degrees better supported for classification)",
       "Pincer: crossover sign, coxa profunda, acetabular retroversion/over-coverage (LCEA)",
       "Adjacent acetabular rim cartilage for chondrolabral injury/delamination; note os acetabuli and herniation pit",
     ],

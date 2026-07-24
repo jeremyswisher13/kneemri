@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 import { submitQuiz } from "@/lib/firestore";
 import { domainLabel } from "@/lib/growth";
+import UnsavedNavigationGuard from "@/components/ui/UnsavedNavigationGuard";
 
 interface QuizResult {
   questionId: string;
@@ -36,14 +37,7 @@ export default function PreQuizPage() {
   const [results, setResults] = useState<QuizResults | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Warn before navigating away from an in-progress quiz
-  useEffect(() => {
-    const hasAnswers = Object.keys(answers).length > 0;
-    if (!hasAnswers || results) return;
-    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
-    window.addEventListener('beforeunload', handler);
-    return () => window.removeEventListener('beforeunload', handler);
-  }, [answers, results]);
+  const quizInProgress = Object.keys(answers).length > 0 && !results;
 
   // Redirect if already completed
   useEffect(() => {
@@ -188,6 +182,7 @@ export default function PreQuizPage() {
   // Quiz view
   return (
     <div>
+      <UnsavedNavigationGuard active={quizInProgress} />
       <h1 className="text-2xl font-bold text-gray-900 mb-6">
         Pre-Assessment Knowledge Quiz
       </h1>

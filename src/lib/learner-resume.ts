@@ -1,4 +1,5 @@
 import { courseRegistry, type CourseId } from "@/content/courses";
+import { safeInternalPath } from "@/lib/login-return";
 
 export const LEARNER_RESUME_KEY = "uclaSportsMri.resume";
 
@@ -13,11 +14,6 @@ export interface LearnerResumeState {
 }
 
 type ResumeStorage = Pick<Storage, "getItem" | "removeItem" | "setItem">;
-
-function safeInternalPath(path: string) {
-  if (!path.startsWith("/") || path.startsWith("//") || path.startsWith("/login")) return "/";
-  return path;
-}
 
 function isCourseId(value: string | undefined): value is CourseId {
   return !!value && courseRegistry.some((course) => course.id === value);

@@ -1,7 +1,11 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import CrossPlaneDrill from "./CrossPlaneDrill";
-import { moveCrossPlaneCursor } from "./cross-plane-cursor";
+import {
+  CROSS_PLANE_FREE_TOLERANCE,
+  isCrossPlaneFreeResponseCorrect,
+  moveCrossPlaneCursor,
+} from "./cross-plane-cursor";
 import type { CorrelationItem } from "@/content/normal-mri-types";
 
 const correlations: CorrelationItem[] = [
@@ -67,5 +71,17 @@ describe("CrossPlaneDrill", () => {
     expect(moveCrossPlaneCursor({ x: 50, y: 50 }, "ArrowUp", true)).toEqual({ x: 50, y: 49 });
     expect(moveCrossPlaneCursor({ x: 99, y: 2 }, "ArrowRight")).toEqual({ x: 100, y: 2 });
     expect(moveCrossPlaneCursor({ x: 99, y: 2 }, "ArrowUp")).toEqual({ x: 99, y: 0 });
+  });
+
+  it("requires a free-response click to land near the actual target", () => {
+    const target = { x: 62, y: 54 };
+    expect(isCrossPlaneFreeResponseCorrect(target, target)).toBe(true);
+    expect(
+      isCrossPlaneFreeResponseCorrect(
+        { x: target.x + CROSS_PLANE_FREE_TOLERANCE, y: target.y },
+        target,
+      ),
+    ).toBe(true);
+    expect(isCrossPlaneFreeResponseCorrect({ x: 30, y: 20 }, target)).toBe(false);
   });
 });

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Marker } from "@/content/normal-mri-types";
 
 function labelClass(marker: Marker) {
@@ -33,6 +34,9 @@ export default function AnnotatedSlice({
 }) {
   const src = `${dir}/slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`;
   const imageAlt = alt ?? `MRI slice ${sliceIndex + 1} with educational annotation markers`;
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const [retryRevision, setRetryRevision] = useState(0);
+  const failed = failedSrc === src;
   return (
     // min-h reserves the box height before the slice decodes so an uncached image
     // doesn't collapse to 0 then shove the page down ~335px on load (CLS). Markers
@@ -43,12 +47,35 @@ export default function AnnotatedSlice({
       className="relative mx-auto block w-fit min-h-[45svh] max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black lg:min-h-0 lg:max-h-none lg:w-full lg:max-w-[560px]"
     >
       <img
+        key={`${src}:${retryRevision}`}
         src={src}
         alt={imageAlt}
         draggable={false}
-        className="mx-auto block max-h-[45svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full"
+        className={`mx-auto block max-h-[45svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full ${
+          failed ? "invisible" : ""
+        }`}
+        onLoad={() => setFailedSrc((current) => (current === src ? null : current))}
+        onError={() => setFailedSrc(src)}
       />
-      {markers.map((m, i) => (
+      {failed && (
+        <div
+          role="alert"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center text-sm text-white"
+        >
+          <p>This MRI slice could not be loaded.</p>
+          <button
+            type="button"
+            onClick={() => {
+              setFailedSrc(null);
+              setRetryRevision((revision) => revision + 1);
+            }}
+            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+          >
+            Retry image
+          </button>
+        </div>
+      )}
+      {!failed && markers.map((m, i) => (
         <div
           key={i}
           data-mri-marker="true"

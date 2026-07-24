@@ -60,6 +60,7 @@ function FellowLayoutContent() {
   const { progress } = useProgress(activeCourse);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
 
   // Mobile drawer = managed dialog: close on Escape, move focus into the drawer
   // when it opens, and restore focus to the menu button when it closes.
@@ -86,6 +87,14 @@ function FellowLayoutContent() {
     const page = pageTitleForRouteSegment(last, activeCourse, isCourseRoot);
     document.title = `${page} · ${activeCourse.title} · UCLA`;
   }, [location.pathname, activeCourse]);
+
+  // AppLayout resets document scrolling. Also reset this inner overflow surface
+  // for constrained browser/app-shell layouts where #main-content becomes the
+  // active scroller. Query/hash changes stay put for workstation modes and topic
+  // deep links.
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, left: 0 });
+  }, [location.pathname]);
 
   useEffect(() => {
     if (location.pathname === "/" || /\/normal-(knee|shoulder|hip|elbow)-mri/.test(location.pathname)) {
@@ -617,7 +626,12 @@ function FellowLayoutContent() {
       </aside>
 
       {/* Main content */}
-      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 overflow-auto overscroll-contain outline-none">
+      <main
+        ref={mainRef}
+        id="main-content"
+        tabIndex={-1}
+        className="min-h-0 flex-1 overflow-auto overscroll-contain outline-none"
+      >
         <div className="mx-auto max-w-5xl px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-6 lg:px-8 lg:pb-6">
           <Suspense fallback={<PageLoader />}>
             <Outlet />

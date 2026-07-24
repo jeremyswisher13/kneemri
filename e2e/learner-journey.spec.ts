@@ -3,6 +3,7 @@ import {
   ELBOW_PATH,
   collectRuntimeErrors,
   expectNoHorizontalOverflow,
+  installPreviewSession,
   loginThroughPreviewButton,
   setPreviewProgress,
 } from "./helpers";
@@ -47,4 +48,39 @@ test("login to certificate follows the five-step elbow curriculum", async ({ pag
 
   await expectNoHorizontalOverflow(page);
   expect(runtimeErrors).toEqual([]);
+});
+
+test("client-side navigation resets the active fellow scroll surface", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "Desktop regression for the persistent course layout.");
+  await installPreviewSession(page);
+  await page.goto("/courses/knee-mri/reference");
+
+  await expect(page.getByRole("heading", { name: "Quick Reference" })).toBeVisible();
+  const surface = await page.evaluate(() => {
+    const main = document.querySelector<HTMLElement>("#main-content");
+    const documentScroller = document.scrollingElement;
+    if (!main || !documentScroller) return null;
+    const target = main.scrollHeight > main.clientHeight ? main : documentScroller;
+    target.scrollTop = Math.min(500, target.scrollHeight - target.clientHeight);
+    return {
+      kind: target === main ? "main" : "document",
+      moved: target.scrollTop > 0,
+    };
+  });
+  expect(surface).not.toBeNull();
+  expect(surface?.moved).toBe(true);
+
+  await page.locator("aside").getByRole("link", { name: /^Modules\b/ }).click();
+  await expect(page).toHaveURL(/\/courses\/knee-mri\/modules$/);
+  await expect
+    .poll(() =>
+      page.evaluate((kind) => {
+        const target =
+          kind === "main"
+            ? document.querySelector<HTMLElement>("#main-content")
+            : document.scrollingElement;
+        return target?.scrollTop ?? -1;
+      }, surface!.kind),
+    )
+    .toBe(0);
 });

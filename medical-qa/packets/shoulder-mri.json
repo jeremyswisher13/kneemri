@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21",
+  "generatedAt": "2026-07-24",
   "course": {
     "id": "shoulder-mri",
     "title": "Shoulder MRI for Primary Care Sports Medicine",
@@ -1131,7 +1131,7 @@
         {
           "src": "/images/teaching/shoulder/adhesive-capsulitis.svg",
           "alt": "Schematic of adhesive capsulitis MRI findings",
-          "caption": "Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI supports the clinical diagnosis and excludes mimics.",
+          "caption": "Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI can support the clinical diagnosis and evaluate for structural mimics.",
           "attribution": "UCLA Shoulder MRI Course — original schematic illustration.",
           "step": 6
         }
@@ -1141,7 +1141,7 @@
         "impression": "1. Capsular and rotator interval findings supportive of adhesive capsulitis in the appropriate clinical setting.\n2. Mild supraspinatus tendinosis without rotator cuff tear.\n3. No advanced glenohumeral arthritis."
       },
       "teachingPoints": [
-        "Adhesive capsulitis remains a clinical diagnosis; MRI supports and excludes competing pathology.",
+        "Adhesive capsulitis remains a clinical diagnosis; MRI can support it and evaluate for competing structural pathology.",
         "Key imaging regions are the rotator interval, coracohumeral ligament, and axillary capsule.",
         "Primary care relevance: supports capsular-focused therapy and image-guided injection planning when clinically appropriate."
       ],
@@ -3981,7 +3981,7 @@
           "Parsonage–Turner involving the long thoracic nerve"
         ],
         "answer": 0,
-        "explanation": "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with an unremarkable spinoglenoid notch excludes spinoglenoid and suprascapular-notch cysts; the long thoracic nerve supplies serratus anterior, not teres minor."
+        "explanation": "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with no notch mass argues against a suprascapular compressive neuropathy; the long thoracic nerve supplies serratus anterior, not teres minor."
       },
       {
         "id": "nerve-3",
@@ -4007,7 +4007,7 @@
           "Suprascapular notch ganglion cyst"
         ],
         "answer": 0,
-        "explanation": "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion is the hallmark of Parsonage–Turner. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). The absence of any cyst/mass and the cross-territory pattern exclude all compressive causes."
+        "explanation": "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion strongly supports Parsonage–Turner syndrome. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). No visible cyst/mass and the cross-territory pattern argue against one focal compressive cause."
       },
       {
         "id": "measure-3",
@@ -9480,7 +9480,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with an unremarkable spinoglenoid notch excludes spinoglenoid and suprascapular-notch cysts; the long thoracic nerve supplies serratus anterior, not teres minor.",
+      "explanation": "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with no notch mass argues against a suprascapular compressive neuropathy; the long thoracic nerve supplies serratus anterior, not teres minor.",
       "source": "Shoulder MRI · Advanced",
       "courseId": "shoulder-mri"
     },
@@ -9530,7 +9530,7 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion is the hallmark of Parsonage–Turner. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). The absence of any cyst/mass and the cross-territory pattern exclude all compressive causes.",
+      "explanation": "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion strongly supports Parsonage–Turner syndrome. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). No visible cyst/mass and the cross-territory pattern argue against one focal compressive cause.",
       "source": "Shoulder MRI · Advanced",
       "courseId": "shoulder-mri"
     },

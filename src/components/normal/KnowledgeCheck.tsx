@@ -433,9 +433,12 @@ function LocatableSlice({
   const src = `${dir}/slice_${String(sliceIndex + 1).padStart(2, "0")}.jpg`;
   const [cursor, setCursor] = useState({ x: 50, y: 50 });
   const [keyboardActive, setKeyboardActive] = useState(false);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const [retryRevision, setRetryRevision] = useState(0);
+  const failed = failedSrc === src;
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (answered) return;
+    if (answered || failed) return;
     const rect = event.currentTarget.getBoundingClientRect();
     onPick(
       clamp(((event.clientX - rect.left) / rect.width) * 100, 0, 100),
@@ -444,7 +447,7 @@ function LocatableSlice({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (answered) return;
+    if (answered || failed) return;
     const step = event.shiftKey ? 1 : 4;
     const move = (dx: number, dy: number) => {
       setKeyboardActive(true);
@@ -468,7 +471,7 @@ function LocatableSlice({
       data-target-y={target.y}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex={answered ? -1 : 0}
+      tabIndex={answered || failed ? -1 : 0}
       role="application"
       aria-label={
         answered
@@ -484,12 +487,36 @@ function LocatableSlice({
       }`}
     >
       <img
+        key={`${src}:${retryRevision}`}
         src={src}
         alt={`${planeLabel} MRI slice; locate the ${structure}`}
         draggable={false}
-        className="mx-auto block max-h-[45svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full"
+        className={`mx-auto block max-h-[45svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full ${
+          failed ? "invisible" : ""
+        }`}
+        onLoad={() => setFailedSrc((current) => (current === src ? null : current))}
+        onError={() => setFailedSrc(src)}
       />
-      {!answered && keyboardActive && (
+      {failed && (
+        <div
+          role="alert"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center text-sm text-white"
+        >
+          <p>This MRI slice could not be loaded. Localization is paused.</p>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              setFailedSrc(null);
+              setRetryRevision((revision) => revision + 1);
+            }}
+            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+          >
+            Retry image
+          </button>
+        </div>
+      )}
+      {!failed && !answered && keyboardActive && (
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${cursor.x}%`, top: `${cursor.y}%` }}
@@ -499,7 +526,7 @@ function LocatableSlice({
           <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
         </span>
       )}
-      {answered && showCorrect && (
+      {!failed && answered && showCorrect && (
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${target.x}%`, top: `${target.y}%` }}
@@ -509,7 +536,7 @@ function LocatableSlice({
           <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
         </span>
       )}
-      {answered && guess && (
+      {!failed && answered && guess && (
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 text-lg font-bold"
           style={{

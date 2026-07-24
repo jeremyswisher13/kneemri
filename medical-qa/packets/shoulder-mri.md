@@ -1,5 +1,5 @@
 # Medical QA Packet: Shoulder MRI for Primary Care Sports Medicine
-Generated: 2026-07-21
+Generated: 2026-07-24
 Course ID: `shoulder-mri`  
 Body region: `shoulder`  
 Audience: Primary care sports medicine fellows
@@ -136,7 +136,8 @@ Pearls:
 
 ### Module 1: Shoulder MRI Orientation
 
-**Subtitle:** Protocols, planes, sequences, and clinical framing  
+**Subtitle:** Protocols, planes, sequences, and clinical framing
+
 **Estimated minutes:** 18
 
 Learning objectives:
@@ -226,7 +227,8 @@ The course uses this clinical lens throughout: identify the structure, classify 
 
 ### Module 2: Shoulder Search Pattern
 
-**Subtitle:** A repeatable read for pain, cuff disease, and instability  
+**Subtitle:** A repeatable read for pain, cuff disease, and instability
+
 **Estimated minutes:** 20
 
 Learning objectives:
@@ -341,7 +343,8 @@ Images:
 
 ### Module 3: Rotator Cuff
 
-**Subtitle:** Tendinosis, partial tears, full-thickness tears, and reparability clues  
+**Subtitle:** Tendinosis, partial tears, full-thickness tears, and reparability clues
+
 **Estimated minutes:** 24
 
 Learning objectives:
@@ -463,7 +466,8 @@ Images:
 
 ### Module 4: Labrum & Instability
 
-**Subtitle:** SLAP, Bankart spectrum, posterior labrum, and bone loss  
+**Subtitle:** SLAP, Bankart spectrum, posterior labrum, and bone loss
+
 **Estimated minutes:** 24
 
 Learning objectives:
@@ -583,7 +587,8 @@ Images:
 
 ### Module 5: Biceps, Rotator Interval & AC Joint
 
-**Subtitle:** Anterior shoulder pain, pulley lesions, adhesive capsulitis, and AC pain  
+**Subtitle:** Anterior shoulder pain, pulley lesions, adhesive capsulitis, and AC pain
+
 **Estimated minutes:** 22
 
 Learning objectives:
@@ -683,7 +688,8 @@ Images:
 
 ### Module 6: Arthritis, Bursa & Don't-Miss Findings
 
-**Subtitle:** Cartilage loss, bursitis, denervation, infection, tumor mimics, and referral flags  
+**Subtitle:** Cartilage loss, bursitis, denervation, infection, tumor mimics, and referral flags
+
 **Estimated minutes:** 24
 
 Learning objectives:
@@ -1152,12 +1158,12 @@ Model report impression:
 3. No advanced glenohumeral arthritis.
 
 Teaching points:
-- Adhesive capsulitis remains a clinical diagnosis; MRI supports and excludes competing pathology.
+- Adhesive capsulitis remains a clinical diagnosis; MRI can support it and evaluate for competing structural pathology.
 - Key imaging regions are the rotator interval, coracohumeral ligament, and axillary capsule.
 - Primary care relevance: supports capsular-focused therapy and image-guided injection planning when clinically appropriate.
 Teaching media:
 - src=/images/teaching/shoulder/adhesive-real.jpg | alt=MRI showing thickened coracohumeral ligament in adhesive capsulitis | caption=Real MRI (T2) — thickened coracohumeral ligament / rotator-interval soft tissue (arrows) adjacent to the humeral head (H): a supportive MRI sign of adhesive capsulitis. | attribution=Insights Imaging 2016. PMC4877356. CC-BY 4.0.
-- src=/images/teaching/shoulder/adhesive-capsulitis.svg | alt=Schematic of adhesive capsulitis MRI findings | caption=Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI supports the clinical diagnosis and excludes mimics. | attribution=UCLA Shoulder MRI Course — original schematic illustration.
+- src=/images/teaching/shoulder/adhesive-capsulitis.svg | alt=Schematic of adhesive capsulitis MRI findings | caption=Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI can support the clinical diagnosis and evaluate for structural mimics. | attribution=UCLA Shoulder MRI Course — original schematic illustration.
 
 ### Upper Subscapularis Tear with Medial Biceps Subluxation (the “hidden lesion”)
 
@@ -2093,7 +2099,7 @@ A pitcher with chronic posterior shoulder pain shows isolated teres minor fatty 
 - B. Spinoglenoid notch paralabral cyst
 - C. Suprascapular notch ganglion cyst
 - D. Parsonage–Turner involving the long thoracic nerve
-Explanation: Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with an unremarkable spinoglenoid notch excludes spinoglenoid and suprascapular-notch cysts; the long thoracic nerve supplies serratus anterior, not teres minor.
+Explanation: Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with no notch mass argues against a suprascapular compressive neuropathy; the long thoracic nerve supplies serratus anterior, not teres minor.
 
 #### Advanced: nerve-3 · Nerve entrapment & paralabral cysts
 
@@ -2113,7 +2119,7 @@ A 41-year-old develops acute shoulder pain followed by weakness; MRI shows diffu
 - B. Spinoglenoid notch ganglion cyst
 - C. Quadrilateral space syndrome
 - D. Suprascapular notch ganglion cyst
-Explanation: Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion is the hallmark of Parsonage–Turner. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). The absence of any cyst/mass and the cross-territory pattern exclude all compressive causes.
+Explanation: Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion strongly supports Parsonage–Turner syndrome. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). No visible cyst/mass and the cross-territory pattern argue against one focal compressive cause.
 
 #### Advanced: measure-3 · Measurements, technique & normal values
 
@@ -2747,4 +2753,3 @@ Explanation: A fluid-bright (fluid-equivalent) defect spanning the full tendon t
   **Back:** Eccentric load with the arm extended/abducted — classically the bottom of a bench press. The most surgically relevant location is avulsion of the tendon from its humeral insertion at the lateral lip of the bicipital (intertubercular) groove; the sternocostal head tears most often (inferior sternocostal fibers first).
 - **Front:** What MRI sign indicates a complete humeral-sided avulsion of the pectoralis major, and what should the report state?
   **Back:** The 'empty bicipital groove' — the avulsed tendon is absent from the lateral lip of the intertubercular groove (partial/MTJ tears retain tendon there). Report which head(s), tear location (intramuscular vs MTJ vs humeral avulsion), completeness, and retraction; acute complete avulsions in active patients are referred for surgical repair.
-

@@ -2514,7 +2514,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "Transient bone-marrow-edema syndrome vs SIFH | A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amou..."
+    "textPreview": "Transient bone-marrow-edema syndrome vs SIFFH | A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amo..."
   },
   {
     "courseId": "hip-mri",
@@ -2581,7 +2581,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "AVN vs subchondral insufficiency fracture (SIFH) of the femoral head | On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroids..."
+    "textPreview": "AVN vs subchondral insufficiency fracture of the femoral head (SIFFH) | On this coronal water (T2 fat-suppressed) image, find the femoral head marrow superior to the physeal scar — this is the screening location for marrow pathology. A 52-year-old man on chronic corticosteroid..."
   },
   {
     "courseId": "hip-mri",
@@ -3717,23 +3717,6 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "review-registry-question",
-    "itemId": "fc-hip-anatomy-t5-1",
-    "section": "spaced-review-registry",
-    "title": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI?",
-    "risk": "high",
-    "requiresSourceCheck": true,
-    "flags": [
-      "answer-key",
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | front: How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | back: A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anter..."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "review-registry-question",
     "itemId": "fc-hip-search-pattern-t1-1",
     "section": "spaced-review-registry",
     "title": "In the 7-step hip/pelvis search pattern, why is bone/marrow read as step 2 rather than last?",
@@ -3776,7 +3759,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "How does the presence or absence of a subchondral fracture line change hip management? | front: How does the presence or absence of a subchondral fracture line change hip management? | back: No fracture line = transient bone marrow edema = rehab. A subchondral fracture line (S..."
+    "textPreview": "How does the presence or absence of a subchondral fracture line change hip management? | front: How does the presence or absence of a subchondral fracture line change hip management? | back: Diffuse edema without a fracture line can fit transient bone-marrow-edema syndrome onl..."
   },
   {
     "courseId": "hip-mri",
@@ -3789,7 +3772,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "On hip MRI, which femoral-neck stress fracture location is a surgical emergency, and what is the immediate management? | front: On hip MRI, which femoral-neck stress fracture location is a surgical emergency, and what is the immediate management? | back: A TENSION-side (supero..."
@@ -3817,7 +3801,7 @@
     "itemType": "review-registry-question",
     "itemId": "fc-hip-bones-stress-t2-1",
     "section": "spaced-review-registry",
-    "title": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI?",
+    "title": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -3825,7 +3809,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI? | front: How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI? | back: BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture line, NO necroti..."
+    "textPreview": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI? | front: How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI? | back: BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture band, NO geogr..."
   },
   {
     "courseId": "hip-mri",
@@ -3951,7 +3935,8 @@
     "requiresSourceCheck": true,
     "flags": [
       "answer-key",
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "On femoral-neck stress fracture, which side of the neck makes it a surgical emergency, and what do you do? | front: On femoral-neck stress fracture, which side of the neck makes it a surgical emergency, and what do you do? | back: A fracture line on the SUPEROLATERAL (tension)..."
@@ -9923,7 +9908,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — excludes Panner by focality and age | UNSTABLE interface: a T2 fluid-bright line (matching joint fluid) completely undercutting the fragment + a sizeable/multiple subchondral cys..."
+    "textPreview": "FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — focality and age argue strongly against Panner disease | UNSTABLE interface: a T2 fluid-bright line (matching joint fluid) completely undercutting the fragment + a sizeable/multi..."
   },
   {
     "courseId": "elbow-mri",
@@ -10349,7 +10334,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "LUCL traced to the supinator crest is intact — no PLRI | No coronoid (anteromedial-facet) fracture or post-traumatic instability pattern | Radiocapitellar alignment normal — excludes a competing lateral/instability cause"
+    "textPreview": "LUCL traced to the supinator crest is intact — no PLRI | No coronoid (anteromedial-facet) fracture or post-traumatic instability pattern | Radiocapitellar alignment normal, without evidence of a competing lateral-instability pattern"
   },
   {
     "courseId": "elbow-mri",
@@ -13144,7 +13129,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "PROTOCOL: Non-contrast 3T hip MRI with dedicated oblique-axial sequences along the femoral neck and radial reformats. Clinical question: rule out FAI/labral pathology in a young athlete with mechanical groin pain. BONES & MARROW: Femoral head and neck are well seen and well co..."
+    "textPreview": "PROTOCOL: Non-contrast 3T hip MRI with dedicated oblique-axial sequences along the femoral neck and radial reformats. Clinical question: evaluate FAI/labral pathology in a young athlete with mechanical groin pain. BONES & MARROW: Femoral head and neck are well seen and well co..."
   },
   {
     "courseId": "hip-mri",
@@ -13336,7 +13321,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Labrum intact - exclude a competing labral cause for the groin pain | No cam/pincer morphology accounting for symptoms | Confirm the stress fracture is the dominant pain generator"
+    "textPreview": "No labral tear or FAI morphology identified as a competing structural pain source | No cam/pincer morphology accounting for symptoms | The stress-fracture pattern best explains the presentation"
   },
   {
     "courseId": "hip-mri",
@@ -13412,7 +13397,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Reactive marrow edema and enthesophytes at the greater trochanteric facets | Normal femoral head/neck - no stress fracture or AVN | No intraosseous lesion to explain symptoms"
+    "textPreview": "Reactive marrow edema and enthesophytes at the greater trochanteric facets | Normal femoral head/neck - no stress fracture or AVN | No competing intraosseous abnormality identified"
   },
   {
     "courseId": "hip-mri",
@@ -13548,7 +13533,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Confirm high-resolution T1 and fluid-sensitive coronal/sagittal sequences | Clinical question is transient BME vs SIFK in an atraumatic painful hip | Recognize the discriminator will be presence/absence of a subchondral fracture line"
+    "textPreview": "Confirm high-resolution T1 and fluid-sensitive coronal/sagittal sequences | Clinical question is transient BME vs SIFFH in an atraumatic painful hip | Recognize the discriminator will be presence/absence of a subchondral fracture band"
   },
   {
     "courseId": "hip-mri",
@@ -13563,7 +13548,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Diffuse femoral head/neck marrow edema (low T1, high STIR) | Focal low-signal SUBCHONDRAL FRACTURE LINE in the anterosuperior weight-bearing head - the key finding making this SIFK | No serpiginous double-line and no demarcated necrotic segment (against AVN)"
+    "textPreview": "Diffuse femoral head/neck marrow edema (low T1, high STIR) | Focal irregular low-signal SUBCHONDRAL FRACTURE BAND in the weight-bearing head - the key finding making this SIFFH | No geographic serpiginous lesion or double-line sign (against AVN)"
   },
   {
     "courseId": "hip-mri",
@@ -13578,7 +13563,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Don't-miss: the subtle subchondral fracture line that converts benign transient BME into collapse-prone SIFK | State collapse risk and recommend protected weight-bearing plus short-interval follow-up | Disposition: orthopedic referral and bone-density/insufficiency workup"
+    "textPreview": "Don't-miss: the subtle subchondral fracture band that distinguishes SIFFH from transient BME | State collapse risk and recommend protected weight-bearing plus prompt follow-up | Disposition: orthopedic referral and bone-health/insufficiency workup"
   },
   {
     "courseId": "hip-mri",
@@ -13852,7 +13837,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "The DOUBLE-LINE SIGN on T2 (inner bright granulation tissue + outer dark sclerosis) is pathognomonic for osteonecrosis and distinguishes AVN from transient bone-marrow edema, which lacks it."
+    "textPreview": "A geographic subchondral lesion with a serpiginous T1 rim and the characteristic T2 DOUBLE-LINE SIGN (inner bright granulation tissue + outer dark sclerosis) strongly supports osteonecrosis; transient bone-marrow-edema syndrome lacks that demarcated necrotic pattern."
   },
   {
     "courseId": "hip-mri",
@@ -14004,7 +13989,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Both transient bone-marrow-edema syndrome and SIFK show diffuse femoral head edema - the DISCRIMINATOR is the subchondral fracture LINE. Transient BME has edema WITHOUT a subchondral fracture line or double-line and is self-limiting; SIFK has a subchondral fracture line and ri..."
+    "textPreview": "Both transient bone-marrow-edema syndrome and SIFFH can show diffuse femoral-head edema; the key discriminator is an irregular subchondral low-signal fracture band. Transient BME lacks a fracture band and geographic necrotic segment, while SIFFH carries collapse risk."
   },
   {
     "courseId": "hip-mri",
@@ -14019,7 +14004,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Management/disposition pearl: transient BME syndrome is benign and self-limiting (protected weight-bearing, time, symptomatic care). SIFK is a structural fracture at risk of collapse - it needs protected weight-bearing, orthopedic referral, and short-interval follow-up to dete..."
+    "textPreview": "Management/disposition pearl: transient BME syndrome is generally self-limiting after fracture and AVN are excluded. SIFFH is a structural fracture at risk of collapse - it needs protected weight-bearing, prompt orthopedic review, and follow-up based on lesion extent and clini..."
   },
   {
     "courseId": "hip-mri",
@@ -14034,7 +14019,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Distinguish both from AVN: AVN has the serpiginous DOUBLE-LINE sign and a demarcated necrotic segment; transient BME and SIFK do not. Calling AVN incorrectly changes the entire prognosis conversation."
+    "textPreview": "Distinguish both from AVN: AVN typically has a geographic serpiginous interface and may show the characteristic double-line sign; transient BME and SIFFH do not share that full pattern."
   },
   {
     "courseId": "hip-mri",
@@ -14049,7 +14034,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "Pitfall: the most dangerous error is over-reading diffuse edema as 'just transient BME' and missing the subtle low-signal subchondral fracture line of SIFK - scrutinize the anterosuperior subchondral region on every plane and on T1."
+    "textPreview": "Pitfall: the most dangerous error is over-reading diffuse edema as 'just transient BME' and missing the subtle low-signal subchondral fracture band of SIFFH - scrutinize the weight-bearing subchondral region on every plane and on T1."
   },
   {
     "courseId": "hip-mri",
@@ -14064,7 +14049,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "SIFK is an INSUFFICIENCY fracture - look for and recommend workup of the underlying bone-quality problem (osteoporosis/osteopenia, vitamin D); the fracture is a marker of fragile bone."
+    "textPreview": "SIFFH is an insufficiency fracture - assess bone health and relevant risk factors, while remembering that it has also been reported in younger adults and is not confined to one demographic."
   },
   {
     "courseId": "hip-mri",
@@ -14169,7 +14154,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "AVN's near-pathognomonic finding is the double-line sign on T2 — a hyperintense inner granulation line paralleled by a hypointense sclerotic outer line at the necrosis interface; its presence distinguishes AVN from nonspecific marrow edema."
+    "textPreview": "AVN's characteristic MRI pattern is a geographic subchondral lesion with a serpiginous T1 rim and, on T2, a hyperintense inner granulation line paralleling a hypointense outer rim (the double-line sign). Read the full pattern rather than using marrow edema or one line in isola..."
   },
   {
     "courseId": "hip-mri",
@@ -14212,11 +14197,10 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
+      "high-risk-keyword"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "Subchondral insufficiency fracture shows a serpiginous low-signal line parallel to the articular surface with surrounding edema, typically in older osteopenic patients; a line length >4 mm or any articular flattening predicts collapse."
+    "textPreview": "Subchondral insufficiency fracture of the femoral head shows an irregular low-signal subchondral band with surrounding edema. Greater band length, a larger band-to-weight-bearing-surface ratio, associated cartilage loss, and any articular flattening increase progression risk; ..."
   },
   {
     "courseId": "hip-mri",
@@ -14374,22 +14358,6 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "flashcard",
-    "itemId": "hip-anatomy:topic:4:card:1",
-    "section": "spaced-review",
-    "title": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI?",
-    "risk": "high",
-    "requiresSourceCheck": true,
-    "flags": [
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anterosuperior femoral neck — often incidental but associated with cam FAI. If symptomatic, look for cam ..."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "flashcard",
     "itemId": "hip-search-pattern:topic:1:card:1",
     "section": "spaced-review",
     "title": "In the 7-step hip/pelvis search pattern, why is bone/marrow read as step 2 rather than last?",
@@ -14399,7 +14367,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "In the 7-step hip/pelvis search pattern, why is bone/marrow read as step 2 rather than last? | The disposition-changing lesions hide in bone/marrow — tension-side neck fracture, AVN, SIFK, confluent low-T1 marrow. Reading them early (while attention is freshest) instead of at ..."
+    "textPreview": "In the 7-step hip/pelvis search pattern, why is bone/marrow read as step 2 rather than last? | The disposition-changing lesions hide in bone/marrow — tension-side neck fracture, AVN, SIFFH, confluent low-T1 marrow. Reading them early (while attention is freshest) instead of at..."
   },
   {
     "courseId": "hip-mri",
@@ -14429,7 +14397,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "How does the presence or absence of a subchondral fracture line change hip management? | No fracture line = transient bone marrow edema = rehab. A subchondral fracture line (SIFK) carries collapse risk and is urgent; a superolateral femoral-neck line is a surgical emergency. T..."
+    "textPreview": "How does the presence or absence of a subchondral fracture line change hip management? | Diffuse edema without a fracture line can fit transient bone-marrow-edema syndrome only after AVN and occult fracture are excluded. A femoral-head subchondral fracture band (SIFFH) carries..."
   },
   {
     "courseId": "hip-mri",
@@ -14441,7 +14409,8 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
     "textPreview": "On hip MRI, which femoral-neck stress fracture location is a surgical emergency, and what is the immediate management? | A TENSION-side (superolateral) fracture line — high risk of completion/displacement and AVN. Make the patient non-weight-bearing and obtain urgent orthopedi..."
@@ -14468,14 +14437,14 @@
     "itemType": "flashcard",
     "itemId": "hip-bones-stress:topic:3:card:1",
     "section": "spaced-review",
-    "title": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI?",
+    "title": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI? | BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture line, NO necrotic segment, and NO double-line sign; it is self-limiting. AVN shows a geographic lesion with a ..."
+    "textPreview": "How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI? | BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture band, NO geographic necrotic segment, and NO double-line sign; it is a diagnosis of exclusion and generally s..."
   },
   {
     "courseId": "hip-mri",
@@ -14593,10 +14562,11 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "On femoral-neck stress fracture, which side of the neck makes it a surgical emergency, and what do you do? | A fracture line on the SUPEROLATERAL (tension) side is unstable and a surgical emergency — make the patient non-weight-bearing and obtain urgent ortho referral. Compres..."
+    "textPreview": "On femoral-neck stress fracture, which side of the neck makes it a surgical emergency, and what do you do? | A fracture line on the SUPEROLATERAL (tension) side is unstable and a surgical urgency — make the patient non-weight-bearing and obtain urgent orthopedic referral. Only..."
   },
   {
     "courseId": "hip-mri",
@@ -15142,11 +15112,10 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword",
-      "numeric-threshold-or-named-criterion"
+      "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### Translating Findings Into Rehab vs Injection vs Referral vs Urgent Every read ends with a **disposition**, ordered from most to least urgent. Sort the study into one bucket. **URGENT (escalate today):** - **Tension-side (superolateral) femoral-neck stress fracture** — non-..."
+    "textPreview": "### Translating Findings Into Rehab vs Injection vs Referral vs Urgent Every read should communicate the safest next step. **URGENT (escalate today):** - **Tension-side (superolateral) femoral-neck stress fracture** — non-weight-bearing + urgent surgical referral. - Septic joi..."
   },
   {
     "courseId": "hip-mri",
@@ -15162,7 +15131,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### Femoral-Neck Stress Fracture: Compression vs Tension A runner or recruit with groin/anterior-hip pain and a normal radiograph needs **fluid-sensitive MRI** (coronal STIR/T2 fat-sat + T1). Marrow edema alone is a stress *reaction*; a discrete **low-signal fracture line** on..."
+    "textPreview": "### Femoral-Neck Stress Fracture: Compression vs Tension A runner or recruit with groin/anterior-hip pain and a normal radiograph needs **fluid-sensitive MRI** plus T1. Marrow edema alone can represent stress reaction; a discrete **low-signal fracture line** establishes a stre..."
   },
   {
     "courseId": "hip-mri",
@@ -15178,7 +15147,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### AVN of the Femoral Head: Double-Line Sign & ARCO Staging Suspect osteonecrosis with steroid use, alcohol, sickle cell, or prior trauma. The earliest MRI change is a **serpiginous reactive interface** rimming the necrotic antero-superior segment. - **Double-line sign** (T2)..."
+    "textPreview": "### AVN of the Femoral Head: Double-Line Sign & ARCO Staging Suspect osteonecrosis with steroid use, alcohol, sickle cell, or prior trauma. The classic MRI pattern is a **serpiginous reactive interface** rimming a geographic subchondral segment. - **Double-line sign** (T2): ou..."
   },
   {
     "courseId": "hip-mri",
@@ -15208,7 +15177,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### Subchondral Insufficiency Fracture (SIFK) of the Femoral Head Typically an **older osteopenic woman** (or post-arthroscopy patient) with abrupt hip pain out of proportion to imaging. Unlike BMES, there is a structural fracture. MRI hallmarks: - **Subchondral low-signal lin..."
+    "textPreview": "### Subchondral Insufficiency Fracture of the Femoral Head (SIFFH) Often encountered in older or osteopenic adults, but reported across a wider adult age range, SIFFH can present with abrupt hip pain and may mimic osteonecrosis or BMES. Unlike isolated BMES, there is a structu..."
   },
   {
     "courseId": "hip-mri",
@@ -15240,6 +15209,22 @@
     ],
     "sourcePath": "src/content/hip/modules.ts",
     "textPreview": "### Sacral & Pubic-Ramus Stress / Insufficiency Fractures Two populations: **young athletes** (fatigue fracture of normal bone under load — distance runners, the female athlete triad) and **older/osteoporotic or post-radiation** patients (insufficiency fracture of weak bone un..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "module-topic",
+    "itemId": "hip-fai-labrum:topic:1",
+    "section": "module 5",
+    "title": "Cam morphology and the alpha angle (oblique-axial/radial measurement)",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/hip/modules.ts",
+    "textPreview": "### Cam Morphology and the Alpha Angle **Cam morphology** is asphericity at the anterosuperior **femoral head-neck junction** — a bump that loses the normal concave waist and may contribute to chondrolabral shear during flexion/internal rotation. **Measuring the alpha angle:**..."
   },
   {
     "courseId": "hip-mri",
@@ -15418,10 +15403,11 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### Tension-Side Femoral-Neck Stress Fracture and Occult/Insufficiency Fracture Not all femoral-neck stress fractures are equal — **location dictates urgency.** **Compression-side (inferomedial)** fractures are stable and managed with protected weight-bearing. **Tension-side (..."
+    "textPreview": "### Tension-Side Femoral-Neck Stress Fracture and Occult/Insufficiency Fracture Not all femoral-neck stress fractures are equal — **location and extent dictate urgency.** - An **incomplete compression-side (inferomedial) line involving <50% of neck width** is the lower-risk pa..."
   },
   {
     "courseId": "hip-mri",
@@ -15437,7 +15423,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### AVN of the Femoral Head Before Collapse The entire goal is to catch osteonecrosis **before the articular surface collapses** — that is the window where joint-preserving surgery (core decompression) still works. **The pathognomonic sign:** - **Double-line sign** on T2 — an ..."
+    "textPreview": "### AVN of the Femoral Head Before Collapse The goal is to detect osteonecrosis **before articular-surface collapse**, when joint-preserving options may still be considered. **Characteristic MRI pattern:** - A geographic subchondral lesion with a **serpiginous low-signal rim o..."
   },
   {
     "courseId": "hip-mri",
@@ -15621,7 +15607,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "Watch for a serpiginous subchondral double-line (AVN) or a focal subchondral low-signal fracture band with surrounding edema (SIFH) — both can appear before the head loses its sphericity, and the water image is where the edema becomes obvious."
+    "textPreview": "Watch for a geographic serpiginous subchondral interface with a double-line pattern (AVN) or an irregular subchondral low-signal fracture band with surrounding edema (SIFFH) — both can appear before the head loses its sphericity."
   },
   {
     "courseId": "hip-mri",
@@ -15713,6 +15699,22 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "variant: A corticated os acetabuli with smooth margins at the anterosuperior rim is a chronic rim variant/fragment, not an acute fracture (sharp margins + marrow edema). | measure: Read coverage by the lateral center-edge angle on radiographs: <20° = dysplasia/undercoverage, 2..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
+    "itemId": "Femoral neck & head-neck junction",
+    "section": "normal-mri",
+    "title": "Femoral neck & head-neck junction",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "variant: A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate. | measure: For stress injury, side the low-signal line first: any superolateral/tension-side fractur..."
   },
   {
     "courseId": "hip-mri",
@@ -15885,7 +15887,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is perfectly spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an inta..."
+    "textPreview": "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an intact subchon..."
   },
   {
     "courseId": "hip-mri",
@@ -16031,7 +16033,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/reference.ts",
-    "textPreview": "label: Femoral head & marrow | detail: Spherical with uniformly bright fatty marrow on T1. Asphericity / a bump at the anterosuperior head-neck junction suggests cam morphology; a low-T1 marrow lesion is never normal. A radiograph-negative double-line hip is AVN ARCO I (MRI-po..."
+    "textPreview": "label: Femoral head & marrow | detail: Spherical with expected fatty marrow on T1. Asphericity / a bump at the anterosuperior head-neck junction suggests cam morphology. Low T1 is not automatically malignant — compare with muscle/disc, distribution, fat content, age, and the f..."
   },
   {
     "courseId": "hip-mri",
@@ -16063,7 +16065,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/reference.ts",
-    "textPreview": "label: Alpha angle (cam) | detail: Measured on OBLIQUE-AXIAL (along the femoral neck) or RADIAL images — NOT the straight coronal. >~55° defines cam morphology (anterosuperior head-neck bump with loss of the normal concave waist). Don't eyeball it on a standard axial; measure ..."
+    "textPreview": "label: Alpha angle (cam) | detail: Measured on OBLIQUE-AXIAL (along the femoral neck) or RADIAL images — NOT the straight coronal. The historic >55° cutoff remains common, while ≥60° is the better-supported classification threshold. Report the value and plane; an elevated angl..."
   },
   {
     "courseId": "hip-mri",
@@ -16087,14 +16089,14 @@
     "itemType": "reference-measurementSections",
     "itemId": "measurementSections:4",
     "section": "reference",
-    "title": "SIFK vs transient bone-marrow-edema syndrome",
+    "title": "SIFFH vs transient bone-marrow-edema syndrome",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/hip/reference.ts",
-    "textPreview": "label: The distinguishing feature | detail: A subchondral low-signal FRACTURE LINE paralleling the articular surface (with or without focal subchondral collapse/flattening) marks subchondral insufficiency fracture (SIFK). Transient BME syndrome shows diffuse marrow edema WITHO..."
+    "textPreview": "label: The distinguishing feature | detail: A subchondral low-signal FRACTURE BAND at the femoral head (often irregular and convex toward the surface, with or without focal flattening) marks subchondral insufficiency fracture of the femoral head (SIFFH). Transient BME syndrome..."
   },
   {
     "courseId": "hip-mri",
@@ -16106,7 +16108,8 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/reference.ts",
     "textPreview": "label: Superolateral (tension side) | detail: Tension-side fracture line along the SUPEROLATERAL cortex is the SURGICAL-URGENCY pattern — prone to displacement and AVN. Treat as urgent: protected/non-weight-bearing and prompt orthopedic referral. | label: Inferomedial (compres..."
@@ -16172,7 +16175,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/reference.ts",
-    "textPreview": "label: Non-contrast MRI (most questions) | detail: Dedicated small-FOV hip with oblique-axial neck sequences with or without radial reformats. Best first study for AVN, SIFK/stress fracture, marrow edema, abductor and hamstring tendons, and cam morphology (alpha angle). | labe..."
+    "textPreview": "label: Non-contrast MRI (most questions) | detail: Dedicated small-FOV hip with oblique-axial neck sequences with or without radial reformats. Best first study for AVN, SIFFH/stress fracture, marrow edema, abductor and hamstring tendons, and cam morphology (alpha angle). | lab..."
   },
   {
     "courseId": "hip-mri",
@@ -16199,7 +16202,8 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/search-pattern.ts",
     "textPreview": "Sweep the proximal femur, acetabulum, and pelvic ring first: T1 for marrow replacement, fluid-sensitive (STIR/T2 FS) for edema and fracture lines. This is where the highest-stakes findings hide. | Femoral neck for a stress fracture line, explicitly noting compression (inferome..."
@@ -21479,7 +21483,23 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | front: Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | back: Oblique-axial along the femoral neck (or radial reformat..."
+    "textPreview": "Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | front: Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | back: Oblique-axial along the femoral neck or radial reformats..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-hip-anatomy-t5-1",
+    "section": "spaced-review-registry",
+    "title": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | front: How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | back: A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anter..."
   },
   {
     "courseId": "hip-mri",
@@ -21487,7 +21507,7 @@
     "itemType": "review-registry-question",
     "itemId": "fc-hip-search-pattern-t2-1",
     "section": "spaced-review-registry",
-    "title": "On which plane is the alpha angle measured, and what value is abnormal?",
+    "title": "On which plane is the alpha angle measured, and how should the value be interpreted?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -21495,7 +21515,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "On which plane is the alpha angle measured, and what value is abnormal? | front: On which plane is the alpha angle measured, and what value is abnormal? | back: Oblique-axial along the femoral neck (or radial reformats); alpha angle >55 degrees is abnormal (cam morphology). A ..."
+    "textPreview": "On which plane is the alpha angle measured, and how should the value be interpreted? | front: On which plane is the alpha angle measured, and how should the value be interpreted? | back: Measure on oblique-axial images along the femoral neck or radial reformats. The historic >..."
   },
   {
     "courseId": "hip-mri",
@@ -21503,7 +21523,7 @@
     "itemType": "review-registry-question",
     "itemId": "fc-hip-fai-labrum-t0-1",
     "section": "spaced-review-registry",
-    "title": "In which plane should the alpha angle be measured, and what value defines pathologic cam morphology?",
+    "title": "In which plane should the alpha angle be measured, and how should it be interpreted?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
@@ -21511,7 +21531,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "In which plane should the alpha angle be measured, and what value defines pathologic cam morphology? | front: In which plane should the alpha angle be measured, and what value defines pathologic cam morphology? | back: Measure on oblique-axial/radial images angled along the fe..."
+    "textPreview": "In which plane should the alpha angle be measured, and how should it be interpreted? | front: In which plane should the alpha angle be measured, and how should it be interpreted? | back: Measure on oblique-axial/radial images angled along the femoral neck because a straight ax..."
   },
   {
     "courseId": "hip-mri",
@@ -22940,7 +22960,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "Anterior-bundle UCL traced from medial epicondyle to sublime tubercle and intact | NO T-sign — no fluid tracking beyond the articular-cartilage edge at the distal attachment | No sublime-tubercle traction spur or chronic attenuation (excludes a competing medial valgus process)"
+    "textPreview": "Anterior-bundle UCL traced from medial epicondyle to sublime tubercle and intact | NO T-sign — no fluid tracking beyond the articular-cartilage edge at the distal attachment | No sublime-tubercle traction spur or chronic attenuation to support a competing medial valgus process"
   },
   {
     "courseId": "elbow-mri",
@@ -23243,7 +23263,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/cases.ts",
-    "textPreview": "The alpha angle is measured on oblique-axial (along the neck) or radial images; >55 degrees defines cam morphology. Do not eyeball it on a standard axial - measure it."
+    "textPreview": "Measure the alpha angle on oblique-axial (along the neck) or radial images. The historic >55-degree cutoff remains common, but ≥60 degrees is better supported for classifying cam morphology; report the value and plane rather than treating one cutoff as a diagnosis."
   },
   {
     "courseId": "hip-mri",
@@ -23288,7 +23308,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/daily-pearls.ts",
-    "textPreview": "An alpha angle >55 degrees defines cam morphology, but measure it on radial reformats around the head-neck junction (maximal between 1 and 2 o'clock) — a single straight axial slice misses the anterosuperior bump and underestimates the deformity."
+    "textPreview": "Measure the alpha angle on oblique-axial neck images or radial reformats around the head-neck junction. The historic >55-degree cutoff remains common, while ≥60 degrees is better supported for classifying cam morphology; neither value alone diagnoses symptomatic FAI."
   },
   {
     "courseId": "hip-mri",
@@ -23348,7 +23368,22 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | Oblique-axial along the femoral neck (or radial reformats), which lays the anterosuperior head-neck junction flat. Alpha angle >55 degrees indicates cam morphology. Never me..."
+    "textPreview": "Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold? | Oblique-axial along the femoral neck or radial reformats, which profile the anterosuperior head-neck junction. The historic >55-degree cutoff remains common, while ≥60 degre..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "flashcard",
+    "itemId": "hip-anatomy:topic:4:card:1",
+    "section": "spaced-review",
+    "title": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/hip/flashcards.ts",
+    "textPreview": "How do you distinguish a benign herniation pit from concerning pathology on hip MRI? | A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anterosuperior femoral neck — often incidental but associated with cam morphology. Measure the alpha angl..."
   },
   {
     "courseId": "hip-mri",
@@ -23356,14 +23391,14 @@
     "itemType": "flashcard",
     "itemId": "hip-search-pattern:topic:2:card:1",
     "section": "spaced-review",
-    "title": "On which plane is the alpha angle measured, and what value is abnormal?",
+    "title": "On which plane is the alpha angle measured, and how should the value be interpreted?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "On which plane is the alpha angle measured, and what value is abnormal? | Oblique-axial along the femoral neck (or radial reformats); alpha angle >55 degrees is abnormal (cam morphology). A routine axial foreshortens the neck and misrepresents the bump — confirm the dedicated ..."
+    "textPreview": "On which plane is the alpha angle measured, and how should the value be interpreted? | Measure on oblique-axial images along the femoral neck or radial reformats. The historic >55-degree cutoff remains common, while ≥60 degrees is better supported for classifying cam morpholog..."
   },
   {
     "courseId": "hip-mri",
@@ -23371,14 +23406,14 @@
     "itemType": "flashcard",
     "itemId": "hip-fai-labrum:topic:1:card:1",
     "section": "spaced-review",
-    "title": "In which plane should the alpha angle be measured, and what value defines pathologic cam morphology?",
+    "title": "In which plane should the alpha angle be measured, and how should it be interpreted?",
     "risk": "medium",
     "requiresSourceCheck": true,
     "flags": [
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/flashcards.ts",
-    "textPreview": "In which plane should the alpha angle be measured, and what value defines pathologic cam morphology? | Measure on oblique-axial/radial images angled along the femoral neck (a straight axial under-samples the anterosuperior bump). Alpha angle >55° = pathologic cam; 50–55° borde..."
+    "textPreview": "In which plane should the alpha angle be measured, and how should it be interpreted? | Measure on oblique-axial/radial images angled along the femoral neck because a straight axial can under-sample the anterosuperior bump. The historic >55° cutoff remains common, while ≥60° is..."
   },
   {
     "courseId": "hip-mri",
@@ -23408,7 +23443,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "Measure the alpha angle on an oblique-axial plane along the femoral neck or on radial images; >55 degrees is the common threshold, with borderline values near the cutoff. A non-aligned plane over- or under-estimates the angle."
+    "textPreview": "Measure the alpha angle on an oblique-axial plane along the femoral neck or on radial images. The historic >55-degree cutoff remains common, but systematic-review evidence supports ≥60 degrees for classifying cam morphology; report the value and plane rather than turning one c..."
   },
   {
     "courseId": "hip-mri",
@@ -23439,21 +23474,6 @@
     ],
     "sourcePath": "src/content/hip/modules.ts",
     "textPreview": "### Large-FOV Pelvis Screen vs Small-FOV Dedicated Hip Protocol The first decision when you open a hip study: **what protocol was actually ordered?** These are not interchangeable. **Large-FOV pelvis screen** (~32–40 cm FOV, both hips on every slice): - Best for **bilateral an..."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "module-topic",
-    "itemId": "hip-fai-labrum:topic:1",
-    "section": "module 5",
-    "title": "Cam morphology and the alpha angle (oblique-axial/radial measurement)",
-    "risk": "medium",
-    "requiresSourceCheck": true,
-    "flags": [
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/hip/modules.ts",
-    "textPreview": "### Cam Morphology and the Alpha Angle **Cam morphology** is asphericity at the anterosuperior **femoral head-neck junction** — a bump that loses the normal concave waist. During flexion/internal rotation it jams into the acetabulum, shearing the chondrolabral junction. **Meas..."
   },
   {
     "courseId": "hip-mri",
@@ -23534,21 +23554,6 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-reading",
-    "itemId": "Femoral neck & head-neck junction",
-    "section": "normal-mri",
-    "title": "Femoral neck & head-neck junction",
-    "risk": "medium",
-    "requiresSourceCheck": true,
-    "flags": [
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "variant: A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate. | measure: For stress injury, estimate the percent of neck width crossed by the low-signal line; a s..."
-  },
-  {
-    "courseId": "hip-mri",
-    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
-    "itemType": "normal-structure-reading",
     "itemId": "Anterior joint recess",
     "section": "normal-mri",
     "title": "Anterior joint recess",
@@ -23590,7 +23595,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/surgical-correlates.ts",
-    "textPreview": "structure: Cam lesion (FAI) | title: Cam morphology — alpha angle ↔ femoroplasty | body: The aspherical anterior head-neck bump (alpha angle >~55° on oblique-axial/radial) is the cam lesion. At arthroscopy it is burred back (femoroplasty/osteochondroplasty) to restore the conc..."
+    "textPreview": "structure: Cam lesion (FAI) | title: Cam morphology — alpha angle ↔ femoroplasty | body: An aspherical anterior head-neck bump can be classified with an alpha angle measured on oblique-axial or radial images. The historic >55° cutoff remains common, while ≥60° is better suppor..."
   },
   {
     "courseId": "knee-mri",

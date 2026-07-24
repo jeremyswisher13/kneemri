@@ -58,6 +58,8 @@ export default function MriStackViewer({
   // onLoad writes here — the background preloader below just warms the browser
   // cache and never touches state, so opening a plane doesn't fire ~N re-renders.
   const [loadedSet, setLoadedSet] = useState<Set<number>>(new Set());
+  const [failedSet, setFailedSet] = useState<Set<number>>(new Set());
+  const [retryRevision, setRetryRevision] = useState(0);
 
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -113,6 +115,8 @@ export default function MriStackViewer({
   if (slices !== prevSlices) {
     setPrevSlices(slices);
     setLoadedSet(new Set());
+    setFailedSet(new Set());
+    setRetryRevision(0);
     setZoom(1);
     setPan({ x: 0, y: 0 });
     setBright(1);
@@ -162,6 +166,7 @@ export default function MriStackViewer({
       const step = wheelSliceStep(e);
       if (step === 0) return;
       e.preventDefault();
+      setCinePlaying(false);
       setIndex((i) => Math.min(total - 1, Math.max(0, i + step)));
     };
     el.addEventListener("wheel", onWheelNative, { passive: false });
@@ -274,20 +279,24 @@ export default function MriStackViewer({
         case "ArrowRight":
           if (total <= 1) return;
           e.preventDefault();
+          setCinePlaying(false);
           setIndex((i) => Math.min(total - 1, i + 1));
           break;
         case "ArrowUp":
         case "ArrowLeft":
           if (total <= 1) return;
           e.preventDefault();
+          setCinePlaying(false);
           setIndex((i) => Math.max(0, i - 1));
           break;
         case "Home":
           e.preventDefault();
+          setCinePlaying(false);
           setIndex(0);
           break;
         case "End":
           e.preventDefault();
+          setCinePlaying(false);
           setIndex(total - 1);
           break;
         case " ":
@@ -318,6 +327,17 @@ export default function MriStackViewer({
   // state update during every commit in two-pane Compare mode.
   const markVisibleLoaded = useCallback(() => {
     setLoadedSet((prev) => (prev.has(safeIndex) ? prev : new Set(prev).add(safeIndex)));
+    setFailedSet((prev) => {
+      if (!prev.has(safeIndex)) return prev;
+      const next = new Set(prev);
+      next.delete(safeIndex);
+      return next;
+    });
+  }, [safeIndex]);
+
+  const markVisibleFailed = useCallback(() => {
+    setLoadedSet((prev) => (prev.has(safeIndex) ? prev : new Set(prev).add(safeIndex)));
+    setFailedSet((prev) => (prev.has(safeIndex) ? prev : new Set(prev).add(safeIndex)));
   }, [safeIndex]);
 
   if (total === 0) {
@@ -329,6 +349,7 @@ export default function MriStackViewer({
   }
 
   const loaded = loadedSet.has(safeIndex);
+  const failed = failedSet.has(safeIndex);
 
   const showPlay = total > 1;
   const zoomed = zoom > 1.02;
@@ -399,7 +420,7 @@ export default function MriStackViewer({
           </div>
         )}
         <img
-          key={slices[safeIndex].src}
+          key={`${slices[safeIndex].src}:${retryRevision}`}
           // Cached images can be `complete` before onLoad attaches and never
           // fire it, leaving the spinner stuck — clear it synchronously here.
           ref={(el) => {
@@ -410,15 +431,46 @@ export default function MriStackViewer({
           draggable={false}
           decoding="async"
           fetchPriority="high"
-          className="max-h-full max-w-full select-none object-contain will-change-transform"
+          className={`max-h-full max-w-full select-none object-contain will-change-transform ${
+            failed ? "invisible" : ""
+          }`}
           style={{
             transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
             filter: `brightness(${bright}) contrast(${contrast})${invert ? " invert(1)" : ""}`,
             transition: gesturing ? "none" : "transform 120ms ease-out",
           }}
           onLoad={markVisibleLoaded}
-          onError={markVisibleLoaded}
+          onError={markVisibleFailed}
         />
+        {failed && (
+          <div
+            role="alert"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center text-sm text-white"
+          >
+            <p>This MRI slice could not be loaded.</p>
+            <button
+              type="button"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={(event) => {
+                event.stopPropagation();
+                setLoadedSet((prev) => {
+                  const next = new Set(prev);
+                  next.delete(safeIndex);
+                  return next;
+                });
+                setFailedSet((prev) => {
+                  const next = new Set(prev);
+                  next.delete(safeIndex);
+                  return next;
+                });
+                setRetryRevision((revision) => revision + 1);
+              }}
+              className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+            >
+              Retry image
+            </button>
+          </div>
+        )}
         {/* Slice indicator + zoom badge */}
         <div className="pointer-events-none absolute bottom-2 right-3 rounded bg-black/60 px-2 py-0.5 text-xs font-medium text-white tabular-nums">
           {safeIndex + 1} / {total}

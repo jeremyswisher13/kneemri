@@ -154,7 +154,7 @@ const HIP_TRACKS: LearningTrack[] = [
     cases: [
       { id: "hip-femoral-neck-stress-fracture", label: "Femoral-neck stress fracture" },
       { id: "hip-avn-femoral-head", label: "Femoral-head AVN" },
-      { id: "hip-transient-bme-vs-sifk", label: "Transient BME vs SIFK" },
+      { id: "hip-transient-bme-vs-sifk", label: "Transient BME vs SIFFH" },
     ],
   },
   {

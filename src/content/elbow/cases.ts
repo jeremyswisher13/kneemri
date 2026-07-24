@@ -219,7 +219,7 @@ export const elbowCaseRegistry: CaseMetadata[] = [
         "step": 2,
         "stepName": "Bones, Marrow & Osteochondral",
         "expectedFindings": [
-          "FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — excludes Panner by focality and age",
+          "FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — focality and age argue strongly against Panner disease",
           "UNSTABLE interface: a T2 fluid-bright line (matching joint fluid) completely undercutting the fragment + a sizeable/multiple subchondral cyst(s) + a cartilage cleft reaching the fragment — the management-changing findings, read on coronal + sagittal",
           "Surrounding marrow edema is present but explicitly NOT used as a stability sign; no medial epicondyle apophyseal stress lesion; radial head/trochlea/olecranon normal"
         ]
@@ -456,7 +456,7 @@ export const elbowCaseRegistry: CaseMetadata[] = [
         "expectedFindings": [
           "Anterior-bundle UCL traced from medial epicondyle to sublime tubercle and intact",
           "NO T-sign — no fluid tracking beyond the articular-cartilage edge at the distal attachment",
-          "No sublime-tubercle traction spur or chronic attenuation (excludes a competing medial valgus process)"
+          "No sublime-tubercle traction spur or chronic attenuation to support a competing medial valgus process"
         ]
       },
       {
@@ -693,7 +693,7 @@ export const elbowCaseRegistry: CaseMetadata[] = [
         "expectedFindings": [
           "LUCL traced to the supinator crest is intact — no PLRI",
           "No coronoid (anteromedial-facet) fracture or post-traumatic instability pattern",
-          "Radiocapitellar alignment normal — excludes a competing lateral/instability cause"
+          "Radiocapitellar alignment normal, without evidence of a competing lateral-instability pattern"
         ]
       },
       {

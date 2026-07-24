@@ -52,13 +52,13 @@ export const surgicalCorrelatesByRegion: Record<string, SurgicalCorrelate[]> = {
   hip: [
     {
       structure: "Acetabular labrum",
-      title: "Labral tear — MR-arthrography ↔ hip arthroscopy",
-      body: "MR-arthrography is most sensitive for the anterosuperior labral tear; at arthroscopy the same lesion is probed for chondrolabral separation, and tissue quality decides labral repair vs selective debridement.",
+      title: "Labral tear — dedicated MRI / MR arthrography ↔ hip arthroscopy",
+      body: "Dedicated small-field-of-view 3-T MRI is a strong first-line examination for anterosuperior labral and chondrolabral injury; direct MR arthrography is a selective problem-solving study when routine imaging is equivocal and the answer will change management. At arthroscopy the same lesion is probed for chondrolabral separation, and tissue quality helps determine repair versus selective debridement.",
     },
     {
       structure: "Cam lesion (FAI)",
       title: "Cam morphology — alpha angle ↔ femoroplasty",
-      body: "The aspherical anterior head-neck bump (alpha angle >~55° on oblique-axial/radial) is the cam lesion. At arthroscopy it is burred back (femoroplasty/osteochondroplasty) to restore the concave head-neck offset and the dynamic clearance lost in impingement.",
+      body: "An aspherical anterior head-neck bump can be classified with an alpha angle measured on oblique-axial or radial images. The historic >55° cutoff remains common, while ≥60° is better supported for classifying cam morphology; neither the bump nor the angle alone establishes symptomatic FAI. When symptoms, examination, and chondrolabral injury are concordant and operative treatment is selected, arthroscopic femoroplasty restores head-neck offset and dynamic clearance.",
     },
   ],
 };

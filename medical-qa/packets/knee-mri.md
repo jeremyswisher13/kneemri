@@ -1,5 +1,5 @@
 # Medical QA Packet: UCLA Knee MRI Interpretation Course
-Generated: 2026-07-21
+Generated: 2026-07-24
 Course ID: `knee-mri`  
 Body region: `knee`  
 Audience: Sports medicine fellows and orthopaedic residents
@@ -132,7 +132,8 @@ Pearls:
 
 ### Module 1: MRI Basics
 
-**Subtitle:** Planes, sequences, and common pitfalls  
+**Subtitle:** Planes, sequences, and common pitfalls
+
 **Estimated minutes:** 15
 
 Learning objectives:
@@ -253,7 +254,8 @@ Develop the habit of adjusting window/level as you move through your search patt
 
 ### Module 2: Anatomy
 
-**Subtitle:** Compartments, landmarks, and what belongs where  
+**Subtitle:** Compartments, landmarks, and what belongs where
+
 **Estimated minutes:** 20
 
 Learning objectives:
@@ -419,7 +421,8 @@ Images:
 
 ### Module 3: Search Pattern Overview
 
-**Subtitle:** The 7-step systematic approach  
+**Subtitle:** The 7-step systematic approach
+
 **Estimated minutes:** 10
 
 Learning objectives:
@@ -549,7 +552,8 @@ Developing familiarity with your anchor slices accelerates reading because you s
 
 ### Module 4: Bones & Marrow
 
-**Subtitle:** Edema patterns, fractures, and alignment  
+**Subtitle:** Edema patterns, fractures, and alignment
+
 **Estimated minutes:** 15
 
 Learning objectives:
@@ -760,6 +764,7 @@ Images:
 ### Module 5: Cartilage & Osteochondral
 
 **Subtitle:** Grading, OCD stability, SIF, and loose bodies
+
 **Estimated minutes:** 20
 
 Learning objectives:
@@ -972,7 +977,8 @@ Images:
 
 ### Module 6: Menisci
 
-**Subtitle:** Tears, roots, ramp lesions, extrusion, and reporting  
+**Subtitle:** Tears, roots, ramp lesions, extrusion, and reporting
+
 **Estimated minutes:** 25
 
 Learning objectives:
@@ -1276,7 +1282,8 @@ Evaluating the **post-surgical meniscus** requires understanding the expected ap
 
 ### Module 7: Ligaments
 
-**Subtitle:** ACL/PCL, MCL/LCL, PLC, and MPFL  
+**Subtitle:** ACL/PCL, MCL/LCL, PLC, and MPFL
+
 **Estimated minutes:** 20
 
 Learning objectives:
@@ -1585,7 +1592,8 @@ When evaluating a multiligament knee injury, report **every ligament and stabili
 
 ### Module 8: Extensor Mechanism & Synovium/Bursae
 
-**Subtitle:** Quad/patellar tendon, Baker's cyst, and effusion  
+**Subtitle:** Quad/patellar tendon, Baker's cyst, and effusion
+
 **Estimated minutes:** 15
 
 Learning objectives:
@@ -1902,7 +1910,8 @@ The ischial hamstring origin, adductor longus origin, and proximal rectus femori
 
 ### Module 9: 12 Don't-Miss Findings
 
-**Subtitle:** High-yield findings that change management  
+**Subtitle:** High-yield findings that change management
+
 **Estimated minutes:** 15
 
 Learning objectives:

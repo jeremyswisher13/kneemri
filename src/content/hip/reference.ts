@@ -32,7 +32,7 @@ export const hipAnatomySections: MeasurementSection[] = [
       {
         label: "Oblique-axial (along the femoral neck) / radial",
         detail:
-          "Added specifically to measure the alpha angle. Prescribed parallel to the femoral neck long axis (or as radial reformats) so the anterosuperior head-neck junction lies flat. Cam = alpha angle >~55°. NEVER quote an alpha angle off a straight axial or coronal — it foreshortens the neck and mis-measures the bump.",
+          "Added specifically to measure the alpha angle. Prescribed parallel to the femoral neck long axis (or as radial reformats) so the anterosuperior head-neck junction lies flat. The historic >55° threshold remains common, while ≥60° is better supported for classifying cam morphology. Do not quote an angle off a straight axial or coronal image.",
       },
     ],
   },
@@ -57,7 +57,7 @@ export const hipAnatomySections: MeasurementSection[] = [
       {
         label: "MR arthrography (the labrum)",
         detail:
-          "Most sensitive modality for the acetabular labrum and subtle anterosuperior tears; intra-articular contrast undercuts a tear and distends the joint. Add it when non-contrast MRI is equivocal or discordant with the exam.",
+          "A selective problem-solving examination for subtle labral/chondrolabral tears; intra-articular contrast distends the joint and can outline a defect. High-quality dedicated 3-T MRI performs well first-line, so add arthrography when routine MRI is equivocal or discordant with the examination and the answer will change management.",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const hipAnatomySections: MeasurementSection[] = [
       {
         label: "Femoral head & marrow",
         detail:
-          "Spherical with uniformly bright fatty marrow on T1. Asphericity / a bump at the anterosuperior head-neck junction suggests cam morphology; a low-T1 marrow lesion is never normal. A radiograph-negative double-line hip is AVN ARCO I (MRI-positive, pre-collapse).",
+          "Spherical with expected fatty marrow on T1. Asphericity / a bump at the anterosuperior head-neck junction suggests cam morphology. Low T1 is not automatically malignant — compare with muscle/disc, distribution, fat content, age, and the fluid-sensitive sequences; confluent replacement darker than muscle is the red flag.",
       },
       {
         label: "Acetabulum, sourcil & coverage",
@@ -147,7 +147,7 @@ export const hipAnatomySections: MeasurementSection[] = [
       {
         label: "Where true tears live",
         detail:
-          "The ANTEROSUPERIOR chondrolabral junction (roughly 12–3 o'clock) is the weight-bearing FAI shear zone and the prime site for a real tear. MR arthrography is the most sensitive modality.",
+          "The ANTEROSUPERIOR chondrolabral junction (roughly 12–3 o'clock) is the weight-bearing FAI shear zone and the prime site for a real tear. Dedicated small-field-of-view 3-T MRI is a strong first-line study; direct MR arthrography is useful when routine MRI is equivocal or detailed chondrolabral mapping will change management.",
       },
       {
         label: "Normal labrum / smooth sublabral sulcus",
@@ -176,7 +176,7 @@ export const hipMeasurementSections: MeasurementSection[] = [
       {
         label: "Alpha angle (cam)",
         detail:
-          "Measured on OBLIQUE-AXIAL (along the femoral neck) or RADIAL images — NOT the straight coronal. >~55° defines cam morphology (anterosuperior head-neck bump with loss of the normal concave waist). Don't eyeball it on a standard axial; measure it on the neck-axis plane.",
+          "Measured on OBLIQUE-AXIAL (along the femoral neck) or RADIAL images — NOT the straight coronal. The historic >55° cutoff remains common, while ≥60° is the better-supported classification threshold. Report the value and plane; an elevated angle does not by itself diagnose symptomatic FAI.",
       },
       {
         label: "Lateral center-edge angle (LCEA)",
@@ -206,12 +206,12 @@ export const hipMeasurementSections: MeasurementSection[] = [
       {
         label: "Location — anterosuperior",
         detail:
-          "True labral tears live at the ANTEROSUPERIOR chondrolabral junction (roughly 12–3 o'clock). Signal extending to the articular margin with irregular morphology, ideally confirmed on two planes.",
+          "Labral tears most often involve the ANTEROSUPERIOR chondrolabral junction (roughly 12–3 o'clock), but can occur elsewhere. Favor a tear when fluid/signal extends irregularly into the labral substance with morphologic distortion or secondary findings, ideally confirmed on two planes.",
       },
       {
-        label: "Most sensitive modality",
+        label: "Choose the problem-solving study",
         detail:
-          "MR ARTHROGRAPHY is the most sensitive study for subtle labral tears (intra-articular contrast outlines the tear and distends the joint). Use it when non-contrast MRI is equivocal.",
+          "Dedicated small-field-of-view 3-T MRI performs well as a first-line study. Direct MR ARTHROGRAPHY can better outline subtle labral/chondrolabral defects when routine or lower-field MRI is equivocal and the answer will change management.",
       },
       {
         label: "Paralabral cyst",
@@ -260,15 +260,15 @@ export const hipMeasurementSections: MeasurementSection[] = [
     ],
   },
   {
-    title: "SIFK vs transient bone-marrow-edema syndrome",
+    title: "SIFFH vs transient bone-marrow-edema syndrome",
     items: [
       {
         label: "The distinguishing feature",
         detail:
-          "A subchondral low-signal FRACTURE LINE paralleling the articular surface (with or without focal subchondral collapse/flattening) marks subchondral insufficiency fracture (SIFK). Transient BME syndrome shows diffuse marrow edema WITHOUT a discrete fracture line or collapse.",
+          "A subchondral low-signal FRACTURE BAND at the femoral head (often irregular and convex toward the surface, with or without focal flattening) marks subchondral insufficiency fracture of the femoral head (SIFFH). Transient BME syndrome shows diffuse marrow edema WITHOUT a discrete fracture band or collapse.",
       },
       {
-        label: "SIFK — collapse risk",
+        label: "SIFFH — collapse risk",
         detail:
           "The subchondral line plus any flattening signals structural failure and collapse risk; it is not benign self-limited edema. Protected weight-bearing and orthopedic referral, especially in older/osteopenic patients.",
       },
@@ -290,7 +290,7 @@ export const hipMeasurementSections: MeasurementSection[] = [
       {
         label: "Inferomedial (compression side)",
         detail:
-          "Compression-side line along the INFEROMEDIAL cortex is lower-risk and more often managed conservatively with activity modification and protected weight-bearing.",
+          "An incomplete compression-side line involving <50% of the neck width is lower-risk and is often managed conservatively with protected weight-bearing and close follow-up. A line reaching ≥50%, a fracture gap, significant pain, or inability to straight-leg raise shifts toward fixation.",
       },
       {
         label: "Look for the line, not just edema",
@@ -376,12 +376,12 @@ export const hipMeasurementSections: MeasurementSection[] = [
       {
         label: "Non-contrast MRI (most questions)",
         detail:
-          "Dedicated small-FOV hip with oblique-axial neck sequences with or without radial reformats. Best first study for AVN, SIFK/stress fracture, marrow edema, abductor and hamstring tendons, and cam morphology (alpha angle).",
+          "Dedicated small-FOV hip with oblique-axial neck sequences with or without radial reformats. Best first study for AVN, SIFFH/stress fracture, marrow edema, abductor and hamstring tendons, and cam morphology (alpha angle).",
       },
       {
         label: "MR arthrogram",
         detail:
-          "Most sensitive for subtle labral tears and chondrolabral pathology; add when non-contrast MRI is equivocal or discordant with the exam in suspected FAI/instability.",
+          "A selective problem-solving study for subtle labral/chondrolabral pathology when routine MRI is equivocal or discordant with the examination. High-quality dedicated 3-T MRI can approach MR-arthrography sensitivity for labral tears, so direct arthrography is not automatically required.",
       },
       {
         label: "CT",

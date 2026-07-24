@@ -281,7 +281,7 @@ export const shoulderCaseRegistry: CaseMetadata[] = [
       {
         src: "/images/teaching/shoulder/adhesive-capsulitis.svg",
         alt: "Schematic of adhesive capsulitis MRI findings",
-        caption: "Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI supports the clinical diagnosis and excludes mimics.",
+        caption: "Inspect the rotator interval (coracohumeral ligament thickening, loss of the subcoracoid fat triangle) and the thickened, edematous axillary pouch / inferior capsule. MRI can support the clinical diagnosis and evaluate for structural mimics.",
         attribution: "UCLA Shoulder MRI Course — original schematic illustration.",
         step: 6,
       },
@@ -293,7 +293,7 @@ export const shoulderCaseRegistry: CaseMetadata[] = [
         "1. Capsular and rotator interval findings supportive of adhesive capsulitis in the appropriate clinical setting.\n2. Mild supraspinatus tendinosis without rotator cuff tear.\n3. No advanced glenohumeral arthritis.",
     },
     teachingPoints: [
-      "Adhesive capsulitis remains a clinical diagnosis; MRI supports and excludes competing pathology.",
+      "Adhesive capsulitis remains a clinical diagnosis; MRI can support it and evaluate for competing structural pathology.",
       "Key imaging regions are the rotator interval, coracohumeral ligament, and axillary capsule.",
       "Primary care relevance: supports capsular-focused therapy and image-guided injection planning when clinically appropriate.",
     ],

@@ -28,3 +28,31 @@ test("unfinished module answers survive a cancelled cross-app navigation", async
 
   expect(runtimeErrors).toEqual([]);
 });
+
+test("unfinished assessment answers cannot be discarded by sidebar navigation", async ({
+  context,
+  page,
+}, testInfo) => {
+  await installPreviewSession(context);
+  await page.goto("/courses/elbow-mri/pre-assessment/quiz");
+  const firstAnswer = page.getByRole("radio").first();
+  await firstAnswer.click();
+
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.getByRole("button", { name: "Open menu" }).click();
+  }
+  const modulesLink = page.locator("aside").getByRole("link", { name: /^Modules\b/ });
+  await modulesLink.click();
+
+  await expect(page.getByRole("dialog", { name: "Leave this assessment?" })).toBeVisible();
+  await page.getByRole("button", { name: "Stay here" }).click();
+  await expect(page).toHaveURL(/\/courses\/elbow-mri\/pre-assessment\/quiz$/);
+  await expect(firstAnswer).toHaveAttribute("aria-checked", "true");
+
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.getByRole("button", { name: "Open menu" }).click();
+  }
+  await modulesLink.click();
+  await page.getByRole("button", { name: "Leave and discard" }).click();
+  await expect(page).toHaveURL(/\/courses\/elbow-mri\/modules$/);
+});

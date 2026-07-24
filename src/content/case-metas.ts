@@ -452,7 +452,7 @@ export const hipCaseMetas: CaseMeta[] = [
     "residentVisible": true,
     "clinicalScenario": "A 27-year-old male ice-hockey player presents with 8 months of deep anterior groin pain (positive C-sign) worse with prolonged sitting and pivoting. FADIR (flexion-adduction-internal rotation) impingement test reproduces his pain, and internal rotation in flexion is limited to 10 degrees.",
     "keyDiagnoses": [
-      "Cam-type femoroacetabular impingement (alpha angle >55 degrees)",
+      "Cam morphology with symptomatic femoroacetabular impingement syndrome (alpha angle 68 degrees)",
       "Anterosuperior acetabular labral tear",
       "Anterosuperior acetabular rim chondral delamination",
       "Femoral head-neck junction subchondral cyst (herniation pit)"
@@ -580,9 +580,9 @@ export const hipCaseMetas: CaseMeta[] = [
     "residentVisible": false,
     "clinicalScenario": "A 52-year-old woman with no trauma presents with several weeks of progressive, weight-bearing groin pain and a markedly antalgic gait; she has osteopenia risk factors. Radiographs are normal or show only subtle osteopenia. The clinical question is whether her diffuse femoral head edema represents benign transient bone-marrow-edema syndrome or a subchondral insufficiency fracture at risk of collapse.",
     "keyDiagnoses": [
-      "Subchondral insufficiency fracture of the femoral head (SIFK)",
+      "Subchondral insufficiency fracture of the femoral head (SIFFH)",
       "Transient bone-marrow-edema syndrome (the key differential)",
-      "Avascular necrosis (excluded - no double-line sign)"
+      "Avascular necrosis less likely (no geographic serpiginous lesion or double-line pattern)"
     ],
     "tags": [
       "subchondral-insufficiency-fracture",

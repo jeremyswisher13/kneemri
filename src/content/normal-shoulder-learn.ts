@@ -1122,7 +1122,7 @@ export const shoulderAdvanced: AdvancedQ[] = [
     prompt: "A pitcher with chronic posterior shoulder pain shows isolated teres minor fatty atrophy on MRI, with a normal infraspinatus and an unremarkable spinoglenoid notch. The MOST likely explanation is:",
     options: ["Quadrilateral space syndrome (axillary nerve, posterior branch)", "Spinoglenoid notch paralabral cyst", "Suprascapular notch ganglion cyst", "Parsonage–Turner involving the long thoracic nerve"],
     answer: 0,
-    explanation: "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with an unremarkable spinoglenoid notch excludes spinoglenoid and suprascapular-notch cysts; the long thoracic nerve supplies serratus anterior, not teres minor.",
+    explanation: "Teres minor is supplied by the posterior branch of the axillary nerve within the quadrilateral space, so isolated teres minor denervation localizes there—classic in overhead throwers. The suprascapular nerve does not innervate teres minor, and a normal infraspinatus with no notch mass argues against a suprascapular compressive neuropathy; the long thoracic nerve supplies serratus anterior, not teres minor.",
   },
   {
     id: "nerve-3",
@@ -1138,7 +1138,7 @@ export const shoulderAdvanced: AdvancedQ[] = [
     prompt: "A 41-year-old develops acute shoulder pain followed by weakness; MRI shows diffuse T2 hyperintense edema involving BOTH the supraspinatus and infraspinatus, plus the deltoid, with NO paralabral cyst or mass at either notch. The BEST diagnosis is:",
     options: ["Parsonage–Turner syndrome (neuralgic amyotrophy)", "Spinoglenoid notch ganglion cyst", "Quadrilateral space syndrome", "Suprascapular notch ganglion cyst"],
     answer: 0,
-    explanation: "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion is the hallmark of Parsonage–Turner. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). The absence of any cyst/mass and the cross-territory pattern exclude all compressive causes.",
+    explanation: "Multifocal denervation edema crossing several nerve territories—here both suprascapular (supra/infraspinatus) and axillary (deltoid)—without a compressive lesion strongly supports Parsonage–Turner syndrome. A suprascapular-notch ganglion would give supra+infraspinatus edema but spare the deltoid; a spinoglenoid cyst confines edema to the infraspinatus, and quadrilateral space syndrome confines it to the deltoid (and teres minor). No visible cyst/mass and the cross-territory pattern argue against one focal compressive cause.",
   },
   {
     id: "measure-3",

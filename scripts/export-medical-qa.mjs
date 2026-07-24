@@ -831,7 +831,7 @@ function renderCourseMarkdown(packet) {
   md.push("## Modules\n\n");
   for (const module of packet.modules) {
     md.push(`### Module ${module.number}: ${module.title}\n\n`);
-    md.push(`**Subtitle:** ${module.subtitle}  \n**Estimated minutes:** ${module.estimatedMinutes}\n\n`);
+    md.push(`**Subtitle:** ${module.subtitle}\n\n**Estimated minutes:** ${module.estimatedMinutes}\n\n`);
     md.push("Learning objectives:\n");
     md.push(mdList(module.learningObjectives));
     md.push("Topics:\n");
@@ -1122,7 +1122,7 @@ for (const courseId of ["knee-mri", "shoulder-mri", "hip-mri", "elbow-mri"]) {
   const packet = buildPacket(courseId);
   packets[courseId] = packet;
   writeFileSync(join(packetDir, `${courseId}.json`), JSON.stringify(packet, null, 2) + "\n");
-  writeFileSync(join(packetDir, `${courseId}.md`), renderCourseMarkdown(packet));
+  writeFileSync(join(packetDir, `${courseId}.md`), `${renderCourseMarkdown(packet).trimEnd()}\n`);
 }
 
 const summary = {

@@ -251,6 +251,74 @@ test.beforeEach(async ({ context }) => {
   await installPreviewSession(context);
 });
 
+test.describe("MRI network recovery", () => {
+  test.use({ serviceWorkers: "block" });
+
+  test("MRI image failures pause interaction and recover after retry", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "desktop-chromium", "One browser is sufficient for network recovery");
+
+    const imageUrl =
+      /\/images\/teaching\/stacks\/normal-elbow-coronal\/slice_13\.jpg(?:\?.*)?$/;
+    let failImage = true;
+    await page.route(imageUrl, async (route) => {
+      if (failImage) {
+        await route.fulfill({
+          status: 503,
+          contentType: "text/plain",
+          body: "Intentional MRI image failure for recovery testing",
+        });
+        return;
+      }
+      await route.continue();
+    });
+
+    await page.goto(
+      "/courses/elbow-mri/normal-elbow-mri?mode=explore&series=cor-t2fs",
+    );
+    const stackViewer = page.getByTestId("mri-stack-viewer");
+    await expect(
+      stackViewer.getByRole("alert").getByText("This MRI slice could not be loaded."),
+    ).toBeVisible();
+    await expect(stackViewer.locator("img")).toHaveClass(/invisible/);
+
+    failImage = false;
+    await stackViewer.getByRole("button", { name: "Retry image" }).click();
+    await expectImageLoaded(stackViewer.locator("img"));
+    await expect(stackViewer.getByRole("alert")).toHaveCount(0);
+
+    failImage = true;
+    await page.goto(
+      "/courses/elbow-mri/normal-elbow-mri?mode=tour&series=cor-t2fs",
+    );
+    const annotated = page.getByTestId("annotated-mri");
+    await expect(
+      annotated.getByRole("alert").getByText("This MRI slice could not be loaded."),
+    ).toBeVisible();
+    await page.getByRole("button", { name: /^Go to step 2:/ }).click();
+    await expect(annotated.locator("[data-mri-marker]")).toHaveCount(0);
+
+    failImage = false;
+    await annotated.getByRole("button", { name: "Retry image" }).click();
+    await expectImageLoaded(annotated.locator("img"));
+    await expect(annotated.locator("[data-mri-marker]")).toHaveCount(1);
+
+    failImage = true;
+    await page.goto(
+      "/courses/elbow-mri/normal-elbow-mri?mode=correlate&series=cor-t2fs",
+    );
+    const answerButton = page.getByRole("button", { name: /option A on/i }).first();
+    await expect(page.getByRole("alert").getByText(/the drill is paused/)).toBeVisible();
+    await expect(answerButton).toHaveCount(0);
+
+    failImage = false;
+    await page.getByRole("button", { name: "Retry image" }).click();
+    await expectImageLoaded(
+      page.locator('[data-screenshot-anchor="mri-viewer"] img').first(),
+    );
+    await expect(answerButton).toBeEnabled();
+  });
+});
+
 for (const fixture of WORKSTATIONS) {
   test(`${fixture.name}: every plane, tour marker, mastery interaction, and mode works`, async ({
     page,

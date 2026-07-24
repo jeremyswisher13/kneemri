@@ -8,6 +8,7 @@ import { coursePath } from "@/content/courses";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 import { submitSurvey } from "@/lib/firestore";
+import UnsavedNavigationGuard from "@/components/ui/UnsavedNavigationGuard";
 
 export default function PreSurveyPage() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function PreSurveyPage() {
   }
 
   const allRated = confidenceStatements.every((s) => ratings[s.id] != null);
+  const surveyInProgress = Object.keys(ratings).length > 0 && !submitted;
 
   async function handleSubmit() {
     if (!user) return;
@@ -99,6 +101,11 @@ export default function PreSurveyPage() {
 
   return (
     <div>
+      <UnsavedNavigationGuard
+        active={surveyInProgress}
+        title="Leave this survey?"
+        description="Your confidence ratings have not been submitted and will be lost."
+      />
       <h1 className="text-2xl font-bold text-gray-900">
         Pre-Assessment Confidence Survey
       </h1>

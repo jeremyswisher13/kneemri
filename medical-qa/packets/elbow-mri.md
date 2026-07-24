@@ -1,5 +1,5 @@
 # Medical QA Packet: Elbow MRI for Primary Care Sports Medicine
-Generated: 2026-07-21
+Generated: 2026-07-24
 Course ID: `elbow-mri`  
 Body region: `elbow`  
 Audience: Primary care sports medicine fellows
@@ -136,7 +136,8 @@ Pearls:
 
 ### Module 1: Elbow MRI Orientation
 
-**Subtitle:** Protocols, planes, and sequences — and translating the clinical question into a focused, complete search  
+**Subtitle:** Protocols, planes, and sequences — and translating the clinical question into a focused, complete search
+
 **Estimated minutes:** 16
 
 Learning objectives:
@@ -251,7 +252,8 @@ Three normal findings are routinely over-called at the elbow. Recognizing them i
 
 ### Module 2: Elbow Search Pattern
 
-**Subtitle:** A repeatable bones-first read that defeats satisfaction-of-search across the thrower's, the tennis, and the post-trauma elbow  
+**Subtitle:** A repeatable bones-first read that defeats satisfaction-of-search across the thrower's, the tennis, and the post-trauma elbow
+
 **Estimated minutes:** 15
 
 Learning objectives:
@@ -384,7 +386,8 @@ Then **prioritize the single management-changing finding** — rehab/injection, 
 
 ### Module 3: Bones, Marrow & Osteochondral
 
-**Subtitle:** Capitellar OCD vs Panner, the thrower's stress lesions, CRITOE and the radiocapitellar line, occult fracture, and loose bodies  
+**Subtitle:** Capitellar OCD vs Panner, the thrower's stress lesions, CRITOE and the radiocapitellar line, occult fracture, and loose bodies
+
 **Estimated minutes:** 18
 
 Learning objectives:
@@ -517,7 +520,8 @@ Both pediatric lesions are the kind that look unimpressive on the first pass and
 
 ### Module 4: UCL & Valgus Overload (Thrower)
 
-**Subtitle:** The anterior bundle, the T-sign undersurface tear, and the repair-vs-reconstruction conversation in the throwing athlete  
+**Subtitle:** The anterior bundle, the T-sign undersurface tear, and the repair-vs-reconstruction conversation in the throwing athlete
+
 **Estimated minutes:** 18
 
 Learning objectives:
@@ -650,7 +654,8 @@ A common incidental bony clue to chronic valgus overload is the **sublime-tuberc
 
 ### Module 5: LCL Complex, PLRI & Post-Traumatic Instability
 
-**Subtitle:** The LUCL and posterolateral rotatory instability, the coronoid/anteromedial-facet axis and VPMRI, the terrible triad, Osborne-Cotterill, and heterotopic ossification  
+**Subtitle:** The LUCL and posterolateral rotatory instability, the coronoid/anteromedial-facet axis and VPMRI, the terrible triad, Osborne-Cotterill, and heterotopic ossification
+
 **Estimated minutes:** 18
 
 Learning objectives:
@@ -793,7 +798,8 @@ So the disposition turns on **whether the joint stays concentrically reduced**: 
 
 ### Module 6: Tendons: Distal Biceps, Triceps & Epicondylitis
 
-**Subtitle:** Distal biceps grading and the lacertus, the under-diagnosed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management  
+**Subtitle:** Distal biceps grading and the lacertus, the under-diagnosed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management
+
 **Estimated minutes:** 17
 
 Learning objectives:
@@ -918,7 +924,8 @@ The triceps inserts **broadly on the olecranon**. Rupture is uncommon but is the
 
 ### Module 7: Nerves: Ulnar, Median/AIN, Radial/PIN
 
-**Subtitle:** Cubital tunnel neuritis and subluxation, AIN/pronator, PIN/radial tunnel, and reading denervation as the localizing sign  
+**Subtitle:** Cubital tunnel neuritis and subluxation, AIN/pronator, PIN/radial tunnel, and reading denervation as the localizing sign
+
 **Estimated minutes:** 16
 
 Learning objectives:
@@ -1055,7 +1062,8 @@ The radial nerve divides at the **radiocapitellar level** into the superficial (
 
 ### Module 8: Don't-Miss Findings
 
-**Subtitle:** Occult fracture, the surgically urgent ligament/tendon/coronoid injuries, infection, and the marrow red flag  
+**Subtitle:** Occult fracture, the surgically urgent ligament/tendon/coronoid injuries, infection, and the marrow red flag
+
 **Estimated minutes:** 17
 
 Learning objectives:
@@ -1278,7 +1286,7 @@ Search pattern findings:
   - State the exact question: capitellar OCD vs Panner, and (if OCD) stable vs unstable, since that drives rest vs surgical referral
   - Lateral-pain, mechanically-catching adolescent gymnast/thrower with a capitellar lucency on radiographs — map the search to the radiocapitellar (OCD) face
 - **Step 2: Bones, Marrow & Osteochondral**
-  - FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — excludes Panner by focality and age
+  - FOCAL anterolateral capitellar osteochondral lesion (OCD), NOT diffuse whole-nucleus involvement — focality and age argue strongly against Panner disease
   - UNSTABLE interface: a T2 fluid-bright line (matching joint fluid) completely undercutting the fragment + a sizeable/multiple subchondral cyst(s) + a cartilage cleft reaching the fragment — the management-changing findings, read on coronal + sagittal
   - Surrounding marrow edema is present but explicitly NOT used as a stability sign; no medial epicondyle apophyseal stress lesion; radial head/trochlea/olecranon normal
 - **Step 3: Medial Ligament — UCL & Valgus Overload**
@@ -1435,7 +1443,7 @@ Search pattern findings:
 - **Step 3: Medial Ligament — UCL & Valgus Overload**
   - Anterior-bundle UCL traced from medial epicondyle to sublime tubercle and intact
   - NO T-sign — no fluid tracking beyond the articular-cartilage edge at the distal attachment
-  - No sublime-tubercle traction spur or chronic attenuation (excludes a competing medial valgus process)
+  - No sublime-tubercle traction spur or chronic attenuation to support a competing medial valgus process
 - **Step 4: Lateral Ligament — LCL Complex, PLRI & Coronoid**
   - LUCL traced (epicondyle → posterior to the radial head → supinator crest) on coronal + axial and INVOLVED by the deep undersurface extensor tear — the management-changing finding implying PLRI
   - Deep common-extensor tear undercuts/communicates with the radiocapitellar joint; look for secondary PLRI signs (posterolateral radial subluxation, radiocapitellar incongruity)
@@ -1593,7 +1601,7 @@ Search pattern findings:
 - **Step 4: Lateral Ligament — LCL Complex, PLRI & Coronoid**
   - LUCL traced to the supinator crest is intact — no PLRI
   - No coronoid (anteromedial-facet) fracture or post-traumatic instability pattern
-  - Radiocapitellar alignment normal — excludes a competing lateral/instability cause
+  - Radiocapitellar alignment normal, without evidence of a competing lateral-instability pattern
 - **Step 5: Tendons — Biceps, Triceps & Epicondyle Origins**
   - Mild common flexor-pronator (medial epicondyle) tendinosis without a surface-reaching tear
   - Distal biceps and common extensor origins intact
@@ -2578,4 +2586,3 @@ Explanation: Snapping triceps — the medial triceps head subluxating over the m
 - **11:** In the post-dislocation elbow the LCL is usually the primary lesion (O'Driscoll lateral-to-medial circle); chase the coronoid too — a small anteromedial facet fracture means varus posteromedial rotatory instability and is surgical.
 
 ## Module Flashcards
-

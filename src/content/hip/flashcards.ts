@@ -21,7 +21,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-mri-basics-t1-1",
           question: "Which MRI plane is essential for measuring the alpha angle, and what is the cam-morphology threshold?",
-          answer: "Oblique-axial along the femoral neck (or radial reformats), which lays the anterosuperior head-neck junction flat. Alpha angle >55 degrees indicates cam morphology. Never measure it on a standard true-axial slice.",
+          answer: "Oblique-axial along the femoral neck or radial reformats, which profile the anterosuperior head-neck junction. The historic >55-degree cutoff remains common, while ≥60 degrees is the better-supported classification threshold. Report the plane and value; do not turn the angle alone into symptomatic FAI.",
         },
       ],
     },
@@ -83,7 +83,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-anatomy-t5-1",
           question: "How do you distinguish a benign herniation pit from concerning pathology on hip MRI?",
-          answer: "A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anterosuperior femoral neck — often incidental but associated with cam FAI. If symptomatic, look for cam morphology (alpha angle >55°); it is not a marrow-replacing lesion.",
+          answer: "A herniation (fibrocystic) pit is a small, corticated, T2-bright/T1-dark cyst at the anterosuperior femoral neck — often incidental but associated with cam morphology. Measure the alpha angle on an appropriate neck-axis/radial plane (historic >55° cutoff; ≥60° better supported for classification), but do not diagnose symptomatic FAI from the pit or angle alone.",
         },
       ],
     },
@@ -95,7 +95,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-search-pattern-t1-1",
           question: "In the 7-step hip/pelvis search pattern, why is bone/marrow read as step 2 rather than last?",
-          answer: "The disposition-changing lesions hide in bone/marrow — tension-side neck fracture, AVN, SIFK, confluent low-T1 marrow. Reading them early (while attention is freshest) instead of at the fatigued end of the study prevents the highest-stakes miss. Use both T1 (marrow replacement) and fluid-sensitive (edema/fracture line).",
+          answer: "The disposition-changing lesions hide in bone/marrow — tension-side neck fracture, AVN, SIFFH, confluent low-T1 marrow. Reading them early (while attention is freshest) instead of at the fatigued end of the study prevents the highest-stakes miss. Use both T1 (marrow replacement) and fluid-sensitive (edema/fracture line).",
         },
       ],
     },
@@ -104,8 +104,8 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
       cards: [
         {
           id: "fc-hip-search-pattern-t2-1",
-          question: "On which plane is the alpha angle measured, and what value is abnormal?",
-          answer: "Oblique-axial along the femoral neck (or radial reformats); alpha angle >55 degrees is abnormal (cam morphology). A routine axial foreshortens the neck and misrepresents the bump — confirm the dedicated oblique-axial/radial images exist before reporting a number.",
+          question: "On which plane is the alpha angle measured, and how should the value be interpreted?",
+          answer: "Measure on oblique-axial images along the femoral neck or radial reformats. The historic >55-degree cutoff remains common, while ≥60 degrees is better supported for classifying cam morphology. Report the value and plane; a routine axial can misrepresent the bump, and no single angle diagnoses symptomatic FAI.",
         },
       ],
     },
@@ -125,7 +125,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-search-pattern-t5-1",
           question: "How does the presence or absence of a subchondral fracture line change hip management?",
-          answer: "No fracture line = transient bone marrow edema = rehab. A subchondral fracture line (SIFK) carries collapse risk and is urgent; a superolateral femoral-neck line is a surgical emergency. The fracture line is the hinge between conservative and surgical management.",
+          answer: "Diffuse edema without a fracture line can fit transient bone-marrow-edema syndrome only after AVN and occult fracture are excluded. A femoral-head subchondral fracture band (SIFFH) carries collapse risk and requires offloading plus prompt orthopedic review; a superolateral femoral-neck line is the same-day surgical-urgency pattern.",
         },
       ],
     },
@@ -137,7 +137,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-bones-stress-t0-1",
           question: "On hip MRI, which femoral-neck stress fracture location is a surgical emergency, and what is the immediate management?",
-          answer: "A TENSION-side (superolateral) fracture line — high risk of completion/displacement and AVN. Make the patient non-weight-bearing and obtain urgent orthopedic referral for fixation. Infero-medial (compression) lines are lower risk and managed with protected weight-bearing.",
+          answer: "A TENSION-side (superolateral) fracture line — high risk of completion/displacement and AVN. Make the patient non-weight-bearing and obtain urgent orthopedic referral. An incomplete inferomedial compression-side line involving <50% of the neck can often be managed nonoperatively; ≥50% extent, a gap, significant pain, or inability to straight-leg raise shifts toward fixation.",
         },
       ],
     },
@@ -156,8 +156,8 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
       cards: [
         {
           id: "fc-hip-bones-stress-t2-1",
-          question: "How do you distinguish transient BME syndrome (BMES) from AVN and SIFK on MRI?",
-          answer: "BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture line, NO necrotic segment, and NO double-line sign; it is self-limiting. AVN shows a geographic lesion with a double-line sign; SIFK shows a subchondral low-signal fracture line with collapse risk.",
+          question: "How do you distinguish transient BME syndrome (BMES) from AVN and SIFFH on MRI?",
+          answer: "BMES = diffuse homogeneous marrow edema of the head/neck with NO subchondral fracture band, NO geographic necrotic segment, and NO double-line sign; it is a diagnosis of exclusion and generally self-limiting. AVN shows a geographic/serpiginous lesion with a characteristic double-line sign; SIFFH shows an irregular femoral-head subchondral low-signal band with collapse risk.",
         },
       ],
     },
@@ -178,8 +178,8 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
       cards: [
         {
           id: "fc-hip-fai-labrum-t0-1",
-          question: "In which plane should the alpha angle be measured, and what value defines pathologic cam morphology?",
-          answer: "Measure on oblique-axial/radial images angled along the femoral neck (a straight axial under-samples the anterosuperior bump). Alpha angle >55° = pathologic cam; 50–55° borderline; <50° normal. Treat as one input alongside symptoms and a chondrolabral lesion — asymptomatic cam morphology is common.",
+          question: "In which plane should the alpha angle be measured, and how should it be interpreted?",
+          answer: "Measure on oblique-axial/radial images angled along the femoral neck because a straight axial can under-sample the anterosuperior bump. The historic >55° cutoff remains common, while ≥60° is better supported for classifying cam morphology. Report it as a continuous measurement and correlate with symptoms, examination, and chondrolabral injury.",
         },
       ],
     },
@@ -305,7 +305,7 @@ export const hipModuleFlashcards: Record<string, TopicFlashcards[]> = {
         {
           id: "fc-hip-dont-miss-t0-1",
           question: "On femoral-neck stress fracture, which side of the neck makes it a surgical emergency, and what do you do?",
-          answer: "A fracture line on the SUPEROLATERAL (tension) side is unstable and a surgical emergency — make the patient non-weight-bearing and obtain urgent ortho referral. Compression-side (inferomedial) fractures are managed with protected weight-bearing.",
+          answer: "A fracture line on the SUPEROLATERAL (tension) side is unstable and a surgical urgency — make the patient non-weight-bearing and obtain urgent orthopedic referral. Only an incomplete inferomedial compression-side line involving <50% of the neck is usually treated nonoperatively; ≥50% extent, a gap, or significant functional pain shifts toward fixation.",
         },
       ],
     },

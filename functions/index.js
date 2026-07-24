@@ -16,12 +16,6 @@ const db = getFirestore();
 const GMAIL_APP_PASSWORD = defineSecret("GMAIL_APP_PASSWORD");
 
 // --- Constants ---
-const ADMIN_EMAILS = [
-  "jeremyswisher13@gmail.com",
-  "jeremyswisher@gmail.com",
-  "jswisher@mednet.ucla.edu",
-];
-
 // Workstation plane ids mirror src/lib/firestore.ts. Plane passes are stored in
 // users/{uid}/normalKnee for historical reasons, with course-prefixed ids for
 // non-knee workstations.
@@ -249,7 +243,7 @@ function meetsCompletion({
 }
 
 function resolveCourse(courseId) {
-  return COURSE_CONFIG[courseId] || COURSE_CONFIG["knee-mri"];
+  return COURSE_CONFIG[courseId] || null;
 }
 
 // UCLA colors
@@ -487,6 +481,10 @@ exports.onCourseCompletion = onDocumentWritten(
     // support have no courseId and are knee by definition.
     const courseId = data.courseId || "knee-mri";
     const course = resolveCourse(courseId);
+    if (!course) {
+      console.error(`Ignoring certificate trigger with unknown courseId: ${String(courseId)}`);
+      return;
+    }
 
     const userId = event.params.userId;
 
@@ -611,10 +609,23 @@ exports.sendCertificate = onCall(
       throw new HttpsError("permission-denied", "Admin only");
     }
 
-    const { userId, courseId, force } = request.data;
-    if (!userId) throw new HttpsError("invalid-argument", "userId required");
+    const payload =
+      request.data && typeof request.data === "object" && !Array.isArray(request.data)
+        ? request.data
+        : {};
+    const userId = typeof payload.userId === "string" ? payload.userId.trim() : "";
+    if (!userId || userId.length > 128 || userId.includes("/")) {
+      throw new HttpsError("invalid-argument", "A valid userId is required");
+    }
 
-    const cid = courseId || "knee-mri";
+    const cid = payload.courseId == null ? "knee-mri" : payload.courseId;
+    if (typeof cid !== "string" || !Object.hasOwn(COURSE_CONFIG, cid)) {
+      throw new HttpsError("invalid-argument", "Unknown courseId");
+    }
+    if (payload.force != null && typeof payload.force !== "boolean") {
+      throw new HttpsError("invalid-argument", "force must be a boolean");
+    }
+    const force = payload.force === true;
     const course = resolveCourse(cid);
     const belongsToCourse = (d) => (d.data().courseId || "knee-mri") === cid;
 

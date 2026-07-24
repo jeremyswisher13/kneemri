@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 import { submitQuiz, addWrongAnswerToReview } from "@/lib/firestore";
 import { workstationReviewId } from "@/content/review-id";
+import UnsavedNavigationGuard from "@/components/ui/UnsavedNavigationGuard";
 
 interface QuizResult {
   questionId: string;
@@ -36,14 +37,7 @@ export default function PostQuizPage() {
   const [results, setResults] = useState<QuizResults | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Warn before navigating away from an in-progress quiz
-  useEffect(() => {
-    const hasAnswers = Object.keys(answers).length > 0;
-    if (!hasAnswers || results) return;
-    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
-    window.addEventListener('beforeunload', handler);
-    return () => window.removeEventListener('beforeunload', handler);
-  }, [answers, results]);
+  const quizInProgress = Object.keys(answers).length > 0 && !results;
 
   // Redirect if not unlocked or already completed. Admins (and admin preview)
   // bypass the unlock gate so they can walk the quiz without prerequisites.
@@ -235,6 +229,7 @@ export default function PostQuizPage() {
   // Quiz view
   return (
     <div>
+      <UnsavedNavigationGuard active={quizInProgress} />
       <h1 className="text-2xl font-bold text-gray-900 mb-6">
         Post-Assessment Knowledge Quiz
       </h1>

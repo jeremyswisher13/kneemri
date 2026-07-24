@@ -252,7 +252,7 @@ export const shoulderPearls: DailyPearl[] = [
 export const hipPearls: DailyPearl[] = [
   {
     id: 1,
-    text: "An alpha angle >55 degrees defines cam morphology, but measure it on radial reformats around the head-neck junction (maximal between 1 and 2 o'clock) — a single straight axial slice misses the anterosuperior bump and underestimates the deformity.",
+    text: "Measure the alpha angle on oblique-axial neck images or radial reformats around the head-neck junction. The historic >55-degree cutoff remains common, while ≥60 degrees is better supported for classifying cam morphology; neither value alone diagnoses symptomatic FAI.",
   },
   {
     id: 2,
@@ -268,7 +268,7 @@ export const hipPearls: DailyPearl[] = [
   },
   {
     id: 5,
-    text: "Pathologic labral tears live anterosuperiorly and show fluid undercutting the labral base; the key mimic is a smooth posteroinferior sublabral recess following the labral contour. Anchor the call on location, full-thickness extension, and an associated paralabral cyst — not signal alone.",
+    text: "Acetabular labral tears most often occur anterosuperiorly, but location alone does not settle the call because smooth sublabral sulci can occur in more than one quadrant. Favor a tear when fluid extends irregularly into the labral substance, the labrum is displaced or frayed, or a paralabral cyst/chondral injury is present.",
   },
   {
     id: 6,
@@ -296,7 +296,7 @@ export const hipPearls: DailyPearl[] = [
   },
   {
     id: 12,
-    text: "AVN's near-pathognomonic finding is the double-line sign on T2 — a hyperintense inner granulation line paralleled by a hypointense sclerotic outer line at the necrosis interface; its presence distinguishes AVN from nonspecific marrow edema.",
+    text: "AVN's characteristic MRI pattern is a geographic subchondral lesion with a serpiginous T1 rim and, on T2, a hyperintense inner granulation line paralleling a hypointense outer rim (the double-line sign). Read the full pattern rather than using marrow edema or one line in isolation.",
   },
   {
     id: 13,
@@ -308,7 +308,7 @@ export const hipPearls: DailyPearl[] = [
   },
   {
     id: 15,
-    text: "Subchondral insufficiency fracture shows a serpiginous low-signal line parallel to the articular surface with surrounding edema, typically in older osteopenic patients; a line length >4 mm or any articular flattening predicts collapse.",
+    text: "Subchondral insufficiency fracture of the femoral head shows an irregular low-signal subchondral band with surrounding edema. Greater band length, a larger band-to-weight-bearing-surface ratio, associated cartilage loss, and any articular flattening increase progression risk; do not apply the knee's millimetre cutoffs to the hip.",
   },
   {
     id: 16,

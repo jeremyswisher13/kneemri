@@ -53,7 +53,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 19,
         markers: [{ x: 77, y: 47, label: "Labrum" }],
         title: "Acetabular labrum",
-        note: "On coronal images the labrum is the small triangular low-signal fibrocartilage capping the superolateral acetabular rim, hugging the femoral head. Normally it is uniformly dark with a sharp triangular apex — but remember the tear-prone zone is anterosuperior, so coronal undersamples it and a true labral workup needs the radial/oblique-axial planes and ideally MR arthrography.",
+        note: "On coronal images the labrum is the small triangular low-signal fibrocartilage capping the superolateral acetabular rim. Normally it is uniformly dark with a sharp triangular apex — but the tear-prone zone is anterosuperior, so use dedicated small-field-of-view radial/oblique-axial imaging. High-quality 3-T MRI may be sufficient; direct MR arthrography is a selective problem-solving study when routine MRI is equivocal.",
       },
       {
         sliceIndex: 19,
@@ -112,7 +112,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         options: ["Femoral head", "Greater trochanter", "Acetabular roof (sourcil)", "Femoral neck"],
         answer: 0,
         explanation:
-          "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and subchondral insufficiency fracture of the femoral head (SIFH). The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
+          "The spherical epiphysis articulating within the acetabular cup is the femoral head, the surface you screen for AVN and subchondral insufficiency fracture of the femoral head (SIFFH). The greater trochanter is the lateral cortical prominence at the abductor footprint — well lateral to and below the joint, not seated within the acetabulum.",
       },
       {
         id: "hc-q2",
@@ -132,7 +132,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         options: ["Ligamentum teres", "Transverse acetabular ligament", "Acetabular labrum", "Zona orbicularis"],
         answer: 2,
         explanation:
-          "The triangular fibrocartilage seating on the bony rim and deepening the socket is the acetabular labrum, the anterosuperior tear site worked up with MR arthrography. The transverse acetabular ligament bridges the inferior acetabular notch, not the superolateral rim seen on this slice; the zona orbicularis is the circular capsular waist around the neck, not a rim structure.",
+          "The triangular fibrocartilage seating on the bony rim and deepening the socket is the acetabular labrum. The anterosuperior segment is the most common tear site and should be assessed on dedicated small-field-of-view MRI, with direct MR arthrography reserved for selected equivocal cases. The transverse acetabular ligament bridges the inferior notch; the zona orbicularis is the capsular waist around the neck.",
       },
       {
         id: "hc-q4",
@@ -357,7 +357,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 43, y: 60, label: "Femoral head" }],
         title: "Femoral head",
-        note: "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is perfectly spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an intact subchondral cortex — sphericity feeds your cam/asphericity read, and the marrow is your AVN and subchondral insufficiency fracture of the femoral head (SIFH) screen.",
+        note: "On this sagittal PD FS the femoral head is the large round epiphysis capped by smooth low-signal articular cartilage and seated in the acetabulum. Confirm it is spherical with normal marrow (fatty signal that suppresses uniformly on this fat-sat sequence) and an intact subchondral cortex — the marrow and subchondral contour are your AVN and subchondral insufficiency fracture of the femoral head (SIFFH) screen.",
       },
       {
         sliceIndex: 11,
@@ -369,7 +369,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         sliceIndex: 11,
         markers: [{ x: 46, y: 54, label: "Labrum" }],
         title: "Acetabular labrum",
-        note: "On sagittal PD FS the acetabular labrum is the small low-signal triangle on the bony rim, and this plane helps localize it around the clock face — the anterosuperior quadrant is the tear hotspot. Confirm a uniformly dark, sharply pointed triangle blending with the rim; rounded, blunted, or internally bright signal raises tear, which MR arthrography depicts best with intra-articular contrast tracking into the cleft.",
+        note: "On sagittal PD FS the acetabular labrum is the small low-signal triangle on the bony rim, and this plane helps localize it around the clock face — the anterosuperior quadrant is the tear hotspot. Confirm a uniformly dark, sharply pointed triangle blending with the rim; rounded, blunted, displaced, or irregular fluid signal raises concern. Direct MR arthrography can clarify subtle defects when a dedicated routine MRI is equivocal.",
       },
       {
         sliceIndex: 11,
@@ -440,7 +440,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         options: ["Ligamentum teres", "Transverse acetabular ligament", "Acetabular labrum", "Zona orbicularis"],
         answer: 2,
         explanation:
-          "The triangular low-signal fibrocartilage seated on the bony acetabular rim is the labrum, with the anterosuperior segment the classic tear site read on MR arthrography. The ligamentum teres runs from the fovea to the acetabular notch INSIDE the joint, not along the outer rim, so it is the best distractor.",
+          "The triangular low-signal fibrocartilage seated on the bony acetabular rim is the labrum, with the anterosuperior segment the classic tear site. Assess it on dedicated small-field-of-view MRI and use direct MR arthrography selectively when the routine study is equivocal. The ligamentum teres runs from the fovea to the acetabular notch inside the joint, not along the outer rim.",
       },
       {
         id: "hs-q4",
@@ -480,7 +480,7 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
         options: ["Acetabular labrum", "Joint capsule with iliofemoral ligament", "Ligamentum teres", "Iliopsoas tendon"],
         answer: 1,
         explanation:
-          "The anterior joint capsule reinforced by the iliofemoral ligament forms the roof of the anterior synovial recess, and its distension by fluid indicates effusion/synovitis — also the target for image-guided aspiration/injection. The acetabular labrum is the triangular fibrocartilage rim at the acetabular margin (tears are anterosuperior, best shown on MR arthrography), not the fibrous capsular layer draped over the femoral neck.",
+          "The anterior joint capsule reinforced by the iliofemoral ligament forms the roof of the anterior synovial recess, and its distension by fluid indicates effusion/synovitis — also the target for image-guided aspiration/injection. The acetabular labrum is the triangular fibrocartilage rim at the acetabular margin, not the fibrous capsular layer draped over the femoral neck.",
       },
     ],
   },
@@ -489,11 +489,11 @@ export const normalHipLearn: Record<string, PlaneLearn> = {
 /** title → "Watch for" teaching pearl (keyed by tour-step title). */
 export const structureHipPearl: Record<string, string> = {
   "Femoral head":
-    "Watch for a serpiginous subchondral double-line (AVN) or a focal subchondral low-signal fracture band with surrounding edema (SIFH) — both can appear before the head loses its sphericity, and the water image is where the edema becomes obvious.",
+    "Watch for a geographic serpiginous subchondral interface with a double-line pattern (AVN) or an irregular subchondral low-signal fracture band with surrounding edema (SIFFH) — both can appear before the head loses its sphericity.",
   "Acetabulum & sourcil":
     "Watch for sourcil subchondral edema or a thin bright line beneath it on the water image — early stress response or insufficiency fracture in the weight-bearing roof, not just degenerative sclerosis.",
   "Acetabular labrum":
-    "Watch for intrasubstance high signal or blunting of the triangular apex — but don't overcall the normal sublabral sulcus; the surgically relevant tears are anterosuperior, so confirm on radial/oblique-axial MRA before committing.",
+    "Watch for irregular fluid extending into the labral substance, blunting/displacement, a paralabral cyst, or adjacent chondral injury — but don't overcall a smooth sublabral sulcus. Confirm a suspected tear in another plane on dedicated small-field-of-view MRI; use direct MR arthrography selectively when routine imaging remains equivocal.",
   "Articular cartilage":
     "Watch for focal full-thickness cartilage loss with a subchondral cyst or edema at the superolateral joint — the chondral counterpart of the chondrolabral injury seen in FAI.",
   "Femoral neck & head-neck junction":
@@ -542,7 +542,7 @@ export const structureHipReading: Record<string, StructureReading> = {
     variant:
       "A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate.",
     measure:
-      "For stress injury, estimate the percent of neck width crossed by the low-signal line; a superolateral/tension-side line beyond ~50% is high-risk. For cam morphology, measure alpha angle on oblique-axial-along-the-neck or radial images: >55° is widely used and ~60° may be more specific, but morphology is not symptomatic FAI by itself.",
+      "For stress injury, side the low-signal line first: any superolateral/tension-side fracture is high-risk, while the ~50% neck-width threshold helps stratify an inferomedial/compression-side fracture. For cam morphology, measure the alpha angle on oblique-axial-along-the-neck or radial images: >55° is historically common and ≥60° is a better-supported classification threshold, but morphology is not symptomatic FAI by itself.",
   },
   "Gluteus medius & minimus (abductors)": {
     variant:
@@ -620,7 +620,7 @@ export const hipStructureCorrelate: Record<string, StructureCorrelate> = {
     ultrasound: {
       seen: false,
       appearance:
-        "The labrum is deep and the high-yield anterosuperior tear is essentially beyond US — MR-arthrography is the modality. US at best glimpses the anterior labrum as a small hyperechoic triangle at the rim, but a normal-looking anterior labrum on US never excludes a labral tear.",
+        "The labrum is deep and the high-yield anterosuperior tear is essentially beyond US. Dedicated small-field-of-view hip MRI is the first-line cross-sectional study; high-quality 3-T MRI can approach MR-arthrography for labral tears, while direct MR-arthrography remains useful when routine MRI is equivocal or detailed chondrolabral mapping will change management. A normal-looking anterior labrum on US never excludes a tear.",
     },
   },
   "Articular cartilage": {
@@ -731,13 +731,13 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 2,
     explanation:
-      "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — a pincer morphology pattern in which an over-covering acetabular rim can contact a normal head-neck junction. The normal alpha angle/offset excludes cam morphology (the strongest distractor): cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
+      "The described anterior-wall-crosses-posterior-wall pattern is the crossover sign, indicating cranial acetabular retroversion/over-coverage — a pincer morphology pattern in which an over-covering acetabular rim can contact a normal head-neck junction. The normal measured alpha angle/offset argues against appreciable cam morphology on the available images: cam is a femoral-side aspherical bump, whereas pincer is an acetabular-side over-coverage problem. Dysplasia is the opposite (undercoverage, lateral center-edge angle too low), not a crossover sign.",
   },
   {
     id: "hadv-3",
-    topic: "Acetabular labral tear — anterosuperior location & MR-arthrography",
+    topic: "Acetabular labral tear — anterosuperior location & selective MR-arthrography",
     prompt:
-      "A 29-year-old soccer player has mechanical clicking and catching anterior groin pain. Non-contrast MRI is equivocal. You order the study most sensitive for a labral tear. On that study, where is the tear most likely to be located, and what is the modality?",
+      "A 29-year-old soccer player has mechanical clicking and catching anterior groin pain. A routine lower-field non-contrast MRI is equivocal, and more detailed chondrolabral assessment will change management. Where is a tear most likely to be located, and what is a reasonable next study?",
     options: [
       "Posteroinferior labrum on CT arthrography",
       "Anterosuperior labrum on MR arthrography",
@@ -746,7 +746,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "Acetabular labral tears occur predominantly at the anterosuperior labrum, and MR arthrography (intra-articular gadolinium distending the joint and tracking into the tear) is the most sensitive/specific modality, outperforming non-contrast MRI. The strongest distractor (posterosuperior on non-contrast MRI) errs on both location and modality: posterosuperior tears are far less common (seen more in certain populations/posterior impingement) and non-contrast MRI is less sensitive than arthrography. CT arthrography and scintigraphy are not the labral workhorses here.",
+      "Acetabular labral tears occur predominantly at the anterosuperior labrum. Direct MR arthrography is a reasonable problem-solving study after an equivocal routine or lower-field MRI because joint distension can better outline subtle labral and chondrolabral defects. It is not mandatory after every study: high-quality dedicated 3-T non-contrast MRI has sensitivity close to MR arthrography in meta-analysis and can be an appropriate first-line examination. CT arthrography and scintigraphy are not the usual labral workhorses.",
   },
   {
     id: "hadv-4",
@@ -761,7 +761,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and often surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral, making conservative management inappropriate. Transient marrow edema lacks a discrete fracture line, and SIFH is a subchondral femoral-head process, not femoral-neck cortex.",
+      "A fracture line on the superolateral (tension) side of the femoral neck is the high-risk pattern: it is prone to propagation, displacement, and AVN, so it warrants urgent orthopedic referral and often surgical fixation. The strongest distractor is the compression-side scenario — inferomedial fractures are lower-risk when incomplete and can often be managed conservatively with protected weight-bearing — but the stem specifies superolateral. Transient marrow edema lacks a discrete fracture line, and SIFFH is a subchondral femoral-head process, not femoral-neck cortex.",
   },
   {
     id: "hadv-5",
@@ -780,7 +780,7 @@ export const hipAdvanced: AdvancedQ[] = [
   },
   {
     id: "hadv-6",
-    topic: "Transient bone-marrow-edema syndrome vs SIFH",
+    topic: "Transient bone-marrow-edema syndrome vs SIFFH",
     prompt:
       "A 58-year-old woman with osteopenia has acute, non-traumatic hip pain. MRI shows extensive femoral-head and neck marrow edema, AND a focal subchondral curvilinear LOW-signal line paralleling the articular surface with a small amount of adjacent subchondral hyperintensity. Which diagnosis is most likely, and why does it matter?",
     options: [
@@ -791,7 +791,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "The discriminating feature is the focal subchondral LOW-signal fracture line paralleling the articular surface — this defines subchondral insufficiency fracture of the femoral head (SIFH), which carries a real risk of articular collapse and changes management/prognosis. The strongest distractor, transient bone-marrow-edema syndrome, also shows diffuse edema and is self-limited — but it lacks a discrete subchondral fracture line; the presence of that line is exactly what separates SIFH from benign transient edema. AVN would show a double-line sign rather than a subchondral fracture line, and there is nothing here to suggest infection.",
+      "The discriminating feature is the irregular subchondral LOW-signal fracture band — this defines subchondral insufficiency fracture of the femoral head (SIFFH), which carries articular-collapse risk and changes management. Transient bone-marrow-edema syndrome can also show diffuse edema but lacks a discrete fracture band or geographic necrotic segment. AVN instead has a smoother geographic/serpiginous interface and may show the characteristic double-line pattern.",
   },
   {
     id: "hadv-7",
@@ -866,7 +866,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "Deep buttock pain radiating down the leg with a normal lumbar spine, positive piriformis-stretch provocation, and imaging showing the sciatic nerve irritated in the deep gluteal space defines deep gluteal/piriformis syndrome — an extraspinal sciatic nerve entrapment. The strongest distractor, L5-S1 radiculopathy, produces overlapping leg symptoms but the normal lumbar MRI and absence of back pain point away from a spinal source and toward extraspinal sciatic compression. GTPS causes lateral (not deep posterior) pain, and the findings localize to the sciatic nerve/piriformis rather than isolated quadratus femoris narrowing.",
+      "Deep buttock pain radiating down the leg, piriformis/deep-gluteal provocation, and concordant sciatic-nerve abnormality in the deep gluteal space support an extraspinal entrapment diagnosis after competing causes are considered. A normal lumbar MRI lowers but does not eliminate radiculopathy, so the diagnosis remains clinical-imaging and exclusion based rather than defined by one scan. GTPS causes lateral pain, and isolated quadratus-femoris narrowing would suggest a different deep-gluteal mechanism.",
   },
   {
     id: "hadv-12",
@@ -881,7 +881,7 @@ export const hipAdvanced: AdvancedQ[] = [
     ],
     answer: 1,
     explanation:
-      "The bilateral vertical sacral-ala fractures bridged by a transverse component (through the sacral body, typically at the S2 level) produce the classic 'H' (Honda) sign — diagnostic of a sacral insufficiency fracture, typical of elderly osteoporotic patients with minimal/no trauma and normal radiographs. The strongest distractor, metastatic disease, can also cause sacral uptake and marrow edema, but it does not produce the symmetric, geometric H configuration that follows the stress-fracture lines of the sacrum. Sacroiliitis localizes to the SI joints rather than the sacral ala/body, and the coccyx is not involved.",
+      "Bilateral vertical sacral-ala fractures bridged by a transverse component produce the classic 'H' (Honda) pattern, which strongly supports sacral insufficiency fracture in the right clinical setting. It is characteristic rather than an absolute stand-alone diagnosis: marrow-replacing disease can coexist or mimic parts of the pattern, so confirm fracture lines, T1 marrow behavior, symmetry, and clinical context. Sacroiliitis instead centers on the SI joints.",
   },
 ];
 
@@ -889,7 +889,7 @@ export const hipAdvanced: AdvancedQ[] = [
 export const hipImageCaq: ImageCaqQ[] = [
   {
     id: "hicaq-1",
-    topic: "AVN vs subchondral insufficiency fracture (SIFH) of the femoral head",
+    topic: "AVN vs subchondral insufficiency fracture of the femoral head (SIFFH)",
     dir: "/images/teaching/stacks/normal-hip-coronal",
     count: 34,
     startIndex: 19,
@@ -904,7 +904,7 @@ export const hipImageCaq: ImageCaqQ[] = [
     ],
     answer: 0,
     explanation:
-      "Key: a classic double-line AVN pattern with a normal radiograph is the MRI-only stage of AVN = ARCO I; because there is no radiographic sclerosis or collapse yet, joint-preserving management may be considered before collapse. Best distractor (ARCO III) is wrong because collapse/crescent sign would be required to call it stage III, and the stem specifies a radiograph-negative pre-collapse hip. Transient BMES is wrong because it shows diffuse edema WITHOUT a demarcated double-line lesion and is self-limited. SIFH is wrong because it is a subchondral fracture line without the necrotic double-line pattern and is not staged by ARCO.",
+      "Key: a classic geographic/double-line AVN pattern with a normal radiograph fits MRI-positive pre-collapse disease (ARCO I); joint-preserving management may be considered based on symptoms, lesion size/location, and patient factors. ARCO III requires subchondral fracture/collapse. Transient BMES shows diffuse edema without a demarcated necrotic lesion, while SIFFH shows an irregular subchondral fracture band and is not staged by ARCO.",
   },
   {
     id: "hicaq-2",
@@ -927,22 +927,22 @@ export const hipImageCaq: ImageCaqQ[] = [
   },
   {
     id: "hicaq-3",
-    topic: "Acetabular labral tear and FAI — site and best imaging modality",
+    topic: "Acetabular labral tear and FAI — site and problem-solving imaging",
     dir: "/images/teaching/stacks/normal-hip-axial",
     count: 44,
     startIndex: 23,
     plane: "Axial T2-FS",
     vignette:
-      "On this axial T2-FS image, find the anterior/anterosuperior acetabular labrum at the rim of the joint — the segment most prone to tearing in FAI. A 24-year-old hockey player has anterior groin pain and a positive anterior impingement (FADIR) test, and you suspect a labral tear. If you needed to maximize sensitivity for a labral tear, which choice best reflects the site and modality?",
+      "On this axial T2-FS image, find the anterior/anterosuperior acetabular labrum at the rim of the joint — the segment most prone to tearing in FAI. A 24-year-old hockey player has anterior groin pain and a positive anterior impingement (FADIR) test. A routine lower-field MRI is equivocal, and detailed chondrolabral assessment would change management. Which choice best reflects the likely site and a reasonable next study?",
     options: [
-      "Anterosuperior labrum; MR arthrography is the most sensitive study for detecting labral tears",
-      "Posteroinferior labrum; MR arthrography is the most sensitive study for detecting labral tears",
-      "Anterosuperior labrum; non-contrast 1.5-T MRI is equal or superior to MR arthrography for tears",
+      "Anterosuperior labrum; direct MR arthrography can clarify an equivocal routine MRI",
+      "Posteroinferior labrum; direct MR arthrography is required for every suspected tear",
+      "Anterosuperior labrum; repeat the same large-field 1.5-T protocol because technique does not affect accuracy",
       "Anterosuperior labrum; dynamic ultrasound is the gold standard for diagnosing the tear",
     ],
     answer: 0,
     explanation:
-      "Key: acetabular labral tears are predominantly anterosuperior, and MR arthrography (intra-articular gadolinium distending the joint) is the most sensitive modality for detecting them. The posteroinferior option is wrong — that is not the classic FAI tear location. The 'non-contrast equals arthrography' option is wrong because MR arthrography outperforms standard non-contrast MRI for labral tears (especially at lower field strength). Dynamic ultrasound is wrong — it is the diagnostic tool for snapping-hip syndromes, not for intra-articular labral tears.",
+      "Key: acetabular labral tears are predominantly anterosuperior. Direct MR arthrography can clarify a subtle tear after an equivocal routine or lower-field study, but it is not universally required: a dedicated small-field-of-view 3-T MRI can approach MR-arthrography sensitivity and may be the appropriate first examination. Repeating the same limited technique does not solve the problem, and dynamic ultrasound is for snapping-hip syndromes rather than intra-articular labral tears.",
   },
   {
     id: "hicaq-4",
@@ -980,7 +980,7 @@ export const hipImageCaq: ImageCaqQ[] = [
     ],
     answer: 0,
     explanation:
-      "Key: the alpha angle for cam morphology is measured on oblique-axial images aligned along the femoral neck (and on radial reformats), which best profile the anterior/anterosuperior head-neck asphericity — not on the coronal plane. The coronal option is wrong because the straight coronal underestimates the anterior cam lesion. The '<40°' option is wrong — an ELEVATED alpha angle (commonly >55°) indicates cam morphology, while ~60° may be more specific; a low value is normal. The crossover-sign option is wrong because crossover/over-coverage describes PINCER morphology (acetabular retroversion), not cam, which is a femoral-side aspherical head-neck deformity. Morphology still needs clinical and chondrolabral correlation before calling symptomatic FAI.",
+      "Key: measure the alpha angle on oblique-axial images aligned along the femoral neck and/or radial reformats, which best profile anterior/anterosuperior head-neck asphericity — not on a straight coronal plane. The historic >55° cutoff remains common, while ≥60° is better supported for classifying cam morphology. The crossover sign describes acetabular retroversion/over-coverage (pincer morphology), not a femoral cam. No angle alone establishes symptomatic FAI; symptoms, examination, and chondrolabral findings must correlate.",
   },
   {
     id: "hicaq-6",

@@ -45,15 +45,23 @@ describe("learner resume", () => {
 
   it("rejects unsafe resume paths and can clear state", () => {
     const storage = memoryStorage();
-    storage.setItem(
-      LEARNER_RESUME_KEY,
-      JSON.stringify({
-        path: "https://example.com",
-        title: "Bad",
-        updatedAt: new Date().toISOString(),
-      }),
-    );
-    expect(readLearnerResume(storage)).toBeNull();
+    for (const path of [
+      "https://example.com",
+      "//example.com/course",
+      "/\\example.com/course",
+      "/courses\\..\\example.com",
+      "/login?returnTo=/courses/knee-mri",
+    ]) {
+      storage.setItem(
+        LEARNER_RESUME_KEY,
+        JSON.stringify({
+          path,
+          title: "Bad",
+          updatedAt: new Date().toISOString(),
+        }),
+      );
+      expect(readLearnerResume(storage)).toBeNull();
+    }
 
     saveLearnerResume({ path: "/courses/knee-mri", title: "Knee" }, storage);
     clearLearnerResume(storage);

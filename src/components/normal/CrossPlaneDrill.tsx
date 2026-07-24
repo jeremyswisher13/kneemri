@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import {
   clampCrossPlaneCoordinate,
+  isCrossPlaneFreeResponseCorrect,
   moveCrossPlaneCursor,
 } from "@/components/normal/cross-plane-cursor";
 import type { CorrelationItem } from "@/content/normal-mri-types";
@@ -44,7 +45,7 @@ function sourceLabelClass(point: { x: number; y: number }) {
  * the learner finds the SAME structure on a different plane (TO). Two difficulties:
  *  • Multiple choice — tap the matching lettered candidate.
  *  • Free response — no letters; click the structure directly (graded by which
- *    candidate region the click lands nearest to).
+ *    point lands within the verified target tolerance).
  * Trains the mental 3-D model that ties the planes together.
  */
 export default function CrossPlaneDrill({
@@ -68,9 +69,16 @@ export default function CrossPlaneDrill({
   const [keyboardActive, setKeyboardActive] = useState(false);
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const [retryRevision, setRetryRevision] = useState(0);
   const toBoxRef = useRef<HTMLDivElement>(null);
 
   const item = items[idx];
+  const fromSrc = item ? `${item.from.dir}/slice_${pad(item.from.sliceIndex)}.jpg` : "";
+  const toSrc = item ? `${item.to.dir}/slice_${pad(item.to.sliceIndex)}.jpg` : "";
+  const fromFailed = failedImages.has(fromSrc);
+  const toFailed = failedImages.has(toSrc);
+  const interactionPaused = fromFailed || toFailed;
 
   useEffect(() => {
     if (!item) return;
@@ -158,25 +166,11 @@ export default function CrossPlaneDrill({
 
   const answerPos = item.to.candidates[item.to.answer];
 
-  // Index of the candidate nearest a click (Voronoi grading for free response).
-  function nearestCandidate(x: number, y: number) {
-    let best = 0;
-    let bestD = Infinity;
-    item.to.candidates.forEach((c, i) => {
-      const d = (c.x - x) ** 2 + (c.y - y) ** 2;
-      if (d < bestD) {
-        bestD = d;
-        best = i;
-      }
-    });
-    return best;
-  }
-
   const correct =
     answered &&
     (diff === "mc"
       ? pickedIdx === item.to.answer
-      : clickPct !== null && nearestCandidate(clickPct.x, clickPct.y) === item.to.answer);
+      : clickPct !== null && isCrossPlaneFreeResponseCorrect(clickPct, answerPos));
   const answerDisplayPos = order.indexOf(item.to.answer);
   const pickedDisplayPos = pickedIdx === null ? -1 : order.indexOf(pickedIdx);
   const answerLetter = answerDisplayPos >= 0 ? LETTERS[answerDisplayPos] : "?";
@@ -208,11 +202,11 @@ export default function CrossPlaneDrill({
     if (answered || diff !== "free") return;
     const point = { x: clampCrossPlaneCoordinate(x), y: clampCrossPlaneCoordinate(y) };
     setClickPct(point);
-    commit(nearestCandidate(point.x, point.y) === item.to.answer);
+    commit(isCrossPlaneFreeResponseCorrect(point, answerPos));
   }
 
   function clickFree(e: React.MouseEvent<HTMLDivElement>) {
-    if (answered || diff !== "free") return;
+    if (answered || diff !== "free" || interactionPaused) return;
     const box = toBoxRef.current;
     if (!box) return;
     const r = box.getBoundingClientRect();
@@ -222,7 +216,7 @@ export default function CrossPlaneDrill({
   }
 
   function keyFree(e: React.KeyboardEvent<HTMLDivElement>) {
-    if (answered || diff !== "free") return;
+    if (answered || diff !== "free" || interactionPaused) return;
     if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
       const key = e.key as "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight";
       setKeyboardPoint((point) => moveCrossPlaneCursor(point, key, e.shiftKey));
@@ -306,24 +300,55 @@ export default function CrossPlaneDrill({
           </span>
           <div className="relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full">
             <img
-              src={`${item.from.dir}/slice_${pad(item.from.sliceIndex)}.jpg`}
+              key={`${fromSrc}:${retryRevision}`}
+              src={fromSrc}
               alt={`${item.from.label} on ${item.from.plane}`}
-              className="mx-auto block max-h-[40svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full"
+              className={`mx-auto block max-h-[40svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full ${
+                fromFailed ? "invisible" : ""
+              }`}
               draggable={false}
+              onLoad={() =>
+                setFailedImages((current) => {
+                  if (!current.has(fromSrc)) return current;
+                  const next = new Set(current);
+                  next.delete(fromSrc);
+                  return next;
+                })
+              }
+              onError={() =>
+                setFailedImages((current) =>
+                  current.has(fromSrc) ? current : new Set(current).add(fromSrc),
+                )
+              }
             />
-            <span
-              className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: `${item.from.x}%`, top: `${item.from.y}%` }}
-            >
-              <span className="block h-3.5 w-3.5 animate-pulse rounded-full bg-ucla-gold ring-2 ring-white shadow" />
+            {fromFailed && (
+              <MriImageFailure
+                paused
+                onRetry={() => {
+                  setFailedImages((current) => {
+                    const next = new Set(current);
+                    next.delete(fromSrc);
+                    return next;
+                  });
+                  setRetryRevision((revision) => revision + 1);
+                }}
+              />
+            )}
+            {!fromFailed && (
               <span
-                className={`absolute max-w-44 rounded bg-ucla-gold px-1.5 py-0.5 text-[10px] font-semibold leading-tight text-[#3a2d00] shadow ${sourceLabelClass(
-                  item.from,
-                )}`}
+                className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
+                style={{ left: `${item.from.x}%`, top: `${item.from.y}%` }}
               >
-                {item.from.label}
+                <span className="block h-3.5 w-3.5 animate-pulse rounded-full bg-ucla-gold ring-2 ring-white shadow" />
+                <span
+                  className={`absolute max-w-44 rounded bg-ucla-gold px-1.5 py-0.5 text-[10px] font-semibold leading-tight text-[#3a2d00] shadow ${sourceLabelClass(
+                    item.from,
+                  )}`}
+                >
+                  {item.from.label}
+                </span>
               </span>
-            </span>
+            )}
           </div>
         </div>
 
@@ -336,7 +361,7 @@ export default function CrossPlaneDrill({
             ref={toBoxRef}
             onClick={clickFree}
             onKeyDown={keyFree}
-            tabIndex={diff === "free" && !answered ? 0 : -1}
+            tabIndex={diff === "free" && !answered && !interactionPaused ? 0 : -1}
             role={diff === "free" ? "application" : undefined}
             aria-label={
               diff === "free"
@@ -346,19 +371,48 @@ export default function CrossPlaneDrill({
                 : undefined
             }
             className={`relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full ${
-              diff === "free" && !answered ? "cursor-crosshair" : ""
+              diff === "free" && !answered && !interactionPaused ? "cursor-crosshair" : ""
             }`}
           >
             <img
-              src={`${item.to.dir}/slice_${pad(item.to.sliceIndex)}.jpg`}
+              key={`${toSrc}:${retryRevision}`}
+              src={toSrc}
               alt={`Find the structure on ${item.to.plane}`}
-              className="mx-auto block max-h-[40svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full"
+              className={`mx-auto block max-h-[40svh] w-auto max-w-full select-none object-contain lg:max-h-none lg:w-full ${
+                toFailed ? "invisible" : ""
+              }`}
               draggable={false}
+              onLoad={() =>
+                setFailedImages((current) => {
+                  if (!current.has(toSrc)) return current;
+                  const next = new Set(current);
+                  next.delete(toSrc);
+                  return next;
+                })
+              }
+              onError={() =>
+                setFailedImages((current) =>
+                  current.has(toSrc) ? current : new Set(current).add(toSrc),
+                )
+              }
             />
+            {toFailed && (
+              <MriImageFailure
+                paused
+                onRetry={() => {
+                  setFailedImages((current) => {
+                    const next = new Set(current);
+                    next.delete(toSrc);
+                    return next;
+                  });
+                  setRetryRevision((revision) => revision + 1);
+                }}
+              />
+            )}
 
             {/* Multiple-choice candidates. On phones, the image letters are visual anchors only;
                 the separate answer row below avoids overlapping thumb targets on tight anatomy. */}
-            {diff === "mc" &&
+            {!interactionPaused && diff === "mc" &&
               order.map((candIdx, pos) => {
                 const c = item.to.candidates[candIdx];
                 return (
@@ -397,7 +451,7 @@ export default function CrossPlaneDrill({
               })}
 
             {/* Free-response: reveal the target + the click after answering */}
-            {diff === "free" && answered && (
+            {!interactionPaused && diff === "free" && answered && (
               <>
                 <span
                   className="pointer-events-none absolute h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/30 ring-2 ring-green-400"
@@ -413,7 +467,7 @@ export default function CrossPlaneDrill({
                 )}
               </>
             )}
-            {diff === "free" && !answered && keyboardActive && (
+            {!interactionPaused && diff === "free" && !answered && keyboardActive && (
               <span
                 className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${keyboardPoint.x}%`, top: `${keyboardPoint.y}%` }}
@@ -430,7 +484,7 @@ export default function CrossPlaneDrill({
                 <button
                   key={candIdx}
                   type="button"
-                  disabled={answered}
+                  disabled={answered || interactionPaused}
                   onClick={() => chooseMc(candIdx)}
                   aria-label={`Choose option ${LETTERS[pos]} on ${item.to.plane}`}
                   className={`min-h-11 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors disabled:cursor-default ${candPanelClass(
@@ -483,6 +537,27 @@ export default function CrossPlaneDrill({
           {idx >= items.length - 1 ? "See results" : "Next →"}
         </Button>
       </div>
+    </div>
+  );
+}
+
+function MriImageFailure({ onRetry, paused = false }: { onRetry: () => void; paused?: boolean }) {
+  return (
+    <div
+      role="alert"
+      className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center text-sm text-white"
+    >
+      <p>This MRI slice could not be loaded{paused ? "; the drill is paused" : ""}.</p>
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+          onRetry();
+        }}
+        className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+      >
+        Retry image
+      </button>
     </div>
   );
 }

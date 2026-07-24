@@ -204,7 +204,7 @@ export const hipPrePostQuizQuestions: QuizQuestion[] = [
     options: [{ key: "A", text: "Treat cam morphology as a common, often asymptomatic finding and correlate clinically rather than refer for surgery on imaging alone" }, { key: "B", text: "Refer for prophylactic arthroscopic osteoplasty because the alpha angle exceeds 55 degrees" }, { key: "C", text: "Order an urgent oncologic workup for the femoral neck osseous bump" }, { key: "D", text: "Place the patient non-weight-bearing for an impending femoral neck fracture" }],
     correctAnswer: "A",
     explanation:
-      "Cam morphology (alpha angle >55 degrees) is common and frequently asymptomatic; isolated morphology without chondrolabral injury or concordant symptoms should be correlated clinically, not taken to surgery. Prophylactic osteoplasty on morphology alone (B) is not indicated. A cam bump is not a tumor (C) or a fracture (D).",
+      "Cam morphology is common and frequently asymptomatic. The historic >55-degree alpha-angle cutoff remains widely used, while ≥60 degrees is better supported for classification; neither threshold establishes symptomatic FAI. Isolated morphology without chondrolabral injury or concordant symptoms should be correlated clinically, not taken to surgery. Prophylactic osteoplasty on morphology alone (B) is not indicated. A cam bump is not a tumor (C) or a fracture (D).",
     cognitiveLevel: "analyze",
   },
   {
@@ -217,7 +217,7 @@ export const hipPrePostQuizQuestions: QuizQuestion[] = [
     options: [{ key: "A", text: "Refer for prophylactic arthroscopic osteoplasty because the alpha angle is above 55 degrees" }, { key: "B", text: "Treat cam morphology as a common, frequently asymptomatic finding and correlate clinically rather than operate on imaging alone" }, { key: "C", text: "Order a staging workup for an aggressive osseous lesion of the femoral neck" }, { key: "D", text: "Place the patient non-weight-bearing for an impending femoral neck fracture" }],
     correctAnswer: "B",
     explanation:
-      "Cam morphology (alpha angle >55 degrees) is common and frequently asymptomatic; an isolated bump without chondrolabral injury or concordant impingement symptoms should be correlated clinically, not taken to surgery — especially when found incidentally. Prophylactic osteoplasty on morphology alone (A) is not indicated; a cam bump is neither an aggressive osseous lesion (C) nor a fracture (D).",
+      "Cam morphology is common and frequently asymptomatic. The historic >55-degree alpha-angle cutoff remains widely used, while ≥60 degrees is better supported for classification; neither threshold establishes symptomatic FAI. An isolated bump without chondrolabral injury or concordant impingement symptoms should be correlated clinically, not taken to surgery — especially when found incidentally. Prophylactic osteoplasty on morphology alone (A) is not indicated; a cam bump is neither an aggressive osseous lesion (C) nor a fracture (D).",
     cognitiveLevel: "analyze",
   },
   {
