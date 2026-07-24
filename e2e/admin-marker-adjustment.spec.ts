@@ -46,6 +46,19 @@ test.describe("administrator marker adjustment", () => {
       await expect(page.getByRole("button", { name: "Copy marker changes" })).toBeVisible();
       await expect(page.getByRole("button", { name: "Reset to committed" })).toBeVisible();
 
+      if (workstation.name === "knee") {
+        await page.getByRole("button", { name: /^2\. Femoral condyle/ }).click();
+        await page.getByRole("slider", { name: /^Slice for/ }).fill("12");
+        const linkedDraft = await page.evaluate(() => {
+          const key = Object.keys(localStorage).find((candidate) =>
+            candidate.startsWith("uclaSportsMri.normalMriAdjustment:"),
+          );
+          return key ? JSON.parse(localStorage.getItem(key) ?? "{}") : null;
+        });
+        expect(linkedDraft?.tour?.[1]?.sliceIndex).toBe(12);
+        expect(linkedDraft?.quiz?.[1]?.sliceIndex).toBe(12);
+      }
+
       await page.getByRole("button", { name: "Reset to committed" }).click();
       const draftKeys = await page.evaluate(() =>
         Object.keys(localStorage).filter((key) =>

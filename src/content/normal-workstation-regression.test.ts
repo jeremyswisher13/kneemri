@@ -328,7 +328,7 @@ describe("normal MRI workstation regression contract", () => {
 const contentText = (...sources: unknown[]) => JSON.stringify(sources).toLowerCase();
 
 describe("normal MRI must-not-overcall teaching safeguards", () => {
-  it("locks the vision-reviewed knee ACL and lateral-meniscus targets", () => {
+  it("locks the faculty-reviewed knee ACL and lateral-meniscus targets", () => {
     const sagittal = normalKneeLearn["sag-pdfs"];
     const aclTour = sagittal.tour.find((step) => step.title === "Anterior cruciate ligament");
     const aclQuiz = sagittal.quiz.find((item) => item.id === "sag-sid-1");
@@ -336,11 +336,11 @@ describe("normal MRI must-not-overcall teaching safeguards", () => {
     const meniscusCrossPlane = crossPlane.find((item) => item.id === "xp-meniscus");
     const poplitealTour = sagittal.tour.find((step) => step.title === "Popliteal vessels");
 
-    expect(aclTour?.sliceIndex).toBe(12);
-    expect(aclTour?.markers[0]).toMatchObject({ x: 49, y: 55 });
-    expect(aclQuiz).toMatchObject({ sliceIndex: 12, marker: { x: 49, y: 55 } });
-    expect(aclCrossPlane?.from).toMatchObject({ sliceIndex: 12, x: 49, y: 55 });
-    expect(kneeImageCaq.find((item) => item.id === "icaq-1")?.startIndex).toBe(12);
+    expect(aclTour?.sliceIndex).toBe(14);
+    expect(aclTour?.markers[0]).toMatchObject({ x: 52.5, y: 52 });
+    expect(aclQuiz).toMatchObject({ sliceIndex: 14, marker: { x: 52.5, y: 52 } });
+    expect(aclCrossPlane?.from).toMatchObject({ sliceIndex: 14, x: 52.5, y: 52 });
+    expect(kneeImageCaq.find((item) => item.id === "icaq-1")?.startIndex).toBe(14);
 
     expect(meniscusCrossPlane?.from.label.toLowerCase()).toContain("lateral meniscus");
     expect(meniscusCrossPlane?.to.candidates[meniscusCrossPlane.to.answer]).toEqual({ x: 69, y: 55 });

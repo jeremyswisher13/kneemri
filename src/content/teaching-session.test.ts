@@ -122,7 +122,7 @@ describe("teaching session run-sheet", () => {
     });
     expect(sagittal[8]).toMatchObject({
       title: "Anterior cruciate ligament",
-      sliceIndex: 12,
+      sliceIndex: 14,
     });
     expect(coronal).toHaveLength(9);
     expect(new Set(coronal.map((step) => step.sliceIndex))).toEqual(new Set([7]));

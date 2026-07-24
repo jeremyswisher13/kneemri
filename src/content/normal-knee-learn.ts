@@ -405,8 +405,8 @@ export const crossPlane: CorrelationItem[] = [
       candidates: [
         { x: 63, y: 52 }, // lateral femoral condyle ✓
         { x: 37, y: 52 }, // medial femoral condyle (side distractor)
-        { x: 50, y: 19 }, // patella
-        { x: 50, y: 34 }, // trochlea
+        { x: 55.8, y: 16.1 }, // patella
+        { x: 53.1, y: 35.4 }, // trochlea
       ],
       answer: 0,
     },
@@ -435,7 +435,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt: "This is weight-bearing articular cartilage on the sagittal. Find the weight-bearing articular cartilage on the coronal.",
     explanation:
       "Cartilage is the smooth intermediate-signal layer on the bone ends, outlined by a thin bright rim of fluid. On coronal you compare medial vs lateral cartilage thickness directly.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 7, x: 61.3, y: 50.8, label: "Articular cartilage" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 7, x: 62.3, y: 51, label: "Articular cartilage" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
@@ -460,10 +460,10 @@ export const crossPlane: CorrelationItem[] = [
       dir: AXI,
       sliceIndex: 13,
       candidates: [
-        { x: 55, y: 70 }, // popliteal vessels ✓
-        { x: 50, y: 19 }, // patella
-        { x: 32, y: 24 }, // MPFL
-        { x: 50, y: 34 }, // trochlea
+        { x: 58, y: 68.4 }, // popliteal vessels ✓
+        { x: 55.8, y: 16.1 }, // patella
+        { x: 35.3, y: 23.2 }, // MPFL
+        { x: 53.1, y: 35.4 }, // trochlea
       ],
       answer: 0,
     },
@@ -473,7 +473,7 @@ export const crossPlane: CorrelationItem[] = [
     prompt: "This is the patella on the axial. Find the patella on the sagittal.",
     explanation:
       "On the sagittal, the patella is the anterior bone with the quadriceps tendon above and the patellar tendon below — the extensor mechanism. Anterior is to the LEFT.",
-    from: { plane: "Axial T2-FS", dir: AXI, sliceIndex: 13, x: 50, y: 19, label: "Patella" },
+    from: { plane: "Axial T2-FS", dir: AXI, sliceIndex: 13, x: 55.8, y: 16.1, label: "Patella" },
     to: {
       plane: "Sagittal PD-FS",
       dir: SAG,
@@ -482,7 +482,7 @@ export const crossPlane: CorrelationItem[] = [
         { x: 16, y: 36 }, // patella ✓
         { x: 37, y: 48 }, // femoral condyle
         { x: 36.9, y: 64.5 }, // tibial plateau
-        { x: 20, y: 68 }, // patellar tendon
+        { x: 22.8, y: 66.4 }, // patellar tendon
       ],
       answer: 0,
     },
@@ -501,8 +501,8 @@ export const crossPlane: CorrelationItem[] = [
       candidates: [
         { x: 37, y: 52 }, // Medial femoral condyle ✓
         { x: 63, y: 52 }, // Lateral femoral condyle
-        { x: 50, y: 19 }, // Patella
-        { x: 50, y: 34 }, // Femoral trochlea
+        { x: 55.8, y: 16.1 }, // Patella
+        { x: 53.1, y: 35.4 }, // Femoral trochlea
       ],
       answer: 0,
     },
@@ -513,7 +513,7 @@ export const crossPlane: CorrelationItem[] = [
       "This is the ACL on the sagittal, attaching in the anterior intercondylar area. Find that region on the coronal - just in front of the central eminence.",
     explanation:
       "The ACL is volume-averaged on coronal, so localize it to the anterior intercondylar area, in front of and between the tibial spines - not on a condyle. The PCL inserts far posteriorly, not here. Don't mistake normal spines for a tibial eminence avulsion and overcall.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 12, x: 49, y: 55, label: "Anterior cruciate ligament" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 14, x: 52.5, y: 52, label: "Anterior cruciate ligament" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
@@ -539,9 +539,9 @@ export const crossPlane: CorrelationItem[] = [
       dir: AXI,
       sliceIndex: 13,
       candidates: [
-        { x: 50, y: 19 }, // Patella ✓
-        { x: 50, y: 34 }, // Femoral trochlea
-        { x: 32, y: 24 }, // MPFL / medial retinaculum
+        { x: 55.8, y: 16.1 }, // Patella ✓
+        { x: 53.1, y: 35.4 }, // Femoral trochlea
+        { x: 35.3, y: 23.2 }, // MPFL / medial retinaculum
         { x: 63, y: 52 }, // Lateral femoral condyle
       ],
       answer: 0,
@@ -561,8 +561,8 @@ export const crossPlane: CorrelationItem[] = [
       candidates: [
         { x: 34, y: 41 }, // Femoral condyle ✓
         { x: 37.5, y: 62 }, // Tibial plateau
-        { x: 16, y: 36 }, // Patella
-        { x: 20, y: 68 }, // Patellar tendon
+        { x: 18.8, y: 38.2 }, // Patella
+        { x: 23.9, y: 65.7 }, // Patellar tendon
       ],
       answer: 0,
     },
@@ -602,7 +602,7 @@ export const crossPlane: CorrelationItem[] = [
         { x: 36.9, y: 64.5 }, // Tibial plateau ✓
         { x: 37, y: 48 }, // Femoral condyle
         { x: 16, y: 36 }, // Patella
-        { x: 20, y: 68 }, // Patellar tendon
+        { x: 22.8, y: 66.4 }, // Patellar tendon
       ],
       answer: 0,
     },
@@ -940,7 +940,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 20, y: 68, label: "Patellar tendon" }],
+        markers: [{ x: 22.8, y: 66.4, label: "Patellar tendon" }],
         title: "Patellar tendon",
         note: "Runs from the inferior pole of the patella to the tibial tubercle — uniformly low signal and a few mm thick. Hoffa's fat pad sits just behind it.",
       },
@@ -961,15 +961,15 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 7,
-        markers: [{ x: 61.3, y: 50.8, label: "Articular cartilage / joint fluid" }],
+        markers: [{ x: 62.3, y: 51, label: "Articular cartilage / joint fluid" }],
         title: "Cartilage & joint fluid",
         note: "Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal.",
       },
       {
-        sliceIndex: 12,
-        markers: [{ x: 49, y: 55, label: "Anterior cruciate ligament" }],
+        sliceIndex: 14,
+        markers: [{ x: 52.5, y: 52, label: "Anterior cruciate ligament" }],
         title: "Anterior cruciate ligament",
-        note: "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. It is partly volume-averaged on any one image, so trace it across adjacent slices and correlate all planes before calling it intact or torn.",
+        note: "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. Because its fan-shaped fibers are partly volume-averaged and are not all visible on one conventional sagittal image, trace the ligament across adjacent slices and correlate all planes before calling it intact or torn.",
       },
       {
         sliceIndex: 16,
@@ -987,12 +987,12 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
     quiz: [
       {
         id: "sag-sid-1",
-        sliceIndex: 12,
-        marker: { x: 49, y: 55 },
-        prompt: "What is the straight striated band marked here, paralleling the roof of the intercondylar notch?",
+        sliceIndex: 14,
+        marker: { x: 52.5, y: 52 },
+        prompt: "What is the oblique striated band marked here, paralleling the roof of the intercondylar notch?",
         options: ["Anterior cruciate ligament", "Posterior cruciate ligament", "Meniscofemoral ligament", "Posterior joint capsule"],
         answer: 0,
-        explanation: "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. Trace the ACL across adjacent slices and correlate all planes rather than judging it from this image alone.",
+        explanation: "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. The fan-shaped ACL is not displayed in its entirety on one conventional sagittal image, so trace it across adjacent slices and correlate all planes rather than judging it from this image alone.",
       },
       {
         id: "sag-q1",
@@ -1033,7 +1033,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "sag-q5",
         sliceIndex: 13,
-        marker: { x: 20, y: 68 },
+        marker: { x: 22.8, y: 66.4 },
         prompt: WHAT,
         options: ["Patellar tendon", "Quadriceps tendon", "ACL", "Popliteus tendon"],
         answer: 0,
@@ -1069,7 +1069,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "sag-q9",
         sliceIndex: 7,
-        marker: { x: 61.3, y: 50.8 },
+        marker: { x: 62.3, y: 51 },
         prompt: "The bright line outlining the joint surface here is normal — what is it?",
         options: ["Articular cartilage with a thin rim of joint fluid", "A meniscal tear", "Subchondral edema", "Synovitis"],
         answer: 0,
@@ -1151,13 +1151,13 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 7,
-        markers: [{ x: 14, y: 54, label: "Medial collateral ligament" }],
+        markers: [{ x: 18.1, y: 52.7, label: "Medial collateral ligament" }],
         title: "Medial collateral ligament",
         note: "A thin, taut low-signal band along the medial edge from the femoral epicondyle to the proximal tibia. Distinguish the long superficial MCL from the deep meniscofemoral and meniscotibial fibers. Periligamentous edema with preserved fibers can support a low-grade sprain; partial or complete fiber disruption determines higher grade.",
       },
       {
         sliceIndex: 7,
-        markers: [{ x: 78, y: 53, label: "Lateral collateral ligament (LCL)" }],
+        markers: [{ x: 79.3, y: 48.3, label: "Lateral collateral ligament (LCL)" }],
         title: "Lateral collateral ligament (LCL)",
         note: "The cord-like LCL runs down the lateral edge from the lateral femoral epicondyle to the fibular head — the lateral counterpart of the MCL. The popliteus and posterolateral corner are confirmed on more posterior slices.",
       },
@@ -1166,7 +1166,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "cor-sid-1",
         sliceIndex: 7,
-        marker: { x: 14, y: 54 },
+        marker: { x: 18.1, y: 52.7 },
         prompt: "What is the marked structure running along the medial edge of the joint?",
         options: ["Medial collateral ligament", "Pes anserine tendons", "Medial meniscus body", "Semimembranosus tendon"],
         answer: 0,
@@ -1175,7 +1175,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "cor-sid-2",
         sliceIndex: 7,
-        marker: { x: 78, y: 53 },
+        marker: { x: 79.3, y: 48.3 },
         prompt: "What is the cord-like structure at the lateral margin coursing toward the fibular head?",
         options: ["Lateral (fibular) collateral ligament", "Iliotibial band", "Popliteus tendon", "Biceps femoris tendon"],
         answer: 0,
@@ -1281,37 +1281,37 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 50, y: 19, label: "Patella" }],
+        markers: [{ x: 55.8, y: 16.1, label: "Patella" }],
         title: "Patella",
         note: "The anterior sesamoid bone, with its own articular cartilage on the deep surface. Note its position and tilt relative to the trochlea.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 50, y: 34, label: "Femoral trochlea" }],
+        markers: [{ x: 53.1, y: 35.4, label: "Femoral trochlea" }],
         title: "Femoral trochlea",
         note: "The grooved anterior femur the patella tracks in. The lateral facet is normally longer, forming a higher buttress against the patella; loss of that asymmetry — a flat, shallow groove — is trochlear dysplasia.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 50, y: 31, label: "Trochlear groove (sulcus)" }],
+        markers: [{ x: 54.1, y: 29.8, label: "Trochlear groove (sulcus)" }],
         title: "Trochlear groove",
         note: "The deepest point of the trochlea. A shallow, flat groove is trochlear dysplasia — a key predisposing factor for patellar instability.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 50, y: 26, label: "Patellofemoral cartilage" }],
+        markers: [{ x: 62.8, y: 25.8, label: "Patellofemoral cartilage" }],
         title: "Patellofemoral cartilage",
         note: "The cartilage on the patellar and trochlear surfaces, outlined by a thin bright rim of fluid. Assess thickness and symmetry of the facets.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 32, y: 24, label: "MPFL / medial retinaculum" }],
+        markers: [{ x: 35.3, y: 23.2, label: "MPFL / medial retinaculum" }],
         title: "MPFL / medial retinaculum",
         note: "The medial patellofemoral ligament runs from the superomedial patella toward the region between the adductor tubercle and medial epicondyle. It is the principal passive restraint in early lateral translation and is commonly injured after lateral patellar dislocation; inspect its full course because the tear site varies.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 68, y: 24, label: "Lateral retinaculum" }],
+        markers: [{ x: 73, y: 25.4, label: "Lateral retinaculum" }],
         title: "Lateral retinaculum",
         note: "The lateral retinacular soft tissues tethering the patella laterally.",
       },
@@ -1326,7 +1326,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 55, y: 70, label: "Popliteal vessels" }],
+        markers: [{ x: 58, y: 68.4, label: "Popliteal vessels" }],
         title: "Popliteal vessels",
         note: "The popliteal artery and vein in the popliteal fossa posteriorly — a reliable posterior landmark.",
       },
@@ -1335,7 +1335,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-sid-1",
         sliceIndex: 13,
-        marker: { x: 50, y: 34 },
+        marker: { x: 53.1, y: 35.4 },
         prompt: "What is the marked grooved anterior femoral structure the patella tracks within?",
         options: ["Femoral trochlea", "Intercondylar notch", "Median patellar ridge", "Tibial tuberosity"],
         answer: 0,
@@ -1344,7 +1344,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-sid-2",
         sliceIndex: 13,
-        marker: { x: 68, y: 24 },
+        marker: { x: 73, y: 25.4 },
         prompt: "What is the marked soft-tissue band on the lateral side of the patella?",
         options: ["Lateral retinaculum", "MPFL (medial retinaculum)", "Iliotibial band", "Vastus lateralis tendon"],
         answer: 0,
@@ -1353,7 +1353,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q1",
         sliceIndex: 13,
-        marker: { x: 50, y: 19 },
+        marker: { x: 55.8, y: 16.1 },
         prompt: WHAT,
         options: ["Patella", "Femoral trochlea", "Quadriceps tendon", "Tibial tubercle"],
         answer: 0,
@@ -1362,7 +1362,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q3",
         sliceIndex: 13,
-        marker: { x: 50, y: 26 },
+        marker: { x: 62.8, y: 25.8 },
         prompt: "The bright line between the patella and the trochlea is normal — what is it?",
         options: ["Patellofemoral articular cartilage with joint fluid", "A chondral fissure", "Synovitis", "Plica"],
         answer: 0,
@@ -1371,7 +1371,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q4",
         sliceIndex: 13,
-        marker: { x: 50, y: 31 },
+        marker: { x: 54.1, y: 29.8 },
         prompt: WHAT,
         options: ["Trochlear groove (sulcus)", "Intercondylar notch", "Median patellar ridge", "Trochlear cartilage defect"],
         answer: 0,
@@ -1380,7 +1380,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q5",
         sliceIndex: 13,
-        marker: { x: 32, y: 24 },
+        marker: { x: 35.3, y: 23.2 },
         prompt: "Which principal medial restraint of the patella is marked (a structure commonly injured after lateral patellar dislocation)?",
         options: ["MPFL / medial retinaculum", "Lateral retinaculum", "Patellar tendon", "Iliotibial band"],
         answer: 0,
@@ -1407,7 +1407,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q9",
         sliceIndex: 13,
-        marker: { x: 55, y: 70 },
+        marker: { x: 58, y: 68.4 },
         prompt: WHAT,
         options: ["Popliteal vessels", "PCL", "Baker's cyst", "Semimembranosus tendon"],
         answer: 0,
@@ -1416,7 +1416,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q10",
         sliceIndex: 13,
-        marker: { x: 50, y: 31 },
+        marker: { x: 54.1, y: 29.8 },
         prompt: "A shallow, flat trochlear groove on the axial images predisposes to which problem?",
         options: ["Patellar instability / dislocation", "ACL tear", "Meniscal root tear", "Baker's cyst"],
         answer: 0,
@@ -1425,7 +1425,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "axi-q11",
         sliceIndex: 13,
-        marker: { x: 32, y: 24 },
+        marker: { x: 35.3, y: 23.2 },
         prompt:
           "This is the MPFL. After a transient lateral patellar dislocation, where do you expect the classic bone bruises?",
         options: [
@@ -1468,28 +1468,28 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         sliceIndex: 13,
         markers: [
-          { x: 14, y: 22, label: "Quadriceps tendon" },
-          { x: 16, y: 36, label: "Patella" },
+          { x: 17.2, y: 19.2, label: "Quadriceps tendon" },
+          { x: 18.8, y: 38.2, label: "Patella" },
         ],
         title: "Extensor mechanism — top",
         note: "The quadriceps tendon inserts on the superior pole of the patella. Tendons are low signal on T1, just as on PD-FS.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 20, y: 68, label: "Patellar tendon" }],
+        markers: [{ x: 23.9, y: 65.7, label: "Patellar tendon" }],
         title: "Patellar tendon",
         note: "Uniformly low signal from the inferior pole of the patella to the tibial tubercle.",
       },
       {
         sliceIndex: 13,
-        markers: [{ x: 24, y: 60, label: "Hoffa's (infrapatellar) fat pad" }],
+        markers: [{ x: 27.8, y: 57.4, label: "Hoffa's (infrapatellar) fat pad" }],
         title: "Hoffa's fat pad",
         note: "Bright fat (unsuppressed on T1) behind the patellar tendon.",
       },
       {
         sliceIndex: 8,
         markers: [
-          { x: 40, y: 61, label: "Anterior horn (lateral meniscus)" },
+          { x: 43.1, y: 59.3, label: "Anterior horn (lateral meniscus)" },
           { x: 61, y: 59.2, label: "Posterior horn (lateral meniscus)" },
         ],
         title: "Meniscus",
@@ -1503,13 +1503,13 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 16,
-        markers: [{ x: 50.7, y: 53.6, label: "Posterior cruciate ligament" }],
+        markers: [{ x: 52.6, y: 49.8, label: "Posterior cruciate ligament" }],
         title: "Posterior cruciate ligament",
         note: "The PCL is a smooth, continuous low-signal arc through the posterior notch.",
       },
       {
         sliceIndex: 14,
-        markers: [{ x: 66, y: 55, label: "Popliteal vessels" }],
+        markers: [{ x: 65.1, y: 54.9, label: "Popliteal vessels" }],
         title: "Popliteal vessels",
         note: "The popliteal artery and vein in the popliteal fossa posteriorly.",
       },
@@ -1536,7 +1536,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q3",
         sliceIndex: 13,
-        marker: { x: 16, y: 36 },
+        marker: { x: 18.8, y: 38.2 },
         prompt: WHAT,
         options: ["Patella", "Femoral condyle", "Quadriceps tendon", "Tibial tubercle"],
         answer: 0,
@@ -1545,7 +1545,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q4",
         sliceIndex: 13,
-        marker: { x: 14, y: 22 },
+        marker: { x: 17.2, y: 19.2 },
         prompt: WHAT,
         options: ["Quadriceps tendon", "Patellar tendon", "Iliotibial band", "Prepatellar bursa"],
         answer: 0,
@@ -1554,7 +1554,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q5",
         sliceIndex: 13,
-        marker: { x: 20, y: 68 },
+        marker: { x: 23.9, y: 65.7 },
         prompt: WHAT,
         options: ["Patellar tendon", "Quadriceps tendon", "ACL", "Popliteus tendon"],
         answer: 0,
@@ -1563,7 +1563,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q6",
         sliceIndex: 13,
-        marker: { x: 24, y: 60 },
+        marker: { x: 27.8, y: 57.4 },
         prompt: WHAT,
         options: ["Hoffa's infrapatellar fat pad", "Joint effusion", "Baker's cyst", "Prefemoral fat"],
         answer: 0,
@@ -1581,7 +1581,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q8",
         sliceIndex: 8,
-        marker: { x: 40, y: 61 },
+        marker: { x: 43.1, y: 59.3 },
         prompt: WHAT,
         options: ["Anterior horn of the meniscus", "Hoffa's fat pad", "ACL", "Transverse ligament"],
         answer: 0,
@@ -1599,7 +1599,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "t1-q10",
         sliceIndex: 14,
-        marker: { x: 66, y: 55 },
+        marker: { x: 65.1, y: 54.9 },
         prompt: WHAT,
         options: ["Popliteal vessels", "PCL", "Baker's cyst", "Semimembranosus tendon"],
         answer: 0,
@@ -1627,9 +1627,9 @@ export const kneeImageCaq: ImageCaqQ[] = [
     topic: "ACL tear — pivot-shift secondary signs",
     dir: "/images/teaching/stacks/normal-knee-sagittal",
     count: 29,
-    startIndex: 12,
+    startIndex: 14,
     plane: "Sagittal PD-FS",
-    vignette: "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
+    vignette: "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
     options: ["Posterolateral tibial plateau bone contusion", "Anteromedial femoral condyle fracture", "Medial patellar facet bruise", "Quadriceps tendon avulsion"],
     answer: 0,
     explanation: "A wavy, discontinuous ACL on this notch slice would indicate a tear, and the classic associated finding is the pivot-shift kissing contusion at the posterolateral tibial plateau and mid-lateral femoral condyle. A medial patellar facet bruise belongs to lateral patellar dislocation, a different mechanism, so it is not the expected ACL-associated finding.",

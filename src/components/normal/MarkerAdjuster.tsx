@@ -12,6 +12,8 @@ import type { PlaneLearn, QuizItem, TourStep } from "@/content/normal-mri-types"
 
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
 const round1 = (n: number) => Math.round(n * 10) / 10;
+const sameAnchor = (a: { x: number; y: number }, b: { x: number; y: number }) =>
+  Math.abs(a.x - b.x) < 0.001 && Math.abs(a.y - b.y) < 0.001;
 
 type Sel = { kind: "tour" | "quiz"; idx: number };
 
@@ -68,13 +70,31 @@ export default function MarkerAdjuster({
 
   function setSlice(v: number) {
     if (sel.kind === "tour") {
+      const selectedStep = tour[sel.idx];
       const nt = tour.map((s, i) => (i === sel.idx ? { ...s, sliceIndex: v } : s));
+      const nq = quiz.map((q) =>
+        selectedStep &&
+        q.sliceIndex === selectedStep.sliceIndex &&
+        selectedStep.markers.some((marker) => sameAnchor(marker, q.marker))
+          ? { ...q, sliceIndex: v }
+          : q,
+      );
       setTour(nt);
-      persist(nt, quiz);
-    } else {
-      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, sliceIndex: v } : q));
       setQuiz(nq);
-      persist(tour, nq);
+      persist(nt, nq);
+    } else {
+      const selectedQuiz = quiz[sel.idx];
+      const nt = tour.map((step) =>
+        selectedQuiz &&
+        step.sliceIndex === selectedQuiz.sliceIndex &&
+        step.markers.some((marker) => sameAnchor(marker, selectedQuiz.marker))
+          ? { ...step, sliceIndex: v }
+          : step,
+      );
+      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, sliceIndex: v } : q));
+      setTour(nt);
+      setQuiz(nq);
+      persist(nt, nq);
     }
   }
 
@@ -82,15 +102,38 @@ export default function MarkerAdjuster({
     const x = round1(clamp(xRaw));
     const y = round1(clamp(yRaw));
     if (sel.kind === "tour") {
+      const selectedStep = tour[sel.idx];
+      const priorMarker = selectedStep?.markers[mi];
       const nt = tour.map((s, i) =>
         i === sel.idx ? { ...s, markers: s.markers.map((m, j) => (j === mi ? { ...m, x, y } : m)) } : s,
       );
+      const nq = quiz.map((q) =>
+        selectedStep &&
+        priorMarker &&
+        q.sliceIndex === selectedStep.sliceIndex &&
+        sameAnchor(q.marker, priorMarker)
+          ? { ...q, marker: { x, y } }
+          : q,
+      );
       setTour(nt);
-      persist(nt, quiz);
-    } else {
-      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, marker: { x, y } } : q));
       setQuiz(nq);
-      persist(tour, nq);
+      persist(nt, nq);
+    } else {
+      const selectedQuiz = quiz[sel.idx];
+      const nt = tour.map((step) =>
+        selectedQuiz && step.sliceIndex === selectedQuiz.sliceIndex
+          ? {
+              ...step,
+              markers: step.markers.map((marker) =>
+                sameAnchor(marker, selectedQuiz.marker) ? { ...marker, x, y } : marker,
+              ),
+            }
+          : step,
+      );
+      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, marker: { x, y } } : q));
+      setTour(nt);
+      setQuiz(nq);
+      persist(nt, nq);
     }
   }
 
@@ -183,7 +226,7 @@ export default function MarkerAdjuster({
           <h3 className="text-sm font-semibold text-gray-900">Adjust markers — {planeLabel}</h3>
           <p className="mt-0.5 text-xs text-gray-500">
             Pick a structure, scrub to the best slice, and drag the marker. Then copy the marker changes and send
-            them to Dr. Swisher for review and deployment.
+            them to Dr. Swisher for review and deployment. Matching tour and quiz anchors stay synchronized.
           </p>
 
           <div className="mt-3 max-h-72 space-y-0.5 overflow-y-auto pr-1">
