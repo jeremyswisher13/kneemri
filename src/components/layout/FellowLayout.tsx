@@ -630,7 +630,7 @@ function FellowLayoutContent() {
         ref={mainRef}
         id="main-content"
         tabIndex={-1}
-        className="min-h-0 flex-1 overflow-auto overscroll-contain outline-none"
+        className="min-h-0 flex-1 overflow-auto outline-none"
       >
         <div className="mx-auto max-w-5xl px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-6 lg:px-8 lg:pb-6">
           <Suspense fallback={<PageLoader />}>

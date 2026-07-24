@@ -358,6 +358,23 @@ for (const fixture of WORKSTATIONS) {
         await expect
           .poll(() => page.evaluate(() => window.scrollY))
           .toBeLessThan(scrollBeforeBoundaryWheel);
+        const pageHeading = page.getByRole("heading", { name: fixture.title });
+        await pageHeading.hover();
+        const pageScrollBeforeWheel = await page.evaluate(
+          () => window.scrollY + (document.querySelector<HTMLElement>("#main-content")?.scrollTop ?? 0),
+        );
+        await page.mouse.wheel(0, 500);
+        await expect
+          .poll(() =>
+            page.evaluate(
+              () => window.scrollY + (document.querySelector<HTMLElement>("#main-content")?.scrollTop ?? 0),
+            ),
+          )
+          .toBeGreaterThan(pageScrollBeforeWheel);
+        await page.evaluate(() => {
+          window.scrollTo(0, 0);
+          document.querySelector<HTMLElement>("#main-content")?.scrollTo(0, 0);
+        });
       }
       await page.getByRole("button", { name: "Next slice" }).click();
       await expect(viewer).toHaveAttribute("data-slice-index", "1");
