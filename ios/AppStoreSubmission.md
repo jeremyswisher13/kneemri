@@ -1,6 +1,6 @@
 # App Store Submission Handoff
 
-Last updated: July 1, 2026
+Last updated: July 24, 2026
 
 ## Current binary
 
@@ -15,8 +15,8 @@ Last updated: July 1, 2026
 
 ## Current verified status
 
-- Firebase Hosting was deployed on July 1, 2026 after the accessibility URL addition.
-- `npm run preflight:ios:live` passes against `https://ucla-knee-mri.firebaseapp.com` with 105 live checks, including public privacy/support/accessibility/account routes, lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, login/App Review demo affordances, and Firebase Auth callback endpoints.
+- Firebase Hosting and all four Cloud Functions were deployed successfully on July 24, 2026.
+- `npm run preflight:ios:live` passes against `https://ucla-knee-mri.firebaseapp.com` with 112 live checks, including public privacy/support/accessibility/account routes, all discovered lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, login/App Review demo affordances, and both Firebase Auth callback endpoints.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
 - The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-01",
+  "lastUpdated": "2026-07-24",
   "purpose": "This file tracks external App Store gates that cannot be proven by local build/tests alone. Set an item to true only after the listed evidence exists.",
   "appleDeveloper": {
     "signInWithAppleEnabledForBundleId": false,
@@ -18,7 +18,7 @@
   "hosting": {
     "currentBuildDeployed": true,
     "livePreflightPassed": true,
-    "evidence": "Firebase Hosting deploy completed on 2026-07-01 after the accessibility URL addition; npm run preflight:ios:live passed against https://ucla-knee-mri.firebaseapp.com with 105 live checks, including public privacy/support/accessibility/account routes, lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, Sign in with Apple, App Review demo, the native iOS shell marker, and both Firebase Auth handler endpoints."
+    "evidence": "Firebase Hosting and all four Cloud Functions deployed successfully on 2026-07-24; npm run preflight:ios:live passed against https://ucla-knee-mri.firebaseapp.com with 112 live checks, including public privacy/support/accessibility/account routes, all discovered lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, Sign in with Apple, App Review demo, the native iOS shell marker, and both Firebase Auth handler endpoints."
   },
   "archiveExport": {
     "appStoreExportSigningReady": false,
