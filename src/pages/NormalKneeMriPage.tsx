@@ -171,13 +171,7 @@ export default function NormalKneeMriPage() {
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
-      <NormalMriMasteryPanel
-        courseId="knee-mri"
-        activeMode={mode}
-        activeModeLabel={modeLabel}
-        seriesLabel={series.label}
-        availableModes={visibleModes}
-      />
+      <NormalMriMasteryPanel courseId="knee-mri" />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

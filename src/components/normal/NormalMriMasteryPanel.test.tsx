@@ -17,29 +17,17 @@ vi.mock("@/hooks/useProgress", () => ({
 }));
 
 describe("NormalMriMasteryPanel", () => {
-  it("renders course progress and highlights the active workstation step", () => {
+  it("renders compact course progress without repeating workstation controls", () => {
     const html = renderToStaticMarkup(
-      <NormalMriMasteryPanel
-        courseId="knee-mri"
-        activeMode="correlate"
-        activeModeLabel="Cross-Plane"
-        seriesLabel="Sagittal PD-FS"
-        availableModes={[
-          { id: "explore", label: "Explore" },
-          { id: "tour", label: "Guided Tour" },
-          { id: "check", label: "Knowledge Check" },
-          { id: "correlate", label: "Cross-Plane" },
-          { id: "caq", label: "Image CAQ" },
-        ]}
-      />,
+      <NormalMriMasteryPanel courseId="knee-mri" />,
     );
 
-    expect(html).toContain("Normal Knee MRI");
+    expect(html).toContain("Normal MRI progress");
     expect(html).toContain("2 of 4 series passed");
-    expect(html).toContain("Current focus:");
-    expect(html).toContain("Sagittal PD-FS");
-    expect(html).toContain("Cross-Plane");
-    expect(html).toContain('aria-current="step"');
-    expect(html).toContain("confirm on another plane");
+    expect(html).toContain('role="progressbar"');
+    expect(html).toContain('aria-valuenow="50"');
+    expect(html).not.toContain("Current focus:");
+    expect(html).not.toContain("Stack Sweep");
+    expect(html).not.toContain("Before calling pathology");
   });
 });

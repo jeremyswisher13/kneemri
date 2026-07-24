@@ -361,6 +361,22 @@ test("knee PCL pathology comparison is clear, sourced, and mobile-safe", async (
   await expectNoHorizontalOverflow(page);
 });
 
+test("normal MRI progress stays compact above the workstation", async ({ page }) => {
+  await page.goto("/courses/knee-mri/normal-knee-mri?mode=check&series=sag-pdfs");
+
+  const progress = page.getByRole("region", { name: "Normal MRI mastery progress" });
+  await expect(progress).toBeVisible();
+  await expect(progress).toContainText("Normal MRI progress");
+  await expect(progress).toContainText(/series passed/);
+  await expect(progress).not.toContainText("Current focus:");
+  await expect(progress).not.toContainText("Stack Sweep");
+
+  const box = await progress.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeLessThanOrEqual(48);
+  await expectNoHorizontalOverflow(page);
+});
+
 for (const fixture of WORKSTATIONS) {
   test(`${fixture.name}: every plane, tour marker, mastery interaction, and mode works`, async ({
     page,

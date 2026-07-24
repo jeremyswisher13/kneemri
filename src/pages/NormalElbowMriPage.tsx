@@ -164,13 +164,7 @@ export default function NormalElbowMriPage() {
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
-      <NormalMriMasteryPanel
-        courseId="elbow-mri"
-        activeMode={mode}
-        activeModeLabel={modeLabel}
-        seriesLabel={series.label}
-        availableModes={visibleModes}
-      />
+      <NormalMriMasteryPanel courseId="elbow-mri" />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

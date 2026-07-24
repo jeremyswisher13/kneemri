@@ -174,13 +174,7 @@ export default function NormalShoulderMriPage() {
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
-      <NormalMriMasteryPanel
-        courseId="shoulder-mri"
-        activeMode={mode}
-        activeModeLabel={modeLabel}
-        seriesLabel={series.label}
-        availableModes={visibleModes}
-      />
+      <NormalMriMasteryPanel courseId="shoulder-mri" />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (

@@ -164,13 +164,7 @@ export default function NormalHipMriPage() {
 
       <NormalModeSwitcher modes={visibleModes} activeMode={mode} onModeChange={handleModeChange} />
 
-      <NormalMriMasteryPanel
-        courseId="hip-mri"
-        activeMode={mode}
-        activeModeLabel={modeLabel}
-        seriesLabel={series.label}
-        availableModes={visibleModes}
-      />
+      <NormalMriMasteryPanel courseId="hip-mri" />
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       {mode === "explore" && (
