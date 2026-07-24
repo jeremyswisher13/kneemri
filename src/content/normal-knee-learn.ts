@@ -364,7 +364,7 @@ export const crossPlane: CorrelationItem[] = [
       dir: COR,
       sliceIndex: 7,
       candidates: [
-        { x: 69, y: 55 }, // lateral meniscus wedge ✓
+        { x: 71.5, y: 59.4 }, // lateral meniscus wedge ✓
         { x: 48, y: 49 }, // tibial spines
         { x: 27, y: 56 }, // medial meniscus (side distractor)
         { x: 40, y: 61.5 }, // tibial plateau
@@ -582,7 +582,7 @@ export const crossPlane: CorrelationItem[] = [
         { x: 66.6, y: 44.9 }, // Lateral femoral condyle ✓
         { x: 28.5, y: 45.9 }, // Medial femoral condyle
         { x: 48, y: 49 }, // Tibial spines
-        { x: 69, y: 55 }, // Lateral meniscus
+        { x: 41.7, y: 69.8 }, // Proximal tibial metaphysis
       ],
       answer: 0,
     },

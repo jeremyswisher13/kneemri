@@ -118,7 +118,7 @@ const workstations: WorkstationContract[] = [
     expectedQuizCounts: { "sag-pdfs": 12, "cor-pdfs": 11, "axi-t2fs": 11, "sag-t1": 11 },
     crossPlane,
     expectedCrossPlaneCount: 13,
-    firstCrossPlaneTarget: { x: 69, y: 55 },
+    firstCrossPlaneTarget: { x: 71.5, y: 59.4 },
     advanced: advancedChallenge,
     expectedAdvancedCount: 36,
     imageCaq: kneeImageCaq,
@@ -350,6 +350,7 @@ describe("normal MRI must-not-overcall teaching safeguards", () => {
     const aclQuiz = sagittal.quiz.find((item) => item.id === "sag-sid-1");
     const aclCrossPlane = crossPlane.find((item) => item.id === "xp-acl-origin");
     const meniscusCrossPlane = crossPlane.find((item) => item.id === "xp-meniscus");
+    const reverseCondyleCrossPlane = crossPlane.find((item) => item.id === "xp-condyle-axi-cor");
     const poplitealTour = sagittal.tour.find((step) => step.title === "Popliteal vessels");
 
     expect(aclTour?.sliceIndex).toBe(14);
@@ -359,7 +360,8 @@ describe("normal MRI must-not-overcall teaching safeguards", () => {
     expect(kneeImageCaq.find((item) => item.id === "icaq-1")?.startIndex).toBe(14);
 
     expect(meniscusCrossPlane?.from.label.toLowerCase()).toContain("lateral meniscus");
-    expect(meniscusCrossPlane?.to.candidates[meniscusCrossPlane.to.answer]).toEqual({ x: 69, y: 55 });
+    expect(meniscusCrossPlane?.to.candidates[meniscusCrossPlane.to.answer]).toEqual({ x: 71.5, y: 59.4 });
+    expect(reverseCondyleCrossPlane?.to.candidates[3]).toEqual({ x: 41.7, y: 69.8 });
     expect(poplitealTour?.markers[0]).toMatchObject({ x: 66, y: 55 });
   });
 
