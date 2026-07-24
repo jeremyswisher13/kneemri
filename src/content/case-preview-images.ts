@@ -2,7 +2,12 @@
 // normal-vs-abnormal compare. Lightweight (paths + captions only). Regenerate if
 // case imagery changes.
 
-export interface CasePreviewImage { src: string; caption: string; }
+export interface CasePreviewImage {
+  src: string;
+  caption: string;
+  attribution?: string;
+  sourceUrl?: string;
+}
 
 export const caseTeachingImageById: Record<string, CasePreviewImage> = {
   "degenerative-knee-oa": {
@@ -22,8 +27,10 @@ export const caseTeachingImageById: Record<string, CasePreviewImage> = {
     "caption": "Medial meniscal root tear — sequential coronal images (A–C) with a correlating sagittal image (D)."
   },
   "pcl-plc-dashboard": {
-    "src": "/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg",
-    "caption": "PCL intrasubstance tear"
+    "src": "/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png",
+    "caption": "Complete PCL tear with femoral detachment (white arrow) — the normal continuous low-signal band is interrupted at its femoral attachment. This is a published chronic example; use the discontinuity pattern as the pathology contrast, then trace adjacent slices and assess for associated PLC injury.",
+    "attribution": "Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). CC BY 4.0.",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6538732/"
   },
   "bucket-handle": {
     "src": "/images/teaching/cases/bucket-handle/bh_donor_site.jpg",

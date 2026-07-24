@@ -2,6 +2,8 @@ import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { normalMriPath, getCourseById } from "@/content/courses";
+import { caseTeachingImageById } from "@/content/case-preview-images";
+import { caseRegistry } from "@/content/cases";
 import {
   normalKneeLearn,
   advancedChallenge,
@@ -66,6 +68,7 @@ type WorkstationContract = {
 };
 
 const STACK_ROOT = join(process.cwd(), "public/images/teaching/stacks");
+const PUBLIC_ROOT = join(process.cwd(), "public");
 const stackFolder = (dir: string) => dir.split("/").filter(Boolean).pop() as string;
 const stackCount = (dir: string) =>
   readdirSync(join(STACK_ROOT, stackFolder(dir))).filter((file) => file.endsWith(".jpg")).length;
@@ -175,6 +178,19 @@ const workstations: WorkstationContract[] = [
 ];
 
 describe("normal MRI workstation regression contract", () => {
+  it("keeps the PCL pathology bridge aligned with the complete-tear teaching case", () => {
+    const preview = caseTeachingImageById["pcl-plc-dashboard"];
+    const pclCase = caseRegistry.find((caseItem) => caseItem.id === "pcl-plc-dashboard");
+
+    expect(preview.caption).toContain("Complete PCL tear");
+    expect(preview.caption).toContain("chronic example");
+    expect(preview.attribution).toContain("CC BY 4.0");
+    expect(preview.sourceUrl).toBe("https://pmc.ncbi.nlm.nih.gov/articles/PMC6538732/");
+    expect(existsSync(join(PUBLIC_ROOT, preview.src))).toBe(true);
+    expect(pclCase?.teachingImages?.[0]?.src).toBe(preview.src);
+    expect(pclCase?.teachingImages?.[0]?.caption).toContain("dashboard teaching case models an acute");
+  });
+
   describe.each(workstations)("$courseId", (workstation) => {
     it("keeps the expected route and mode set from the browser QA pass", () => {
       expect(normalMriPath(getCourseById(workstation.courseId))).toBe(workstation.expectedRoute);

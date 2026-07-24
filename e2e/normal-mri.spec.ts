@@ -319,6 +319,48 @@ test.describe("MRI network recovery", () => {
   });
 });
 
+test("knee PCL pathology comparison is clear, sourced, and mobile-safe", async ({ page }) => {
+  await page.goto("/courses/knee-mri/normal-knee-mri?mode=tour&series=sag-pdfs");
+  await page.getByRole("button", { name: "Go to step 10: Posterior cruciate ligament" }).click();
+  await page
+    .getByRole("button", {
+      name: "Show normal-to-pathology comparison for PCL + PLC dashboard injury",
+    })
+    .click();
+
+  const comparison = page.locator("figure").filter({ hasText: "Normal-to-pathology compare" });
+  await expect(comparison).toBeVisible();
+  const pathologyImage = comparison.locator("img");
+  await expectImageLoaded(pathologyImage);
+  await expect(pathologyImage).toHaveAttribute(
+    "src",
+    "/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png",
+  );
+  await expect(comparison).toContainText("Complete PCL tear with femoral detachment");
+  await expect(comparison).toContainText("published chronic example");
+  await expect(comparison.getByRole("link", { name: /Wilson KJ et al/ })).toHaveAttribute(
+    "href",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6538732/",
+  );
+
+  const geometry = await comparison.evaluate((element) => {
+    const image = element.querySelector("img") as HTMLImageElement | null;
+    const rect = element.getBoundingClientRect();
+    return {
+      naturalWidth: image?.naturalWidth ?? 0,
+      naturalHeight: image?.naturalHeight ?? 0,
+      left: rect.left,
+      right: rect.right,
+      viewportWidth: document.documentElement.clientWidth,
+    };
+  });
+  expect(geometry.naturalWidth).toBe(473);
+  expect(geometry.naturalHeight).toBe(455);
+  expect(geometry.left).toBeGreaterThanOrEqual(-1);
+  expect(geometry.right).toBeLessThanOrEqual(geometry.viewportWidth + 1);
+  await expectNoHorizontalOverflow(page);
+});
+
 for (const fixture of WORKSTATIONS) {
   test(`${fixture.name}: every plane, tour marker, mastery interaction, and mode works`, async ({
     page,

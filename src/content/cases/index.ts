@@ -427,10 +427,10 @@ export const caseRegistry: CaseMetadata[] = [
     ],
     teachingImages: [
       {
-        src: '/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg',
-        alt: 'PCL intrasubstance tear',
-        caption: 'Published partial/intrasubstance PCL-tear example illustrating abnormal thickening and internal signal. The teaching case describes a complete tear, which additionally requires fiber discontinuity.',
-        attribution: 'Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.',
+        src: '/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png',
+        alt: 'Complete PCL tear with femoral detachment on sagittal PD fat-suppressed MRI',
+        caption: 'Complete PCL tear with femoral detachment (white arrow). The normally continuous low-signal PCL is interrupted at its femoral attachment. This published image is a chronic example; the dashboard teaching case models an acute combined PCL and PLC injury.',
+        attribution: 'Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). PMC6538732. CC BY 4.0.',
         step: 5,
       },
       {

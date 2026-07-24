@@ -30,7 +30,12 @@ export default function GuidedTour({
   /** title → anatomy + ultrasound correlate panel. Optional per region. */
   structureCorrelate?: Record<string, StructureCorrelate>;
   /** caseId → first teaching image, for the inline normal↔abnormal compare. */
-  caseImageById?: Record<string, { src: string; caption: string }>;
+  caseImageById?: Record<string, {
+    src: string;
+    caption: string;
+    attribution?: string;
+    sourceUrl?: string;
+  }>;
   /** Course-scoped base path for case links (e.g. "/courses/shoulder-mri/cases"). */
   caseBasePath?: string;
   /**
@@ -146,6 +151,23 @@ export default function GuidedTour({
             <figcaption className="px-3 py-2 text-xs leading-relaxed text-rose-800">
               <span className="font-semibold">Pathology contrast: </span>
               {abnormal.caption}
+              {abnormal.attribution && (
+                <span className="mt-1 block text-[10px] leading-relaxed text-rose-600">
+                  Source:{" "}
+                  {abnormal.sourceUrl ? (
+                    <a
+                      href={abnormal.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-rose-300 underline-offset-2 hover:text-rose-800"
+                    >
+                      {abnormal.attribution}
+                    </a>
+                  ) : (
+                    abnormal.attribution
+                  )}
+                </span>
+              )}
             </figcaption>
           </figure>
         )}
