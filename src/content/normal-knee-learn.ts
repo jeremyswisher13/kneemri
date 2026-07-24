@@ -513,7 +513,7 @@ export const crossPlane: CorrelationItem[] = [
       "This is the ACL on the sagittal, attaching in the anterior intercondylar area. Find that region on the coronal - just in front of the central eminence.",
     explanation:
       "The ACL is volume-averaged on coronal, so localize it to the anterior intercondylar area, in front of and between the tibial spines - not on a condyle. The PCL inserts far posteriorly, not here. Don't mistake normal spines for a tibial eminence avulsion and overcall.",
-    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 14, x: 52.5, y: 52, label: "Anterior cruciate ligament" },
+    from: { plane: "Sagittal PD-FS", dir: SAG, sliceIndex: 14, x: 48, y: 50.4, label: "Anterior cruciate ligament" },
     to: {
       plane: "Coronal PD-FS",
       dir: COR,
@@ -967,7 +967,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       },
       {
         sliceIndex: 14,
-        markers: [{ x: 52.5, y: 52, label: "Anterior cruciate ligament" }],
+        markers: [{ x: 48, y: 50.4, label: "Anterior cruciate ligament" }],
         title: "Anterior cruciate ligament",
         note: "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. Because its fan-shaped fibers are partly volume-averaged and are not all visible on one conventional sagittal image, trace the ligament across adjacent slices and correlate all planes before calling it intact or torn.",
       },
@@ -988,7 +988,7 @@ export const normalKneeLearn: Record<string, PlaneLearn> = {
       {
         id: "sag-sid-1",
         sliceIndex: 14,
-        marker: { x: 52.5, y: 52 },
+        marker: { x: 48, y: 50.4 },
         prompt: "What is the oblique striated band marked here, paralleling the roof of the intercondylar notch?",
         options: ["Anterior cruciate ligament", "Posterior cruciate ligament", "Meniscofemoral ligament", "Posterior joint capsule"],
         answer: 0,

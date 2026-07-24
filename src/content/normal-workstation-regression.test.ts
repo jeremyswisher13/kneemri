@@ -337,9 +337,9 @@ describe("normal MRI must-not-overcall teaching safeguards", () => {
     const poplitealTour = sagittal.tour.find((step) => step.title === "Popliteal vessels");
 
     expect(aclTour?.sliceIndex).toBe(14);
-    expect(aclTour?.markers[0]).toMatchObject({ x: 52.5, y: 52 });
-    expect(aclQuiz).toMatchObject({ sliceIndex: 14, marker: { x: 52.5, y: 52 } });
-    expect(aclCrossPlane?.from).toMatchObject({ sliceIndex: 14, x: 52.5, y: 52 });
+    expect(aclTour?.markers[0]).toMatchObject({ x: 48, y: 50.4 });
+    expect(aclQuiz).toMatchObject({ sliceIndex: 14, marker: { x: 48, y: 50.4 } });
+    expect(aclCrossPlane?.from).toMatchObject({ sliceIndex: 14, x: 48, y: 50.4 });
     expect(kneeImageCaq.find((item) => item.id === "icaq-1")?.startIndex).toBe(14);
 
     expect(meniscusCrossPlane?.from.label.toLowerCase()).toContain("lateral meniscus");
