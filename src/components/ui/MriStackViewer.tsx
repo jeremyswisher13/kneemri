@@ -28,6 +28,7 @@ export interface MriStackViewerProps {
   attribution: string;
   sourceUrl?: string;
   startIndex?: number;
+  sliceIndex?: number;
   initialCineMs?: number;
   onSliceChange?: (sliceIndex: number) => void;
 }
@@ -45,11 +46,12 @@ export default function MriStackViewer({
   attribution,
   sourceUrl,
   startIndex = 0,
+  sliceIndex,
   initialCineMs = 150,
   onSliceChange,
 }: MriStackViewerProps) {
   const total = slices.length;
-  const [index, setIndex] = useState(() =>
+  const [internalIndex, setInternalIndex] = useState(() =>
     Math.min(Math.max(0, startIndex), Math.max(0, total - 1)),
   );
   const [cinePlaying, setCinePlaying] = useState(false);
@@ -95,7 +97,8 @@ export default function MriStackViewer({
   const movedRef = useRef(false);
 
   const maxIndex = Math.max(0, total - 1);
-  const safeIndex = Math.min(index, maxIndex);
+  const controlled = sliceIndex !== undefined;
+  const safeIndex = Math.min(Math.max(0, sliceIndex ?? internalIndex), maxIndex);
   const wheelIndexRef = useRef(safeIndex);
   const onSliceChangeRef = useRef(onSliceChange);
 
@@ -105,8 +108,32 @@ export default function MriStackViewer({
 
   useEffect(() => {
     wheelIndexRef.current = safeIndex;
-    onSliceChangeRef.current?.(safeIndex);
-  }, [safeIndex, slices]);
+    if (!controlled) onSliceChangeRef.current?.(safeIndex);
+  }, [controlled, safeIndex, slices]);
+
+  const requestIndex = useCallback(
+    (nextValue: number | ((current: number) => number)) => {
+      if (controlled) {
+        const current = wheelIndexRef.current;
+        const requested = typeof nextValue === "function" ? nextValue(current) : nextValue;
+        const next = Math.min(Math.max(0, requested), maxIndex);
+        if (next === current) return;
+        wheelIndexRef.current = next;
+        onSliceChangeRef.current?.(next);
+      } else if (typeof nextValue === "function") {
+        setInternalIndex((current) => {
+          const next = Math.min(Math.max(0, nextValue(current)), maxIndex);
+          wheelIndexRef.current = next;
+          return next;
+        });
+      } else {
+        const next = Math.min(Math.max(0, nextValue), maxIndex);
+        wheelIndexRef.current = next;
+        setInternalIndex(next);
+      }
+    },
+    [controlled, maxIndex],
+  );
 
   // Reset loaded/zoom/pan AND jump to the new stack's own startIndex whenever the
   // stack changes — adjusted during render (not in an effect) so a new plane never
@@ -124,7 +151,7 @@ export default function MriStackViewer({
     setBright(1);
     setContrast(1);
     setInvert(false);
-    setIndex(Math.min(Math.max(0, startIndex), Math.max(0, slices.length - 1)));
+    setInternalIndex(Math.min(Math.max(0, startIndex), Math.max(0, slices.length - 1)));
   }
 
   // Preload the active plane, but in PRIORITY ORDER — the opening slice first,
@@ -155,9 +182,9 @@ export default function MriStackViewer({
   // Cine loop
   useEffect(() => {
     if (!cinePlaying || total <= 1) return;
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % total), cineMs);
+    const id = window.setInterval(() => requestIndex((i) => (i + 1) % total), cineMs);
     return () => window.clearInterval(id);
-  }, [cinePlaying, cineMs, total]);
+  }, [cinePlaying, cineMs, requestIndex, total]);
 
   // Mouse-wheel and trackpad motion over the image scrub the stack. At either
   // endpoint, outward vertical motion is handed to the document so the page
@@ -180,12 +207,11 @@ export default function MriStackViewer({
       }
       e.preventDefault();
       setCinePlaying(false);
-      wheelIndexRef.current = next;
-      setIndex(next);
+      requestIndex(next);
     };
     el.addEventListener("wheel", onWheelNative, { passive: false });
     return () => el.removeEventListener("wheel", onWheelNative);
-  }, [total]);
+  }, [requestIndex, total]);
 
   const clampPan = useCallback((p: { x: number; y: number }, z: number) => {
     const el = viewportRef.current;
@@ -267,10 +293,10 @@ export default function MriStackViewer({
         const h = viewportRef.current?.clientHeight ?? 480;
         const pxPerSlice = clamp(h / Math.max(total, 1), 6, 16);
         const delta = Math.round((e.clientY - g.startClientY) / pxPerSlice);
-        setIndex(Math.min(total - 1, Math.max(0, g.startIndex + delta)));
+        requestIndex(g.startIndex + delta);
       }
     },
-    [total, zoom, clampPan],
+    [total, zoom, clampPan, requestIndex],
   );
 
   const onPointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
@@ -294,24 +320,24 @@ export default function MriStackViewer({
           if (total <= 1) return;
           e.preventDefault();
           setCinePlaying(false);
-          setIndex((i) => Math.min(total - 1, i + 1));
+          requestIndex((i) => i + 1);
           break;
         case "ArrowUp":
         case "ArrowLeft":
           if (total <= 1) return;
           e.preventDefault();
           setCinePlaying(false);
-          setIndex((i) => Math.max(0, i - 1));
+          requestIndex((i) => i - 1);
           break;
         case "Home":
           e.preventDefault();
           setCinePlaying(false);
-          setIndex(0);
+          requestIndex(0);
           break;
         case "End":
           e.preventDefault();
           setCinePlaying(false);
-          setIndex(total - 1);
+          requestIndex(total - 1);
           break;
         case " ":
           if (total <= 1) return;
@@ -333,7 +359,7 @@ export default function MriStackViewer({
           break;
       }
     },
-    [total],
+    [requestIndex, total],
   );
 
   // A stable ref/onLoad callback prevents parent context updates from
@@ -547,7 +573,7 @@ export default function MriStackViewer({
           type="button"
           onClick={() => {
             setCinePlaying(false);
-            setIndex((i) => Math.max(0, i - 1));
+            requestIndex((i) => i - 1);
           }}
           disabled={safeIndex <= 0}
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-white sm:h-7 sm:w-7"
@@ -566,7 +592,7 @@ export default function MriStackViewer({
             value={safeIndex}
             onChange={(e) => {
               setCinePlaying(false);
-              setIndex(Number(e.target.value));
+              requestIndex(Number(e.target.value));
             }}
             className="relative z-10 w-full accent-ucla-blue py-4 sm:py-0"
             aria-label="Slice position"
@@ -577,7 +603,7 @@ export default function MriStackViewer({
           type="button"
           onClick={() => {
             setCinePlaying(false);
-            setIndex((i) => Math.min(total - 1, i + 1));
+            requestIndex((i) => i + 1);
           }}
           disabled={safeIndex >= maxIndex}
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-white sm:h-7 sm:w-7"

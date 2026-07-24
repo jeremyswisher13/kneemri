@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import MriStackViewer from "@/components/ui/MriStackViewer";
+import { mapLinkedSliceIndex } from "@/components/normal/plane-compare-logic";
 
 export interface ComparePlane {
   id: string;
@@ -17,17 +18,26 @@ function buildSlices(p: ComparePlane) {
   }));
 }
 
+function openingIndex(plane?: ComparePlane) {
+  if (!plane) return 0;
+  return Math.min(Math.max(0, plane.startIndex ?? 0), Math.max(0, plane.count - 1));
+}
+
 function Pane({
   planes,
   selectedId,
+  sliceIndex,
   onSelect,
+  onSliceChange,
   attribution,
   paneLabel,
   onContextChange,
 }: {
   planes: ComparePlane[];
   selectedId: string;
+  sliceIndex: number;
   onSelect: (id: string) => void;
+  onSliceChange: (sliceIndex: number) => void;
   attribution: string;
   paneLabel: string;
   onContextChange?: (context: { sliceIndex: number; landmark: string; itemId: string }) => void;
@@ -54,24 +64,26 @@ function Pane({
         slices={slices}
         plane={plane.plane}
         startIndex={plane.startIndex}
+        sliceIndex={sliceIndex}
         attribution={attribution}
-        onSliceChange={(sliceIndex) =>
+        onSliceChange={(nextSliceIndex) => {
+          onSliceChange(nextSliceIndex);
           onContextChange?.({
-            sliceIndex,
+            sliceIndex: nextSliceIndex,
             landmark: `${paneLabel}: ${plane.label}`,
             itemId: plane.id,
-          })
-        }
+          });
+        }}
       />
     </div>
   );
 }
 
 /**
- * Two MRI stacks side-by-side, each independently scrollable with its own plane
- * picker — so a learner can find a structure on one plane and confirm it on
- * another (the cross-plane mental model). Not auto-synced: there is no
- * slice-to-slice correspondence between planes, so each scrolls on its own.
+ * Two MRI stacks side-by-side with independent series pickers. Linked scrolling
+ * maps the relative position through each stack; it intentionally does not claim
+ * true spatial registration because the teaching JPGs do not contain DICOM
+ * geometry.
  */
 export default function PlaneCompare({
   planes,
@@ -84,18 +96,134 @@ export default function PlaneCompare({
 }) {
   const [aId, setAId] = useState(planes[0]?.id ?? "");
   const [bId, setBId] = useState(planes[1]?.id ?? planes[0]?.id ?? "");
+  const [aIndex, setAIndex] = useState(() => openingIndex(planes[0]));
+  const [bIndex, setBIndex] = useState(() => openingIndex(planes[1] ?? planes[0]));
+  const [linked, setLinked] = useState(false);
 
   if (planes.length < 2) return null;
 
+  const aPlane = planes.find((plane) => plane.id === aId) ?? planes[0];
+  const bPlane = planes.find((plane) => plane.id === bId) ?? planes[1] ?? planes[0];
+
+  function selectA(id: string) {
+    const nextPlane = planes.find((plane) => plane.id === id) ?? planes[0];
+    const nextIndex = openingIndex(nextPlane);
+    setAId(nextPlane.id);
+    setAIndex(nextIndex);
+    if (linked) {
+      setBIndex(mapLinkedSliceIndex(nextIndex, nextPlane.count, bPlane.count));
+    }
+  }
+
+  function selectB(id: string) {
+    const nextPlane = planes.find((plane) => plane.id === id) ?? planes[1] ?? planes[0];
+    const nextIndex = openingIndex(nextPlane);
+    setBId(nextPlane.id);
+    setBIndex(nextIndex);
+    if (linked) {
+      setAIndex(mapLinkedSliceIndex(nextIndex, nextPlane.count, aPlane.count));
+    }
+  }
+
+  function changeAIndex(nextIndex: number) {
+    setAIndex(nextIndex);
+    if (linked) {
+      setBIndex(mapLinkedSliceIndex(nextIndex, aPlane.count, bPlane.count));
+    }
+  }
+
+  function changeBIndex(nextIndex: number) {
+    setBIndex(nextIndex);
+    if (linked) {
+      setAIndex(mapLinkedSliceIndex(nextIndex, bPlane.count, aPlane.count));
+    }
+  }
+
+  function toggleLinked() {
+    if (!linked) {
+      setBIndex(mapLinkedSliceIndex(aIndex, aPlane.count, bPlane.count));
+    }
+    setLinked((current) => !current);
+  }
+
   return (
     <div className="mt-4">
-      <p className="mb-3 text-sm text-gray-500">
-        Open two planes at once: find a structure on one, then confirm it on the other to build your
-        cross-plane sense of where things live. Each stack scrolls independently.
-      </p>
+      <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm text-gray-600">
+            Open two series side by side to compare anatomy and signal.
+          </p>
+          <p id="compare-link-status" className="mt-1 text-xs leading-5 text-gray-500">
+            {linked
+              ? "Linked by relative stack position. Cross-plane views are approximate, not spatially registered."
+              : "Stacks scroll independently."}
+          </p>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={linked}
+          aria-describedby="compare-link-status"
+          aria-label="Link stack scrolling"
+          onClick={toggleLinked}
+          className={`inline-flex min-h-11 w-full shrink-0 items-center justify-between gap-3 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:w-auto ${
+            linked
+              ? "border-ucla-blue bg-ucla-blue/10 text-ucla-blue"
+              : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+          }`}
+        >
+          <span className="inline-flex items-center gap-2">
+            <svg
+              className="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 13.5l3-3m-6.75 6.75-1.5 1.5a3.182 3.182 0 0 1-4.5-4.5l3-3a3.182 3.182 0 0 1 4.5 0m9-4.5 1.5-1.5a3.182 3.182 0 0 1 4.5 4.5l-3 3a3.182 3.182 0 0 1-4.5 0"
+              />
+            </svg>
+            Link scrolling
+          </span>
+          <span
+            aria-hidden="true"
+            className={`relative h-5 w-9 rounded-full transition-colors ${
+              linked ? "bg-ucla-blue" : "bg-gray-300"
+            }`}
+          >
+            <span
+              className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${
+                linked ? "translate-x-[18px]" : "translate-x-0.5"
+              }`}
+            />
+          </span>
+        </button>
+      </div>
       <div className="grid gap-5 lg:grid-cols-2">
-        <Pane planes={planes} selectedId={aId} onSelect={setAId} attribution={attribution} paneLabel="Compare A" onContextChange={onContextChange} />
-        <Pane planes={planes} selectedId={bId} onSelect={setBId} attribution={attribution} paneLabel="Compare B" onContextChange={onContextChange} />
+        <Pane
+          planes={planes}
+          selectedId={aId}
+          sliceIndex={aIndex}
+          onSelect={selectA}
+          onSliceChange={changeAIndex}
+          attribution={attribution}
+          paneLabel="Compare A"
+          onContextChange={onContextChange}
+        />
+        <Pane
+          planes={planes}
+          selectedId={bId}
+          sliceIndex={bIndex}
+          onSelect={selectB}
+          onSliceChange={changeBIndex}
+          attribution={attribution}
+          paneLabel="Compare B"
+          onContextChange={onContextChange}
+        />
       </div>
     </div>
   );

@@ -221,8 +221,40 @@ async function inspectExtendedModes(
   await expect(compareViewers).toHaveCount(2);
   await expectImageLoaded(compareViewers.first().locator("img"));
   await expectImageLoaded(compareViewers.nth(1).locator("img"));
+
+  const linkScrolling = page.getByRole("switch", { name: "Link stack scrolling" });
+  await expect(linkScrolling).toHaveAttribute("aria-checked", "false");
+  await linkScrolling.click();
+  await expect(linkScrolling).toHaveAttribute("aria-checked", "true");
+  await expect(page.getByText(/Cross-plane views are approximate/)).toBeVisible();
+
+  const firstCount = Number(await compareViewers.first().getAttribute("data-slice-count"));
+  const secondCount = Number(await compareViewers.nth(1).getAttribute("data-slice-count"));
+  await compareViewers.first().focus();
+  await compareViewers.first().press("End");
+  await expect(compareViewers.first()).toHaveAttribute("data-slice-index", String(firstCount - 1));
+  await expect(compareViewers.nth(1)).toHaveAttribute("data-slice-index", String(secondCount - 1));
+
+  await compareViewers.nth(1).focus();
+  await compareViewers.nth(1).press("Home");
+  await expect(compareViewers.first()).toHaveAttribute("data-slice-index", "0");
+  await expect(compareViewers.nth(1)).toHaveAttribute("data-slice-index", "0");
+
+  await compareViewers.first().hover();
+  await page.mouse.wheel(0, 120);
+  await expect(compareViewers.first()).toHaveAttribute("data-slice-index", "1");
+  await expect(compareViewers.nth(1)).toHaveAttribute(
+    "data-slice-index",
+    String(Math.round((secondCount - 1) / (firstCount - 1))),
+  );
+  await compareViewers.first().press("Home");
+
+  await linkScrolling.click();
+  await expect(linkScrolling).toHaveAttribute("aria-checked", "false");
   await compareViewers.first().focus();
   await compareViewers.first().press("ArrowRight");
+  await expect(compareViewers.first()).toHaveAttribute("data-slice-index", "1");
+  await expect(compareViewers.nth(1)).toHaveAttribute("data-slice-index", "0");
   await page.reload();
   await expect(modeButton(page, "compare")).toHaveAttribute("aria-pressed", "true");
 
@@ -434,6 +466,8 @@ for (const fixture of WORKSTATIONS) {
           document.querySelector<HTMLElement>("#main-content")?.scrollTo(0, 0);
         });
       }
+      await viewer.press("Home");
+      await expect(viewer).toHaveAttribute("data-slice-index", "0");
       await page.getByRole("button", { name: "Next slice" }).click();
       await expect(viewer).toHaveAttribute("data-slice-index", "1");
 
