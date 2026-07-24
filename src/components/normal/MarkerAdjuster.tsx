@@ -5,8 +5,8 @@ import type { PlaneLearn, QuizItem, TourStep } from "@/content/normal-mri-types"
 
 /**
  * Admin-only authoring workbench. The director scrubs to the best slice and
- * drags each marker onto the structure; "Copy JSON" hands the exact slice +
- * coordinates back to be committed into normal-knee-learn.ts. Working state is
+ * drags each marker onto the structure; the copied marker changes hand the
+ * exact slice + coordinates back for review and deployment. Working state is
  * kept in localStorage so adjustments survive a refresh.
  */
 
@@ -28,16 +28,24 @@ export default function MarkerAdjuster({
   count: number;
   learn: PlaneLearn;
 }) {
-  const storeKey = `nk-adjust:${planeId}`;
+  // Plane IDs such as "cor-t2fs" repeat between courses. Include the image
+  // directory so a draft from one anatomy cannot overwrite another.
+  const storeKey = `uclaSportsMri.normalMriAdjustment:${dir}:${planeId}`;
+  const legacyStoreKey = `nk-adjust:${planeId}`;
   // Signature of the committed content. If it changes (a newer version was
   // deployed), any saved local draft is stale and we start fresh — this stops a
   // stale draft from silently reverting edits that were already committed.
   const baseSig = useMemo(() => JSON.stringify({ t: learn.tour, q: learn.quiz }), [learn]);
+  const savedDraft = useMemo(() => {
+    const current = loadDraft(storeKey, baseSig);
+    if (current.tour || current.quiz) return current;
+    return loadDraft(legacyStoreKey, baseSig);
+  }, [baseSig, legacyStoreKey, storeKey]);
 
-  const [tour, setTour] = useState<TourStep[]>(() => loadDraft(storeKey, baseSig).tour ?? structuredClone(learn.tour));
-  const [quiz, setQuiz] = useState<QuizItem[]>(() => loadDraft(storeKey, baseSig).quiz ?? structuredClone(learn.quiz));
+  const [tour, setTour] = useState<TourStep[]>(() => savedDraft.tour ?? structuredClone(learn.tour));
+  const [quiz, setQuiz] = useState<QuizItem[]>(() => savedDraft.quiz ?? structuredClone(learn.quiz));
   const [sel, setSel] = useState<Sel>({ kind: "tour", idx: 0 });
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
 
   const boxRef = useRef<HTMLDivElement>(null);
   const dragIdx = useRef<number | null>(null);
@@ -94,14 +102,15 @@ export default function MarkerAdjuster({
 
   const exportText = useMemo(() => JSON.stringify({ tour, quiz }, null, 2), [tour, quiz]);
 
-  function copyJson() {
-    navigator.clipboard?.writeText(exportText).then(
-      () => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
-      },
-      () => {},
-    );
+  async function copyChanges() {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable");
+      await navigator.clipboard.writeText(exportText);
+      setCopyState("copied");
+      window.setTimeout(() => setCopyState("idle"), 1500);
+    } catch {
+      setCopyState("failed");
+    }
   }
 
   function reset() {
@@ -126,23 +135,25 @@ export default function MarkerAdjuster({
         >
           <img src={src} alt="" draggable={false} className="block w-full select-none" />
           {markers.map((m, mi) => (
-            <div
+            <button
+              type="button"
               key={mi}
+              aria-label={m.label ? `Move ${m.label} marker` : `Move marker ${mi + 1}`}
               onPointerDown={(e) => {
                 dragIdx.current = mi;
                 boxRef.current?.setPointerCapture(e.pointerId);
               }}
               style={{ left: `${m.x}%`, top: `${m.y}%` }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing"
+              className="absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
             >
               <span className="block h-6 w-6 rounded-full border-2 border-ucla-gold bg-ucla-gold/25 shadow-[0_0_0_2px_rgba(0,0,0,0.6)]" />
               <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
               {m.label && (
-                <span className="absolute left-1/2 top-[150%] -translate-x-1/2 whitespace-nowrap rounded bg-black/80 px-2 py-0.5 text-[11px] font-semibold text-white">
+                <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/80 px-2 py-0.5 text-[11px] font-semibold text-white">
                   {m.label}
                 </span>
               )}
-            </div>
+            </button>
           ))}
         </div>
 
@@ -156,11 +167,13 @@ export default function MarkerAdjuster({
             max={count - 1}
             value={sliceIndex}
             onChange={(e) => setSlice(Number(e.target.value))}
+            aria-label={`Slice for ${planeLabel}`}
             className="flex-1 accent-ucla-blue"
           />
         </div>
         <p className="mt-1 text-xs text-gray-500">
-          Drag the gold marker onto the structure; use the slider to pick the best slice. Saved as you go.
+          Drag the gold marker onto the structure; use the slider to pick the best slice. Your draft is saved on
+          this device as you go.
         </p>
       </div>
 
@@ -169,8 +182,8 @@ export default function MarkerAdjuster({
         <Card>
           <h3 className="text-sm font-semibold text-gray-900">Adjust markers — {planeLabel}</h3>
           <p className="mt-0.5 text-xs text-gray-500">
-            Pick a structure, scrub to the best slice, drag the marker. Then <strong>Copy JSON</strong> and send it
-            to me to commit.
+            Pick a structure, scrub to the best slice, and drag the marker. Then copy the marker changes and send
+            them to Dr. Swisher for review and deployment.
           </p>
 
           <div className="mt-3 max-h-72 space-y-0.5 overflow-y-auto pr-1">
@@ -201,13 +214,27 @@ export default function MarkerAdjuster({
           </div>
 
           <div className="mt-3 flex items-center gap-2 border-t border-gray-100 pt-3">
-            <Button size="sm" onClick={copyJson}>
-              {copied ? "Copied!" : "Copy JSON"}
+            <Button size="sm" onClick={copyChanges}>
+              {copyState === "copied" ? "Changes copied" : "Copy marker changes"}
             </Button>
             <Button size="sm" variant="secondary" onClick={reset}>
               Reset to committed
             </Button>
           </div>
+          {copyState === "failed" && (
+            <div className="mt-3" role="alert">
+              <p className="text-xs font-medium text-red-700">
+                Automatic copy was blocked. Select and copy the marker changes below.
+              </p>
+              <textarea
+                readOnly
+                value={exportText}
+                aria-label="Marker changes to copy manually"
+                onFocus={(event) => event.currentTarget.select()}
+                className="mt-2 h-28 w-full resize-y rounded border border-gray-300 bg-gray-50 p-2 font-mono text-[11px] text-gray-800"
+              />
+            </div>
+          )}
         </Card>
       </div>
     </div>
