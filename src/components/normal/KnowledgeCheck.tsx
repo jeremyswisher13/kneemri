@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import AnnotatedSlice from "./AnnotatedSlice";
 import Button from "@/components/ui/Button";
-import type { Marker, QuizItem, TourStep } from "@/content/normal-mri-types";
+import type {
+  LocateSegmentRegion,
+  Marker,
+  QuizItem,
+  TourStep,
+} from "@/content/normal-mri-types";
+import { isKnowledgeLocateHit } from "./knowledge-check-hit";
 import {
   MASTERY_TRIAL_COUNT,
   NORMAL_MRI_PASS_PERCENT,
@@ -20,9 +26,6 @@ export interface ShowInLearnArgs {
   structure: string;
 }
 
-const HIT_TOLERANCE = 8;
-const dist = (a: { x: number; y: number }, b: { x: number; y: number }) =>
-  Math.hypot(a.x - b.x, a.y - b.y);
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 
 /**
@@ -216,7 +219,8 @@ export default function KnowledgeCheck({
 
   const q = qs[idx];
   const answered = q.kind === "identify" ? picked !== null : guess !== null;
-  const hit = guess !== null && dist(guess, q.marker) <= HIT_TOLERANCE;
+  const hit =
+    guess !== null && isKnowledgeLocateHit(guess, q.marker, q.locateRegion);
   const isCorrect = q.kind === "identify" ? picked === q.correctPos : hit;
   const answerText = q.options[q.answer];
   const landmarkLabel = q.locateLabel ?? answerText;
@@ -240,7 +244,7 @@ export default function KnowledgeCheck({
     if (answered) return;
     const nextGuess = { x, y };
     setGuess(nextGuess);
-    if (dist(nextGuess, q.marker) <= HIT_TOLERANCE) recordCorrectAnswer();
+    if (isKnowledgeLocateHit(nextGuess, q.marker, q.locateRegion)) recordCorrectAnswer();
     else onMiss?.(q.id);
   }
 
@@ -278,6 +282,7 @@ export default function KnowledgeCheck({
             dir={dir}
             sliceIndex={q.sliceIndex}
             target={q.marker}
+            region={q.locateRegion}
             guess={guess}
             answered={answered}
             showCorrect={showFeedback}
@@ -342,7 +347,9 @@ export default function KnowledgeCheck({
                     ? "Answer recorded."
                     : hit
                       ? "On target."
-                      : "Off target; the gold ring marks the actual location."}
+                      : q.locateRegion
+                        ? "Off target; the gold line traces the structure."
+                        : "Off target; the gold ring marks the actual location."}
               </p>
             </>
           )}
@@ -361,7 +368,7 @@ export default function KnowledgeCheck({
                 {isCorrect
                   ? "Correct. "
                   : q.kind === "locate"
-                    ? `Not quite. The gold ring marks the ${structure}. `
+                    ? `Not quite. The gold ${q.locateRegion ? "line traces" : "ring marks"} the ${structure}. `
                     : "Not quite. "}
               </span>
               {q.kind === "locate" ? (q.locateExplanation ?? q.explanation) : q.explanation}
@@ -411,6 +418,7 @@ function LocatableSlice({
   dir,
   sliceIndex,
   target,
+  region,
   guess,
   answered,
   showCorrect,
@@ -422,6 +430,7 @@ function LocatableSlice({
   dir: string;
   sliceIndex: number;
   target: Marker;
+  region?: LocateSegmentRegion;
   guess: { x: number; y: number } | null;
   answered: boolean;
   showCorrect: boolean;
@@ -469,6 +478,9 @@ function LocatableSlice({
       data-testid="locatable-mri"
       data-target-x={target.x}
       data-target-y={target.y}
+      data-target-region={region?.kind}
+      data-target-region-start-x={region?.start.x}
+      data-target-region-start-y={region?.start.y}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={answered || failed ? -1 : 0}
@@ -476,7 +488,7 @@ function LocatableSlice({
       aria-label={
         answered
           ? showCorrect
-            ? `Result: the ${structure} is marked with a gold ring; your answer ${hit ? "was on target" : "missed"}.`
+            ? `Result: the ${structure} is highlighted in gold; your answer ${hit ? "was on target" : "missed"}.`
             : `Location recorded for the ${structure}. The result is hidden until the mastery round ends.`
           : `Locate the ${structure} on this ${planeLabel} MRI. Select the image, or use arrow keys to move the crosshair and press Enter.`
       }
@@ -526,7 +538,37 @@ function LocatableSlice({
           <span className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
         </span>
       )}
-      {!failed && answered && showCorrect && (
+      {!failed && answered && showCorrect && region && (
+        <svg
+          data-testid="locate-correct-segment"
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line
+            x1={region.start.x}
+            y1={region.start.y}
+            x2={region.end.x}
+            y2={region.end.y}
+            stroke="rgba(255, 209, 0, 0.28)"
+            strokeWidth={10}
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+          />
+          <line
+            x1={region.start.x}
+            y1={region.start.y}
+            x2={region.end.x}
+            y2={region.end.y}
+            stroke="#FFD100"
+            strokeWidth={2}
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      )}
+      {!failed && answered && showCorrect && !region && (
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${target.x}%`, top: `${target.y}%` }}

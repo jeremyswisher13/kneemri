@@ -63,6 +63,17 @@ async function expectImageLoaded(image: Locator) {
     .toBe(true);
 }
 
+async function clickImagePercent(image: Locator, x: number, y: number) {
+  const box = await image.boundingBox();
+  expect(box).not.toBeNull();
+  await image.click({
+    position: {
+      x: (box!.width * x) / 100,
+      y: (box!.height * y) / 100,
+    },
+  });
+}
+
 async function expectMarkerGeometry(annotated: Locator, requireMarker = true) {
   await expect(annotated).toBeVisible();
   await expectImageLoaded(annotated.locator("img"));
@@ -407,6 +418,82 @@ test("normal MRI progress stays compact above the workstation", async ({ page })
   expect(box).not.toBeNull();
   expect(box!.height).toBeLessThanOrEqual(48);
   await expectNoHorizontalOverflow(page);
+});
+
+test("valid quadriceps and patellar tendon clicks score correctly", async ({ page }) => {
+  await page.goto("/courses/knee-mri/normal-knee-mri?mode=check&series=sag-pdfs");
+  const modeSelector = page.getByRole("group", { name: "Practice or mastery mode" });
+  await modeSelector.getByRole("button", { name: "Locate" }).click();
+
+  const image = page.getByTestId("locatable-mri");
+  await expectImageLoaded(image.locator("img"));
+
+  // Advance through ACL, femoral-condyle, and patella localization using each
+  // item's authored anchor. The two tendon items follow in the verified bank.
+  for (let priorQuestion = 0; priorQuestion < 3; priorQuestion += 1) {
+    const target = await image.evaluate((element) => ({
+      x: Number(element.getAttribute("data-target-x")),
+      y: Number(element.getAttribute("data-target-y")),
+    }));
+    await clickImagePercent(image, target.x, target.y);
+    await expect(page.getByText(/^Correct\./)).toBeVisible();
+    await page.getByRole("button", { name: "Continue" }).click();
+  }
+
+  await expect(page.getByRole("heading", { name: "Find the Quadriceps tendon" })).toBeVisible();
+  await clickImagePercent(image, 12.7, 8);
+  await expect(page.getByText(/^Correct\./)).toBeVisible();
+  await expect(page.getByTestId("locate-correct-segment")).toBeVisible();
+  await page.getByRole("button", { name: "Continue" }).click();
+
+  await expect(page.getByRole("heading", { name: "Find the Patellar tendon" })).toBeVisible();
+  await clickImagePercent(image, 17.5, 48);
+  await expect(page.getByText(/^Correct\./)).toBeVisible();
+  await expect(page.getByTestId("locate-correct-segment")).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+
+  await page.addInitScript(() => {
+    Math.random = () => 0.999999;
+  });
+  await page.reload();
+  await page
+    .getByRole("group", { name: "Practice or mastery mode" })
+    .getByRole("button", { name: "Mastery" })
+    .click();
+
+  let segmentTrials = 0;
+  for (let trial = 0; trial < 10; trial += 1) {
+    if (await image.isVisible()) {
+      const target = await image.evaluate((element) => {
+        const region = element.getAttribute("data-target-region");
+        return {
+          x: Number(
+            region
+              ? element.getAttribute("data-target-region-start-x")
+              : element.getAttribute("data-target-x"),
+          ),
+          y: Number(
+            region
+              ? element.getAttribute("data-target-region-start-y")
+              : element.getAttribute("data-target-y"),
+          ),
+          region,
+        };
+      });
+      if (target.region === "segment") segmentTrials += 1;
+      await clickImagePercent(image, target.x, target.y);
+      await expect(page.getByText("Answer recorded.", { exact: true })).toBeVisible();
+    } else {
+      await page.getByRole("radio").first().click();
+    }
+    await page
+      .getByRole("button", { name: trial < 9 ? "Continue" : "See results" })
+      .click();
+  }
+
+  expect(segmentTrials).toBe(2);
+  await expect(page.getByText("100%", { exact: true })).toBeVisible();
+  await expect(page.getByText(/^Passed\./)).toBeVisible();
 });
 
 for (const fixture of WORKSTATIONS) {

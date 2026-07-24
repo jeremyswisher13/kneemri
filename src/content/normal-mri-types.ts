@@ -14,6 +14,14 @@ export interface Marker {
   label?: string; // shown in the tour (and as the answer in the check)
 }
 
+export interface LocateSegmentRegion {
+  kind: "segment";
+  start: { x: number; y: number };
+  end: { x: number; y: number };
+  /** Maximum distance from the centerline, in image-percentage units. */
+  tolerance: number;
+}
+
 export interface TourStep {
   sliceIndex: number;
   markers: Marker[];
@@ -27,6 +35,8 @@ export interface QuizItem {
   marker: { x: number; y: number };
   /** Verified anatomy at the marker, used for localization prompts. */
   locateLabel?: string;
+  /** Accepted centerline for elongated anatomy; marker remains the reveal anchor. */
+  locateRegion?: LocateSegmentRegion;
   /** Landmark-specific feedback for localization practice. */
   locateExplanation?: string;
   prompt: string;
