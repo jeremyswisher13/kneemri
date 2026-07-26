@@ -610,7 +610,18 @@ Then review generated diffs before committing. Deploy only a passing build:
 firebase deploy --only hosting
 ```
 
-After deploy, verify both production domains, the current hashed app bundle, `manifest.webmanifest`, `sw.js`, the 512 px icon, and at least one real MRI stack asset. For interaction changes, use the deployed App Review demo to verify the actual production bundle without using a learner account.
+After deploy, verify both production domains, `manifest.webmanifest`, `sw.js`, the 512 px icon, and at least one real MRI stack asset. For interaction changes, use the deployed App Review demo to verify the actual production bundle without using a learner account.
+
+**Do NOT verify a deploy by comparing the local bundle hash to the live one — the build is not reproducible.** Measured 2026-07-26: two consecutive `npm run build` runs on an identical clean tree produced different hashes, and **39 of 74 emitted assets differed**. The cause is benign — the entry chunk imports `firestore-<hash>.js` while that chunk imports `index-<hash>.js` back, so Rollup resolves a circular hash dependency and can settle on different-but-equivalent hash pairs. Byte length and functional content are identical; only the mutually-referencing hash values move. But it means hash equality proves nothing in either direction, and a mismatch is not evidence that a deploy failed.
+
+Verify by CONTENT instead. Fetch the live entry chunk and grep for a string you know you just changed, e.g.:
+
+```bash
+CHUNK=$(curl -s https://sportsmriacademy.com/index.html | grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' | head -1)
+curl -s "https://sportsmriacademy.com/$CHUNK" | grep -c "some string you just added"
+```
+
+That is how the Segond-mechanism fix and the removal of the three trainee names were both confirmed live, and it is the check to use going forward.
 
 The service worker uses network-first navigation and content-hashed assets. A currently open tab still needs one refresh after deployment; an installed PWA may need to be closed and reopened once.
 
