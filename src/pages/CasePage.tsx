@@ -8,6 +8,7 @@ import MriStackViewer from "@/components/ui/MriStackViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { useActiveCourse } from "@/hooks/useActiveCourse";
 import { useIsAdminView } from "@/hooks/useIsAdminView";
+import { useProgress } from "@/hooks/useProgress";
 import { coursePath, courseRegionTitle, courseRegistry } from "@/content/courses";
 import { submitCaseAttempt } from "@/lib/firestore";
 
@@ -135,6 +136,9 @@ export default function CasePage() {
   const { caseId } = useParams<{ caseId: string }>();
   const { user, role } = useAuth();
   const activeCourse = useActiveCourse();
+  // Same persisted attempt list CasesPage keys its "Completed" cards off — read
+  // it here so this page and the cases list agree about what is already revealed.
+  const { progress } = useProgress(activeCourse);
   const unrevealedCaseTitle = `${courseRegionTitle(activeCourse)} MRI Case`;
   const isAdminView = useIsAdminView();
   const searchPatternSteps = activeCourse.searchPatternSteps;
@@ -174,6 +178,10 @@ export default function CasePage() {
   const [primaryImpression, setPrimaryImpression] = useState("");
   const [confidence, setConfidence] = useState(50);
   const [committed, setCommitted] = useState(false);
+  // Set by "Try Again". The saved attempt for a finished case never goes away,
+  // so without this the restart would re-reveal itself on the next render and
+  // the fellow would never get a blinded second pass.
+  const [restartedAttempt, setRestartedAttempt] = useState(false);
 
   // Submit state
   const [submitted, setSubmitted] = useState(false);
@@ -230,6 +238,7 @@ export default function CasePage() {
     setPrimaryImpression("");
     setConfidence(50);
     setCommitted(false);
+    setRestartedAttempt(true);
     setSubmitted(false);
     setSubmitError(null);
     setSubmitting(false);
@@ -247,6 +256,7 @@ export default function CasePage() {
     setPrimaryImpression("");
     setConfidence(50);
     setCommitted(false);
+    setRestartedAttempt(false);
     setSubmitted(false);
     setSubmitError(null);
     // Clear submitting too: if a prior case's submit is still in-flight (e.g. a
@@ -309,9 +319,18 @@ export default function CasePage() {
   const teachingImages = caseItem.teachingImages ?? [];
   const teachingStacks = caseItem.teachingStacks ?? [];
   const previewImages = teachingImages.slice(0, 4);
+  // A case the learner already finished must open REVEALED. `committed` is
+  // per-visit state, so on its own it re-blinded a case completed last week —
+  // generic heading, no diagnosis, external MRI link locked — while the cases
+  // list, keyed off this same persisted attempt, already showed that case's
+  // diagnoses. The two surfaces disagreeing reads as a bug and blocks review.
+  // Note this resolves async: it starts false and flips true once progress
+  // loads, so any flash is blinded-then-revealed, never the spoiler direction.
+  const previouslyCompleted =
+    !!caseId && (progress?.caseAttempts?.some((attempt) => attempt.caseId === caseId) ?? false);
   // Once a learner commits, keep the answer state unlocked while they revisit
   // earlier steps to compare the teaching images with their original read.
-  const answersRevealed = committed;
+  const answersRevealed = committed || (previouslyCompleted && !restartedAttempt);
   const expandedImageIndex = expandedImage ? teachingImages.indexOf(expandedImage) : -1;
   const expandedImageLabel = answersRevealed
     ? expandedImage?.caption || expandedImage?.alt || "Teaching image"
@@ -1033,8 +1052,11 @@ export default function CasePage() {
         );
       })()}
 
-      {/* ---- Commit gate: capture the read BEFORE revealing the answer ---- */}
-      {currentStep === reviewStep && !committed && (
+      {/* ---- Commit gate: capture the read BEFORE revealing the answer ----
+           Gated on answersRevealed, not `committed`: for an already-completed
+           case the diagnosis is on screen from the header down, so asking for a
+           blinded commit here would be theatre. "Try Again" brings it back. */}
+      {currentStep === reviewStep && !answersRevealed && (
         <div className="space-y-6">
           <div className="rounded-xl border border-ucla-blue/30 bg-ucla-light/40 px-5 py-4">
             <h3 className="text-lg font-semibold text-gray-900">Commit your read</h3>
@@ -1107,7 +1129,7 @@ export default function CasePage() {
       )}
 
       {/* ---- Answer Key & Review ---- */}
-      {currentStep === reviewStep && committed && (
+      {currentStep === reviewStep && answersRevealed && (
         <div className="space-y-6">
           {primaryImpression.trim() && (
             <div className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">

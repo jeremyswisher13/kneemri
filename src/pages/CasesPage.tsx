@@ -209,7 +209,7 @@ export default function CasesPage() {
       </div>
       {query.trim() !== "" && (
         <p className="mt-2 text-xs text-gray-500">
-          Searching presentations and tags only — a case&apos;s diagnosis stays hidden until you complete it.
+          Searching clinical presentations only — a case&apos;s diagnosis and tags stay hidden until you complete it.
         </p>
       )}
 

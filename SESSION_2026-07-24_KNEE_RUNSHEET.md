@@ -128,7 +128,7 @@ Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
 |---|---|---|
 | **3 · Tibial plateau** (14/29) | 2 | The app's own pearl names the posterolateral plateau as the pivot-shift site. Plant it now and Case 1's bruise is recall, not discovery. |
 | **7 · Meniscus — bow-ties** (9/29) | 4 | Longest note in the tour; three pseudotears live here. Pays off in Case 1 step 4 and Case 2. |
-| **9 · ACL** (13/29) | 4 | Case 1's entire step 5. |
+| **9 · ACL** (15/29) | 4 | Case 1's entire step 5. |
 
 **Say — stop 3, tibial plateau:**
 > "Uniform marrow. Nothing to see. Remember what nothing looks like — in an hour one of you is looking at this exact corner, the **posterolateral plateau**, and it will be full of bright signal."
@@ -144,7 +144,7 @@ Stops **1–6 in 6 minutes** (naming). Stops **7–11 in 12 minutes** (reading).
 
 > "And three normal structures fake a lateral tear: the **popliteomeniscal fascicles / popliteus hiatus**, the **transverse intermeniscal ligament** where it meets the anterior horn, and the **meniscofemoral ligament** (Humphrey/Wrisberg) next to the posterior horn. Before you call a lateral tear, actively exclude all three."
 
-**Say — stop 9, ACL (slice 13/29):**
+**Say — stop 9, ACL (slice 15/29):**
 > "Taut, continuous, **parallel to Blumensaat's line**. Fibers, not a blur. Trace it across at least three slices before you're allowed an opinion — a single slice through a normal ACL can look convincingly torn."
 
 > "Normal ACL striations are fine. **Diffuse thickening with intact, continuous fibers is mucoid degeneration, not a tear** — a consequential over-call (6 of 10 such ligaments were read as torn but were intact at arthroscopy; McIntyre 2001). Look for the celery-stalk look: thickened, high signal on all sequences, but *continuous fibers*. The discriminator that carries the weight is **discontinuity** — present in ~97% of complete tears, 0% of mucoid degeneration. Clinically it's *posterior* knee pain with limited terminal flexion, not instability."

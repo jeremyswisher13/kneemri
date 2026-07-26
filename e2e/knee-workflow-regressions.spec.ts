@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
-import { expectNoHorizontalOverflow, installPreviewSession } from "./helpers";
+import {
+  expectNoHorizontalOverflow,
+  installPreviewSession,
+  LOCAL_PREVIEW_PROGRESS_KEY,
+} from "./helpers";
 
 test.beforeEach(async ({ page }) => {
   await installPreviewSession(page);
@@ -113,4 +117,74 @@ test("image-less knee case does not leak its findings before commit", async ({ p
   await page.getByRole("button", { name: "Clinical", exact: true }).click();
   await expect(page.getByTestId("image-review-focus")).toBeVisible();
   await expect(page.getByTestId("image-review-focus-locked")).toHaveCount(0);
+});
+
+// `committed` used to be visit-only component state, so a fellow reopening a case
+// they finished last week saw it fully re-blinded — generic heading, no diagnosis,
+// external MRI link locked — while the cases list, keyed off the same persisted
+// attempt, already showed that case's diagnoses.
+test("a completed knee case reopens revealed, and Try Again re-blinds it", async ({ page }) => {
+  await page.goto("/courses/knee-mri/cases");
+  await page.evaluate(
+    ({ key, caseId }) => {
+      localStorage.setItem(
+        key,
+        JSON.stringify({
+          quizAttempts: [],
+          surveyResponses: [],
+          moduleProgress: {},
+          caseAttempts: [
+            {
+              id: "e2e-completed-knee-case",
+              courseId: "knee-mri",
+              caseId,
+              searchPatternChecklist: {},
+              report: "",
+              completedAt: { seconds: Math.floor(Date.now() / 1000) },
+            },
+          ],
+          normalPlanes: {},
+          reviewCards: {},
+        }),
+      );
+      window.dispatchEvent(new Event("uclaSportsMri:localPreviewProgress"));
+    },
+    { key: LOCAL_PREVIEW_PROGRESS_KEY, caseId: "acl-pivot-shift" },
+  );
+
+  // The list surface treats it as done...
+  await expect(
+    page.getByRole("link", { name: "Review case: ACL Tear + Pivot-Shift Pattern" }),
+  ).toBeVisible();
+
+  // ...so the case page has to agree instead of starting over from blinded.
+  await page.goto("/courses/knee-mri/cases/acl-pivot-shift");
+  await expect(
+    page.getByRole("heading", { name: "ACL Tear + Pivot-Shift Pattern", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Knee MRI Case", exact: true })).toHaveCount(0);
+  await expect(page.getByTestId("external-case-locked")).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: /Open the full scrollable MRI on Radiopaedia/ }),
+  ).toBeVisible();
+
+  // Reaching the review step goes straight to the answer key: the commit gate
+  // would be theatre once the diagnosis is already on screen.
+  await page.getByRole("button", { name: /Begin Case Walkthrough/ }).click();
+  for (let step = 1; step < 7; step += 1) {
+    await page.getByRole("button", { name: /Next Step/ }).click();
+  }
+  await page.getByRole("button", { name: /Commit your read/ }).click();
+  await expect(page.getByRole("heading", { name: "Key Diagnoses", exact: true })).toBeVisible();
+  await expect(page.getByPlaceholder(/Name the primary lesion/)).toHaveCount(0);
+
+  // Try Again still hands back a genuinely blinded second pass, even though the
+  // saved attempt for this case never goes away.
+  await page.getByRole("button", { name: "Try Again" }).click();
+  await page.getByRole("button", { name: "Start Over" }).click();
+  await expect(page.getByRole("heading", { name: "Knee MRI Case", exact: true })).toBeVisible();
+  await expect(
+    page.getByText("ACL Tear + Pivot-Shift Pattern", { exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByTestId("external-case-locked")).toBeVisible();
 });

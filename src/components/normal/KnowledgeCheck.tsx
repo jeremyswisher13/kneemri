@@ -8,6 +8,7 @@ import type {
   TourStep,
 } from "@/content/normal-mri-types";
 import { isKnowledgeLocateHit } from "./knowledge-check-hit";
+import { locateRevealSpanPercent } from "./knowledge-check-reveal";
 import {
   MASTERY_TRIAL_COUNT,
   NORMAL_MRI_PASS_PERCENT,
@@ -346,10 +347,10 @@ export default function KnowledgeCheck({
                   : !showFeedback
                     ? "Answer recorded."
                     : hit
-                      ? "On target."
+                      ? "On target. The shaded gold area is the range accepted here."
                       : q.locateRegion
-                        ? "Off target; the gold line traces the structure."
-                        : "Off target; the gold ring marks the actual location."}
+                        ? "Off target; the gold line traces the structure, and the shaded area is the range accepted."
+                        : "Off target; the gold ring marks the actual location, and the shaded area is the range accepted."}
               </p>
             </>
           )}
@@ -546,15 +547,24 @@ function LocatableSlice({
           preserveAspectRatio="none"
           aria-hidden="true"
         >
+          {/*
+            Halo = the band the scorer actually accepts, not a decorative glow.
+            Deliberately NOT vectorEffect="non-scaling-stroke": in user units the
+            viewBox (0 0 100 100, preserveAspectRatio="none") stretches the stroke
+            with the box exactly the way percent-space distance stretches on
+            screen, so the painted band is the hit test. Round caps reproduce the
+            endpoint discs that distanceToSegment's clamped projection accepts.
+            Alpha is lower than the old 10px stroke because this band is several
+            times wider — it must stay a translucent halo, not a solid block.
+          */}
           <line
             x1={region.start.x}
             y1={region.start.y}
             x2={region.end.x}
             y2={region.end.y}
-            stroke="rgba(255, 209, 0, 0.28)"
-            strokeWidth={10}
+            stroke="rgba(255, 209, 0, 0.18)"
+            strokeWidth={locateRevealSpanPercent(region)}
             strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
           />
           <line
             x1={region.start.x}
@@ -569,14 +579,38 @@ function LocatableSlice({
         </svg>
       )}
       {!failed && answered && showCorrect && !region && (
-        <span
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${target.x}%`, top: `${target.y}%` }}
-          aria-hidden="true"
-        >
-          <span className="block h-7 w-7 rounded-full border-2 border-ucla-gold bg-ucla-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5" />
-          <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
-        </span>
+        <>
+          {/*
+            Same honesty rule as the segment halo: the ring below is a fixed ~7px
+            while the point hit test accepts DEFAULT_LOCATE_TOLERANCE percent of the
+            box. Sized in percent of this container — the element handleClick
+            measures against — so the halo IS the accepted region, including the
+            fact that the hit test is isotropic in percent space (it reads as an
+            ellipse on a non-square box, which is exactly what the scorer accepts).
+            borderRadius 50%, not rounded-full: a 9999px radius on a non-square box
+            collapses to a pill, which would misstate the region at the ends.
+          */}
+          <span
+            data-testid="locate-tolerance-halo"
+            className="pointer-events-none absolute block -translate-x-1/2 -translate-y-1/2 bg-ucla-gold/15"
+            style={{
+              left: `${target.x}%`,
+              top: `${target.y}%`,
+              width: `${locateRevealSpanPercent()}%`,
+              height: `${locateRevealSpanPercent()}%`,
+              borderRadius: "50%",
+            }}
+            aria-hidden="true"
+          />
+          <span
+            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
+            style={{ left: `${target.x}%`, top: `${target.y}%` }}
+            aria-hidden="true"
+          >
+            <span className="block h-7 w-7 rounded-full border-2 border-ucla-gold bg-ucla-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5" />
+            <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
+          </span>
+        </>
       )}
       {!failed && answered && guess && (
         <span

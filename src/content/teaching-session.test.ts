@@ -21,6 +21,32 @@ import {
 describe("teaching session run-sheet", () => {
   const course = getCourseById(TEACHING_SESSION.courseId);
 
+  /**
+   * Faculty call slices by the number ON SCREEN, and the viewer displays
+   * sliceIndex + 1 (GuidedTour renders `MRI slice ${step.sliceIndex + 1}`).
+   * Every printed slice number is DERIVED from the tour through this helper
+   * rather than written as a literal: a marker commit moved the sagittal ACL
+   * stop to index 14 (15/29) while the run-sheet went on saying "13/29", and
+   * this file stayed green because it compared one literal against another.
+   */
+  const tourStop = (planeKey: string, title: string) => {
+    const tour = normalKneeLearn[planeKey].tour;
+    const at = tour.findIndex((step) => step.title === title);
+    if (at < 0) throw new Error(`no tour stop titled "${title}" in ${planeKey}`);
+    const series = normalKneeSeries.find((s) => s.id === planeKey);
+    if (!series) throw new Error(`no series "${planeKey}"`);
+    return {
+      /** 1-based, the way the tour header and the run-sheet count stops. */
+      number: at + 1,
+      /** e.g. "15/29" — exactly what the slice counter shows. */
+      slice: `${tour[at].sliceIndex + 1}/${series.count}`,
+    };
+  };
+
+  const sagAcl = tourStop("sag-pdfs", "Anterior cruciate ligament");
+  const sagMeniscus = tourStop("sag-pdfs", "Meniscus — the dark bow-ties");
+  const sagPlateau = tourStop("sag-pdfs", "Tibial plateau");
+
   it("targets a real course", () => {
     expect(course.id).toBe(TEACHING_SESSION.courseId);
   });
@@ -110,6 +136,12 @@ describe("teaching session run-sheet", () => {
     }
   });
 
+  /**
+   * These indices are pinned deliberately, not derived: the run-sheet's timing
+   * ("4 minutes on the ACL") is built around WHICH slice the tour lands on, so
+   * moving a marker should fail loudly here and force a faculty re-read — while
+   * the printed numbers below follow the content automatically.
+   */
   it("pins the live tour stops and displayed slices used by faculty", () => {
     const sagittal = normalKneeLearn["sag-pdfs"].tour;
     const coronal = normalKneeLearn["cor-pdfs"].tour;
@@ -128,6 +160,13 @@ describe("teaching session run-sheet", () => {
     expect(new Set(coronal.map((step) => step.sliceIndex))).toEqual(new Set([7]));
     expect(axial).toHaveLength(9);
     expect(new Set(axial.map((step) => step.sliceIndex))).toEqual(new Set([13]));
+  });
+
+  it("quotes the tour's own displayed slices in the hour-1 faculty note", () => {
+    const sagTour = SESSION_HOUR_ONE.find((s) => s.seriesId === "sag-pdfs" && s.mode === "tour");
+    expect(sagTour, "hour 1 no longer runs the sagittal guided tour").toBeDefined();
+    expect(sagTour!.facultyNote).toContain(`stop ${sagMeniscus.number} (menisci, slice ${sagMeniscus.slice})`);
+    expect(sagTour!.facultyNote).toContain(`stop ${sagAcl.number} (ACL, slice ${sagAcl.slice})`);
   });
 
   it("invite text carries the live course URL", () => {
@@ -187,9 +226,24 @@ describe("teaching session run-sheet", () => {
       expect(lower).not.toContain("femoral-sided carries higher *recurrence*");
     });
 
-    it("matches current image access, ACL slice, and medical safety language", () => {
+    /**
+     * Both places the doc prints a sagittal slice number — the "spend the time
+     * here" table and the say-this-out-loud script — are checked against the
+     * tour, so a marker move can never leave faculty calling a stale slice to
+     * three fellows mid-session.
+     */
+    it("prints the slice numbers the sagittal tour actually jumps to", () => {
+      expect(runsheet).toContain(`| **${sagPlateau.number} · Tibial plateau** (${sagPlateau.slice}) |`);
+      expect(runsheet).toContain(
+        `| **${sagMeniscus.number} · Meniscus — bow-ties** (${sagMeniscus.slice}) |`,
+      );
+      expect(runsheet).toContain(`| **${sagAcl.number} · ACL** (${sagAcl.slice}) |`);
+      expect(runsheet).toContain(`stop ${sagMeniscus.number}, menisci (slice ${sagMeniscus.slice}`);
+      expect(runsheet).toContain(`stop ${sagAcl.number}, ACL (slice ${sagAcl.slice})`);
+    });
+
+    it("matches current image access and medical safety language", () => {
       const lower = runsheet.toLowerCase();
-      expect(runsheet).toContain("**9 · ACL** (13/29)");
       expect(lower).toContain("compact local image rail");
       expect(lower).toContain("does **not** exclude an intra-articular fracture");
       expect(lower).toContain("sif with osteonecrosis (sif-on)");

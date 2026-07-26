@@ -125,7 +125,7 @@ export const SESSION_HOUR_ONE = [
     minutes: "1:08 – 1:26",
     label: "Sagittal PD-FS — Guided Tour (11 stops)",
     facultyNote:
-      "Stops 1-6 are naming (6 min); stops 7-11 are reading (12 min). Spend the time on stop 3 (tibial plateau — plants Case 1's bruise), stop 7 (menisci, slice 9/29) and stop 9 (ACL, slice 13/29).",
+      "Stops 1-6 are naming (6 min); stops 7-11 are reading (12 min). Spend the time on stop 3 (tibial plateau — plants Case 1's bruise), stop 7 (menisci, slice 9/29) and stop 9 (ACL, slice 15/29).",
     seriesId: "sag-pdfs",
     mode: "tour",
   },

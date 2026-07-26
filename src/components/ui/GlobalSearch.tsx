@@ -1,3 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
+// buildIndex/search are exported alongside the component so the spoiler-safety
+// rule below can be asserted directly in a unit test (GlobalSearch.test.tsx)
+// rather than inferred from rendered markup.
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { getPearlsForRegion } from "@/content/daily-pearls";
@@ -96,7 +100,7 @@ const DIFFICULTY_LABEL: Record<string, string> = {
   advanced: "Advanced",
 };
 
-function buildIndex(
+export function buildIndex(
   role: string | null,
   course: CourseDefinition,
   completedCaseIds: Set<string>,
@@ -135,9 +139,12 @@ function buildIndex(
   });
 
   // Cases (filter by role). SPOILER-SAFE: an unopened case must not reveal its
-  // diagnosis. CasesPage renders it as "Case N: Difficulty" and matches only on
-  // scenario+tags until completed — mirror that here, or global search becomes a
-  // back door to every answer (type "acl" → the ACL case surfaces by title).
+  // diagnosis. CasesPage renders it as "Case N: Difficulty" and matches on the
+  // clinical scenario ALONE until completed — mirror that exactly, or global
+  // search becomes a back door to every answer. Tags are as diagnostic as the
+  // title ("acl", "root-tear"), so they stay out of the index until the learner
+  // has actually read the MRI; they join it, with the title and diagnoses, once
+  // the case is completed.
   // Number within the case's OWN group (core / advanced), 1-based, to match
   // CasesPage's "Case N" label.
   const indexCase = (c: ReturnType<typeof getVisibleCoreCases>[number], caseNumber: number) => {
@@ -158,7 +165,7 @@ function buildIndex(
       items.push({
         id: `case-${c.id}`,
         title: `Case ${caseNumber}: ${DIFFICULTY_LABEL[c.difficulty] ?? "Case"}`,
-        body: `${c.clinicalScenario} ${c.tags.join(" ")}`,
+        body: c.clinicalScenario,
         category: "case",
         route: coursePath(course, `/cases/${c.id}`),
       });
@@ -218,7 +225,7 @@ function buildIndex(
 // Search logic (case-insensitive, partial-word matching)
 // ---------------------------------------------------------------------------
 
-function search(index: SearchItem[], query: string): SearchResult[] {
+export function search(index: SearchItem[], query: string): SearchResult[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];
 
