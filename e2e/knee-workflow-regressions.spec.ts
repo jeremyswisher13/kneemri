@@ -80,3 +80,37 @@ test("knee case stays blind through commit and keeps images beside every step", 
     "https://radiopaedia.org/cases/pivot-shift-injury-with-acl-tear?lang=us",
   );
 });
+
+// The blinding test above can only exercise cases that HAVE embedded images.
+// Cases without them (multiligament, post-repair-retear, acl-graft-evaluation)
+// render a different branch that used to print the expectedFindings answer key
+// on the opening screen, before any commit.
+test("image-less knee case does not leak its findings before commit", async ({ page }) => {
+  await page.goto("/courses/knee-mri/cases/multiligament");
+
+  await expect(page.getByRole("heading", { name: "Knee MRI Case", exact: true })).toBeVisible();
+  // The branch is reached at all (i.e. this case really has no embedded images).
+  await expect(page.getByTestId("image-review-focus-locked")).toContainText(
+    "Unlocks after you commit your read or choose Skip and reveal.",
+  );
+  await expect(page.getByTestId("image-review-focus")).toHaveCount(0);
+
+  // The specific answer-key strings that used to render here.
+  await expect(page.getByText(/ACL complete tear/i)).toHaveCount(0);
+  await expect(page.getByText(/PCL complete tear/i)).toHaveCount(0);
+  await expect(page.getByText(/LCL tear \(PLC disruption\)/i)).toHaveCount(0);
+  await expect(page.getByText("Multiligament Knee Injury", { exact: true })).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Begin Case Walkthrough/ }).click();
+  for (let step = 1; step < 7; step += 1) {
+    await page.getByRole("button", { name: /Next Step/ }).click();
+  }
+  await page.getByRole("button", { name: /Commit your read/ }).click();
+  await page.getByRole("button", { name: "Skip and reveal" }).click();
+
+  // After the commit gate the same block is expected to appear.
+  await expect(page.getByRole("button", { name: "Clinical", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Clinical", exact: true }).click();
+  await expect(page.getByTestId("image-review-focus")).toBeVisible();
+  await expect(page.getByTestId("image-review-focus-locked")).toHaveCount(0);
+});

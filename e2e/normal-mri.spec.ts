@@ -527,6 +527,27 @@ for (const fixture of WORKSTATIONS) {
       await page.mouse.wheel(0, -120);
       await expect(viewer).toHaveAttribute("data-slice-index", "0");
       if (testInfo.project.name === "desktop-chromium" && series === firstSeries) {
+        // MID-STACK: capturing the wheel to scrub is intentional (2fc634e, confirmed
+        // 2026-07-26). Pinned here because the unit guard that used to assert the
+        // opposite was inverted rather than replaced, so nothing covered this.
+        const midIndex = Math.floor(count / 2);
+        await viewer.focus();
+        for (let i = 0; i < midIndex; i += 1) await viewer.press("ArrowRight");
+        await expect(viewer).toHaveAttribute("data-slice-index", String(midIndex));
+        await viewer.hover();
+        const readScroll = () =>
+          page.evaluate(
+            () => window.scrollY + (document.querySelector<HTMLElement>("#main-content")?.scrollTop ?? 0),
+          );
+        const scrollBeforeMidWheel = await readScroll();
+        await page.mouse.wheel(0, 120);
+        await expect(viewer).toHaveAttribute("data-slice-index", String(midIndex + 1));
+        expect(await readScroll()).toBe(scrollBeforeMidWheel);
+        await viewer.press("Home");
+        await expect(viewer).toHaveAttribute("data-slice-index", "0");
+
+        // END-OF-STACK: the wheel must be handed back to the page, otherwise the
+        // viewer becomes the permanent scroll trap that 128a78f originally fixed.
         await viewer.hover();
         const scrollBeforeBoundaryWheel = await page.evaluate(() => window.scrollY);
         expect(scrollBeforeBoundaryWheel).toBeGreaterThan(0);

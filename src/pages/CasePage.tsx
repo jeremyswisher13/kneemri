@@ -679,22 +679,44 @@ export default function CasePage() {
                   optional image review.
                 </p>
                 {readoutFindings.length > 0 && (
-                  <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Image review focus
-                    </p>
-                    <ul className="mt-2 space-y-2">
-                      {readoutFindings.map((finding, index) => (
-                        <li key={`${finding.step}-${index}`} className="text-xs leading-relaxed text-gray-600">
-                          <span className="font-semibold text-gray-800">
-                            Step {finding.step}: {finding.stepName}
-                          </span>
-                          {" — "}
-                          {finding.finding}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  // These entries are the case's expectedFindings — i.e. the answer
+                  // key. Cases without embedded images used to render them on the
+                  // opening screen, before the fellow committed a read, which handed
+                  // over the diagnosis (e.g. "Step 5: Ligaments — ACL complete tear").
+                  // Gate them the same way the external-stack link is gated.
+                  answersRevealed ? (
+                    <div
+                      data-testid="image-review-focus"
+                      className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        Image review focus
+                      </p>
+                      <ul className="mt-2 space-y-2">
+                        {readoutFindings.map((finding, index) => (
+                          <li key={`${finding.step}-${index}`} className="text-xs leading-relaxed text-gray-600">
+                            <span className="font-semibold text-gray-800">
+                              Step {finding.step}: {finding.stepName}
+                            </span>
+                            {" — "}
+                            {finding.finding}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div
+                      data-testid="image-review-focus-locked"
+                      className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        Image review focus
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        Unlocks after you commit your read or choose Skip and reveal.
+                      </p>
+                    </div>
+                  )
                 )}
               </div>
             )}

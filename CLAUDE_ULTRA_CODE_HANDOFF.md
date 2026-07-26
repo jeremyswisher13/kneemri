@@ -6,7 +6,9 @@ Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-a
 
 Branch: `main`
 
-Current product HEAD: `921a298 Use Sports MRI Academy canonical domain`. The July 19 handoff HEAD was `be2f5ea`; retain the detailed historical sections below, but use `git log` as the source of truth for all work after that handoff.
+Current product HEAD: see `git log` — this line has gone stale twice, so treat git as authoritative rather than trusting a sha written here. The July 19 handoff HEAD was `be2f5ea`; retain the detailed historical sections below, but use `git log` as the source of truth for all work after that handoff.
+
+**Direction change (2026-07-26): the project is moving toward commercialization** — selling institutional licenses under the name **Sports MRI Academy**, with UCLA branding removed. Before acting on anything branding-related in this document, read "Commercialization: what blocks taking money" below. Two things are load-bearing: 33 shipped teaching images carry NonCommercial licenses that forbid paid distribution, and admin access is a single global allowlist with no notion of an organization.
 
 Production:
 
@@ -26,9 +28,53 @@ The web/PWA is the active shipping surface. Native iOS submission remains paused
 - Namecheap DNS intentionally retains the email-forwarding SPF TXT record alongside Firebase's ownership TXT record. Do not remove the SPF record merely because two apex TXT records are present.
 - The Firebase Hosting records are apex `A 199.36.158.100`, apex `TXT hosting-site=ucla-knee-mri`, and `www CNAME ucla-knee-mri.web.app`.
 - `www.sportsmriacademy.com` is configured in Firebase as a redirect to the apex domain. Do not replace it with a Namecheap URL redirect; Firebase owns HTTPS and the redirect certificate.
-- Final 2026-07-26 check: Firebase accepted both domain setups and shows the apex and `www` rows as **Minting certificate**. Firebase states this can take up to 24 hours. Do not restart setup or alter the verified DNS records while issuance is in progress; wait for both rows to become **Connected**, then run HTTPS/login/PWA checks on the new origin.
+- **Certificate issuance COMPLETED and verified live on 2026-07-26.** The apex serves HTTPS 200 with a valid certificate, `www` 301-redirects to the apex, and `sportsmriacademy.com`, `jeremyswisherkneemri.com`, and `ucla-knee-mri.web.app` all serve the same bundle. Verified on the new origin: the app shell renders with zero console errors, `canonical`/`og:url`/`og:image` all point at the new domain, `og-image.jpg` (200, image/jpeg), `manifest.webmanifest` (200), `sw.js` (200), and `/__/auth/handler` (200). The legacy domain also advertises the new canonical, so bookmarks and installed home-screen apps keep working while indexing consolidates.
+- Still outstanding on the new origin: the live release gate has only ever been run against `firebaseapp.com` (`scripts/ios-live-readiness.mjs` defaults there), so re-run it as `LIVE_APP_BASE_URL=https://sportsmriacademy.com npm run preflight:ios:live`; and Google sign-in has not been exercised by hand from the new origin in mobile Safari or an installed PWA (the popup hops to `ucla-knee-mri.firebaseapp.com`, which is exactly the class of hop that caused the earlier iOS Safari bounce).
+- Known SEO caveat from the migration: `index.html` carries a single hardcoded `rel=canonical` pointing at the apex, and `firebase.json` rewrites `**` to `/index.html`, so **every route declares itself a duplicate of the homepage**. Harmless if the app is effectively invite-only; fix with per-route canonical updates if course pages should be indexed.
 - Keep `jeremyswisherkneemri.com` attached to the same Hosting site so existing bookmarks and installed home-screen apps continue working. New installs and shared links should use the Sports MRI Academy domain.
 - Keep `src/lib/firebase.ts` on `authDomain: "ucla-knee-mri.firebaseapp.com"`. The new domains are authorized origins, not replacement callback hosts.
+
+## Commercialization: what blocks taking money
+
+Direction set 2026-07-26: sell institutional licenses as **Sports MRI Academy**, drop UCLA
+identity. The domain migration already landed the name. Two findings are load-bearing and were
+verified directly in the repo — do not start rebranding work without accounting for them.
+
+**1. 33 shipped teaching images carry NonCommercial licenses.** `CC BY-NC`, `CC BY-NC-SA`, and
+at least one `-ND` variant appear in `src/content/**` attribution strings. NonCommercial terms
+forbid use in a product sold for money; `-SA` (share-alike) additionally propagates obligations
+to the derived work, and `-ND` forbids the cropping and annotating that a teaching image
+inherently requires. Concentration by area: `cases/acl-pivot-shift/` 11 (the flagship case),
+`modules/module7-ligaments/` 4, `modules/module4-bones/` 4 (all four contusion patterns),
+`shoulder/modules/` 3, and the 5 ultrasound correlates under `images/teaching/us/`. Roughly 100
+further attributions are plain `CC BY`, which **is** fine commercially with attribution — so the
+sourcing habit is already mostly right and the fix is targeted replacement, not a rebuild. This
+is a licensing question for an IP attorney, not something to resolve by reading the deed text.
+
+**2. There is no concept of an organization.** Admin is a global hardcoded email allowlist (see
+"Administrator Access"), so the moment a second institution exists, each customer's admin can
+read every other customer's learners. Org entity, org-scoped roles, seat/license enforcement,
+per-org reporting, and data isolation in `firestore.rules` all have to exist before two paying
+customers can coexist. The analytics, psychometrics, research-export, tracked-fellows panel, and
+the `weeklyDigest` function are all written around a single global cohort and will need scoping.
+
+**Upstream of everything, and unresolved: IP ownership.** The work was created while Jeremy is
+UCLA faculty and the course carries UCLA branding, certificates, and copyright language. Whether
+it is fully his to sell is a question for UCLA's technology-transfer / OTL office and his own
+counsel. Removing UCLA branding lowers trademark exposure — it does **not** settle ownership.
+Resolve this before investing in billing, contracts, or a sales motion.
+
+Sequencing traps, learned the hard way elsewhere in this document:
+
+- Do **not** rename the `uclaSportsMri.*` localStorage key prefix without a migration path —
+  those keys are persisted on real devices and silently dropping them discards learner state.
+- Do **not** rename the Firebase project (`ucla-knee-mri`) or `authDomain`. The authDomain is the
+  registered Apple Service ID return URL and the only host allowlisted in the native shell;
+  renaming breaks Google/Apple sign-in. The project id is not user-visible — leave it alone.
+- Do **not** alter certificate wording for already-issued certificates without a plan; three
+  fellows hold certificates naming the current institution.
+- Do **not** imply CME credit or accreditation you do not hold. Selling a "certificate" makes
+  that claim materially riskier than giving one away.
 
 ## Start Here
 
@@ -211,21 +257,45 @@ This fixed a user-reported production bug.
 
 Root cause: `MriStackViewer` unconditionally called `preventDefault()` for every wheel/trackpad event over the large image. On desktop, the image occupies much of the viewport, making the page feel completely scroll-locked.
 
-Current required behavior:
+**SUPERSEDED on 2026-07-24 — see "Wheel behavior: current contract" immediately below.** The
+July 19 rule ("ordinary vertical wheel/trackpad gestures scroll the page, even directly over the
+MRI image; do not restore unconditional vertical-wheel slice capture") no longer describes what
+ships. It is preserved here only so the history of the original production bug is legible.
 
-- Ordinary vertical wheel/trackpad gestures scroll the page, even directly over the MRI image.
-- Horizontal trackpad gestures scrub slices.
-- Shift + mouse wheel scrubs slices.
-- Drag, arrow keys, slider, previous/next controls, and cine playback still work.
-- Small diagonal or jitter events must not accidentally change slices.
-
-Do not restore unconditional vertical-wheel slice capture. The behavior is isolated in:
+The behavior remains isolated in:
 
 - `src/components/ui/MriStackViewer.tsx`
 - `src/components/ui/mri-stack-wheel.ts`
+- `src/components/ui/mri-stack-wheel.test.ts`
 - `src/components/ui/MriStackViewer.test.tsx`
 
-Two shoulder case captions were updated so their instructions match the new controls.
+Two shoulder case captions were updated so their instructions match the controls.
+
+### Wheel behavior: current contract (supersedes `128a78f`)
+
+`2fc634e` deliberately made the mouse wheel scrub slices, and Jeremy confirmed on 2026-07-26 that
+this is **intentional** — scrubbing a stack with the wheel is the natural radiology-workstation
+gesture and is how the app is taught. The required behavior today is:
+
+- **Any wheel/trackpad gesture over the viewer scrubs slices** (vertical or horizontal) and
+  consumes the event.
+- When the stack is **exhausted in the direction of travel**, the wheel stops being consumed and
+  is handed back to the page, so the user can keep scrolling past the viewer without a dead zone.
+  This handoff is the reason the original scroll-lock bug does not recur.
+- Ctrl+wheel is never consumed — browser pinch-zoom must keep working.
+- Sub-pixel jitter (|delta| < 1 in pixel mode) does not step a slice.
+- Drag, arrow keys, slider, previous/next controls, and cine playback still work; manual stepping
+  pauses cine.
+
+Trade-off accepted knowingly: on a long page, a user scrolling through the middle of a stack must
+traverse the remaining slices (19–44) before the page scrolls again. If that ever becomes a
+complaint, the intended fix is to gate capture on the viewer having focus, **not** to silently
+revert to the July 19 rule.
+
+Guarding this: `mri-stack-wheel.test.ts` pins the step function and `MriStackViewer.test.tsx`
+pins the mid-stack capture plus the end-of-stack handoff. Do not delete a wheel test to make a
+behavior change pass — `2fc634e` inverted the old guard assertion rather than replacing it, which
+is how this contract silently diverged from the documentation for two days.
 
 ## Browser QA Evidence
 
@@ -345,13 +415,44 @@ Priority order:
    - Do not run `npm audit fix --force`; the proposed resolution changes `firebase-admin` across a breaking boundary.
    - Firebase deploy also warns that the Functions package uses an older `firebase-functions` version. Upgrade Functions separately with emulator/tests rather than mixing it into learner-facing work.
 
+## Administrator Access (who has it, and why)
+
+Admin is granted by a hardcoded email allowlist that must stay identical in two places —
+`src/lib/auth.ts` (`ADMIN_EMAILS`, controls what the client renders) and `firestore.rules`
+(`isAdminEmail()`, controls what the server actually permits). `src/lib/admin-emails.test.ts`
+asserts the two lists are equal; that test proves **file-to-file parity only**, never that the
+live ruleset matches the repo.
+
+Current standing administrators:
+
+- `jswisher@mednet.ucla.edu` — course director.
+- `kimberlymburbank@gmail.com` — **Dr. Kimberly Burbank, standing co-faculty. Intentional and
+  ratified by Jeremy on 2026-07-26.** Granted in `d14b367` for the 2026-07-24 live session and
+  deliberately retained afterward. This is NOT a leftover; do not "clean it up." If it is ever
+  revoked, remove it from `auth.ts` AND `firestore.rules`, delete the assertion in
+  `admin-emails.test.ts`, and redeploy rules.
+
+Two things to know before touching this:
+
+1. **Admin is global, not scoped.** An admin reads every learner document and subcollection,
+   can write any learner's `quizAttempts`/`progress`, and can read/delete `issueReports` and
+   `accountDeletionRequests`. There is no per-course or per-cohort admin. Any move toward
+   selling institutional licenses has to replace this allowlist with org-scoped roles before a
+   second institution exists — otherwise every customer's admin sees every other customer's
+   learners.
+2. **Editing `firestore.rules` changes nothing until it is deployed.** Hosting deploys do not
+   ship rules. After any allowlist change: `firebase deploy --only firestore:rules`. As of
+   2026-07-26 there is no artifact in the repo recording a rules deploy after `d14b367`, so if
+   Dr. Burbank's admin actions failed with permission-denied on 7/24, an undeployed ruleset is
+   the first thing to check.
+
 ## Critical Behavior Contracts
 
 - Pre-assessment remains a clean baseline: no answer-key feedback and no spaced-review seeding.
 - Workstation review IDs and entries remain course-scoped.
 - Every normal MRI course requires passing each plane knowledge check at 70% for normal-MRI completion.
 - Knee cases remain optional for certificate completion; non-knee course requirements follow existing course definitions.
-- `MriStackViewer` must not trap ordinary vertical desktop scrolling.
+- `MriStackViewer` captures the wheel to scrub slices (intentional as of 2026-07-24 — see "Wheel behavior: current contract") and MUST hand the wheel back to the page once the stack is exhausted in the direction of travel, so the viewer never becomes a permanent scroll trap.
 - On mobile, vertical touch scrubs the MRI; the approximately 40 px side gutters remain available for reliable page scrolling.
 - Double-tap zoom must be armed only by a stationary single-finger tap, never by rapid scrub flicks.
 - Manual scrub/slider/previous/next input pauses cine playback.
