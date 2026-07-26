@@ -47,7 +47,7 @@ export default function AdminSettingsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -80,7 +80,7 @@ export default function AdminSettingsPage() {
                 <button
                   onClick={() => handleToggle(c.id)}
                   disabled={toggling}
-                  className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:opacity-60 ${
+                  className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 disabled:opacity-60 ${
                     unlocked ? "bg-green-500" : "bg-gray-300"
                   }`}
                   role="switch"

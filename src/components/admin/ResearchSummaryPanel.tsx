@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CourseDefinition } from "@/content/courses";
-import { UCLA_BLUE, type Fellow } from "@/components/admin/shared";
+import { BRAND_BLUE, type Fellow } from "@/components/admin/shared";
 import {
   buildCohortReport,
   buildResearchDataset,
@@ -244,9 +244,9 @@ export default function ResearchSummaryPanel({ fellows, course }: Props) {
             <button
               onClick={handleCsv}
               className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
-              style={{ backgroundColor: UCLA_BLUE }}
+              style={{ backgroundColor: BRAND_BLUE }}
               onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#005587")}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = UCLA_BLUE)}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = BRAND_BLUE)}
             >
               De-identified data (CSV)
             </button>
@@ -254,7 +254,7 @@ export default function ResearchSummaryPanel({ fellows, course }: Props) {
               onClick={handlePdf}
               disabled={pdfBusy}
               className="inline-flex items-center gap-2 rounded-lg border-2 px-4 py-2 text-sm font-semibold shadow-sm transition-colors disabled:opacity-60"
-              style={{ borderColor: UCLA_BLUE, color: UCLA_BLUE, backgroundColor: "white" }}
+              style={{ borderColor: BRAND_BLUE, color: BRAND_BLUE, backgroundColor: "white" }}
             >
               {pdfBusy ? "Building…" : "Summary report (PDF)"}
             </button>

@@ -45,7 +45,7 @@ export interface CourseDefinition {
 export const courseRegistry: CourseDefinition[] = [
   {
     id: "knee-mri",
-    title: "UCLA Knee MRI Interpretation Course",
+    title: "Knee MRI Interpretation Course",
     shortTitle: "Knee MRI",
     dashboardTitle: "Knee MRI Interpretation",
     description:

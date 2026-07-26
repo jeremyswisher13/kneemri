@@ -43,8 +43,8 @@ function toEvent(ts: Timestamp, kind: TimelineEvent["kind"], title: string, subt
 const KIND_CONFIG: Record<TimelineEvent["kind"], { dot: string; ring: string; pill: string; label: string }> = {
   "pre-quiz":    { dot: "bg-amber-400",  ring: "ring-amber-100",  pill: "bg-amber-50 text-amber-700",   label: "Pre-Quiz" },
   "pre-survey":  { dot: "bg-amber-300",  ring: "ring-amber-100",  pill: "bg-amber-50 text-amber-700",   label: "Pre-Survey" },
-  "module":      { dot: "bg-ucla-blue",  ring: "ring-blue-100",   pill: "bg-blue-50 text-ucla-blue",    label: "Module" },
-  "case":        { dot: "bg-ucla-gold",  ring: "ring-yellow-100", pill: "bg-yellow-50 text-yellow-700", label: "Case" },
+  "module":      { dot: "bg-brand-blue",  ring: "ring-blue-100",   pill: "bg-blue-50 text-brand-blue",    label: "Module" },
+  "case":        { dot: "bg-brand-gold",  ring: "ring-yellow-100", pill: "bg-yellow-50 text-yellow-700", label: "Case" },
   "post-quiz":   { dot: "bg-green-500",  ring: "ring-green-100",  pill: "bg-green-50 text-green-700",   label: "Post-Quiz" },
   "post-survey": { dot: "bg-green-400",  ring: "ring-green-100",  pill: "bg-green-50 text-green-700",   label: "Post-Survey" },
 };

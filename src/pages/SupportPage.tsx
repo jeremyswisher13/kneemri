@@ -4,8 +4,8 @@ import Card from "@/components/ui/Card";
 export default function SupportPage() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Support</p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">UCLA Sports MRI Support</h1>
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Support</p>
+      <h1 className="mt-2 text-2xl font-bold text-gray-900">Sports MRI Academy Support</h1>
       <p className="mt-2 text-sm leading-6 text-gray-600">
         For access, account, privacy, or content-review questions, contact the UCLA Sports Medicine
         course team or your fellowship/course director.
@@ -38,7 +38,7 @@ export default function SupportPage() {
             technology, and what happened when you contact the course team.
           </p>
           <div className="mt-4">
-            <Link to="/accessibility" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/accessibility" className="text-sm font-semibold text-brand-blue hover:underline">
               Accessibility statement
             </Link>
           </div>
@@ -50,10 +50,10 @@ export default function SupportPage() {
             Signed-in users can request account deletion from the Account page.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/account" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/account" className="text-sm font-semibold text-brand-blue hover:underline">
               Account page
             </Link>
-            <Link to="/privacy" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/privacy" className="text-sm font-semibold text-brand-blue hover:underline">
               Privacy policy
             </Link>
           </div>

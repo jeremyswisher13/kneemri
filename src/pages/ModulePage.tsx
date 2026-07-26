@@ -333,7 +333,7 @@ export default function ModulePage() {
 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-        <Link to={coursePath(activeCourse, "/modules")} className="hover:text-ucla-blue transition-colors">
+        <Link to={coursePath(activeCourse, "/modules")} className="hover:text-brand-blue transition-colors">
           Modules
         </Link>
         <span>/</span>
@@ -343,7 +343,7 @@ export default function ModulePage() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ucla-blue text-white text-sm font-bold">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-blue text-white text-sm font-bold">
             {mod.number}
           </div>
           <div>
@@ -398,7 +398,7 @@ export default function ModulePage() {
         <div className="mb-4">
           <Link
             to={coursePath(activeCourse, `/search-pattern?step=${mod.searchPatternStep}`)}
-            className="inline-flex items-center gap-2 rounded-full border border-ucla-blue/25 bg-ucla-blue/5 px-3 py-1.5 text-xs font-medium text-ucla-blue transition-colors hover:bg-ucla-blue/10"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-blue/25 bg-brand-blue/5 px-3 py-1.5 text-xs font-medium text-brand-blue transition-colors hover:bg-brand-blue/10"
           >
             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -421,8 +421,8 @@ export default function ModulePage() {
 
       {/* Learning Objectives */}
       {mod.learningObjectives && mod.learningObjectives.length > 0 && (
-        <div className="mb-6 rounded-xl border border-ucla-blue/20 bg-ucla-light/50 p-5">
-          <h3 className="text-sm font-bold text-ucla-dark mb-3 flex items-center gap-2">
+        <div className="mb-6 rounded-xl border border-brand-blue/20 bg-brand-light/50 p-5">
+          <h3 className="text-sm font-bold text-brand-dark mb-3 flex items-center gap-2">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
             </svg>
@@ -432,7 +432,7 @@ export default function ModulePage() {
           <ul className="space-y-1.5">
             {mod.learningObjectives.map((obj, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-ucla-blue" />
+                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue" />
                 {obj}
               </li>
             ))}
@@ -444,7 +444,7 @@ export default function ModulePage() {
       <div className="mb-4 flex justify-end">
         <button
           onClick={expandedTopics.size === visibleTopics.length ? collapseAll : expandAll}
-          className="text-sm text-ucla-blue hover:underline"
+          className="text-sm text-brand-blue hover:underline"
         >
           {expandedTopics.size === visibleTopics.length ? "Collapse all sections" : "Expand all sections"}
         </button>
@@ -479,7 +479,7 @@ export default function ModulePage() {
                 className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ucla-light text-ucla-blue text-xs font-semibold">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-blue text-xs font-semibold">
                     {displayIndex + 1}
                   </span>
                   <span className="font-medium text-gray-900">{topic}</span>
@@ -645,7 +645,7 @@ export default function ModulePage() {
               <h3 className="mt-3 text-xl font-bold text-gray-900">
                 Module Complete!
               </h3>
-              <p className="mt-2 text-3xl font-bold text-ucla-blue">
+              <p className="mt-2 text-3xl font-bold text-brand-blue">
                 {quizResults.score}/{quizResults.total}
               </p>
               <p className="text-sm text-gray-500">
@@ -659,7 +659,7 @@ export default function ModulePage() {
               {/* Continue to next module button */}
               {nextModule ? (
                 <Link to={coursePath(activeCourse, `/modules/${nextModule.id}`)} className="mt-5 inline-block">
-                  <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
+                  <button className="inline-flex items-center gap-2 rounded-lg bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors">
                     Continue to Module {nextModule.number}: {nextModule.title}
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -668,7 +668,7 @@ export default function ModulePage() {
                 </Link>
               ) : (
                 <Link to={coursePath(activeCourse, "/cases")} className="mt-5 inline-block">
-                  <button className="inline-flex items-center gap-2 rounded-lg bg-ucla-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-ucla-dark transition-colors">
+                  <button className="inline-flex items-center gap-2 rounded-lg bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors">
                     All modules complete! Continue to Cases
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -718,7 +718,7 @@ export default function ModulePage() {
                         <button
                           type="button"
                           onClick={() => openAndScrollToTopic(d.question.topicIndex)}
-                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-ucla-blue hover:underline"
+                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-blue hover:underline"
                         >
                           Review this topic
                           <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -747,8 +747,8 @@ export default function ModulePage() {
             </div>
 
             {isAdminView && (
-              <div className="mb-5 flex items-center justify-between gap-3 rounded-lg border border-ucla-gold/40 bg-ucla-gold/10 px-4 py-2.5">
-                <span className="text-xs font-medium text-ucla-dark">
+              <div className="mb-5 flex items-center justify-between gap-3 rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-4 py-2.5">
+                <span className="text-xs font-medium text-brand-dark">
                   Admin view — quiz results are not recorded.
                 </span>
                 <Link
@@ -901,9 +901,9 @@ export default function ModulePage() {
         ) : (
           /* Not completed — show take quiz prompt */
           <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-ucla-light">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-light">
               <svg
-                className="h-6 w-6 text-ucla-blue"
+                className="h-6 w-6 text-brand-blue"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}

@@ -151,7 +151,9 @@ describe("pwa helpers", () => {
     expect(sw).toContain('"/apple-touch-icon.png"');
     expect(sw).toContain("html.matchAll");
     expect(sw).toContain('event.data?.type === "SKIP_WAITING"');
-    expect(favicon).toContain("UCLA Sports MRI favicon");
+    // Asserts the favicon carries the product's own title rather than a
+    // scaffold default (#863bff is Vite's placeholder purple).
+    expect(favicon).toContain("Sports MRI Academy favicon");
     expect(favicon).not.toContain("#863bff");
   });
 

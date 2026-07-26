@@ -85,7 +85,7 @@ export default function MedicalQaReadinessPanel({ course }: MedicalQaReadinessPa
         </div>
         <Link
           to={medicalQaFilterPath({ courseId: course.id, status: "pending", risk: "high" })}
-          className="inline-flex items-center justify-center rounded-lg border border-ucla-blue bg-white px-3 py-2 text-sm font-semibold text-ucla-blue transition-colors hover:bg-ucla-light"
+          className="inline-flex items-center justify-center rounded-lg border border-brand-blue bg-white px-3 py-2 text-sm font-semibold text-brand-blue transition-colors hover:bg-brand-light"
         >
           Open high-risk queue
         </Link>
@@ -93,7 +93,7 @@ export default function MedicalQaReadinessPanel({ course }: MedicalQaReadinessPa
 
       {loading ? (
         <div className="mt-5 h-2 overflow-hidden rounded-full bg-gray-100">
-          <div className="h-full w-1/3 animate-pulse rounded-full bg-ucla-blue/40" />
+          <div className="h-full w-1/3 animate-pulse rounded-full bg-brand-blue/40" />
         </div>
       ) : error ? (
         <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-700">

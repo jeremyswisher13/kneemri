@@ -12,7 +12,7 @@ export default function PreAssessmentPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -84,7 +84,7 @@ export default function PreAssessmentPage() {
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${
                 progress.preQuizCompleted
                   ? "bg-green-100"
-                  : "bg-ucla-light"
+                  : "bg-brand-light"
               }`}
             >
               {progress.preQuizCompleted ? (
@@ -103,7 +103,7 @@ export default function PreAssessmentPage() {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6 text-ucla-blue"
+                  className="h-6 w-6 text-brand-blue"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
@@ -154,7 +154,7 @@ export default function PreAssessmentPage() {
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${
                 progress.preSurveyCompleted
                   ? "bg-green-100"
-                  : "bg-ucla-light"
+                  : "bg-brand-light"
               }`}
             >
               {progress.preSurveyCompleted ? (
@@ -173,7 +173,7 @@ export default function PreAssessmentPage() {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6 text-ucla-blue"
+                  className="h-6 w-6 text-brand-blue"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}

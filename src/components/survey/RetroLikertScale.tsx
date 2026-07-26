@@ -49,7 +49,7 @@ function Row({
     <fieldset>
       <legend className="mb-1.5 flex items-baseline gap-2">
         <span
-          className={`text-xs font-semibold ${accent === "now" ? "text-ucla-blue" : "text-amber-600"}`}
+          className={`text-xs font-semibold ${accent === "now" ? "text-brand-blue" : "text-amber-600"}`}
         >
           {legend}
         </span>
@@ -65,7 +65,7 @@ function Row({
           const isSelected = rating === value;
           const selectedClass =
             accent === "now"
-              ? "border-ucla-blue bg-ucla-light text-ucla-blue"
+              ? "border-brand-blue bg-brand-light text-brand-blue"
               : "border-amber-400 bg-amber-50 text-amber-700";
           return (
             <button
@@ -111,7 +111,7 @@ export default function RetroLikertScale({
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-5">
       <p className="mb-4 text-sm font-medium text-gray-900">
-        <span className="mr-2 font-semibold text-ucla-blue">{index}.</span>
+        <span className="mr-2 font-semibold text-brand-blue">{index}.</span>
         {statement.statement}
       </p>
       <div className="space-y-4">

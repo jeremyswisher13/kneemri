@@ -216,7 +216,7 @@ export default function AnatomyReference() {
   return (
     <div>
       <div className="mb-4 flex justify-end gap-3">
-        <button onClick={expandAll} className="text-xs text-ucla-blue hover:underline">
+        <button onClick={expandAll} className="text-xs text-brand-blue hover:underline">
           Expand all
         </button>
         <button onClick={collapseAll} className="text-xs text-gray-500 hover:underline">
@@ -233,7 +233,7 @@ export default function AnatomyReference() {
               onClick={() => toggleSection(idx)}
               className="flex w-full items-center justify-between px-5 py-3 text-left hover:bg-gray-50 transition-colors"
             >
-              <span className="text-sm font-semibold text-ucla-dark">
+              <span className="text-sm font-semibold text-brand-dark">
                 {section.title}
               </span>
               <div className="flex items-center gap-2">
@@ -264,7 +264,7 @@ export default function AnatomyReference() {
                     <div className="space-y-2.5">
                       {sub.items.map((item) => (
                         <div key={item.structure}>
-                          <p className="text-sm font-medium text-ucla-blue">
+                          <p className="text-sm font-medium text-brand-blue">
                             {item.structure}
                           </p>
                           <p className="mt-0.5 text-sm text-gray-600 leading-relaxed">

@@ -119,7 +119,7 @@ export default function IssueReportsPanel({ course }: { course: CourseDefinition
             onClick={() => setFilter(status)}
             aria-pressed={filter === status}
             className={`min-h-11 rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
-              filter === status ? "bg-ucla-blue text-white" : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+              filter === status ? "bg-brand-blue text-white" : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
             }`}
           >
             {status === "all" ? "All" : STATUS_LABELS[status]} ({counts[status]})
@@ -135,7 +135,7 @@ export default function IssueReportsPanel({ course }: { course: CourseDefinition
 
       {loading && reports.length === 0 ? (
         <div className="flex justify-center py-16">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
         </div>
       ) : visible.length === 0 ? (
         <div className="rounded-lg border border-dashed border-gray-300 bg-white px-5 py-12 text-center">
@@ -167,7 +167,7 @@ export default function IssueReportsPanel({ course }: { course: CourseDefinition
                         {STATUS_LABELS[report.status]}
                       </span>
                       {report.pageKind === "normal-mri" && (
-                        <span className="rounded-full bg-ucla-light px-2 py-0.5 text-xs font-semibold text-ucla-dark">
+                        <span className="rounded-full bg-brand-light px-2 py-0.5 text-xs font-semibold text-brand-dark">
                           Normal MRI
                         </span>
                       )}

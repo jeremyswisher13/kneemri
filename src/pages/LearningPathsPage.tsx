@@ -12,7 +12,7 @@ import { useActiveCourse } from "@/hooks/useActiveCourse";
 
 function StepNumber({ n }: { n: number }) {
   return (
-    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ucla-blue text-xs font-bold text-white">
+    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-blue text-xs font-bold text-white">
       {n}
     </span>
   );
@@ -39,7 +39,7 @@ export default function LearningPathsPage() {
         and clinical application.
       </p>
 
-      <div className="mt-5 rounded-lg border border-ucla-blue/20 bg-ucla-light/40 px-4 py-3 text-sm text-gray-700">
+      <div className="mt-5 rounded-lg border border-brand-blue/20 bg-brand-light/40 px-4 py-3 text-sm text-gray-700">
         Every path uses the same sequence: see it normal, learn it, then apply it. Complete any {requiredCases} cases
         labeled Core for the course requirement; Advanced cases are optional.
       </div>
@@ -60,7 +60,7 @@ export default function LearningPathsPage() {
               <div className="mt-4 grid overflow-hidden rounded-lg border border-gray-200 bg-white md:grid-cols-3 md:divide-x md:divide-gray-200">
                 <Link
                   to={normalPath}
-                  className="group min-h-28 border-b border-gray-200 p-4 transition-colors hover:bg-ucla-light/40 md:border-b-0"
+                  className="group min-h-28 border-b border-gray-200 p-4 transition-colors hover:bg-brand-light/40 md:border-b-0"
                 >
                   <div className="flex items-center gap-2">
                     <StepNumber n={1} />
@@ -81,7 +81,7 @@ export default function LearningPathsPage() {
                       <Link
                         key={module.id}
                         to={coursePath(activeCourse, `/modules/${module.id}`)}
-                        className="flex min-h-8 items-center justify-between gap-2 text-sm font-medium text-ucla-blue hover:underline"
+                        className="flex min-h-8 items-center justify-between gap-2 text-sm font-medium text-brand-blue hover:underline"
                       >
                         <span>{module.title}</span>
                         <span aria-hidden="true">&rarr;</span>

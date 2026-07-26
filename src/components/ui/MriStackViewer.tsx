@@ -402,7 +402,7 @@ export default function MriStackViewer({
           <div className="flex items-center gap-2 text-sm">
             {title && <span className="font-semibold text-gray-900">{title}</span>}
             {plane && (
-              <span className="rounded bg-ucla-blue/10 px-2 py-0.5 text-xs font-medium text-ucla-blue">
+              <span className="rounded bg-brand-blue/10 px-2 py-0.5 text-xs font-medium text-brand-blue">
                 {plane}
               </span>
             )}
@@ -449,14 +449,14 @@ export default function MriStackViewer({
         // outline-none needs a replacement: this viewport is keyboard-focusable
         // (tabIndex=0, arrow/Home/End/Space controls) but showed no focus state.
         // ring-inset + gold reads against the black viewport.
-        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-5rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ucla-gold sm:mx-0 sm:max-h-[600px] sm:w-full ${
+        className={`relative mx-auto flex aspect-square max-h-[70svh] w-[calc(100%-5rem)] touch-none select-none items-center justify-center overflow-hidden bg-black outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-gold sm:mx-0 sm:max-h-[600px] sm:w-full ${
           zoomed ? "cursor-grab" : "cursor-ns-resize"
         }`}
         style={{ touchAction: "none" }}
       >
         {!loaded && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-700 border-t-ucla-blue" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-700 border-t-brand-blue" />
           </div>
         )}
         <img
@@ -505,7 +505,7 @@ export default function MriStackViewer({
                 });
                 setRetryRevision((revision) => revision + 1);
               }}
-              className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+              className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
             >
               Retry image
             </button>
@@ -539,7 +539,7 @@ export default function MriStackViewer({
           aria-pressed={showAdjust}
           className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition sm:h-7 sm:w-7 ${
             showAdjust || wlAdjusted
-              ? "border-ucla-blue bg-ucla-blue/10 text-ucla-blue"
+              ? "border-brand-blue bg-brand-blue/10 text-brand-blue"
               : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
           }`}
           aria-label="Adjust window/level (brightness and contrast)"
@@ -554,7 +554,7 @@ export default function MriStackViewer({
           <button
             type="button"
             onClick={() => setCinePlaying((p) => !p)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ucla-blue text-white transition hover:bg-ucla-dark sm:h-7 sm:w-7"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white transition hover:bg-brand-dark sm:h-7 sm:w-7"
             aria-label={cinePlaying ? "Pause cine" : "Play cine"}
             title={cinePlaying ? "Pause" : "Play"}
           >
@@ -594,7 +594,7 @@ export default function MriStackViewer({
               setCinePlaying(false);
               requestIndex(Number(e.target.value));
             }}
-            className="relative z-10 w-full accent-ucla-blue py-4 sm:py-0"
+            className="relative z-10 w-full accent-brand-blue py-4 sm:py-0"
             aria-label="Slice position"
             aria-valuetext={`Slice ${safeIndex + 1} of ${total}`}
           />
@@ -628,7 +628,7 @@ export default function MriStackViewer({
               step={0.02}
               value={bright}
               onChange={(e) => setBright(Number(e.target.value))}
-              className="flex-1 accent-ucla-blue"
+              className="flex-1 accent-brand-blue"
               aria-label="Brightness"
             />
           </label>
@@ -641,7 +641,7 @@ export default function MriStackViewer({
               step={0.02}
               value={contrast}
               onChange={(e) => setContrast(Number(e.target.value))}
-              className="flex-1 accent-ucla-blue"
+              className="flex-1 accent-brand-blue"
               aria-label="Contrast"
             />
           </label>
@@ -652,7 +652,7 @@ export default function MriStackViewer({
               aria-pressed={invert}
               className={`rounded-md border px-2.5 py-1 font-medium transition ${
                 invert
-                  ? "border-ucla-blue bg-ucla-blue/10 text-ucla-blue"
+                  ? "border-brand-blue bg-brand-blue/10 text-brand-blue"
                   : "border-gray-300 bg-white text-gray-600 hover:bg-gray-100"
               }`}
             >
@@ -684,7 +684,7 @@ export default function MriStackViewer({
                     href={sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ucla-blue hover:underline"
+                    className="text-brand-blue hover:underline"
                   >
                     source
                   </a>

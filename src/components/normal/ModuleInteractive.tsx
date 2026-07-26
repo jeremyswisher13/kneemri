@@ -11,9 +11,9 @@ import { STACK_ATTR, type InteractiveBlock } from "@/content/module-interactives
  */
 export default function ModuleInteractive({ block }: { block: InteractiveBlock }) {
   return (
-    <div className="mt-5 overflow-hidden rounded-xl border-2 border-ucla-blue/25 bg-ucla-blue/[0.04]">
-      <div className="flex items-center gap-2 border-b border-ucla-blue/15 bg-ucla-blue/[0.06] px-4 py-2.5">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-ucla-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+    <div className="mt-5 overflow-hidden rounded-xl border-2 border-brand-blue/25 bg-brand-blue/[0.04]">
+      <div className="flex items-center gap-2 border-b border-brand-blue/15 bg-brand-blue/[0.06] px-4 py-2.5">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
           <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -34,14 +34,14 @@ export default function ModuleInteractive({ block }: { block: InteractiveBlock }
 
 function Teaching({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-3 rounded-lg border border-ucla-blue/20 bg-white px-4 py-3 text-sm leading-relaxed text-gray-700">
+    <div className="mt-3 rounded-lg border border-brand-blue/20 bg-white px-4 py-3 text-sm leading-relaxed text-gray-700">
       {children}
     </div>
   );
 }
 
 function Instruction({ children }: { children: ReactNode }) {
-  return <p className="mb-3 text-sm font-medium text-ucla-blue">{children}</p>;
+  return <p className="mb-3 text-sm font-medium text-brand-blue">{children}</p>;
 }
 
 function ScrollDrill({ block }: { block: Extract<InteractiveBlock, { kind: "scroll-drill" }> }) {
@@ -108,7 +108,7 @@ function ShapeShift({ block }: { block: Extract<InteractiveBlock, { kind: "shape
             type="button"
             onClick={() => setV(i)}
             className={`min-h-11 rounded-md px-3 py-2 font-medium transition-colors sm:min-h-0 sm:py-1.5 ${
-              i === v ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
+              i === v ? "bg-brand-blue text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
           >
             {vw.planeLabel}
@@ -153,7 +153,7 @@ function Annotate({ block }: { block: Extract<InteractiveBlock, { kind: "annotat
       <button
         type="button"
         onClick={() => setReveal((r) => !r)}
-        className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-ucla-blue/40 bg-ucla-blue/10 px-3 py-2 text-sm font-semibold text-ucla-blue transition-colors hover:bg-ucla-blue/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
+        className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-brand-blue/40 bg-brand-blue/10 px-3 py-2 text-sm font-semibold text-brand-blue transition-colors hover:bg-brand-blue/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
       >
         {reveal ? "Hide structures" : "Reveal structures"}
       </button>

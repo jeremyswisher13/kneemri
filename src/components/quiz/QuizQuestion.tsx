@@ -91,7 +91,7 @@ export default function QuizQuestion({
         </div>
         <div className="h-2 w-full rounded-full bg-gray-200">
           <div
-            className="h-2 rounded-full bg-ucla-blue transition-all duration-300"
+            className="h-2 rounded-full bg-brand-blue transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -140,8 +140,8 @@ export default function QuizQuestion({
               borderClass = "border-gray-200 bg-white opacity-60";
             }
           } else if (isSelected) {
-            borderClass = "border-ucla-blue bg-ucla-light text-ucla-dark";
-            badgeClass = "bg-ucla-blue text-white";
+            borderClass = "border-brand-blue bg-brand-light text-brand-dark";
+            badgeClass = "bg-brand-blue text-white";
           }
 
           return (

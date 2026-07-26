@@ -20,11 +20,11 @@ const currentSupport = [
 export default function AccessibilityPage() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Accessibility</p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">UCLA Sports MRI Accessibility</h1>
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Accessibility</p>
+      <h1 className="mt-2 text-2xl font-bold text-gray-900">Sports MRI Academy Accessibility</h1>
       <p className="mt-2 text-sm text-gray-500">Last updated: July 1, 2026</p>
       <p className="mt-4 text-sm leading-6 text-gray-600">
-        UCLA Sports MRI is an educational app for sports medicine MRI learning. We want fellows,
+        Sports MRI Academy is an educational app for sports medicine MRI learning. We want fellows,
         faculty, and App Review users to understand what accessibility support is available and where
         image-based MRI teaching may still need visual interpretation.
       </p>
@@ -70,10 +70,10 @@ export default function AccessibilityPage() {
             device, browser or app shell, assistive technology, and a short description of what happened.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/support" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/support" className="text-sm font-semibold text-brand-blue hover:underline">
               Open Support
             </Link>
-            <Link to="/privacy" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/privacy" className="text-sm font-semibold text-brand-blue hover:underline">
               Privacy policy
             </Link>
           </div>

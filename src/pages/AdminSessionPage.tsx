@@ -184,7 +184,7 @@ function PreflightChecklist() {
               type="checkbox"
               checked={state[item.id]}
               onChange={(event) => setItem(item.id, event.target.checked)}
-              className="mt-0.5 h-5 w-5 shrink-0 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
+              className="mt-0.5 h-5 w-5 shrink-0 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/50"
             />
             <span className={state[item.id] ? "text-sm text-gray-500 line-through" : "text-sm text-gray-800"}>
               {item.label}
@@ -206,10 +206,10 @@ function SessionHeader({
   onToggleProjectorSafe: () => void;
 }) {
   return (
-    <section className="rounded-2xl border border-ucla-blue/25 bg-gradient-to-br from-ucla-light/70 to-white p-5 sm:p-6">
+    <section className="rounded-2xl border border-brand-blue/25 bg-gradient-to-br from-brand-light/70 to-white p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+          <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
             Live teaching session
           </p>
           <h1 className="mt-1 text-2xl font-bold text-gray-900">{TEACHING_SESSION.title}</h1>
@@ -377,7 +377,7 @@ function RosterCheck({
 
       <Link
         to={coursePath(course, "/")}
-        className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-ucla-blue hover:underline"
+        className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-brand-blue hover:underline"
       >
         Open the fellow-facing course dashboard →
       </Link>
@@ -418,7 +418,7 @@ function InviteBlock() {
         <button
           type="button"
           onClick={() => void copy()}
-          className="inline-flex min-h-11 items-center rounded-lg bg-ucla-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark"
+          className="inline-flex min-h-11 items-center rounded-lg bg-brand-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
         >
           {copied ? "Copied ✓" : "Copy invite"}
         </button>
@@ -465,7 +465,7 @@ function HourOnePanel({
         {SESSION_HOUR_ONE.map((step) => (
           <li key={step.label} className="rounded-xl border border-gray-200 p-4">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="rounded-md bg-ucla-light px-2 py-0.5 text-xs font-bold text-ucla-dark">
+              <span className="rounded-md bg-brand-light px-2 py-0.5 text-xs font-bold text-brand-dark">
                 {step.minutes}
               </span>
               <h3 className="font-semibold text-gray-900">{step.label}</h3>
@@ -477,7 +477,7 @@ function HourOnePanel({
               to={`${base}?${NORMAL_MRI_SERIES_PARAM}=${step.seriesId}&${NORMAL_MRI_MODE_PARAM}=${step.mode}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-ucla-blue/40 bg-ucla-light/40 px-4 text-sm font-semibold text-ucla-dark transition-colors hover:bg-ucla-light"
+              className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-brand-blue/40 bg-brand-light/40 px-4 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-light"
             >
               Open {seriesLabel(step.seriesId)} ↗
             </Link>
@@ -568,7 +568,7 @@ function HourTwoPanel({
         {SESSION_CASES.map((plan, index) => (
           <article key={plan.caseId} className="rounded-xl border border-gray-200 p-4">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="rounded-md bg-ucla-blue px-2 py-0.5 text-xs font-bold text-white">
+              <span className="rounded-md bg-brand-blue px-2 py-0.5 text-xs font-bold text-white">
                 Case {index + 1}
               </span>
               <span className="rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
@@ -621,8 +621,8 @@ function HourTwoPanel({
                   </p>
                   <p className="mt-1 text-sm text-gray-800">{plan.supportingRole}</p>
                 </div>
-                <div className="rounded-lg border border-ucla-blue/25 bg-ucla-light/40 p-3">
-                  <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                <div className="rounded-lg border border-brand-blue/25 bg-brand-light/40 p-3">
+                  <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
                     Closing impression
                   </p>
                   <p className="mt-1 text-sm text-gray-800">{plan.impressionPrompt}</p>
@@ -634,7 +634,7 @@ function HourTwoPanel({
               to={coursePath(course, `/cases/${plan.caseId}`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex min-h-11 items-center rounded-lg bg-ucla-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark"
+              className="mt-3 inline-flex min-h-11 items-center rounded-lg bg-brand-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
             >
               Open case {index + 1} ↗
             </Link>

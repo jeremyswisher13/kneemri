@@ -1,6 +1,6 @@
 import { Fragment, useMemo, useState } from "react";
 import type { CourseDefinition } from "@/content/courses";
-import { domainLabel, UCLA_BLUE, type Fellow } from "@/components/admin/shared";
+import { domainLabel, BRAND_BLUE, type Fellow } from "@/components/admin/shared";
 import { pointBiserial, interpretDiscrimination } from "@/lib/psychometrics";
 import { csvCell } from "@/lib/csv-cell";
 
@@ -324,7 +324,7 @@ export default function ItemAnalysisTable({ fellows, course }: ItemAnalysisTable
         <div className="overflow-x-auto -mx-6 px-6">
           <table className="w-full min-w-[760px] text-left text-sm">
             <thead>
-              <tr className="border-b-2" style={{ borderColor: UCLA_BLUE }}>
+              <tr className="border-b-2" style={{ borderColor: BRAND_BLUE }}>
                 {HEADERS.map((h) => {
                   const active = sort?.key === h.key;
                   return (
@@ -335,7 +335,7 @@ export default function ItemAnalysisTable({ fellows, course }: ItemAnalysisTable
                     >
                       {h.label}
                       {active && (
-                        <span className="ml-1" style={{ color: UCLA_BLUE }}>
+                        <span className="ml-1" style={{ color: BRAND_BLUE }}>
                           {sort!.dir === 1 ? "▲" : "▼"}
                         </span>
                       )}
@@ -358,7 +358,7 @@ export default function ItemAnalysisTable({ fellows, course }: ItemAnalysisTable
                         <div className="flex items-start gap-2">
                           <span
                             className={`mt-0.5 text-[10px] transition-transform ${isExpanded ? "rotate-90" : ""}`}
-                            style={{ color: UCLA_BLUE }}
+                            style={{ color: BRAND_BLUE }}
                           >
                             &#9654;
                           </span>
@@ -432,7 +432,7 @@ export default function ItemAnalysisTable({ fellows, course }: ItemAnalysisTable
                     </tr>
                     {isExpanded && (
                       <tr>
-                        <td colSpan={7} className="border-l-4 bg-gray-50/80 px-6 py-5" style={{ borderColor: UCLA_BLUE }}>
+                        <td colSpan={7} className="border-l-4 bg-gray-50/80 px-6 py-5" style={{ borderColor: BRAND_BLUE }}>
                           <ExpandedItem item={q} />
                         </td>
                       </tr>

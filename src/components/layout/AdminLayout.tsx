@@ -30,7 +30,7 @@ export default function AdminLayout() {
     <div className="flex-1">
       <div className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
-          <span className="rounded-md bg-ucla-gold px-2 py-0.5 text-xs font-bold text-ucla-dark">
+          <span className="rounded-md bg-brand-gold px-2 py-0.5 text-xs font-bold text-brand-dark">
             ADMIN
           </span>
           <nav className="flex flex-wrap gap-1">
@@ -40,7 +40,7 @@ export default function AdminLayout() {
                 to={item.path}
                 className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                   isActive(item.path)
-                    ? "bg-ucla-blue text-white"
+                    ? "bg-brand-blue text-white"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
               >

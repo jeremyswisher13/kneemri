@@ -172,7 +172,7 @@ export default function SearchPatternPage() {
         <div className="mt-6 mb-8">
           <div className="h-3 w-full rounded-full bg-gray-200">
             <div
-              className="h-3 rounded-full bg-ucla-blue transition-all"
+              className="h-3 rounded-full bg-brand-blue transition-all"
               style={{ width: `${percentChecked}%` }}
             />
           </div>
@@ -253,14 +253,14 @@ export default function SearchPatternPage() {
       {/* Embedded "look here" viewer — jumps to the verified plane/slice for the
           tapped step so the checklist becomes "look HERE". Collapsible. */}
       {activeTarget && (
-        <div className="mt-6 overflow-hidden rounded-xl border-2 border-ucla-blue/25 bg-ucla-blue/[0.04]">
+        <div className="mt-6 overflow-hidden rounded-xl border-2 border-brand-blue/25 bg-brand-blue/[0.04]">
           <button
             type="button"
             onClick={() => setViewerOpen((v) => !v)}
             aria-expanded={viewerOpen}
-            className="flex w-full items-center gap-2 border-b border-ucla-blue/15 bg-ucla-blue/[0.06] px-4 py-2.5 text-left"
+            className="flex w-full items-center gap-2 border-b border-brand-blue/15 bg-brand-blue/[0.06] px-4 py-2.5 text-left"
           >
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-ucla-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
               Look here
             </span>
             <span className="flex-1 text-sm font-semibold text-gray-900">
@@ -307,7 +307,7 @@ export default function SearchPatternPage() {
         </div>
         <div className="h-2 w-full rounded-full bg-gray-200">
           <div
-            className="h-2 rounded-full bg-ucla-blue transition-all"
+            className="h-2 rounded-full bg-brand-blue transition-all"
             style={{
               width: `${(completedSteps / searchPatternSteps.length) * 100}%`,
             }}
@@ -335,7 +335,7 @@ export default function SearchPatternPage() {
                 }}
                 className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all ${
                   isActive
-                    ? "border-ucla-blue bg-white shadow-sm"
+                    ? "border-brand-blue bg-white shadow-sm"
                     : "border-gray-200 bg-white hover:border-gray-300"
                 }`}
               >
@@ -345,7 +345,7 @@ export default function SearchPatternPage() {
                     stepComplete
                       ? "bg-green-100 text-green-700"
                       : isActive
-                      ? "bg-ucla-blue text-white"
+                      ? "bg-brand-blue text-white"
                       : "bg-gray-100 text-gray-500"
                   }`}
                 >
@@ -369,7 +369,7 @@ export default function SearchPatternPage() {
                 <div className="flex-1 min-w-0">
                   <h3
                     className={`font-semibold ${
-                      isActive ? "text-ucla-blue" : "text-gray-900"
+                      isActive ? "text-brand-blue" : "text-gray-900"
                     }`}
                   >
                     Step {step.number}: {step.name}
@@ -421,7 +421,7 @@ export default function SearchPatternPage() {
                         setViewerOpen(true);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className="mb-4 inline-flex items-center gap-1.5 rounded-lg border border-ucla-blue/40 bg-ucla-blue/10 px-3 py-1.5 text-xs font-semibold text-ucla-blue transition-colors hover:bg-ucla-blue/20"
+                      className="mb-4 inline-flex items-center gap-1.5 rounded-lg border border-brand-blue/40 bg-brand-blue/10 px-3 py-1.5 text-xs font-semibold text-brand-blue transition-colors hover:bg-brand-blue/20"
                     >
                       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -442,7 +442,7 @@ export default function SearchPatternPage() {
                           type="checkbox"
                           checked={isItemChecked(step.number, i)}
                           onChange={() => toggleItem(step.number, i)}
-                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
+                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/50"
                         />
                         <span
                           className={`text-sm ${

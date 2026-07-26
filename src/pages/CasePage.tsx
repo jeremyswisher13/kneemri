@@ -64,7 +64,7 @@ function mentionsFinding(userText: string, finding: string): boolean {
 
 const difficultyConfig = {
   foundational: { label: "Foundational", bg: "bg-green-100", text: "text-green-700" },
-  intermediate: { label: "Intermediate", bg: "bg-blue-100", text: "text-ucla-blue" },
+  intermediate: { label: "Intermediate", bg: "bg-blue-100", text: "text-brand-blue" },
   advanced: { label: "Advanced", bg: "bg-red-100", text: "text-red-700" },
 } as const;
 
@@ -105,7 +105,7 @@ function BlindedCaseImageGrid({
             type="button"
             onClick={() => onOpen(image)}
             aria-label={`Open ${label.toLowerCase()}`}
-            className={`overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-left transition hover:border-ucla-blue/50 hover:shadow-sm ${
+            className={`overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-left transition hover:border-brand-blue/50 hover:shadow-sm ${
               compact ? "w-44 shrink-0 snap-start" : "w-64 shrink-0 snap-start sm:w-auto"
             }`}
           >
@@ -521,7 +521,7 @@ export default function CasePage() {
 
       {/* Breadcrumb */}
       <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500">
-        <Link to={coursePath(activeCourse, "/cases")} className="hover:text-ucla-blue transition-colors">
+        <Link to={coursePath(activeCourse, "/cases")} className="hover:text-brand-blue transition-colors">
           Cases
         </Link>
         <span>/</span>
@@ -551,8 +551,8 @@ export default function CasePage() {
       </div>
 
       {/* Clinical Scenario Banner (always visible) */}
-      <div className="mb-6 rounded-xl border border-ucla-blue/20 bg-ucla-light px-5 py-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-ucla-blue mb-1">
+      <div className="mb-6 rounded-xl border border-brand-blue/20 bg-brand-light px-5 py-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-brand-blue mb-1">
           Clinical Scenario
         </p>
         <p className="text-sm text-gray-700 leading-relaxed">
@@ -579,7 +579,7 @@ export default function CasePage() {
                   {idx > 0 && (
                     <div
                       className={`w-4 h-0.5 mx-0.5 ${
-                        idx <= highestStep ? "bg-ucla-blue" : "bg-gray-200"
+                        idx <= highestStep ? "bg-brand-blue" : "bg-gray-200"
                       }`}
                     />
                   )}
@@ -589,7 +589,7 @@ export default function CasePage() {
                     disabled={!reachable}
                     className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                       isCurrent
-                        ? "bg-ucla-blue text-white shadow-sm"
+                        ? "bg-brand-blue text-white shadow-sm"
                         : completed
                         ? "bg-green-100 text-green-700 hover:bg-green-200"
                         : reachable
@@ -635,7 +635,7 @@ export default function CasePage() {
                 ["3", "Clinical hinge", "On review, link the imaging findings to the diagnosis and sports medicine decision point."],
               ].map(([number, title, copy]) => (
                 <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-                  <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
+                  <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand-blue">
                     {number}
                   </div>
                   <p className="text-sm font-semibold text-gray-900">{title}</p>
@@ -745,15 +745,15 @@ export default function CasePage() {
                   href={caseItem.radiopaediaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 flex flex-col items-start gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-blue/10 sm:flex-row sm:items-center sm:justify-between"
+                  className="mt-4 flex flex-col items-start gap-3 rounded-lg border border-brand-blue/30 bg-brand-light px-4 py-3 transition-colors hover:bg-brand-blue/10 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <span className="flex items-center gap-3">
-                    <svg className="h-6 w-6 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
+                    <svg className="h-6 w-6 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75 12 3l8.25 3.75L12 10.5 3.75 6.75Z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 12 8.25 3.75L20.25 12M3.75 17.25 12 21l8.25-3.75" />
                     </svg>
                     <span>
-                      <span className="block text-sm font-semibold text-ucla-dark">
+                      <span className="block text-sm font-semibold text-brand-dark">
                         {externalCaseLinkLabel}
                       </span>
                       <span className="block text-xs text-gray-500">
@@ -761,7 +761,7 @@ export default function CasePage() {
                       </span>
                     </span>
                   </span>
-                  <span className="self-end shrink-0 text-ucla-blue sm:self-center" aria-hidden>&#8599;</span>
+                  <span className="self-end shrink-0 text-brand-blue sm:self-center" aria-hidden>&#8599;</span>
                 </a>
               ) : (
                 <div
@@ -815,7 +815,7 @@ export default function CasePage() {
                       i + 1 < stepNumber
                         ? "bg-green-400"
                         : i + 1 === stepNumber
-                        ? "bg-ucla-blue"
+                        ? "bg-brand-blue"
                         : "bg-gray-200"
                     }`}
                   />
@@ -848,7 +848,7 @@ export default function CasePage() {
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                     allChecked
                       ? "bg-green-100 text-green-700"
-                      : "bg-ucla-light text-ucla-blue"
+                      : "bg-brand-light text-brand-blue"
                   }`}
                 >
                   {allChecked ? <CheckIcon /> : stepNumber}
@@ -871,7 +871,7 @@ export default function CasePage() {
                       type="checkbox"
                       checked={isItemChecked(stepNumber, i)}
                       onChange={() => toggleItem(stepNumber, i)}
-                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue/50"
+                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue/50"
                     />
                     <span
                       className={`text-sm ${
@@ -922,7 +922,7 @@ export default function CasePage() {
                 }
                 rows={3}
                 placeholder="Type your observations here..."
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:border-ucla-blue focus:ring-1 focus:ring-ucla-blue/50"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50"
               />
 
               {/* Reveal button */}
@@ -964,7 +964,7 @@ export default function CasePage() {
                               hemarthrosis." Use a neutral dot the fellow verifies. */}
                           {matched ? (
                             <span
-                              className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-ucla-blue/15 text-ucla-blue text-[13px] leading-none"
+                              className="mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full bg-brand-blue/15 text-brand-blue text-[13px] leading-none"
                               title="You mentioned related terms — verify against your read"
                               aria-label="mentioned"
                             >
@@ -1058,7 +1058,7 @@ export default function CasePage() {
            blinded commit here would be theatre. "Try Again" brings it back. */}
       {currentStep === reviewStep && !answersRevealed && (
         <div className="space-y-6">
-          <div className="rounded-xl border border-ucla-blue/30 bg-ucla-light/40 px-5 py-4">
+          <div className="rounded-xl border border-brand-blue/30 bg-brand-light/40 px-5 py-4">
             <h3 className="text-lg font-semibold text-gray-900">Commit your read</h3>
             <p className="mt-1 text-sm text-gray-600">
               Before the answer key — write your leading impression and rate how sure you are.
@@ -1075,13 +1075,13 @@ export default function CasePage() {
               onChange={(e) => setPrimaryImpression(e.target.value)}
               rows={2}
               placeholder="Name the primary lesion, key secondary evidence, and important associated injury."
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900 focus:border-ucla-blue focus:outline-none focus:ring-1 focus:ring-ucla-blue sm:text-sm"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue sm:text-sm"
             />
 
             <div className="mt-4">
               <label className="flex items-center justify-between text-sm font-medium text-gray-700" htmlFor="confidence">
                 <span>How confident are you?</span>
-                <span className="font-semibold text-ucla-blue">{confidence}%</span>
+                <span className="font-semibold text-brand-blue">{confidence}%</span>
               </label>
               <input
                 id="confidence"
@@ -1091,7 +1091,7 @@ export default function CasePage() {
                 step={5}
                 value={confidence}
                 onChange={(e) => setConfidence(Number(e.target.value))}
-                className="mt-2 w-full accent-ucla-blue"
+                className="mt-2 w-full accent-brand-blue"
               />
               <div className="flex justify-between text-[11px] text-gray-400">
                 <span>Guessing</span>
@@ -1169,7 +1169,7 @@ export default function CasePage() {
                   key={i}
                   className="flex items-start gap-2 text-sm text-gray-700"
                 >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ucla-blue text-white text-xs font-bold">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white text-xs font-bold">
                     {i + 1}
                   </span>
                   {diagnosis}
@@ -1178,13 +1178,13 @@ export default function CasePage() {
             </ul>
           </Card>
 
-          <Card className="border-ucla-blue/20 bg-ucla-light/40">
+          <Card className="border-brand-blue/20 bg-brand-light/40">
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
               Sports Medicine Read-Out
             </h3>
             <div className="grid gap-4 lg:grid-cols-3">
               <section className="rounded-lg border border-white/70 bg-white/80 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
                   Call it
                 </p>
                 <ul className="mt-3 space-y-2">
@@ -1197,7 +1197,7 @@ export default function CasePage() {
               </section>
 
               <section className="rounded-lg border border-white/70 bg-white/80 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
                   Prove it on MRI
                 </p>
                 {readoutFindings.length > 0 ? (
@@ -1217,7 +1217,7 @@ export default function CasePage() {
               </section>
 
               <section className="rounded-lg border border-white/70 bg-white/80 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
                   Clinical hinge
                 </p>
                 {clinicalHinges.length > 0 ? (
@@ -1329,7 +1329,7 @@ export default function CasePage() {
                   <div className="space-y-6">
                     {sortedSteps.map((stepNum) => (
                       <div key={stepNum}>
-                        <h4 className="text-sm font-semibold text-ucla-blue mb-3">
+                        <h4 className="text-sm font-semibold text-brand-blue mb-3">
                           Step {stepNum}: {stepNames[stepNum] ?? `Step ${stepNum}`}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1338,7 +1338,7 @@ export default function CasePage() {
                               key={i}
                               type="button"
                               onClick={() => setExpandedImage(img)}
-                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-ucla-blue/40 hover:shadow-md transition-all"
+                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-brand-blue/40 hover:shadow-md transition-all"
                             >
                               <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
                                 <img
@@ -1373,7 +1373,7 @@ export default function CasePage() {
                               key={i}
                               type="button"
                               onClick={() => setExpandedImage(img)}
-                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-ucla-blue/40 hover:shadow-md transition-all"
+                              className="group text-left rounded-lg border border-gray-200 overflow-hidden hover:border-brand-blue/40 hover:shadow-md transition-all"
                             >
                               <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
                                 <img
@@ -1413,7 +1413,7 @@ export default function CasePage() {
                 <div className="space-y-5">
                   {caseItem.searchPatternFindings.map((spf) => (
                     <div key={spf.step}>
-                      <h4 className="text-sm font-semibold text-ucla-blue mb-2">
+                      <h4 className="text-sm font-semibold text-brand-blue mb-2">
                         Step {spf.step}: {spf.stepName}
                       </h4>
 

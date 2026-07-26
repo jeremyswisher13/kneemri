@@ -22,9 +22,9 @@ import {
 } from "@/content/courses";
 
 /* ─── helpers ─── */
-const UCLA_BLUE = "#2774AE";
-const UCLA_DARK = "#003B5C";
-const UCLA_GOLD = "#FFD100";
+const BRAND_BLUE = "#2774AE";
+const BRAND_DARK = "#003B5C";
+const BRAND_GOLD = "#FFD100";
 const GRAY_400 = "#9CA3AF";
 const GRAY_600 = "#4B5563";
 const GRAY_900 = "#111827";
@@ -72,14 +72,14 @@ async function generatePdf({
   const CX = W / 2;
 
   /* ── Gold decorative border ── */
-  doc.setDrawColor(UCLA_GOLD);
+  doc.setDrawColor(BRAND_GOLD);
   doc.setLineWidth(4);
   doc.rect(24, 24, W - 48, H - 48);
   doc.setLineWidth(1.5);
   doc.rect(32, 32, W - 64, H - 64);
 
   /* ── Blue header bar ── */
-  doc.setFillColor(UCLA_BLUE);
+  doc.setFillColor(BRAND_BLUE);
   doc.rect(32, 32, W - 64, 90, "F");
 
   /* header text */
@@ -93,12 +93,12 @@ async function generatePdf({
 
   /* ── Gold seal circle ── */
   const sealY = 172;
-  doc.setDrawColor(UCLA_GOLD);
+  doc.setDrawColor(BRAND_GOLD);
   doc.setLineWidth(3);
   doc.setFillColor("#FFF9E0");
   doc.circle(CX, sealY, 28, "FD");
   // Trophy-like icon inside seal (simple star)
-  doc.setFillColor(UCLA_GOLD);
+  doc.setFillColor(BRAND_GOLD);
   const starPoints = buildStar(CX, sealY, 16, 8, 5);
   drawPolygon(doc, starPoints);
 
@@ -111,14 +111,14 @@ async function generatePdf({
 
   /* ── Fellow name ── */
   y += 32;
-  doc.setTextColor(UCLA_DARK);
+  doc.setTextColor(BRAND_DARK);
   doc.setFontSize(26);
   doc.setFont("helvetica", "bold");
   doc.text(fellowName, CX, y, { align: "center" });
 
   /* underline under name */
   const nameWidth = doc.getTextWidth(fellowName);
-  doc.setDrawColor(UCLA_GOLD);
+  doc.setDrawColor(BRAND_GOLD);
   doc.setLineWidth(1.5);
   doc.line(CX - nameWidth / 2, y + 6, CX + nameWidth / 2, y + 6);
 
@@ -166,7 +166,7 @@ async function generatePdf({
   drawScoreBox(doc, x1, y, boxW, boxH, "Pre-Assessment", `${prePercent}%`, GRAY_600);
   // Post-Assessment box
   const x2 = CX - boxW / 2;
-  drawScoreBox(doc, x2, y, boxW, boxH, "Post-Assessment", `${postPercent}%`, UCLA_BLUE);
+  drawScoreBox(doc, x2, y, boxW, boxH, "Post-Assessment", `${postPercent}%`, BRAND_BLUE);
   // Improvement box
   const x3 = CX + gap / 2 + boxW / 2;
   const impColor = improvement > 0 ? GREEN_600 : improvement < 0 ? "#DC2626" : GRAY_600;
@@ -204,7 +204,7 @@ async function generatePdf({
 
   /* ── Footer ── */
   const footerY = H - 52;
-  doc.setDrawColor(UCLA_GOLD);
+  doc.setDrawColor(BRAND_GOLD);
   doc.setLineWidth(1);
   doc.line(48, footerY, W - 48, footerY);
   doc.setTextColor(GRAY_400);
@@ -302,7 +302,7 @@ export default function CertificatePage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -385,10 +385,10 @@ export default function CertificatePage() {
             <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
               Overall Progress
             </p>
-            <p className="mt-2 text-4xl font-bold text-ucla-blue">{overallPct}%</p>
+            <p className="mt-2 text-4xl font-bold text-brand-blue">{overallPct}%</p>
             <div className="mx-auto mt-3 h-3 w-full max-w-md rounded-full bg-gray-200">
               <div
-                className="h-3 rounded-full bg-ucla-blue transition-all"
+                className="h-3 rounded-full bg-brand-blue transition-all"
                 style={{ width: `${overallPct}%` }}
               />
             </div>
@@ -445,8 +445,8 @@ export default function CertificatePage() {
           ))}
         </Card>
 
-        <div className="mt-8 rounded-lg border border-ucla-blue/20 bg-ucla-light/30 px-6 py-5 text-center">
-          <p className="text-sm font-medium text-ucla-dark">
+        <div className="mt-8 rounded-lg border border-brand-blue/20 bg-brand-light/30 px-6 py-5 text-center">
+          <p className="text-sm font-medium text-brand-dark">
             You're making great progress! Keep going to earn your certificate.
           </p>
           <div className="mt-3">
@@ -588,7 +588,7 @@ export default function CertificatePage() {
       </div>
 
       {/* On-screen certificate preview */}
-      <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border-4 border-ucla-gold bg-white shadow-2xl">
+      <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border-4 border-brand-gold bg-white shadow-2xl">
         {/* Header */}
         <div className="bg-gradient-to-r from-[#003B5C] to-[#2774AE] px-8 py-6 text-center text-white">
           <p className="text-sm font-medium tracking-widest uppercase opacity-80">
@@ -602,8 +602,8 @@ export default function CertificatePage() {
         {/* Body */}
         <div className="px-8 py-10 text-center">
           {/* Seal */}
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-ucla-gold bg-ucla-gold/10">
-            <svg className="h-10 w-10 text-ucla-gold" fill="currentColor" viewBox="0 0 24 24">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-brand-gold bg-brand-gold/10">
+            <svg className="h-10 w-10 text-brand-gold" fill="currentColor" viewBox="0 0 24 24">
               <path d="M5 3h14c.6 0 1 .4 1 1v2c0 2.8-2 5.1-4.6 5.8-.4 1.4-1.5 2.5-2.9 2.9V17h3a1 1 0 110 2H8a1 1 0 110-2h3v-2.3c-1.4-.4-2.5-1.5-2.9-2.9C5.5 11.1 4 8.8 4 6V4c0-.6.4-1 1-1zm1 2v1c0 1.9 1.2 3.5 2.8 4.2.5-.3 1-.4 1.6-.4h1.2c.6 0 1.1.1 1.6.4C14.8 9.5 16 7.9 16 6V5H6z" />
             </svg>
           </div>
@@ -625,7 +625,7 @@ export default function CertificatePage() {
             </div>
             <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
               <p className="text-xs text-gray-500">Post-Assessment</p>
-              <p className="mt-1 text-xl font-bold text-ucla-blue">{postPercent}%</p>
+              <p className="mt-1 text-xl font-bold text-brand-blue">{postPercent}%</p>
             </div>
             <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
               <p className="text-xs text-gray-500">Improvement</p>
@@ -672,7 +672,7 @@ export default function CertificatePage() {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-ucla-gold/30 bg-[#DAEBFE]/30 px-8 py-3 text-center">
+        <div className="border-t border-brand-gold/30 bg-[#DAEBFE]/30 px-8 py-3 text-center">
           <p className="text-xs text-gray-500">
             {certFooter.replace("  |  ", " · ")}
           </p>

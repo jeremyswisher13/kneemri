@@ -29,7 +29,7 @@ export default function ProgressPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -89,7 +89,7 @@ export default function ProgressPage() {
             </span>
           </div>
           {progress.preQuizScore !== null && (
-            <p className="mt-1 text-2xl font-bold text-ucla-blue">
+            <p className="mt-1 text-2xl font-bold text-brand-blue">
               {progress.preQuizScore}
               <span className="text-sm font-normal text-gray-500">/{progress.preQuizTotal ?? preTotalFallback}</span>
             </p>
@@ -114,7 +114,7 @@ export default function ProgressPage() {
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Modules
           </p>
-          <p className="mt-2 text-2xl font-bold text-ucla-blue">
+          <p className="mt-2 text-2xl font-bold text-brand-blue">
             {completedModuleCount}
             <span className="text-sm font-normal text-gray-500">
               /{activeCourse.modules.length}
@@ -122,7 +122,7 @@ export default function ProgressPage() {
           </p>
           <div className="mt-2 h-2 w-full rounded-full bg-gray-200">
             <div
-              className="h-2 rounded-full bg-ucla-blue transition-all"
+              className="h-2 rounded-full bg-brand-blue transition-all"
               style={{ width: `${modulePercent}%` }}
             />
           </div>
@@ -133,7 +133,7 @@ export default function ProgressPage() {
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Required Cases
           </p>
-          <p className="mt-2 text-2xl font-bold text-ucla-blue">
+          <p className="mt-2 text-2xl font-bold text-brand-blue">
             {Math.min(completedCoreCaseIds.size, requiredCaseCount)}
             <span className="text-sm font-normal text-gray-500">
               /{requiredCaseCount}
@@ -141,7 +141,7 @@ export default function ProgressPage() {
           </p>
           <div className="mt-2 h-2 w-full rounded-full bg-gray-200">
             <div
-              className="h-2 rounded-full bg-ucla-gold transition-all"
+              className="h-2 rounded-full bg-brand-gold transition-all"
               style={{ width: `${casePercent}%` }}
             />
           </div>
@@ -175,7 +175,7 @@ export default function ProgressPage() {
             </span>
           </div>
           {activeCourse.features.assessments && progress.postQuizScore !== null && (
-            <p className="mt-1 text-2xl font-bold text-ucla-blue">
+            <p className="mt-1 text-2xl font-bold text-brand-blue">
               {progress.postQuizScore}
               <span className="text-sm font-normal text-gray-500">/{progress.postQuizTotal ?? postTotalFallback}</span>
             </p>
@@ -201,7 +201,7 @@ export default function ProgressPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-500">Quiz Score</p>
-                <p className="text-3xl font-bold text-ucla-blue">
+                <p className="text-3xl font-bold text-brand-blue">
                   {progress.preQuizScore}
                   <span className="text-base font-normal text-gray-500">
                     /{progress.preQuizTotal ?? preTotalFallback}
@@ -453,7 +453,7 @@ export default function ProgressPage() {
                 <p className="text-sm text-gray-500 mb-1">
                   Post-Assessment Score
                 </p>
-                <p className="text-3xl font-bold text-ucla-blue">
+                <p className="text-3xl font-bold text-brand-blue">
                   {progress.postQuizScore ?? "---"}
                   <span className="text-base font-normal text-gray-500">
                     /{progress.postQuizTotal ?? postTotalFallback}
@@ -462,7 +462,7 @@ export default function ProgressPage() {
                 {progress.postQuizScore !== null && (
                   <div className="mt-2 h-2 w-full rounded-full bg-gray-200">
                     <div
-                      className="h-2 rounded-full bg-ucla-blue transition-all"
+                      className="h-2 rounded-full bg-brand-blue transition-all"
                       style={{
                         width: `${Math.min(100, (progress.postQuizScore / ((progress.postQuizTotal ?? postTotalFallback) || 1)) * 100)}%`,
                       }}

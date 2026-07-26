@@ -42,7 +42,7 @@ export default function LikertScale({
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-5">
       <p id={`likert-${statement.id}`} className="mb-4 text-sm font-medium text-gray-900">
-        <span className="mr-2 text-ucla-blue font-semibold">{index}.</span>
+        <span className="mr-2 text-brand-blue font-semibold">{index}.</span>
         {statement.statement}
       </p>
       <div
@@ -66,13 +66,13 @@ export default function LikertScale({
               aria-label={`${value} — ${labels[value - 1]}`}
               className={`flex flex-1 flex-col items-center rounded-lg border-2 px-2 py-3 transition-colors ${
                 isSelected
-                  ? "border-ucla-blue bg-ucla-light"
+                  ? "border-brand-blue bg-brand-light"
                   : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >
               <span
                 className={`text-lg font-bold ${
-                  isSelected ? "text-ucla-blue" : "text-gray-500"
+                  isSelected ? "text-brand-blue" : "text-gray-500"
                 }`}
               >
                 {shortLabels[value - 1]}

@@ -20,7 +20,7 @@ export default function PwaUpdatePrompt() {
     <div
       role="status"
       data-testid="pwa-update-prompt"
-      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[70] mx-auto flex max-w-md items-center gap-3 rounded-lg border border-ucla-blue/30 bg-white px-4 py-3 shadow-xl"
+      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[70] mx-auto flex max-w-md items-center gap-3 rounded-lg border border-brand-blue/30 bg-white px-4 py-3 shadow-xl"
     >
       <div className="min-w-0 flex-1">
         <p className="text-sm font-semibold text-gray-900">App update ready</p>
@@ -38,7 +38,7 @@ export default function PwaUpdatePrompt() {
           // permanently inert button on an undismissable card.
           if (!activateWaitingServiceWorker(registration)) window.location.reload();
         }}
-        className="min-h-11 shrink-0 rounded-lg bg-ucla-blue px-3 py-2 text-sm font-semibold text-white hover:bg-ucla-dark disabled:opacity-60"
+        className="min-h-11 shrink-0 rounded-lg bg-brand-blue px-3 py-2 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60"
       >
         {updating ? "Updating..." : "Update now"}
       </button>

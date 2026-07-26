@@ -78,7 +78,7 @@ export default function NormalModeSwitcher<TMode extends string>({
             onClick={() => onModeChange(mode.id)}
             aria-pressed={active}
             className={`min-h-11 shrink-0 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium leading-tight transition-colors sm:min-h-9 sm:flex-none sm:py-1.5 ${
-              active ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
+              active ? "bg-brand-blue text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
           >
             {mode.label}

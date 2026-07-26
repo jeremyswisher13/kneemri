@@ -213,7 +213,7 @@ export default function VisualAtlas() {
   return (
     <div>
       <div className="mb-4 flex justify-end gap-3">
-        <button onClick={expandAll} className="text-xs text-ucla-blue hover:underline">
+        <button onClick={expandAll} className="text-xs text-brand-blue hover:underline">
           Expand all
         </button>
         <button onClick={collapseAll} className="text-xs text-gray-500 hover:underline">
@@ -230,7 +230,7 @@ export default function VisualAtlas() {
               onClick={() => toggleSection(idx)}
               className="flex w-full items-center justify-between px-5 py-3 text-left hover:bg-gray-50 transition-colors"
             >
-              <span className="text-sm font-semibold text-ucla-dark">
+              <span className="text-sm font-semibold text-brand-dark">
                 {section.title}
               </span>
               <div className="flex items-center gap-2">
@@ -285,10 +285,10 @@ export default function VisualAtlas() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50 px-4 py-3 hover:border-ucla-blue/30 hover:bg-ucla-light/20 transition-colors group"
+                          className="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50 px-4 py-3 hover:border-brand-blue/30 hover:bg-brand-light/20 transition-colors group"
                         >
                           <svg
-                            className="h-4 w-4 shrink-0 mt-0.5 text-gray-500 group-hover:text-ucla-blue transition-colors"
+                            className="h-4 w-4 shrink-0 mt-0.5 text-gray-500 group-hover:text-brand-blue transition-colors"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth={2}
@@ -301,7 +301,7 @@ export default function VisualAtlas() {
                             />
                           </svg>
                           <div>
-                            <p className="text-sm font-medium text-ucla-blue group-hover:underline">
+                            <p className="text-sm font-medium text-brand-blue group-hover:underline">
                               {link.label}
                             </p>
                             <p className="text-xs text-gray-500 mt-0.5">

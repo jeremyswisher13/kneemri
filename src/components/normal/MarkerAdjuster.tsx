@@ -296,12 +296,12 @@ export default function MarkerAdjuster({
               {/* Line ends are white so they stay tellable from the gold answer marker. */}
               <span
                 className={`block h-6 w-6 rounded-full border-2 shadow-[0_0_0_2px_rgba(0,0,0,0.6)] ${
-                  m.role === "marker" ? "border-ucla-gold bg-ucla-gold/25" : "border-white bg-white/25"
+                  m.role === "marker" ? "border-brand-gold bg-brand-gold/25" : "border-white bg-white/25"
                 }`}
               />
               <span
                 className={`absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${
-                  m.role === "marker" ? "bg-ucla-gold" : "bg-white"
+                  m.role === "marker" ? "bg-brand-gold" : "bg-white"
                 }`}
               />
               {m.label && (
@@ -324,7 +324,7 @@ export default function MarkerAdjuster({
             value={sliceIndex}
             onChange={(e) => setSlice(Number(e.target.value))}
             aria-label={`Slice for ${planeLabel}`}
-            className="flex-1 accent-ucla-blue"
+            className="flex-1 accent-brand-blue"
           />
         </div>
         <p className="mt-1 text-xs text-gray-500">
@@ -349,7 +349,7 @@ export default function MarkerAdjuster({
                 key={`t${i}`}
                 onClick={() => setSel({ kind: "tour", idx: i })}
                 className={`block w-full truncate rounded px-2 py-1 text-left text-xs ${
-                  sel.kind === "tour" && sel.idx === i ? "bg-ucla-blue text-white" : "text-gray-700 hover:bg-gray-100"
+                  sel.kind === "tour" && sel.idx === i ? "bg-brand-blue text-white" : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
                 {i + 1}. {s.title} <span className="opacity-60">· sl {s.sliceIndex + 1}</span>
@@ -361,7 +361,7 @@ export default function MarkerAdjuster({
                 key={`q${i}`}
                 onClick={() => setSel({ kind: "quiz", idx: i })}
                 className={`block w-full truncate rounded px-2 py-1 text-left text-xs ${
-                  sel.kind === "quiz" && sel.idx === i ? "bg-ucla-blue text-white" : "text-gray-700 hover:bg-gray-100"
+                  sel.kind === "quiz" && sel.idx === i ? "bg-brand-blue text-white" : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
                 {q.options[q.answer]}{" "}
@@ -401,7 +401,7 @@ export default function MarkerAdjuster({
                     value={region.tolerance}
                     onChange={(e) => setRegionTolerance(Number(e.target.value))}
                     aria-label="Locate line half-width"
-                    className="flex-1 accent-ucla-blue"
+                    className="flex-1 accent-brand-blue"
                   />
                 </div>
                 <p className="mt-1 text-xs text-gray-500">

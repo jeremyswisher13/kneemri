@@ -161,7 +161,7 @@ export default function NeedsAttentionPanel({
                         type="button"
                         onClick={() => onSelectLearner(entry.id)}
                         title={`View ${entry.name}`}
-                        className={`${base} transition-colors hover:border-ucla-blue hover:bg-blue-50 hover:text-ucla-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue`}
+                        className={`${base} transition-colors hover:border-brand-blue hover:bg-blue-50 hover:text-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue`}
                       >
                         {inner}
                       </button>

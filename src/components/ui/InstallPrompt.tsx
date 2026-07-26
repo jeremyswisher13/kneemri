@@ -69,7 +69,7 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
             }
             setDetailsOpen((open) => !open);
           }}
-          className="inline-flex min-h-11 items-center rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-ucla-dark sm:min-h-9 sm:py-1.5 sm:text-xs"
+          className="inline-flex min-h-11 items-center rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-brand-dark sm:min-h-9 sm:py-1.5 sm:text-xs"
         >
           Install app
         </button>
@@ -79,9 +79,9 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
             id={panelId}
             className="absolute right-0 top-full z-50 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-gray-200 bg-white p-3 text-left text-gray-700 shadow-lg"
           >
-            <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Add to Home Screen</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Add to Home Screen</p>
             <p className="mt-1 text-sm text-gray-700">
-              Save UCLA Sports MRI as a standalone app for faster access before clinic or conference.
+              Save Sports MRI Academy as a standalone app for faster access before clinic or conference.
             </p>
             <p className="mt-2 text-xs font-medium text-gray-500">{instructions}</p>
             <div className="mt-3 flex justify-end gap-2">
@@ -99,12 +99,12 @@ export default function InstallPrompt({ variant = "full", className = "" }: Inst
   }
 
   return (
-    <section className={`rounded-xl border border-ucla-blue/20 bg-ucla-light/50 p-4 ${className}`}>
+    <section className={`rounded-xl border border-brand-blue/20 bg-brand-light/50 p-4 ${className}`}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-sm font-bold text-[#003B5C]">Use this like an app</h2>
           <p className="mt-1 text-sm text-gray-600">
-            Add UCLA Sports MRI to your home screen for faster access before conference or clinic.
+            Add Sports MRI Academy to your home screen for faster access before conference or clinic.
           </p>
           <p className="mt-1 text-xs font-medium text-gray-500">{instructions}</p>
         </div>

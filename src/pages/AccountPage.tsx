@@ -30,7 +30,7 @@ export default function AccountPage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Account</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Account</p>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">Account and Privacy</h1>
 
       <div className="mt-6 space-y-5">
@@ -51,7 +51,7 @@ export default function AccountPage() {
         <Card>
           <h2 className="text-lg font-semibold text-gray-900">Request account deletion</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">
-            This submits an in-app deletion request for your UCLA Sports MRI account and learning
+            This submits an in-app deletion request for your Sports MRI Academy account and learning
             records. You will be signed out after the request is recorded. Some audit records may be
             retained where needed for security, integrity, legal, or institutional compliance.
           </p>
@@ -86,8 +86,8 @@ export default function AccountPage() {
         </Card>
 
         <p className="text-sm text-gray-500">
-          Read the <Link to="/privacy" className="font-semibold text-ucla-blue hover:underline">privacy policy</Link>
-          {" "}or visit <Link to="/support" className="font-semibold text-ucla-blue hover:underline">support</Link>.
+          Read the <Link to="/privacy" className="font-semibold text-brand-blue hover:underline">privacy policy</Link>
+          {" "}or visit <Link to="/support" className="font-semibold text-brand-blue hover:underline">support</Link>.
         </p>
       </div>
     </div>

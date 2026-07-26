@@ -142,7 +142,7 @@ export default function KnowledgeCheck({
           }
           aria-pressed={mode === id}
           className={`min-h-11 rounded-md px-2 py-2 transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-0 sm:px-3 sm:py-1.5 ${
-            mode === id ? "bg-white text-ucla-blue shadow-sm" : "text-gray-500 hover:text-gray-700"
+            mode === id ? "bg-white text-brand-blue shadow-sm" : "text-gray-500 hover:text-gray-700"
           }`}
         >
           {label}
@@ -167,7 +167,7 @@ export default function KnowledgeCheck({
         <p className="mt-6 text-sm font-medium text-gray-500">
           {planeLabel} &middot; {isMastery ? "Mastery Check" : mode === "identify" ? "Identify Practice" : "Locate Practice"}
         </p>
-        <p className={`mt-2 text-5xl font-bold ${isMastery && !passed ? "text-amber-600" : "text-ucla-blue"}`}>
+        <p className={`mt-2 text-5xl font-bold ${isMastery && !passed ? "text-amber-600" : "text-brand-blue"}`}>
           {score}
           <span className="text-2xl font-normal text-gray-500">/{qs.length}</span>
         </p>
@@ -315,7 +315,7 @@ export default function KnowledgeCheck({
                   } else if (answered && showFeedback) {
                     classes = "border-gray-200 bg-white text-gray-500";
                   } else if (answered && isPicked) {
-                    classes = "border-ucla-blue bg-ucla-light/40 text-ucla-dark";
+                    classes = "border-brand-blue bg-brand-light/40 text-brand-dark";
                   }
                   return (
                     <button
@@ -339,7 +339,7 @@ export default function KnowledgeCheck({
           ) : (
             <>
               <h3 className="mt-3 text-base font-semibold text-gray-900">
-                Find the <span className="text-ucla-blue">{structure}</span>
+                Find the <span className="text-brand-blue">{structure}</span>
               </h3>
               <p className="mt-2 text-sm text-gray-500">
                 {!answered
@@ -384,7 +384,7 @@ export default function KnowledgeCheck({
                       structure: landmarkLabel,
                     })
                   }
-                  className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ucla-blue hover:underline sm:min-h-0 sm:text-xs"
+                  className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-brand-blue hover:underline sm:min-h-0 sm:text-xs"
                 >
                   Show me in Guided Tour
                   <span aria-hidden="true">&rarr;</span>
@@ -495,7 +495,7 @@ function LocatableSlice({
       }
       // min-h reserves the box height so the per-question img remount (key=trialId)
       // doesn't collapse to 0 and jump the Back/Next buttons on each new slice (CLS).
-      className={`relative mx-auto block w-fit min-h-[45svh] max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:min-h-0 lg:max-h-none lg:w-full lg:max-w-[560px] ${
+      className={`relative mx-auto block w-fit min-h-[45svh] max-h-[45svh] max-w-full overflow-hidden rounded-xl bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 lg:min-h-0 lg:max-h-none lg:w-full lg:max-w-[560px] ${
         answered ? "" : "cursor-crosshair"
       }`}
     >
@@ -523,7 +523,7 @@ function LocatableSlice({
               setFailedSrc(null);
               setRetryRevision((revision) => revision + 1);
             }}
-            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
           >
             Retry image
           </button>
@@ -592,7 +592,7 @@ function LocatableSlice({
           */}
           <span
             data-testid="locate-tolerance-halo"
-            className="pointer-events-none absolute block -translate-x-1/2 -translate-y-1/2 bg-ucla-gold/15"
+            className="pointer-events-none absolute block -translate-x-1/2 -translate-y-1/2 bg-brand-gold/15"
             style={{
               left: `${target.x}%`,
               top: `${target.y}%`,
@@ -607,8 +607,8 @@ function LocatableSlice({
             style={{ left: `${target.x}%`, top: `${target.y}%` }}
             aria-hidden="true"
           >
-            <span className="block h-7 w-7 rounded-full border-2 border-ucla-gold bg-ucla-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5" />
-            <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
+            <span className="block h-7 w-7 rounded-full border-2 border-brand-gold bg-brand-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5" />
+            <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gold" />
           </span>
         </>
       )}

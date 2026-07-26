@@ -16,7 +16,7 @@ const RATINGS: { label: string; quality: number; hint: string; cls: string }[] =
   { label: "Again", quality: 1, hint: "Couldn't recall", cls: "border-red-300 text-red-700 hover:bg-red-50" },
   { label: "Hard", quality: 3, hint: "Recalled with effort", cls: "border-amber-300 text-amber-700 hover:bg-amber-50" },
   { label: "Good", quality: 4, hint: "Recalled it", cls: "border-green-300 text-green-700 hover:bg-green-50" },
-  { label: "Easy", quality: 5, hint: "Instant", cls: "border-ucla-blue/40 text-ucla-blue hover:bg-ucla-light" },
+  { label: "Easy", quality: 5, hint: "Instant", cls: "border-brand-blue/40 text-brand-blue hover:bg-brand-light" },
 ];
 
 function intervalLabel(days: number): string {
@@ -144,7 +144,7 @@ export default function ReviewPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-ucla-blue" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-brand-blue" />
       </div>
     );
   }
@@ -237,7 +237,7 @@ export default function ReviewPage() {
           return (
             <Link
               to={coursePath(course, `/modules/${currentQuestion.moduleId}${topicQuery}`)}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ucla-blue hover:underline"
+              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-blue hover:underline"
             >
               Review this topic
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -252,17 +252,17 @@ export default function ReviewPage() {
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-bold text-gray-900">Spaced Review</h1>
-        <span className="rounded-full bg-ucla-light px-3 py-1 text-sm font-medium text-ucla-blue">
+        <span className="rounded-full bg-brand-light px-3 py-1 text-sm font-medium text-brand-blue">
           {reviewedCount} of {dueCards.length} reviewed
           {totalDue > dueCards.length && (
-            <span className="ml-1 font-normal text-ucla-blue/70">· {totalDue} due total</span>
+            <span className="ml-1 font-normal text-brand-blue/70">· {totalDue} due total</span>
           )}
         </span>
       </div>
 
       <div className="mb-6 h-2 w-full rounded-full bg-gray-200">
         <div
-          className="h-2 rounded-full bg-ucla-blue transition-all duration-300"
+          className="h-2 rounded-full bg-brand-blue transition-all duration-300"
           style={{ width: `${(reviewedCount / dueCards.length) * 100}%` }}
         />
       </div>
@@ -350,7 +350,7 @@ export default function ReviewPage() {
               else if (isSelected) borderClass = "border-red-400 bg-red-50";
               else borderClass = "border-gray-200 bg-white opacity-60";
             } else if (isSelected) {
-              borderClass = "border-ucla-blue bg-ucla-light text-ucla-dark";
+              borderClass = "border-brand-blue bg-brand-light text-brand-dark";
             }
             return (
               <button
@@ -370,7 +370,7 @@ export default function ReviewPage() {
                       : showFeedback && isSelected && !isCorrectOption
                         ? "bg-red-500 text-white"
                         : isSelected
-                          ? "bg-ucla-blue text-white"
+                          ? "bg-brand-blue text-white"
                           : "bg-gray-100 text-gray-600"
                   }`}
                 >

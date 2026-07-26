@@ -49,7 +49,7 @@ export default function WelcomeGuide({ progress, course = defaultCourse }: Props
               aria-current={status === "current" ? "step" : undefined}
               className={`min-w-0 bg-white px-3 py-3 ${
                 status === "current"
-                  ? "border-l-4 border-ucla-blue sm:border-l-0 sm:border-t-4"
+                  ? "border-l-4 border-brand-blue sm:border-l-0 sm:border-t-4"
                   : status === "future"
                     ? "text-gray-500"
                     : "text-green-700"
@@ -61,7 +61,7 @@ export default function WelcomeGuide({ progress, course = defaultCourse }: Props
                     status === "complete"
                       ? "bg-green-100 text-green-700"
                       : status === "current"
-                        ? "bg-ucla-blue text-white"
+                        ? "bg-brand-blue text-white"
                         : "bg-gray-100 text-gray-500"
                   }`}
                   aria-hidden="true"

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ucla-blue: #2774AE;
-  --color-ucla-dark: #005587;
-  --color-ucla-gold: #FFD100;
-  --color-ucla-light: #DAEBFE;
-  --color-ucla-gray: #F5F5F5;
+  --color-brand-blue: #2774AE;
+  --color-brand-dark: #005587;
+  --color-brand-gold: #FFD100;
+  --color-brand-light: #DAEBFE;
+  --color-brand-gray: #F5F5F5;
 }
 
 body {
-  background-color: var(--color-ucla-gray);
+  background-color: var(--color-brand-gray);
   font-family: system-ui, -apple-system, sans-serif;
   margin: 0;
   min-height: 100vh;
@@ -17,7 +17,7 @@ body {
 }
 
 html {
-  background-color: var(--color-ucla-gray);
+  background-color: var(--color-brand-gray);
 }
 
 /* iOS Safari auto-zooms the page when a focused text field's font is < 16px.

@@ -19,9 +19,9 @@ export default function AppLayout() {
 
   return (
     <div className="flex min-h-screen min-h-[100dvh] flex-col">
-      <header className="bg-ucla-dark px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] text-white sm:px-6">
+      <header className="bg-brand-dark px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] text-white sm:px-6">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
-          <h1 className="min-w-0 truncate text-lg font-bold">UCLA Sports MRI Courses</h1>
+          <h1 className="min-w-0 truncate text-lg font-bold">Sports MRI Academy</h1>
           {showHeaderInstallPrompt && <InstallPrompt variant="header" />}
         </div>
       </header>
@@ -40,8 +40,8 @@ export default function AppLayout() {
         <div className="flex flex-wrap items-center justify-between gap-2 max-w-5xl mx-auto">
           <span>Created by Jeremy Swisher, MD | UCLA Division of Sports Medicine</span>
           <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <Link to="/privacy" className="font-medium text-ucla-blue hover:underline">Privacy</Link>
-            <Link to="/support" className="font-medium text-ucla-blue hover:underline">Support</Link>
+            <Link to="/privacy" className="font-medium text-brand-blue hover:underline">Privacy</Link>
+            <Link to="/support" className="font-medium text-brand-blue hover:underline">Support</Link>
             <span>© 2026 UCLA Health</span>
           </span>
         </div>

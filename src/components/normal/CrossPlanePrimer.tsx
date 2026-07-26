@@ -12,9 +12,9 @@ export default function CrossPlanePrimer({
   return (
     <details
       open
-      className="group mb-4 rounded-xl border border-ucla-blue/20 bg-ucla-blue/5 px-4 py-3"
+      className="group mb-4 rounded-xl border border-brand-blue/20 bg-brand-blue/5 px-4 py-3"
     >
-      <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-ucla-blue [&::-webkit-details-marker]:hidden">
+      <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-brand-blue [&::-webkit-details-marker]:hidden">
         <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M14.8 9.2l-1.5 4.1-4.1 1.5 1.5-4.1 4.1-1.5z" />
@@ -33,7 +33,7 @@ export default function CrossPlanePrimer({
       <ol className="mt-3 space-y-2">
         {rules.map((r, i) => (
           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-gray-700">
-            <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ucla-blue text-[11px] font-bold text-white">
+            <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-blue text-[11px] font-bold text-white">
               {i + 1}
             </span>
             <span>

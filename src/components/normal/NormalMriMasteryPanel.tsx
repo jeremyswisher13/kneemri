@@ -42,7 +42,7 @@ export default function NormalMriMasteryPanel({ courseId }: NormalMriMasteryPane
         className="col-span-2 h-1.5 min-w-12 overflow-hidden rounded-full bg-gray-200 sm:order-2 sm:flex-1"
       >
         <div
-          className="h-full rounded-full bg-ucla-blue transition-all"
+          className="h-full rounded-full bg-brand-blue transition-all"
           style={{ width: `${progressPercent}%` }}
         />
       </div>

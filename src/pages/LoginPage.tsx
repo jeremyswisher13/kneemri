@@ -235,7 +235,7 @@ export default function LoginPage() {
             alt=""
             className="mx-auto mb-4 h-16 w-16 rounded-[18px] shadow-sm ring-1 ring-black/5"
           />
-          <h1 className="text-2xl font-bold text-ucla-dark">UCLA Sports MRI Courses</h1>
+          <h1 className="text-2xl font-bold text-brand-dark">Sports MRI Academy</h1>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-gray-600">
             Sign in once, then resume the MRI workstation, cases, and review from the home-screen app.
           </p>
@@ -264,7 +264,7 @@ export default function LoginPage() {
           <button
             onClick={() => handleProviderSignIn("google")}
             disabled={signingIn}
-            className="flex min-h-12 w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-base font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:text-sm"
+            className="flex min-h-12 w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-base font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:text-sm"
           >
             <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
@@ -291,7 +291,7 @@ export default function LoginPage() {
           </p>
 
           {standaloneMode && (
-            <div className="mt-4 rounded-lg border border-ucla-blue/20 bg-ucla-light/50 px-4 py-3 text-xs leading-5 text-gray-600">
+            <div className="mt-4 rounded-lg border border-brand-blue/20 bg-brand-light/50 px-4 py-3 text-xs leading-5 text-gray-600">
               Home-screen mode keeps sign-in in the installed app and brings you back to the page you opened.
               <span className="mt-1 block font-medium text-[#003B5C]">{installInstructions}</span>
             </div>
@@ -307,7 +307,7 @@ export default function LoginPage() {
             <button
               onClick={handleLocalPreviewSignIn}
               disabled={signingIn}
-              className="mt-4 min-h-11 w-full rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-2 text-sm font-semibold text-ucla-dark transition-colors hover:bg-ucla-light/70 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-4 min-h-11 w-full rounded-lg border border-brand-blue/30 bg-brand-light px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-light/70 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Continue in local preview
             </button>
@@ -317,7 +317,7 @@ export default function LoginPage() {
             <button
               onClick={handleAppReviewDemoSignIn}
               disabled={signingIn}
-              className="mt-4 min-h-11 w-full rounded-lg border border-[#003B5C]/30 bg-[#F4F8FB] px-4 py-2 text-sm font-semibold text-[#003B5C] transition-colors hover:bg-[#E8F1F7] focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-4 min-h-11 w-full rounded-lg border border-[#003B5C]/30 bg-[#F4F8FB] px-4 py-2 text-sm font-semibold text-[#003B5C] transition-colors hover:bg-[#E8F1F7] focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Continue in App Review demo
             </button>
@@ -327,7 +327,7 @@ export default function LoginPage() {
             <button
               onClick={handleRedirectSignIn}
               disabled={signingIn}
-              className="mt-4 min-h-11 w-full rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-2 text-sm font-semibold text-ucla-dark transition-colors hover:bg-ucla-light/70 focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-4 min-h-11 w-full rounded-lg border border-brand-blue/30 bg-brand-light px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-light/70 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Continue with full-page {providerLabels[fallbackProvider]} sign-in
             </button>

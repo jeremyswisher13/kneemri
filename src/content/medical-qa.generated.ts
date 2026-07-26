@@ -60,7 +60,7 @@ export const medicalQaTotals: MedicalQaTotals = {
 
 export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = {
   "knee-mri": {
-    "title": "UCLA Knee MRI Interpretation Course",
+    "title": "Knee MRI Interpretation Course",
     "modules": 9,
     "cases": 13,
     "prePostQuizItems": 28,

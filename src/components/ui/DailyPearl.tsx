@@ -11,7 +11,7 @@ export default function DailyPearl() {
         {/* Lightbulb icon */}
         <span
           className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-          style={{ backgroundColor: "var(--color-ucla-gold)" }}
+          style={{ backgroundColor: "var(--color-brand-gold)" }}
         >
           <svg
             className="h-4.5 w-4.5 text-gray-800"

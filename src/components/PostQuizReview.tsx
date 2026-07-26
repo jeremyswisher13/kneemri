@@ -69,7 +69,7 @@ export default function PostQuizReview({
                 type="checkbox"
                 checked={missesOnly}
                 onChange={(e) => setMissesOnly(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-ucla-blue focus:ring-ucla-blue"
+                className="h-4 w-4 rounded border-gray-300 text-brand-blue focus:ring-brand-blue"
               />
               Show only the {missed} I missed
             </label>

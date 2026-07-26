@@ -37,7 +37,7 @@ export default function PageLoader({ label, fullHeight = false }: PageLoaderProp
           className="mx-auto mt-4 h-1.5 max-w-60 overflow-hidden rounded-full bg-gray-200"
           aria-hidden="true"
         >
-          <div className="page-loader-indicator h-full w-2/5 rounded-full bg-ucla-blue" />
+          <div className="page-loader-indicator h-full w-2/5 rounded-full bg-brand-blue" />
         </div>
 
         {slow && (
@@ -52,7 +52,7 @@ export default function PageLoader({ label, fullHeight = false }: PageLoaderProp
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="mt-3 min-h-11 rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 sm:min-h-9"
+              className="mt-3 min-h-11 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 sm:min-h-9"
             >
               Try again
             </button>

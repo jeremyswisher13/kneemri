@@ -234,7 +234,7 @@ export default function GuidedTour({
           </span>
           <span className="h-1 flex-1 overflow-hidden rounded-full bg-gray-200">
             <span
-              className="block h-full rounded-full bg-ucla-blue transition-all"
+              className="block h-full rounded-full bg-brand-blue transition-all"
               style={{ width: `${((i + 1) / steps.length) * 100}%` }}
             />
           </span>
@@ -245,7 +245,7 @@ export default function GuidedTour({
           <div
             role="status"
             aria-live="polite"
-            className="mt-3 rounded-lg border border-ucla-blue/20 bg-ucla-light/60 px-3 py-2 text-xs leading-relaxed text-[#003B5C]"
+            className="mt-3 rounded-lg border border-brand-blue/20 bg-brand-light/60 px-3 py-2 text-xs leading-relaxed text-[#003B5C]"
           >
             <span className="font-semibold">Reviewing missed item: </span>
             {focusTarget.structure}. This is the closest guided-tour match; use Back/Next to review nearby anatomy.
@@ -359,7 +359,7 @@ export default function GuidedTour({
             <Link
               to={`${caseBasePath}/${bridge.caseId}`}
               aria-label={`Open injured case: ${bridge.label}`}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-ucla-gold/60 bg-ucla-gold/10 px-3 py-2 text-sm font-semibold text-[#7a5d00] transition-colors hover:bg-ucla-gold/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-brand-gold/60 bg-brand-gold/10 px-3 py-2 text-sm font-semibold text-[#7a5d00] transition-colors hover:bg-brand-gold/20 sm:min-h-0 sm:py-1.5 sm:text-xs"
             >
               See it injured: {bridge.label}
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -412,7 +412,7 @@ export default function GuidedTour({
               >
                 <span
                   className={`block rounded-full transition-colors ${
-                    n === i ? "h-3 w-3 bg-ucla-blue ring-2 ring-ucla-blue/20" : "h-2 w-2 bg-gray-300 hover:bg-gray-400"
+                    n === i ? "h-3 w-3 bg-brand-blue ring-2 ring-brand-blue/20" : "h-2 w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               </button>

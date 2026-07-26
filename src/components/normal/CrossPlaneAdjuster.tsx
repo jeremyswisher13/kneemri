@@ -167,7 +167,7 @@ export default function CrossPlaneAdjuster({
             dragTarget.current = null;
             setItemIndex(Number(event.target.value));
           }}
-          className="mt-1 block min-h-11 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-normal text-gray-900 focus:border-ucla-blue focus:outline-none focus:ring-2 focus:ring-ucla-blue/20"
+          className="mt-1 block min-h-11 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-normal text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
         >
           {draftItems.map((candidate, index) => (
             <option key={candidate.id} value={index}>
@@ -180,7 +180,7 @@ export default function CrossPlaneAdjuster({
       <div className="mt-4 grid gap-5 lg:grid-cols-2">
         <div>
           <div className="mb-2 flex items-center justify-between gap-3">
-            <p className="text-sm font-semibold text-ucla-blue">Source: {item.from.plane}</p>
+            <p className="text-sm font-semibold text-brand-blue">Source: {item.from.plane}</p>
             <p className="text-xs tabular-nums text-gray-500">
               x {item.from.x.toFixed(1)}%, y {item.from.y.toFixed(1)}%
             </p>
@@ -215,8 +215,8 @@ export default function CrossPlaneAdjuster({
               style={{ left: `${item.from.x}%`, top: `${item.from.y}%` }}
               className="absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
             >
-              <span className="block h-6 w-6 rounded-full border-2 border-ucla-gold bg-ucla-gold/30 shadow-[0_0_0_2px_rgba(0,0,0,0.65)]" />
-              <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
+              <span className="block h-6 w-6 rounded-full border-2 border-brand-gold bg-brand-gold/30 shadow-[0_0_0_2px_rgba(0,0,0,0.65)]" />
+              <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gold" />
             </button>
           </div>
           <label className="mt-3 flex items-center gap-3 text-xs text-gray-600">
@@ -230,7 +230,7 @@ export default function CrossPlaneAdjuster({
               value={item.from.sliceIndex}
               onChange={(event) => setSlice("from", Number(event.target.value))}
               aria-label={`Source slice for ${item.from.plane}`}
-              className="flex-1 accent-ucla-blue"
+              className="flex-1 accent-brand-blue"
             />
           </label>
         </div>
@@ -281,8 +281,8 @@ export default function CrossPlaneAdjuster({
                   <span
                     className={`grid h-7 min-w-7 place-items-center rounded-full border-2 px-1 text-[10px] font-bold shadow-[0_0_0_2px_rgba(0,0,0,0.65)] ${
                       correct
-                        ? "border-ucla-gold bg-ucla-gold text-[#3a2d00]"
-                        : "border-white bg-ucla-blue text-white"
+                        ? "border-brand-gold bg-brand-gold text-[#3a2d00]"
+                        : "border-white bg-brand-blue text-white"
                     }`}
                   >
                     {correct ? "T" : `D${distractorNumber}`}
@@ -302,7 +302,7 @@ export default function CrossPlaneAdjuster({
               value={item.to.sliceIndex}
               onChange={(event) => setSlice("to", Number(event.target.value))}
               aria-label={`Target slice for ${item.to.plane}`}
-              className="flex-1 accent-ucla-blue"
+              className="flex-1 accent-brand-blue"
             />
           </label>
           <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs tabular-nums text-gray-500 sm:grid-cols-4">

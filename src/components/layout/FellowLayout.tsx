@@ -85,7 +85,7 @@ function FellowLayoutContent() {
     const last = parts[parts.length - 1] || "";
     const isCourseRoot = parts[0] === "courses" && parts.length === 2;
     const page = pageTitleForRouteSegment(last, activeCourse, isCourseRoot);
-    document.title = `${page} · ${activeCourse.title} · UCLA`;
+    document.title = `${page} · ${activeCourse.title} · Sports MRI Academy`;
   }, [location.pathname, activeCourse]);
 
   // AppLayout resets document scrolling. Also reset this inner overflow surface
@@ -267,7 +267,7 @@ function FellowLayoutContent() {
           nav straight to the page content (WCAG 2.4.1). */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ucla-blue focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-blue focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
       >
         Skip to main content
       </a>
@@ -358,7 +358,7 @@ function FellowLayoutContent() {
             {user?.photoURL ? (
               <img src={user.photoURL} alt="" className="h-8 w-8 rounded-full" />
             ) : (
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ucla-blue text-white text-sm font-bold">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-white text-sm font-bold">
                 {user?.displayName?.[0] || "?"}
               </div>
             )}
@@ -391,7 +391,7 @@ function FellowLayoutContent() {
                     onClick={() => setSidebarOpen(false)}
                     className={`flex min-h-11 items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       selected
-                        ? "bg-ucla-light text-ucla-dark"
+                        ? "bg-brand-light text-brand-dark"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -419,14 +419,14 @@ function FellowLayoutContent() {
                     onClick={() => setSidebarOpen(false)}
                     aria-label={`${item.label}${workstationComplete ? " — completed" : " — course step 2"}`}
                     className={`block rounded-xl bg-gradient-to-br from-[#003B5C] to-[#2774AE] px-3 py-2.5 text-white shadow-sm transition-all hover:shadow-md hover:brightness-110 ${
-                      isActive(item.path) ? "ring-2 ring-ucla-gold" : "ring-1 ring-ucla-gold/40"
+                      isActive(item.path) ? "ring-2 ring-brand-gold" : "ring-1 ring-brand-gold/40"
                     }`}
                   >
                     <div className="flex items-center gap-1.5">
                       <svg className="h-3.5 w-3.5 shrink-0 text-white/90" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
                       </svg>
-                      <span className="inline-flex items-center rounded-full bg-ucla-gold px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#003B5C]">
+                      <span className="inline-flex items-center rounded-full bg-brand-gold px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#003B5C]">
                         {workstationComplete ? "Completed" : "Step 2"}
                       </span>
                       {progress && progress.totalNormalPlanes > 0 && (
@@ -445,7 +445,7 @@ function FellowLayoutContent() {
                     onClick={() => setSidebarOpen(false)}
                     className={`flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(item.path)
-                        ? "bg-ucla-blue text-white"
+                        ? "bg-brand-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -470,7 +470,7 @@ function FellowLayoutContent() {
                     onClick={() => setSidebarOpen(false)}
                     className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(coursePath(activeCourse, "/reference"))
-                        ? "bg-ucla-blue text-white"
+                        ? "bg-brand-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -494,7 +494,7 @@ function FellowLayoutContent() {
                   onClick={() => setSidebarOpen(false)}
                   className={`flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                     isActive(coursePath(activeCourse, "/review"))
-                      ? "bg-ucla-blue text-white"
+                      ? "bg-brand-blue text-white"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -535,7 +535,7 @@ function FellowLayoutContent() {
                     onClick={() => setSidebarOpen(false)}
                     className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                       isActive(scopedPath)
-                        ? "bg-ucla-blue text-white"
+                        ? "bg-brand-blue text-white"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -560,7 +560,7 @@ function FellowLayoutContent() {
                   onClick={() => setSidebarOpen(false)}
                   className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:min-h-0 ${
                     isActive(coursePath(activeCourse, "/certificate"))
-                      ? "bg-ucla-blue text-white"
+                      ? "bg-brand-blue text-white"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >

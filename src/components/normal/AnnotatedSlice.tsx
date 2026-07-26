@@ -69,7 +69,7 @@ export default function AnnotatedSlice({
               setFailedSrc(null);
               setRetryRevision((revision) => revision + 1);
             }}
-            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+            className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
           >
             Retry image
           </button>
@@ -86,12 +86,12 @@ export default function AnnotatedSlice({
         >
           {/* Marker ring */}
           <span
-            className={`block h-7 w-7 rounded-full border-2 border-ucla-gold bg-ucla-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5 ${
+            className={`block h-7 w-7 rounded-full border-2 border-brand-gold bg-brand-gold/20 shadow-[0_0_0_2px_rgba(0,0,0,0.55)] lg:h-5 lg:w-5 ${
               pulse ? "animate-pulse" : ""
             }`}
           />
           {/* Center dot */}
-          <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
+          <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gold" />
           {showLabels && m.label && (
             <span
               className={`absolute max-w-44 rounded bg-black/55 px-2 py-0.5 text-[11px] font-semibold leading-tight text-white ${labelClass(

@@ -177,7 +177,7 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
                             key={item.id}
                             className={`cursor-pointer rounded-lg border px-3 py-3 transition-colors ${
                               category === item.id
-                                ? "border-ucla-blue bg-ucla-light/60 ring-1 ring-ucla-blue"
+                                ? "border-brand-blue bg-brand-light/60 ring-1 ring-brand-blue"
                                 : "border-gray-200 bg-white hover:border-gray-300"
                             }`}
                           >
@@ -218,7 +218,7 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
                   <button
                     type="button"
                     onClick={close}
-                    className="min-h-11 rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white hover:bg-ucla-dark"
+                    className="min-h-11 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark"
                   >
                     Done
                   </button>
@@ -235,7 +235,7 @@ export default function IssueReportButton({ course }: { course: CourseDefinition
                       type="button"
                       onClick={submit}
                       disabled={!category || submitting}
-                      className="min-h-11 rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white hover:bg-ucla-dark disabled:cursor-not-allowed disabled:opacity-50"
+                      className="min-h-11 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {submitting ? "Sending..." : "Send report"}
                     </button>

@@ -162,7 +162,7 @@ function CourseQaCard({
       type="button"
       onClick={() => onSelect(courseId)}
       className={`rounded-xl border bg-white p-4 text-left shadow-sm transition-colors ${
-        active ? "border-ucla-blue ring-2 ring-ucla-blue/20" : "border-gray-100 hover:border-ucla-blue/40"
+        active ? "border-brand-blue ring-2 ring-brand-blue/20" : "border-gray-100 hover:border-brand-blue/40"
       }`}
     >
       <div className="flex items-start justify-between gap-3">
@@ -172,7 +172,7 @@ function CourseQaCard({
             {summary.modules} modules · {summary.cases} cases · {summary.normalPlanes} planes
           </p>
         </div>
-        <span className="rounded-full bg-ucla-light px-2 py-0.5 text-xs font-semibold text-ucla-dark">
+        <span className="rounded-full bg-brand-light px-2 py-0.5 text-xs font-semibold text-brand-dark">
           {sourcePct}%
         </span>
       </div>
@@ -234,7 +234,7 @@ function SourceCheckRow({
           <button
             type="button"
             onClick={onSelect}
-            className="rounded-md border border-ucla-blue/30 bg-white px-2.5 py-1 text-xs font-semibold text-ucla-blue transition-colors hover:bg-ucla-light"
+            className="rounded-md border border-brand-blue/30 bg-white px-2.5 py-1 text-xs font-semibold text-brand-blue transition-colors hover:bg-brand-light"
           >
             Review
           </button>
@@ -454,7 +454,7 @@ export default function AdminMedicalQaPage() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <StatCard label="Review Items" value={formatNumber(medicalQaTotals.reviewItems)} tone="bg-ucla-blue" />
+        <StatCard label="Review Items" value={formatNumber(medicalQaTotals.reviewItems)} tone="bg-brand-blue" />
         <StatCard label="Source Checks" value={formatNumber(medicalQaTotals.sourceCheckItems)} tone="bg-amber-500" />
         <StatCard label="High Risk" value={formatNumber(medicalQaTotals.highRiskItems)} tone="bg-red-500" />
         <StatCard label="Approved" value={formatNumber(reviewStatusCounts.approved)} tone="bg-green-500" />
@@ -494,7 +494,7 @@ export default function AdminMedicalQaPage() {
               type="button"
               onClick={handleExportReviewCsv}
               disabled={queueLoading}
-              className="rounded-lg border border-ucla-blue bg-white px-3 py-1.5 text-sm font-semibold text-ucla-blue transition-colors hover:bg-ucla-light disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-lg border border-brand-blue bg-white px-3 py-1.5 text-sm font-semibold text-brand-blue transition-colors hover:bg-brand-light disabled:cursor-not-allowed disabled:opacity-60"
             >
               Export QA CSV
             </button>
@@ -506,7 +506,7 @@ export default function AdminMedicalQaPage() {
                   type="button"
                   onClick={() => setRiskFilter(risk)}
                   className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
-                    active ? "bg-ucla-blue text-white shadow-sm" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    active ? "bg-brand-blue text-white shadow-sm" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
                   {risk === "all" ? "All risk" : riskLabels[risk]}
@@ -527,7 +527,7 @@ export default function AdminMedicalQaPage() {
                 type="button"
                 onClick={() => setReviewStatusFilter(status)}
                 className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
-                  active ? "bg-ucla-blue text-white shadow-sm" : "bg-white text-gray-600 hover:bg-gray-100"
+                  active ? "bg-brand-blue text-white shadow-sm" : "bg-white text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 {status === "all" ? "All" : MEDICAL_QA_REVIEW_LABELS[status]} ({formatNumber(count)})
@@ -542,7 +542,7 @@ export default function AdminMedicalQaPage() {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-ucla-blue focus:ring-2 focus:ring-ucla-blue/20"
+              className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
               placeholder="Finding, source file, flag, item id"
             />
           </label>
@@ -552,7 +552,7 @@ export default function AdminMedicalQaPage() {
             <select
               value={typeFilter}
               onChange={(event) => setTypeFilter(event.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-ucla-blue focus:ring-2 focus:ring-ucla-blue/20"
+              className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
             >
               <option value="all">All item types</option>
               {itemTypeOptions.map(([type, count]) => (
@@ -600,7 +600,7 @@ export default function AdminMedicalQaPage() {
         )}
 
         {selectedItem && (
-          <div className="mt-5 rounded-xl border border-ucla-blue/20 bg-blue-50/40 p-4">
+          <div className="mt-5 rounded-xl border border-brand-blue/20 bg-blue-50/40 p-4">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
@@ -621,7 +621,7 @@ export default function AdminMedicalQaPage() {
                 <select
                   value={draftStatus}
                   onChange={(event) => setDraftStatus(event.target.value as MedicalQaReviewStatus)}
-                  className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm outline-none transition-colors focus:border-ucla-blue focus:ring-2 focus:ring-ucla-blue/20"
+                  className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
                 >
                   {MEDICAL_QA_REVIEW_STATUSES.map((status) => (
                     <option key={status} value={status}>
@@ -638,7 +638,7 @@ export default function AdminMedicalQaPage() {
                 <textarea
                   value={draftSourceNotes}
                   onChange={(event) => setDraftSourceNotes(event.target.value)}
-                  className="mt-1 min-h-28 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-ucla-blue focus:ring-2 focus:ring-ucla-blue/20"
+                  className="mt-1 min-h-28 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
                   placeholder="Citation, guideline, article, or rationale used to verify this claim"
                 />
               </label>
@@ -647,7 +647,7 @@ export default function AdminMedicalQaPage() {
                 <textarea
                   value={draftReviewerNotes}
                   onChange={(event) => setDraftReviewerNotes(event.target.value)}
-                  className="mt-1 min-h-28 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-ucla-blue focus:ring-2 focus:ring-ucla-blue/20"
+                  className="mt-1 min-h-28 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
                   placeholder="Content edits needed, reviewer concerns, or sign-off context"
                 />
               </label>
@@ -658,7 +658,7 @@ export default function AdminMedicalQaPage() {
                 type="button"
                 onClick={handleSaveReview}
                 disabled={!user || savingReview}
-                className="rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {savingReview ? "Saving..." : "Save review"}
               </button>
@@ -674,7 +674,7 @@ export default function AdminMedicalQaPage() {
         <div className="mt-5 overflow-x-auto">
           <table className="w-full min-w-[1120px] text-left">
             <thead>
-              <tr className="border-b-2 border-ucla-blue">
+              <tr className="border-b-2 border-brand-blue">
                 <th className="pb-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Item</th>
                 <th className="pb-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Course</th>
                 <th className="pb-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Source</th>

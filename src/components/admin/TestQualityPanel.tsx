@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import type { CourseDefinition } from "@/content/courses";
-import { UCLA_BLUE, type Fellow } from "@/components/admin/shared";
+import { BRAND_BLUE, type Fellow } from "@/components/admin/shared";
 import {
   computePsychometrics,
   interpretCohensD,
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const GREEN = "#16a34a";
-const BLUE = UCLA_BLUE;
+const BLUE = BRAND_BLUE;
 const AMBER = "#d97706";
 const RED = "#dc2626";
 const GRAY = "#9ca3af";

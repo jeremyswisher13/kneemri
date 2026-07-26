@@ -1,4 +1,4 @@
-# Medical QA Packet: UCLA Knee MRI Interpretation Course
+# Medical QA Packet: Knee MRI Interpretation Course
 Generated: 2026-07-26
 Course ID: `knee-mri`  
 Body region: `knee`  

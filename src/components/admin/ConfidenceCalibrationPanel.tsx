@@ -133,11 +133,11 @@ export default function ConfidenceCalibrationPanel({ fellows, course }: Confiden
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="w-20 shrink-0 text-[11px] text-ucla-blue">Confidence</span>
+                  <span className="w-20 shrink-0 text-[11px] text-brand-blue">Confidence</span>
                   <div className="h-2.5 flex-1 rounded-full bg-gray-100">
                     <div className="h-2.5 rounded-full" style={{ width: `${r.confPct ?? 0}%`, backgroundColor: NOW }} />
                   </div>
-                  <span className="w-9 text-right text-[11px] font-semibold text-ucla-blue">{r.confPct == null ? "—" : `${r.confPct}%`}</span>
+                  <span className="w-9 text-right text-[11px] font-semibold text-brand-blue">{r.confPct == null ? "—" : `${r.confPct}%`}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-20 shrink-0 text-[11px] text-gray-600">Competence</span>

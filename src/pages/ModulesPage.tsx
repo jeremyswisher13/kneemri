@@ -21,7 +21,7 @@ export default function ModulesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -55,13 +55,13 @@ export default function ModulesPage() {
       {prerequisite && (
         <Link
           to={prerequisite.href}
-          className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70"
+          className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-brand-blue/30 bg-brand-light px-4 py-3 transition-colors hover:bg-brand-light/70"
         >
           <div className="min-w-0">
             <p className="text-sm font-semibold text-[#003B5C]">{prerequisite.title}</p>
             <p className="mt-0.5 text-xs leading-5 text-gray-600">{prerequisite.copy}</p>
           </div>
-          <span className="shrink-0 text-ucla-blue" aria-hidden="true">&rarr;</span>
+          <span className="shrink-0 text-brand-blue" aria-hidden="true">&rarr;</span>
         </Link>
       )}
 
@@ -83,7 +83,7 @@ export default function ModulesPage() {
 
           return (
             <Link key={mod.id} to={coursePath(activeCourse, `/modules/${mod.id}`)} className="block">
-              <Card className="relative h-full transition-shadow hover:shadow-md hover:border-ucla-blue/30">
+              <Card className="relative h-full transition-shadow hover:shadow-md hover:border-brand-blue/30">
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
                   {status === "completed" && (() => {
@@ -109,8 +109,8 @@ export default function ModulesPage() {
                     );
                   })()}
                   {status === "in-progress" && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-ucla-blue">
-                      <span className="h-1.5 w-1.5 rounded-full bg-ucla-blue" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-brand-blue">
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
                       In Progress
                     </span>
                   )}
@@ -118,7 +118,7 @@ export default function ModulesPage() {
 
                 {/* Module Number */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ucla-blue text-white text-sm font-bold">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-blue text-white text-sm font-bold">
                     {mod.number}
                   </div>
                   <div className="min-w-0 pr-20">

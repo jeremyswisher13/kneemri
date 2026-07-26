@@ -58,7 +58,7 @@ export default function PostQuizPage() {
   if (progressLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -124,11 +124,11 @@ export default function PostQuizPage() {
               {preScore != null ? `${preScore}/${progress?.preQuizTotal ?? results.totalQuestions}` : "N/A"}
             </p>
           </div>
-          <div className="rounded-xl bg-white p-6 shadow-sm border border-ucla-blue text-center">
-            <p className="text-sm font-medium text-ucla-blue uppercase tracking-wider">
+          <div className="rounded-xl bg-white p-6 shadow-sm border border-brand-blue text-center">
+            <p className="text-sm font-medium text-brand-blue uppercase tracking-wider">
               Post-Assessment Score
             </p>
-            <p className="mt-2 text-4xl font-bold text-ucla-blue">
+            <p className="mt-2 text-4xl font-bold text-brand-blue">
               {results.score}/{results.totalQuestions}
             </p>
             <p className="mt-1 text-sm text-gray-500">
@@ -235,8 +235,8 @@ export default function PostQuizPage() {
       </h1>
 
       {isAdminView && (
-        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-gold/40 bg-ucla-gold/10 px-4 py-2.5">
-          <span className="text-xs font-medium text-ucla-dark">
+        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-4 py-2.5">
+          <span className="text-xs font-medium text-brand-dark">
             Admin view — your answers are not recorded. You can skip ahead.
           </span>
           <Button

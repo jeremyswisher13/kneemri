@@ -10,10 +10,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-ucla-blue text-white hover:bg-ucla-dark focus:ring-ucla-blue/50 shadow-sm",
+    "bg-brand-blue text-white hover:bg-brand-dark focus:ring-brand-blue/50 shadow-sm",
   secondary:
-    "border border-ucla-blue text-ucla-blue bg-white hover:bg-ucla-light focus:ring-ucla-blue/50",
-  gold: "bg-ucla-gold text-ucla-dark hover:brightness-95 focus:ring-ucla-gold/50 shadow-sm font-semibold",
+    "border border-brand-blue text-brand-blue bg-white hover:bg-brand-light focus:ring-brand-blue/50",
+  gold: "bg-brand-gold text-brand-dark hover:brightness-95 focus:ring-brand-gold/50 shadow-sm font-semibold",
   danger:
     "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500/50 shadow-sm",
 };

@@ -10,12 +10,12 @@ interface CompletionBadgeProps {
 
 export default function CompletionBadge({ fellowName, courseTitle, certificateHref }: CompletionBadgeProps) {
   return (
-    <div className="mb-8 overflow-hidden rounded-xl border-2 border-ucla-gold bg-gradient-to-r from-ucla-dark to-ucla-blue p-6 text-white shadow-lg">
+    <div className="mb-8 overflow-hidden rounded-xl border-2 border-brand-gold bg-gradient-to-r from-brand-dark to-brand-blue p-6 text-white shadow-lg">
       <div className="flex items-center gap-5">
         {/* Trophy icon */}
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-ucla-gold/20 ring-2 ring-ucla-gold">
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-brand-gold/20 ring-2 ring-brand-gold">
           <svg
-            className="h-8 w-8 text-ucla-gold"
+            className="h-8 w-8 text-brand-gold"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -34,7 +34,7 @@ export default function CompletionBadge({ fellowName, courseTitle, certificateHr
 
         <Link
           to={certificateHref}
-          className="shrink-0 rounded-lg bg-ucla-gold px-4 py-2 text-sm font-semibold text-ucla-dark shadow transition-colors hover:bg-yellow-300"
+          className="shrink-0 rounded-lg bg-brand-gold px-4 py-2 text-sm font-semibold text-brand-dark shadow transition-colors hover:bg-yellow-300"
         >
           View Certificate
         </Link>

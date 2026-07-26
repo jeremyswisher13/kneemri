@@ -90,7 +90,7 @@ export default function AdvancedChallenge({
       <Card>
         <div className="flex items-start gap-3">
           <span
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ucla-gold/20 text-xs font-bold tracking-wide text-[#7a5d00]"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-gold/20 text-xs font-bold tracking-wide text-[#7a5d00]"
             aria-hidden="true"
           >
             ADV
@@ -112,7 +112,7 @@ export default function AdvancedChallenge({
             aria-label={`Start advanced challenge with all topics, ${questionCountLabel(
               questions.length,
             )}`}
-            className="flex items-center justify-between rounded-xl border border-ucla-blue/30 bg-ucla-light/60 px-4 py-3 text-left transition-colors hover:bg-ucla-light"
+            className="flex items-center justify-between rounded-xl border border-brand-blue/30 bg-brand-light/60 px-4 py-3 text-left transition-colors hover:bg-brand-light"
           >
             <span className="text-sm font-semibold text-[#003B5C]">All topics</span>
             <span className="rounded-full bg-white/70 px-2 py-0.5 text-xs font-semibold text-gray-600">
@@ -146,7 +146,7 @@ export default function AdvancedChallenge({
       <Card>
         <div className="py-8 text-center">
           <p className="text-sm font-medium text-gray-500">Advanced challenge complete</p>
-          <p className="mt-2 text-4xl font-bold text-ucla-blue">
+          <p className="mt-2 text-4xl font-bold text-brand-blue">
             {score}/{run.length}
           </p>
           <p className="mx-auto mt-2 max-w-md text-sm text-gray-600">
@@ -206,7 +206,7 @@ export default function AdvancedChallenge({
 
   function optClass(optIdx: number) {
     if (!answered)
-      return "border-gray-200 bg-white hover:border-ucla-blue/50 hover:bg-ucla-light/40 cursor-pointer";
+      return "border-gray-200 bg-white hover:border-brand-blue/50 hover:bg-brand-light/40 cursor-pointer";
     if (optIdx === q.answer) return "border-green-400 bg-green-50";
     if (optIdx === picked) return "border-red-400 bg-red-50";
     return "border-gray-200 bg-white opacity-60";
@@ -221,7 +221,7 @@ export default function AdvancedChallenge({
         </span>
         <span className="h-1 flex-1 overflow-hidden rounded-full bg-gray-200">
           <span
-            className="block h-full rounded-full bg-ucla-blue transition-all"
+            className="block h-full rounded-full bg-brand-blue transition-all"
             style={{ width: `${((qi + 1) / run.length) * 100}%` }}
           />
         </span>
@@ -231,7 +231,7 @@ export default function AdvancedChallenge({
       </div>
 
       <Card>
-        <span className="inline-flex rounded-full bg-ucla-gold/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[#7a5d00]">
+        <span className="inline-flex rounded-full bg-brand-gold/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[#7a5d00]">
           {q.topic}
         </span>
         <p className="mt-2 text-[15px] font-medium leading-relaxed text-gray-900">{q.prompt}</p>

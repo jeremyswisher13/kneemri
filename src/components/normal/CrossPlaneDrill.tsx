@@ -134,7 +134,7 @@ export default function CrossPlaneDrill({
       <Card>
         <div className="py-8 text-center">
           <p className="text-sm font-medium text-gray-500">Cross-plane correlation complete</p>
-          <p className="mt-2 text-4xl font-bold text-ucla-blue">
+          <p className="mt-2 text-4xl font-bold text-brand-blue">
             {score}/{items.length}
           </p>
           <p className="mx-auto mt-2 max-w-md text-sm text-gray-600">
@@ -236,14 +236,14 @@ export default function CrossPlaneDrill({
   }
 
   function candClass(candIdx: number) {
-    if (!answered) return "bg-white/90 text-ucla-blue ring-ucla-blue hover:scale-110 cursor-pointer";
+    if (!answered) return "bg-white/90 text-brand-blue ring-brand-blue hover:scale-110 cursor-pointer";
     if (candIdx === item.to.answer) return "bg-green-500 text-white ring-white";
     if (candIdx === pickedIdx) return "bg-red-500 text-white ring-white";
     return "bg-white/40 text-gray-500 ring-white/60";
   }
 
   function candPanelClass(candIdx: number) {
-    if (!answered) return "border-ucla-blue/25 bg-white text-ucla-blue shadow-sm";
+    if (!answered) return "border-brand-blue/25 bg-white text-brand-blue shadow-sm";
     if (candIdx === item.to.answer) return "border-green-400 bg-green-50 text-green-800";
     if (candIdx === pickedIdx) return "border-red-400 bg-red-50 text-red-800";
     return "border-gray-200 bg-gray-50 text-gray-500";
@@ -265,7 +265,7 @@ export default function CrossPlaneDrill({
               onClick={() => changeDiff(d)}
               aria-pressed={diff === d}
               className={`min-h-11 rounded-md px-3 py-2 font-medium transition-colors sm:min-h-9 sm:py-1.5 lg:min-h-0 lg:px-2.5 lg:py-1 ${
-                diff === d ? "bg-ucla-blue text-white" : "text-gray-600 hover:bg-gray-50"
+                diff === d ? "bg-brand-blue text-white" : "text-gray-600 hover:bg-gray-50"
               }`}
             >
               {d === "mc" ? "Multiple choice" : "Free response (hard)"}
@@ -278,12 +278,12 @@ export default function CrossPlaneDrill({
       </div>
       <span className="block h-1 w-full overflow-hidden rounded-full bg-gray-200">
         <span
-          className="block h-full rounded-full bg-ucla-blue transition-all"
+          className="block h-full rounded-full bg-brand-blue transition-all"
           style={{ width: `${((idx + 1) / items.length) * 100}%` }}
         />
       </span>
 
-      <div className="mt-3 rounded-lg border border-ucla-blue/15 bg-ucla-light/50 px-3 py-2 text-sm">
+      <div className="mt-3 rounded-lg border border-brand-blue/15 bg-brand-light/50 px-3 py-2 text-sm">
         <p className="font-semibold text-[#003B5C]">Track the labeled structure across planes</p>
         <p className="mt-0.5 text-xs leading-relaxed text-gray-600">
           Find <span className="font-semibold text-gray-800">{item.from.label}</span> on{" "}
@@ -295,7 +295,7 @@ export default function CrossPlaneDrill({
       <div data-screenshot-anchor="mri-viewer" className="mt-4 grid gap-5 lg:grid-cols-2">
         {/* FROM — labeled structure */}
         <div>
-          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-ucla-blue/10 px-2.5 py-1 text-xs font-semibold text-ucla-blue">
+          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-brand-blue/10 px-2.5 py-1 text-xs font-semibold text-brand-blue">
             From · {item.from.plane}
           </span>
           <div className="relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full">
@@ -339,9 +339,9 @@ export default function CrossPlaneDrill({
                 className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${item.from.x}%`, top: `${item.from.y}%` }}
               >
-                <span className="block h-3.5 w-3.5 animate-pulse rounded-full bg-ucla-gold ring-2 ring-white shadow" />
+                <span className="block h-3.5 w-3.5 animate-pulse rounded-full bg-brand-gold ring-2 ring-white shadow" />
                 <span
-                  className={`absolute max-w-44 rounded bg-ucla-gold px-1.5 py-0.5 text-[10px] font-semibold leading-tight text-[#3a2d00] shadow ${sourceLabelClass(
+                  className={`absolute max-w-44 rounded bg-brand-gold px-1.5 py-0.5 text-[10px] font-semibold leading-tight text-[#3a2d00] shadow ${sourceLabelClass(
                     item.from,
                   )}`}
                 >
@@ -354,7 +354,7 @@ export default function CrossPlaneDrill({
 
         {/* TO — pick / click the matching structure */}
         <div>
-          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-ucla-gold/20 px-2.5 py-1 text-xs font-semibold text-[#7a5d00]">
+          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-brand-gold/20 px-2.5 py-1 text-xs font-semibold text-[#7a5d00]">
             To · {item.to.plane} — {diff === "mc" ? "tap the same structure" : "click the same structure"}
           </span>
           <div
@@ -370,7 +370,7 @@ export default function CrossPlaneDrill({
                   : `Locate the ${item.from.label} on this ${item.to.plane} MRI. Click the image, or use the arrow keys to move the crosshair (hold Shift for fine steps) and press Enter to place it.`
                 : undefined
             }
-            className={`relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2 lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full ${
+            className={`relative mx-auto block w-fit min-h-[40svh] max-h-[40svh] overflow-hidden rounded-xl border border-gray-200 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 lg:mx-0 lg:min-h-0 lg:max-h-none lg:w-full ${
               diff === "free" && !answered && !interactionPaused ? "cursor-crosshair" : ""
             }`}
           >
@@ -554,7 +554,7 @@ function MriImageFailure({ onRetry, paused = false }: { onRetry: () => void; pau
           event.stopPropagation();
           onRetry();
         }}
-        className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-gold"
+        className="rounded-md border border-white/60 bg-white/10 px-3 py-2 font-medium hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
       >
         Retry image
       </button>

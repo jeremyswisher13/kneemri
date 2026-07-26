@@ -35,7 +35,7 @@ export default function PreSurveyPage() {
   if (progressLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -115,8 +115,8 @@ export default function PreSurveyPage() {
       </p>
 
       {isAdminView && (
-        <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-gold/40 bg-ucla-gold/10 px-4 py-2.5">
-          <span className="text-xs font-medium text-ucla-dark">
+        <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-4 py-2.5">
+          <span className="text-xs font-medium text-brand-dark">
             Admin view — your responses are not recorded. You can skip ahead.
           </span>
           <Button

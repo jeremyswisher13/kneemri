@@ -56,7 +56,7 @@ export default function PostAssessmentPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -128,9 +128,9 @@ export default function PostAssessmentPage() {
         <h1 className="text-2xl font-bold text-gray-900">Post-Assessment</h1>
 
         {courseComplete ? (
-          <div className="mt-8 overflow-hidden rounded-xl border-2 border-ucla-gold bg-gradient-to-r from-ucla-dark to-ucla-blue p-8 text-center text-white">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-ucla-gold/20 ring-2 ring-ucla-gold">
-              <svg className="h-8 w-8 text-ucla-gold" fill="currentColor" viewBox="0 0 24 24">
+          <div className="mt-8 overflow-hidden rounded-xl border-2 border-brand-gold bg-gradient-to-r from-brand-dark to-brand-blue p-8 text-center text-white">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-gold/20 ring-2 ring-brand-gold">
+              <svg className="h-8 w-8 text-brand-gold" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M5 3h14c.6 0 1 .4 1 1v2c0 2.8-2 5.1-4.6 5.8-.4 1.4-1.5 2.5-2.9 2.9V17h3a1 1 0 110 2H8a1 1 0 110-2h3v-2.3c-1.4-.4-2.5-1.5-2.9-2.9C5.5 11.1 4 8.8 4 6V4c0-.6.4-1 1-1zm1 2v1c0 1.9 1.2 3.5 2.8 4.2.5-.3 1-.4 1.6-.4h1.2c.6 0 1.1.1 1.6.4C14.8 9.5 16 7.9 16 6V5H6z" />
               </svg>
             </div>
@@ -142,7 +142,7 @@ export default function PostAssessmentPage() {
             </p>
             <Link
               to={coursePath(activeCourse, "/certificate")}
-              className="mt-4 inline-block rounded-lg bg-ucla-gold px-6 py-2 text-sm font-semibold text-ucla-dark shadow transition-colors hover:bg-yellow-300"
+              className="mt-4 inline-block rounded-lg bg-brand-gold px-6 py-2 text-sm font-semibold text-brand-dark shadow transition-colors hover:bg-yellow-300"
             >
               View Your Certificate
             </Link>
@@ -193,7 +193,7 @@ export default function PostAssessmentPage() {
           <div className="flex items-start gap-4">
             <div
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${
-                progress.postQuizCompleted ? "bg-green-100" : "bg-ucla-light"
+                progress.postQuizCompleted ? "bg-green-100" : "bg-brand-light"
               }`}
             >
               {progress.postQuizCompleted ? (
@@ -212,7 +212,7 @@ export default function PostAssessmentPage() {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6 text-ucla-blue"
+                  className="h-6 w-6 text-brand-blue"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
@@ -261,7 +261,7 @@ export default function PostAssessmentPage() {
           <div className="flex items-start gap-4">
             <div
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${
-                progress.postSurveyCompleted ? "bg-green-100" : "bg-ucla-light"
+                progress.postSurveyCompleted ? "bg-green-100" : "bg-brand-light"
               }`}
             >
               {progress.postSurveyCompleted ? (
@@ -280,7 +280,7 @@ export default function PostAssessmentPage() {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6 text-ucla-blue"
+                  className="h-6 w-6 text-brand-blue"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}

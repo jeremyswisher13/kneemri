@@ -4,15 +4,15 @@ import Card from "@/components/ui/Card";
 export default function PrivacyPage() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-      <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Privacy</p>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">UCLA Sports MRI Privacy Policy</h1>
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Privacy</p>
+      <h1 className="mt-2 text-2xl font-bold text-gray-900">Sports MRI Academy Privacy Policy</h1>
       <p className="mt-2 text-sm text-gray-500">Last updated: July 14, 2026</p>
 
       <div className="mt-6 space-y-5">
         <Card>
           <h2 className="text-lg font-semibold text-gray-900">What this app is for</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">
-            UCLA Sports MRI is an educational app for sports medicine MRI learning. It is not a
+            Sports MRI Academy is an educational app for sports medicine MRI learning. It is not a
             diagnostic device, treatment tool, or substitute for professional clinical judgment.
             Learners should verify clinical decisions with qualified supervising clinicians and
             institutional policy.
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
             institutional compliance.
           </p>
           <div className="mt-4">
-            <Link to="/account" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/account" className="text-sm font-semibold text-brand-blue hover:underline">
               Open Account page
             </Link>
           </div>
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
             director through the UCLA Sports Medicine education team.
           </p>
           <div className="mt-4">
-            <Link to="/support" className="text-sm font-semibold text-ucla-blue hover:underline">
+            <Link to="/support" className="text-sm font-semibold text-brand-blue hover:underline">
               Open Support
             </Link>
           </div>

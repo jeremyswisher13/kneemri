@@ -819,7 +819,7 @@ export default function AdminDashboardPage() {
               key={course.id}
               onClick={() => setSelectedCourse(course)}
               className={`rounded-lg px-3.5 py-1.5 text-sm font-semibold transition-colors ${
-                active ? "bg-ucla-blue text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"
+                active ? "bg-brand-blue text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               {course.shortTitle}
@@ -838,7 +838,7 @@ export default function AdminDashboardPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`rounded-lg px-3.5 py-1.5 text-sm font-semibold transition-colors ${
-                active ? "bg-ucla-blue text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"
+                active ? "bg-brand-blue text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               {tab.label}
@@ -1306,7 +1306,7 @@ function TrackedFellowsPanel({
         </div>
         <div className="grid grid-cols-3 gap-2 text-center sm:w-[360px]">
           <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
-            <p className="text-lg font-bold text-ucla-dark">{foundCount}/{rows.length}</p>
+            <p className="text-lg font-bold text-brand-dark">{foundCount}/{rows.length}</p>
             <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Signed in</p>
           </div>
           <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
@@ -1369,7 +1369,7 @@ function TrackedFellowsPanel({
                 </div>
                 <div className="h-2 rounded-full bg-gray-100">
                   <div
-                    className="h-2 rounded-full bg-ucla-blue"
+                    className="h-2 rounded-full bg-brand-blue"
                     style={{ width: `${Math.min(Math.max(row.progressPct, 0), 100)}%` }}
                   />
                 </div>
@@ -1394,7 +1394,7 @@ function TrackedFellowsPanel({
                   type="button"
                   onClick={() => fellow && onSelectLearner(fellow.id)}
                   disabled={!fellow}
-                  className="self-start rounded-lg border border-ucla-blue/30 px-3 py-1.5 text-xs font-semibold text-ucla-dark transition-colors hover:bg-ucla-light disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400 disabled:hover:bg-transparent sm:self-auto"
+                  className="self-start rounded-lg border border-brand-blue/30 px-3 py-1.5 text-xs font-semibold text-brand-dark transition-colors hover:bg-brand-light disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400 disabled:hover:bg-transparent sm:self-auto"
                 >
                   Open row
                 </button>

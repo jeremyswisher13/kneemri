@@ -39,7 +39,7 @@ export function AppErrorFallback({
   const copy = getErrorFallbackCopy(error);
 
   return (
-    <main className="flex min-h-screen min-h-[100dvh] items-center justify-center bg-ucla-gray px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-[calc(2rem+env(safe-area-inset-top))]">
+    <main className="flex min-h-screen min-h-[100dvh] items-center justify-center bg-brand-gray px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-[calc(2rem+env(safe-area-inset-top))]">
       <div
         role="alert"
         aria-labelledby="app-error-title"
@@ -50,8 +50,8 @@ export function AppErrorFallback({
           alt=""
           className="mx-auto h-16 w-16 rounded-[18px] shadow-sm ring-1 ring-black/5"
         />
-        <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-ucla-blue">
-          UCLA Sports MRI Courses
+        <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-brand-blue">
+          Sports MRI Academy
         </p>
         <h1 id="app-error-title" className="mt-2 text-2xl font-bold text-gray-900">
           {copy.title}
@@ -64,13 +64,13 @@ export function AppErrorFallback({
           <button
             type="button"
             onClick={onReload}
-            className="min-h-11 rounded-lg bg-ucla-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+            className="min-h-11 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
           >
             Reload app
           </button>
           <a
             href="/"
-            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
           >
             Return to courses
           </a>
@@ -81,7 +81,7 @@ export function AppErrorFallback({
         </p>
         <a
           href="/support"
-          className="mt-2 inline-block text-xs font-semibold text-ucla-blue hover:underline"
+          className="mt-2 inline-block text-xs font-semibold text-brand-blue hover:underline"
         >
           Get support
         </a>

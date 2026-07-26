@@ -46,7 +46,7 @@ export default function PostSurveyPage() {
   if (progressLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -146,7 +146,7 @@ export default function PostSurveyPage() {
           <p className="mb-4 text-sm text-gray-500">
             <span className="font-medium text-amber-600">Before</span> is your
             looking-back rating;{" "}
-            <span className="font-medium text-ucla-blue">Now</span> is today. The
+            <span className="font-medium text-brand-blue">Now</span> is today. The
             growth uses the same after-course yardstick for both, which is the most
             honest measure of what you gained.
             {hasPreData && " Your original day-one rating is shown for reference."}
@@ -214,7 +214,7 @@ export default function PostSurveyPage() {
                       <Bar label="Day one" value={origPre} color="#d1d5db" text="text-gray-500" />
                     )}
                     <Bar label="Before" value={then} color="#d97706" text="text-amber-600" />
-                    <Bar label="Now" value={now} color="#2774AE" text="text-ucla-blue" />
+                    <Bar label="Now" value={now} color="#2774AE" text="text-brand-blue" />
                   </div>
                 </div>
               );
@@ -242,15 +242,15 @@ export default function PostSurveyPage() {
         Post-Assessment Confidence Survey
       </h1>
       <p className="mt-1 text-gray-500">
-        For each skill, rate your confidence <span className="font-medium text-ucla-blue">now</span>{" "}
+        For each skill, rate your confidence <span className="font-medium text-brand-blue">now</span>{" "}
         and&mdash;looking back with what you know today&mdash;how confident you{" "}
         <span className="font-medium text-amber-600">actually were before</span> the course.
         There are no right or wrong answers.
       </p>
 
       {isAdminView && (
-        <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-gold/40 bg-ucla-gold/10 px-4 py-2.5">
-          <span className="text-xs font-medium text-ucla-dark">
+        <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-4 py-2.5">
+          <span className="text-xs font-medium text-brand-dark">
             Admin view — your responses are not recorded. You can skip ahead.
           </span>
           <Button

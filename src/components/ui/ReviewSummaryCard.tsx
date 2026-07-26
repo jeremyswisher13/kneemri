@@ -52,7 +52,7 @@ export default function ReviewSummaryCard() {
           <p className="text-sm font-semibold text-gray-900">Spaced Review</p>
           {dueNow > 0 ? (
             <p className="mt-0.5 text-sm text-gray-600">
-              <span className="text-lg font-bold text-ucla-blue">{dueNow}</span>{" "}
+              <span className="text-lg font-bold text-brand-blue">{dueNow}</span>{" "}
               {dueNow === 1 ? "card is" : "cards are"} due today.
             </p>
           ) : (
@@ -78,7 +78,7 @@ export default function ReviewSummaryCard() {
         {dueNow > 0 && (
           <Link
             to={reviewHref}
-            className="shrink-0 rounded-lg bg-ucla-blue px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark"
+            className="shrink-0 rounded-lg bg-brand-blue px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
           >
             Review now
           </Link>

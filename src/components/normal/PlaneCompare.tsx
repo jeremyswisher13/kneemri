@@ -52,7 +52,7 @@ function Pane({
         value={plane.id}
         onChange={(e) => onSelect(e.target.value)}
         aria-label={`${paneLabel} plane to compare`}
-        className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-800 focus:border-ucla-blue focus:outline-none focus:ring-1 focus:ring-ucla-blue"
+        className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-800 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
       >
         {planes.map((p) => (
           <option key={p.id} value={p.id}>
@@ -168,7 +168,7 @@ export default function PlaneCompare({
           onClick={toggleLinked}
           className={`inline-flex min-h-11 w-full shrink-0 items-center justify-between gap-3 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors sm:w-auto ${
             linked
-              ? "border-ucla-blue bg-ucla-blue/10 text-ucla-blue"
+              ? "border-brand-blue bg-brand-blue/10 text-brand-blue"
               : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -192,7 +192,7 @@ export default function PlaneCompare({
           <span
             aria-hidden="true"
             className={`relative h-5 w-9 rounded-full transition-colors ${
-              linked ? "bg-ucla-blue" : "bg-gray-300"
+              linked ? "bg-brand-blue" : "bg-gray-300"
             }`}
           >
             <span

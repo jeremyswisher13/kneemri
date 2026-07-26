@@ -31,10 +31,10 @@ const components: Components = {
     </div>
   ),
   thead: ({ children }) => (
-    <thead className="bg-ucla-light">{children}</thead>
+    <thead className="bg-brand-light">{children}</thead>
   ),
   th: ({ children }) => (
-    <th className="border border-gray-200 px-3 py-2 text-left text-xs font-semibold text-ucla-dark">
+    <th className="border border-gray-200 px-3 py-2 text-left text-xs font-semibold text-brand-dark">
       {children}
     </th>
   ),
@@ -47,7 +47,7 @@ const components: Components = {
     <tr className="even:bg-gray-50">{children}</tr>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="my-3 border-l-4 border-ucla-blue bg-ucla-light/30 pl-4 py-2 text-sm text-gray-700 italic">
+    <blockquote className="my-3 border-l-4 border-brand-blue bg-brand-light/30 pl-4 py-2 text-sm text-gray-700 italic">
       {children}
     </blockquote>
   ),

@@ -89,7 +89,7 @@ export default function FAQChatbot() {
           controls. From the tablet breakpoint up it returns to a floating button. */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ucla-blue text-white transition-colors hover:bg-ucla-dark sm:fixed sm:bottom-4 sm:right-4 sm:z-50 sm:h-14 sm:w-14 sm:rounded-full sm:shadow-lg sm:transition-all sm:duration-200 sm:hover:scale-105 sm:hover:shadow-xl sm:active:scale-95"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-blue text-white transition-colors hover:bg-brand-dark sm:fixed sm:bottom-4 sm:right-4 sm:z-50 sm:h-14 sm:w-14 sm:rounded-full sm:shadow-lg sm:transition-all sm:duration-200 sm:hover:scale-105 sm:hover:shadow-xl sm:active:scale-95"
         aria-label={open ? 'Close chat' : 'Open MRI Course Assistant'}
       >
         {open ? (
@@ -124,7 +124,7 @@ export default function FAQChatbot() {
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between bg-ucla-blue px-4 py-3">
+        <div className="flex items-center justify-between bg-brand-blue px-4 py-3">
           <div className="flex items-center gap-2">
             <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path
@@ -170,7 +170,7 @@ export default function FAQChatbot() {
                   <button
                     key={entry.id}
                     onClick={() => handleSend(entry.question)}
-                    className="block min-h-11 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-left text-sm text-gray-700 transition-colors hover:border-ucla-blue/40 hover:bg-ucla-light/30 hover:text-ucla-dark sm:min-h-0 sm:text-xs"
+                    className="block min-h-11 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-left text-sm text-gray-700 transition-colors hover:border-brand-blue/40 hover:bg-brand-light/30 hover:text-brand-dark sm:min-h-0 sm:text-xs"
                   >
                     {entry.question}
                   </button>
@@ -187,7 +187,7 @@ export default function FAQChatbot() {
               <div
                 className={`max-w-[85%] rounded-xl px-3 py-2 text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-ucla-blue text-white rounded-br-sm'
+                    ? 'bg-brand-blue text-white rounded-br-sm'
                     : 'bg-gray-100 text-gray-800 rounded-bl-sm'
                 }`}
               >
@@ -195,7 +195,7 @@ export default function FAQChatbot() {
                 {msg.role === 'bot' && msg.relatedModule && (
                   <button
                     onClick={() => handleLearnMore(msg.relatedModule!)}
-                    className="mt-1.5 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-ucla-blue transition-colors hover:text-ucla-dark sm:min-h-0 sm:text-xs"
+                    className="mt-1.5 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-brand-blue transition-colors hover:text-brand-dark sm:min-h-0 sm:text-xs"
                   >
                     Learn more
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -219,12 +219,12 @@ export default function FAQChatbot() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask a question..."
-              className="min-h-11 flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-ucla-blue focus:bg-white focus:ring-1 focus:ring-ucla-blue/30 sm:min-h-0"
+              className="min-h-11 flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:bg-white focus:ring-1 focus:ring-brand-blue/30 sm:min-h-0"
             />
             <button
               onClick={() => handleSend()}
               disabled={!input.trim()}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ucla-blue text-white transition-all hover:bg-ucla-dark disabled:opacity-40 disabled:hover:bg-ucla-blue sm:h-9 sm:w-9"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-blue text-white transition-all hover:bg-brand-dark disabled:opacity-40 disabled:hover:bg-brand-blue sm:h-9 sm:w-9"
               aria-label="Send message"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

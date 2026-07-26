@@ -100,13 +100,13 @@ function BaselineBanner() {
   return (
     <Link
       to={coursePath(firstCourse, "/pre-assessment")}
-      className="mb-6 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-ucla-blue/25 bg-ucla-light/50 px-4 py-3 transition-colors hover:bg-ucla-light focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+      className="mb-6 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-brand-blue/25 bg-brand-light/50 px-4 py-3 transition-colors hover:bg-brand-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
     >
       <span className="min-w-0 text-sm text-gray-700">
-        <span className="font-semibold text-ucla-dark">New here?</span> Capture your baseline first —
+        <span className="font-semibold text-brand-dark">New here?</span> Capture your baseline first —
         a short quiz and confidence survey.
       </span>
-      <span className="flex shrink-0 items-center gap-1 text-sm font-semibold text-ucla-blue">
+      <span className="flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-blue">
         Start
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -119,9 +119,9 @@ function BaselineBanner() {
 /** Only rendered when a resume actually exists — the caller handles the empty case. */
 function ResumePanel({ resume }: { resume: LearnerResumeState }) {
   return (
-    <section className="rounded-xl border border-ucla-blue/20 bg-white p-5 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-4">
+    <section className="rounded-xl border border-brand-blue/20 bg-white p-5 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-4">
       <div className="min-w-0">
-        <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">Resume</p>
+        <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">Resume</p>
         <h2 className="mt-1.5 text-lg font-bold text-gray-900">{resume.title}</h2>
         <p className="mt-1 text-sm text-gray-600">
           {[resume.courseTitle, resume.modeLabel, resume.seriesLabel].filter(Boolean).join(" · ")}
@@ -130,7 +130,7 @@ function ResumePanel({ resume }: { resume: LearnerResumeState }) {
       </div>
       <Link
         to={resume.path}
-        className="mt-4 inline-flex min-h-11 w-full shrink-0 items-center justify-center rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ucla-dark sm:mt-0 sm:w-auto"
+        className="mt-4 inline-flex min-h-11 w-full shrink-0 items-center justify-center rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark sm:mt-0 sm:w-auto"
       >
         Continue learning
       </Link>
@@ -175,7 +175,7 @@ function CourseCard({ course }: { course: CourseDefinition }) {
     <Link
       to={coursePath(course, "/")}
       aria-label={`Open ${course.dashboardTitle}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-ucla-blue/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
     >
       {/* Shorter accent band + tighter padding on phones so more of the picker
           fits in the first screen; full size returns at sm+. */}
@@ -188,7 +188,7 @@ function CourseCard({ course }: { course: CourseDefinition }) {
         )}
       </div>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h2 className="text-lg font-bold text-gray-900 group-hover:text-ucla-blue">{course.dashboardTitle}</h2>
+        <h2 className="text-lg font-bold text-gray-900 group-hover:text-brand-blue">{course.dashboardTitle}</h2>
         <p className="mt-1.5 line-clamp-2 flex-1 text-sm text-gray-500 sm:line-clamp-none">{course.description}</p>
         <p className="mt-3 flex items-center gap-1.5 text-xs font-medium text-gray-500">
           <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
@@ -196,7 +196,7 @@ function CourseCard({ course }: { course: CourseDefinition }) {
           </svg>
           {course.modules.length} modules{duration ? ` · ${duration}` : ""}
         </p>
-        <div className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-ucla-blue">
+        <div className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-brand-blue">
           Open {course.shortTitle}
           <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />

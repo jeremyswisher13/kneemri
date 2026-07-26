@@ -53,7 +53,7 @@ export default function PreQuizPage() {
   if (progressLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -119,7 +119,7 @@ export default function PreQuizPage() {
 
         {/* Score summary */}
         <div className="mt-6 rounded-xl bg-white p-8 shadow-sm border border-gray-100 text-center">
-          <p className="text-5xl font-bold text-ucla-blue">
+          <p className="text-5xl font-bold text-brand-blue">
             {results.score}
             <span className="text-2xl text-gray-500">
               /{results.totalQuestions}
@@ -149,7 +149,7 @@ export default function PreQuizPage() {
                 </div>
                 <div className="mt-1 h-2 overflow-hidden rounded-full bg-gray-200">
                   <div
-                    className="h-full rounded-full bg-ucla-blue transition-all"
+                    className="h-full rounded-full bg-brand-blue transition-all"
                     style={{ width: `${row.pct}%` }}
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function PreQuizPage() {
         </div>
 
         {/* Why the answer key is withheld on the pre-assessment */}
-        <div className="mt-8 rounded-xl border border-ucla-blue/20 bg-ucla-blue/5 p-5">
+        <div className="mt-8 rounded-xl border border-brand-blue/20 bg-brand-blue/5 p-5">
           <p className="text-sm leading-6 text-gray-700">
             <span className="font-semibold text-gray-900">
               Answers are hidden for the pre-assessment on purpose.
@@ -188,8 +188,8 @@ export default function PreQuizPage() {
       </h1>
 
       {isAdminView && (
-        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-ucla-gold/40 bg-ucla-gold/10 px-4 py-2.5">
-          <span className="text-xs font-medium text-ucla-dark">
+        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-4 py-2.5">
+          <span className="text-xs font-medium text-brand-dark">
             Admin view — your answers are not recorded. You can skip ahead.
           </span>
           <Button

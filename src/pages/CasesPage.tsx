@@ -14,7 +14,7 @@ import {
 
 const difficultyConfig = {
   foundational: { label: "Foundational", bg: "bg-green-100", text: "text-green-700" },
-  intermediate: { label: "Intermediate", bg: "bg-blue-100", text: "text-ucla-blue" },
+  intermediate: { label: "Intermediate", bg: "bg-blue-100", text: "text-brand-blue" },
   advanced: { label: "Advanced", bg: "bg-red-100", text: "text-red-700" },
 } as const;
 
@@ -71,7 +71,7 @@ export default function CasesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -121,15 +121,15 @@ export default function CasesPage() {
       </p>
 
       {(!baselineComplete || !progress?.normalMriComplete) && <Link to={prerequisitePath} className="mt-4 block">
-        <div className="flex items-center gap-3 rounded-lg border border-ucla-blue/30 bg-ucla-light px-4 py-3 transition-colors hover:bg-ucla-light/70">
-          <svg className="h-5 w-5 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <div className="flex items-center gap-3 rounded-lg border border-brand-blue/30 bg-brand-light px-4 py-3 transition-colors hover:bg-brand-light/70">
+          <svg className="h-5 w-5 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
           </svg>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-[#003B5C]">{prerequisiteTitle}</p>
             <p className="text-xs text-gray-600">{prerequisiteCopy}</p>
           </div>
-          <svg className="h-4 w-4 shrink-0 text-ucla-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg className="h-4 w-4 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </div>
@@ -175,7 +175,7 @@ export default function CasesPage() {
                 aria-pressed={active}
                 className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors sm:min-h-9 ${
                   active
-                    ? "border-ucla-blue bg-ucla-blue text-white"
+                    ? "border-brand-blue bg-brand-blue text-white"
                     : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
                 }`}
               >
@@ -193,7 +193,7 @@ export default function CasesPage() {
             placeholder="Search presentations…"
             aria-label="Search cases by clinical presentation"
             /* text-base on mobile: <16px triggers iOS zoom-on-focus. */
-            className="min-h-11 w-full rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-base text-gray-900 placeholder-gray-400 outline-none focus:border-ucla-blue focus-visible:ring-2 focus-visible:ring-ucla-blue/40 sm:min-h-9 sm:text-sm"
+            className="min-h-11 w-full rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-base text-gray-900 placeholder-gray-400 outline-none focus:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue/40 sm:min-h-9 sm:text-sm"
           />
           <svg
             className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
@@ -222,7 +222,7 @@ export default function CasesPage() {
               setStatusFilter("all");
               setQuery("");
             }}
-            className="mt-2 min-h-11 text-sm font-semibold text-ucla-blue hover:underline"
+            className="mt-2 min-h-11 text-sm font-semibold text-brand-blue hover:underline"
           >
             Clear filters
           </button>
@@ -277,7 +277,7 @@ export default function CasesPage() {
         ].map(([number, title, copy]) => (
           <div key={title} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
             <div className="flex items-start gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ucla-light text-xs font-bold text-ucla-blue">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand-blue">
                 {number}
               </span>
               <div className="min-w-0">
@@ -312,9 +312,9 @@ function renderCaseCard(
           ? `Review case: ${caseItem.title}`
           : `Start case ${caseNumber}: ${diff.label} ${activeCourse.shortTitle} case`
       }
-      className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ucla-blue focus-visible:ring-offset-2"
+      className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
     >
-      <Card className="flex h-full flex-col transition-shadow hover:border-ucla-blue/30 hover:shadow-md">
+      <Card className="flex h-full flex-col transition-shadow hover:border-brand-blue/30 hover:shadow-md">
         <div className="flex flex-wrap items-center gap-2">
           {/* Difficulty badge */}
           <span
@@ -378,7 +378,7 @@ function renderCaseCard(
           )}
         </div>
 
-        <div className="mt-5 inline-flex min-h-10 items-center text-sm font-semibold text-ucla-blue">
+        <div className="mt-5 inline-flex min-h-10 items-center text-sm font-semibold text-brand-blue">
           {completed ? "Review case" : "Start case"}
           <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />

@@ -45,7 +45,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-ucla-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-blue border-t-transparent" />
       </div>
     );
   }
@@ -155,11 +155,11 @@ export default function DashboardPage() {
 
           <section
             aria-labelledby="next-action-title"
-            className="mt-6 overflow-hidden rounded-lg border border-ucla-blue/30 bg-white shadow-sm"
+            className="mt-6 overflow-hidden rounded-lg border border-brand-blue/30 bg-white shadow-sm"
           >
             <div className="flex min-h-[13rem]">
               <div className="flex min-w-0 flex-1 flex-col justify-center px-5 py-5 sm:px-6">
-                <p className="text-xs font-bold uppercase tracking-wide text-ucla-blue">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-blue">
                   {nextAction.stepNumber
                     ? `Next up | Step ${nextAction.stepNumber} of ${nextAction.stepCount}`
                     : "Next up"}
@@ -171,14 +171,14 @@ export default function DashboardPage() {
                 <div className="mt-5 flex flex-wrap items-center gap-4">
                   <Link
                     to={nextAction.href}
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-ucla-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ucla-dark focus:outline-none focus:ring-2 focus:ring-ucla-blue/50 focus:ring-offset-2"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2"
                   >
                     {nextAction.label}
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                     </svg>
                   </Link>
-                  <Link to={coursePath(activeCourse, "/progress")} className="text-sm font-semibold text-ucla-blue hover:underline">
+                  <Link to={coursePath(activeCourse, "/progress")} className="text-sm font-semibold text-brand-blue hover:underline">
                     Detailed progress
                   </Link>
                 </div>

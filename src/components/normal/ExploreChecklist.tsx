@@ -50,7 +50,7 @@ export default function ExploreChecklist({ plane, items }: { plane: string; item
               >
                 <span
                   className={`mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded border transition-colors ${
-                    on ? "border-ucla-blue bg-ucla-blue text-white" : "border-gray-300 bg-white"
+                    on ? "border-brand-blue bg-brand-blue text-white" : "border-gray-300 bg-white"
                   }`}
                 >
                   {on && (

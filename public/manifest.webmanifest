@@ -1,6 +1,6 @@
 {
-  "name": "UCLA Sports MRI Courses",
-  "short_name": "UCLA MRI",
+  "name": "Sports MRI Academy",
+  "short_name": "Sports MRI",
   "description": "Interactive sports medicine MRI teaching workstations, cases, quizzes, and spaced review.",
   "id": "/",
   "start_url": "/?source=homescreen",

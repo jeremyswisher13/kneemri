@@ -281,7 +281,7 @@ function StudyModuleLink({
     <Link
       to={coursePath(course, `/modules/${mod.id}`)}
       className={`mt-2 inline-flex items-center gap-1 text-sm font-semibold hover:underline ${
-        tone === "amber" ? "text-amber-900" : "text-ucla-blue"
+        tone === "amber" ? "text-amber-900" : "text-brand-blue"
       }`}
     >
       Review the {mod.title} module

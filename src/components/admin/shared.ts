@@ -129,8 +129,8 @@ export function domainLabel(domain: string): string {
   return domain.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-export const UCLA_BLUE = "#2774AE";
-export const UCLA_DARK = "#005587";
+export const BRAND_BLUE = "#2774AE";
+export const BRAND_DARK = "#005587";
 export const STATUS_COLORS: Record<FellowStatus, string> = {
   Complete: "#16a34a",
   "Below 70%": "#d97706",

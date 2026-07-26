@@ -31,7 +31,7 @@ export default function NormalSeriesSelector<TId extends string>({
             aria-pressed={active}
             className={`min-h-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors sm:min-h-9 sm:px-3.5 sm:py-1.5 ${
               active
-                ? "border-ucla-blue bg-ucla-blue text-white"
+                ? "border-brand-blue bg-brand-blue text-white"
                 : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
             }`}
           >
