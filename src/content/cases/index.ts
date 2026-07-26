@@ -167,9 +167,9 @@ export const caseRegistry: CaseMetadata[] = [
     teachingImages: [
       {
         src: '/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg',
-        alt: 'Complete ACL tear on sagittal MRI',
-        caption: 'Complete ACL tear — abnormal angulation, mid-substance rupture',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Complete ACL tear on sagittal PD MRI',
+        caption: 'Complete ACL tear — sagittal PD shows high signal through the ACL with frank fibre discontinuity (arrow); proven complete at arthroscopy.',
+        attribution: 'ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.',
         step: 5,
       },
       {

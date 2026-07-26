@@ -264,9 +264,9 @@ The Segond fracture is often **more conspicuous on radiographs** than on MRI, so
       },
       {
         src: '/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg',
-        alt: 'Segond fracture — anterolateral ligament avulsion',
-        caption: 'Segond fracture — anterolateral ligament avulsion',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Segond fracture on coronal PD MRI',
+        caption: 'Segond fracture — lateral tibial cortical-rim avulsion (arrow). This knee also shows a full-thickness MCL rupture at the femoral attachment (arrowhead).',
+        attribution: 'ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.',
       },
     ],
   },

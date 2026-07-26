@@ -253,7 +253,7 @@ export const moduleInteractives: Record<string, Record<number, InteractiveBlock[
           "A normal ACL is a continuous, taut, low-signal fascicular band with an expected oblique course near the notch roof. Because it is volume-averaged on any one slice, trace femoral attachment, midsubstance, and tibial attachment across adjacent images and confirm continuity in another plane. Discontinuity, abnormal orientation/laxity, or edema with disrupted fibers are primary tear findings. A deep lateral femoral-notch contour, increased anterior tibial translation (thresholds vary by method), PCL buckling, and pivot-shift contusions are supportive secondary signs, not independent proof.",
         compare: {
           src: "/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg",
-          caption: "Abnormal — complete ACL tear: the fibers are discontinuous with abnormal orientation. Compare with the continuous, taut normal ACL on the stack above.",
+          caption: "Abnormal — complete ACL tear on sagittal PD: high signal through the ligament with frank fibre discontinuity (arrow). Compare with the continuous, taut normal ACL on the stack above.",
         },
       },
     ],

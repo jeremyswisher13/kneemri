@@ -16,7 +16,7 @@ export const caseTeachingImageById: Record<string, CasePreviewImage> = {
   },
   "acl-pivot-shift": {
     "src": "/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg",
-    "caption": "Complete ACL tear — abnormal angulation, mid-substance rupture"
+    "caption": "Complete ACL tear — sagittal PD with frank fibre discontinuity through the ACL (arrow)."
   },
   "patellar-dislocation-mpfl": {
     "src": "/images/teaching/cases/patellar-dislocation/pd_mpfl_tear_axial.jpg",

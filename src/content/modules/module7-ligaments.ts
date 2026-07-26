@@ -50,9 +50,9 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg',
-        alt: 'Complete ACL tear — abnormal angulation, mid-substance rupture',
-        caption: 'Complete ACL tear — abnormal angulation, mid-substance rupture',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Complete ACL tear on sagittal PD MRI',
+        caption: 'Complete ACL tear — sagittal PD shows high signal through the ACL with frank fibre discontinuity (arrow); proven complete at arthroscopy.',
+        attribution: 'ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.',
       },
       {
         src: '/images/teaching/modules/module7-ligaments/03_ACL_Partial_Tear.jpg',
@@ -68,9 +68,9 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg',
-        alt: 'Segond fracture — anterolateral tibial-rim avulsion',
-        caption: 'Segond fracture — anterolateral tibial-rim avulsion involving the anterolateral capsular complex',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Segond fracture on coronal PD MRI',
+        caption: 'Segond fracture — coronal PD shows avulsion of the lateral tibial cortical rim (arrow) beside a small focus of subchondral high signal. This knee also has a full-thickness MCL rupture at the femoral attachment (arrowhead), a reminder to keep reading after the first finding.',
+        attribution: 'ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.',
       },
     ],
   },
