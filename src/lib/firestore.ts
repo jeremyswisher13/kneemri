@@ -21,6 +21,7 @@ import {
   type MedicalQaReviewTarget,
 } from "@/lib/medical-qa-review";
 import { isPreviewAuthSession } from "@/lib/local-preview-auth";
+import { parseTrackedFellowTargets, type TrackedFellowTarget } from "@/lib/tracked-fellows";
 import {
   addLocalPreviewWrongAnswerToReview,
   getLocalPreviewProgress,
@@ -384,6 +385,19 @@ async function getCohortSettings(): Promise<Record<string, unknown>> {
   const data = snap.exists() ? snap.data() : {};
   cohortCache = { data, at: Date.now() };
   return data;
+}
+
+/**
+ * The pilot-cohort roster shown on the admin dashboard and the session page.
+ *
+ * Stored in Firestore rather than in source: these are real trainee names, and
+ * hard-coding them shipped them inside the public JS bundle where anyone could
+ * fetch them from the live site. Returns [] when unset, which renders the panel
+ * in its empty state.
+ */
+export async function getTrackedFellowRoster(): Promise<TrackedFellowTarget[]> {
+  const settings = await getCohortSettings();
+  return parseTrackedFellowTargets(settings.trackedFellows);
 }
 
 export async function getUserProgress(

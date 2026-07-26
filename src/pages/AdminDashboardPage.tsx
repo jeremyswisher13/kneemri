@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback, Fragment } from "react";
-import { getAllFellows, setUserRole, completeModuleAdmin, getPendingDeletionRequests, type AccountDeletionRequest } from "@/lib/firestore";
+import { getAllFellows, setUserRole, completeModuleAdmin, getPendingDeletionRequests, getTrackedFellowRoster, type AccountDeletionRequest } from "@/lib/firestore";
 import { sendCertificateCallable } from "@/lib/functions";
 import { csvCell } from "@/lib/csv-cell";
 import { moduleQuizzes } from "@/content/quizzes/module-quizzes";
@@ -25,7 +25,7 @@ import {
   type SurveyResponse,
   type CaseAttemptItem,
 } from "@/components/admin/shared";
-import { matchTrackedFellows } from "@/lib/tracked-fellows";
+import { matchTrackedFellows, type TrackedFellowTarget } from "@/lib/tracked-fellows";
 import StatusFunnel from "@/components/admin/StatusFunnel";
 import NeedsAttentionPanel from "@/components/admin/NeedsAttentionPanel";
 import DomainMasteryPanel from "@/components/admin/DomainMasteryPanel";
@@ -454,8 +454,9 @@ function buildTrackedFellowRows(
   totalModules: number,
   totalCasesForFellow: (fellow: Fellow) => number,
   postQuizTotal: number,
+  targets: TrackedFellowTarget[],
 ): TrackedFellowRow[] {
-  return matchTrackedFellows(fellows).map(({ targetName, fellow }) => {
+  return matchTrackedFellows(fellows, targets).map(({ targetName, fellow }) => {
     if (!fellow) {
       return {
         targetName,
@@ -502,6 +503,7 @@ export default function AdminDashboardPage() {
     [adminUser],
   );
   const [fellows, setFellows] = useState<Fellow[]>([]);
+  const [trackedTargets, setTrackedTargets] = useState<TrackedFellowTarget[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedFellow, setExpandedFellow] = useState<string | null>(null);
@@ -537,6 +539,11 @@ export default function AdminDashboardPage() {
       .then((data) => { if (active) setFellows(data as unknown as Fellow[]); })
       .catch((err) => { if (active) setError(err.message); })
       .finally(() => { if (active) setLoading(false); });
+    // Roster of followed learners lives in Firestore, not in the bundle. A
+    // failure here only empties the tracked panel; it must not blank the page.
+    getTrackedFellowRoster()
+      .then((targets) => { if (active) setTrackedTargets(targets); })
+      .catch(() => { if (active) setTrackedTargets([]); });
     return () => { active = false; };
   }, [selectedCourse]);
 
@@ -721,8 +728,16 @@ export default function AdminDashboardPage() {
   }, [filteredFellows, statusFilter, totalModules, totalCasesForFellow, selectedCourse, POST_QUIZ_TOTAL]);
 
   const trackedFellowRows = useMemo(
-    () => buildTrackedFellowRows(fellows, selectedCourse, totalModules, totalCasesForFellow, POST_QUIZ_TOTAL),
-    [fellows, selectedCourse, totalModules, totalCasesForFellow, POST_QUIZ_TOTAL],
+    () =>
+      buildTrackedFellowRows(
+        fellows,
+        selectedCourse,
+        totalModules,
+        totalCasesForFellow,
+        POST_QUIZ_TOTAL,
+        trackedTargets,
+      ),
+    [fellows, selectedCourse, totalModules, totalCasesForFellow, POST_QUIZ_TOTAL, trackedTargets],
   );
 
   const handleExport = useCallback(() => {
@@ -1284,12 +1299,14 @@ function TrackedFellowsPanel({
         <div>
           <h2 className="text-lg font-bold text-gray-900">Tracked Sports Medicine Fellows</h2>
           <p className="mt-0.5 text-xs text-gray-500">
-            Riley Coon, Sonal Singh, and Lilian Toaspern in the selected {course.shortTitle} cohort.
+            {rows.length > 0
+              ? `${rows.map((row) => row.targetName).join(", ")} in the selected ${course.shortTitle} cohort.`
+              : `No roster configured. Set settings/cohort.trackedFellows to follow specific learners in the ${course.shortTitle} cohort.`}
           </p>
         </div>
         <div className="grid grid-cols-3 gap-2 text-center sm:w-[360px]">
           <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">
-            <p className="text-lg font-bold text-ucla-dark">{foundCount}/3</p>
+            <p className="text-lg font-bold text-ucla-dark">{foundCount}/{rows.length}</p>
             <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Signed in</p>
           </div>
           <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm">

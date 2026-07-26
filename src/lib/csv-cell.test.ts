@@ -3,7 +3,7 @@ import { csvCell } from "./csv-cell";
 
 describe("csvCell", () => {
   it("quotes and escapes normal values", () => {
-    expect(csvCell("Riley Coon")).toBe('"Riley Coon"');
+    expect(csvCell("Ada Lovelace")).toBe('"Ada Lovelace"');
     expect(csvCell('a "quoted" name')).toBe('"a ""quoted"" name"');
     expect(csvCell(null)).toBe('""');
     expect(csvCell(42)).toBe('"42"');

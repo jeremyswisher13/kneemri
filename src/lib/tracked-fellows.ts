@@ -1,17 +1,46 @@
 import { fellowName, type Fellow } from "@/components/admin/shared";
 
 /**
- * The sports-medicine fellows being followed through the pilot.
+ * A learner the admin dashboard follows by name (the pilot-cohort panel).
  *
- * Matched by DISPLAY NAME + EMAIL TEXT only — no learner uid or private email is
- * hard-coded here, so this file stays safe to commit. Spelling aliases exist
- * because a learner's Google display name may not match the roster spelling.
+ * The roster is stored in Firestore (`settings/cohort.trackedFellows`) and NOT
+ * hard-coded here. It used to be a literal array of real trainee names, which
+ * meant those names shipped inside the public JS bundle and were fetchable from
+ * the live site by anyone, signed in or not. Matching still uses DISPLAY NAME +
+ * EMAIL TEXT only — never a uid or private email. Spelling aliases exist because
+ * a learner's Google display name may not match the roster spelling.
  */
-export const TRACKED_FELLOW_TARGETS = [
-  { name: "Riley Coon", aliases: ["riley coon"] },
-  { name: "Sonal Singh", aliases: ["sonal singh"] },
-  { name: "Lilian Toaspern", aliases: ["lilian toaspern", "lillian toaspern"] },
-] as const;
+export interface TrackedFellowTarget {
+  name: string;
+  aliases: string[];
+}
+
+/**
+ * Parse the roster out of the settings doc, tolerating hand-entry: entries may
+ * be plain strings or `{ name, aliases }`. Anything malformed is dropped rather
+ * than throwing, so a bad edit degrades to an empty panel instead of breaking
+ * the whole admin page. An entry with no explicit aliases matches on its name.
+ */
+export function parseTrackedFellowTargets(value: unknown): TrackedFellowTarget[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry): TrackedFellowTarget[] => {
+    if (typeof entry === "string") {
+      const name = entry.trim();
+      return name ? [{ name, aliases: [name] }] : [];
+    }
+    if (!entry || typeof entry !== "object") return [];
+    const record = entry as { name?: unknown; aliases?: unknown };
+    const name = typeof record.name === "string" ? record.name.trim() : "";
+    if (!name) return [];
+    const aliases = Array.isArray(record.aliases)
+      ? record.aliases
+          .filter((alias): alias is string => typeof alias === "string")
+          .map((alias) => alias.trim())
+          .filter(Boolean)
+      : [];
+    return [{ name, aliases: aliases.length > 0 ? aliases : [name] }];
+  });
+}
 
 export function normalizePersonText(value?: string | null): string {
   return (value ?? "")
@@ -24,8 +53,8 @@ export function normalizePersonText(value?: string | null): string {
 
 /**
  * Match on whole normalized TOKENS (word boundaries), never raw substrings, so a
- * short alias like "Sonal Singh" cannot collide with a superstring name such as
- * "Sonali Singhania".
+ * short alias like "Dana Sing" cannot collide with a superstring name such as
+ * "Dana Singleton".
  */
 export function fellowMatchesAlias(fellow: Fellow, alias: string): boolean {
   const normalizedAlias = normalizePersonText(alias);
@@ -43,9 +72,10 @@ export function fellowMatchesAlias(fellow: Fellow, alias: string): boolean {
  */
 export function matchTrackedFellows(
   fellows: Fellow[],
+  targets: TrackedFellowTarget[],
 ): { targetName: string; fellow: Fellow | null }[] {
   const used = new Set<string>();
-  return TRACKED_FELLOW_TARGETS.map((target) => {
+  return targets.map((target) => {
     const fellow =
       fellows.find(
         (candidate) =>

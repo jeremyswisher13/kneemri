@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllFellows } from "@/lib/firestore";
+import { getAllFellows, getTrackedFellowRoster } from "@/lib/firestore";
 import { fellowName, type Fellow } from "@/components/admin/shared";
-import { matchTrackedFellows } from "@/lib/tracked-fellows";
+import { matchTrackedFellows, type TrackedFellowTarget } from "@/lib/tracked-fellows";
 import { coursePath, getCourseById, normalMriPath } from "@/content/courses";
 import { normalKneeSeries } from "@/content/normal-workstation-series";
 import {
@@ -52,6 +52,7 @@ const PREFLIGHT_ITEMS = [
 export default function AdminSessionPage() {
   const course = getCourseById(TEACHING_SESSION.courseId);
   const [fellows, setFellows] = useState<Fellow[] | null>(null);
+  const [trackedTargets, setTrackedTargets] = useState<TrackedFellowTarget[]>([]);
   const [rosterError, setRosterError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
   const [projectorSafe, setProjectorSafe] = useState(false);
@@ -63,7 +64,12 @@ export default function AdminSessionPage() {
       // Same cast the admin dashboard uses: firestore's ModuleProgressItem has
       // an optional `completed`, the admin one requires it. This page only reads
       // baseline/activity fields, never moduleProgress.
-      setFellows((await getAllFellows(course)) as unknown as Fellow[]);
+      const [loadedFellows, targets] = await Promise.all([
+        getAllFellows(course),
+        getTrackedFellowRoster(),
+      ]);
+      setFellows(loadedFellows as unknown as Fellow[]);
+      setTrackedTargets(targets);
     } catch {
       setRosterError("Could not load the roster. Check the connection and try again.");
     } finally {
@@ -75,7 +81,10 @@ export default function AdminSessionPage() {
     void loadRoster();
   }, [loadRoster]);
 
-  const roster = useMemo(() => matchTrackedFellows(fellows ?? []), [fellows]);
+  const roster = useMemo(
+    () => matchTrackedFellows(fellows ?? [], trackedTargets),
+    [fellows, trackedTargets],
+  );
 
   return (
     <div className="space-y-6 pb-16">
