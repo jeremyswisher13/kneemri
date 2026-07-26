@@ -2,20 +2,38 @@ import { useMemo, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import type { PlaneLearn, QuizItem, TourStep } from "@/content/normal-mri-types";
+import { locateRevealSpanPercent } from "./knowledge-check-reveal";
+import {
+  MAX_REGION_TOLERANCE,
+  MIN_REGION_TOLERANCE,
+  type AdjusterKind,
+  adjusterHandles,
+  clamp,
+  handleAriaLabel,
+  isDegenerateRegion,
+  markerOutsideRegion,
+  round1,
+  sameAnchor,
+  seedRegion,
+  withRegionPoint,
+  withRegionTolerance,
+  withoutRegion,
+} from "./marker-adjuster-logic";
 
 /**
  * Admin-only authoring workbench. The director scrubs to the best slice and
  * drags each marker onto the structure; the copied marker changes hand the
  * exact slice + coordinates back for review and deployment. Working state is
  * kept in localStorage so adjustments survive a refresh.
+ *
+ * Elongated structures (tendons, ligaments) also carry a `locateRegion`: a
+ * centreline the localization scorer accepts anywhere along its length. Those
+ * endpoints are authored HERE, on the image, for the same reason markers are —
+ * nobody can read a coordinate off an MRI by eye, so the only trustworthy way
+ * to add a region to a course is for faculty to drag it onto the slice.
  */
 
-const clamp = (n: number) => Math.max(0, Math.min(100, n));
-const round1 = (n: number) => Math.round(n * 10) / 10;
-const sameAnchor = (a: { x: number; y: number }, b: { x: number; y: number }) =>
-  Math.abs(a.x - b.x) < 0.001 && Math.abs(a.y - b.y) < 0.001;
-
-type Sel = { kind: "tour" | "quiz"; idx: number };
+type Sel = { kind: AdjusterKind; idx: number };
 
 export default function MarkerAdjuster({
   planeId,
@@ -62,11 +80,9 @@ export default function MarkerAdjuster({
 
   const item = sel.kind === "tour" ? tour[sel.idx] : quiz[sel.idx];
   const sliceIndex = item?.sliceIndex ?? 0;
-  const markers: { x: number; y: number; label?: string }[] = !item
-    ? []
-    : sel.kind === "tour"
-      ? (item as TourStep).markers
-      : [{ x: (item as QuizItem).marker.x, y: (item as QuizItem).marker.y }];
+  const handles = adjusterHandles(sel.kind, item);
+  const selectedQuizItem = sel.kind === "quiz" ? quiz[sel.idx] : undefined;
+  const region = selectedQuizItem?.locateRegion;
 
   function setSlice(v: number) {
     if (sel.kind === "tour") {
@@ -130,17 +146,69 @@ export default function MarkerAdjuster({
             }
           : step,
       );
-      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, marker: { x, y } } : q));
+      // Sibling quiz items sharing this slice + anchor are the SAME point, so
+      // they move together — matching what the tour->quiz path already does and
+      // what the panel copy promises about synchronized anchors.
+      const nq = quiz.map((q, i) =>
+        i === sel.idx ||
+        (selectedQuiz && q.sliceIndex === selectedQuiz.sliceIndex && sameAnchor(q.marker, selectedQuiz.marker))
+          ? { ...q, marker: { x, y } }
+          : q,
+      );
       setTour(nt);
       setQuiz(nq);
       persist(nt, nq);
     }
   }
 
+  function setRegionPoint(which: "start" | "end", xRaw: number, yRaw: number) {
+    const current = quiz[sel.idx]?.locateRegion;
+    if (sel.kind !== "quiz" || !current) return;
+    const nq = quiz.map((q, i) =>
+      i === sel.idx ? { ...q, locateRegion: withRegionPoint(current, which, xRaw, yRaw) } : q,
+    );
+    setQuiz(nq);
+    persist(tour, nq);
+  }
+
+  function setRegionTolerance(toleranceRaw: number) {
+    const current = quiz[sel.idx]?.locateRegion;
+    if (sel.kind !== "quiz" || !current) return;
+    const nq = quiz.map((q, i) =>
+      i === sel.idx ? { ...q, locateRegion: withRegionTolerance(current, toleranceRaw) } : q,
+    );
+    setQuiz(nq);
+    persist(tour, nq);
+  }
+
+  function addRegion() {
+    const current = quiz[sel.idx];
+    if (sel.kind !== "quiz" || !current || current.locateRegion) return;
+    const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, locateRegion: seedRegion(q.marker) } : q));
+    setQuiz(nq);
+    persist(tour, nq);
+  }
+
+  function removeRegion() {
+    if (sel.kind !== "quiz" || !quiz[sel.idx]?.locateRegion) return;
+    const nq = quiz.map((q, i) => (i === sel.idx ? withoutRegion(q) : q));
+    setQuiz(nq);
+    persist(tour, nq);
+  }
+
+  // Region endpoints share the marker drag path, so the handle's role — not its
+  // index — decides what a drag writes to.
+  function setHandle(hi: number, xRaw: number, yRaw: number) {
+    const handle = handles[hi];
+    if (!handle) return;
+    if (handle.role === "marker") setMarker(hi, xRaw, yRaw);
+    else setRegionPoint(handle.role === "region-start" ? "start" : "end", xRaw, yRaw);
+  }
+
   function onMove(e: React.PointerEvent) {
     if (dragIdx.current === null || !boxRef.current) return;
     const r = boxRef.current.getBoundingClientRect();
-    setMarker(dragIdx.current, ((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100);
+    setHandle(dragIdx.current, ((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100);
   }
 
   const exportText = useMemo(() => JSON.stringify({ tour, quiz }, null, 2), [tour, quiz]);
@@ -177,11 +245,47 @@ export default function MarkerAdjuster({
           className="relative mx-auto w-full max-w-[560px] touch-none select-none overflow-hidden rounded-xl bg-black"
         >
           <img src={src} alt="" draggable={false} className="block w-full select-none" />
-          {markers.map((m, mi) => (
+          {region && (
+            <svg
+              data-testid="adjust-locate-region"
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              {/*
+                Same geometry the reveal uses in KnowledgeCheck: the halo is the
+                band the scorer accepts (tolerance is a radius, so the stroke is
+                twice it) and it deliberately scales with the box, because the
+                hit test measures in stretched percent space too. Authoring
+                against anything narrower would hide what fellows are graded on.
+              */}
+              <line
+                x1={region.start.x}
+                y1={region.start.y}
+                x2={region.end.x}
+                y2={region.end.y}
+                stroke="rgba(255, 209, 0, 0.18)"
+                strokeWidth={locateRevealSpanPercent(region)}
+                strokeLinecap="round"
+              />
+              <line
+                x1={region.start.x}
+                y1={region.start.y}
+                x2={region.end.x}
+                y2={region.end.y}
+                stroke="#FFD100"
+                strokeWidth={2}
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+          )}
+          {handles.map((m, mi) => (
             <button
               type="button"
               key={mi}
-              aria-label={m.label ? `Move ${m.label} marker` : `Move marker ${mi + 1}`}
+              aria-label={handleAriaLabel(m, mi)}
               onPointerDown={(e) => {
                 dragIdx.current = mi;
                 boxRef.current?.setPointerCapture(e.pointerId);
@@ -189,8 +293,17 @@ export default function MarkerAdjuster({
               style={{ left: `${m.x}%`, top: `${m.y}%` }}
               className="absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
             >
-              <span className="block h-6 w-6 rounded-full border-2 border-ucla-gold bg-ucla-gold/25 shadow-[0_0_0_2px_rgba(0,0,0,0.6)]" />
-              <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ucla-gold" />
+              {/* Line ends are white so they stay tellable from the gold answer marker. */}
+              <span
+                className={`block h-6 w-6 rounded-full border-2 shadow-[0_0_0_2px_rgba(0,0,0,0.6)] ${
+                  m.role === "marker" ? "border-ucla-gold bg-ucla-gold/25" : "border-white bg-white/25"
+                }`}
+              />
+              <span
+                className={`absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${
+                  m.role === "marker" ? "bg-ucla-gold" : "bg-white"
+                }`}
+              />
               {m.label && (
                 <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/55 px-2 py-0.5 text-[11px] font-semibold text-white">
                   {m.label}
@@ -215,8 +328,8 @@ export default function MarkerAdjuster({
           />
         </div>
         <p className="mt-1 text-xs text-gray-500">
-          Drag the gold marker onto the structure; use the slider to pick the best slice. Your draft is saved on
-          this device as you go.
+          Drag the gold marker onto the structure; use the slider to pick the best slice. White handles set the
+          ends of a locate line. Your draft is saved on this device as you go.
         </p>
       </div>
 
@@ -251,9 +364,66 @@ export default function MarkerAdjuster({
                   sel.kind === "quiz" && sel.idx === i ? "bg-ucla-blue text-white" : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                {q.options[q.answer]} <span className="opacity-60">· sl {q.sliceIndex + 1}</span>
+                {q.options[q.answer]}{" "}
+                <span className="opacity-60">
+                  · sl {q.sliceIndex + 1}
+                  {q.locateRegion ? " · line" : ""}
+                </span>
               </button>
             ))}
+          </div>
+
+          <div className="mt-3 border-t border-gray-100 pt-3">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Locate line</p>
+            {sel.kind !== "quiz" || !selectedQuizItem ? (
+              <p className="mt-1 text-xs text-gray-500">Pick a quiz item to place a locate line.</p>
+            ) : !region ? (
+              <>
+                <p className="mt-1 text-xs text-gray-500">
+                  Long structures (tendons, ligaments) should score anywhere along their course, not just at one
+                  point. Add a line, then drag each white end along the structure.
+                </p>
+                <Button size="sm" variant="secondary" className="mt-2" onClick={addRegion}>
+                  Add locate line
+                </Button>
+              </>
+            ) : (
+              <>
+                <div className="mt-2 flex items-center gap-3">
+                  <span className="w-28 shrink-0 text-xs tabular-nums text-gray-500">
+                    Half-width {region.tolerance}%
+                  </span>
+                  <input
+                    type="range"
+                    min={MIN_REGION_TOLERANCE}
+                    max={MAX_REGION_TOLERANCE}
+                    step={0.5}
+                    value={region.tolerance}
+                    onChange={(e) => setRegionTolerance(Number(e.target.value))}
+                    aria-label="Locate line half-width"
+                    className="flex-1 accent-ucla-blue"
+                  />
+                </div>
+                <p className="mt-1 text-xs text-gray-500">
+                  The gold band is exactly what the scorer accepts — keep it inside the structure.
+                </p>
+                {isDegenerateRegion(region) && (
+                  <p className="mt-1 text-xs font-medium text-red-700">
+                    Both ends sit on the same spot, so this scores as a circle. Drag them apart along the structure.
+                  </p>
+                )}
+                {markerOutsideRegion(selectedQuizItem.marker, region) && (
+                  <p className="mt-1 text-xs font-medium text-red-700">
+                    The gold marker is outside the band. The same item is also served as an identify question,
+                    where this marker is the pin drawn on the image — so it has to sit on the structure the band
+                    traces. Move the marker onto the line or widen the band.
+                  </p>
+                )}
+                <Button size="sm" variant="secondary" className="mt-2" onClick={removeRegion}>
+                  Remove locate line
+                </Button>
+              </>
+            )}
           </div>
 
           <div className="mt-3 flex items-center gap-2 border-t border-gray-100 pt-3">

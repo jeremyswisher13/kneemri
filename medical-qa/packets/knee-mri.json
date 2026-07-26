@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24",
+  "generatedAt": "2026-07-26",
   "course": {
     "id": "knee-mri",
     "title": "UCLA Knee MRI Interpretation Course",
@@ -1217,8 +1217,8 @@
         "meniscus",
         "acute-injury"
       ],
-      "radiopaediaUrl": "https://radiopaedia.org/cases/pivot-shift-injury-of-the-knee-anterior-cruciate-ligament-rupture",
-      "radiopaediaTitle": "Pivot shift injury of the knee - ACL rupture",
+      "radiopaediaUrl": "https://radiopaedia.org/cases/pivot-shift-injury-with-acl-tear?lang=us",
+      "radiopaediaTitle": "Pivot shift injury with ACL tear",
       "modelReport": {
         "findings": "ACL: Complete discontinuity of the ACL with abnormal signal and morphology. The ligament fibers are lax and irregular.\n\nBones/Marrow: Characteristic pivot-shift contusion pattern with marrow edema-like signal at the posterolateral tibial plateau and lateral femoral condyle sulcus terminalis region. No fracture line or articular collapse is identified.\n\nMenisci: Evaluate carefully for lateral posterior-root injury and a medial ramp lesion.\n\nCartilage: No focal cartilage defects.\n\nOther ligaments: MCL, LCL, PCL intact. No posterolateral-corner injury.\n\nEffusion: Large hemarthrosis without a fat-fluid level. Absence of lipohemarthrosis does not by itself exclude fracture; no fracture is identified on the available images.",
         "impression": "1. Complete ACL tear with classic pivot-shift bone contusion pattern (LFC + posterolateral tibial plateau).\n2. Carefully evaluate for associated meniscal injuries (root tear, ramp lesion, bucket-handle) which are commonly associated.\n3. Large hemarthrosis; no fat-fluid level to indicate an intra-articular fracture."
@@ -1714,10 +1714,10 @@
       ],
       "teachingImages": [
         {
-          "src": "/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg",
-          "alt": "PCL intrasubstance tear",
-          "caption": "Published partial/intrasubstance PCL-tear example illustrating abnormal thickening and internal signal. The teaching case describes a complete tear, which additionally requires fiber discontinuity.",
-          "attribution": "Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.",
+          "src": "/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png",
+          "alt": "Complete PCL tear with femoral detachment on sagittal PD fat-suppressed MRI",
+          "caption": "Complete PCL tear with femoral detachment (white arrow). The normally continuous low-signal PCL is interrupted at its femoral attachment. This published image is a chronic example; the dashboard teaching case models an acute combined PCL and PLC injury.",
+          "attribution": "Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). PMC6538732. CC BY 4.0.",
           "step": 5
         },
         {
@@ -2658,8 +2658,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 20,
-                "y": 68,
+                "x": 22.8,
+                "y": 66.4,
                 "label": "Patellar tendon"
               }
             ],
@@ -2699,8 +2699,8 @@
             "sliceIndex": 7,
             "markers": [
               {
-                "x": 61.3,
-                "y": 50.8,
+                "x": 62.3,
+                "y": 51,
                 "label": "Articular cartilage / joint fluid"
               }
             ],
@@ -2708,16 +2708,16 @@
             "note": "Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal."
           },
           {
-            "sliceIndex": 12,
+            "sliceIndex": 14,
             "markers": [
               {
-                "x": 49,
-                "y": 55,
+                "x": 48,
+                "y": 50.4,
                 "label": "Anterior cruciate ligament"
               }
             ],
             "title": "Anterior cruciate ligament",
-            "note": "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. It is partly volume-averaged on any one image, so trace it across adjacent slices and correlate all planes before calling it intact or torn."
+            "note": "On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. Because its fan-shaped fibers are partly volume-averaged and are not all visible on one conventional sagittal image, trace the ligament across adjacent slices and correlate all planes before calling it intact or torn."
           },
           {
             "sliceIndex": 16,
@@ -2747,12 +2747,12 @@
         "quiz": [
           {
             "id": "sag-sid-1",
-            "sliceIndex": 12,
+            "sliceIndex": 14,
             "marker": {
-              "x": 49,
-              "y": 55
+              "x": 48,
+              "y": 50.4
             },
-            "prompt": "What is the straight striated band marked here, paralleling the roof of the intercondylar notch?",
+            "prompt": "What is the oblique striated band marked here, paralleling the roof of the intercondylar notch?",
             "options": [
               "Anterior cruciate ligament",
               "Posterior cruciate ligament",
@@ -2760,7 +2760,7 @@
               "Posterior joint capsule"
             ],
             "answer": 0,
-            "explanation": "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. Trace the ACL across adjacent slices and correlate all planes rather than judging it from this image alone."
+            "explanation": "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. The fan-shaped ACL is not displayed in its entirety on one conventional sagittal image, so trace it across adjacent slices and correlate all planes rather than judging it from this image alone."
           },
           {
             "id": "sag-q1",
@@ -2820,6 +2820,18 @@
               "x": 14,
               "y": 22
             },
+            "locateRegion": {
+              "kind": "segment",
+              "start": {
+                "x": 12.2,
+                "y": 4.5
+              },
+              "end": {
+                "x": 15.2,
+                "y": 28
+              },
+              "tolerance": 4
+            },
             "prompt": "What is the marked structure?",
             "options": [
               "Quadriceps tendon",
@@ -2834,8 +2846,20 @@
             "id": "sag-q5",
             "sliceIndex": 13,
             "marker": {
-              "x": 20,
-              "y": 68
+              "x": 22.8,
+              "y": 66.4
+            },
+            "locateRegion": {
+              "kind": "segment",
+              "start": {
+                "x": 16.5,
+                "y": 44.5
+              },
+              "end": {
+                "x": 27.2,
+                "y": 76
+              },
+              "tolerance": 4
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -2902,8 +2926,8 @@
             "id": "sag-q9",
             "sliceIndex": 7,
             "marker": {
-              "x": 61.3,
-              "y": 50.8
+              "x": 62.3,
+              "y": 51
             },
             "prompt": "The bright line outlining the joint surface here is normal — what is it?",
             "options": [
@@ -3040,8 +3064,8 @@
             "sliceIndex": 7,
             "markers": [
               {
-                "x": 14,
-                "y": 54,
+                "x": 18.1,
+                "y": 52.7,
                 "label": "Medial collateral ligament"
               }
             ],
@@ -3052,8 +3076,8 @@
             "sliceIndex": 7,
             "markers": [
               {
-                "x": 78,
-                "y": 53,
+                "x": 79.3,
+                "y": 48.3,
                 "label": "Lateral collateral ligament (LCL)"
               }
             ],
@@ -3066,8 +3090,8 @@
             "id": "cor-sid-1",
             "sliceIndex": 7,
             "marker": {
-              "x": 14,
-              "y": 54
+              "x": 18.1,
+              "y": 52.7
             },
             "prompt": "What is the marked structure running along the medial edge of the joint?",
             "options": [
@@ -3083,8 +3107,8 @@
             "id": "cor-sid-2",
             "sliceIndex": 7,
             "marker": {
-              "x": 78,
-              "y": 53
+              "x": 79.3,
+              "y": 48.3
             },
             "prompt": "What is the cord-like structure at the lateral margin coursing toward the fibular head?",
             "options": [
@@ -3263,8 +3287,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 50,
-                "y": 19,
+                "x": 55.8,
+                "y": 16.1,
                 "label": "Patella"
               }
             ],
@@ -3275,8 +3299,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 50,
-                "y": 34,
+                "x": 53.1,
+                "y": 35.4,
                 "label": "Femoral trochlea"
               }
             ],
@@ -3287,8 +3311,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 50,
-                "y": 31,
+                "x": 54.1,
+                "y": 29.8,
                 "label": "Trochlear groove (sulcus)"
               }
             ],
@@ -3299,8 +3323,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 50,
-                "y": 26,
+                "x": 62.8,
+                "y": 25.8,
                 "label": "Patellofemoral cartilage"
               }
             ],
@@ -3311,8 +3335,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 32,
-                "y": 24,
+                "x": 35.3,
+                "y": 23.2,
                 "label": "MPFL / medial retinaculum"
               }
             ],
@@ -3323,8 +3347,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 68,
-                "y": 24,
+                "x": 73,
+                "y": 25.4,
                 "label": "Lateral retinaculum"
               }
             ],
@@ -3352,8 +3376,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 55,
-                "y": 70,
+                "x": 58,
+                "y": 68.4,
                 "label": "Popliteal vessels"
               }
             ],
@@ -3366,8 +3390,8 @@
             "id": "axi-sid-1",
             "sliceIndex": 13,
             "marker": {
-              "x": 50,
-              "y": 34
+              "x": 53.1,
+              "y": 35.4
             },
             "prompt": "What is the marked grooved anterior femoral structure the patella tracks within?",
             "options": [
@@ -3383,8 +3407,8 @@
             "id": "axi-sid-2",
             "sliceIndex": 13,
             "marker": {
-              "x": 68,
-              "y": 24
+              "x": 73,
+              "y": 25.4
             },
             "prompt": "What is the marked soft-tissue band on the lateral side of the patella?",
             "options": [
@@ -3400,8 +3424,8 @@
             "id": "axi-q1",
             "sliceIndex": 13,
             "marker": {
-              "x": 50,
-              "y": 19
+              "x": 55.8,
+              "y": 16.1
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3417,8 +3441,8 @@
             "id": "axi-q3",
             "sliceIndex": 13,
             "marker": {
-              "x": 50,
-              "y": 26
+              "x": 62.8,
+              "y": 25.8
             },
             "prompt": "The bright line between the patella and the trochlea is normal — what is it?",
             "options": [
@@ -3434,8 +3458,8 @@
             "id": "axi-q4",
             "sliceIndex": 13,
             "marker": {
-              "x": 50,
-              "y": 31
+              "x": 54.1,
+              "y": 29.8
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3451,8 +3475,8 @@
             "id": "axi-q5",
             "sliceIndex": 13,
             "marker": {
-              "x": 32,
-              "y": 24
+              "x": 35.3,
+              "y": 23.2
             },
             "prompt": "Which principal medial restraint of the patella is marked (a structure commonly injured after lateral patellar dislocation)?",
             "options": [
@@ -3502,8 +3526,8 @@
             "id": "axi-q9",
             "sliceIndex": 13,
             "marker": {
-              "x": 55,
-              "y": 70
+              "x": 58,
+              "y": 68.4
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3519,8 +3543,8 @@
             "id": "axi-q10",
             "sliceIndex": 13,
             "marker": {
-              "x": 50,
-              "y": 31
+              "x": 54.1,
+              "y": 29.8
             },
             "prompt": "A shallow, flat trochlear groove on the axial images predisposes to which problem?",
             "options": [
@@ -3536,8 +3560,8 @@
             "id": "axi-q11",
             "sliceIndex": 13,
             "marker": {
-              "x": 32,
-              "y": 24
+              "x": 35.3,
+              "y": 23.2
             },
             "prompt": "This is the MPFL. After a transient lateral patellar dislocation, where do you expect the classic bone bruises?",
             "options": [
@@ -3587,13 +3611,13 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 14,
-                "y": 22,
+                "x": 17.2,
+                "y": 19.2,
                 "label": "Quadriceps tendon"
               },
               {
-                "x": 16,
-                "y": 36,
+                "x": 18.8,
+                "y": 38.2,
                 "label": "Patella"
               }
             ],
@@ -3604,8 +3628,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 20,
-                "y": 68,
+                "x": 23.9,
+                "y": 65.7,
                 "label": "Patellar tendon"
               }
             ],
@@ -3616,8 +3640,8 @@
             "sliceIndex": 13,
             "markers": [
               {
-                "x": 24,
-                "y": 60,
+                "x": 27.8,
+                "y": 57.4,
                 "label": "Hoffa's (infrapatellar) fat pad"
               }
             ],
@@ -3628,8 +3652,8 @@
             "sliceIndex": 8,
             "markers": [
               {
-                "x": 40,
-                "y": 61,
+                "x": 43.1,
+                "y": 59.3,
                 "label": "Anterior horn (lateral meniscus)"
               },
               {
@@ -3657,8 +3681,8 @@
             "sliceIndex": 16,
             "markers": [
               {
-                "x": 50.7,
-                "y": 53.6,
+                "x": 52.6,
+                "y": 49.8,
                 "label": "Posterior cruciate ligament"
               }
             ],
@@ -3669,8 +3693,8 @@
             "sliceIndex": 14,
             "markers": [
               {
-                "x": 66,
-                "y": 55,
+                "x": 65.1,
+                "y": 54.9,
                 "label": "Popliteal vessels"
               }
             ],
@@ -3717,8 +3741,8 @@
             "id": "t1-q3",
             "sliceIndex": 13,
             "marker": {
-              "x": 16,
-              "y": 36
+              "x": 18.8,
+              "y": 38.2
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3734,8 +3758,20 @@
             "id": "t1-q4",
             "sliceIndex": 13,
             "marker": {
-              "x": 14,
-              "y": 22
+              "x": 17.2,
+              "y": 19.2
+            },
+            "locateRegion": {
+              "kind": "segment",
+              "start": {
+                "x": 15.5,
+                "y": 3.5
+              },
+              "end": {
+                "x": 18.7,
+                "y": 27.5
+              },
+              "tolerance": 4
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3751,8 +3787,20 @@
             "id": "t1-q5",
             "sliceIndex": 13,
             "marker": {
-              "x": 20,
-              "y": 68
+              "x": 23.9,
+              "y": 65.7
+            },
+            "locateRegion": {
+              "kind": "segment",
+              "start": {
+                "x": 17.2,
+                "y": 44
+              },
+              "end": {
+                "x": 29,
+                "y": 76
+              },
+              "tolerance": 4
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3768,8 +3816,8 @@
             "id": "t1-q6",
             "sliceIndex": 13,
             "marker": {
-              "x": 24,
-              "y": 60
+              "x": 27.8,
+              "y": 57.4
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3802,8 +3850,8 @@
             "id": "t1-q8",
             "sliceIndex": 8,
             "marker": {
-              "x": 40,
-              "y": 61
+              "x": 43.1,
+              "y": 59.3
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -3836,8 +3884,8 @@
             "id": "t1-q10",
             "sliceIndex": 14,
             "marker": {
-              "x": 66,
-              "y": 55
+              "x": 65.1,
+              "y": 54.9
             },
             "prompt": "What is the marked structure?",
             "options": [
@@ -4192,8 +4240,8 @@
           "sliceIndex": 7,
           "candidates": [
             {
-              "x": 69,
-              "y": 55
+              "x": 71.5,
+              "y": 59.4
             },
             {
               "x": 48,
@@ -4274,12 +4322,12 @@
               "y": 52
             },
             {
-              "x": 50,
-              "y": 19
+              "x": 55.8,
+              "y": 16.1
             },
             {
-              "x": 50,
-              "y": 34
+              "x": 53.1,
+              "y": 35.4
             }
           ],
           "answer": 0
@@ -4330,8 +4378,8 @@
           "plane": "Sagittal PD-FS",
           "dir": "/images/teaching/stacks/normal-knee-sagittal",
           "sliceIndex": 7,
-          "x": 61.3,
-          "y": 50.8,
+          "x": 62.3,
+          "y": 51,
           "label": "Articular cartilage"
         },
         "to": {
@@ -4377,20 +4425,20 @@
           "sliceIndex": 13,
           "candidates": [
             {
-              "x": 55,
-              "y": 70
+              "x": 58,
+              "y": 68.4
             },
             {
-              "x": 50,
-              "y": 19
+              "x": 55.8,
+              "y": 16.1
             },
             {
-              "x": 32,
-              "y": 24
+              "x": 35.3,
+              "y": 23.2
             },
             {
-              "x": 50,
-              "y": 34
+              "x": 53.1,
+              "y": 35.4
             }
           ],
           "answer": 0
@@ -4404,8 +4452,8 @@
           "plane": "Axial T2-FS",
           "dir": "/images/teaching/stacks/normal-knee-axial",
           "sliceIndex": 13,
-          "x": 50,
-          "y": 19,
+          "x": 55.8,
+          "y": 16.1,
           "label": "Patella"
         },
         "to": {
@@ -4426,8 +4474,8 @@
               "y": 64.5
             },
             {
-              "x": 20,
-              "y": 68
+              "x": 22.8,
+              "y": 66.4
             }
           ],
           "answer": 0
@@ -4459,12 +4507,12 @@
               "y": 52
             },
             {
-              "x": 50,
-              "y": 19
+              "x": 55.8,
+              "y": 16.1
             },
             {
-              "x": 50,
-              "y": 34
+              "x": 53.1,
+              "y": 35.4
             }
           ],
           "answer": 0
@@ -4477,9 +4525,9 @@
         "from": {
           "plane": "Sagittal PD-FS",
           "dir": "/images/teaching/stacks/normal-knee-sagittal",
-          "sliceIndex": 12,
-          "x": 49,
-          "y": 55,
+          "sliceIndex": 14,
+          "x": 48,
+          "y": 50.4,
           "label": "Anterior cruciate ligament"
         },
         "to": {
@@ -4525,16 +4573,16 @@
           "sliceIndex": 13,
           "candidates": [
             {
-              "x": 50,
-              "y": 19
+              "x": 55.8,
+              "y": 16.1
             },
             {
-              "x": 50,
-              "y": 34
+              "x": 53.1,
+              "y": 35.4
             },
             {
-              "x": 32,
-              "y": 24
+              "x": 35.3,
+              "y": 23.2
             },
             {
               "x": 63,
@@ -4570,12 +4618,12 @@
               "y": 62
             },
             {
-              "x": 16,
-              "y": 36
+              "x": 18.8,
+              "y": 38.2
             },
             {
-              "x": 20,
-              "y": 68
+              "x": 23.9,
+              "y": 65.7
             }
           ],
           "answer": 0
@@ -4611,8 +4659,8 @@
               "y": 49
             },
             {
-              "x": 69,
-              "y": 55
+              "x": 41.7,
+              "y": 69.8
             }
           ],
           "answer": 0
@@ -4648,8 +4696,8 @@
               "y": 36
             },
             {
-              "x": 20,
-              "y": 68
+              "x": 22.8,
+              "y": 66.4
             }
           ],
           "answer": 0
@@ -5132,9 +5180,9 @@
         "topic": "ACL tear — pivot-shift secondary signs",
         "dir": "/images/teaching/stacks/normal-knee-sagittal",
         "count": 29,
-        "startIndex": 12,
+        "startIndex": 14,
         "plane": "Sagittal PD-FS",
-        "vignette": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
+        "vignette": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
         "options": [
           "Posterolateral tibial plateau bone contusion",
           "Anteromedial femoral condyle fracture",
@@ -10572,7 +10620,7 @@
       "courseId": "knee-mri"
     },
     "knee-mri::sag-sid-1": {
-      "stem": "What is the straight striated band marked here, paralleling the roof of the intercondylar notch?",
+      "stem": "What is the oblique striated band marked here, paralleling the roof of the intercondylar notch?",
       "options": [
         {
           "key": "A",
@@ -10592,14 +10640,14 @@
         }
       ],
       "correctAnswer": "A",
-      "explanation": "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. Trace the ACL across adjacent slices and correlate all planes rather than judging it from this image alone.",
+      "explanation": "On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. The fan-shaped ACL is not displayed in its entirety on one conventional sagittal image, so trace it across adjacent slices and correlate all planes rather than judging it from this image alone.",
       "source": "Knee MRI · Sagittal",
       "courseId": "knee-mri",
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal",
-        "sliceIndex": 12,
-        "x": 49,
-        "y": 55
+        "sliceIndex": 14,
+        "x": 48,
+        "y": 50.4
       }
     },
     "knee-mri::sag-q1": {
@@ -10753,8 +10801,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal",
         "sliceIndex": 13,
-        "x": 20,
-        "y": 68
+        "x": 22.8,
+        "y": 66.4
       }
     },
     "knee-mri::sag-q6": {
@@ -10877,8 +10925,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal",
         "sliceIndex": 7,
-        "x": 61.3,
-        "y": 50.8
+        "x": 62.3,
+        "y": 51
       }
     },
     "knee-mri::sag-q10": {
@@ -10970,8 +11018,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-coronal",
         "sliceIndex": 7,
-        "x": 14,
-        "y": 54
+        "x": 18.1,
+        "y": 52.7
       }
     },
     "knee-mri::cor-sid-2": {
@@ -11001,8 +11049,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-coronal",
         "sliceIndex": 7,
-        "x": 78,
-        "y": 53
+        "x": 79.3,
+        "y": 48.3
       }
     },
     "knee-mri::cor-sid-3": {
@@ -11311,8 +11359,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 50,
-        "y": 34
+        "x": 53.1,
+        "y": 35.4
       }
     },
     "knee-mri::axi-sid-2": {
@@ -11342,8 +11390,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 68,
-        "y": 24
+        "x": 73,
+        "y": 25.4
       }
     },
     "knee-mri::axi-q1": {
@@ -11373,8 +11421,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 50,
-        "y": 19
+        "x": 55.8,
+        "y": 16.1
       }
     },
     "knee-mri::axi-q3": {
@@ -11404,8 +11452,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 50,
-        "y": 26
+        "x": 62.8,
+        "y": 25.8
       }
     },
     "knee-mri::axi-q4": {
@@ -11435,8 +11483,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 50,
-        "y": 31
+        "x": 54.1,
+        "y": 29.8
       }
     },
     "knee-mri::axi-q5": {
@@ -11466,8 +11514,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 32,
-        "y": 24
+        "x": 35.3,
+        "y": 23.2
       }
     },
     "knee-mri::axi-q7": {
@@ -11559,8 +11607,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 55,
-        "y": 70
+        "x": 58,
+        "y": 68.4
       }
     },
     "knee-mri::axi-q10": {
@@ -11590,8 +11638,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 50,
-        "y": 31
+        "x": 54.1,
+        "y": 29.8
       }
     },
     "knee-mri::axi-q11": {
@@ -11621,8 +11669,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-axial",
         "sliceIndex": 13,
-        "x": 32,
-        "y": 24
+        "x": 35.3,
+        "y": 23.2
       }
     },
     "knee-mri::t1-q1": {
@@ -11714,8 +11762,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 13,
-        "x": 16,
-        "y": 36
+        "x": 18.8,
+        "y": 38.2
       }
     },
     "knee-mri::t1-q4": {
@@ -11745,8 +11793,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 13,
-        "x": 14,
-        "y": 22
+        "x": 17.2,
+        "y": 19.2
       }
     },
     "knee-mri::t1-q5": {
@@ -11776,8 +11824,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 13,
-        "x": 20,
-        "y": 68
+        "x": 23.9,
+        "y": 65.7
       }
     },
     "knee-mri::t1-q6": {
@@ -11807,8 +11855,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 13,
-        "x": 24,
-        "y": 60
+        "x": 27.8,
+        "y": 57.4
       }
     },
     "knee-mri::t1-q7": {
@@ -11869,8 +11917,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 8,
-        "x": 40,
-        "y": 61
+        "x": 43.1,
+        "y": 59.3
       }
     },
     "knee-mri::t1-q9": {
@@ -11931,8 +11979,8 @@
       "image": {
         "dir": "/images/teaching/stacks/normal-knee-sagittal-t1",
         "sliceIndex": 14,
-        "x": 66,
-        "y": 55
+        "x": 65.1,
+        "y": 54.9
       }
     },
     "knee-mri::t1-q11": {
@@ -12867,7 +12915,7 @@
       "courseId": "knee-mri"
     },
     "knee-mri::icaq-1": {
-      "stem": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
+      "stem": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
       "options": [
         {
           "key": "A",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24",
+  "generatedAt": "2026-07-26",
   "courses": {
     "knee-mri": {
       "title": "UCLA Knee MRI Interpretation Course",
@@ -37,13 +37,13 @@
       "cases": 8,
       "prePostQuizItems": 24,
       "normalPlanes": 3,
-      "normalPlaneQuizItems": 22,
-      "advancedItems": 12,
+      "normalPlaneQuizItems": 38,
+      "advancedItems": 22,
       "imageCaqItems": 6,
       "redFlags": 5,
-      "reviewItems": 556,
-      "highRiskItems": 342,
-      "sourceCheckItems": 385,
+      "reviewItems": 608,
+      "highRiskItems": 371,
+      "sourceCheckItems": 420,
       "diagnostics": 0
     },
     "elbow-mri": {
@@ -52,20 +52,20 @@
       "cases": 8,
       "prePostQuizItems": 24,
       "normalPlanes": 3,
-      "normalPlaneQuizItems": 15,
-      "advancedItems": 10,
+      "normalPlaneQuizItems": 35,
+      "advancedItems": 20,
       "imageCaqItems": 7,
       "redFlags": 5,
-      "reviewItems": 448,
-      "highRiskItems": 353,
-      "sourceCheckItems": 382,
+      "reviewItems": 546,
+      "highRiskItems": 435,
+      "sourceCheckItems": 465,
       "diagnostics": 0
     }
   },
   "totals": {
-    "reviewItems": 2768,
-    "highRiskItems": 1338,
-    "sourceCheckItems": 1560,
+    "reviewItems": 2918,
+    "highRiskItems": 1449,
+    "sourceCheckItems": 1678,
     "diagnostics": 0,
     "diagnosticErrors": 0,
     "diagnosticWarnings": 0

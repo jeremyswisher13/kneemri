@@ -47,12 +47,12 @@ export interface MedicalQaPriorityItem {
   textPreview: string;
 }
 
-export const medicalQaGeneratedAt = "2026-07-24";
+export const medicalQaGeneratedAt = "2026-07-26";
 
 export const medicalQaTotals: MedicalQaTotals = {
-  "reviewItems": 2768,
-  "highRiskItems": 1338,
-  "sourceCheckItems": 1560,
+  "reviewItems": 2918,
+  "highRiskItems": 1449,
+  "sourceCheckItems": 1678,
   "diagnostics": 0,
   "diagnosticErrors": 0,
   "diagnosticWarnings": 0
@@ -95,13 +95,13 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "cases": 8,
     "prePostQuizItems": 24,
     "normalPlanes": 3,
-    "normalPlaneQuizItems": 22,
-    "advancedItems": 12,
+    "normalPlaneQuizItems": 38,
+    "advancedItems": 22,
     "imageCaqItems": 6,
     "redFlags": 5,
-    "reviewItems": 556,
-    "highRiskItems": 342,
-    "sourceCheckItems": 385,
+    "reviewItems": 608,
+    "highRiskItems": 371,
+    "sourceCheckItems": 420,
     "diagnostics": 0
   },
   "elbow-mri": {
@@ -110,13 +110,13 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "cases": 8,
     "prePostQuizItems": 24,
     "normalPlanes": 3,
-    "normalPlaneQuizItems": 15,
-    "advancedItems": 10,
+    "normalPlaneQuizItems": 35,
+    "advancedItems": 20,
     "imageCaqItems": 7,
     "redFlags": 5,
-    "reviewItems": 448,
-    "highRiskItems": 353,
-    "sourceCheckItems": 382,
+    "reviewItems": 546,
+    "highRiskItems": 435,
+    "sourceCheckItems": 465,
     "diagnostics": 0
   }
 };
@@ -245,9 +245,9 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   },
   "hip-mri": {
     "risks": {
-      "high": 342,
-      "medium": 43,
-      "standard": 171
+      "high": 371,
+      "medium": 49,
+      "standard": 188
     },
     "itemTypes": {
       "course-overview": 1,
@@ -261,11 +261,11 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 40,
       "case-search-finding": 56,
       "normal-tour-step": 28,
-      "normal-plane-quiz": 22,
+      "normal-plane-quiz": 38,
       "normal-structure-pearl": 13,
       "normal-structure-reading": 13,
       "normal-structure-correlate": 12,
-      "normal-advanced-question": 12,
+      "normal-advanced-question": 22,
       "normal-image-caq": 6,
       "normal-cross-plane": 5,
       "pre-post-quiz": 24,
@@ -275,7 +275,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-measurementSections": 9,
       "daily-pearl": 30,
       "flashcard": 32,
-      "review-registry-question": 120
+      "review-registry-question": 146
     },
     "sourceCheckByType": {
       "course-overview": 1,
@@ -289,11 +289,11 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 28,
       "case-search-finding": 25,
       "normal-tour-step": 10,
-      "normal-plane-quiz": 4,
+      "normal-plane-quiz": 13,
       "normal-structure-pearl": 5,
       "normal-structure-reading": 8,
       "normal-structure-correlate": 6,
-      "normal-advanced-question": 8,
+      "normal-advanced-question": 17,
       "normal-image-caq": 5,
       "normal-cross-plane": 3,
       "pre-post-quiz": 24,
@@ -303,14 +303,14 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-measurementSections": 8,
       "daily-pearl": 18,
       "flashcard": 25,
-      "review-registry-question": 89
+      "review-registry-question": 106
     }
   },
   "elbow-mri": {
     "risks": {
-      "high": 353,
-      "medium": 29,
-      "standard": 66
+      "high": 435,
+      "medium": 30,
+      "standard": 81
     },
     "itemTypes": {
       "course-overview": 1,
@@ -324,11 +324,11 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 40,
       "case-search-finding": 64,
       "normal-tour-step": 22,
-      "normal-plane-quiz": 15,
+      "normal-plane-quiz": 35,
       "normal-structure-pearl": 12,
       "normal-structure-reading": 6,
       "normal-structure-correlate": 6,
-      "normal-advanced-question": 10,
+      "normal-advanced-question": 20,
       "normal-image-caq": 7,
       "normal-cross-plane": 7,
       "pre-post-quiz": 24,
@@ -336,7 +336,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-anatomySections": 6,
       "reference-measurementSections": 12,
       "daily-pearl": 11,
-      "review-registry-question": 80
+      "review-registry-question": 148
     },
     "sourceCheckByType": {
       "search-pattern-step": 8,
@@ -349,11 +349,11 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-teaching-point": 33,
       "case-search-finding": 56,
       "normal-tour-step": 14,
-      "normal-plane-quiz": 7,
+      "normal-plane-quiz": 23,
       "normal-structure-pearl": 9,
       "normal-structure-reading": 6,
       "normal-structure-correlate": 4,
-      "normal-advanced-question": 9,
+      "normal-advanced-question": 19,
       "normal-image-caq": 7,
       "normal-cross-plane": 2,
       "pre-post-quiz": 24,
@@ -361,9 +361,9 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "reference-anatomySections": 5,
       "reference-measurementSections": 12,
       "daily-pearl": 8,
-      "review-registry-question": 70
+      "review-registry-question": 127
     }
   }
 };
 
-export const medicalQaPriorityItemCount = 1560;
+export const medicalQaPriorityItemCount = 1678;

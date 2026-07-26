@@ -1,5 +1,5 @@
 # Medical QA Packet: UCLA Knee MRI Interpretation Course
-Generated: 2026-07-24
+Generated: 2026-07-26
 Course ID: `knee-mri`  
 Body region: `knee`  
 Audience: Sports medicine fellows and orthopaedic residents
@@ -2681,7 +2681,7 @@ Teaching points:
 - PLC structures to evaluate: LCL, popliteus tendon, popliteofibular ligament, arcuate ligament, biceps femoris.
 - An unrecognized PLC injury can leave posterolateral/varus laxity that overloads a cruciate graft. It is an important preventable contributor to reconstruction failure; tunnel malposition and other technical or biologic factors must also be assessed.
 Teaching media:
-- src=/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg | alt=PCL intrasubstance tear | caption=Published partial/intrasubstance PCL-tear example illustrating abnormal thickening and internal signal. The teaching case describes a complete tear, which additionally requires fiber discontinuity. | attribution=Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.
+- src=/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png | alt=Complete PCL tear with femoral detachment on sagittal PD fat-suppressed MRI | caption=Complete PCL tear with femoral detachment (white arrow). The normally continuous low-signal PCL is interrupted at its femoral attachment. This published image is a chronic example; the dashboard teaching case models an acute combined PCL and PLC injury. | attribution=Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). PMC6538732. CC BY 4.0.
 - src=/images/teaching/modules/module4-bones/38_BoneContusion_Dashboard_Sagittal.jpg | alt=Dashboard bone contusion pattern | caption=Dashboard injury — proximal tibia edema | attribution=JCDR, 2016. PMC4866212. CC-BY-NC 3.0.
 - caption=Intact PCL — uniformly dark, taut, continuous posterior arc from medial femoral condyle to posterior tibia. | attribution=Wilson KJ et al., J Exp Orthop, 2019. PMC6538732. CC-BY 4.0.
 - caption=Intrasubstance PCL tear — thickened, increased T2 signal, loss of normal taut morphology (arrow on central slice). | attribution=Wilson KJ et al., J Exp Orthop, 2019. PMC6538732. CC-BY 4.0.
@@ -3184,28 +3184,28 @@ Guided tour:
   - Quadriceps tendon @ x=14, y=22
   - Patella @ x=16, y=36
 - **5. Patellar tendon** (slice 13) Runs from the inferior pole of the patella to the tibial tubercle — uniformly low signal and a few mm thick. Hoffa's fat pad sits just behind it.
-  - Patellar tendon @ x=20, y=68
+  - Patellar tendon @ x=22.8, y=66.4
 - **6. Hoffa's fat pad** (slice 13) The fat behind the patellar tendon and in front of the joint. Edema-like signal here is nonspecific and can reflect trauma, synovitis, postoperative change, or an impingement pattern depending on its distribution and the clinical context.
   - Hoffa's (infrapatellar) fat pad @ x=24, y=60
 - **7. Meniscus — the dark bow-ties** (slice 8) This is the LATERAL compartment: on a sagittal compartment slice the meniscus appears as two low-signal triangles (anterior and posterior horns). Surface-reaching signal on two or more matching images favors a tear; the images need not be contiguous and may be in different planes. Three normal lateral-meniscus relationships mimic tears: the transverse (intermeniscal) ligament at the anterior horn, the meniscofemoral ligament (Humphry/Wrisberg) at the posterior horn, and the popliteal hiatus/popliteomeniscal fascicles posterolaterally near the popliteus tendon. Trace the band or hiatus across adjacent slices before calling a tear.
   - Anterior horn (lateral meniscus) @ x=40, y=61
   - Posterior horn (lateral meniscus) @ x=61, y=59.2
 - **8. Cartilage & joint fluid** (slice 7) Cartilage is the smooth intermediate-signal layer on the bone ends; a thin bright rim of joint fluid outlines it. A small amount of fluid is normal.
-  - Articular cartilage / joint fluid @ x=61.3, y=50.8
-- **9. Anterior cruciate ligament** (slice 12) On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. It is partly volume-averaged on any one image, so trace it across adjacent slices and correlate all planes before calling it intact or torn.
-  - Anterior cruciate ligament @ x=49, y=55
+  - Articular cartilage / joint fluid @ x=62.3, y=51
+- **9. Anterior cruciate ligament** (slice 14) On this lateral notch slice the ACL is the oblique, striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area. It generally parallels the roof of the notch (Blumensaat line) and is more fibrillar than the smooth, dark PCL. Because its fan-shaped fibers are partly volume-averaged and are not all visible on one conventional sagittal image, trace the ligament across adjacent slices and correlate all planes before calling it intact or torn.
+  - Anterior cruciate ligament @ x=48, y=50.4
 - **10. Posterior cruciate ligament** (slice 16) The PCL is a smooth, continuous low-signal band arcing through the posterior notch — a thick, dark, curved structure on this midline slice. Loss of its smooth arc suggests injury.
   - Posterior cruciate ligament @ x=50, y=47
 - **11. Popliteal vessels** (slice 14) The popliteal artery and vein run vertically in the popliteal fossa behind the joint — a useful posterior landmark. Don't mistake the flow-related signal for pathology.
   - Popliteal vessels @ x=66, y=55
 
 Knowledge check:
-- **sag-sid-1:** What is the straight striated band marked here, paralleling the roof of the intercondylar notch? (slice 12)
+- **sag-sid-1:** What is the oblique striated band marked here, paralleling the roof of the intercondylar notch? (slice 14)
   - A. Anterior cruciate ligament [CORRECT]
   - B. Posterior cruciate ligament
   - C. Meniscofemoral ligament
   - D. Posterior joint capsule
-    Explanation: On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. Trace the ACL across adjacent slices and correlate all planes rather than judging it from this image alone.
+    Explanation: On this lateral notch slice, the oblique striated band running from the lateral femoral condyle toward the anterior tibial intercondylar area is the ACL. The PCL is smoother, darker, more sharply curved, and sits farther posteriorly and medially. The fan-shaped ACL is not displayed in its entirety on one conventional sagittal image, so trace it across adjacent slices and correlate all planes rather than judging it from this image alone.
 - **sag-q1:** What is the marked structure? (slice 13)
   - A. Femoral condyle [CORRECT]
   - B. Patella
@@ -3291,9 +3291,9 @@ Guided tour:
 - **7. Weight-bearing cartilage** (slice 7) The smooth intermediate-signal layer on the condyle and plateau, outlined by a thin bright rim of joint fluid. Compare medial vs lateral for symmetry.
   - Articular cartilage @ x=38, y=53
 - **8. Medial collateral ligament** (slice 7) A thin, taut low-signal band along the medial edge from the femoral epicondyle to the proximal tibia. Distinguish the long superficial MCL from the deep meniscofemoral and meniscotibial fibers. Periligamentous edema with preserved fibers can support a low-grade sprain; partial or complete fiber disruption determines higher grade.
-  - Medial collateral ligament @ x=14, y=54
+  - Medial collateral ligament @ x=18.1, y=52.7
 - **9. Lateral collateral ligament (LCL)** (slice 7) The cord-like LCL runs down the lateral edge from the lateral femoral epicondyle to the fibular head — the lateral counterpart of the MCL. The popliteus and posterolateral corner are confirmed on more posterior slices.
-  - Lateral collateral ligament (LCL) @ x=78, y=53
+  - Lateral collateral ligament (LCL) @ x=79.3, y=48.3
 
 Knowledge check:
 - **cor-sid-1:** What is the marked structure running along the medial edge of the joint? (slice 7)
@@ -3368,22 +3368,22 @@ Knowledge check:
 Guided tour:
 - **1. Get oriented** (slice 13) Axial T2 fat-sat at the patellofemoral joint. Anterior (the patella) is up, posterior is down; medial is to the LEFT, lateral to the RIGHT. The axial is THE plane for the patella, trochlea, retinacula/MPFL, and patellar tracking.
 - **2. Patella** (slice 13) The anterior sesamoid bone, with its own articular cartilage on the deep surface. Note its position and tilt relative to the trochlea.
-  - Patella @ x=50, y=19
+  - Patella @ x=55.8, y=16.1
 - **3. Femoral trochlea** (slice 13) The grooved anterior femur the patella tracks in. The lateral facet is normally longer, forming a higher buttress against the patella; loss of that asymmetry — a flat, shallow groove — is trochlear dysplasia.
-  - Femoral trochlea @ x=50, y=34
+  - Femoral trochlea @ x=53.1, y=35.4
 - **4. Trochlear groove** (slice 13) The deepest point of the trochlea. A shallow, flat groove is trochlear dysplasia — a key predisposing factor for patellar instability.
-  - Trochlear groove (sulcus) @ x=50, y=31
+  - Trochlear groove (sulcus) @ x=54.1, y=29.8
 - **5. Patellofemoral cartilage** (slice 13) The cartilage on the patellar and trochlear surfaces, outlined by a thin bright rim of fluid. Assess thickness and symmetry of the facets.
-  - Patellofemoral cartilage @ x=50, y=26
+  - Patellofemoral cartilage @ x=62.8, y=25.8
 - **6. MPFL / medial retinaculum** (slice 13) The medial patellofemoral ligament runs from the superomedial patella toward the region between the adductor tubercle and medial epicondyle. It is the principal passive restraint in early lateral translation and is commonly injured after lateral patellar dislocation; inspect its full course because the tear site varies.
-  - MPFL / medial retinaculum @ x=32, y=24
+  - MPFL / medial retinaculum @ x=35.3, y=23.2
 - **7. Lateral retinaculum** (slice 13) The lateral retinacular soft tissues tethering the patella laterally.
-  - Lateral retinaculum @ x=68, y=24
+  - Lateral retinaculum @ x=73, y=25.4
 - **8. Femoral condyles** (slice 13) Behind the trochlea, the two condyles flank the intercondylar notch (where the cruciates are seen in cross-section).
   - Medial femoral condyle @ x=37, y=52
   - Lateral femoral condyle @ x=63, y=52
 - **9. Popliteal vessels** (slice 13) The popliteal artery and vein in the popliteal fossa posteriorly — a reliable posterior landmark.
-  - Popliteal vessels @ x=55, y=70
+  - Popliteal vessels @ x=58, y=68.4
 
 Knowledge check:
 - **axi-sid-1:** What is the marked grooved anterior femoral structure the patella tracks within? (slice 13)
@@ -3462,21 +3462,21 @@ Guided tour:
 - **3. Tibial plateau** (slice 13) Predominantly bright fatty marrow lies below the joint. A discrete low-signal line can be a fracture clue, but correlate its shape across planes and look for surrounding edema-like signal because sclerosis, vascular channels, and other low-signal structures can mimic a line.
   - Tibial plateau @ x=37.5, y=62
 - **4. Extensor mechanism — top** (slice 13) The quadriceps tendon inserts on the superior pole of the patella. Tendons are low signal on T1, just as on PD-FS.
-  - Quadriceps tendon @ x=14, y=22
-  - Patella @ x=16, y=36
+  - Quadriceps tendon @ x=17.2, y=19.2
+  - Patella @ x=18.8, y=38.2
 - **5. Patellar tendon** (slice 13) Uniformly low signal from the inferior pole of the patella to the tibial tubercle.
-  - Patellar tendon @ x=20, y=68
+  - Patellar tendon @ x=23.9, y=65.7
 - **6. Hoffa's fat pad** (slice 13) Bright fat (unsuppressed on T1) behind the patellar tendon.
-  - Hoffa's (infrapatellar) fat pad @ x=24, y=60
+  - Hoffa's (infrapatellar) fat pad @ x=27.8, y=57.4
 - **7. Meniscus** (slice 8) Low-signal triangles of the lateral meniscus at the joint line — dark on T1, as on PD-FS.
-  - Anterior horn (lateral meniscus) @ x=40, y=61
+  - Anterior horn (lateral meniscus) @ x=43.1, y=59.3
   - Posterior horn (lateral meniscus) @ x=61, y=59.2
 - **8. Bone marrow — T1's job** (slice 13) Adult knee marrow is usually predominantly bright on T1, but residual or reconverted red marrow can be heterogeneous and should remain brighter than skeletal muscle. Assess unexpected focal low signal by its distribution, margin, relation to the cortex/subchondral plate, and fluid-sensitive correlate rather than labeling every dark focus as a lesion. Joint fluid is dark on T1, so use fluid-sensitive images for edema-like signal and effusion.
   - Bone marrow @ x=34, y=41
 - **9. Posterior cruciate ligament** (slice 16) The PCL is a smooth, continuous low-signal arc through the posterior notch.
-  - Posterior cruciate ligament @ x=50.7, y=53.6
+  - Posterior cruciate ligament @ x=52.6, y=49.8
 - **10. Popliteal vessels** (slice 14) The popliteal artery and vein in the popliteal fossa posteriorly.
-  - Popliteal vessels @ x=66, y=55
+  - Popliteal vessels @ x=65.1, y=54.9
 
 Knowledge check:
 - **t1-q1:** What is the marked structure? (slice 13)
@@ -3967,9 +3967,9 @@ Explanation: On a true lateral radiograph, an Insall-Salvati ratio (patellar ten
 
 #### Image CAQ: icaq-1 · ACL tear — pivot-shift secondary signs
 
-A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?
+A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?
 
-Plane: Sagittal PD-FS · Stack: /images/teaching/stacks/normal-knee-sagittal · startIndex: 12
+Plane: Sagittal PD-FS · Stack: /images/teaching/stacks/normal-knee-sagittal · startIndex: 14
 
 - A. Posterolateral tibial plateau bone contusion [CORRECT]
 - B. Anteromedial femoral condyle fracture

@@ -1,5 +1,5 @@
 # Medical QA Packet: Hip MRI for Primary Care Sports Medicine
-Generated: 2026-07-24
+Generated: 2026-07-26
 Course ID: `hip-mri`  
 Body region: `hip`  
 Audience: Primary care sports medicine fellows
@@ -15,9 +15,9 @@ Audience: Primary care sports medicine fellows
 
 ## Automated QA Summary
 
-- Review queue items: 556
-- High-risk keyword items: 342
-- Numeric threshold / named-criterion items: 140
+- Review queue items: 608
+- High-risk keyword items: 371
+- Numeric threshold / named-criterion items: 150
 - Diagnostics: 0
 
 ## Course Overview
@@ -1831,6 +1831,42 @@ Knowledge check:
   - C. Femoral head
   - D. Iliac crest
     Explanation: The greater trochanter is the lateral proximal-femoral prominence and the abductor (gluteus medius/minimus) footprint, with the trochanteric/subgluteus bursae normally collapsed superficial to the tendons — the GTPS hot spot. The lesser trochanter is also a proximal-femoral apophysis but lies posteromedially as the iliopsoas insertion, not the lateral abductor footprint.
+- **hc-q10:** A 19-year-old recruit has groin pain with running, and this femoral neck shows marrow edema with a low-signal line. Which cortex carries the high-risk, urgent-referral pattern? (slice 19)
+  - A. The superolateral (tension) cortex [CORRECT]
+  - B. The inferomedial (compression) cortex
+  - C. The posterior cortex at the intertrochanteric line
+  - D. Either cortex — the side does not affect management
+    Explanation: A fracture line touching the superolateral (tension) cortex is the high-risk pattern: it is prone to completion, displacement, and subsequent AVN, so it means non-weight-bearing and urgent orthopedic referral. The inferomedial (compression) cortex is the tempting answer because it is the more frequent site, but an incomplete compression-side line is the lower-risk pattern usually managed with protected weight-bearing and close review — which is exactly why the report must state WHICH cortex the line touches rather than just 'femoral neck stress fracture.'
+- **hc-q11:** You are screening this femoral head marrow in a 58-year-old with osteopenia and acute atraumatic hip pain. Which finding most specifically indicates a subchondral insufficiency fracture (SIFFH) rather than AVN? (slice 19)
+  - A. An irregular subchondral low-signal band paralleling the articular surface with surrounding edema [CORRECT]
+  - B. A geographic serpiginous interface with a T2 double-line sign
+  - C. Diffuse homogeneous marrow edema extending into the neck with no discrete line
+  - D. A small well-corticated subcortical cyst at the anterosuperior head-neck junction
+    Explanation: SIFFH is defined by a structural fracture: an irregular subchondral low-signal band, often convex toward the articular surface, with surrounding marrow edema — and it carries real collapse risk, so it is offloaded and reviewed promptly. The double-line sign is the strongest distractor because it also sits subchondrally in a painful head, but it marks the demarcating interface of AVN (outer sclerotic rim, inner granulation line) rather than a fracture band. Diffuse edema with no discrete line is most consistent with transient bone-marrow-edema syndrome, but that remains a diagnosis of exclusion — early subchondral insufficiency fracture and early osteonecrosis can look identical before a line appears — so protect weight-bearing and re-image at short interval rather than reassure on one study. A corticated neck cyst is a benign herniation pit.
+- **hc-q12:** A 62-year-old has lateral hip pain over this trochanter. Which finding best supports true abductor tendon disease rather than the loose label 'trochanteric bursitis'? (slice 19)
+  - A. Tendon thickening and fluid signal at the gluteus medius/minimus footprint with peritrochanteric edema [CORRECT]
+  - B. A thin sliver of fluid in the trochanteric bursa with a normal-looking footprint
+  - C. Normal fatty marrow signal within the greater trochanter
+  - D. A thin fluid layer in the anterior joint recess
+    Explanation: GTPS is usually abductor tendon disease, so the finding that carries weight is at the footprint itself: tendinosis or partial tearing on the trochanteric facets with surrounding peritrochanteric edema (and, when present, retraction or fatty atrophy). Isolated bursal fluid is the strongest distractor because it is what the historical label points at, but the trochanteric and subgluteus bursae can carry a small amount of fluid without being the pain generator — bursal fluid is a signpost to interrogate the tendons underneath, not a stand-alone diagnosis.
+- **hc-q13:** On this Dixon WATER image a thin bright line with adjacent marrow signal appears beneath the marked acetabular roof. Which interpretation deserves the most consideration? (slice 19)
+  - A. Subchondral stress response or insufficiency fracture of the weight-bearing roof [CORRECT]
+  - B. Degenerative subchondral sclerosis, which is bright on the water image
+  - C. Normal fatty marrow, which is expected to be bright in this location
+  - D. The sourcil cannot be assessed on a fat-suppressed image
+    Explanation: On the water (fat-suppressed) image marrow fat is nulled and therefore dark, so bright subchondral signal under the sourcil is edema — in the weight-bearing roof that raises a stress response or insufficiency fracture, especially alongside a thin low-signal line. Sclerosis is the strongest distractor because it lives in exactly this location in a degenerative hip, but sclerotic bone is LOW signal on every sequence and cannot account for bright fluid-sensitive signal. Correlate with age, load history, and radiographs rather than committing from one image.
+- **hc-q14:** You are tracing this acetabular cartilage for the chondral injury that accompanies FAI. Where does that damage characteristically sit? (slice 19)
+  - A. The anterosuperior weight-bearing rim, at the chondrolabral junction [CORRECT]
+  - B. The superomedial roof, medial to the supra-acetabular fossa
+  - C. The floor of the cotyloid (acetabular) fossa
+  - D. Uniformly around the entire circumference of the socket
+    Explanation: FAI-related chondral injury clusters where the impingement lands — the anterosuperior rim at the chondrolabral junction — which is why delamination there is the finding that weights management toward surgical referral. The superomedial roof is the tempting miss: the normal stellate lesion is a star-shaped bare area of absent cartilage sitting medial to the supra-acetabular fossa with clean margins and no marrow edema, so it looks like a defect without being one. The cotyloid fossa is non-articular (fat and ligamentum teres), and diffuse circumferential loss suggests osteoarthritis rather than focal impingement.
+- **hc-q15:** You are screening these sacroiliac joints on the posterior coronal slices. Which finding best supports inflammatory sacroiliitis? (slice 15)
+  - A. Periarticular subchondral marrow edema with erosive change [CORRECT]
+  - B. Bilateral symmetric thin subchondral sclerosis without erosion
+  - C. An H-shaped band of sacral-ala marrow edema
+  - D. Bright signal within the sacral neural foramina
+    Explanation: True periarticular subchondral marrow edema — read together with erosions and the clinical picture — is what supports inflammatory sacroiliitis; the ASAS definition rests on clear subchondral bone-marrow edema in a typical periarticular location, not on which side it sits. Laterality is not the discriminator: established axial spondyloarthritis is classically bilateral and symmetric, and asymmetric or unilateral disease is more typical of psoriatic or reactive arthritis — but EARLY axSpA is itself often one-sided, so laterality alone neither confirms nor excludes it. What a strictly unilateral, severe pattern does demand is excluding INFECTION: in published series of unilateral sacroiliitis infection is the majority cause, favoured by severe marrow edema, joint-space widening, and intra-articular or peri-articular abscess. Bilateral symmetric sclerosis without erosion is the strongest distractor because it is also 'signal at the SI joints,' but it is a degenerative/mechanical pattern. The complete H (Honda) pattern — bilateral vertical sacral-ala bands bridged by a transverse component — is the classic sacral insufficiency-fracture look, but it is complete in only about two-thirds of cases and was originally described on bone scintigraphy; incomplete variants, including a single vertical ala band, are common, so keep insufficiency fracture in the differential for unilateral ala edema too in an osteoporotic or running patient.
 
 ### Plane: axi
 
@@ -1890,6 +1926,36 @@ Knowledge check:
   - C. Pudendal nerve
   - D. Sciatic nerve [CORRECT]
     Explanation: The large fascicular nerve coursing posterior to the hip between the ischial tuberosity and greater trochanter is the sciatic nerve. The femoral nerve lies anteriorly within the iliopsoas groove lateral to the femoral artery, so it is a plausible but anatomically opposite distractor.
+- **ha-q7:** A fluid-signal cleft sits at the base of this labrum. Which feature best supports a true tear rather than a normal sublabral/perilabral sulcus? (slice 23)
+  - A. Irregular fluid extending into the labral substance with blunting or displacement, or an adjacent paralabral cyst [CORRECT]
+  - B. A smooth-walled cleft paralleling the labral base with no displacement
+  - C. Any cleft seen in the posteroinferior labrum
+  - D. Uniformly low signal throughout the labral triangle
+    Explanation: Trajectory and margins decide it: fluid tracking INTO the substance of the labrum, a blunted or displaced fragment, or a paralabral cyst supports a tear. The smooth basal cleft is the strongest distractor because a sublabral/perilabral sulcus produces exactly that fluid signal — but it stays at the base, does not displace the labrum, and carries no cyst or adjacent chondral injury. Location alone does not settle it either way, so confirm a suspected tear in a second plane on dedicated small-field-of-view imaging; a uniformly dark triangle is the normal labrum.
+- **ha-q8:** Fluid distends the bursa deep to this iliopsoas tendon. Which statement about that finding is most accurate? (slice 23)
+  - A. The iliopsoas bursa communicates with the hip in roughly 15% of people, so a distended bursa can flag intra-articular pathology [CORRECT]
+  - B. A distended iliopsoas bursa establishes primary iliopsoas bursitis as the pain source
+  - C. Bursal distension on this static image confirms internal snapping hip
+  - D. Any fluid deep to the tendon indicates a full-thickness iliopsoas tendon tear
+    Explanation: Because the iliopsoas bursa communicates with the joint in about 15% of people, a distended bursa is often secondary — a marker of effusion, synovitis, or degenerative joint disease — so the read should turn back to the joint before settling on bursitis. Calling it primary bursitis is the tempting error: a small bursa can be normal and a large one may simply be decompressing the joint. Internal snapping is a DYNAMIC event (the tendon flicking over the iliopectineal eminence), diagnosed on real-time ultrasound rather than a static MR image.
+- **ha-q9:** Seeing this sciatic nerve is normal. Which combination best supports deep gluteal (sciatic) entrapment? (slice 23)
+  - A. A concordant buttock-pain pattern PLUS nerve enlargement or T2 hyperintensity with loss of the surrounding fat plane [CORRECT]
+  - B. Clear visualization of the nerve between the ischial tuberosity and greater trochanter
+  - C. Preserved fascicular architecture of the nerve
+  - D. Lateral hip pain with point tenderness over the greater trochanter
+    Explanation: Deep gluteal syndrome is a clinical-plus-imaging diagnosis made after competing causes are considered: it needs a concordant posterior-pain pattern together with nerve enlargement, T2 hyperintensity, fat-plane loss, or a compressive lesion. Simply seeing the nerve is the classic over-call — the sciatic nerve is normally well visualized in the subgluteal space, and a normal fascicular pattern is reassuring rather than diagnostic. Lateral pain with trochanteric tenderness points to GTPS, a different compartment entirely.
+- **ha-q10:** You suspect cam morphology at the anterior head-neck junction of this femoral head. On which images is the alpha angle most reliably measured? (slice 23)
+  - A. Oblique-axial images prescribed along the femoral neck axis, or radial reformats [CORRECT]
+  - B. This straight axial slice through the mid femoral head
+  - C. The large-field-of-view coronal through the mid acetabulum
+  - D. Any sagittal slice through the joint
+    Explanation: The cam bump lives at the anterosuperior head-neck junction, which only the oblique-axial-along-the-neck plane (or radial reformats, which add the clock-face map) profiles properly. A standard axial is the strongest distractor because it looks like the same plane and will happily yield a number — but it can under-sample the anterosuperior peak and misrepresent the angle. Report the measured value and the plane: the historic >55° cutoff is widely cited while ≥60° is the better-supported classification threshold, and morphology is not symptomatic FAI by itself.
+- **ha-q11:** In pincer-type impingement from anterior acetabular over-coverage, where does the characteristic contrecoup chondral injury appear? (slice 23)
+  - A. Posteroinferiorly, opposite the impinging anterior rim [CORRECT]
+  - B. At the anterosuperior rim, exactly at the point of contact
+  - C. In the superomedial bare area of the acetabular roof
+  - D. At the gluteal tendon footprint on the greater trochanter
+    Explanation: In pincer impingement the over-covering anterior rim levers the femoral head, which pivots away and loads the posteroinferior surface — so the contrecoup lesion sits opposite the point of contact, and finding it should send you looking for anterior over-coverage. The anterosuperior rim is the strongest distractor because it IS where pincer rim-side labral degeneration and cam-related delamination occur; the teaching point is that pincer produces both a narrow rim lesion anteriorly AND the posteroinferior contrecoup loss. The superomedial bare area is a normal variant, and the trochanteric footprint is extra-articular.
 
 ### Plane: sag
 
@@ -1957,6 +2023,36 @@ Knowledge check:
   - C. Ligamentum teres
   - D. Iliopsoas tendon
     Explanation: The anterior joint capsule reinforced by the iliofemoral ligament forms the roof of the anterior synovial recess, and its distension by fluid indicates effusion/synovitis — also the target for image-guided aspiration/injection. The acetabular labrum is the triangular fibrocartilage rim at the acetabular margin, not the fibrous capsular layer draped over the femoral neck.
+- **hs-q8:** A small, well-corticated T1-dark / T2-bright cyst sits in the anterosuperior cortex of this femoral neck. What is it, and what should you do? (slice 11)
+  - A. A herniation (fibrocystic) pit — benign, but a prompt to assess cam morphology in the correct plane [CORRECT]
+  - B. An intraosseous abscess requiring urgent aspiration
+  - C. A subchondral insufficiency fracture of the femoral head
+  - D. An aggressive lytic lesion requiring an oncologic workup
+    Explanation: A small corticated subcortical cyst at the anterosuperior head-neck junction is a herniation pit — classically benign, often incidental, and associated with cam morphology, so the reasonable next move is a measured alpha angle on an oblique-axial-along-the-neck or radial image rather than escalation. Subchondral insufficiency fracture is the strongest distractor because it is also a low-signal subchondral finding in a painful hip, but SIFFH is a fracture BAND paralleling the articular surface of the femoral HEAD, not a corticated cyst in the neck cortex. Aggressive lesions lack this thin sclerotic rim.
+- **hs-q9:** You move to the ultrasound correlate of this anterior joint recess. Which measurement supports an effusion or synovitis? (slice 11)
+  - A. Capsule-to-bone distance greater than about 7 mm at the head-neck junction, or more than 1 mm side-to-side asymmetry [CORRECT]
+  - B. Any visible anechoic sliver within the recess
+  - C. A hyperechoic triangle at the acetabular rim
+  - D. Loss of the fibrillar pattern of the iliopsoas tendon
+    Explanation: The anterior recess is the one part of the hip joint ultrasound reads well, and the working thresholds are a bone-to-capsule distance above roughly 7 mm at the head-neck junction or more than 1 mm of side-to-side asymmetry — which is also why this is the window used for guided aspiration and injection. 'Any anechoic sliver' is the tempting answer because fluid is what you are looking for, but a thin physiologic sliver is normal; it is distension that matters. Ultrasound cannot tell you the cause — the labrum and cartilage stay hidden.
+- **hs-q10:** Which appearance of this anterior capsule / iliofemoral ligament indicates a true joint effusion rather than a normal capsule? (slice 11)
+  - A. A convex, outwardly bulging capsular margin with distension of the underlying recess [CORRECT]
+  - B. A thin, flat-to-concave capsular margin closely apposed to the femoral neck
+  - C. Uniformly low signal of the iliofemoral ligament fibers
+  - D. A thin fluid sliver in the iliopsoas bursa superficial to the capsule
+    Explanation: The normal anterior capsule hugs the head-neck junction with a flat or slightly concave outer margin; when the recess fills, that margin becomes CONVEX and bulges the iliofemoral ligament outward — the sign of effusion or synovitis. The concave margin is the strongest distractor precisely because there is normally a thin sliver of fluid there, so learners call any visible recess an effusion. Uniform low signal of the ligament is normal, and iliopsoas bursal fluid lies superficial to the capsule (extracapsular), so it is a separate compartment.
+- **hs-q11:** Following these abductor tendons onto the greater trochanter, which footprint assignment is correct? (slice 11)
+  - A. Gluteus minimus onto the anterior facet; gluteus medius onto the lateral and superoposterior facets [CORRECT]
+  - B. Gluteus medius onto the anterior facet; gluteus minimus onto the lateral facet
+  - C. Both tendons converge onto the lesser trochanter
+  - D. Piriformis onto the lateral facet; gluteus medius onto the superomedial tip
+    Explanation: Minimus takes the anterior facet and medius the lateral and superoposterior facets — worth knowing by name because the ultrasound examination and the operative note are both written facet by facet, and a footprint defect is what separates true abductor tearing from 'bursitis.' Swapping the two is the easy error since both tendons converge on the same bone. The lesser trochanter is the iliopsoas insertion, and the piriformis reaches the superomedial tip of the trochanter as a short external rotator, not the abductor footprint.
+- **hs-q12:** A 25-year-old with FADIR-positive groin pain has an equivocal routine MRI of this labrum, and detailed chondrolabral mapping would change management. What is the most appropriate next step? (slice 11)
+  - A. Direct MR arthrography as a selective problem-solving study [CORRECT]
+  - B. Direct MR arthrography routinely, because every suspected labral tear needs it
+  - C. Dynamic ultrasound, which is the reference standard for labral tears
+  - D. CT arthrography as the first-line labral examination
+    Explanation: Direct MR arthrography earns its needle here because joint distension can outline a subtle labral or chondrolabral defect and the result would change the plan — that is the standard for ordering it. Making it routine is the strongest distractor: a high-quality dedicated 3-T non-contrast study can approach MR-arthrography performance for the labrum and is often the appropriate first examination, so reflex arthrography adds cost and a needle without changing decisions. Dynamic ultrasound belongs to the snapping-hip syndromes; the labrum is too deep for it.
 
 ### Structure Pearls / Readings / Correlates
 
@@ -1967,16 +2063,16 @@ Knowledge check:
 - **Femoral neck & head-neck junction:** Watch the SUPEROLATERAL (tension) cortex of the neck — a stress fracture there is the surgical-urgency miss prone to displacement; the inferomedial (compression) side is the lower-risk pattern.
 - **Gluteus medius & minimus (abductors):** Watch for fluid signal at the trochanteric footprint or T2-bright tendinosis with peritrochanteric edema — abductor tendinopathy/tear is the true cause of most 'trochanteric bursitis'/GTPS.
 - **Adductors & pubic symphysis:** Watch for the 'secondary cleft sign' (fluid tracking inferolaterally from the symphysis) and edema at the rectus-adductor aponeurosis — this supports athletic pubalgia/core-muscle injury in the right clinical context, not simple osteitis pubis.
-- **Sacrum & SI joint:** Watch for unilateral periarticular SI marrow edema (inflammatory sacroiliitis) or an H-/butterfly-shaped (Honda sign) sacral edema pattern — the insufficiency fracture that masquerades as 'hip' pain in runners and older patients.
+- **Sacrum & SI joint:** Watch for periarticular subchondral SI marrow edema with erosion (inflammatory sacroiliitis — bilateral and symmetric in established axSpA, asymmetric in psoriatic/reactive disease, though early axSpA is often one-sided; if it is strictly unilateral and severe, exclude infection) or a sacral-ala marrow-edema pattern — the complete H-/butterfly-shaped (Honda) form is classic for insufficiency fracture but is complete in only about two-thirds of cases and was described on bone scintigraphy, so a single vertical ala band counts too — the fracture that masquerades as 'hip' pain in runners and older patients.
 - **Iliopsoas tendon & bursa:** Watch for a fluid-filled iliopsoas bursa communicating with the joint — and remember internal snapping (the tendon flicking over the iliopectineal eminence/femoral head) is a DYNAMIC ultrasound diagnosis, not a static MR one.
 - **Sciatic nerve:** Watch for nerve enlargement or bright edema-like signal as it passes the piriformis or hamstring origin — the clue to piriformis (deep gluteal) syndrome or proximal-hamstring-avulsion entrapment.
 - **Anterior joint recess:** A convex (rather than the normal concave) anterior capsular margin with capsular distension indicates a true effusion/synovitis — and is where you aim the needle for an image-guided hip aspiration or injection.
 - **Greater trochanter & trochanteric bursa:** Most clinical 'trochanteric bursitis' is actually gluteus medius/minimus tendinopathy at the footprint — fluid signal should track to the tendon insertion, not just sit in a bursa.
 - **Joint capsule & iliofemoral ligament:** A convex, fluid-distended anterior recess bulging the iliofemoral ligament outward signals a joint effusion — a flat or concave anterior capsular margin is the normal, non-distended appearance.
-- **Femoral head reading:** variant: Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line.
+- **Femoral head reading:** variant: Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line — but that absence is a diagnosis of exclusion, since early SIF and early osteonecrosis can look identical before a line appears, so protect weight-bearing and re-image at short interval rather than reassure on one study.
 - **Acetabulum & sourcil reading:** variant: A corticated os acetabuli with smooth margins at the anterosuperior rim is a chronic rim variant/fragment, not an acute fracture (sharp margins + marrow edema). | measure: Read coverage by the lateral center-edge angle on radiographs: <20° = dysplasia/undercoverage, 20–25° = borderline, roughly 26–40° = normal, and >40° supports overcoverage/pincer morphology. Landmark choice and symptoms matter.
 - **Acetabular labrum reading:** variant: A smooth-walled cleft paralleling the labral base with no displacement, cartilage injury, or paralabral cyst can be a sublabral/perilabral sulcus, especially posteroinferiorly. Anterosuperior clefts deserve extra scrutiny, but location alone does not prove a tear.
-- **Articular cartilage reading:** variant: The superomedial stellate lesion is a normal bare-area cartilage gap (medial to the supra-acetabular fossa, no marrow edema) — not the anterosuperior weight-bearing dome where real chondral loss lives. | measure: Grade Outerbridge-type: II = partial-thickness <50% depth, III = >50% to (not through) the subchondral plate, IV = full-thickness with exposed bone.
+- **Articular cartilage reading:** variant: The superomedial stellate lesion is a normal bare-area cartilage gap (medial to the supra-acetabular fossa, no marrow edema) — not the anterosuperior weight-bearing dome where real chondral loss lives. | measure: Grade on the modified Outerbridge (MRI) scale and name the system: II = partial-thickness defect <50% of cartilage depth, III = >50% of depth down to but not through the subchondral plate, IV = full-thickness loss with exposed subchondral bone. (The original arthroscopic Outerbridge separates II from III chiefly by lesion DIAMETER — fissures under vs over half an inch, with grade III also reaching subchondral bone — not by percentage depth; and ICRS reserves grade 4 for penetration THROUGH the subchondral plate, which is modified-Outerbridge IV's near-equivalent only at ICRS 3C.)
 - **Femoral neck & head-neck junction reading:** variant: A small, well-corticated T1-dark/T2-bright herniation pit at the anterosuperior neck is benign (a cam marker) — note it and check the alpha angle rather than escalate. | measure: For stress injury, side the low-signal line first: any superolateral/tension-side fracture is high-risk, while the ~50% neck-width threshold helps stratify an inferomedial/compression-side fracture. For cam morphology, measure the alpha angle on oblique-axial-along-the-neck or radial images: >55° is historically common and ≥60° is a better-supported classification threshold, but morphology is not symptomatic FAI by itself.
 - **Gluteus medius & minimus (abductors) reading:** variant: GTPS should not be reduced to 'trochanteric bursitis.' Look for gluteus medius/minimus tendinosis, footprint partial tearing, retraction, fatty atrophy, and peritrochanteric edema; isolated tiny bursal fluid is nonspecific.
 - **Greater trochanter & trochanteric bursa reading:** variant: Trochanteric and subgluteus bursae are normally collapsed. Distended bursal fluid can accompany abductor disease, but bursal fluid alone is not the primary diagnosis when the footprint is abnormal.
@@ -2120,6 +2216,106 @@ An 81-year-old woman with osteoporosis has low back and buttock pain after no si
 - C. Sacroiliitis
 - D. Coccygeal stress fracture
 Explanation: Bilateral vertical sacral-ala fractures bridged by a transverse component produce the classic 'H' (Honda) pattern, which strongly supports sacral insufficiency fracture in the right clinical setting. It is characteristic rather than an absolute stand-alone diagnosis: marrow-replacing disease can coexist or mimic parts of the pattern, so confirm fracture lines, T1 marrow behavior, symmetry, and clinical context. Sacroiliitis instead centers on the SI joints.
+
+#### Advanced: hadv-13 · FAI chondral injury — delamination vs diffuse loss and the surgical hinge
+
+A 28-year-old with cam morphology and an anterosuperior labral tear is being considered for hip arthroscopy. Which cartilage finding argues MOST strongly against a good joint-preserving outcome?
+
+- A. Focal anterosuperior acetabular delamination with a preserved joint space
+- B. Diffuse full-thickness cartilage loss with joint-space narrowing (Tönnis 2–3) [CORRECT]
+- C. A smooth star-shaped cartilage gap in the superomedial acetabular roof
+- D. A thin bright rim of joint fluid outlining otherwise smooth cartilage
+Explanation: Diffuse full-thickness loss with joint-space narrowing predicts poor arthroscopic outcomes, so that patient is steered toward conservative care or the arthroplasty conversation rather than osteochondroplasty with chondrolabral repair. Focal delamination is the strongest distractor because it is a genuine, management-relevant lesion that can look dramatic — fluid undercutting a deceptively intact surface — but a focal, well-shouldered lesion with a preserved joint space is the repairable pattern that favors joint preservation. The superomedial star-shaped gap is the normal stellate bare area, and a thin fluid rim outlining cartilage is normal.
+
+#### Advanced: hadv-14 · Protocol selection — large-FOV pelvis screen vs small-FOV dedicated hip
+
+A 26-year-old runner has poorly localized deep groin and buttock pain that could be hip, sacrum, or referred. Which initial MRI protocol is the best first choice?
+
+- A. Large-field-of-view pelvis screen, covering both hips, the sacrum, and the pelvic ring [CORRECT]
+- B. Small-field-of-view dedicated hip, because its resolution answers every hip question
+- C. Small-field-of-view dedicated hip with direct MR arthrography, since contrast is needed before any hip MRI is interpretable
+- D. A single coronal STIR of the symptomatic hip only, to keep the study short
+Explanation: When the pain generator is unclear, the large-FOV screen is right because it covers the sacrum, pubic ring, marrow, and contralateral hip — exactly where insufficiency fractures, referred causes, and second lesions hide. The dedicated small-FOV hip is the strongest distractor and is genuinely the better study once the question is intra-articular (labrum, cartilage, cam/pincer morphology), but its field simply does not include the sacrum or symphysis, so it cannot answer an undifferentiated presentation. Arthrography is selective, not a precondition, and a single-sequence look recreates the same coverage gap.
+
+#### Advanced: hadv-15 · Fat suppression — chemical fat-sat failure vs true marrow edema
+
+On a large-FOV coronal chemically fat-suppressed T2 of the pelvis, marrow at the lateral edge of the field looks bright and 'unsuppressed' on one side, with no corresponding abnormality on T1. What is the best next step?
+
+- A. Recognize probable fat-suppression failure at the edge of a large field and confirm with STIR alongside T1 [CORRECT]
+- B. Report unilateral marrow edema and recommend urgent orthopedic review
+- C. Report marrow-replacing disease, since bright fat-sat signal is specific for tumor
+- D. Repeat the identical chemical fat-sat sequence with a smaller flip angle
+Explanation: Chemical (spectral) fat saturation depends on a homogeneous main field and characteristically fails at the edges of a large FOV and near metal, producing regional bright pseudo-edema; STIR suppresses fat uniformly across a wide field, so STIR plus T1 settles it. Calling it marrow edema is the tempting error because that is literally what the image looks like — but a finding seen on one artifact-prone image and nowhere else should be corroborated before it drives management. Bright fat-sat signal is not specific for tumor, and repeating the same failing technique does not fix field inhomogeneity.
+
+#### Advanced: hadv-16 · Marrow red flag — lesser-trochanter avulsion in an adult
+
+A 68-year-old with several weeks of hip pain and no significant trauma has an avulsion fracture of the lesser trochanter. What should this be assumed to represent?
+
+- A. A pathologic fracture through an underlying marrow-replacing lesion until proven otherwise [CORRECT]
+- B. An iliopsoas apophyseal avulsion, as seen in adolescent athletes
+- C. An unfused secondary ossification center, a normal variant
+- D. A simple osteoporotic insufficiency fracture needing only bone-density evaluation
+Explanation: The lesser trochanter rarely avulses through normal adult bone without major trauma, so this pattern is a classic pathologic-fracture marker: scrutinize the marrow for confluent low-T1 signal darker than skeletal muscle or intervertebral disc and pursue an oncologic workup. The adolescent apophyseal avulsion is the strongest distractor because the mechanism and site are correct — the iliopsoas does avulse the lesser trochanter — but that injury belongs to a skeletally immature athlete with an unfused apophysis and a sudden forceful flexion. Osteoporosis may coexist, yet treating this as a pure bone-density problem risks missing the lesion underneath.
+
+#### Advanced: hadv-17 · Acetabular normal variants — supra-acetabular fossa and stellate lesion
+
+A dedicated hip MRI shows a smooth midline cartilage-filled notch at the acetabular dome and a star-shaped bare area in the superomedial roof, neither with surrounding marrow edema. How should these be reported?
+
+- A. As normal variants — the supra-acetabular fossa and the stellate lesion [CORRECT]
+- B. As focal full-thickness chondral defects warranting arthroscopic referral
+- C. As early osteoarthritis with subchondral cystic change
+- D. As post-traumatic osteochondral lesions from prior impaction
+Explanation: Both are predictable midline/bare-area variants: the supra-acetabular fossa sits at the dome and the stellate lesion superomedially, medial to that fossa and continuous with the acetabular notch, each with clean margins and no marrow reaction. 'Full-thickness chondral defect' is the strongest distractor because cartilage really is absent in these spots, so the appearance overlaps — but true FAI chondral loss is eccentric, sits at the anterosuperior weight-bearing rim, and usually shows subchondral reaction. Calling the variants defects sends a normal hip toward arthroscopy.
+
+#### Advanced: hadv-18 · Paralabral cyst as a secondary sign of a labral tear
+
+A 30-year-old with groin pain has a lobulated T2-bright collection along the anterosuperior acetabular rim; the adjacent labrum looks only subtly irregular. Which interpretation is best?
+
+- A. Treat the cyst as a strong secondary sign and re-scrutinize the adjacent labrum for the tear that decompresses into it [CORRECT]
+- B. Call it a soft-tissue ganglion unrelated to the joint; no further labral assessment is needed
+- C. Conclude that the cyst excludes a labral tear, because the joint has decompressed
+- D. Report a full-thickness labral tear on the strength of the cyst alone and refer for repair
+Explanation: Paralabral cysts form when joint fluid is pumped through a labral tear as through a one-way valve, so the cyst is a high-value secondary sign: trace its neck back to the labrum and look again at that segment. The last option is the strongest distractor because it gets the association right but over-reaches — describe the tear only when its location and morphology actually support it, and let symptoms plus chondrolabral findings, not the cyst alone, drive the surgical conversation. A cyst never excludes a tear; it argues for one.
+
+#### Advanced: hadv-19 · SCFE in the skeletally immature — an orthopedic urgency
+
+A 12-year-old with obesity has several weeks of vague knee and thigh pain and a limp. MRI shows physeal widening with physeal and metaphyseal edema and subtle posteromedial displacement of the capital femoral epiphysis. What is the appropriate action?
+
+- A. Make the patient non-weight-bearing and refer promptly to pediatric orthopedics [CORRECT]
+- B. Reassure the family — physeal widening is an expected growth variant at this age
+- C. Begin rehabilitation for a hip-flexor strain and review in six weeks
+- D. Obtain MR arthrography to assess the labrum before any referral
+Explanation: Even a subtle slipped capital femoral epiphysis is an orthopedic urgency: continued loading risks further slip and osteonecrosis, so the answer is non-weight-bearing plus prompt pediatric-orthopedic referral. Treating it as a strain is the dangerous distractor precisely because SCFE classically presents with referred knee or thigh pain and an unimpressive hip examination — that is how it gets missed, and the harm comes from delay. Arthrography answers a labral question that is not the issue, and physeal widening with edema and epiphyseal displacement is not a normal variant.
+
+#### Advanced: hadv-20 · Effusion with synovitis — septic arthritis vs a degenerative flare
+
+A 55-year-old with diabetes has three days of severe hip pain, fever, and raised inflammatory markers. MRI shows a tense effusion with synovial thickening, periarticular soft-tissue edema, and marrow edema on both sides of the joint. What is the correct next step?
+
+- A. Treat as septic arthritis until proven otherwise and arrange urgent joint aspiration [CORRECT]
+- B. Perform an intra-articular corticosteroid injection for an osteoarthritis flare
+- C. Arrange outpatient physical therapy and NSAIDs with review in six weeks
+- D. Assume transient bone-marrow-edema syndrome and simply offload the joint
+Explanation: In the right clinical setting — fever and raised inflammatory markers — a tense effusion with synovitis and periarticular edema is septic arthritis until proven otherwise, and aspiration is both the diagnostic test and the urgent step, because MRI cannot exclude infection. The steroid injection is the strongest distractor since a large effusion with synovitis genuinely overlaps a degenerative or inflammatory flare on imaging, but injecting a potentially infected joint can cause harm and delays source control. Transient bone-marrow-edema syndrome is atraumatic and lacks this systemic inflammatory picture.
+
+#### Advanced: hadv-21 · Pelvic apophyseal avulsions — matching the site to the muscle
+
+A 15-year-old felt a sudden pop while kicking a football and has anterior hip pain. Imaging shows a displaced ossific fragment at the anterior inferior iliac spine (AIIS). Which muscle origin has avulsed?
+
+- A. Direct (straight) head of rectus femoris [CORRECT]
+- B. Sartorius
+- C. Iliopsoas
+- D. Hamstring conjoint tendon
+Explanation: The AIIS is the origin of the direct (straight) head of rectus femoris, and forceful kicking is its classic mechanism. Sartorius is the strongest distractor because it avulses the immediately adjacent ASIS — one spine higher and more anterior — but with a sprinting rather than kicking mechanism. Iliopsoas avulses the lesser trochanter and the hamstrings the ischial tuberosity. Most of these are managed conservatively; large displacement (commonly cited as >1.5–2 cm, especially at the ischium) prompts a surgical discussion.
+
+#### Advanced: hadv-22 · Acetabular dysplasia — undercoverage and the lateral center-edge angle
+
+A 23-year-old woman has activity-related groin pain and a sense that the hip 'gives way.' On a standing AP pelvic radiograph the lateral center-edge angle measures 17°, with a normal alpha angle and no crossover sign. Which morphology does this describe?
+
+- A. Acetabular dysplasia with lateral undercoverage [CORRECT]
+- B. Pincer morphology from lateral over-coverage
+- C. Cam morphology at the anterosuperior head-neck junction
+- D. Coxa profunda with global over-coverage
+Explanation: A lateral center-edge angle below 20° indicates undercoverage/dysplasia (20–25° borderline, roughly 26–40° normal, >40° supporting over-coverage), and the distinction matters because a dysplastic hip overloads the anterosuperior rim and labrum yet needs stability, not the rim trimming used for over-coverage. Pincer is the strongest distractor because both present with rim and labral pathology and groin pain — but pincer sits at the opposite end of this same measurement, and the normal alpha angle with no crossover sign argues against cam and against retroversion. Landmark choice and symptoms still matter: the angle classifies morphology, not the patient.
 
 #### Image CAQ: hicaq-1 · AVN vs subchondral insufficiency fracture of the femoral head (SIFFH)
 

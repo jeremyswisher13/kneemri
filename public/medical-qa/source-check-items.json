@@ -493,6 +493,170 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-11",
+    "section": "normal-mri",
+    "title": "An 8-year-old gymnast has lateral elbow pain and a mild flexion contracture. MRI shows the ENTIRE capitellar ossific nucleus is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. Which interpretation is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Panner vs capitellar OCD — age, focality, and reversibility | An 8-year-old gymnast has lateral elbow pain and a mild flexion contracture. MRI shows the ENTIRE capitellar ossific nucleus is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, an..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-12",
+    "section": "normal-mri",
+    "title": "A 9-year-old had a painful elbow injury; the joint is clinically reduced on arrival. On imaging you can identify the trochlear ossification center, but you cannot find the medial epicondyle ossification center. What does this mean?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "CRITOE — the incarcerated medial epicondyle after a spontaneously reduced dislocation | A 9-year-old had a painful elbow injury; the joint is clinically reduced on arrival. On imaging you can identify the trochlear ossification center, but you cannot find the medial epicondyle..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-13",
+    "section": "normal-mri",
+    "title": "A 28-year-old sustains a simple elbow dislocation that is reduced in the emergency department. Post-reduction imaging shows a concentrically reduced joint with an LUCL injury, an intact radial head, and no coronoid fracture. Which statement best reflects the expected pattern and disposition?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The dislocated elbow — which ligament fails first and what decides disposition | A 28-year-old sustains a simple elbow dislocation that is reduced in the emergency department. Post-reduction imaging shows a concentrically reduced joint with an LUCL injury, an intact radial hea..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-14",
+    "section": "normal-mri",
+    "title": "A 17-year-old pitcher has posterior elbow pain at ball release. MRI shows posteromedial olecranon marrow edema WITHOUT a discrete low-signal line, plus a small posteromedial olecranon osteophyte and a posterior loose body. How should this be read and managed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Posterior elbow in the thrower — stress reaction vs stress fracture, and the VEO trap | A 17-year-old pitcher has posterior elbow pain at ball release. MRI shows posteromedial olecranon marrow edema WITHOUT a discrete low-signal line, plus a small posteromedial olecranon osteo..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-15",
+    "section": "normal-mri",
+    "title": "A patient describes ulnar-sided hand weakness that began 5 days ago. MRI shows a normal-appearing FCU and normal ulnar intrinsics with no muscle edema and no fatty atrophy. What is the correct interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Staging muscle denervation — the three phases and how early edema can appear | A patient describes ulnar-sided hand weakness that began 5 days ago. MRI shows a normal-appearing FCU and normal ulnar intrinsics with no muscle edema and no fatty atrophy. What is the correct inter..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-16",
+    "section": "normal-mri",
+    "title": "A 52-year-old plumber has a red, warm, fluctuant swelling over the olecranon. MRI shows a distended olecranon bursa with rim enhancement and surrounding soft-tissue edema; the elbow joint itself looks normal. What is the correct next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The warm olecranon bursa — what MRI can and cannot do | A 52-year-old plumber has a red, warm, fluctuant swelling over the olecranon. MRI shows a distended olecranon bursa with rim enhancement and surrounding soft-tissue edema; the elbow joint itself looks normal. What is the ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-17",
+    "section": "normal-mri",
+    "title": "A 24-year-old competitive cyclist who smokes has an elbow MRI for lateral pain. The distal humeral metaphyseal marrow is diffusely lower in T1 signal than fat, but it stays AT OR ABOVE skeletal muscle, retains interspersed fat, spares the epiphyseal fat, is symmetric with the other side, and has no soft-tissue mass or cortical destruction. Best interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The marrow red flag — confluent low-T1 replacement and its benign mimics | A 24-year-old competitive cyclist who smokes has an elbow MRI for lateral pain. The distal humeral metaphyseal marrow is diffusely lower in T1 signal than fat, but it stays AT OR ABOVE skeletal muscle, ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-18",
+    "section": "normal-mri",
+    "title": "A 45-year-old machinist with no throwing history has locking and catching, and the surgeon wants a usable pre-operative loose-body count. Which approach is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The mechanical elbow — where loose bodies hide, the plica mimic, and the pre-op count | A 45-year-old machinist with no throwing history has locking and catching, and the surgeon wants a usable pre-operative loose-body count. Which approach is correct? | Sweep the dependent re..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-19",
+    "section": "normal-mri",
+    "title": "A 41-year-old has lateral forearm pain just distal to the lateral epicondyle, tender over the mobile wad, with NO weakness of finger extension. The elbow MRI is normal. What is the best interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Radial tunnel syndrome vs PIN syndrome — the normal MRI and the hunt for a mass | A 41-year-old has lateral forearm pain just distal to the lateral epicondyle, tender over the mobile wad, with NO weakness of finger extension. The elbow MRI is normal. What is the best interpret..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "elb-adv-20",
+    "section": "normal-mri",
+    "title": "A 21-year-old collegiate pitcher has a proximal (humeral-sided) partial UCL tear with no T-sign, an intact flexor-pronator origin, a normal-caliber ulnar nerve, and a mildly positive moving-valgus test. The coach asks whether he needs Tommy John surgery. What is the most accurate framing?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "UCL management in a thrower — what MRI does and does not decide | A 21-year-old collegiate pitcher has a proximal (humeral-sided) partial UCL tear with no T-sign, an intact flexor-pronator origin, a normal-caliber ulnar nerve, and a mildly positive moving-valgus test. The coac..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-image-caq",
     "itemId": "elb-caq-2",
     "section": "normal-mri",
@@ -615,6 +779,91 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q6",
+    "section": "normal-mri",
+    "title": "An 8-year-old gymnast has lateral elbow pain, and the ENTIRE ossific nucleus of the marked structure is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. What is the most likely diagnosis?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "An 8-year-old gymnast has lateral elbow pain, and the ENTIRE ossific nucleus of the marked structure is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. What is the most likely diagnosis? | Panner disease | Capitellar oste..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q8",
+    "section": "normal-mri",
+    "title": "A ridge and shallow groove interrupt the contour of the marked spool-shaped surface. What is this most likely to be?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A ridge and shallow groove interrupt the contour of the marked spool-shaped surface. What is this most likely to be? | The normal transverse trochlear ridge/groove | An osteochondral defect | A displaced loose body | The capitellar pseudodefect | Correct: The normal transverse..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q10",
+    "section": "normal-mri",
+    "title": "The marked band is the anterior bundle of the UCL. Which component of the UCL complex forms the floor of the cubital tunnel and contributes little to valgus restraint?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The marked band is the anterior bundle of the UCL. Which component of the UCL complex forms the floor of the cubital tunnel and contributes little to valgus restraint? | Posterior bundle | Anterior bundle | Transverse (Cooper) ligament | Annular ligament | Correct: Posterior b..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q12",
+    "section": "normal-mri",
+    "title": "Alongside tendinosis of the marked common extensor origin you see reactive lateral-epicondyle marrow edema and thin signal within the RCL, with the deep fibers intact and no fluid-bright gap. How should this be reported?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Alongside tendinosis of the marked common extensor origin you see reactive lateral-epicondyle marrow edema and thin signal within the RCL, with the deep fibers intact and no fluid-bright gap. How should this be reported? | Common extensor tendinosis with reactive change — do N..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q13",
+    "section": "normal-mri",
+    "title": "A line drawn through the central long axis of the radial neck should pass through which structure?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A line drawn through the central long axis of the radial neck should pass through which structure? | Capitellum | Trochlea | Coronoid process | Olecranon | Correct: Capitellum | The radiocapitellar line — drawn along the central long axis of the radial NECK (not the shaft), an..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
     "itemId": "axi-t2fs:ec-axi-q1",
     "section": "normal-mri",
     "title": "The marked nerve sits posterior to the medial epicondyle. Mild T2 brightness here can be normal — what anchors a diagnosis of cubital tunnel syndrome?",
@@ -644,6 +893,75 @@
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
     "textPreview": "Why does the common flexor-pronator origin (medial epicondylitis) travel with ulnar neuritis? | They share a blood supply | The cubital tunnel and ulnar nerve sit immediately posterior to the flexor-pronator origin | The flexor origin is innervated by the ulnar nerve | Both ar..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi-t2fs:ec-axi-q6",
+    "section": "normal-mri",
+    "title": "The marked anterior compartment also carries the distal biceps tendon toward its radial-tuberosity footprint. Which structure decides whether a COMPLETE distal biceps tear retracts?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The marked anterior compartment also carries the distal biceps tendon toward its radial-tuberosity footprint. Which structure decides whether a COMPLETE distal biceps tear retracts? | The lacertus fibrosus | The bicipitoradial bursa | The annular ligament | The brachialis inse..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi-t2fs:ec-axi-q7",
+    "section": "normal-mri",
+    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say? | A high-grade partial tear — state the percent..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi-t2fs:ec-axi-q8",
+    "section": "normal-mri",
+    "title": "In a patient with flexion-provoked medial snapping and ulnar symptoms, why does it matter whether the MEDIAL head of the marked triceps subluxates over the medial epicondyle?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "In a patient with flexion-provoked medial snapping and ulnar symptoms, why does it matter whether the MEDIAL head of the marked triceps subluxates over the medial epicondyle? | Snapping triceps must be addressed at surgery — transposing the nerve alone leaves the snapping mech..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi-t2fs:ec-axi-q9",
+    "section": "normal-mri",
+    "title": "The radial nerve divides at the radiocapitellar level near the marked lateral compartment. Beneath which structure is the posterior interosseous nerve most commonly compressed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The radial nerve divides at the radiocapitellar level near the marked lateral compartment. Beneath which structure is the posterior interosseous nerve most commonly compressed? | The arcade of Frohse (the proximal edge of the supinator) | Osborne's retinaculum | The lacertus f..."
   },
   {
     "courseId": "elbow-mri",
@@ -696,6 +1014,109 @@
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
     "textPreview": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how? | A normal plica/fold unless thickened, edematous, or associated with snapping/catching | A displaced loose body until proven otherwise | A capitellar OCD instability sign b..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q6",
+    "section": "normal-mri",
+    "title": "The marked anterior fat pad is normally visible in the coronoid fossa. What does it mean when it is lifted into a triangular 'sail' after trauma?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "The marked anterior fat pad is normally visible in the coronoid fossa. What does it mean when it is lifted into a triangular 'sail' after trauma? | A joint effusion/hemarthrosis — search the marrow for an occult intra-articular fracture | Nothing — anterior fat-pad displacemen..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q7",
+    "section": "normal-mri",
+    "title": "A pitcher has posterior elbow pain and catching, with a posteromedial osteophyte at the marked process and a posterior loose body. Which structure must also be assessed before an osteophyte debridement is recommended?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A pitcher has posterior elbow pain and catching, with a posteromedial osteophyte at the marked process and a posterior loose body. Which structure must also be assessed before an osteophyte debridement is recommended? | The UCL — debriding the valgus-extension-overload osteoph..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q8",
+    "section": "normal-mri",
+    "title": "In an adolescent thrower with posterior elbow pain, what separates an olecranon stress FRACTURE from a lower-grade stress reaction?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "In an adolescent thrower with posterior elbow pain, what separates an olecranon stress FRACTURE from a lower-grade stress reaction? | A discrete low-signal line in addition to marrow edema; edema without a line is a stress reaction | The amount of marrow edema alone — more ede..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q9",
+    "section": "normal-mri",
+    "title": "A 55-year-old laborer who has never thrown has locking and catching, and a loose body sits in the marked olecranon fossa. What is the most likely source?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A 55-year-old laborer who has never thrown has locking and catching, and a loose body sits in the marked olecranon fossa. What is the most likely source? | Primary elbow osteoarthritis — coronoid/olecranon-tip and fossa osteophytes with chondral loss | A thrower's valgus-exten..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q10",
+    "section": "normal-mri",
+    "title": "A subtle contour irregularity of the marked articular surface is visible on this sagittal image but cannot be found anywhere on the coronal stack. What is the correct interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "A subtle contour irregularity of the marked articular surface is visible on this sagittal image but cannot be found anywhere on the coronal stack. What is the correct interpretation? | Treat it as partial-volume averaging or a normal contour — an osteochondral lesion must be c..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag-ir:ec-sag-q11",
+    "section": "normal-mri",
+    "title": "Two classification systems are applied to the marked process after trauma. Which pairing is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "Two classification systems are applied to the marked process after trauma. Which pairing is correct? | O'Driscoll classifies the anteromedial facet (the VPMRI lesion); Regan–Morrey grades coronoid height | Regan–Morrey classifies the anteromedial facet; O'Driscoll grades coron..."
   },
   {
     "courseId": "elbow-mri",
@@ -1438,6 +1859,86 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q6",
+    "section": "spaced-review-registry",
+    "title": "An 8-year-old gymnast has lateral elbow pain, and the ENTIRE ossific nucleus of the marked structure is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. What is the most likely diagnosis?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "An 8-year-old gymnast has lateral elbow pain, and the ENTIRE ossific nucleus of the marked structure is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. What is the most likely diagnosis? | A. Panner disease | B. Capitella..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q8",
+    "section": "spaced-review-registry",
+    "title": "A ridge and shallow groove interrupt the contour of the marked spool-shaped surface. What is this most likely to be?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A ridge and shallow groove interrupt the contour of the marked spool-shaped surface. What is this most likely to be? | A. The normal transverse trochlear ridge/groove | B. An osteochondral defect | C. A displaced loose body | D. The capitellar pseudodefect | A | The transverse..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q10",
+    "section": "spaced-review-registry",
+    "title": "The marked band is the anterior bundle of the UCL. Which component of the UCL complex forms the floor of the cubital tunnel and contributes little to valgus restraint?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "The marked band is the anterior bundle of the UCL. Which component of the UCL complex forms the floor of the cubital tunnel and contributes little to valgus restraint? | A. Posterior bundle | B. Anterior bundle | C. Transverse (Cooper) ligament | D. Annular ligament | A | The ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q12",
+    "section": "spaced-review-registry",
+    "title": "Alongside tendinosis of the marked common extensor origin you see reactive lateral-epicondyle marrow edema and thin signal within the RCL, with the deep fibers intact and no fluid-bright gap. How should this be reported?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Alongside tendinosis of the marked common extensor origin you see reactive lateral-epicondyle marrow edema and thin signal within the RCL, with the deep fibers intact and no fluid-bright gap. How should this be reported? | A. Common extensor tendinosis with reactive change — d..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q13",
+    "section": "spaced-review-registry",
+    "title": "A line drawn through the central long axis of the radial neck should pass through which structure?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A line drawn through the central long axis of the radial neck should pass through which structure? | A. Capitellum | B. Trochlea | C. Coronoid process | D. Olecranon | A | The radiocapitellar line — drawn along the central long axis of the radial NECK (not the shaft), and most..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
     "itemId": "elbow-mri::ec-axi-q1",
     "section": "spaced-review-registry",
     "title": "The marked nerve sits posterior to the medial epicondyle. Mild T2 brightness here can be normal — what anchors a diagnosis of cubital tunnel syndrome?",
@@ -1465,6 +1966,71 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "Why does the common flexor-pronator origin (medial epicondylitis) travel with ulnar neuritis? | A. They share a blood supply | B. The cubital tunnel and ulnar nerve sit immediately posterior to the flexor-pronator origin | C. The flexor origin is innervated by the ulnar nerve ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-axi-q6",
+    "section": "spaced-review-registry",
+    "title": "The marked anterior compartment also carries the distal biceps tendon toward its radial-tuberosity footprint. Which structure decides whether a COMPLETE distal biceps tear retracts?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "The marked anterior compartment also carries the distal biceps tendon toward its radial-tuberosity footprint. Which structure decides whether a COMPLETE distal biceps tear retracts? | A. The lacertus fibrosus | B. The bicipitoradial bursa | C. The annular ligament | D. The bra..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-axi-q7",
+    "section": "spaced-review-registry",
+    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say? | A. A high-grade partial tear — state the perc..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-axi-q8",
+    "section": "spaced-review-registry",
+    "title": "In a patient with flexion-provoked medial snapping and ulnar symptoms, why does it matter whether the MEDIAL head of the marked triceps subluxates over the medial epicondyle?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "In a patient with flexion-provoked medial snapping and ulnar symptoms, why does it matter whether the MEDIAL head of the marked triceps subluxates over the medial epicondyle? | A. Snapping triceps must be addressed at surgery — transposing the nerve alone leaves the snapping m..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-axi-q9",
+    "section": "spaced-review-registry",
+    "title": "The radial nerve divides at the radiocapitellar level near the marked lateral compartment. Beneath which structure is the posterior interosseous nerve most commonly compressed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "The radial nerve divides at the radiocapitellar level near the marked lateral compartment. Beneath which structure is the posterior interosseous nerve most commonly compressed? | A. The arcade of Frohse (the proximal edge of the supinator) | B. Osborne's retinaculum | C. The l..."
   },
   {
     "courseId": "elbow-mri",
@@ -1514,6 +2080,103 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "A thin posterolateral radiocapitellar synovial fold on this sagittal elbow MRI is best interpreted how? | A. A normal plica/fold unless thickened, edematous, or associated with snapping/catching | B. A displaced loose body until proven otherwise | C. A capitellar OCD instabili..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q6",
+    "section": "spaced-review-registry",
+    "title": "The marked anterior fat pad is normally visible in the coronoid fossa. What does it mean when it is lifted into a triangular 'sail' after trauma?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "The marked anterior fat pad is normally visible in the coronoid fossa. What does it mean when it is lifted into a triangular 'sail' after trauma? | A. A joint effusion/hemarthrosis — search the marrow for an occult intra-articular fracture | B. Nothing — anterior fat-pad displ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q7",
+    "section": "spaced-review-registry",
+    "title": "A pitcher has posterior elbow pain and catching, with a posteromedial osteophyte at the marked process and a posterior loose body. Which structure must also be assessed before an osteophyte debridement is recommended?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A pitcher has posterior elbow pain and catching, with a posteromedial osteophyte at the marked process and a posterior loose body. Which structure must also be assessed before an osteophyte debridement is recommended? | A. The UCL — debriding the valgus-extension-overload oste..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q8",
+    "section": "spaced-review-registry",
+    "title": "In an adolescent thrower with posterior elbow pain, what separates an olecranon stress FRACTURE from a lower-grade stress reaction?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "In an adolescent thrower with posterior elbow pain, what separates an olecranon stress FRACTURE from a lower-grade stress reaction? | A. A discrete low-signal line in addition to marrow edema; edema without a line is a stress reaction | B. The amount of marrow edema alone — mo..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q9",
+    "section": "spaced-review-registry",
+    "title": "A 55-year-old laborer who has never thrown has locking and catching, and a loose body sits in the marked olecranon fossa. What is the most likely source?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 55-year-old laborer who has never thrown has locking and catching, and a loose body sits in the marked olecranon fossa. What is the most likely source? | A. Primary elbow osteoarthritis — coronoid/olecranon-tip and fossa osteophytes with chondral loss | B. A thrower's valgus..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q10",
+    "section": "spaced-review-registry",
+    "title": "A subtle contour irregularity of the marked articular surface is visible on this sagittal image but cannot be found anywhere on the coronal stack. What is the correct interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A subtle contour irregularity of the marked articular surface is visible on this sagittal image but cannot be found anywhere on the coronal stack. What is the correct interpretation? | A. Treat it as partial-volume averaging or a normal contour — an osteochondral lesion must b..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-sag-q11",
+    "section": "spaced-review-registry",
+    "title": "Two classification systems are applied to the marked process after trauma. Which pairing is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Two classification systems are applied to the marked process after trauma. Which pairing is correct? | A. O'Driscoll classifies the anteromedial facet (the VPMRI lesion); Regan–Morrey grades coronoid height | B. Regan–Morrey classifies the anteromedial facet; O'Driscoll grades..."
   },
   {
     "courseId": "elbow-mri",
@@ -1668,6 +2331,170 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-11",
+    "section": "spaced-review-registry",
+    "title": "An 8-year-old gymnast has lateral elbow pain and a mild flexion contracture. MRI shows the ENTIRE capitellar ossific nucleus is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. Which interpretation is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "An 8-year-old gymnast has lateral elbow pain and a mild flexion contracture. MRI shows the ENTIRE capitellar ossific nucleus is low-signal and fragmented-appearing, with no discrete fragment, no subchondral cyst, and no loose body. Which interpretation is correct? | A. Panner ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-12",
+    "section": "spaced-review-registry",
+    "title": "A 9-year-old had a painful elbow injury; the joint is clinically reduced on arrival. On imaging you can identify the trochlear ossification center, but you cannot find the medial epicondyle ossification center. What does this mean?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 9-year-old had a painful elbow injury; the joint is clinically reduced on arrival. On imaging you can identify the trochlear ossification center, but you cannot find the medial epicondyle ossification center. What does this mean? | A. The medial epicondyle has been avulsed —..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-13",
+    "section": "spaced-review-registry",
+    "title": "A 28-year-old sustains a simple elbow dislocation that is reduced in the emergency department. Post-reduction imaging shows a concentrically reduced joint with an LUCL injury, an intact radial head, and no coronoid fracture. Which statement best reflects the expected pattern and disposition?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 28-year-old sustains a simple elbow dislocation that is reduced in the emergency department. Post-reduction imaging shows a concentrically reduced joint with an LUCL injury, an intact radial head, and no coronoid fracture. Which statement best reflects the expected pattern a..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-14",
+    "section": "spaced-review-registry",
+    "title": "A 17-year-old pitcher has posterior elbow pain at ball release. MRI shows posteromedial olecranon marrow edema WITHOUT a discrete low-signal line, plus a small posteromedial olecranon osteophyte and a posterior loose body. How should this be read and managed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 17-year-old pitcher has posterior elbow pain at ball release. MRI shows posteromedial olecranon marrow edema WITHOUT a discrete low-signal line, plus a small posteromedial olecranon osteophyte and a posterior loose body. How should this be read and managed? | A. A stress REA..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-15",
+    "section": "spaced-review-registry",
+    "title": "A patient describes ulnar-sided hand weakness that began 5 days ago. MRI shows a normal-appearing FCU and normal ulnar intrinsics with no muscle edema and no fatty atrophy. What is the correct interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A patient describes ulnar-sided hand weakness that began 5 days ago. MRI shows a normal-appearing FCU and normal ulnar intrinsics with no muscle edema and no fatty atrophy. What is the correct interpretation? | A. A normal muscle appearance does not exclude denervation — edema..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-16",
+    "section": "spaced-review-registry",
+    "title": "A 52-year-old plumber has a red, warm, fluctuant swelling over the olecranon. MRI shows a distended olecranon bursa with rim enhancement and surrounding soft-tissue edema; the elbow joint itself looks normal. What is the correct next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 52-year-old plumber has a red, warm, fluctuant swelling over the olecranon. MRI shows a distended olecranon bursa with rim enhancement and surrounding soft-tissue edema; the elbow joint itself looks normal. What is the correct next step? | A. Aspirate the bursa — MRI cannot ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-17",
+    "section": "spaced-review-registry",
+    "title": "A 24-year-old competitive cyclist who smokes has an elbow MRI for lateral pain. The distal humeral metaphyseal marrow is diffusely lower in T1 signal than fat, but it stays AT OR ABOVE skeletal muscle, retains interspersed fat, spares the epiphyseal fat, is symmetric with the other side, and has no soft-tissue mass or cortical destruction. Best interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 24-year-old competitive cyclist who smokes has an elbow MRI for lateral pain. The distal humeral metaphyseal marrow is diffusely lower in T1 signal than fat, but it stays AT OR ABOVE skeletal muscle, retains interspersed fat, spares the epiphyseal fat, is symmetric with the ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-18",
+    "section": "spaced-review-registry",
+    "title": "A 45-year-old machinist with no throwing history has locking and catching, and the surgeon wants a usable pre-operative loose-body count. Which approach is correct?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 45-year-old machinist with no throwing history has locking and catching, and the surgeon wants a usable pre-operative loose-body count. Which approach is correct? | A. Sweep the dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) against bright fluid..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-19",
+    "section": "spaced-review-registry",
+    "title": "A 41-year-old has lateral forearm pain just distal to the lateral epicondyle, tender over the mobile wad, with NO weakness of finger extension. The elbow MRI is normal. What is the best interpretation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 41-year-old has lateral forearm pain just distal to the lateral epicondyle, tender over the mobile wad, with NO weakness of finger extension. The elbow MRI is normal. What is the best interpretation? | A. Radial tunnel syndrome — pain without a motor deficit, frequently with..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::elb-adv-20",
+    "section": "spaced-review-registry",
+    "title": "A 21-year-old collegiate pitcher has a proximal (humeral-sided) partial UCL tear with no T-sign, an intact flexor-pronator origin, a normal-caliber ulnar nerve, and a mildly positive moving-valgus test. The coach asks whether he needs Tommy John surgery. What is the most accurate framing?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 21-year-old collegiate pitcher has a proximal (humeral-sided) partial UCL tear with no T-sign, an intact flexor-pronator origin, a normal-caliber ulnar nerve, and a mildly positive moving-valgus test. The coach asks whether he needs Tommy John surgery. What is the most accur..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
     "itemId": "elbow-mri::elb-caq-2",
     "section": "spaced-review-registry",
     "title": "On this coronal T2 FS image, find the radiocapitellar joint and the convex articular surface of the capitellum — the anterolateral/central capitellum is where osteochondritis dissecans lives. (Remember the normal posterolateral capitellar pseudodefect groove is a bare area, NOT a lesion.) A 14-year-old gymnast has lateral elbow pain and catching. If the capitellum here showed an osteochondral lesion, which approach and finding correctly drive the stable-vs-unstable call?",
@@ -1761,6 +2588,514 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "On this sagittal IR/STIR image, trace the radiocapitellar articulation and the posterolateral recess. A fellow sees a thin low-signal synovial fold near the radiocapitellar joint in an otherwise normal elbow and wonders whether to call a loose body. Which interpretation is saf..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-mri-orientation-t2-1",
+    "section": "spaced-review-registry",
+    "title": "When does MR arthrography earn its needle at the elbow?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "When does MR arthrography earn its needle at the elbow? | front: When does MR arthrography earn its needle at the elbow? | back: Only when the added detail changes a decision: a suspected partial undersurface UCL tear (T-sign) when non-contrast MRI is equivocal, OCD stability ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-search-pattern-t1-1",
+    "section": "spaced-review-registry",
+    "title": "In the eight-step elbow search pattern, why are bones and marrow read as step 2 rather than last?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "In the eight-step elbow search pattern, why are bones and marrow read as step 2 rather than last? | front: In the eight-step elbow search pattern, why are bones and marrow read as step 2 rather than last? | back: The disposition-changing lesions are osseous — an unstable capit..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-search-pattern-t2-1",
+    "section": "spaced-review-registry",
+    "title": "You have called lateral epicondylitis. What is the required next step — and what is the medial equivalent?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You have called lateral epicondylitis. What is the required next step — and what is the medial equivalent? | front: You have called lateral epicondylitis. What is the required next step — and what is the medial equivalent? | back: Trace the LUCL to the supinator crest. The LUC..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-search-pattern-t3-1",
+    "section": "spaced-review-registry",
+    "title": "Name the medial valgus triad and the post-trauma O'Driscoll circle, and state the order in which soft tissue fails in a dislocation.",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Name the medial valgus triad and the post-trauma O'Driscoll circle, and state the order in which soft tissue fails in a dislocation. | front: Name the medial valgus triad and the post-trauma O'Driscoll circle, and state the order in which soft tissue fails in a dislocation. | ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-search-pattern-t4-1",
+    "section": "spaced-review-registry",
+    "title": "Where do elbow loose bodies settle, and which mimic must you exclude before committing to one?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Where do elbow loose bodies settle, and which mimic must you exclude before committing to one? | front: Where do elbow loose bodies settle, and which mimic must you exclude before committing to one? | back: In the dependent recesses — the coronoid fossa, the olecranon fossa, a..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-bones-marrow-t0-1",
+    "section": "spaced-review-registry",
+    "title": "Which three discriminators separate Panner disease from capitellar OCD?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which three discriminators separate Panner disease from capitellar OCD? | front: Which three discriminators separate Panner disease from capitellar OCD? | back: Age, focality, and reversibility. Panner is a self-limited osteochondrosis of the ENTIRE capitellar ossific nucleus ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-bones-marrow-t1-1",
+    "section": "spaced-review-registry",
+    "title": "What makes a capitellar OCD unstable on MRI — and which two findings are NOT stability signs?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What makes a capitellar OCD unstable on MRI — and which two findings are NOT stability signs? | front: What makes a capitellar OCD unstable on MRI — and which two findings are NOT stability signs? | back: Unstable if ANY of: a T2 fluid-bright line completely undercutting the f..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-bones-marrow-t2-1",
+    "section": "spaced-review-registry",
+    "title": "What separates an olecranon stress FRACTURE from a stress reaction, and what should a posteromedial olecranon osteophyte make you do?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What separates an olecranon stress FRACTURE from a stress reaction, and what should a posteromedial olecranon osteophyte make you do? | front: What separates an olecranon stress FRACTURE from a stress reaction, and what should a posteromedial olecranon osteophyte make you do? ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-bones-marrow-t2-2",
+    "section": "spaced-review-registry",
+    "title": "In the skeletally immature thrower with a medial epicondyle apophyseal injury (Little League elbow), what triggers surgery?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "In the skeletally immature thrower with a medial epicondyle apophyseal injury (Little League elbow), what triggers surgery? | front: In the skeletally immature thrower with a medial epicondyle apophyseal injury (Little League elbow), what triggers surgery? | back: In a throwin..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-bones-marrow-t3-2",
+    "section": "spaced-review-registry",
+    "title": "What does a visible posterior fat pad mean after adult elbow trauma, and what is the real surgical trigger for a radial-head fracture?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What does a visible posterior fat pad mean after adult elbow trauma, and what is the real surgical trigger for a radial-head fracture? | front: What does a visible posterior fat pad mean after adult elbow trauma, and what is the real surgical trigger for a radial-head fracture..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-ucl-valgus-t0-1",
+    "section": "spaced-review-registry",
+    "title": "Which band of the UCL complex matters to the thrower, where does it run, and how do you read it?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which band of the UCL complex matters to the thrower, where does it run, and how do you read it? | front: Which band of the UCL complex matters to the thrower, where does it run, and how do you read it? | back: The anterior bundle — the primary valgus restraint across the func..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-ucl-valgus-t2-1",
+    "section": "spaced-review-registry",
+    "title": "What forms the 'T' in the UCL T-sign, and why is MR arthrography the most sensitive study for it?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What forms the 'T' in the UCL T-sign, and why is MR arthrography the most sensitive study for it? | front: What forms the 'T' in the UCL T-sign, and why is MR arthrography the most sensitive study for it? | back: Fluid or contrast tracks medially along the sublime tubercle UND..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-ucl-valgus-t3-1",
+    "section": "spaced-review-registry",
+    "title": "What three things must a UCL report give the surgeon, and what is the honest caveat about distal versus proximal tears?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What three things must a UCL report give the surgeon, and what is the honest caveat about distal versus proximal tears? | front: What three things must a UCL report give the surgeon, and what is the honest caveat about distal versus proximal tears? | back: Surface/grade (sprai..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-ucl-valgus-t4-1",
+    "section": "spaced-review-registry",
+    "title": "How is a thrower's UCL injury managed, and which number can MRI not supply?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "How is a thrower's UCL injury managed, and which number can MRI not supply? | front: How is a thrower's UCL injury managed, and which number can MRI not supply? | back: Most partial/low-grade tears are managed nonoperatively first — rest, flexor-pronator and kinetic-chain reha..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-lcl-plri-t1-1",
+    "section": "spaced-review-registry",
+    "title": "Which lateral-sided finding turns refractory 'tennis elbow' into a surgical instability problem, and what should you NOT over-call?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which lateral-sided finding turns refractory 'tennis elbow' into a surgical instability problem, and what should you NOT over-call? | front: Which lateral-sided finding turns refractory 'tennis elbow' into a surgical instability problem, and what should you NOT over-call? | ba..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-lcl-plri-t3-1",
+    "section": "spaced-review-registry",
+    "title": "Why is a small anteromedial coronoid facet fragment a surgical lesion, and which classification applies to what?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Why is a small anteromedial coronoid facet fragment a surgical lesion, and which classification applies to what? | front: Why is a small anteromedial coronoid facet fragment a surgical lesion, and which classification applies to what? | back: It is the imaging signature of var..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-lcl-plri-t4-1",
+    "section": "spaced-review-registry",
+    "title": "What is the terrible triad, and what determines whether a post-dislocation elbow goes to surgery?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What is the terrible triad, and what determines whether a post-dislocation elbow goes to surgery? | front: What is the terrible triad, and what determines whether a post-dislocation elbow goes to surgery? | back: Elbow dislocation + radial head fracture + coronoid fracture — s..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-tendons-t0-1",
+    "section": "spaced-review-registry",
+    "title": "Which three anatomic structures decide every distal biceps read?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which three anatomic structures decide every distal biceps read? | front: Which three anatomic structures decide every distal biceps read? | back: (1) The bifurcated radial-tuberosity footprint — the short head attaches distal/anterior and is the flexion lever, the long head p..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-tendons-t1-1",
+    "section": "spaced-review-registry",
+    "title": "What three things must every distal biceps tear report contain, and what is the great mimic?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What three things must every distal biceps tear report contain, and what is the great mimic? | front: What three things must every distal biceps tear report contain, and what is the great mimic? | back: Partial versus complete, lacertus fibrosus intact versus torn, and retract..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-tendons-t2-1",
+    "section": "spaced-review-registry",
+    "title": "Why does a near-complete triceps avulsion often look like a partial tear, and what should the report state?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Why does a near-complete triceps avulsion often look like a partial tear, and what should the report state? | front: Why does a near-complete triceps avulsion often look like a partial tear, and what should the report state? | back: Distal triceps tears characteristically fail..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-tendons-t4-1",
+    "section": "spaced-review-registry",
+    "title": "Medial epicondylitis is on the images — what two additional structures must you trace, and why?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Medial epicondylitis is on the images — what two additional structures must you trace, and why? | front: Medial epicondylitis is on the images — what two additional structures must you trace, and why? | back: The UCL anterior bundle to the sublime tubercle and the ulnar nerve ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-nerves-t0-1",
+    "section": "spaced-review-registry",
+    "title": "What are the three phases of muscle denervation on MRI, and how early can the edema phase appear?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What are the three phases of muscle denervation on MRI, and how early can the edema phase appear? | front: What are the three phases of muscle denervation on MRI, and how early can the edema phase appear? | back: Denervation on MRI runs through three phases, but the first one ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-nerves-t1-1",
+    "section": "spaced-review-registry",
+    "title": "Why is isolated ulnar-nerve T2 hyperintensity at the cubital tunnel insufficient for neuritis, and what technique replaces the missing cutoff?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Why is isolated ulnar-nerve T2 hyperintensity at the cubital tunnel insufficient for neuritis, and what technique replaces the missing cutoff? | front: Why is isolated ulnar-nerve T2 hyperintensity at the cubital tunnel insufficient for neuritis, and what technique replaces th..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-nerves-t2-1",
+    "section": "spaced-review-registry",
+    "title": "Which cubital-tunnel findings change the operation, and what imaging is required to see them?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which cubital-tunnel findings change the operation, and what imaging is required to see them? | front: Which cubital-tunnel findings change the operation, and what imaging is required to see them? | back: Ulnar nerve subluxation/dislocation over the medial epicondyle favors an..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-nerves-t3-1",
+    "section": "spaced-review-registry",
+    "title": "What is the pattern of an AIN palsy, and why should it usually NOT go to decompression?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What is the pattern of an AIN palsy, and why should it usually NOT go to decompression? | front: What is the pattern of an AIN palsy, and why should it usually NOT go to decompression? | back: The anterior interosseous nerve (Kiloh-Nevin) is PURE MOTOR: it denervates flexor po..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-nerves-t4-1",
+    "section": "spaced-review-registry",
+    "title": "How does PIN syndrome localize on MRI, which muscle must NOT be claimed as a constant sign, and what does radial tunnel syndrome look like?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "How does PIN syndrome localize on MRI, which muscle must NOT be claimed as a constant sign, and what does radial tunnel syndrome look like? | front: How does PIN syndrome localize on MRI, which muscle must NOT be claimed as a constant sign, and what does radial tunnel syndrome..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-dont-miss-t0-1",
+    "section": "spaced-review-registry",
+    "title": "A post-traumatic elbow radiograph is called normal but shows a displaced posterior fat pad. What have you been told, and who fractures what?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A post-traumatic elbow radiograph is called normal but shows a displaced posterior fat pad. What have you been told, and who fractures what? | front: A post-traumatic elbow radiograph is called normal but shows a displaced posterior fat pad. What have you been told, and who fr..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-dont-miss-t1-1",
+    "section": "spaced-review-registry",
+    "title": "Which soft-tissue avulsions at the elbow convert a rehab plan into a same-week surgical conversation?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which soft-tissue avulsions at the elbow convert a rehab plan into a same-week surgical conversation? | front: Which soft-tissue avulsions at the elbow convert a rehab plan into a same-week surgical conversation? | back: A complete distal biceps avulsion (empty radial tuberosi..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-dont-miss-t2-1",
+    "section": "spaced-review-registry",
+    "title": "Which two bony patterns of the post-trauma elbow look small on radiographs but are inherently unstable and surgical?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Which two bony patterns of the post-trauma elbow look small on radiographs but are inherently unstable and surgical? | front: Which two bony patterns of the post-trauma elbow look small on radiographs but are inherently unstable and surgical? | back: The anteromedial coronoid ..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-dont-miss-t3-1",
+    "section": "spaced-review-registry",
+    "title": "A patient has a red, warm, fluctuant olecranon bursa and a reassuring-looking MRI. What is the correct action?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A patient has a red, warm, fluctuant olecranon bursa and a reassuring-looking MRI. What is the correct action? | front: A patient has a red, warm, fluctuant olecranon bursa and a reassuring-looking MRI. What is the correct action? | back: Aspirate it. The single most important..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "fc-elbow-dont-miss-t4-1",
+    "section": "spaced-review-registry",
+    "title": "What is the marrow red-flag pattern on elbow MRI, and which benign processes also lower T1?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "What is the marrow red-flag pattern on elbow MRI, and which benign processes also lower T1? | front: What is the marrow red-flag pattern on elbow MRI, and which benign processes also lower T1? | back: Confluent low-T1 marrow signal that drops BELOW skeletal muscle or disc and ..."
   },
   {
     "courseId": "elbow-mri",
@@ -2568,6 +3903,135 @@
   {
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-13",
+    "section": "normal-mri",
+    "title": "A 28-year-old with cam morphology and an anterosuperior labral tear is being considered for hip arthroscopy. Which cartilage finding argues MOST strongly against a good joint-preserving outcome?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "FAI chondral injury — delamination vs diffuse loss and the surgical hinge | A 28-year-old with cam morphology and an anterosuperior labral tear is being considered for hip arthroscopy. Which cartilage finding argues MOST strongly against a good joint-preserving outcome? | Foca..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-15",
+    "section": "normal-mri",
+    "title": "On a large-FOV coronal chemically fat-suppressed T2 of the pelvis, marrow at the lateral edge of the field looks bright and 'unsuppressed' on one side, with no corresponding abnormality on T1. What is the best next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Fat suppression — chemical fat-sat failure vs true marrow edema | On a large-FOV coronal chemically fat-suppressed T2 of the pelvis, marrow at the lateral edge of the field looks bright and 'unsuppressed' on one side, with no corresponding abnormality on T1. What is the best n..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-16",
+    "section": "normal-mri",
+    "title": "A 68-year-old with several weeks of hip pain and no significant trauma has an avulsion fracture of the lesser trochanter. What should this be assumed to represent?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Marrow red flag — lesser-trochanter avulsion in an adult | A 68-year-old with several weeks of hip pain and no significant trauma has an avulsion fracture of the lesser trochanter. What should this be assumed to represent? | A pathologic fracture through an underlying marrow-r..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-17",
+    "section": "normal-mri",
+    "title": "A dedicated hip MRI shows a smooth midline cartilage-filled notch at the acetabular dome and a star-shaped bare area in the superomedial roof, neither with surrounding marrow edema. How should these be reported?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Acetabular normal variants — supra-acetabular fossa and stellate lesion | A dedicated hip MRI shows a smooth midline cartilage-filled notch at the acetabular dome and a star-shaped bare area in the superomedial roof, neither with surrounding marrow edema. How should these be r..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-18",
+    "section": "normal-mri",
+    "title": "A 30-year-old with groin pain has a lobulated T2-bright collection along the anterosuperior acetabular rim; the adjacent labrum looks only subtly irregular. Which interpretation is best?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Paralabral cyst as a secondary sign of a labral tear | A 30-year-old with groin pain has a lobulated T2-bright collection along the anterosuperior acetabular rim; the adjacent labrum looks only subtly irregular. Which interpretation is best? | Treat the cyst as a strong second..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-19",
+    "section": "normal-mri",
+    "title": "A 12-year-old with obesity has several weeks of vague knee and thigh pain and a limp. MRI shows physeal widening with physeal and metaphyseal edema and subtle posteromedial displacement of the capital femoral epiphysis. What is the appropriate action?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "SCFE in the skeletally immature — an orthopedic urgency | A 12-year-old with obesity has several weeks of vague knee and thigh pain and a limp. MRI shows physeal widening with physeal and metaphyseal edema and subtle posteromedial displacement of the capital femoral epiphysis...."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-20",
+    "section": "normal-mri",
+    "title": "A 55-year-old with diabetes has three days of severe hip pain, fever, and raised inflammatory markers. MRI shows a tense effusion with synovial thickening, periarticular soft-tissue edema, and marrow edema on both sides of the joint. What is the correct next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Effusion with synovitis — septic arthritis vs a degenerative flare | A 55-year-old with diabetes has three days of severe hip pain, fever, and raised inflammatory markers. MRI shows a tense effusion with synovial thickening, periarticular soft-tissue edema, and marrow edema on..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-21",
+    "section": "normal-mri",
+    "title": "A 15-year-old felt a sudden pop while kicking a football and has anterior hip pain. Imaging shows a displaced ossific fragment at the anterior inferior iliac spine (AIIS). Which muscle origin has avulsed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Pelvic apophyseal avulsions — matching the site to the muscle | A 15-year-old felt a sudden pop while kicking a football and has anterior hip pain. Imaging shows a displaced ossific fragment at the anterior inferior iliac spine (AIIS). Which muscle origin has avulsed? | Direct..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-image-caq",
     "itemId": "hicaq-1",
     "section": "normal-mri",
@@ -2689,6 +4153,91 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:hc-q10",
+    "section": "normal-mri",
+    "title": "A 19-year-old recruit has groin pain with running, and this femoral neck shows marrow edema with a low-signal line. Which cortex carries the high-risk, urgent-referral pattern?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "A 19-year-old recruit has groin pain with running, and this femoral neck shows marrow edema with a low-signal line. Which cortex carries the high-risk, urgent-referral pattern? | The superolateral (tension) cortex | The inferomedial (compression) cortex | The posterior cortex ..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:hc-q11",
+    "section": "normal-mri",
+    "title": "You are screening this femoral head marrow in a 58-year-old with osteopenia and acute atraumatic hip pain. Which finding most specifically indicates a subchondral insufficiency fracture (SIFFH) rather than AVN?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "You are screening this femoral head marrow in a 58-year-old with osteopenia and acute atraumatic hip pain. Which finding most specifically indicates a subchondral insufficiency fracture (SIFFH) rather than AVN? | An irregular subchondral low-signal band paralleling the articul..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:hc-q13",
+    "section": "normal-mri",
+    "title": "On this Dixon WATER image a thin bright line with adjacent marrow signal appears beneath the marked acetabular roof. Which interpretation deserves the most consideration?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "On this Dixon WATER image a thin bright line with adjacent marrow signal appears beneath the marked acetabular roof. Which interpretation deserves the most consideration? | Subchondral stress response or insufficiency fracture of the weight-bearing roof | Degenerative subchond..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:hc-q14",
+    "section": "normal-mri",
+    "title": "You are tracing this acetabular cartilage for the chondral injury that accompanies FAI. Where does that damage characteristically sit?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "You are tracing this acetabular cartilage for the chondral injury that accompanies FAI. Where does that damage characteristically sit? | The anterosuperior weight-bearing rim, at the chondrolabral junction | The superomedial roof, medial to the supra-acetabular fossa | The flo..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:hc-q15",
+    "section": "normal-mri",
+    "title": "You are screening these sacroiliac joints on the posterior coronal slices. Which finding best supports inflammatory sacroiliitis?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "You are screening these sacroiliac joints on the posterior coronal slices. Which finding best supports inflammatory sacroiliitis? | Periarticular subchondral marrow edema with erosive change | Bilateral symmetric thin subchondral sclerosis without erosion | An H-shaped band of..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
     "itemId": "axi:ha-q6",
     "section": "normal-mri",
     "title": "The marked fascicular structure posterior to the ischium, between the ischial tuberosity and greater trochanter, is the:",
@@ -2701,6 +4250,41 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "The marked fascicular structure posterior to the ischium, between the ischial tuberosity and greater trochanter, is the: | Femoral nerve | Obturator nerve | Pudendal nerve | Sciatic nerve | Correct: Sciatic nerve | The large fascicular nerve coursing posterior to the hip betwe..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi:ha-q9",
+    "section": "normal-mri",
+    "title": "Seeing this sciatic nerve is normal. Which combination best supports deep gluteal (sciatic) entrapment?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Seeing this sciatic nerve is normal. Which combination best supports deep gluteal (sciatic) entrapment? | A concordant buttock-pain pattern PLUS nerve enlargement or T2 hyperintensity with loss of the surrounding fat plane | Clear visualization of the nerve between the ischial..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag:hs-q8",
+    "section": "normal-mri",
+    "title": "A small, well-corticated T1-dark / T2-bright cyst sits in the anterosuperior cortex of this femoral neck. What is it, and what should you do?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "A small, well-corticated T1-dark / T2-bright cyst sits in the anterosuperior cortex of this femoral neck. What is it, and what should you do? | A herniation (fibrocystic) pit — benign, but a prompt to assess cam morphology in the correct plane | An intraosseous abscess requiri..."
   },
   {
     "courseId": "hip-mri",
@@ -3472,6 +5056,86 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "review-registry-question",
+    "itemId": "hip-mri::hc-q10",
+    "section": "spaced-review-registry",
+    "title": "A 19-year-old recruit has groin pain with running, and this femoral neck shows marrow edema with a low-signal line. Which cortex carries the high-risk, urgent-referral pattern?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 19-year-old recruit has groin pain with running, and this femoral neck shows marrow edema with a low-signal line. Which cortex carries the high-risk, urgent-referral pattern? | A. The superolateral (tension) cortex | B. The inferomedial (compression) cortex | C. The posterio..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hc-q11",
+    "section": "spaced-review-registry",
+    "title": "You are screening this femoral head marrow in a 58-year-old with osteopenia and acute atraumatic hip pain. Which finding most specifically indicates a subchondral insufficiency fracture (SIFFH) rather than AVN?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You are screening this femoral head marrow in a 58-year-old with osteopenia and acute atraumatic hip pain. Which finding most specifically indicates a subchondral insufficiency fracture (SIFFH) rather than AVN? | A. An irregular subchondral low-signal band paralleling the arti..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hc-q13",
+    "section": "spaced-review-registry",
+    "title": "On this Dixon WATER image a thin bright line with adjacent marrow signal appears beneath the marked acetabular roof. Which interpretation deserves the most consideration?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On this Dixon WATER image a thin bright line with adjacent marrow signal appears beneath the marked acetabular roof. Which interpretation deserves the most consideration? | A. Subchondral stress response or insufficiency fracture of the weight-bearing roof | B. Degenerative su..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hc-q14",
+    "section": "spaced-review-registry",
+    "title": "You are tracing this acetabular cartilage for the chondral injury that accompanies FAI. Where does that damage characteristically sit?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You are tracing this acetabular cartilage for the chondral injury that accompanies FAI. Where does that damage characteristically sit? | A. The anterosuperior weight-bearing rim, at the chondrolabral junction | B. The superomedial roof, medial to the supra-acetabular fossa | C..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hc-q15",
+    "section": "spaced-review-registry",
+    "title": "You are screening these sacroiliac joints on the posterior coronal slices. Which finding best supports inflammatory sacroiliitis?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You are screening these sacroiliac joints on the posterior coronal slices. Which finding best supports inflammatory sacroiliitis? | A. Periarticular subchondral marrow edema with erosive change | B. Bilateral symmetric thin subchondral sclerosis without erosion | C. An H-shape..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
     "itemId": "hip-mri::ha-q6",
     "section": "spaced-review-registry",
     "title": "The marked fascicular structure posterior to the ischium, between the ischial tuberosity and greater trochanter, is the:",
@@ -3483,6 +5147,39 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "The marked fascicular structure posterior to the ischium, between the ischial tuberosity and greater trochanter, is the: | A. Femoral nerve | B. Obturator nerve | C. Pudendal nerve | D. Sciatic nerve | D | The large fascicular nerve coursing posterior to the hip between the is..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::ha-q9",
+    "section": "spaced-review-registry",
+    "title": "Seeing this sciatic nerve is normal. Which combination best supports deep gluteal (sciatic) entrapment?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "Seeing this sciatic nerve is normal. Which combination best supports deep gluteal (sciatic) entrapment? | A. A concordant buttock-pain pattern PLUS nerve enlargement or T2 hyperintensity with loss of the surrounding fat plane | B. Clear visualization of the nerve between the i..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hs-q8",
+    "section": "spaced-review-registry",
+    "title": "A small, well-corticated T1-dark / T2-bright cyst sits in the anterosuperior cortex of this femoral neck. What is it, and what should you do?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A small, well-corticated T1-dark / T2-bright cyst sits in the anterosuperior cortex of this femoral neck. What is it, and what should you do? | A. A herniation (fibrocystic) pit — benign, but a prompt to assess cam morphology in the correct plane | B. An intraosseous abscess r..."
   },
   {
     "courseId": "hip-mri",
@@ -3582,6 +5279,119 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "An 81-year-old woman with osteoporosis has low back and buttock pain after no significant trauma; radiographs are unremarkable. Bone scintigraphy (and corresponding MRI marrow edema) shows bilateral vertical sacral-ala uptake connected by a horizontal transverse band across th..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-15",
+    "section": "spaced-review-registry",
+    "title": "On a large-FOV coronal chemically fat-suppressed T2 of the pelvis, marrow at the lateral edge of the field looks bright and 'unsuppressed' on one side, with no corresponding abnormality on T1. What is the best next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On a large-FOV coronal chemically fat-suppressed T2 of the pelvis, marrow at the lateral edge of the field looks bright and 'unsuppressed' on one side, with no corresponding abnormality on T1. What is the best next step? | A. Recognize probable fat-suppression failure at the e..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-16",
+    "section": "spaced-review-registry",
+    "title": "A 68-year-old with several weeks of hip pain and no significant trauma has an avulsion fracture of the lesser trochanter. What should this be assumed to represent?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 68-year-old with several weeks of hip pain and no significant trauma has an avulsion fracture of the lesser trochanter. What should this be assumed to represent? | A. A pathologic fracture through an underlying marrow-replacing lesion until proven otherwise | B. An iliopsoas..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-17",
+    "section": "spaced-review-registry",
+    "title": "A dedicated hip MRI shows a smooth midline cartilage-filled notch at the acetabular dome and a star-shaped bare area in the superomedial roof, neither with surrounding marrow edema. How should these be reported?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A dedicated hip MRI shows a smooth midline cartilage-filled notch at the acetabular dome and a star-shaped bare area in the superomedial roof, neither with surrounding marrow edema. How should these be reported? | A. As normal variants — the supra-acetabular fossa and the stel..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-18",
+    "section": "spaced-review-registry",
+    "title": "A 30-year-old with groin pain has a lobulated T2-bright collection along the anterosuperior acetabular rim; the adjacent labrum looks only subtly irregular. Which interpretation is best?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 30-year-old with groin pain has a lobulated T2-bright collection along the anterosuperior acetabular rim; the adjacent labrum looks only subtly irregular. Which interpretation is best? | A. Treat the cyst as a strong secondary sign and re-scrutinize the adjacent labrum for t..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-19",
+    "section": "spaced-review-registry",
+    "title": "A 12-year-old with obesity has several weeks of vague knee and thigh pain and a limp. MRI shows physeal widening with physeal and metaphyseal edema and subtle posteromedial displacement of the capital femoral epiphysis. What is the appropriate action?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 12-year-old with obesity has several weeks of vague knee and thigh pain and a limp. MRI shows physeal widening with physeal and metaphyseal edema and subtle posteromedial displacement of the capital femoral epiphysis. What is the appropriate action? | A. Make the patient non..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-20",
+    "section": "spaced-review-registry",
+    "title": "A 55-year-old with diabetes has three days of severe hip pain, fever, and raised inflammatory markers. MRI shows a tense effusion with synovial thickening, periarticular soft-tissue edema, and marrow edema on both sides of the joint. What is the correct next step?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 55-year-old with diabetes has three days of severe hip pain, fever, and raised inflammatory markers. MRI shows a tense effusion with synovial thickening, periarticular soft-tissue edema, and marrow edema on both sides of the joint. What is the correct next step? | A. Treat a..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-21",
+    "section": "spaced-review-registry",
+    "title": "A 15-year-old felt a sudden pop while kicking a football and has anterior hip pain. Imaging shows a displaced ossific fragment at the anterior inferior iliac spine (AIIS). Which muscle origin has avulsed?",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 15-year-old felt a sudden pop while kicking a football and has anterior hip pain. Imaging shows a displaced ossific fragment at the anterior inferior iliac spine (AIIS). Which muscle origin has avulsed? | A. Direct (straight) head of rectus femoris | B. Sartorius | C. Iliops..."
   },
   {
     "courseId": "hip-mri",
@@ -5166,7 +6976,7 @@
     "itemType": "normal-image-caq",
     "itemId": "icaq-1",
     "section": "normal-mri",
-    "title": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
+    "title": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -5175,7 +6985,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-knee-learn.ts",
-    "textPreview": "ACL tear — pivot-shift secondary signs | A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous,..."
+    "textPreview": "ACL tear — pivot-shift secondary signs | A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than ..."
   },
   {
     "courseId": "knee-mri",
@@ -6650,7 +8460,7 @@
     "itemType": "review-registry-question",
     "itemId": "knee-mri::icaq-1",
     "section": "spaced-review-registry",
-    "title": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
+    "title": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one image. If that band were wavy, edematous, and discontinuous, which associated lateral injury should you most actively search for?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -6658,7 +8468,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the straight striated band that parallels Blumensaat's line. If that band were wavy, edematous, and discontinuous, which associated lateral injury should y..."
+    "textPreview": "A 22-year-old has a non-contact pivoting injury. On this lateral sagittal slice through the intercondylar notch, identify the oblique striated band that generally parallels Blumensaat's line. Trace it across adjacent slices rather than expecting its fan-shaped fibers on one im..."
   },
   {
     "courseId": "knee-mri",
@@ -11321,7 +13131,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "Surrounding marrow edema is present in stable AND unstable lesions and is not a stability sign; an isolated high-T2 line without a cartilage breach or cyst is INDETERMINATE (it may be healing granulation tissue). Instability is a fluid-bright line completely undercutting the f..."
+    "textPreview": "Surrounding marrow edema is present in stable AND unstable lesions and is not a stability sign; an isolated high-T2 line without a cartilage breach or cyst is INDETERMINATE (it may be healing granulation tissue). On MRI, instability is a fluid-bright line completely undercutti..."
   },
   {
     "courseId": "elbow-mri",
@@ -11352,7 +13162,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "Primary elbow OA (coronoid/olecranon-tip and fossa osteophytes, capitellar/radial-head chondral loss) is the most common source of loose bodies and mechanical symptoms in the non-thrower/laborer. In a child, the lateral condyle fracture (Salter-Harris IV) is the most non-union..."
+    "textPreview": "Primary elbow OA (coronoid/olecranon-tip and fossa osteophytes, capitellar/radial-head chondral loss) is the most common source of loose bodies and mechanical symptoms in the non-thrower/laborer. In a child, the lateral condyle fracture is the elbow fracture most prone to non-..."
   },
   {
     "courseId": "elbow-mri",
@@ -11430,7 +13240,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "The deep central triceps fibers tear first while the superficial expansion can stay intact, so a clinically near-complete avulsion can look partial. Report the percentage of width torn and the gap; complete ruptures and high-grade partials (commonly >50% width, or any tear wit..."
+    "textPreview": "Distal triceps tears fail SUPERFICIAL-layer-first: the posterior/superficial component (the combined long- and lateral-head tendon) avulses and retracts, often carrying an olecranon enthesophyte flake, while the deep, anterior medial-head attachment stays intact. And because a..."
   },
   {
     "courseId": "elbow-mri",
@@ -11468,14 +13278,14 @@
     "itemType": "module-common-mistake",
     "itemId": "elbow-nerves:mistake:2",
     "section": "module 7",
-    "title": "Labeling subacute muscle denervation edema as 'acute' and reading an AIN palsy as a mechanical compression that needs decompression",
+    "title": "Using muscle denervation edema to date the injury — or assuming MRI is blank for the first few weeks — and reading an AIN palsy as a mechanical compression that needs decompression",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "Denervation has THREE phases: NO MRI change for the first ~2–4 weeks, then SUBACUTE T2/STIR muscle edema (potentially reversible with reinnervation), then CHRONIC T1 fatty atrophy — so the edema phase is subacute, not acute. And an AIN (pure-motor) palsy is frequently neuralgi..."
+    "textPreview": "Denervation has THREE phases, but the first is NOT a blind window. EARLY: the muscle often still looks normal — fluid-sensitive edema is only CONSISTENTLY present from about 2–4 weeks, so a normal-looking muscle in the first weeks excludes nothing — yet edema has been detected..."
   },
   {
     "courseId": "elbow-mri",
@@ -11599,7 +13409,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "Distal biceps grading and the lacertus, the under-diagnosed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management | Distal biceps anatomy: bifurcated radial-tuberosity footprint, lacertus fibrosus, and bicipitoradial bursa | Distal biceps gradin..."
+    "textPreview": "Distal biceps grading and the lacertus, the commonly missed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management | Distal biceps anatomy: bifurcated radial-tuberosity footprint, lacertus fibrosus, and bicipitoradial bursa | Distal biceps gradin..."
   },
   {
     "courseId": "elbow-mri",
@@ -11614,7 +13424,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "Cubital tunnel neuritis and subluxation, AIN/pronator, PIN/radial tunnel, and reading denervation as the localizing sign | General nerve-entrapment signs and the THREE-phase denervation timeline (no change → subacute edema → chronic fatty atrophy) | Ulnar nerve / cubital tunne..."
+    "textPreview": "Cubital tunnel neuritis and subluxation, AIN/pronator, PIN/radial tunnel, and reading denervation as the localizing sign | General nerve-entrapment signs and the THREE-phase denervation timeline (early/often normal-looking → subacute edema → chronic fatty atrophy) — and why MR..."
   },
   {
     "courseId": "elbow-mri",
@@ -12031,7 +13841,7 @@
     "itemType": "module-topic",
     "itemId": "elbow-tendons:topic:3",
     "section": "module 6",
-    "title": "Triceps tendon: deep-fiber-first avulsion, the under-diagnosed rupture, and percent-width reporting",
+    "title": "Triceps tendon: superficial-layer-first avulsion, the commonly missed rupture, and which-layer plus percent-width reporting",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -12039,7 +13849,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/modules.ts",
-    "textPreview": "### Triceps Tendon: Deep-Fiber-First Avulsion and the Under-Diagnosed Rupture The triceps inserts **broadly on the olecranon**. Rupture is uncommon but is the **most under-diagnosed major tendon avulsion at the elbow** — partly because of how it fails. **The deep-fiber-first p..."
+    "textPreview": "### Triceps Tendon: Superficial-Layer-First Avulsion and the Commonly Missed Rupture The triceps inserts **broadly on the olecranon**. Rupture is **rare** — 0.8% of the 1014 tendon ruptures in Anzel's classic series — and is **frequently missed or diagnosed late**, with roughl..."
   },
   {
     "courseId": "elbow-mri",
@@ -12077,7 +13887,7 @@
     "itemType": "module-topic",
     "itemId": "elbow-nerves:topic:1",
     "section": "module 7",
-    "title": "General nerve-entrapment signs and the THREE-phase denervation timeline (no change → subacute edema → chronic fatty atrophy)",
+    "title": "General nerve-entrapment signs and the THREE-phase denervation timeline (early/often normal-looking → subacute edema → chronic fatty atrophy) — and why MRI generally turns positive before EMG",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -12310,10 +14120,11 @@
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
-      "high-risk-keyword"
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Watch for an osteochondral lesion of the capitellum — judge stability on the interface: a fluid line completely undercutting the fragment, a sizeable/multiple cyst, a cartilage breach, or a displaced fragment = unstable. Surrounding edema alone is not, and an isolated high-T2 ..."
+    "textPreview": "Watch for an osteochondral lesion of the capitellum — on MRI, judge stability at the interface: a fluid line completely undercutting the fragment, a sizeable/multiple cyst, a cartilage breach, or a displaced fragment = unstable. Surrounding edema alone is not, and an isolated ..."
   },
   {
     "courseId": "elbow-mri",
@@ -12425,6 +14236,22 @@
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-structure-reading",
+    "itemId": "Capitellum",
+    "section": "normal-mri",
+    "title": "Capitellum",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "variant: The posterolateral capitellar PSEUDODEFECT (a normal bare-area groove) and the transverse trochlear ridge are normal contours — do not call them osteochondral lesions. | measure: OCD stability is qualitative, not a single cutoff: the 5 mm subchondral-cyst figure is kn..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-structure-reading",
     "itemId": "Ulnar collateral ligament (anterior bundle)",
     "section": "normal-mri",
     "title": "Ulnar collateral ligament (anterior bundle)",
@@ -12482,7 +14309,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "variant: A thin low-signal posterolateral radiocapitellar synovial plica/fold may be normal. It should not be mistaken for a loose body or an unstable OCD fragment unless it is thickened/edematous, trapped in the joint, or matches mechanical symptoms. | measure: When symptoms ..."
+    "textPreview": "variant: A thin low-signal posterolateral radiocapitellar synovial plica/fold may be normal. It should not be mistaken for a loose body or an unstable OCD fragment unless it is thickened/edematous, trapped in the joint, or matches mechanical symptoms. | measure: A posterolater..."
   },
   {
     "courseId": "elbow-mri",
@@ -15652,7 +17479,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "Watch for unilateral periarticular SI marrow edema (inflammatory sacroiliitis) or an H-/butterfly-shaped (Honda sign) sacral edema pattern — the insufficiency fracture that masquerades as 'hip' pain in runners and older patients."
+    "textPreview": "Watch for periarticular subchondral SI marrow edema with erosion (inflammatory sacroiliitis — bilateral and symmetric in established axSpA, asymmetric in psoriatic/reactive disease, though early axSpA is often one-sided; if it is strictly unilateral and severe, exclude infecti..."
   },
   {
     "courseId": "hip-mri",
@@ -15682,7 +17509,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "variant: Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line."
+    "textPreview": "variant: Do not treat marrow edema as a diagnosis. AVN is a geographic/serpiginous subchondral lesion often with a T2 double-line; SIF is a low-signal subchondral fracture band paralleling the articular surface; transient marrow edema lacks a discrete fracture/necrosis line — ..."
   },
   {
     "courseId": "hip-mri",
@@ -21183,6 +23010,23 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "cor-t2fs:ec-cor-q9",
+    "section": "normal-mri",
+    "title": "On a thrower's coronal image, which finding indicates a FULL-thickness tear of the marked ligament rather than the partial undersurface (T-sign) pattern?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-elbow-learn.ts",
+    "textPreview": "On a thrower's coronal image, which finding indicates a FULL-thickness tear of the marked ligament rather than the partial undersurface (T-sign) pattern? | Fluid-bright signal spanning the entire thickness with a gap/retraction, or medial extravasation through the defect | Flu..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "pre-post-quiz",
     "itemId": "elbow-q-protocol-pre",
     "section": "assessment",
@@ -21243,6 +23087,22 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "The thin dark band running from the medial epicondyle toward the sublime tubercle is the: | A. Lateral ulnar collateral ligament | B. Anterior bundle of the UCL | C. Annular ligament | D. Common extensor tendon | B | The anterior bundle of the UCL is the primary valgus restrai..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "elbow-mri::ec-cor-q9",
+    "section": "spaced-review-registry",
+    "title": "On a thrower's coronal image, which finding indicates a FULL-thickness tear of the marked ligament rather than the partial undersurface (T-sign) pattern?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "On a thrower's coronal image, which finding indicates a FULL-thickness tear of the marked ligament rather than the partial undersurface (T-sign) pattern? | A. Fluid-bright signal spanning the entire thickness with a gap/retraction, or medial extravasation through the defect | ..."
   },
   {
     "courseId": "elbow-mri",
@@ -21359,6 +23219,22 @@
   {
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-advanced-question",
+    "itemId": "hadv-22",
+    "section": "normal-mri",
+    "title": "A 23-year-old woman has activity-related groin pain and a sense that the hip 'gives way.' On a standing AP pelvic radiograph the lateral center-edge angle measures 17°, with a normal alpha angle and no crossover sign. Which morphology does this describe?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "Acetabular dysplasia — undercoverage and the lateral center-edge angle | A 23-year-old woman has activity-related groin pain and a sense that the hip 'gives way.' On a standing AP pelvic radiograph the lateral center-edge angle measures 17°, with a normal alpha angle and no cr..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "normal-image-caq",
     "itemId": "hicaq-5",
     "section": "normal-mri",
@@ -21372,6 +23248,40 @@
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
     "textPreview": "Cam-type femoroacetabular impingement and the alpha angle | On this sagittal PD-FS image, find the anterior femoral head–neck junction in profile and trace its contour/offset — the region that loses sphericity in cam morphology. A 27-year-old soccer player has anterior groin p..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "axi:ha-q10",
+    "section": "normal-mri",
+    "title": "You suspect cam morphology at the anterior head-neck junction of this femoral head. On which images is the alpha angle most reliably measured?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "You suspect cam morphology at the anterior head-neck junction of this femoral head. On which images is the alpha angle most reliably measured? | Oblique-axial images prescribed along the femoral neck axis, or radial reformats | This straight axial slice through the mid femoral..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "normal-plane-quiz",
+    "itemId": "sag:hs-q9",
+    "section": "normal-mri",
+    "title": "You move to the ultrasound correlate of this anterior joint recess. Which measurement supports an effusion or synovitis?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "anatomy-label",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/normal-hip-learn.ts",
+    "textPreview": "You move to the ultrasound correlate of this anterior joint recess. Which measurement supports an effusion or synovitis? | Capsule-to-bone distance greater than about 7 mm at the head-neck junction, or more than 1 mm side-to-side asymmetry | Any visible anechoic sliver within ..."
   },
   {
     "courseId": "hip-mri",
@@ -21425,6 +23335,38 @@
     "courseId": "hip-mri",
     "courseTitle": "Hip MRI for Primary Care Sports Medicine",
     "itemType": "review-registry-question",
+    "itemId": "hip-mri::ha-q10",
+    "section": "spaced-review-registry",
+    "title": "You suspect cam morphology at the anterior head-neck junction of this femoral head. On which images is the alpha angle most reliably measured?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You suspect cam morphology at the anterior head-neck junction of this femoral head. On which images is the alpha angle most reliably measured? | A. Oblique-axial images prescribed along the femoral neck axis, or radial reformats | B. This straight axial slice through the mid f..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hs-q9",
+    "section": "spaced-review-registry",
+    "title": "You move to the ultrasound correlate of this anterior joint recess. Which measurement supports an effusion or synovitis?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "You move to the ultrasound correlate of this anterior joint recess. Which measurement supports an effusion or synovitis? | A. Capsule-to-bone distance greater than about 7 mm at the head-neck junction, or more than 1 mm side-to-side asymmetry | B. Any visible anechoic sliver w..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
     "itemId": "hip-mri::hadv-1",
     "section": "spaced-review-registry",
     "title": "A 24-year-old male ice-hockey player has insidious right groin pain and a positive flexion-adduction-internal-rotation (FADIR) impingement test. Radiographs show a bony prominence at the anterolateral head-neck junction. To quantify the lesion driving his impingement, you elect to measure the alpha angle. On which imaging plane is the alpha angle most reliably measured for this morphology?",
@@ -21452,6 +23394,22 @@
     ],
     "sourcePath": "src/content/review-registry.ts",
     "textPreview": "A 41-year-old female recreational dancer has anterior hip pain with deep flexion. On a properly oriented AP pelvic radiograph the anterior acetabular wall line projects lateral to the posterior wall line in the superior acetabulum before they meet inferiorly. Her femoral head-..."
+  },
+  {
+    "courseId": "hip-mri",
+    "courseTitle": "Hip MRI for Primary Care Sports Medicine",
+    "itemType": "review-registry-question",
+    "itemId": "hip-mri::hadv-22",
+    "section": "spaced-review-registry",
+    "title": "A 23-year-old woman has activity-related groin pain and a sense that the hip 'gives way.' On a standing AP pelvic radiograph the lateral center-edge angle measures 17°, with a normal alpha angle and no crossover sign. Which morphology does this describe?",
+    "risk": "medium",
+    "requiresSourceCheck": true,
+    "flags": [
+      "answer-key",
+      "numeric-threshold-or-named-criterion"
+    ],
+    "sourcePath": "src/content/review-registry.ts",
+    "textPreview": "A 23-year-old woman has activity-related groin pain and a sense that the hip 'gives way.' On a standing AP pelvic radiograph the lateral center-edge angle measures 17°, with a normal alpha angle and no crossover sign. Which morphology does this describe? | A. Acetabular dyspla..."
   },
   {
     "courseId": "hip-mri",
@@ -23146,21 +25104,6 @@
   {
     "courseId": "elbow-mri",
     "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
-    "itemType": "normal-structure-reading",
-    "itemId": "Capitellum",
-    "section": "normal-mri",
-    "title": "Capitellum",
-    "risk": "medium",
-    "requiresSourceCheck": true,
-    "flags": [
-      "numeric-threshold-or-named-criterion"
-    ],
-    "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "variant: The posterolateral capitellar PSEUDODEFECT (a normal bare-area groove) and the transverse trochlear ridge are normal contours — do not call them osteochondral lesions. | measure: OCD stability is qualitative, not a single cutoff: the 5 mm subchondral-cyst figure is kn..."
-  },
-  {
-    "courseId": "elbow-mri",
-    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
     "itemType": "normal-tour-step",
     "itemId": "cor-t2fs:tour:5",
     "section": "normal-mri",
@@ -23548,7 +25491,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-hip-learn.ts",
-    "textPreview": "variant: The superomedial stellate lesion is a normal bare-area cartilage gap (medial to the supra-acetabular fossa, no marrow edema) — not the anterosuperior weight-bearing dome where real chondral loss lives. | measure: Grade Outerbridge-type: II = partial-thickness <50% dep..."
+    "textPreview": "variant: The superomedial stellate lesion is a normal bare-area cartilage gap (medial to the supra-acetabular fossa, no marrow edema) — not the anterosuperior weight-bearing dome where real chondral loss lives. | measure: Grade on the modified Outerbridge (MRI) scale and name ..."
   },
   {
     "courseId": "hip-mri",

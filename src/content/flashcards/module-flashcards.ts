@@ -12,15 +12,20 @@ export interface TopicFlashcards {
 
 import { shoulderModuleFlashcards } from "@/content/shoulder/flashcards";
 import { hipModuleFlashcards } from "@/content/hip/flashcards";
+import { elbowModuleFlashcards } from "@/content/elbow/flashcards";
 
 // Keyed by module ID. Module IDs are globally unique across courses, so the
-// knee, shoulder, and hip card sets merge into one lookup without collision.
+// knee, shoulder, hip, and elbow card sets merge into one lookup without
+// collision.
 export const moduleFlashcards: Record<string, TopicFlashcards[]> = {
   // Shoulder course cards (keyed by shoulder-* module IDs).
   ...shoulderModuleFlashcards,
 
   // Hip course cards (keyed by hip-* module IDs).
   ...hipModuleFlashcards,
+
+  // Elbow course cards (keyed by elbow-* module IDs).
+  ...elbowModuleFlashcards,
 
   // ─── Module 1: MRI Basics ───────────────────────────────────────────
   'mri-basics': [

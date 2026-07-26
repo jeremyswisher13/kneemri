@@ -444,12 +444,12 @@ export const elbowModuleMetas: ModuleMeta[] = [
     "id": "elbow-tendons",
     "number": 6,
     "title": "Tendons: Distal Biceps, Triceps & Epicondylitis",
-    "subtitle": "Distal biceps grading and the lacertus, the under-diagnosed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management",
+    "subtitle": "Distal biceps grading and the lacertus, the commonly missed triceps avulsion, and the epicondylitis-plus-ligament pairing that changes management",
     "estimatedMinutes": 17,
     "topics": [
       "Distal biceps anatomy: bifurcated radial-tuberosity footprint, lacertus fibrosus, and bicipitoradial bursa",
       "Distal biceps grading and the lacertus as the discriminator that drives repair urgency",
-      "Triceps tendon: deep-fiber-first avulsion, the under-diagnosed rupture, and percent-width reporting",
+      "Triceps tendon: superficial-layer-first avulsion, the commonly missed rupture, and which-layer plus percent-width reporting",
       "Lateral epicondylitis (ECRB) and tracing the LUCL — the PLRI escalation",
       "Medial epicondylitis (common flexor-pronator) and the medial valgus triad"
     ]
@@ -461,7 +461,7 @@ export const elbowModuleMetas: ModuleMeta[] = [
     "subtitle": "Cubital tunnel neuritis and subluxation, AIN/pronator, PIN/radial tunnel, and reading denervation as the localizing sign",
     "estimatedMinutes": 16,
     "topics": [
-      "General nerve-entrapment signs and the THREE-phase denervation timeline (no change → subacute edema → chronic fatty atrophy)",
+      "General nerve-entrapment signs and the THREE-phase denervation timeline (early/often normal-looking → subacute edema → chronic fatty atrophy) — and why MRI generally turns positive before EMG",
       "Ulnar nerve / cubital tunnel: the most common elbow neuropathy and the internal-control comparison technique",
       "Ulnar nerve subluxation, anconeus epitrochlearis, and snapping triceps — findings that change the operation",
       "Median/AIN: pure-motor AIN palsy, the Parsonage-Turner caveat, and pronator syndrome",
