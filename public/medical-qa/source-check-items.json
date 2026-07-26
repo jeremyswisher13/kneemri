@@ -218,7 +218,7 @@
     "itemType": "module-quiz",
     "itemId": "elbow-tendons-q2",
     "section": "module quiz:elbow-tendons",
-    "title": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the deep central triceps fibers torn with a fluid gap, while the superficial expansion appears continuous. What is the most appropriate interpretation and next step?",
+    "title": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the superficial triceps layer (the combined long- and lateral-head tendon) avulsed with a fluid gap, while the deep medial-head attachment stays in continuity. What is the most appropriate interpretation and next step?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -227,7 +227,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/quizzes/module-quizzes.ts",
-    "textPreview": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the deep central triceps fibers torn with a fluid gap, while the superficial expansio..."
+    "textPreview": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the superficial triceps layer (the combined long- and lateral-head tendon) avulsed wi..."
   },
   {
     "courseId": "elbow-mri",
@@ -414,7 +414,7 @@
     "itemType": "normal-advanced-question",
     "itemId": "elb-adv-6",
     "section": "normal-mri",
-    "title": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central triceps fibers are torn with a fluid gap while the superficial expansion remains in continuity. Which statement is correct?",
+    "title": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superficial triceps layer (combined long and lateral heads) avulsed with a fluid gap while the deep medial-head attachment remains in continuity. Which statement is correct?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -423,7 +423,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Triceps tear — deep central fibers and when to repair | A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central tr..."
+    "textPreview": "Triceps tear — superficial-layer avulsion and when to repair | A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superfic..."
   },
   {
     "courseId": "elbow-mri",
@@ -721,7 +721,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "Distal biceps and triceps insertions on sagittal — the lacertus/deep-fiber 'masked complete tear' | On this sagittal IR/STIR image, follow the anterior soft tissues to the distal biceps heading toward the radial tuberosity, and posteriorly the triceps inserting broadly on the ..."
+    "textPreview": "Distal biceps and triceps insertions on sagittal — the lacertus/layer-selective 'masked complete tear' | On this sagittal IR/STIR image, follow the anterior soft tissues to the distal biceps heading toward the radial tuberosity, and posteriorly the triceps inserting broadly on..."
   },
   {
     "courseId": "elbow-mri",
@@ -917,7 +917,7 @@
     "itemType": "normal-plane-quiz",
     "itemId": "axi-t2fs:ec-axi-q7",
     "section": "normal-mri",
-    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say?",
+    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. What should the report say?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -927,7 +927,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say? | A high-grade partial tear — state the percent..."
+    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. Wh..."
   },
   {
     "courseId": "elbow-mri",
@@ -1290,7 +1290,7 @@
     "itemType": "pre-post-quiz",
     "itemId": "elbow-q-biceps-lacertus-post",
     "section": "assessment",
-    "title": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intact superficial expansion; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
+    "title": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and lateral-head) layer and an intact deep, anterior medial-head attachment; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -1299,7 +1299,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/pre-post-quiz.ts",
-    "textPreview": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intac..."
+    "textPreview": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and latera..."
   },
   {
     "courseId": "elbow-mri",
@@ -1716,7 +1716,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-tendons-q2",
     "section": "spaced-review-registry",
-    "title": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the deep central triceps fibers torn with a fluid gap, while the superficial expansion appears continuous. What is the most appropriate interpretation and next step?",
+    "title": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the superficial triceps layer (the combined long- and lateral-head tendon) avulsed with a fluid gap, while the deep medial-head attachment stays in continuity. What is the most appropriate interpretation and next step?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -1725,7 +1725,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the deep central triceps fibers torn with a fluid gap, while the superficial expansio..."
+    "textPreview": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the superficial triceps layer (the combined long- and lateral-head tendon) avulsed wi..."
   },
   {
     "courseId": "elbow-mri",
@@ -1989,7 +1989,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::ec-axi-q7",
     "section": "spaced-review-registry",
-    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say?",
+    "title": "A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. What should the report say?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -1998,7 +1998,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say? | A. A high-grade partial tear — state the perc..."
+    "textPreview": "A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. Wh..."
   },
   {
     "courseId": "elbow-mri",
@@ -2251,7 +2251,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::elb-adv-6",
     "section": "spaced-review-registry",
-    "title": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central triceps fibers are torn with a fluid gap while the superficial expansion remains in continuity. Which statement is correct?",
+    "title": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superficial triceps layer (combined long and lateral heads) avulsed with a fluid gap while the deep medial-head attachment remains in continuity. Which statement is correct?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -2260,7 +2260,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central triceps fibers are torn with a fluid gap while the superfi..."
+    "textPreview": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superficial triceps layer (combined long and lateral heads) avulsed wit..."
   },
   {
     "courseId": "elbow-mri",
@@ -3269,7 +3269,7 @@
     "itemType": "review-registry-question",
     "itemId": "elbow-mri::prepost-elbow-q-biceps-lacertus-post",
     "section": "spaced-review-registry",
-    "title": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intact superficial expansion; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
+    "title": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and lateral-head) layer and an intact deep, anterior medial-head attachment; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
     "risk": "high",
     "requiresSourceCheck": true,
     "flags": [
@@ -3278,7 +3278,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/review-registry.ts",
-    "textPreview": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intac..."
+    "textPreview": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and latera..."
   },
   {
     "courseId": "elbow-mri",
@@ -11672,7 +11672,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "Radiocapitellar and ulnotrochlear cartilage preserved; small effusion/contrast distension expected for an arthrogram | Pertinent negative: no loose body in the coronoid, olecranon, or radiocapitellar recesses | Pertinent negative: no pathologic (>~3 mm, symptomatic) radiocapit..."
+    "textPreview": "Radiocapitellar and ulnotrochlear cartilage preserved; small effusion/contrast distension expected for an arthrogram | Pertinent negative: no loose body in the coronoid, olecranon, or radiocapitellar recesses | Pertinent negative: no clearly enlarged or edematous radiocapitell..."
   },
   {
     "courseId": "elbow-mri",
@@ -11947,7 +11947,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "Radiocapitellar and ulnotrochlear cartilage preserved; small joint effusion only | No pathologically thickened radiocapitellar plica (>~3 mm) mimicking a loose body / mechanical cause | Olecranon bursa not distended; no synovitis"
+    "textPreview": "Radiocapitellar and ulnotrochlear cartilage preserved; small joint effusion only | No clearly enlarged or edematous radiocapitellar plica mimicking a loose body / mechanical cause (a ~3 mm fold is a normal value, not a pathologic cutoff) | Olecranon bursa not distended; no syn..."
   },
   {
     "courseId": "elbow-mri",
@@ -12266,6 +12266,21 @@
     ],
     "sourcePath": "src/content/elbow/cases.ts",
     "textPreview": "LUCL traced to the supinator crest is intact and in continuity; normal radiocapitellar alignment - pertinent negative for PLRI | No coronoid anteromedial-facet fracture and no terrible-triad pattern (non-traumatic thrower) | No Osborne-Cotterill impaction or heterotopic ossifi..."
+  },
+  {
+    "courseId": "elbow-mri",
+    "courseTitle": "Elbow MRI for Primary Care Sports Medicine",
+    "itemType": "case-search-finding",
+    "itemId": "elbow-veo-posteromedial-loose-body:step:5",
+    "section": "cases",
+    "title": "Valgus Extension Overload — Posteromedial Loose Body · Tendons — Biceps, Triceps & Epicondyle Origins",
+    "risk": "high",
+    "requiresSourceCheck": true,
+    "flags": [
+      "high-risk-keyword"
+    ],
+    "sourcePath": "src/content/elbow/cases.ts",
+    "textPreview": "Mild common flexor-pronator tendinosis (medial companion to the UCL injury) without a surface-reaching tear | Triceps insertion on the olecranon intact - pertinent negative for a superficial-layer (long/lateral-head) avulsion or olecranon flake given posterior pain | Distal bi..."
   },
   {
     "courseId": "elbow-mri",
@@ -12946,7 +12961,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/elbow/cases.ts",
-    "textPreview": "Run the radiocapitellar line on every projection/plane (it must bisect the capitellum) to avoid missing an occult Monteggia, and in CHILDREN convert the same fat-pad sign into a dedicated hunt for the non-union-prone lateral condyle (Salter-Harris IV) fracture — a classic pedi..."
+    "textPreview": "Run the radiocapitellar line — along the central long axis of the radial NECK (not the shaft), most reliable on the LATERAL/sagittal view — as a screen for an occult Monteggia: it SHOULD pass through the capitellum, but treat it as SUGGESTIVE, not absolute. In 116 normal pedia..."
   },
   {
     "courseId": "elbow-mri",
@@ -14452,7 +14467,7 @@
       "high-risk-keyword"
     ],
     "sourcePath": "src/content/normal-elbow-learn.ts",
-    "textPreview": "The triceps occupies the posterior compartment and inserts broadly on the olecranon. Its deep central fibers can tear first while the superficial expansion stays intact — so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head..."
+    "textPreview": "The triceps occupies the posterior compartment and inserts broadly on the olecranon. Failure is superficial-layer-first: the posterior/superficial tendon (combined long and lateral heads) avulses — often carrying an olecranon enthesophyte flake — while the deep anterior medial..."
   },
   {
     "courseId": "elbow-mri",
@@ -14705,7 +14720,7 @@
       "numeric-threshold-or-named-criterion"
     ],
     "sourcePath": "src/content/elbow/reference.ts",
-    "textPreview": "label: Tendinosis vs partial vs complete | detail: The deep central fibers fail first while the superficial expansion stays intact — so it can look partial despite near-complete clinical weakness. Complete = a full-thickness gap with a retracted stump ± an olecranon flake. Rep..."
+    "textPreview": "label: Tendinosis vs partial vs complete | detail: Tears fail SUPERFICIAL-layer-first: the posterior/superficial component (combined long- and lateral-head tendon) avulses and retracts, often carrying an olecranon enthesophyte flake, while the deep, anterior medial-head attach..."
   },
   {
     "courseId": "elbow-mri",

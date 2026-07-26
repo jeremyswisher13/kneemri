@@ -124,7 +124,7 @@ export const elbowAnatomySections: MeasurementSection[] = [
       {
         label: "Triceps tendon",
         detail:
-          "Inserts broadly on the olecranon; the deep central fibers can tear first while the superficial expansion stays intact.",
+          "Inserts broadly on the olecranon; tears fail SUPERFICIAL-layer-first — the posterior/superficial combined long- and lateral-head tendon avulses while the deep, anterior medial-head attachment stays intact.",
       },
       {
         label: "Olecranon, coronoid & fossae",
@@ -263,7 +263,7 @@ export const elbowMeasurementSections: MeasurementSection[] = [
       {
         label: "Tendinosis vs partial vs complete",
         detail:
-          "The deep central fibers fail first while the superficial expansion stays intact — so it can look partial despite near-complete clinical weakness. Complete = a full-thickness gap with a retracted stump ± an olecranon flake. Report the percentage of tendon width torn and the gap.",
+          "Tears fail SUPERFICIAL-layer-first: the posterior/superficial component (combined long- and lateral-head tendon) avulses and retracts, often carrying an olecranon enthesophyte flake, while the deep, anterior medial-head attachment stays intact — so it can look partial despite near-complete clinical weakness. Complete = a full-thickness gap with a retracted stump ± an olecranon flake. Report WHICH layer is torn, the percentage of tendon width, and the gap rather than the word 'partial'; the avulsed olecranon flake on the lateral radiograph is the classic tip-off.",
       },
       {
         label: "When to repair",
@@ -358,7 +358,7 @@ export const elbowMeasurementSections: MeasurementSection[] = [
       {
         label: "Radiocapitellar line",
         detail:
-          "A line through the central long axis of the radial neck must bisect the capitellum on EVERY projection — failure = radial head subluxation/dislocation (think occult Monteggia).",
+          "A line along the central long axis of the radial NECK (not the shaft), most reliable on the LATERAL view, should pass through the capitellum — a miss points to radial-head subluxation/dislocation (think occult Monteggia). Treat it as SUGGESTIVE, not absolute: in 116 normal pediatric elbows the neck line still missed the capitellum in ~1% of tracings and passed through the central third only ~3/4 of the time on lateral (~half on AP), and it is degraded by forearm rotation and young age (least reliable under 5). Correlate with the contralateral side rather than calling instability off the line alone.",
       },
       {
         label: "Mason radial-head framework & the surgical trigger",
@@ -378,7 +378,7 @@ export const elbowMeasurementSections: MeasurementSection[] = [
       {
         label: "Radiocapitellar plica",
         detail:
-          "A thickened radiocapitellar plica/posterolateral synovial fold causes lateral catching and mimics a loose body/OCD — considered pathologic when thickened beyond ~3 mm with mechanical symptoms.",
+          "A radiocapitellar plica/posterolateral synovial fold can cause lateral catching and mimics a loose body/OCD — but it is present in about three-quarters of ASYMPTOMATIC elbows and averages about 3 mm, so ~3 mm is NORMAL, not a pathologic threshold, and symptomatic and asymptomatic plicae overlap. There is no validated cutoff: call it clinically relevant only when clearly enlarged relative to normal (symptomatic series run nearer 7 mm mediolateral, or the fold covers a substantial portion of the radial head) and/or edematous, AND the mechanical symptoms are concordant.",
       },
       {
         label: "Olecranon bursitis",

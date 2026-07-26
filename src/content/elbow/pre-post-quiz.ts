@@ -334,11 +334,11 @@ export const elbowPrePostQuizQuestions: QuizQuestion[] = [
     "moduleId": "elbow-tendons",
     "prePostMapping": "parallel-post",
     "parallelId": "elbow-q-biceps-lacertus",
-    "stem": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intact superficial expansion; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
+    "stem": "A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and lateral-head) layer and an intact deep, anterior medial-head attachment; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?",
     "options": [
       {
         "key": "A",
-        "text": "Because the superficial expansion is intact and it is not a full-thickness gap, label it triceps tendinosis and manage with activity modification alone"
+        "text": "Because the deep medial-head attachment is intact and it is not a full-thickness gap, label it triceps tendinosis and manage with activity modification alone"
       },
       {
         "key": "B",
@@ -350,11 +350,11 @@ export const elbowPrePostQuizQuestions: QuizQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Recognize a high-grade partial triceps tear with extension weakness and refer for surgical repair, since deep-fiber tears with weakness are repaired and the intact superficial expansion makes the tear look milder than it is"
+        "text": "Recognize a high-grade partial triceps tear with extension weakness and refer for surgical repair, reporting WHICH layer is torn plus the percent width and gap, since the intact deep medial head makes the tear look milder than it is"
       }
     ],
     "correctAnswer": "D",
-    "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete injury can look only partial on imaging. A high-grade partial (commonly >50% width torn, or ANY tear with extension weakness against resistance) is a surgical lesion and should not be undercalled — here a ~70% deep-fiber tear with loss of active extension and an avulsed flake clinches it. Calling it tendinosis because the superficial layer is intact (A) is exactly the undercall to avoid, since the patient cannot extend against gravity. Olecranon bursitis (B) does not produce extension weakness or an insertional tendon gap and would not explain these findings. Surgical timing is a guideline, not a fixed deadline, and a repairable tendon tear should be referred now rather than waiting for an arbitrary 6-week cutoff before acting (C).",
+    "explanation": "Distal triceps tears fail SUPERFICIAL-layer-first: the posterior/superficial component — the combined long- and lateral-head tendon — avulses, often carrying an olecranon enthesophyte flake (the classic radiographic tip-off, present here), while the deep, anterior medial-head attachment stays intact. Because an intact lateral expansion (with the anconeus compensating) still permits weak active extension, a functionally near-complete avulsion can read as merely 'partial' — so report which layer is torn, the PERCENTAGE of width, and the gap rather than the word 'partial'. A high-grade partial (commonly >50% width torn, or ANY tear with extension weakness against resistance) is a surgical lesion: here ~70% width, loss of extension against gravity, and the flake clinch it. Calling it tendinosis because the deep medial head is intact (A) is exactly the undercall to avoid, since the patient cannot extend against gravity. Olecranon bursitis (B) does not produce extension weakness or an insertional tendon gap and would not explain these findings. Surgical timing is a guideline, not a fixed deadline, and a repairable tendon tear should be referred now rather than waiting for an arbitrary 6-week cutoff before acting (C).",
     "cognitiveLevel": "apply"
   },
   {

@@ -57,15 +57,15 @@
       "imageCaqItems": 7,
       "redFlags": 5,
       "reviewItems": 546,
-      "highRiskItems": 435,
-      "sourceCheckItems": 465,
+      "highRiskItems": 436,
+      "sourceCheckItems": 466,
       "diagnostics": 0
     }
   },
   "totals": {
     "reviewItems": 2918,
-    "highRiskItems": 1449,
-    "sourceCheckItems": 1678,
+    "highRiskItems": 1450,
+    "sourceCheckItems": 1679,
     "diagnostics": 0,
     "diagnosticErrors": 0,
     "diagnosticWarnings": 0

@@ -86,7 +86,7 @@ export const elbowSearchPatternSteps: SearchPatternStep[] = [
       "Grade the distal biceps and triceps for partial vs complete, and the common flexor and extensor origins for tendinosis vs tear — always tracing the adjacent ligament (UCL with medial, LUCL with lateral).",
     checklistItems: [
       "Distal biceps (best on FABS): partial vs complete, retraction in cm, lacertus fibrosus intact vs torn; bicipitoradial bursitis as a clue",
-      "Triceps: partial (deep-fiber, report % width) vs complete avulsion ± an olecranon flake fragment",
+      "Triceps: partial (superficial-layer-first — report WHICH layer and % width) vs complete avulsion ± an olecranon flake fragment",
       "Lateral (ECRB) epicondylitis grade — trace the LUCL to the supinator crest; medial (flexor-pronator) epicondylitis grade — trace the UCL",
       "Apply a grade 1 / 2 / 3 muscle-strain framework to flexor-pronator and extensor strains",
     ],
@@ -120,13 +120,13 @@ export const elbowSearchPatternSteps: SearchPatternStep[] = [
       "Trace the radiocapitellar and ulnotrochlear cartilage, characterize effusion/synovitis, and clear the dependent recesses for loose bodies — watching for the plica that mimics them.",
     checklistItems: [
       "Radiocapitellar and ulnotrochlear cartilage; effusion and synovitis",
-      "Radiocapitellar plica / posterolateral synovial fold (pathologic when thickened beyond ~3 mm with mechanical symptoms) as a mimic of a loose body or OCD",
+      "Radiocapitellar plica / posterolateral synovial fold (~3 mm is the NORMAL average — no validated cutoff; clinically relevant only when clearly enlarged and/or edematous with concordant symptoms) as a mimic of a loose body or OCD",
       "Olecranon bursitis — aseptic vs septic (aspirate the warm bursa; MRI cannot exclude infection)",
       "Loose bodies in the dependent recesses; primary OA osteophytes at the coronoid and olecranon tips",
     ],
     pearls: [
       "A red/warm/fluctuant olecranon bursa needs aspiration, not just imaging — MRI cannot reliably exclude a septic bursa.",
-      "The radiocapitellar plica is a real mechanical cause of lateral catching, but it is also a loose-body/OCD mimic — call it pathologic only when it's thickened (>~3 mm) with concordant mechanical symptoms.",
+      "The radiocapitellar plica is a real mechanical cause of lateral catching and a loose-body/OCD mimic — but a posterolateral fold is present in about three-quarters of ASYMPTOMATIC elbows and averages about 3 mm, so ~3 mm is normal, not a threshold, and symptomatic and asymptomatic plicae overlap. With no validated cutoff, call it clinically relevant only when clearly enlarged relative to normal (symptomatic series run nearer 7 mm mediolateral, or the fold covers a substantial portion of the radial head) and/or edematous, AND the mechanical symptoms are concordant.",
     ],
   },
   {

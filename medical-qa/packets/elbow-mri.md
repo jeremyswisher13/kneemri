@@ -16,7 +16,7 @@ Audience: Primary care sports medicine fellows
 ## Automated QA Summary
 
 - Review queue items: 546
-- High-risk keyword items: 435
+- High-risk keyword items: 436
 - Numeric threshold / named-criterion items: 185
 - Diagnostics: 0
 
@@ -86,7 +86,7 @@ Grade the distal biceps and triceps for partial vs complete, and the common flex
 
 Checklist:
 - Distal biceps (best on FABS): partial vs complete, retraction in cm, lacertus fibrosus intact vs torn; bicipitoradial bursitis as a clue
-- Triceps: partial (deep-fiber, report % width) vs complete avulsion ± an olecranon flake fragment
+- Triceps: partial (superficial-layer-first — report WHICH layer and % width) vs complete avulsion ± an olecranon flake fragment
 - Lateral (ECRB) epicondylitis grade — trace the LUCL to the supinator crest; medial (flexor-pronator) epicondylitis grade — trace the UCL
 - Apply a grade 1 / 2 / 3 muscle-strain framework to flexor-pronator and extensor strains
 Pearls:
@@ -112,12 +112,12 @@ Trace the radiocapitellar and ulnotrochlear cartilage, characterize effusion/syn
 
 Checklist:
 - Radiocapitellar and ulnotrochlear cartilage; effusion and synovitis
-- Radiocapitellar plica / posterolateral synovial fold (pathologic when thickened beyond ~3 mm with mechanical symptoms) as a mimic of a loose body or OCD
+- Radiocapitellar plica / posterolateral synovial fold (~3 mm is the NORMAL average — no validated cutoff; clinically relevant only when clearly enlarged and/or edematous with concordant symptoms) as a mimic of a loose body or OCD
 - Olecranon bursitis — aseptic vs septic (aspirate the warm bursa; MRI cannot exclude infection)
 - Loose bodies in the dependent recesses; primary OA osteophytes at the coronoid and olecranon tips
 Pearls:
 - A red/warm/fluctuant olecranon bursa needs aspiration, not just imaging — MRI cannot reliably exclude a septic bursa.
-- The radiocapitellar plica is a real mechanical cause of lateral catching, but it is also a loose-body/OCD mimic — call it pathologic only when it's thickened (>~3 mm) with concordant mechanical symptoms.
+- The radiocapitellar plica is a real mechanical cause of lateral catching and a loose-body/OCD mimic — but a posterolateral fold is present in about three-quarters of ASYMPTOMATIC elbows and averages about 3 mm, so ~3 mm is normal, not a threshold, and symptomatic and asymptomatic plicae overlap. With no validated cutoff, call it clinically relevant only when clearly enlarged relative to normal (symptomatic series run nearer 7 mm mediolateral, or the fold covers a substantial portion of the radial head) and/or edematous, AND the mechanical symptoms are concordant.
 
 #### 8. Masses, Management Review & Red Flags
 
@@ -1235,7 +1235,7 @@ Search pattern findings:
 - **Step 7: Cartilage, Joint, Capsule, Bursa & Synovium**
   - Radiocapitellar and ulnotrochlear cartilage preserved; small effusion/contrast distension expected for an arthrogram
   - Pertinent negative: no loose body in the coronoid, olecranon, or radiocapitellar recesses
-  - Pertinent negative: no pathologic (>~3 mm, symptomatic) radiocapitellar plica and no olecranon bursitis
+  - Pertinent negative: no clearly enlarged or edematous radiocapitellar plica (a ~3 mm fold is NORMAL, not a threshold — there is no validated cutoff) and no olecranon bursitis
 - **Step 8: Masses, Management Review & Red Flags**
   - No mass/ganglion as an occult cause and no infection/tumor red flag (no confluent low-T1 marrow replacement or cortical destruction)
   - Name the single management-changing finding: the distal undersurface UCL tear (T-sign) — prognostically worse and occult on MRI/static valgus exam (seen at arthroscopy only with applied valgus stress)
@@ -1456,14 +1456,14 @@ Search pattern findings:
 - **Step 5: Tendons — Biceps, Triceps & Epicondyle Origins**
   - Lateral (ECRB) common extensor origin: tendinosis with a DEEP partial-thickness undersurface tear (not a full-thickness retracted gap) — trace the LUCL to the supinator crest as the companion
   - Common flexor-pronator origin normal (medial epicondylitis not present)
-  - Distal biceps footprint intact with intact lacertus; triceps insertion intact with no deep-fiber tear or olecranon flake
+  - Distal biceps footprint intact with intact lacertus; triceps insertion intact with no superficial-layer (combined long/lateral-head) tear or olecranon flake
 - **Step 6: Nerves — Ulnar, Median / AIN, Radial / PIN**
   - Ulnar nerve normal in caliber/signal vs the median nerve, no flexion subluxation or anconeus epitrochlearis
   - Radial nerve/PIN at the arcade of Frohse unremarkable with no extensor-compartment denervation (lateral pain is tendinous/ligamentous here, not PIN entrapment)
   - No mass or ganglion as an occult cause
 - **Step 7: Cartilage, Joint, Capsule, Bursa & Synovium**
   - Radiocapitellar and ulnotrochlear cartilage preserved; small joint effusion only
-  - No pathologically thickened radiocapitellar plica (>~3 mm) mimicking a loose body / mechanical cause
+  - No clearly enlarged or edematous radiocapitellar plica mimicking a loose body / mechanical cause (a ~3 mm fold is a normal value, not a pathologic cutoff)
   - Olecranon bursa not distended; no synovitis
 - **Step 8: Masses, Management Review & Red Flags**
   - No mass/ganglion, no confluent low-T1 marrow replacement or cortical destruction — no infection/tumor red flags
@@ -1480,7 +1480,7 @@ LIGAMENTS (LATERAL COMPLEX — the key region): The common extensor origin is th
 
 MEDIAL LIGAMENT: The anterior bundle of the UCL is traced from the medial epicondyle to the sublime tubercle and is intact — uniformly low in signal, no T-sign (no fluid tracking beyond the articular-cartilage edge at the distal attachment), no full-thickness defect. No sublime-tubercle traction spur.
 
-TENDONS: The common extensor (ECRB) origin shows tendinosis with the deep partial-thickness tear described above (not a full-thickness gap with retraction). The common flexor-pronator origin is normal. The distal biceps footprint at the radial tuberosity is intact with an intact lacertus fibrosus; no bicipitoradial bursitis. The triceps insertion on the olecranon is intact with no deep-fiber tear or olecranon flake.
+TENDONS: The common extensor (ECRB) origin shows tendinosis with the deep partial-thickness tear described above (not a full-thickness gap with retraction). The common flexor-pronator origin is normal. The distal biceps footprint at the radial tuberosity is intact with an intact lacertus fibrosus; no bicipitoradial bursitis. The triceps insertion on the olecranon is intact with no superficial-layer (combined long/lateral-head) tear or olecranon flake.
 
 NERVES: The ulnar nerve in the cubital tunnel is normal in caliber and signal relative to the median nerve and shows no flexion subluxation; no anconeus epitrochlearis. The radial nerve/PIN at the arcade of Frohse is unremarkable with no extensor-compartment denervation. No mass or ganglion.
 
@@ -1684,7 +1684,7 @@ Search pattern findings:
   - No Osborne-Cotterill impaction or heterotopic ossification
 - **Step 5: Tendons — Biceps, Triceps & Epicondyle Origins**
   - Mild common flexor-pronator tendinosis (medial companion to the UCL injury) without a surface-reaching tear
-  - Triceps insertion on the olecranon intact - pertinent negative for a deep-fiber tear given posterior pain
+  - Triceps insertion on the olecranon intact - pertinent negative for a superficial-layer (long/lateral-head) avulsion or olecranon flake given posterior pain
   - Distal biceps footprint and common extensor origin intact
 - **Step 6: Nerves — Ulnar, Median / AIN, Radial / PIN**
   - Mild ulnar-nerve enlargement and T2 hyperintensity vs the median nerve - low-grade ulnar neuritis completing the valgus triad
@@ -1709,7 +1709,7 @@ LIGAMENTS (MEDIAL - read as the valgus triad): The anterior bundle of the UCL is
 
 LIGAMENTS (LATERAL): The LCL complex including the LUCL traced to the supinator crest is intact and in continuity; radiocapitellar alignment is normal. No secondary signs of posterolateral rotatory instability.
 
-TENDONS: The common flexor-pronator origin shows mild tendinosis without a surface-reaching tear (the medial companion to the UCL injury). The common extensor origin, distal biceps footprint, and triceps insertion on the olecranon are intact; no triceps deep-fiber tear.
+TENDONS: The common flexor-pronator origin shows mild tendinosis without a surface-reaching tear (the medial companion to the UCL injury). The common extensor origin, distal biceps footprint, and triceps insertion on the olecranon are intact; no triceps superficial-layer (long/lateral-head) tear or olecranon flake.
 
 NERVES: The ulnar nerve in the cubital tunnel is mildly enlarged with increased T2 signal relative to the median nerve - consistent with low-grade ulnar neuritis, the third member of the valgus-overload triad - but without dynamic subluxation, an anconeus epitrochlearis, or muscle denervation. Median/AIN and radial/PIN territories show no denervation.
 
@@ -1749,7 +1749,7 @@ Search pattern findings:
 - **Step 2: Bones, Marrow & Osteochondral**
   - Non-displaced radial head/neck FRACTURE LINE (low T1) with surrounding fat-suppressed-bright marrow edema — a true fracture, not a bone bruise (edema only)
   - Pertinent negative: capitellar pseudodefect and transverse trochlear ridge are NORMAL — not osteochondral lesions or fractures
-  - Radiocapitellar line bisects the capitellum (no occult Monteggia); in a child, specifically clear the non-union-prone lateral condyle fracture
+  - Radiocapitellar line (central long axis of the radial NECK, best judged on the sagittal/lateral plane) passes through the capitellum — suggestive of, not proof against, an occult Monteggia; in a child, specifically clear the non-union-prone lateral condyle fracture
 - **Step 3: Medial Ligament — UCL & Valgus Overload**
   - Anterior-bundle UCL intact to the sublime tubercle
   - No T-sign — no fluid tracking beyond the articular-cartilage edge at the distal attachment
@@ -1779,7 +1779,7 @@ Model report findings:
 
 PROTOCOL: Non-contrast elbow MRI with T1 and fluid-sensitive fat-suppressed (T2 FS/STIR) sequences in coronal, sagittal, and axial planes. Clinical question: occult fracture in an adult after a FOOSH with a displaced posterior fat-pad sign on radiograph and no visible fracture line; exclude an osteochondral lesion.
 
-BONES & MARROW: There is a non-displaced, obliquely oriented FRACTURE LINE through the radial head extending into the proximal radial neck, low-signal on T1 with surrounding fat-suppressed-bright marrow EDEMA on the fluid-sensitive sequences. The line reaches the articular surface but the fragments are anatomically aligned without a step-off or depression. Importantly, this is a true fracture (a discrete LINE plus marrow edema), not merely a bone bruise (which would show edema WITHOUT a line). The capitellum, trochlea, olecranon, and coronoid show no fracture line or marrow edema. The radiocapitellar line (central long axis of the radial neck) bisects the capitellum on every plane — no radial-head subluxation/dislocation (no occult Monteggia).
+BONES & MARROW: There is a non-displaced, obliquely oriented FRACTURE LINE through the radial head extending into the proximal radial neck, low-signal on T1 with surrounding fat-suppressed-bright marrow EDEMA on the fluid-sensitive sequences. The line reaches the articular surface but the fragments are anatomically aligned without a step-off or depression. Importantly, this is a true fracture (a discrete LINE plus marrow edema), not merely a bone bruise (which would show edema WITHOUT a line). The capitellum, trochlea, olecranon, and coronoid show no fracture line or marrow edema. The radiocapitellar line — drawn along the central long axis of the radial NECK (not the shaft) and judged primarily on the sagittal/lateral plane — passes through the capitellum, and the radial head is anatomically located with a congruent radiocapitellar joint: no radial-head subluxation/dislocation (no occult Monteggia). The line is supportive rather than definitive.
 
 NORMAL VARIANTS — DO NOT OVERCALL: The posterolateral capitellar bare-area groove (the PSEUDODEFECT of the capitellum) is seen at the capitellum–lateral-epicondyle junction and is a normal contour, NOT an osteochondral lesion — there is no fluid-undercut fragment, no subchondral cyst, and no cartilage breach to suggest capitellar OCD. The transverse TROCHLEAR RIDGE/groove is likewise a normal osseous landmark and must not be called a fracture or osteochondral defect.
 
@@ -1803,7 +1803,7 @@ Teaching points:
 - MRI earns its keep by distinguishing a TRUE FRACTURE (a discrete low-signal LINE plus marrow edema) from a BONE BRUISE (marrow edema WITHOUT a line). That distinction changes immobilization, follow-up, and counseling on healing time.
 - The don't-overcall counterpoint: the capitellar PSEUDODEFECT (posterolateral bare-area groove) and the transverse TROCHLEAR RIDGE are normal variants — calling either an osteochondral lesion or fracture sends a patient down an unnecessary surgical pathway. Capitellar OCD requires a fluid-undercut fragment, a sizeable/multiple subchondral cyst (the 5 mm figure is knee-derived, not validated for the capitellum), a cartilage breach, or a displaced fragment — none of which a pseudodefect has.
 - The radial-head SURGICAL TRIGGER is functional, not a single number: a mechanical BLOCK to forearm rotation, an articular fragment displaced enough to impede motion, or comminution of the whole head (Mason III). The '2 mm' figure alone does not mandate surgery — many minimally displaced Mason I/II fractures without a block are managed non-operatively with early motion.
-- Run the radiocapitellar line on every projection/plane (it must bisect the capitellum) to avoid missing an occult Monteggia, and in CHILDREN convert the same fat-pad sign into a dedicated hunt for the non-union-prone lateral condyle (Salter-Harris IV) fracture — a classic pediatric miss with very different stakes.
+- Run the radiocapitellar line — along the central long axis of the radial NECK (not the shaft), most reliable on the LATERAL/sagittal view — as a screen for an occult Monteggia: it SHOULD pass through the capitellum, but treat it as SUGGESTIVE, not absolute. In 116 normal pediatric elbows the neck line still missed the capitellum in about 1% of tracings and passed through the central third only about three-quarters of the time on the lateral view (roughly half on AP), and it is degraded by forearm rotation and young age (least reliable under 5). A miss earns a contralateral comparison, not a stand-alone dislocation call. And in CHILDREN convert the same fat-pad sign into a dedicated hunt for the non-union-prone lateral condyle (Salter-Harris IV) fracture — a classic pediatric miss with very different stakes.
 Teaching media:
 - src=/images/teaching/us/elbow-radial-head.jpg | alt=Ultrasound of the radiocapitellar joint and radial head | caption=US correlate: radiocapitellar joint and radial head; the MRI task is still to confirm a true fracture line plus edema. | attribution=Malahias MA, et al. Arch Bone Jt Surg 2018;6(6):539. CC BY-NC 3.0.
 
@@ -1919,7 +1919,7 @@ Guided tour:
   - Common extensor origin @ x=72, y=42
 - **5. Brachialis** (slice 16) The brachialis is the broad anterior muscle that inserts on the coronoid/ulnar tuberosity — the primary elbow flexor, lying behind the biceps. The distal biceps tendon runs through the antecubital fossa toward its radial-tuberosity footprint; a dedicated FABS view can help when routine axial/sagittal images leave partial-vs-complete tear status uncertain.
   - Brachialis @ x=45, y=33
-- **6. Triceps** (slice 16) The triceps occupies the posterior compartment and inserts broadly on the olecranon. Its deep central fibers can tear first while the superficial expansion stays intact — so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head subluxing with the ulnar nerve (snapping triceps).
+- **6. Triceps** (slice 16) The triceps occupies the posterior compartment and inserts broadly on the olecranon. Failure is superficial-layer-first: the posterior/superficial tendon (combined long and lateral heads) avulses — often carrying an olecranon enthesophyte flake — while the deep anterior medial-head attachment stays intact, so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head subluxing with the ulnar nerve (snapping triceps).
   - Triceps @ x=50, y=82
 - **7. Do-not-overcall checkpoint** (slice 16) On axial elbow MRI, do not diagnose cubital tunnel syndrome from a bright ulnar nerve alone. Compare nerve size and signal with the median nerve and the other side, then look for denervation or a structural cause such as subluxation, an accessory anconeus epitrochlearis, a ganglion, or snapping triceps. For distal biceps, routine axial images matter, and FABS is a problem-solving view rather than a replacement.
 
@@ -1953,19 +1953,19 @@ Knowledge check:
   - B. Distal biceps
   - C. Common extensor
   - D. Triceps [CORRECT]
-    Explanation: The triceps occupies the posterior compartment and inserts on the olecranon. Its deep fibers can fail while the superficial expansion remains intact, so continuity should be assessed across the full footprint.
+    Explanation: The triceps occupies the posterior compartment and inserts on the olecranon. Its superficial layer (combined long and lateral heads) can fail while the deep medial-head attachment remains intact, so continuity should be assessed across the full footprint.
 - **ec-axi-q6:** The marked anterior compartment also carries the distal biceps tendon toward its radial-tuberosity footprint. Which structure decides whether a COMPLETE distal biceps tear retracts? (slice 16)
   - A. The lacertus fibrosus [CORRECT]
   - B. The bicipitoradial bursa
   - C. The annular ligament
   - D. The brachialis insertion on the coronoid
     Explanation: The lacertus fibrosus is the aponeurotic expansion from the medial musculotendinous junction into the forearm flexor fascia; intact, it tethers a fully torn biceps so the tendon does not retract and the exam can look preserved — the classic complete tear undercalled as partial. A distended bicipitoradial bursa is the tempting answer but is only a CLUE to scrutinize the footprint, not the tether. The annular ligament stabilizes the radial head, and the brachialis is a separate muscle whose coronoid insertion is untouched by a biceps rupture.
-- **ec-axi-q7:** A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say? (slice 16)
+- **ec-axi-q7:** A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. What should the report say? (slice 16)
   - A. A high-grade partial tear — state the percentage of width torn and the gap, and flag it for repair consideration [CORRECT]
-  - B. Tendinosis, because the superficial expansion is intact
-  - C. A complete rupture, because any deep-fiber gap is by definition full-thickness
-  - D. A normal variant — a fluid cleft normally separates the deep and superficial triceps layers
-    Explanation: The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete injury looks partial — report the PERCENTAGE of width torn and the gap rather than the word 'partial' alone. Calling it tendinosis is the tempting undercall, but high-grade partials (commonly >50% width, or any tear with extension weakness against resistance) and complete ruptures prompt repair. It is not complete, since the superficial expansion is continuous, and a fluid-filled cleft between the layers is not a normal triceps finding.
+  - B. Tendinosis, because the deep medial-head attachment is intact
+  - C. A complete rupture, because any avulsed olecranon flake is by definition a full-thickness tear
+  - D. A normal variant — a fluid cleft normally separates the superficial and deep triceps layers
+    Explanation: The superficial triceps layer fails first while the deep medial-head attachment can stay intact, so a clinically near-complete injury looks partial — report the PERCENTAGE of width torn and the gap rather than the word 'partial' alone, and treat the avulsed olecranon flake as the classic tip-off. Calling it tendinosis is the tempting undercall, but high-grade partials (commonly >50% width, or any tear with extension weakness against resistance) and complete ruptures prompt repair. It is not complete, since the deep medial-head fibers are continuous — a flake can avulse with a partial-width tear — and a fluid-filled cleft between the layers is not a normal triceps finding.
 - **ec-axi-q8:** In a patient with flexion-provoked medial snapping and ulnar symptoms, why does it matter whether the MEDIAL head of the marked triceps subluxates over the medial epicondyle? (slice 16)
   - A. Snapping triceps must be addressed at surgery — transposing the nerve alone leaves the snapping mechanism behind [CORRECT]
   - B. It is a normal flexion finding with no operative consequence
@@ -2084,7 +2084,7 @@ Knowledge check:
 - **Common flexor-pronator origin:** Watch the medial 'valgus triad' together: the flexor-pronator origin, the UCL to the sublime tubercle, and the ulnar nerve just posterior — valgus overload injures all three.
 - **Common extensor origin:** Watch the LUCL deep to the extensor origin: a deep common-extensor tear that takes the LUCL implies posterolateral rotatory instability — a ligament-reconstruction problem, not a debridement, and a classic post-injection/post-release complication.
 - **Ulnar nerve (cubital tunnel):** Watch for a structural cause that can change operative planning — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps may favor transposition over in-situ decompression.
-- **Triceps:** Watch the deep central triceps fibers — they tear first while the superficial expansion stays intact, so a 'partial' triceps tear with extension weakness against resistance should still trigger high-grade tear/repair consideration.
+- **Triceps:** Watch the superficial triceps layer — the combined long- and lateral-head tendon avulses first (often with an olecranon enthesophyte flake) while the deep medial-head attachment stays intact, so a 'partial' triceps tear with extension weakness against resistance should still trigger high-grade tear/repair consideration.
 - **Coronoid process:** Watch the anteromedial coronoid facet — a small-looking fracture can imply varus posteromedial rotatory instability and should trigger surgical review; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion).
 - **Olecranon & triceps insertion:** Watch the posteromedial olecranon in the thrower for a valgus-extension-overload osteophyte and a posterior loose body — and remember debriding the osteophyte without addressing UCL laxity can unmask valgus instability.
 - **Trochlea / capitellum (articular surface):** Watch for a posterolateral radiocapitellar plica: a thin fold can be normal, but thickened/edematous plica with snapping/catching can mimic a loose body or OCD symptoms.
@@ -2155,15 +2155,15 @@ A 47-year-old man felt a tearing sensation lifting a heavy box with the elbow fl
 - D. A complete tear that must be grafted because it is already beyond the 2-week repair deadline
 Explanation: Full discontinuity at the tuberosity is a complete tear; an INTACT lacertus fibrosus tethers it so it does not retract and can mimic a partial tear clinically and on imaging — the classic missed complete tear. In an active/medically fit patient it remains an anatomic repair consideration, so calling it partial or tendinosis undercalls it. Report complete-vs-partial AND lacertus integrity with retraction in cm. There is no hard 2-4-week deadline: earlier repair is technically easier and chronic irreducible tears need a graft, but many primary repairs succeed out to ~4-6 weeks and beyond — a fixed deadline is a teaching error.
 
-#### Advanced: elb-adv-6 · Triceps tear — deep central fibers and when to repair
+#### Advanced: elb-adv-6 · Triceps tear — superficial-layer avulsion and when to repair
 
-A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central triceps fibers are torn with a fluid gap while the superficial expansion remains in continuity. Which statement is correct?
+A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superficial triceps layer (combined long and lateral heads) avulsed with a fluid gap while the deep medial-head attachment remains in continuity. Which statement is correct?
 
-- A. This is best called tendinosis because the superficial fibers are intact
-- B. A high-grade partial tear with deep-fiber disruption and extension weakness should be repaired, not dismissed as tendinosis [CORRECT]
-- C. Superficial-expansion continuity excludes a surgically relevant injury regardless of the exam
+- A. This is best called tendinosis because the deep medial-head fibers are intact
+- B. A high-grade partial tear with superficial-layer avulsion and extension weakness should be repaired, not dismissed as tendinosis [CORRECT]
+- C. Deep medial-head continuity excludes a surgically relevant injury regardless of the exam
 - D. Triceps tears never displace an olecranon flake, so the radiographic finding is incidental
-Explanation: The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor.
+Explanation: Distal triceps tears fail superficial-layer-first: the combined long- and lateral-head tendon avulses, classically retracting a fractured olecranon enthesophyte fragment, while the deep medial-head attachment stays intact. So a clinically near-complete tear can look partial — report the percentage of width torn and the gap rather than the word 'partial'. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. An intact deep medial-head attachment does not exclude a surgically relevant superficial-layer tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor.
 
 #### Advanced: elb-adv-7 · Epicondylitis + LUCL — refractory tennis elbow that becomes instability
 
@@ -2353,17 +2353,17 @@ Plane: Axial T2 FS · Stack: /images/teaching/stacks/normal-elbow-axial · start
 - D. Trace the posterior bundle of the UCL, because lateral epicondylitis destabilizes the cubital tunnel floor
 Explanation: Key: the common-extensor origin (ECRB) sits superficial to the LUCL/RCL origin, so with lateral epicondylitis you must trace the LUCL to the supinator crest — a deep/full-thickness extensor tear that undercuts the radiocapitellar joint and involves the LUCL implies posterolateral rotatory instability, converting 'tennis elbow' into a surgical instability problem (and a known complication of prior lateral steroid injection/release). On the medial side the companion is the anterior-bundle UCL. The brachialis distractor is wrong — brachialis is an anterior flexor unrelated to the extensor origin. The annular ligament is not the lesion that hides beneath a deep extensor tear (the LUCL is), and the posterior bundle of the UCL is a medial cubital-tunnel structure, not a lateral companion.
 
-#### Image CAQ: elb-caq-5 · Distal biceps and triceps insertions on sagittal — the lacertus/deep-fiber 'masked complete tear'
+#### Image CAQ: elb-caq-5 · Distal biceps and triceps insertions on sagittal — the lacertus/layer-selective 'masked complete tear'
 
 On this sagittal IR/STIR image, follow the anterior soft tissues to the distal biceps heading toward the radial tuberosity, and posteriorly the triceps inserting broadly on the olecranon — both normally smooth, continuous, low-signal tendons. A 50-year-old man felt a painful anterior 'pop' lifting a heavy box and has a vague antecubital mass but can still flex. What concept must you keep in mind so you do not undercall the injury on this plane?
 
 Plane: Sagittal IR/STIR · Stack: /images/teaching/stacks/normal-elbow-sagittal · startIndex: 14
 
-- A. A complete distal biceps tear with an INTACT lacertus fibrosus may NOT retract and can mimic a partial tear clinically and on imaging — report partial-vs-complete AND lacertus status and state retraction in cm; likewise the triceps deep central fibers tear first while the superficial expansion stays intact [CORRECT]
+- A. A complete distal biceps tear with an INTACT lacertus fibrosus may NOT retract and can mimic a partial tear clinically and on imaging — report partial-vs-complete AND lacertus status and state retraction in cm; likewise the triceps superficial layer avulses first (often with an olecranon flake) while the deep medial-head attachment stays intact [CORRECT]
 - B. A balled-up, retracted stump with an empty tuberosity is the only way a complete distal biceps tear can present, so preserved flexion excludes a complete tear
 - C. The bicipitoradial bursa fluid is itself the diagnosis of a complete tear and no insertion assessment is needed
 - D. The distal biceps and triceps are best graded on the coronal plane, so a sagittal read cannot characterize either tendon
-Explanation: Key: the lacertus fibrosus tethers the distal biceps, so a COMPLETE tear with an intact lacertus may not retract and can masquerade as a partial tear (the commonly missed complete tear) — you must report partial-vs-complete AND lacertus-intact-vs-torn and state retraction in cm; analogously, the triceps deep central fibers fail first while the superficial expansion stays intact, so a clinically near-complete tear can look partial. The strongest distractor (empty tuberosity is the only presentation) is wrong because that is the DISRUPTED-lacertus pattern; an intact lacertus prevents retraction. Bicipitoradial bursitis is a clue to scrutinize the insertion, not a diagnosis by itself. Distal biceps grading is done on axial/FABS and sagittal, not the coronal plane.
+Explanation: Key: the lacertus fibrosus tethers the distal biceps, so a COMPLETE tear with an intact lacertus may not retract and can masquerade as a partial tear (the commonly missed complete tear) — you must report partial-vs-complete AND lacertus-intact-vs-torn and state retraction in cm; analogously, the triceps superficial layer (combined long and lateral heads) avulses first while the deep medial-head attachment stays intact, so a clinically near-complete tear can look partial. The strongest distractor (empty tuberosity is the only presentation) is wrong because that is the DISRUPTED-lacertus pattern; an intact lacertus prevents retraction. Bicipitoradial bursitis is a clue to scrutinize the insertion, not a diagnosis by itself. Distal biceps grading is done on axial/FABS and sagittal, not the coronal plane.
 
 #### Image CAQ: elb-caq-6 · Fat pads and the dependent recesses for loose bodies on sagittal
 
@@ -2429,7 +2429,7 @@ Brachialis fills the anterior elbow and the distal biceps dives toward the radia
 
 This is the posterior triceps compartment on axial. Find its olecranon/triceps-insertion region on sagittal.
 
-Triceps is posterior on axial and inserts broadly on the olecranon on sagittal. Deep central fibers may tear while superficial expansion remains intact, so a 'partial-looking' tear can still be clinically important when extension is weak.
+Triceps is posterior on axial and inserts broadly on the olecranon on sagittal. The superficial layer avulses first (often with an olecranon flake) while the deep medial-head attachment remains intact, so a 'partial-looking' tear can still be clinically important when extension is weak.
 
 ## Assessments
 
@@ -2547,13 +2547,13 @@ Explanation: The tendon is fully discontinuous with an empty footprint, so this 
 
 #### elbow-q-biceps-lacertus-post · parallel-post · elbow-tendons-biceps-triceps-epicondylitis
 
-A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap involving the deep central fibers and a thin intact superficial expansion; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?
+A 52-year-old roofer on chronic dialysis fell onto his hand and now cannot extend the elbow against gravity. MRI shows the triceps tendon torn across roughly 70% of its width at the olecranon insertion, with a fluid-filled gap through the superficial (combined long- and lateral-head) layer and an intact deep, anterior medial-head attachment; a small avulsed osseous flake sits adjacent to the olecranon. How should this finding most appropriately direct management?
 
-- A. Because the superficial expansion is intact and it is not a full-thickness gap, label it triceps tendinosis and manage with activity modification alone
+- A. Because the deep medial-head attachment is intact and it is not a full-thickness gap, label it triceps tendinosis and manage with activity modification alone
 - B. Diagnose olecranon bursitis as the cause of the weakness and arrange aspiration of the bursa
 - C. Withhold any surgical referral unless follow-up imaging beyond a fixed 6-week deadline shows further retraction
-- D. Recognize a high-grade partial triceps tear with extension weakness and refer for surgical repair, since deep-fiber tears with weakness are repaired and the intact superficial expansion makes the tear look milder than it is [CORRECT]
-Explanation: The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete injury can look only partial on imaging. A high-grade partial (commonly >50% width torn, or ANY tear with extension weakness against resistance) is a surgical lesion and should not be undercalled — here a ~70% deep-fiber tear with loss of active extension and an avulsed flake clinches it. Calling it tendinosis because the superficial layer is intact (A) is exactly the undercall to avoid, since the patient cannot extend against gravity. Olecranon bursitis (B) does not produce extension weakness or an insertional tendon gap and would not explain these findings. Surgical timing is a guideline, not a fixed deadline, and a repairable tendon tear should be referred now rather than waiting for an arbitrary 6-week cutoff before acting (C).
+- D. Recognize a high-grade partial triceps tear with extension weakness and refer for surgical repair, reporting WHICH layer is torn plus the percent width and gap, since the intact deep medial head makes the tear look milder than it is [CORRECT]
+Explanation: Distal triceps tears fail SUPERFICIAL-layer-first: the posterior/superficial component — the combined long- and lateral-head tendon — avulses, often carrying an olecranon enthesophyte flake (the classic radiographic tip-off, present here), while the deep, anterior medial-head attachment stays intact. Because an intact lateral expansion (with the anconeus compensating) still permits weak active extension, a functionally near-complete avulsion can read as merely 'partial' — so report which layer is torn, the PERCENTAGE of width, and the gap rather than the word 'partial'. A high-grade partial (commonly >50% width torn, or ANY tear with extension weakness against resistance) is a surgical lesion: here ~70% width, loss of extension against gravity, and the flake clinch it. Calling it tendinosis because the deep medial head is intact (A) is exactly the undercall to avoid, since the patient cannot extend against gravity. Olecranon bursitis (B) does not produce extension weakness or an insertional tendon gap and would not explain these findings. Surgical timing is a guideline, not a fixed deadline, and a repairable tendon tear should be referred now rather than waiting for an arbitrary 6-week cutoff before acting (C).
 
 #### elbow-q-nerve-localize-pre · parallel-pre · elbow-nerves-entrapment
 
@@ -2724,7 +2724,7 @@ Explanation: Snapping triceps — the medial triceps head subluxating over the m
 #### Anterior, posterior compartments & coronoid
 - **Distal biceps tendon:** Bifurcated footprint on the radial tuberosity; the lacertus fibrosus is the aponeurotic expansion that tethers it; the bicipitoradial bursa sits between the tendon and the tuberosity.
 - **Brachialis:** Inserts on the coronoid/ulnar tuberosity; the primary elbow flexor, lying behind the biceps.
-- **Triceps tendon:** Inserts broadly on the olecranon; the deep central fibers can tear first while the superficial expansion stays intact.
+- **Triceps tendon:** Inserts broadly on the olecranon; tears fail SUPERFICIAL-layer-first — the posterior/superficial combined long- and lateral-head tendon avulses while the deep, anterior medial-head attachment stays intact.
 - **Olecranon, coronoid & fossae:** The valgus-extension-overload posteromedial olecranon osteophyte and loose-body niches; the coronoid (sublime tubercle medially, anteromedial facet laterally) is the keystone of post-traumatic stability.
 - **Fat pads:** The anterior fat pad is normally seen (elevation = the sail sign); the posterior fat pad is normally hidden in the olecranon fossa — any visible posterior fat pad after trauma means effusion/hemarthrosis.
 
@@ -2759,7 +2759,7 @@ Explanation: Snapping triceps — the medial triceps head subluxating over the m
 - **Surgical timing (a guideline, not a deadline):** Earlier anatomic repair is technically easier; chronic retracted tears that won't reach the tuberosity (often only after many weeks-to-months, when irreducible) need a graft. Many primary repairs succeed out to ~4–6 weeks and beyond — do NOT teach a hard 2–4 week / graft-after-6-week cutoff.
 
 #### Triceps tear
-- **Tendinosis vs partial vs complete:** The deep central fibers fail first while the superficial expansion stays intact — so it can look partial despite near-complete clinical weakness. Complete = a full-thickness gap with a retracted stump ± an olecranon flake. Report the percentage of tendon width torn and the gap.
+- **Tendinosis vs partial vs complete:** Tears fail SUPERFICIAL-layer-first: the posterior/superficial component (combined long- and lateral-head tendon) avulses and retracts, often carrying an olecranon enthesophyte flake, while the deep, anterior medial-head attachment stays intact — so it can look partial despite near-complete clinical weakness. Complete = a full-thickness gap with a retracted stump ± an olecranon flake. Report WHICH layer is torn, the percentage of tendon width, and the gap rather than the word 'partial'; the avulsed olecranon flake on the lateral radiograph is the classic tip-off.
 - **When to repair:** A complete rupture is surgical; high-grade partials (commonly >50% width torn, or ANY tear with extension weakness against resistance) are repaired — don't undercall as 'tendinosis.'
 
 #### Epicondylitis & the adjacent ligament
@@ -2783,12 +2783,12 @@ Explanation: Snapping triceps — the medial triceps head subluxating over the m
 
 #### Occult fracture & alignment
 - **The displaced posterior fat pad:** Any visible (displaced) posterior fat pad in an adult after trauma = hemarthrosis from an occult intra-articular fracture (radial head most common; supracondylar and the non-union-prone lateral condyle/Salter-Harris IV in children) until proven otherwise. MRI shows the line + marrow edema and distinguishes a true fracture from a bone bruise.
-- **Radiocapitellar line:** A line through the central long axis of the radial neck must bisect the capitellum on EVERY projection — failure = radial head subluxation/dislocation (think occult Monteggia).
+- **Radiocapitellar line:** A line along the central long axis of the radial NECK (not the shaft), most reliable on the LATERAL view, should pass through the capitellum — a miss points to radial-head subluxation/dislocation (think occult Monteggia). Treat it as SUGGESTIVE, not absolute: in 116 normal pediatric elbows the neck line still missed the capitellum in ~1% of tracings and passed through the central third only ~3/4 of the time on lateral (~half on AP), and it is degraded by forearm rotation and young age (least reliable under 5). Correlate with the contralateral side rather than calling instability off the line alone.
 - **Mason radial-head framework & the surgical trigger:** Mason I = non-/minimally displaced, II = displaced (commonly >2 mm) partial-articular, III = comminuted whole-head. The surgical trigger is a mechanical BLOCK to forearm rotation, an articular fragment displaced enough to impede motion, or comminution (Mason III) — NOT the 2 mm number alone (many Mason II without a block are managed nonoperatively).
 
 #### Loose bodies, radiocapitellar plica & olecranon bursitis
 - **Loose bodies:** They migrate to the dependent recesses (coronoid fossa, olecranon fossa, radiocapitellar recess) and are best seen against bright joint fluid on sagittal fluid-sensitive images; GRE blooms ossified bodies; CT/CT arthrography is most sensitive for small ossified bodies and for counting them pre-op. Primary elbow OA (coronoid/olecranon-tip and fossa osteophytes, chondral loss) is the most common source in non-throwers.
-- **Radiocapitellar plica:** A thickened radiocapitellar plica/posterolateral synovial fold causes lateral catching and mimics a loose body/OCD — considered pathologic when thickened beyond ~3 mm with mechanical symptoms.
+- **Radiocapitellar plica:** A radiocapitellar plica/posterolateral synovial fold can cause lateral catching and mimics a loose body/OCD — but it is present in about three-quarters of ASYMPTOMATIC elbows and averages about 3 mm, so ~3 mm is NORMAL, not a pathologic threshold, and symptomatic and asymptomatic plicae overlap. There is no validated cutoff: call it clinically relevant only when clearly enlarged relative to normal (symptomatic series run nearer 7 mm mediolateral, or the fold covers a substantial portion of the radial head) and/or edematous, AND the mechanical symptoms are concordant.
 - **Olecranon bursitis:** Aseptic vs septic — MRI cannot reliably exclude infection. A red/warm/fluctuant bursa needs ASPIRATION, not just imaging.
 
 #### Protocol — when each study changes management

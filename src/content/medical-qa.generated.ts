@@ -51,8 +51,8 @@ export const medicalQaGeneratedAt = "2026-07-26";
 
 export const medicalQaTotals: MedicalQaTotals = {
   "reviewItems": 2918,
-  "highRiskItems": 1449,
-  "sourceCheckItems": 1678,
+  "highRiskItems": 1450,
+  "sourceCheckItems": 1679,
   "diagnostics": 0,
   "diagnosticErrors": 0,
   "diagnosticWarnings": 0
@@ -115,8 +115,8 @@ export const medicalQaCourseSummaries: Record<string, MedicalQaCourseSummary> = 
     "imageCaqItems": 7,
     "redFlags": 5,
     "reviewItems": 546,
-    "highRiskItems": 435,
-    "sourceCheckItems": 465,
+    "highRiskItems": 436,
+    "sourceCheckItems": 466,
     "diagnostics": 0
   }
 };
@@ -308,9 +308,9 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   },
   "elbow-mri": {
     "risks": {
-      "high": 435,
+      "high": 436,
       "medium": 30,
-      "standard": 81
+      "standard": 80
     },
     "itemTypes": {
       "course-overview": 1,
@@ -347,7 +347,7 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
       "case-summary": 8,
       "case-model-report": 8,
       "case-teaching-point": 33,
-      "case-search-finding": 56,
+      "case-search-finding": 57,
       "normal-tour-step": 14,
       "normal-plane-quiz": 23,
       "normal-structure-pearl": 9,
@@ -366,4 +366,4 @@ export const medicalQaReviewBreakdown: Record<string, MedicalQaReviewBreakdown> 
   }
 };
 
-export const medicalQaPriorityItemCount = 1678;
+export const medicalQaPriorityItemCount = 1679;

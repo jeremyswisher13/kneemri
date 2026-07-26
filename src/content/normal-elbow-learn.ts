@@ -286,7 +286,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 16,
         markers: [{ x: 50, y: 82, label: "Triceps" }],
         title: "Triceps",
-        note: "The triceps occupies the posterior compartment and inserts broadly on the olecranon. Its deep central fibers can tear first while the superficial expansion stays intact — so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head subluxing with the ulnar nerve (snapping triceps).",
+        note: "The triceps occupies the posterior compartment and inserts broadly on the olecranon. Failure is superficial-layer-first: the posterior/superficial tendon (combined long and lateral heads) avulses — often carrying an olecranon enthesophyte flake — while the deep anterior medial-head attachment stays intact, so a triceps tear can look partial despite significant extension weakness. Watch for a medial triceps head subluxing with the ulnar nerve (snapping triceps).",
       },
       {
         sliceIndex: 16,
@@ -344,7 +344,7 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         options: ["Brachialis", "Distal biceps", "Common extensor", "Triceps"],
         answer: 3,
         explanation:
-          "The triceps occupies the posterior compartment and inserts on the olecranon. Its deep fibers can fail while the superficial expansion remains intact, so continuity should be assessed across the full footprint.",
+          "The triceps occupies the posterior compartment and inserts on the olecranon. Its superficial layer (combined long and lateral heads) can fail while the deep medial-head attachment remains intact, so continuity should be assessed across the full footprint.",
       },
       // Reasoning items below reuse the reviewed brachialis / triceps / common
       // flexor / common extensor markers only. The axial ulnar-nerve marker is
@@ -366,16 +366,16 @@ export const normalElbowLearn: Record<string, PlaneLearn> = {
         sliceIndex: 16,
         marker: { x: 50, y: 82 },
         prompt:
-          "A powerlifter has posterior elbow pain and weak extension against resistance. The deep central fibers of the marked tendon are torn with a fluid gap while the superficial expansion stays in continuity. What should the report say?",
+          "A powerlifter has posterior elbow pain and weak extension against resistance. The superficial layer of the marked tendon (combined long and lateral heads) is avulsed with a fluid gap and a displaced olecranon flake, while the deep medial-head attachment stays in continuity. What should the report say?",
         options: [
           "A high-grade partial tear — state the percentage of width torn and the gap, and flag it for repair consideration",
-          "Tendinosis, because the superficial expansion is intact",
-          "A complete rupture, because any deep-fiber gap is by definition full-thickness",
-          "A normal variant — a fluid cleft normally separates the deep and superficial triceps layers",
+          "Tendinosis, because the deep medial-head attachment is intact",
+          "A complete rupture, because any avulsed olecranon flake is by definition a full-thickness tear",
+          "A normal variant — a fluid cleft normally separates the superficial and deep triceps layers",
         ],
         answer: 0,
         explanation:
-          "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete injury looks partial — report the PERCENTAGE of width torn and the gap rather than the word 'partial' alone. Calling it tendinosis is the tempting undercall, but high-grade partials (commonly >50% width, or any tear with extension weakness against resistance) and complete ruptures prompt repair. It is not complete, since the superficial expansion is continuous, and a fluid-filled cleft between the layers is not a normal triceps finding.",
+          "The superficial triceps layer fails first while the deep medial-head attachment can stay intact, so a clinically near-complete injury looks partial — report the PERCENTAGE of width torn and the gap rather than the word 'partial' alone, and treat the avulsed olecranon flake as the classic tip-off. Calling it tendinosis is the tempting undercall, but high-grade partials (commonly >50% width, or any tear with extension weakness against resistance) and complete ruptures prompt repair. It is not complete, since the deep medial-head fibers are continuous — a flake can avulse with a partial-width tear — and a fluid-filled cleft between the layers is not a normal triceps finding.",
       },
       {
         id: "ec-axi-q8",
@@ -661,7 +661,7 @@ export const structureElbowPearl: Record<string, string> = {
   "Ulnar nerve (cubital tunnel)":
     "Watch for a structural cause that can change operative planning — dynamic flexion subluxation of the nerve, an anconeus epitrochlearis, or a snapping triceps may favor transposition over in-situ decompression.",
   "Triceps":
-    "Watch the deep central triceps fibers — they tear first while the superficial expansion stays intact, so a 'partial' triceps tear with extension weakness against resistance should still trigger high-grade tear/repair consideration.",
+    "Watch the superficial triceps layer — the combined long- and lateral-head tendon avulses first (often with an olecranon enthesophyte flake) while the deep medial-head attachment stays intact, so a 'partial' triceps tear with extension weakness against resistance should still trigger high-grade tear/repair consideration.",
   "Coronoid process":
     "Watch the anteromedial coronoid facet — a small-looking fracture can imply varus posteromedial rotatory instability and should trigger surgical review; in any post-dislocation elbow, also comment on the LUCL (the usual primary lesion).",
   "Olecranon & triceps insertion":
@@ -846,16 +846,16 @@ export const elbowAdvanced: AdvancedQ[] = [
   },
   {
     "id": "elb-adv-6",
-    "topic": "Triceps tear — deep central fibers and when to repair",
-    "prompt": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the deep central triceps fibers are torn with a fluid gap while the superficial expansion remains in continuity. Which statement is correct?",
+    "topic": "Triceps tear — superficial-layer avulsion and when to repair",
+    "prompt": "A 40-year-old powerlifter (on chronic anabolic steroids) has posterior elbow pain and weak extension after a forced flexion injury; a small olecranon flake is noted on the lateral radiograph. MRI shows the superficial triceps layer (combined long and lateral heads) avulsed with a fluid gap while the deep medial-head attachment remains in continuity. Which statement is correct?",
     "options": [
-      "This is best called tendinosis because the superficial fibers are intact",
-      "A high-grade partial tear with deep-fiber disruption and extension weakness should be repaired, not dismissed as tendinosis",
-      "Superficial-expansion continuity excludes a surgically relevant injury regardless of the exam",
+      "This is best called tendinosis because the deep medial-head fibers are intact",
+      "A high-grade partial tear with superficial-layer avulsion and extension weakness should be repaired, not dismissed as tendinosis",
+      "Deep medial-head continuity excludes a surgically relevant injury regardless of the exam",
       "Triceps tears never displace an olecranon flake, so the radiographic finding is incidental"
     ],
     "answer": 1,
-    "explanation": "The deep central triceps fibers fail first while the superficial expansion can stay intact, so a clinically near-complete tear can look partial — report the percentage of width torn and the gap. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. Intact superficial fibers do not exclude a surgically relevant deep tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor."
+    "explanation": "Distal triceps tears fail superficial-layer-first: the combined long- and lateral-head tendon avulses, classically retracting a fractured olecranon enthesophyte fragment, while the deep medial-head attachment stays intact. So a clinically near-complete tear can look partial — report the percentage of width torn and the gap rather than the word 'partial'. Complete ruptures and high-grade partials (commonly >50% width, especially with extension weakness against resistance) usually prompt repair consideration, so labeling this 'tendinosis' undercalls a surgical lesion. An intact deep medial-head attachment does not exclude a surgically relevant superficial-layer tear. An avulsed olecranon flake is the classic radiographic tip-off to a triceps avulsion, not incidental — anabolic steroids are a known risk factor."
   },
   {
     "id": "elb-adv-7",
@@ -1112,20 +1112,20 @@ export const elbowImageCaq: ImageCaqQ[] = [
   },
   {
     "id": "elb-caq-5",
-    "topic": "Distal biceps and triceps insertions on sagittal — the lacertus/deep-fiber 'masked complete tear'",
+    "topic": "Distal biceps and triceps insertions on sagittal — the lacertus/layer-selective 'masked complete tear'",
     "dir": "/images/teaching/stacks/normal-elbow-sagittal",
     "count": 30,
     "startIndex": 14,
     "plane": "Sagittal IR/STIR",
     "vignette": "On this sagittal IR/STIR image, follow the anterior soft tissues to the distal biceps heading toward the radial tuberosity, and posteriorly the triceps inserting broadly on the olecranon — both normally smooth, continuous, low-signal tendons. A 50-year-old man felt a painful anterior 'pop' lifting a heavy box and has a vague antecubital mass but can still flex. What concept must you keep in mind so you do not undercall the injury on this plane?",
     "options": [
-      "A complete distal biceps tear with an INTACT lacertus fibrosus may NOT retract and can mimic a partial tear clinically and on imaging — report partial-vs-complete AND lacertus status and state retraction in cm; likewise the triceps deep central fibers tear first while the superficial expansion stays intact",
+      "A complete distal biceps tear with an INTACT lacertus fibrosus may NOT retract and can mimic a partial tear clinically and on imaging — report partial-vs-complete AND lacertus status and state retraction in cm; likewise the triceps superficial layer avulses first (often with an olecranon flake) while the deep medial-head attachment stays intact",
       "A balled-up, retracted stump with an empty tuberosity is the only way a complete distal biceps tear can present, so preserved flexion excludes a complete tear",
       "The bicipitoradial bursa fluid is itself the diagnosis of a complete tear and no insertion assessment is needed",
       "The distal biceps and triceps are best graded on the coronal plane, so a sagittal read cannot characterize either tendon"
     ],
     "answer": 0,
-    "explanation": "Key: the lacertus fibrosus tethers the distal biceps, so a COMPLETE tear with an intact lacertus may not retract and can masquerade as a partial tear (the commonly missed complete tear) — you must report partial-vs-complete AND lacertus-intact-vs-torn and state retraction in cm; analogously, the triceps deep central fibers fail first while the superficial expansion stays intact, so a clinically near-complete tear can look partial. The strongest distractor (empty tuberosity is the only presentation) is wrong because that is the DISRUPTED-lacertus pattern; an intact lacertus prevents retraction. Bicipitoradial bursitis is a clue to scrutinize the insertion, not a diagnosis by itself. Distal biceps grading is done on axial/FABS and sagittal, not the coronal plane."
+    "explanation": "Key: the lacertus fibrosus tethers the distal biceps, so a COMPLETE tear with an intact lacertus may not retract and can masquerade as a partial tear (the commonly missed complete tear) — you must report partial-vs-complete AND lacertus-intact-vs-torn and state retraction in cm; analogously, the triceps superficial layer (combined long and lateral heads) avulses first while the deep medial-head attachment stays intact, so a clinically near-complete tear can look partial. The strongest distractor (empty tuberosity is the only presentation) is wrong because that is the DISRUPTED-lacertus pattern; an intact lacertus prevents retraction. Bicipitoradial bursitis is a clue to scrutinize the insertion, not a diagnosis by itself. Distal biceps grading is done on axial/FABS and sagittal, not the coronal plane."
   },
   {
     "id": "elb-caq-6",
@@ -1295,7 +1295,7 @@ export const elbowCrossPlane: CorrelationItem[] = [
     prompt:
       "This is the posterior triceps compartment on axial. Find its olecranon/triceps-insertion region on sagittal.",
     explanation:
-      "Triceps is posterior on axial and inserts broadly on the olecranon on sagittal. Deep central fibers may tear while superficial expansion remains intact, so a 'partial-looking' tear can still be clinically important when extension is weak.",
+      "Triceps is posterior on axial and inserts broadly on the olecranon on sagittal. The superficial layer avulses first (often with an olecranon flake) while the deep medial-head attachment remains intact, so a 'partial-looking' tear can still be clinically important when extension is weak.",
     from: { plane: "Axial T2-FS", dir: ELBOW_AXI, sliceIndex: 16, x: 50, y: 82, label: "Triceps" },
     to: {
       plane: "Sagittal IR/STIR",

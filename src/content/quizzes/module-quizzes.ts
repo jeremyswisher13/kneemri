@@ -1996,7 +1996,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
     },
     {
       "id": "elbow-tendons-q2",
-      "stem": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the deep central triceps fibers torn with a fluid gap, while the superficial expansion appears continuous. What is the most appropriate interpretation and next step?",
+      "stem": "A 38-year-old powerlifter on long-term anabolic steroids has posterior elbow pain and cannot extend against resistance. The lateral radiograph shows a small avulsed olecranon flake. MRI shows the superficial triceps layer (the combined long- and lateral-head tendon) avulsed with a fluid gap, while the deep medial-head attachment stays in continuity. What is the most appropriate interpretation and next step?",
       "options": [
         {
           "key": "A",
@@ -2004,7 +2004,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
         },
         {
           "key": "B",
-          "text": "An isolated bursal process; the tendon is intact because the superficial fibers are continuous"
+          "text": "An isolated bursal process; the tendon is intact because the deep medial-head fibers are continuous"
         },
         {
           "key": "C",
@@ -2016,7 +2016,7 @@ export const moduleQuizzes: Record<string, ModuleQuizQuestion[]> = {
         }
       ],
       "correctAnswer": "C",
-      "explanation": "The triceps deep central fibers fail first while the superficial expansion can stay intact, so a clinically near-complete avulsion can look partial — the analog of the biceps lacertus. The job is to report the PERCENTAGE of tendon width torn and the gap, not just 'partial.' Complete ruptures and high-grade partials (commonly >50% width, or ANY tear with extension weakness against resistance) are repaired. The avulsed olecranon flake is the classic tip-off, and anabolic steroids are a recognized risk factor. Do not undercall this as tendinosis just because the superficial fibers look continuous.",
+      "explanation": "Distal triceps tears characteristically fail SUPERFICIAL-layer-first: the combined long- and lateral-head tendon avulses — often carrying an olecranon enthesophyte flake — while the deep anterior medial-head attachment stays intact (Downey: the deep layer was intact in all cases). Because that deep attachment preserves some continuity, a clinically near-complete avulsion can still look partial — the analog of the biceps lacertus. The job is to report WHICH layer is torn plus the PERCENTAGE of tendon width and the gap, not just 'partial.' Complete ruptures and high-grade partials (commonly >50% width, or ANY tear with extension weakness against resistance) are repaired. The avulsed olecranon flake is the classic tip-off, and anabolic steroids are a recognized risk factor. Do not undercall this as tendinosis just because the deep fibers look continuous.",
       "topicIndex": 2
     },
     {
