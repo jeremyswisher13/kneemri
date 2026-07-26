@@ -9,7 +9,14 @@ import {
   handleAriaLabel,
   isDegenerateRegion,
   markerOutsideRegion,
+  pointAnchor,
+  quizAnchor,
   seedRegion,
+  syncQuizMarkers,
+  syncQuizSlices,
+  syncTourMarkers,
+  syncTourSlices,
+  tourAnchor,
   withRegionPoint,
   withRegionTolerance,
   withoutRegion,
@@ -119,5 +126,85 @@ describe("adjuster drag handles", () => {
 
   it("returns nothing when the selection points at no item", () => {
     expect(adjusterHandles("quiz", undefined)).toEqual([]);
+  });
+});
+
+describe("shared-anchor sync", () => {
+  // Straight from the shipped knee axial deck: axi-q4/axi-q10 both sit on the
+  // trochlear groove and axi-q5/axi-q11 both on the MPFL. These coordinates are
+  // COPIED from reviewed content — the sync only propagates an edit faculty
+  // make on the image, it never invents a position.
+  const trochlea = { x: 54.1, y: 29.8 };
+  const mpfl = { x: 35.3, y: 23.2 };
+  const dragged = { x: 55.4, y: 30.6 };
+
+  const kneeAxialQuiz = (): QuizItem[] => [
+    quizItem({ id: "axi-q4", sliceIndex: 13, marker: { ...trochlea } }),
+    quizItem({ id: "axi-q5", sliceIndex: 13, marker: { ...mpfl } }),
+    quizItem({ id: "axi-q10", sliceIndex: 13, marker: { ...trochlea } }),
+    quizItem({ id: "axi-q11", sliceIndex: 13, marker: { ...mpfl } }),
+    // Same pixels, different slice: a coincidence, not the same structure.
+    quizItem({ id: "axi-q4-prev", sliceIndex: 12, marker: { ...trochlea } }),
+  ];
+
+  const step = (over: Partial<TourStep> = {}): TourStep => ({
+    sliceIndex: 13,
+    markers: [{ ...trochlea, label: "Trochlear groove" }],
+    title: "Trochlea",
+    note: "Note",
+    ...over,
+  });
+
+  it("carries a quiz-row marker edit to every quiz twin on the same anchor", () => {
+    const quiz = kneeAxialQuiz();
+    const moved = syncQuizMarkers(quiz, quizAnchor(quiz[0]!), dragged.x, dragged.y);
+    expect(moved.map((q) => q.marker)).toEqual([dragged, mpfl, dragged, mpfl, trochlea]);
+    // Rows that did not move keep their identity, so React and the draft blob
+    // see no churn from an unrelated edit.
+    expect(moved[1]).toBe(quiz[1]);
+    expect(moved[4]).toBe(quiz[4]);
+  });
+
+  it("carries a quiz-row slice scrub to every quiz twin on the same anchor", () => {
+    const quiz = kneeAxialQuiz();
+    const moved = syncQuizSlices(quiz, quizAnchor(quiz[1]!), 14);
+    // axi-q5 and axi-q11 follow; the trochlear pair and the slice-12 item stay.
+    expect(moved.map((q) => q.sliceIndex)).toEqual([13, 14, 13, 14, 12]);
+  });
+
+  it("carries a tour edit to the quiz items on that marker, and back again", () => {
+    const quiz = kneeAxialQuiz();
+    const tour = [step()];
+    // tour -> quiz
+    expect(
+      syncQuizMarkers(quiz, pointAnchor(13, trochlea), dragged.x, dragged.y).map((q) => q.marker),
+    ).toEqual([dragged, mpfl, dragged, mpfl, trochlea]);
+    // quiz -> tour
+    expect(syncTourMarkers(tour, quizAnchor(quiz[0]!), dragged.x, dragged.y)[0]!.markers).toEqual([
+      { ...dragged, label: "Trochlear groove" },
+    ]);
+    expect(syncTourSlices(tour, quizAnchor(quiz[0]!), 14)[0]!.sliceIndex).toBe(14);
+  });
+
+  it("moves only the dragged marker's anchor, not the rest of its step", () => {
+    const tour = [step({ markers: [{ ...trochlea }, { ...mpfl }] })];
+    const moved = syncTourMarkers(tour, pointAnchor(13, trochlea), dragged.x, dragged.y);
+    expect(moved[0]!.markers).toEqual([dragged, mpfl]);
+  });
+
+  it("scrubs a whole tour step's worth of quiz items, since the step moves as one", () => {
+    const quiz = kneeAxialQuiz();
+    const both = step({ markers: [{ ...trochlea }, { ...mpfl }] });
+    expect(syncQuizSlices(quiz, tourAnchor(both), 14).map((q) => q.sliceIndex)).toEqual([
+      14, 14, 14, 14, 12,
+    ]);
+  });
+
+  it("leaves everything alone when nothing sits on the anchor", () => {
+    const quiz = kneeAxialQuiz();
+    const tour = [step()];
+    expect(syncQuizMarkers(quiz, pointAnchor(13, { x: 1, y: 1 }), 9, 9)).toEqual(quiz);
+    expect(syncTourMarkers(tour, pointAnchor(99, trochlea), 9, 9)[0]).toBe(tour[0]);
+    expect(syncTourSlices(tour, pointAnchor(99, trochlea), 4)[0]).toBe(tour[0]);
   });
 });

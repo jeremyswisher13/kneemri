@@ -92,9 +92,18 @@ export default function AnnotatedSlice({
           />
           {/* Center dot */}
           <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gold" />
+          {/*
+            Scrim opacity is a contrast constraint, not a taste call. 11px
+            semibold is normal-size text under WCAG, so white-on-scrim needs
+            4.5:1 against the WORST backdrop it can land on — bright T1
+            marrow/fat, i.e. effectively white. Over white, black/70 composites
+            to #4D4D4D (8.5:1); black/55 gave only 4.76:1, so any lighter tint
+            fails outright. The shadow keeps glyph edges crisp over that bright
+            signal and is invisible on the dark background most slices have.
+          */}
           {showLabels && m.label && (
             <span
-              className={`absolute max-w-44 rounded bg-black/55 px-2 py-0.5 text-[11px] font-semibold leading-tight text-white ${labelClass(
+              className={`absolute max-w-44 rounded bg-black/70 px-2 py-0.5 text-[11px] font-semibold leading-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.9)] ${labelClass(
                 m,
               )}`}
             >

@@ -12,9 +12,15 @@ import {
   handleAriaLabel,
   isDegenerateRegion,
   markerOutsideRegion,
+  pointAnchor,
+  quizAnchor,
   round1,
-  sameAnchor,
   seedRegion,
+  syncQuizMarkers,
+  syncQuizSlices,
+  syncTourMarkers,
+  syncTourSlices,
+  tourAnchor,
   withRegionPoint,
   withRegionTolerance,
   withoutRegion,
@@ -88,26 +94,19 @@ export default function MarkerAdjuster({
     if (sel.kind === "tour") {
       const selectedStep = tour[sel.idx];
       const nt = tour.map((s, i) => (i === sel.idx ? { ...s, sliceIndex: v } : s));
-      const nq = quiz.map((q) =>
-        selectedStep &&
-        q.sliceIndex === selectedStep.sliceIndex &&
-        selectedStep.markers.some((marker) => sameAnchor(marker, q.marker))
-          ? { ...q, sliceIndex: v }
-          : q,
-      );
+      const nq = selectedStep ? syncQuizSlices(quiz, tourAnchor(selectedStep), v) : quiz;
       setTour(nt);
       setQuiz(nq);
       persist(nt, nq);
     } else {
       const selectedQuiz = quiz[sel.idx];
-      const nt = tour.map((step) =>
-        selectedQuiz &&
-        step.sliceIndex === selectedQuiz.sliceIndex &&
-        step.markers.some((marker) => sameAnchor(marker, selectedQuiz.marker))
-          ? { ...step, sliceIndex: v }
-          : step,
-      );
-      const nq = quiz.map((q, i) => (i === sel.idx ? { ...q, sliceIndex: v } : q));
+      if (!selectedQuiz) return;
+      const anchor = quizAnchor(selectedQuiz);
+      // Sibling quiz items on this anchor are the SAME point, so they follow the
+      // scrub too — the mirror of what the tour->quiz path above already does.
+      // Without it, editing from a quiz row leaves its twin on the old slice.
+      const nq = syncQuizSlices(quiz, anchor, v);
+      const nt = syncTourSlices(tour, anchor, v);
       setTour(nt);
       setQuiz(nq);
       persist(nt, nq);
@@ -123,38 +122,22 @@ export default function MarkerAdjuster({
       const nt = tour.map((s, i) =>
         i === sel.idx ? { ...s, markers: s.markers.map((m, j) => (j === mi ? { ...m, x, y } : m)) } : s,
       );
-      const nq = quiz.map((q) =>
-        selectedStep &&
-        priorMarker &&
-        q.sliceIndex === selectedStep.sliceIndex &&
-        sameAnchor(q.marker, priorMarker)
-          ? { ...q, marker: { x, y } }
-          : q,
-      );
+      const nq =
+        selectedStep && priorMarker
+          ? syncQuizMarkers(quiz, pointAnchor(selectedStep.sliceIndex, priorMarker), x, y)
+          : quiz;
       setTour(nt);
       setQuiz(nq);
       persist(nt, nq);
     } else {
       const selectedQuiz = quiz[sel.idx];
-      const nt = tour.map((step) =>
-        selectedQuiz && step.sliceIndex === selectedQuiz.sliceIndex
-          ? {
-              ...step,
-              markers: step.markers.map((marker) =>
-                sameAnchor(marker, selectedQuiz.marker) ? { ...marker, x, y } : marker,
-              ),
-            }
-          : step,
-      );
+      if (!selectedQuiz) return;
+      const anchor = quizAnchor(selectedQuiz);
       // Sibling quiz items sharing this slice + anchor are the SAME point, so
       // they move together — matching what the tour->quiz path already does and
       // what the panel copy promises about synchronized anchors.
-      const nq = quiz.map((q, i) =>
-        i === sel.idx ||
-        (selectedQuiz && q.sliceIndex === selectedQuiz.sliceIndex && sameAnchor(q.marker, selectedQuiz.marker))
-          ? { ...q, marker: { x, y } }
-          : q,
-      );
+      const nq = syncQuizMarkers(quiz, anchor, x, y);
+      const nt = syncTourMarkers(tour, anchor, x, y);
       setTour(nt);
       setQuiz(nq);
       persist(nt, nq);
@@ -304,8 +287,11 @@ export default function MarkerAdjuster({
                   m.role === "marker" ? "bg-brand-gold" : "bg-white"
                 }`}
               />
+              {/* Same scrim/shadow the learner-facing labels use, and for the
+                  same reason: 11px white over bright T1 fat needs black/70 to
+                  clear WCAG AA. See AnnotatedSlice for the computed ratios. */}
               {m.label && (
-                <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/55 px-2 py-0.5 text-[11px] font-semibold text-white">
+                <span className="absolute left-1/2 top-[calc(50%+16px)] -translate-x-1/2 whitespace-nowrap rounded bg-black/70 px-2 py-0.5 text-[11px] font-semibold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.9)]">
                   {m.label}
                 </span>
               )}

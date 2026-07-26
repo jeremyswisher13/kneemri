@@ -7,8 +7,9 @@ import type {
   QuizItem,
   TourStep,
 } from "@/content/normal-mri-types";
-import { isKnowledgeLocateHit } from "./knowledge-check-hit";
+import { DEFAULT_LOCATE_TOLERANCE, isKnowledgeLocateHit } from "./knowledge-check-hit";
 import { locateRevealSpanPercent } from "./knowledge-check-reveal";
+import { locateTolerances } from "./locate-tolerance";
 import {
   MASTERY_TRIAL_COUNT,
   NORMAL_MRI_PASS_PERCENT,
@@ -220,8 +221,17 @@ export default function KnowledgeCheck({
 
   const q = qs[idx];
   const answered = q.kind === "identify" ? picked !== null : guess !== null;
+  /**
+   * Derived from the whole plane bank (memoised on `labeledItems`), never from the
+   * shuffled round: the competing answers that must not be scored correct are every
+   * anchor on this series+slice, not just the five landmarks this mastery draw
+   * happens to use. Both the hit test and the reveal below read this one number.
+   */
+  const pointTolerance =
+    locateTolerances(labeledItems).get(q.id)?.tolerance ?? DEFAULT_LOCATE_TOLERANCE;
   const hit =
-    guess !== null && isKnowledgeLocateHit(guess, q.marker, q.locateRegion);
+    guess !== null &&
+    isKnowledgeLocateHit(guess, q.marker, q.locateRegion, pointTolerance);
   const isCorrect = q.kind === "identify" ? picked === q.correctPos : hit;
   const answerText = q.options[q.answer];
   const landmarkLabel = q.locateLabel ?? answerText;
@@ -244,8 +254,9 @@ export default function KnowledgeCheck({
   function pickLocate(x: number, y: number) {
     if (answered) return;
     const nextGuess = { x, y };
+    const onTarget = isKnowledgeLocateHit(nextGuess, q.marker, q.locateRegion, pointTolerance);
     setGuess(nextGuess);
-    if (isKnowledgeLocateHit(nextGuess, q.marker, q.locateRegion)) recordCorrectAnswer();
+    if (onTarget) recordCorrectAnswer();
     else onMiss?.(q.id);
   }
 
@@ -284,6 +295,7 @@ export default function KnowledgeCheck({
             sliceIndex={q.sliceIndex}
             target={q.marker}
             region={q.locateRegion}
+            pointTolerance={pointTolerance}
             guess={guess}
             answered={answered}
             showCorrect={showFeedback}
@@ -420,6 +432,7 @@ function LocatableSlice({
   sliceIndex,
   target,
   region,
+  pointTolerance,
   guess,
   answered,
   showCorrect,
@@ -432,6 +445,8 @@ function LocatableSlice({
   sliceIndex: number;
   target: Marker;
   region?: LocateSegmentRegion;
+  /** The same radius the scorer used for this trial; the halo must not restate it. */
+  pointTolerance: number;
   guess: { x: number; y: number } | null;
   answered: boolean;
   showCorrect: boolean;
@@ -582,13 +597,17 @@ function LocatableSlice({
         <>
           {/*
             Same honesty rule as the segment halo: the ring below is a fixed ~7px
-            while the point hit test accepts DEFAULT_LOCATE_TOLERANCE percent of the
-            box. Sized in percent of this container — the element handleClick
+            while the point hit test accepts `pointTolerance` percent of the box —
+            the per-item radius derived from the neighbouring anchors, which for
+            crowded slices is well under the flat default. Sized in percent of this
+            container — the element handleClick
             measures against — so the halo IS the accepted region, including the
             fact that the hit test is isotropic in percent space (it reads as an
             ellipse on a non-square box, which is exactly what the scorer accepts).
             borderRadius 50%, not rounded-full: a 9999px radius on a non-square box
             collapses to a pill, which would misstate the region at the ends.
+            MIN_LOCATE_TOLERANCE is what keeps this halo from shrinking inside the
+            fixed ring below and becoming invisible on a phone-sized viewer.
           */}
           <span
             data-testid="locate-tolerance-halo"
@@ -596,8 +615,8 @@ function LocatableSlice({
             style={{
               left: `${target.x}%`,
               top: `${target.y}%`,
-              width: `${locateRevealSpanPercent()}%`,
-              height: `${locateRevealSpanPercent()}%`,
+              width: `${locateRevealSpanPercent(undefined, pointTolerance)}%`,
+              height: `${locateRevealSpanPercent(undefined, pointTolerance)}%`,
               borderRadius: "50%",
             }}
             aria-hidden="true"

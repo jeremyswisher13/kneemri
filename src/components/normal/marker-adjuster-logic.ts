@@ -135,3 +135,78 @@ export function handleAriaLabel(handle: AdjusterHandle, index: number) {
   if (handle.role === "region-end") return "Move locate line end";
   return handle.label ? `Move ${handle.label} marker` : `Move marker ${index + 1}`;
 }
+
+/**
+ * The slice + coordinates an edit STARTED from. Sync always matches on these
+ * prior values, so a point that has already been rewritten in one array can
+ * still find the twins it left behind on the old pixel.
+ */
+export type EditAnchor = { sliceIndex: number; points: { x: number; y: number }[] };
+
+export function pointAnchor(sliceIndex: number, point: { x: number; y: number }): EditAnchor {
+  return { sliceIndex, points: [{ x: point.x, y: point.y }] };
+}
+
+export function quizAnchor(item: QuizItem): EditAnchor {
+  return pointAnchor(item.sliceIndex, item.marker);
+}
+
+/** Every marker on the step, for edits that move the whole step (slice scrub). */
+export function tourAnchor(step: TourStep): EditAnchor {
+  return { sliceIndex: step.sliceIndex, points: step.markers.map((m) => ({ x: m.x, y: m.y })) };
+}
+
+/**
+ * Two anchors on the same slice at the same coordinates ARE the same anatomic
+ * point. Content deliberately reuses one: knee axi-q4/axi-q10 both sit on the
+ * trochlear groove, axi-q5/axi-q11 both on the MPFL, and the shoulder decks do
+ * it a dozen times over. So an edit has to carry to every one of them in EVERY
+ * direction — leaving a twin behind would silently point it at the stale pixel
+ * while the panel promises "matching tour and quiz anchors stay synchronized".
+ */
+export function anchoredAt(
+  anchor: EditAnchor,
+  item: { sliceIndex: number },
+  point: { x: number; y: number },
+) {
+  return item.sliceIndex === anchor.sliceIndex && anchor.points.some((p) => sameAnchor(p, point));
+}
+
+/** Moves every quiz item sitting on `anchor` to the dragged coordinates. */
+export function syncQuizMarkers(
+  quiz: QuizItem[],
+  anchor: EditAnchor,
+  x: number,
+  y: number,
+): QuizItem[] {
+  return quiz.map((q) => (anchoredAt(anchor, q, q.marker) ? { ...q, marker: { x, y } } : q));
+}
+
+/** Moves every tour marker sitting on `anchor` to the dragged coordinates. */
+export function syncTourMarkers(
+  tour: TourStep[],
+  anchor: EditAnchor,
+  x: number,
+  y: number,
+): TourStep[] {
+  return tour.map((step) =>
+    step.markers.some((m) => anchoredAt(anchor, step, m))
+      ? {
+          ...step,
+          markers: step.markers.map((m) => (anchoredAt(anchor, step, m) ? { ...m, x, y } : m)),
+        }
+      : step,
+  );
+}
+
+/** Re-slices every quiz item on `anchor`; `anchor` still carries the OLD slice. */
+export function syncQuizSlices(quiz: QuizItem[], anchor: EditAnchor, sliceIndex: number): QuizItem[] {
+  return quiz.map((q) => (anchoredAt(anchor, q, q.marker) ? { ...q, sliceIndex } : q));
+}
+
+/** Re-slices every tour step holding a marker on `anchor`. */
+export function syncTourSlices(tour: TourStep[], anchor: EditAnchor, sliceIndex: number): TourStep[] {
+  return tour.map((step) =>
+    step.markers.some((m) => anchoredAt(anchor, step, m)) ? { ...step, sliceIndex } : step,
+  );
+}

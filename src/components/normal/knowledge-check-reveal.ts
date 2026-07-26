@@ -10,7 +10,16 @@ import { DEFAULT_LOCATE_TOLERANCE } from "./knowledge-check-hit";
  * a fellow who clicks inside the accepted band but visibly off a thin drawn answer
  * reads "Correct" beside a mark nowhere near the click, which looks like a scoring
  * bug and undermines trust in the mastery gate.
+ *
+ * `pointTolerance` carries the per-item radius `locate-tolerance.ts` derives from
+ * the neighbouring anchors. It has to be the exact number handed to
+ * `isKnowledgeLocateHit` for the same trial: the halo is a claim about what the
+ * scorer accepts, so a default here beside a tightened tolerance there would draw
+ * a ring wider than the accepted zone — the original honesty bug, re-created.
  */
-export function locateRevealSpanPercent(region?: LocateSegmentRegion) {
-  return (region?.tolerance ?? DEFAULT_LOCATE_TOLERANCE) * 2;
+export function locateRevealSpanPercent(
+  region?: LocateSegmentRegion,
+  pointTolerance: number = DEFAULT_LOCATE_TOLERANCE,
+) {
+  return (region?.tolerance ?? pointTolerance) * 2;
 }

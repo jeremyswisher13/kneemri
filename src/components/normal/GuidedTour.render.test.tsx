@@ -112,8 +112,14 @@ describe("GuidedTour render polish", () => {
     expect(html).toContain("left-0 translate-x-0 text-left");
     expect(html).toContain("right-0 translate-x-0 text-right");
     expect(html).toContain("bottom-[140%]");
-    expect(html).toContain("bg-black/55");
-    expect(html).not.toContain("bg-black/80");
+    // Scrim opacity is pinned by contrast, not taste: 11px semibold white is
+    // normal-size text, so it needs 4.5:1 over the brightest backdrop it can
+    // land on (T1 fat ≈ white). black/70 measures 8.5:1 there; the black/55 it
+    // replaced measured 4.76:1, a hair over the floor. Do not lighten it back.
+    expect(html).toContain("bg-black/70");
+    // Written as a pattern rather than the literal older class so this file
+    // doesn't teach Tailwind to emit a utility nothing renders.
+    expect(html).not.toMatch(/bg-black\/(?!70\b)\d+/);
     expect(html).not.toContain("whitespace-nowrap");
   });
 });
