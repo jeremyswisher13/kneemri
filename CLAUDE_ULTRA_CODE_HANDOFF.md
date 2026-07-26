@@ -1,6 +1,6 @@
 # Handoff to Claude Ultra Code - UCLA Sports MRI App
 
-Last updated: July 26, 2026 (Sports MRI Academy domain migration)
+Last updated: July 26, 2026 (rebrand to Sports MRI Academy; NonCommercial images eliminated; iOS reopened)
 
 Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
 
@@ -8,7 +8,13 @@ Branch: `main`
 
 Current product HEAD: see `git log` — this line has gone stale twice, so treat git as authoritative rather than trusting a sha written here. The July 19 handoff HEAD was `be2f5ea`; retain the detailed historical sections below, but use `git log` as the source of truth for all work after that handoff.
 
-**Direction change (2026-07-26): the project is moving toward commercialization** — selling institutional licenses under the name **Sports MRI Academy**, with UCLA branding removed. Before acting on anything branding-related in this document, read "Commercialization: what blocks taking money" below. Two things are load-bearing: 33 shipped teaching images carry NonCommercial licenses that forbid paid distribution, and admin access is a single global allowlist with no notion of an organization.
+**Direction, as of the end of 2026-07-26 — this SUPERSEDES the commercialization plan further down.** Selling institutional licenses was considered and then **abandoned the same day**, once the blockers were priced out. The app **stays free**. The product was still renamed to **Sports MRI Academy** (the domain had already moved), and the current goal is a **free iOS App Store app** — pursued for credibility rather than capability: an App Store listing is citable and lands differently with a program director than "add this URL to your home screen." The PWA already covers the functional need.
+
+Consequences for anyone picking this up:
+
+- The section "Commercialization: what blocks taking money" below is retained for its analysis of the *selling* path, which is still accurate if that is ever revisited. It is NOT the current plan, and its headline claim is now out of date: **there are zero NonCommercial images left** (see "NonCommercial image migration" below).
+- Multi-tenancy is NOT being built. Admin remains a single global email allowlist. That is fine for one institution and is only a blocker for a second paying customer, which is no longer the goal.
+- The UCLA IP-ownership question is still unresolved and still worth answering, but it is no longer urgent, because nothing is being sold.
 
 Production:
 
@@ -18,9 +24,10 @@ Production:
 - Firebase Hosting: `https://ucla-knee-mri.web.app`
 - Firebase project: `ucla-knee-mri`
 - On 2026-07-26, the new apex and `www` domains were attached to Firebase Hosting, exact Namecheap DNS records were installed, both domains were added to Firebase Authentication's authorized-domain list, and the canonical/share URLs were deployed. Firebase's `ucla-knee-mri.firebaseapp.com` remains the SDK `authDomain` and native callback host; do not change it casually because that separation preserves the proven Google/Apple redirect flow.
-- The 2026-07-26 production release serves bundle `index-CW3HyUga.js`. The full test suite (64 files / 479 tests), lint, production build, and all 112 live route/asset/PWA/auth-handler checks passed.
+- Production at the end of 2026-07-26 serves bundle `index-Dnn6hQUY.js` on all three hosts. Verified then: 71 test files / 535 tests passing plus 2 EXPECTED failures (see below), lint clean, production build clean, `qa:medical` 0 diagnostics, and the live release gate green against `https://sportsmriacademy.com` after its two stale pre-rebrand assertions were fixed.
+- **"2 expected fail" is correct, not breakage.** They are `it.fails()` guards in `src/content/medical-language-regression.test.ts` staking out two medical strings in `src/components/ui/VisualAtlas.tsx` that Dr. Swisher is authoring himself (a ">5mm severe" meniscal-extrusion tier and "functional meniscectomy equivalent", both contradicted by `modules/module6-menisci.ts`). When he fixes the wording they stop throwing and vitest reports "Expect test to fail" — at that point delete the `.fails` and each becomes a permanent guard. Do NOT "fix" them by weakening the assertion.
 
-The web/PWA is the active shipping surface. Native iOS submission remains paused; read the iOS section before touching `ios/` or any App Store evidence tooling.
+The web/PWA is the active shipping surface. **Native iOS is no longer blocked on content licensing and is the current goal** — the two documented reasons it was paused (UCLA trademark under a personal developer account; NonCommercial bundled images) are both now resolved. What remains is the App Store Connect checklist, 0/10 at last audit. Read the iOS section before touching `ios/`.
 
 ## July 26 Domain Migration
 
@@ -29,12 +36,107 @@ The web/PWA is the active shipping surface. Native iOS submission remains paused
 - The Firebase Hosting records are apex `A 199.36.158.100`, apex `TXT hosting-site=ucla-knee-mri`, and `www CNAME ucla-knee-mri.web.app`.
 - `www.sportsmriacademy.com` is configured in Firebase as a redirect to the apex domain. Do not replace it with a Namecheap URL redirect; Firebase owns HTTPS and the redirect certificate.
 - **Certificate issuance COMPLETED and verified live on 2026-07-26.** The apex serves HTTPS 200 with a valid certificate, `www` 301-redirects to the apex, and `sportsmriacademy.com`, `jeremyswisherkneemri.com`, and `ucla-knee-mri.web.app` all serve the same bundle. Verified on the new origin: the app shell renders with zero console errors, `canonical`/`og:url`/`og:image` all point at the new domain, `og-image.jpg` (200, image/jpeg), `manifest.webmanifest` (200), `sw.js` (200), and `/__/auth/handler` (200). The legacy domain also advertises the new canonical, so bookmarks and installed home-screen apps keep working while indexing consolidates.
-- Still outstanding on the new origin: the live release gate has only ever been run against `firebaseapp.com` (`scripts/ios-live-readiness.mjs` defaults there), so re-run it as `LIVE_APP_BASE_URL=https://sportsmriacademy.com npm run preflight:ios:live`; and Google sign-in has not been exercised by hand from the new origin in mobile Safari or an installed PWA (the popup hops to `ucla-knee-mri.firebaseapp.com`, which is exactly the class of hop that caused the earlier iOS Safari bounce).
-- Known SEO caveat from the migration: `index.html` carries a single hardcoded `rel=canonical` pointing at the apex, and `firebase.json` rewrites `**` to `/index.html`, so **every route declares itself a duplicate of the homepage**. Harmless if the app is effectively invite-only; fix with per-route canonical updates if course pages should be indexed.
+- The live release gate HAS now been run against the new origin and passes. It was red on BOTH origins for a while after the rebrand because two assertions still expected "UCLA Sports MRI" in the manifest and favicon; those were updated in `scripts/ios-live-readiness.mjs`. Re-run with `LIVE_APP_BASE_URL=https://sportsmriacademy.com npm run preflight:ios:live`.
+- Still outstanding: Google sign-in has NOT been exercised by hand from the new origin in mobile Safari or an installed PWA. The popup hops to `ucla-knee-mri.firebaseapp.com`, which is exactly the class of hop that caused the earlier iOS Safari bounce, so this deserves a real-device check before the App Store push.
+- The `rel=canonical` tag was REMOVED rather than made per-route, so every URL is now self-canonical, which is the correct claim. A runtime per-route canonical would have been inert: `FellowLayout` sits inside `ProtectedRoute`, so a signed-out crawler is redirected to `/login` before the effect runs, and it could not have reached `/login`, `/privacy`, `/support` or `/accessibility` — the only genuinely public pages and the ones actually harmed. The reasoning ships as comments in `index.html` and `FellowLayout.tsx`; do not "fix" it back. Side note not acted on: `/robots.txt` returns the SPA HTML shell because there is no `public/robots.txt`.
 - Keep `jeremyswisherkneemri.com` attached to the same Hosting site so existing bookmarks and installed home-screen apps continue working. New installs and shared links should use the Sports MRI Academy domain.
 - Keep `src/lib/firebase.ts` on `authDomain: "ucla-knee-mri.firebaseapp.com"`. The new domains are authorized origins, not replacement callback hosts.
 
-## Commercialization: what blocks taking money
+## NonCommercial image migration — DONE (zero remain)
+
+All 33 NonCommercial-licensed teaching images are gone. Final census of attribution strings in
+`src/content/**`: **141 CC BY, 1 CC BY-SA, 0 NC**. This removed the second of the two documented
+reasons iOS submission was paused.
+
+- **24 replaced** with verified CC BY figures from 14 open-access sources (Parkar/JBSR,
+  Celikyay/JBSR, ESSR/Eur Radiol, IDKD Bookshelf, Moon/Medicina, Von Rehlingen-Prinz/Sports Med
+  Open, Willinger/KSSTA, Uchida/KSSTA, Perez Yubran/Insights Imaging, Yeap/JBSR, van Trigt/JSES
+  Int, Albano/Insights Imaging, Dai/Bioengineering, Adwan/Cureus). Four were already cited in the
+  repo, so they needed no new licence review.
+- **9 deleted** — 8 with no acceptable CC BY equivalent after a filtered search of Europe PMC,
+  Cureus, MDPI, BMC, NCBI Bookshelf and Wikimedia, plus 1 redundant duplicate. Deleting was the
+  explicit instruction: unblocking iOS beat retaining an image. Content entries were removed
+  alongside the files and the surrounding teaching text left intact.
+
+**Process rules that were learned the hard way — follow them if you source more images:**
+
+1. **Read the licence on the article page**, not from PMC metadata. This repo has already hit a
+   case where the two disagreed.
+2. **Download and LOOK at every candidate.** Two candidates were correctly CC BY and had matching
+   legends but were a photograph of a film and a cramped research panel; both would have
+   downgraded a clear teaching image. Neither was detectable from text.
+3. **Never carry a caption across a swap.** Roughly a dozen captions had to be rewritten because
+   they described the old picture. Several were substantively wrong once the image changed — one
+   asserted "measured here, 15.4 mm" over a figure measuring 7.2 mm; two promised "LFC +
+   posterolateral tibial plateau" over a figure showing only the tibial half.
+4. **Radiopaedia is CC BY-NC-SA and cannot be copied.** The repo correctly links to it and never
+   copies it. The one remaining `BY-NC` string in the tree is `VisualAtlas.tsx` disclosing that
+   its outbound links point there — linking is not copying, leave it.
+
+**What was lost, and the cheapest way to restore it.** The 8 deletions were: the ACL coronal
+empty-notch sign, PCL intrasubstance injury, a fourth ACL tear-appearance variant, the clip /
+dashboard / hyperextension contusion patterns, and the adult radiocapitellar ultrasound. Five of
+those are knee mechanism-pattern or single-sign images — exactly the category where a labelled
+diagram works as well as a photograph, and this repo already ships 18 hand-authored SVGs under
+`public/images/modules/` that are owned outright. Dr. Swisher supplying his own de-identified
+cases is the other clean answer. Do not re-add an NC image to fill these.
+
+**Still owed before anyone claims the app ships no NC content:** this migration covered the 33
+images an audit identified. A repo-wide sweep of all 128 referenced images has NOT been done. The
+census above reads attribution strings, so an image with no attribution at all would not appear
+in it.
+
+## Changes since the last handoff update (`d8c8fad`..`HEAD`)
+
+Eighteen commits. Grouped by theme; commit bodies carry the detail.
+
+**Rebrand to Sports MRI Academy** (`17c0dfe`, `ac91bfb`, `db0998c`). Colour tokens renamed
+`ucla-*` -> `brand-*` across 559 call sites with byte-identical hex values, so it is a pure rename
+with no visual change. Deliberately NOT renamed because they are not colour tokens and would break
+things: the `ucla-knee-mri` Firebase project id, the `ucla-pwa-*` / `ucla-sports-mri-*` cache and
+storage keys, and the `UCLASportsMRIiOS` user-agent token. Brand mark supplied by Jeremy, vendored
+to `brand/` and derived into `public/` by `scripts/gen-brand-icons.py`; the og-image is likewise
+generated by `scripts/gen-og-image.py` rather than hand-exported, because the previous hand-made
+card silently carried UCLA branding, the LEGACY domain, and a stale two-course list in baked
+pixels that no grep or test could catch. UCLA remains only as footer affiliation, image
+provenance, a support-contact route, and the iOS UA token.
+
+**Locate scoring — wrong-structure clicks were being scored CORRECT** (`06597f1`). Point items
+used a flat radius-8 accept zone, so any two answer anchors on the same series+slice closer than
+8 apart accepted each other. 26 such pairs measured across the four courses, worst 2.2 apart.
+Tolerance is now derived per item from the nearest neighbouring anchor and memoised per plane,
+computed from existing reviewed coordinates — no coordinate moved, so the standing rule against
+AI-placed markers is untouched, and a future anchor edit re-derives automatically. The reveal
+reads the same number, so the gold ring cannot claim an area different from what the scorer
+accepts. A permanent regression test recomputes the scan and asserts no overlap; verified
+non-vacuous (forcing the old flat tolerance fails it with 126 overlapping pairs). **14 items sit
+below a 3% usability floor and were deliberately left alone — they need item redesign or faculty
+repositioning, listed in `LOCATE_REGION_PROPOSAL.md`.**
+
+**Course depth and the elbow deck** (`65053c8`, `a91726d`). Hip plane-quiz items 22 -> 38 and
+advanced 12 -> 22; elbow 15 -> 35 and 10 -> 20; a 38-card elbow flashcard deck added where the
+course previously had none. All new items hang on existing faculty-reviewed markers. Literature
+verification of the authored content found 25 problems including 8 outright reversals; one flag
+was OVERTURNED on second opinion because it misread its own source. A follow-up audit then found
+three of those corrections had been applied only in the file each was spotted in and left wrong
+elsewhere — apply corrections **by claim across the repo**, never by the file the claim was
+noticed in.
+
+**Security and infrastructure** (`afb8d02`, `cd984cd`, `7ce8d31`). Tracked-fellow roster moved out
+of the public bundle and then out of learner-readable `settings/` into admin-only
+`adminSettings/` — REQUIRES `firebase deploy --only firestore:rules`, which has been done. Service
+worker no longer hands `offline.html` to script/style requests (MIME refusal instead of the
+offline page). Router-level `errorElement` had swallowed the only `console.error`, so chunk-load
+crashes lost their diagnostics — restored. Case spoiler leak closed: image-less cases printed the
+`expectedFindings` answer key on the opening screen before commit.
+
+**NonCommercial image migration** — see its own section above.
+
+## Commercialization: what blocks taking money (HISTORICAL — not the current plan)
+
+**Superseded. Selling was abandoned on 2026-07-26; see the direction note at the top.** This
+section is kept because its analysis of the selling path remains accurate if that is revisited.
+Note that blocker 1 below is now resolved — there are zero NonCommercial images.
 
 Direction set 2026-07-26: sell institutional licenses as **Sports MRI Academy**, drop UCLA
 identity. The domain migration already landed the name. Two findings are load-bearing and were
@@ -93,7 +195,7 @@ npm run build
 Expected baseline at handoff:
 
 - `main` is synchronized with `origin/main` (pushed through `921a298`).
-- Full suite: 64 test files, 479 tests passing (verified 2026-07-26).
+- Full suite: 71 test files, 535 tests passing + 2 expected fail (verified end of 2026-07-26). See the note above on the 2 expected failures before assuming the suite is red.
 - `npm run lint`, `npm run test:types`, `npm run build`: clean (2026-07-26).
 - Performance gate: 228.2 KiB initial gzip across 11 assets (largest `react-vendor` 57.6 KiB); 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
 - Live release gate: 112 checks passing across app routes, every discovered JS chunk, manifest/icons, account routes, login, and both Firebase Auth handlers (verified 2026-07-26).
@@ -417,6 +519,16 @@ Priority order:
 
 ## Administrator Access (who has it, and why)
 
+**The tracked-fellow roster is NOT in the bundle and NOT in `settings/`.** It lives in
+`adminSettings/cohort.trackedFellows`, readable only by admins. It was previously hard-coded in
+`src/lib/tracked-fellows.ts`, which shipped three real trainees' names in the public JS bundle;
+moving it to `settings/cohort` was not enough, because `match /settings/{doc}` grants read to any
+signed-in user and every learner's app fetches that document on the progress path. Firestore ORs
+`allow` rules across matching paths, so a narrower `match /settings/roster` could not have taken
+that access back — hence a separate collection. `src/lib/tracked-fellows.test.ts` guards this and
+deliberately names nobody, matching the SHAPE of a personal-name literal instead. Note the names
+remain in git history, and this is a public repo.
+
 Admin is granted by a hardcoded email allowlist that must stay identical in two places —
 `src/lib/auth.ts` (`ADMIN_EMAILS`, controls what the client renders) and `firestore.rules`
 (`isAdminEmail()`, controls what the server actually permits). `src/lib/admin-emails.test.ts`
@@ -502,22 +614,61 @@ After deploy, verify both production domains, the current hashed app bundle, `ma
 
 The service worker uses network-first navigation and content-hashed assets. A currently open tab still needs one refresh after deployment; an installed PWA may need to be closed and reopened once.
 
-## iOS App Store Submission Is Paused
+## iOS App Store Submission — REOPENED, both content blockers cleared
 
-Do not resume native iOS submission work unless Jeremy explicitly reopens it.
+Submission was paused on two documented risks. **Both are now resolved**, and a free iOS app is
+the current goal (see the direction note at the top).
 
-The pause is intentional and based on unresolved risks:
-
-1. Several bundled teaching images use CC BY-NC / BY-NC-SA licenses. App Store distribution under a personal account may conflict with those noncommercial terms.
-2. The app uses UCLA branding, certificates, and copyright language while the Apple developer account and bundle ownership are personal. UCLA Trademarks & Licensing and department authorization, or a UCLA-owned Apple organization account, should be resolved before submission.
+1. ~~Bundled teaching images under CC BY-NC / BY-NC-SA.~~ **RESOLVED** — zero NonCommercial
+   images remain; see "NonCommercial image migration" above.
+2. ~~UCLA branding in the app shipped from a personal developer account.~~ **RESOLVED** — the
+   product is Sports MRI Academy throughout, and the bundle identifier was renamed before it
+   locks (below). UCLA now appears only as a footer affiliation line, image provenance, and a
+   support-contact route. The IP-ownership question with UCLA is still open but is not a
+   submission blocker for a free app.
 3. App Store distribution signing/provisioning and App Store Connect evidence remain incomplete.
+   **This is what is left.**
 
-The July 19 evidence audit reports 1/7 audited groups ready: screenshots are 3/3; archive signing, Apple/Firebase auth (0/6), real-device/account deletion (0/5), App Store Connect (0/10), hard submission, and release evidence (0/3) remain TODO. The native project and evidence scripts are retained but dormant:
+### The bundle identifier was renamed, and it is now effectively frozen
 
-- Bundle ID: `com.jeremyswisher.uclasportsmri`
+Apple does not allow `PRODUCT_BUNDLE_IDENTIFIER` to change after first submission, so it was
+renamed while that was still free:
+
+- Bundle ID: `com.jeremyswisher.sportsmriacademy` *(was `com.jeremyswisher.uclasportsmri`)*
 - Team ID: `X578T4K65B`
-- Xcode project: `ios/UCLASportsMRI.xcodeproj`
-- Scheme: `UCLASportsMRI`
+- Xcode project: `ios/SportsMRIAcademy.xcodeproj`
+- Scheme / target: `SportsMRIAcademy`
+- Display name: `Sports MRI Academy`
+- App Store SKU: `sports-mri-academy-ios`
+
+**Do not rename it again.** It is verified working: `xcodebuild` succeeds and the compiled
+product carries `CFBundleIdentifier com.jeremyswisher.sportsmriacademy`.
+
+Three things that make this project easy to break:
+
+- **The Xcode project is GENERATED by XcodeGen from `ios/project.yml`.** Edit the yml and run
+  `cd ios && xcodegen generate`, then commit the regenerated `.xcodeproj`. Do not hand-edit
+  `project.pbxproj`.
+- **The JS and native sides share a contract.** The shell announces itself via
+  `applicationNameForUserAgent` in `ios/SportsMRIAcademy/WebShellView.swift`, and
+  `src/lib/pwa.ts` matches it to hide browser install prompts inside the app. Both say
+  `SportsMRIAcademyiOS`. The matcher deliberately still accepts the legacy `UCLASportsMRIiOS`
+  token because a dev build carrying it may be installed on a device; drop that once none
+  survive. Both tokens are covered by tests.
+- **The Apple Service ID was renamed too** and is NOT yet registered with Apple
+  (`signInWithAppleEnabledForBundleId: false`). Register `com.jeremyswisher.sportsmriacademy.web`,
+  not the old one.
+
+The July 19 evidence audit reported 1/7 groups ready: screenshots 3/3; archive signing,
+Apple/Firebase auth (0/6), real-device/account deletion (0/5), App Store Connect (0/10), hard
+submission, and release evidence (0/3) remain TODO. Every evidence boolean in `ios/*.json` is
+still `false` — those files describe the app we intend to create, they do not attest to
+verification that happened.
+
+Two things worth doing before the submission push: exercise Google sign-in by hand from
+`sportsmriacademy.com` on a real device (mobile Safari and installed PWA), and be aware that
+medical-education apps draw real App Review scrutiny — ship after the content has settled, not
+during a week of active medical correction.
 
 Never commit Apple private keys, `.p8` files, API keys, issuer IDs, app-specific passwords, Firebase service-account paths, real learner emails/UIDs, or PHI. Do not mark an external evidence gate complete unless it was actually verified.
 
@@ -531,4 +682,24 @@ Never commit Apple private keys, `.p8` files, API keys, issuer IDs, app-specific
 
 ## One-Paragraph Executive Summary
 
-The web/PWA is live at the current product release `106d227` and is substantially hardened for the three-fellow pilot and the July 24 live knee-MRI teaching session with Dr. Burbank. Since the July 19 handoff, twelve commits added the `/admin/session` faculty tooling and canonical `teaching-session.ts` timeline, four escalating literature-verified knee medical-accuracy passes (all recurring facts recorded in `knee-content-medical-facts.md`), pilot UX (home/cases above the fold, spoiler-safe case search, daily review cap, case commit-gate), and a set of whole-app correctness fixes (offline `settleWrite`, stable research-export IDs, service-worker image revalidation, normalized analytics denominators). All four interactive normal MRI workstations have passed complete desktop/mobile plane-and-mode sweeps; the course journey, issue-report workflow, PWA recovery, structural marker/slice/answer-key integrity, and performance budgets are under automated coverage. The 2026-07-21 verified baseline is 450 unit/component tests passing, clean lint/type-check/build, a 210.9 KiB initial-gzip performance budget, and zero automated medical-QA diagnostics; Playwright, `test:normal`, and `npm audit` were not re-run in this content-only pass and carry forward from July 19. The next highest-value work is real-device authentication, authenticated admin/pilot validation, and faculty source-and-marker sign-off. Native iOS submission remains intentionally paused.
+The web/PWA is live and free at `https://sportsmriacademy.com`, rebranded from UCLA to **Sports
+MRI Academy**, and the current goal is a **free iOS App Store app** — selling institutional
+licenses was considered and abandoned on 2026-07-26. Both documented iOS blockers are now cleared:
+every NonCommercial teaching image is gone (24 replaced with verified CC BY figures, 9 deleted;
+final census 141 CC BY / 1 CC BY-SA / 0 NC), and the UCLA trademark is out of the app identity,
+including a bundle-ID rename to `com.jeremyswisher.sportsmriacademy` done before Apple freezes it
+and verified by an actual `xcodebuild`. What remains for submission is the App Store Connect
+checklist (0/10) and a real-device sign-in check from the new origin. Also landed since the last
+handoff: a locate-scoring fix that stopped 26 pairs of answer anchors accepting each other so
+clicking the WRONG structure scored correct; hip and elbow workstation depth roughly doubled and
+a 38-card elbow flashcard deck added, both literature-verified with 25 medical corrections applied
+and one over-correction overturned; three elbow medical claims propagated to every remaining site
+after an audit found they had been fixed in one file and left wrong in others; and the
+tracked-fellow roster moved out of the public bundle into an admin-only Firestore collection. The
+verified baseline is 71 test files / 535 tests passing plus 2 EXPECTED `it.fails()` guards
+awaiting Dr. Swisher's own medical wording in `VisualAtlas.tsx`, clean lint/build, `qa:medical` 0
+diagnostics, a 228.6 KiB initial-gzip budget, and the live release gate green against the new
+origin. The highest-value open items are the App Store Connect checklist, faculty placement of
+`locateRegion` endpoints (see `LOCATE_REGION_PROPOSAL.md` — 14 items sit below a usability floor
+and need item redesign, not a tolerance change), and a repo-wide licence sweep of all 128
+referenced images, since this migration only covered the 33 an audit had identified.
