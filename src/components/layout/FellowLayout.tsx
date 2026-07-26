@@ -80,6 +80,12 @@ function FellowLayoutContent() {
 
   // Per-route document title (WCAG 2.4.2) so a screen-reader user hears where they
   // are on navigation, and tabs/history are distinguishable.
+  //
+  // This effect deliberately does NOT also keep a rel=canonical link in sync.
+  // index.html ships no canonical tag at all (the reasoning lives there), and
+  // syncing one here would be dead code: every route this layout wraps is nested
+  // under ProtectedRoute, so a signed-out crawler is redirected to /login and this
+  // component never mounts for it.
   useEffect(() => {
     const parts = location.pathname.split("/").filter(Boolean);
     const last = parts[parts.length - 1] || "";

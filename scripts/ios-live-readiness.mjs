@@ -136,12 +136,13 @@ async function main() {
 
   const manifest = await fetchText("/manifest.webmanifest");
   assertContentTypeIncludes("Live web manifest content type", manifest.response, "application/manifest+json");
-  assertBodyIncludes("Live web manifest names app", manifest.text, "UCLA Sports MRI");
+  // Brand name, not the Firebase project id: the app ships as "Sports MRI Academy".
+  assertBodyIncludes("Live web manifest names app", manifest.text, "Sports MRI Academy");
   assertBodyIncludes("Live web manifest includes 512 icon", manifest.text, "/pwa-icon-512.png");
 
   const favicon = await fetchText("/favicon.svg");
   assertContentTypeIncludes("Live favicon content type", favicon.response, "image/svg+xml");
-  assertBodyIncludes("Live favicon names app", favicon.text, "UCLA Sports MRI favicon");
+  assertBodyIncludes("Live favicon names app", favicon.text, "Sports MRI Academy favicon");
 
   const appleTouchIcon = await fetchText("/apple-touch-icon.png");
   assertContentTypeIncludes("Live Apple touch icon content type", appleTouchIcon.response, "image/png");

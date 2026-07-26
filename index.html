@@ -2,11 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- .ico first for legacy clients that request /favicon.ico unprompted; without
+         a real file firebase.json's ** rewrite hands them the SPA HTML shell. -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="192x192" href="/pwa-icon-192.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="canonical" href="https://sportsmriacademy.com/" />
+    <!-- No <link rel="canonical"> on purpose. firebase.json rewrites ** to this one
+         index.html, so anything here is served byte-identical on every route; a
+         hardcoded canonical therefore told crawlers that /privacy, /support and
+         every /courses/* URL were duplicates of "/". Rewriting it per-route from
+         JS would not fix that either: every /courses/* route sits behind
+         ProtectedRoute, which redirects a signed-out crawler to /login before the
+         layout that would rewrite the tag ever mounts. With no tag at all each URL
+         is self-canonical, which is the correct claim for the only publicly
+         reachable pages (/, /login, /privacy, /support, /accessibility). Re-add a
+         canonical only if this app grows a prerendered/server-rendered public
+         surface that can emit a genuinely per-URL value. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#005587" />
     <meta name="color-scheme" content="light" />

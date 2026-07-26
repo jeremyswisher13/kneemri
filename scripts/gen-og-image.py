@@ -62,21 +62,21 @@ def main() -> None:
             c = tuple(int(BLUE[i] + (DARK[i] - BLUE[i]) * t) for i in range(3))
             d.rectangle([x, y, x + 8, y + 1], fill=c)
 
-    # ── Crosshair motif (mirrors favicon.svg) ──────────────────────────────
-    # Kept fully clear of the text column: at 1000/132 its leftmost tick lands
-    # at x=844, while the longest text line ends near x=790.
-    cx, cy, r = 1000, 315, 132
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(255, 255, 255), width=2)
-    d.line([cx, cy - r - 22, cx, cy + r + 22], fill=(255, 255, 255), width=2)
-    d.line([cx - r - 22, cy, cx + r + 22, cy], fill=(255, 255, 255), width=2)
-    gr = 92
-    d.ellipse([cx - gr, cy - gr, cx + gr, cy + gr], outline=GOLD, width=13)
-    for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)):
-        d.line(
-            [cx + dx * 34, cy + dy * 34, cx + dx * 67, cy + dy * 67],
-            fill=WHITE, width=9,
-        )
-    d.ellipse([cx - 20, cy - 20, cx + 20, cy + 20], fill=WHITE)
+    # ── Brand mark ─────────────────────────────────────────────────────────
+    # Composited from the designer's own raster in brand/, never redrawn — the
+    # same rule scripts/gen-brand-icons.py follows, and for the same reason:
+    # a PIL reproduction of this mark measured ~16/255 off the real one.
+    # Placed clear of the text column: at 1000 centre / 260 wide its left edge
+    # lands at x=870, while the longest text line ends near x=710.
+    mark = Image.open("brand/favicons/android-chrome-512x512.png").convert("RGBA")
+    side = 260
+    mark = mark.resize((side, side), Image.LANCZOS)
+    rounded = Image.new("L", (side * 4, side * 4), 0)
+    ImageDraw.Draw(rounded).rounded_rectangle(
+        [0, 0, side * 4 - 1, side * 4 - 1], radius=14 / 64 * side * 4, fill=255
+    )
+    mark.putalpha(rounded.resize((side, side), Image.LANCZOS))
+    img.paste(mark, (1000 - side // 2, 315 - side // 2), mark)
 
     # ── Wordmark and copy ──────────────────────────────────────────────────
     # Text is a left column capped well short of the motif. Social cards get
