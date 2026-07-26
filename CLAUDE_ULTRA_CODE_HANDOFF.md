@@ -1,21 +1,33 @@
 # Handoff to Claude Ultra Code - UCLA Sports MRI App
 
-Last updated: July 21, 2026 (7/24 teaching-session prep + two knee medical-accuracy passes)
+Last updated: July 26, 2026 (Sports MRI Academy domain migration)
 
 Repository: `/Users/jeremyswisher/Jeremy Swisher Knee MRI UCLA Course/knee-mri-app`
 
 Branch: `main`
 
-Current product HEAD: `106d227 Knee course: second literature-verified medical-accuracy pass (8 corrections)`. The July 19 handoff HEAD was `be2f5ea`; twelve commits of 7/24-teaching-session prep have landed since (`9ed7516`..`106d227`), documented in the new section below.
+Current product HEAD: `921a298 Use Sports MRI Academy canonical domain`. The July 19 handoff HEAD was `be2f5ea`; retain the detailed historical sections below, but use `git log` as the source of truth for all work after that handoff.
 
 Production:
 
-- Custom domain: `https://jeremyswisherkneemri.com`
+- Primary custom domain: `https://sportsmriacademy.com`
+- `www` redirect: `https://www.sportsmriacademy.com` -> `https://sportsmriacademy.com`
+- Legacy custom domain (keep connected): `https://jeremyswisherkneemri.com`
 - Firebase Hosting: `https://ucla-knee-mri.web.app`
 - Firebase project: `ucla-knee-mri`
-- On 2026-07-21, after the latest deploy, both production domains were verified serving the same current bundle `index-CfUWAHBv.js`, and a corrected teaching string was confirmed live in the production JS.
+- On 2026-07-26, the new apex and `www` domains were attached to Firebase Hosting, exact Namecheap DNS records were installed, both domains were added to Firebase Authentication's authorized-domain list, and the canonical/share URLs were deployed. Firebase's `ucla-knee-mri.firebaseapp.com` remains the SDK `authDomain` and native callback host; do not change it casually because that separation preserves the proven Google/Apple redirect flow.
+- The 2026-07-26 production release serves bundle `index-CW3HyUga.js`. The full test suite (64 files / 479 tests), lint, production build, and all 112 live route/asset/PWA/auth-handler checks passed.
 
 The web/PWA is the active shipping surface. Native iOS submission remains paused; read the iOS section before touching `ios/` or any App Store evidence tooling.
+
+## July 26 Domain Migration
+
+- `sportsmriacademy.com` is the canonical public origin in `index.html`, Open Graph/Twitter image metadata, the teaching-session invite, and the faculty run-sheet.
+- Namecheap DNS intentionally retains the email-forwarding SPF TXT record alongside Firebase's ownership TXT record. Do not remove the SPF record merely because two apex TXT records are present.
+- The Firebase Hosting records are apex `A 199.36.158.100`, apex `TXT hosting-site=ucla-knee-mri`, and `www CNAME ucla-knee-mri.web.app`.
+- `www.sportsmriacademy.com` is configured in Firebase as a redirect to the apex domain. Do not replace it with a Namecheap URL redirect; Firebase owns HTTPS and the redirect certificate.
+- Keep `jeremyswisherkneemri.com` attached to the same Hosting site so existing bookmarks and installed home-screen apps continue working. New installs and shared links should use the Sports MRI Academy domain.
+- Keep `src/lib/firebase.ts` on `authDomain: "ucla-knee-mri.firebaseapp.com"`. The new domains are authorized origins, not replacement callback hosts.
 
 ## Start Here
 
@@ -33,10 +45,11 @@ npm run build
 
 Expected baseline at handoff:
 
-- `main` is synchronized with `origin/main` (pushed through `106d227`).
-- Full suite: 59 test files, 450 tests passing (verified 2026-07-21).
-- `npm run lint`, `npm run test:types`, `npm run build`: clean (2026-07-21).
-- Performance gate: 210.9 KiB initial gzip across 11 assets (largest `react-vendor` 57.6 KiB); 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
+- `main` is synchronized with `origin/main` (pushed through `921a298`).
+- Full suite: 64 test files, 479 tests passing (verified 2026-07-26).
+- `npm run lint`, `npm run test:types`, `npm run build`: clean (2026-07-26).
+- Performance gate: 228.2 KiB initial gzip across 11 assets (largest `react-vendor` 57.6 KiB); 14 MRI stacks checked; largest stack 2,518.6 KiB and largest slice 91.1 KiB.
+- Live release gate: 112 checks passing across app routes, every discovered JS chunk, manifest/icons, account routes, login, and both Firebase Auth handlers (verified 2026-07-26).
 - `npm run qa:medical`: 2,768 review items, 1,360 high-risk items, 1,587 source checks, and zero automated diagnostics (2026-07-21).
 - NOT re-run in the 2026-07-21 content-only pass (they carry forward from July 19 — re-run if you touch the relevant surface): `npm run test:normal` (was 12 files / 53 tests), `npm run test:e2e` Playwright (was 15 pass / 1 intentional desktop skip), and `npm audit --omit=dev` (was zero vulnerabilities; no dependencies changed since).
 
