@@ -1,4 +1,4 @@
-# UCLA Sports MRI Courses Medical QA
+# Sports MRI Academy Courses Medical QA
 
 Generated: 2026-07-26
 

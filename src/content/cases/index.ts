@@ -209,9 +209,9 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_pcl_buckling.jpg',
-        alt: 'Anterior tibial translation measurement on sagittal MRI',
-        caption: 'Anterior tibial translation — the tibia is displaced anteriorly relative to the femur (measured here, 15.4 mm); a secondary sign of ACL deficiency.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Anterior tibial translation and PCL angle on sagittal MRI',
+        caption: 'Secondary signs on sagittal PD, same arthroscopy-proven ACL tear. (e) Anterior tibial translation measured at 7.2 mm — above the 7 mm cut-off, which was 100% specific for a torn ACL in the original series (Vahey 1993); ≥5 mm is ~93% specific but only ~58% sensitive. (f) The PCL angle here is normal at 133.2°, a reminder that a normal PCL angle does not exclude a tear.',
+        attribution: 'Celikyay F et al., J Belg Soc Radiol, 2020. PMC7333554. CC-BY 4.0.',
         step: 5,
       },
       {
@@ -223,16 +223,16 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_blumensaat_angle.jpg',
-        alt: "Blumensaat's angle on sagittal MRI",
-        caption: "Blumensaat's angle — useful when assessing ACL graft orientation and position.",
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'ACL angle and Blumensaat angle measured on sagittal MRI in a torn ACL',
+        caption: "Angle signs in the same arthroscopy-proven tear. (b) The ACL angle is decreased at 26.8°. (c) The Blumensaat angle is 28.2° with its apex formed distally — a positive value. Both are secondary signs: in this series the ACL angle discriminated best (AUC 0.894) and the Blumensaat angle next (0.861), so treat them as supporting evidence rather than a diagnosis.",
+        attribution: 'Celikyay F et al., J Belg Soc Radiol, 2020. PMC7333554. CC-BY 4.0.',
         step: 5,
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/04_ACL_Secondary_Signs.jpg',
-        alt: 'Coronal view of the ACL tibial attachment',
-        caption: 'Coronal image through the intercondylar notch — abnormal signal at the ACL tibial attachment (arrow). The sagittal secondary signs (anterior tibial translation, deep lateral femoral notch, PCL buckling) are assessed on sagittal images.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Six-panel sagittal montage of ACL tear secondary signs in one proven case',
+        caption: 'The secondary-sign sweep in a single arthroscopy-proven ACL tear, all sagittal PD unless noted. (a) Direct sign: fibre discontinuity. (b) Decreased ACL angle. (c) Blumensaat angle, apex distal. (d) T1 — NO deep lateral femoral notch sign here, which is why its absence proves nothing. (e) Anterior tibial translation 7.2 mm. (f) Normal PCL angle. Work the whole set: individually these are specific but insensitive, so absence never excludes a tear.',
+        attribution: 'Celikyay F et al., J Belg Soc Radiol, 2020. PMC7333554. CC-BY 4.0.',
         step: 5,
       },
       {

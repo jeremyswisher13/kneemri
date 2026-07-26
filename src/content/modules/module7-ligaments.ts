@@ -62,9 +62,9 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/04_ACL_Secondary_Signs.jpg',
-        alt: 'Secondary signs of ACL tear — tibial translation, deep sulcus, PCL buckling',
-        caption: 'Secondary signs of ACL tear — tibial translation, deep sulcus, PCL buckling',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Six-panel sagittal montage of ACL tear secondary signs in one proven case',
+        caption: 'Secondary signs in one arthroscopy-proven ACL tear: (a) fibre discontinuity, (b) decreased ACL angle, (c) Blumensaat angle with a distal apex, (d) no deep lateral femoral notch on T1, (e) anterior tibial translation 7.2 mm, (f) normal PCL angle. Note that two of the six are NEGATIVE in a knee with a real tear — these signs are specific but insensitive.',
+        attribution: 'Celikyay F et al., J Belg Soc Radiol, 2020. PMC7333554. CC-BY 4.0.',
       },
       {
         src: '/images/teaching/modules/module7-ligaments/06_ACL_Segond_Fracture.jpg',
