@@ -387,16 +387,37 @@ async function getCohortSettings(): Promise<Record<string, unknown>> {
   return data;
 }
 
+// Admin-only cohort configuration, in its own collection so the rules can deny
+// learners read access outright (see firestore.rules: /settings is readable by
+// every signed-in learner, and Firestore ORs allow rules across matching paths,
+// so the roster could not be locked down as a sub-path of /settings).
+let adminCohortCache: { data: Record<string, unknown>; at: number } | null = null;
+async function getAdminCohortSettings(): Promise<Record<string, unknown>> {
+  if (adminCohortCache && Date.now() - adminCohortCache.at < COHORT_TTL_MS) {
+    return adminCohortCache.data;
+  }
+  const snap = await getDoc(doc(db, "adminSettings", "cohort"));
+  const data = snap.exists() ? snap.data() : {};
+  adminCohortCache = { data, at: Date.now() };
+  return data;
+}
+
 /**
  * The pilot-cohort roster shown on the admin dashboard and the session page.
  *
  * Stored in Firestore rather than in source: these are real trainee names, and
  * hard-coding them shipped them inside the public JS bundle where anyone could
- * fetch them from the live site. Returns [] when unset, which renders the panel
+ * fetch them from the live site. It lives in `adminSettings/cohort`, NOT in the
+ * learner-readable `settings/cohort` — otherwise every signed-in learner
+ * (including the learners named in it) could still read the roster.
+ *
+ * Only ever called from the /admin routes, which are behind
+ * `ProtectedRoute requireAdmin`, so a learner never issues this read and never
+ * sees a permission-denied error. Returns [] when unset, which renders the panel
  * in its empty state.
  */
 export async function getTrackedFellowRoster(): Promise<TrackedFellowTarget[]> {
-  const settings = await getCohortSettings();
+  const settings = await getAdminCohortSettings();
   return parseTrackedFellowTargets(settings.trackedFellows);
 }
 

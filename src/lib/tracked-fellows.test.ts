@@ -78,3 +78,48 @@ describe("tracked fellows roster", () => {
     expect(fellowMatchesAlias(fellow("1", "", "ada.lovelace@example.edu"), "ada lovelace")).toBe(true);
   });
 });
+
+/**
+ * Moving the roster out of the bundle only helps if the document it moved INTO
+ * is actually admin-only. `settings/cohort` is not: every signed-in learner
+ * reads it on the normal progress path, so storing the roster there would have
+ * left it readable by the learners named in it. Firestore ORs `allow` rules
+ * across every matching path, so a narrower `match /settings/roster` could not
+ * have taken that access back — the roster needs a separate collection.
+ */
+describe("tracked fellow roster storage contract", () => {
+  const rules = readFileSync("firestore.rules", "utf8");
+  const store = readFileSync(new URL("./firestore.ts", import.meta.url), "utf8");
+
+  const adminBlock = rules.match(/match \/adminSettings\/\{doc\} \{([\s\S]*?)\n\s{4}\}/)?.[1] ?? "";
+  const settingsBlock = rules.match(/match \/settings\/\{doc\} \{([\s\S]*?)\n\s{4}\}/)?.[1] ?? "";
+
+  it("reserves /adminSettings for admins on both read and write", () => {
+    expect(adminBlock).toContain("allow read, write: if isAdmin()");
+    expect(adminBlock).not.toMatch(/allow read[^\n]*request\.auth != null/);
+  });
+
+  it("keeps /settings learner-readable for the unlock flags it already serves", () => {
+    expect(settingsBlock).toContain("allow read: if request.auth != null");
+    expect(settingsBlock).toContain("allow write: if isAdmin()");
+  });
+
+  it("does not store the roster under any learner-readable settings path", () => {
+    // A `match /settings/...` sub-path cannot narrow the wildcard above it, so
+    // the roster must not be referenced anywhere in the /settings rules.
+    expect(settingsBlock).not.toContain("trackedFellows");
+  });
+
+  it("reads the roster from adminSettings, not from the learner cohort doc", () => {
+    const roster = store.match(/export async function getTrackedFellowRoster\(\)[\s\S]*?\n\}/)?.[0] ?? "";
+    expect(roster).toContain("getAdminCohortSettings()");
+    expect(roster).not.toContain("getCohortSettings()");
+    expect(store).toContain('getDoc(doc(db, "adminSettings", "cohort"))');
+  });
+
+  it("keeps the learner-path cohort read on settings/cohort only", () => {
+    const learnerRead = store.match(/async function getCohortSettings\(\)[\s\S]*?\n\}/)?.[0] ?? "";
+    expect(learnerRead).toContain('getDoc(doc(db, "settings", "cohort"))');
+    expect(learnerRead).not.toContain("adminSettings");
+  });
+});

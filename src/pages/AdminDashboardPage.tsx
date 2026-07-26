@@ -1301,7 +1301,7 @@ function TrackedFellowsPanel({
           <p className="mt-0.5 text-xs text-gray-500">
             {rows.length > 0
               ? `${rows.map((row) => row.targetName).join(", ")} in the selected ${course.shortTitle} cohort.`
-              : `No roster configured. Set settings/cohort.trackedFellows to follow specific learners in the ${course.shortTitle} cohort.`}
+              : `No roster configured. Set adminSettings/cohort.trackedFellows to follow specific learners in the ${course.shortTitle} cohort.`}
           </p>
         </div>
         <div className="grid grid-cols-3 gap-2 text-center sm:w-[360px]">

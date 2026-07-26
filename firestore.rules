@@ -188,9 +188,23 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // Learner-visible global flags only (postQuizUnlocked_*). Every signed-in
+    // learner reads settings/cohort on the normal progress path, so NOTHING
+    // private may be stored here — and because `allow` rules are OR'd across all
+    // matching paths, a narrower `match /settings/roster` could not take it back.
+    // Admin-only data goes in /adminSettings instead.
     match /settings/{doc} {
       allow read: if request.auth != null;
       allow write: if isAdmin();
+    }
+
+    // Admin-only configuration, in a SEPARATE top-level collection rather than a
+    // sub-path of /settings (see above — a sub-path could only widen access, not
+    // narrow it). Holds adminSettings/cohort.trackedFellows: the pilot-cohort
+    // roster of real trainee names, which must not be readable by the learners
+    // named in it.
+    match /adminSettings/{doc} {
+      allow read, write: if isAdmin();
     }
 
     match /medicalQaReviews/{reviewId} {

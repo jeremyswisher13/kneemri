@@ -3,12 +3,14 @@ import { fellowName, type Fellow } from "@/components/admin/shared";
 /**
  * A learner the admin dashboard follows by name (the pilot-cohort panel).
  *
- * The roster is stored in Firestore (`settings/cohort.trackedFellows`) and NOT
- * hard-coded here. It used to be a literal array of real trainee names, which
- * meant those names shipped inside the public JS bundle and were fetchable from
- * the live site by anyone, signed in or not. Matching still uses DISPLAY NAME +
- * EMAIL TEXT only — never a uid or private email. Spelling aliases exist because
- * a learner's Google display name may not match the roster spelling.
+ * The roster is stored in Firestore (`adminSettings/cohort.trackedFellows`) and
+ * NOT hard-coded here. It used to be a literal array of real trainee names,
+ * which meant those names shipped inside the public JS bundle and were fetchable
+ * from the live site by anyone, signed in or not. It lives in `adminSettings`
+ * rather than `settings` because `settings` is readable by every signed-in
+ * learner — including the learners on the roster. Matching still uses DISPLAY
+ * NAME + EMAIL TEXT only — never a uid or private email. Spelling aliases exist
+ * because a learner's Google display name may not match the roster spelling.
  */
 export interface TrackedFellowTarget {
   name: string;

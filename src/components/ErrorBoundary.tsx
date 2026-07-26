@@ -1,4 +1,4 @@
-import { Component, type ErrorInfo, type ReactNode } from "react";
+import { Component, useEffect, type ErrorInfo, type ReactNode } from "react";
 import { useRouteError } from "react-router-dom";
 
 interface Props {
@@ -105,6 +105,16 @@ function routeErrorAsError(routeError: unknown) {
 
 export function RouteErrorFallback() {
   const routeError = useRouteError();
+
+  // The router catches route-level render errors itself, so they never reach
+  // ErrorBoundary.componentDidCatch — without this, the most common failure
+  // path (a chunk-load error after a deploy) leaves no console trace at all.
+  // Logged from an effect keyed on the router's own error value, so a
+  // re-render (or StrictMode's double render) does not duplicate the entry.
+  useEffect(() => {
+    console.error("[ErrorBoundary] Uncaught route error:", routeErrorAsError(routeError));
+  }, [routeError]);
+
   return (
     <AppErrorFallback
       error={routeErrorAsError(routeError)}

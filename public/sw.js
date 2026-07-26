@@ -148,6 +148,14 @@ async function cacheFirst(request) {
   return response;
 }
 
+/**
+ * Same strategy as staleWhileRevalidateImage, for script/style subresources.
+ * Also has NO offline.html fallback, for the same reason an <img> has none: a
+ * <script src>/<link rel=stylesheet> handed an HTML document is rejected on
+ * MIME type, so the learner gets a console error instead of the offline page.
+ * Failing cleanly lets the browser report the real network failure, and lets a
+ * navigation (which DOES fall back to offline.html) show the intended screen.
+ */
 async function staleWhileRevalidate(request, event) {
   const cachePromise = caches.open(CACHE_VERSION);
   const network = cachePromise.then((cache) => fetchAndCache(request, cache));
@@ -158,7 +166,7 @@ async function staleWhileRevalidate(request, event) {
   if (cached) {
     return cached;
   }
-  return (await network) || caches.match("/offline.html");
+  return (await network) || Response.error();
 }
 
 async function navigationFirst(request) {
