@@ -26,6 +26,7 @@ The web/PWA is the active shipping surface. Native iOS submission remains paused
 - Namecheap DNS intentionally retains the email-forwarding SPF TXT record alongside Firebase's ownership TXT record. Do not remove the SPF record merely because two apex TXT records are present.
 - The Firebase Hosting records are apex `A 199.36.158.100`, apex `TXT hosting-site=ucla-knee-mri`, and `www CNAME ucla-knee-mri.web.app`.
 - `www.sportsmriacademy.com` is configured in Firebase as a redirect to the apex domain. Do not replace it with a Namecheap URL redirect; Firebase owns HTTPS and the redirect certificate.
+- Final 2026-07-26 check: Firebase accepted both domain setups and shows the apex and `www` rows as **Minting certificate**. Firebase states this can take up to 24 hours. Do not restart setup or alter the verified DNS records while issuance is in progress; wait for both rows to become **Connected**, then run HTTPS/login/PWA checks on the new origin.
 - Keep `jeremyswisherkneemri.com` attached to the same Hosting site so existing bookmarks and installed home-screen apps continue working. New installs and shared links should use the Sports MRI Academy domain.
 - Keep `src/lib/firebase.ts` on `authDomain: "ucla-knee-mri.firebaseapp.com"`. The new domains are authorized origins, not replacement callback hosts.
 
