@@ -321,10 +321,10 @@ export const hipCaseRegistry: CaseMetadata[] = [
       },
       {
         src: "/images/teaching/cases/hip-bme-sifk/sifk-subchondral-line.jpg",
-        alt: "Subchondral insufficiency fracture of the femoral head on coronal fat-suppressed MRI",
+        alt: "Subchondral insufficiency fracture of the femoral head across CT and MRI",
         caption:
-          "Coronal fat-suppressed MRI — diffuse left femoral-head marrow edema WITH a subchondral low-signal fracture band (arrow): subchondral insufficiency fracture of the femoral head (SIFFH), which carries collapse risk (right hip normal). The fracture band separates SIFFH from transient BME.",
-        attribution: "Ghate & Samant, J Orthop Case Rep 2012;2(2):7-9, Fig 2. PMC4719180. CC BY-NC-SA 3.0.",
+          "Subchondral insufficiency fracture of the femoral head (SIFFH) in one patient. (B) CT coronal: a curved hairline paralleling the articular surface. (C) PD coronal: the corresponding subchondral LOW-signal band (arrows) — this band is what separates SIFFH, which carries collapse risk, from transient bone-marrow-oedema syndrome. (D) STIR oblique sagittal: diffuse high signal through the whole femoral head. (E) T2* oblique axial: an anterosuperior labral tear (arrowhead). Oedema alone is not the diagnosis — hunt for the band.",
+        attribution: "Uchida S et al., Knee Surg Sports Traumatol Arthrosc, 2018;26(8):2527. PMC6061709. CC-BY 4.0.",
         step: 2,
       },
     ],
