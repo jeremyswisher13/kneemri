@@ -188,9 +188,9 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_tear_sagittal.jpg',
-        alt: 'ACL tear sagittal view',
-        caption: 'ACL tear on sagittal PD FS with fibers lax and wavy.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Complete acute ACL tear on sagittal fat-suppressed T2',
+        caption: 'ACL tear, direct sign — sagittal T2 with fat suppression shows increased signal at the expected location of the ligament in a complete acute tear (arrow); the normal taut low-signal band is gone.',
+        attribution: 'Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.',
         step: 5,
       },
       {
@@ -216,9 +216,9 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_kissing_contusions.jpg',
-        alt: 'Pivot-shift kissing contusions',
-        caption: 'Pivot-shift kissing contusions — anterior LFC + posterolateral tibial plateau (arrows).',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Pivot-shift bone contusions with the ACL tear in the same knee',
+        caption: 'ACL tear, indirect sign. (a) Bone oedema and impaction at the CENTRAL lateral femoral condyle and the POSTERIOR lateral tibial plateau (arrowheads). (b) The same knee, showing the ACL tear itself (arrow) — the contusion pattern points you at the ligament, it does not replace looking at it.',
+        attribution: 'Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.',
         step: 2,
       },
       {

@@ -329,9 +329,9 @@
           "images": [
             {
               "src": "/images/teaching/cases/acl-pivot-shift/acl_kissing_contusions.jpg",
-              "alt": "Pivot-shift bone contusions — posterolateral tibial plateau + LFC",
-              "caption": "Pivot-shift bone contusions — lateral femoral condyle and posterolateral tibial plateau (arrows), the classic kissing-contusion pattern of ACL injury on sagittal fat-suppressed MRI.",
-              "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0."
+              "alt": "Pivot-shift bone contusions with the ACL tear in the same knee",
+              "caption": "Pivot-shift bone contusions on sagittal fat-suppressed T2. (a) Oedema and impaction at the central lateral femoral condyle and the posterior lateral tibial plateau (arrowheads). (b) The same knee, showing the ACL tear (arrow).",
+              "attribution": "Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0."
             },
             {
               "src": "/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg",
@@ -773,9 +773,9 @@
           "images": [
             {
               "src": "/images/teaching/modules/module7-ligaments/07_ACL_Chronic_Tear_Mucoid.jpg",
-              "alt": "Chronic ACL tear and mucoid degeneration",
-              "caption": "Chronic ACL tear and mucoid degeneration",
-              "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0."
+              "alt": "ACL mucoid degeneration on sagittal and axial fat-suppressed T2",
+              "caption": "ACL mucoid degeneration — (a) sagittal and (b) axial T2 with fat suppression: increased signal within the ACL WITH the internal ligament striation preserved (arrows), the \"celery stalk\" look. Preserved striation and continuity are what separate this from a tear.",
+              "attribution": "Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0."
             }
           ]
         },
@@ -1313,9 +1313,9 @@
         },
         {
           "src": "/images/teaching/cases/acl-pivot-shift/acl_tear_sagittal.jpg",
-          "alt": "ACL tear sagittal view",
-          "caption": "ACL tear on sagittal PD FS with fibers lax and wavy.",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
+          "alt": "Complete acute ACL tear on sagittal fat-suppressed T2",
+          "caption": "ACL tear, direct sign — sagittal T2 with fat suppression shows increased signal at the expected location of the ligament in a complete acute tear (arrow); the normal taut low-signal band is gone.",
+          "attribution": "Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.",
           "step": 5
         },
         {
@@ -1341,9 +1341,9 @@
         },
         {
           "src": "/images/teaching/cases/acl-pivot-shift/acl_kissing_contusions.jpg",
-          "alt": "Pivot-shift kissing contusions",
-          "caption": "Pivot-shift kissing contusions — anterior LFC + posterolateral tibial plateau (arrows).",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
+          "alt": "Pivot-shift bone contusions with the ACL tear in the same knee",
+          "caption": "ACL tear, indirect sign. (a) Bone oedema and impaction at the CENTRAL lateral femoral condyle and the POSTERIOR lateral tibial plateau (arrowheads). (b) The same knee, showing the ACL tear itself (arrow) — the contusion pattern points you at the ligament, it does not replace looking at it.",
+          "attribution": "Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.",
           "step": 2
         },
         {

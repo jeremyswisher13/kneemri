@@ -615,9 +615,9 @@ This pattern should create **high suspicion for ACL injury**. If it is present b
         images: [
           {
             src: '/images/teaching/cases/acl-pivot-shift/acl_kissing_contusions.jpg',
-            alt: 'Pivot-shift bone contusions — posterolateral tibial plateau + LFC',
-            caption: 'Pivot-shift bone contusions — lateral femoral condyle and posterolateral tibial plateau (arrows), the classic kissing-contusion pattern of ACL injury on sagittal fat-suppressed MRI.',
-            attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+            alt: 'Pivot-shift bone contusions with the ACL tear in the same knee',
+            caption: 'Pivot-shift bone contusions on sagittal fat-suppressed T2. (a) Oedema and impaction at the central lateral femoral condyle and the posterior lateral tibial plateau (arrowheads). (b) The same knee, showing the ACL tear (arrow).',
+            attribution: 'Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.',
           },
           {
             src: '/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg',

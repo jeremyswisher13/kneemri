@@ -99,9 +99,12 @@ The ligament appears **"celery stalk-like"** with interdigitated high signal bet
     images: [
       {
         src: '/images/teaching/modules/module7-ligaments/07_ACL_Chronic_Tear_Mucoid.jpg',
-        alt: 'Chronic ACL tear and mucoid degeneration',
-        caption: 'Chronic ACL tear and mucoid degeneration',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        // Caption no longer claims a chronic TEAR: this figure shows mucoid
+        // degeneration alone, which is the better image for a section teaching
+        // mucoid change as a MIMIC of tear. Filename kept to avoid churn.
+        alt: 'ACL mucoid degeneration on sagittal and axial fat-suppressed T2',
+        caption: 'ACL mucoid degeneration — (a) sagittal and (b) axial T2 with fat suppression: increased signal within the ACL WITH the internal ligament striation preserved (arrows), the "celery stalk" look. Preserved striation and continuity are what separate this from a tear.',
+        attribution: 'Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.',
       },
     ],
   },
