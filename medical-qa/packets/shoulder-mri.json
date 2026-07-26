@@ -237,14 +237,14 @@
             {
               "src": "/images/teaching/shoulder/modules/articular-sided-partial-tear-mra-coronal-aber.jpg",
               "alt": "MR arthrogram of an articular-sided (PASTA) partial-thickness supraspinatus tear",
-              "caption": "Articular-sided (PASTA) partial tear — contrast undercuts the deep, joint-facing surface of the supraspinatus near the footprint (panel A oblique coronal MR arthrogram; panel B ABER view, arrows). The articular surface is the most common site of a partial-thickness cuff tear.",
-              "attribution": "Open Orthop J / PMC2930161. CC BY-NC 3.0."
+              "caption": "Articular-sided (PASTA) partial tear in two different patients — contrast undercuts the DEEP, joint-facing surface of the supraspinatus near the footprint (arrows). (a) ABER fat-suppressed PD arthrographic MRI; (b) ABER T1 arthrographic MRI. The articular surface is the most common site of a partial-thickness cuff tear. Contrast with the bursal-sided tear below: it is the SURFACE that classifies the tear.",
+              "attribution": "Perez Yubran A et al., Insights Imaging, 2024;15:61. PMC10899560. CC-BY 4.0."
             },
             {
               "src": "/images/teaching/shoulder/modules/bursal-sided-partial-tear-coronal-t1-t2.jpg",
               "alt": "Coronal MRI of a bursal-sided partial-thickness supraspinatus tear",
-              "caption": "Bursal-sided partial tear — fluid-bright signal reaches the superficial (bursal) surface of the supraspinatus (arrow), shown on T1 (A) and fluid-sensitive (B). Compare with the articular-sided tear above: surface determines the classification.",
-              "attribution": "Open Orthop J / PMC2930161. CC BY-NC 3.0."
+              "caption": "Bursal-sided partial tear — oblique coronal fat-suppressed PD MRI shows discontinuity reaching the SUPERFICIAL (bursal) surface of the supraspinatus (arrow). Compare with the articular-sided tear above: the deep surface is intact here, and it is the surface involved that determines the classification.",
+              "attribution": "Perez Yubran A et al., Insights Imaging, 2024;15:61. PMC10899560. CC-BY 4.0."
             }
           ]
         },
@@ -272,9 +272,9 @@
           "images": [
             {
               "src": "/images/teaching/shoulder/modules/goutallier-fatty-infiltration-yview-sagittal-t1.jpg",
-              "alt": "Sagittal Y-view T1 MRI showing supraspinatus fatty infiltration",
-              "caption": "Goutallier fatty infiltration on the oblique-sagittal 'Y' view at the scapular spine. Magnified insets (a, c; supraspinatus outlined) show increasing intramuscular fat streaks; whole-Y views (b, d) for orientation. Goutallier ≥3 (fat ≥ muscle) predicts poor healing and may indicate an irreparable tear.",
-              "attribution": "PMC9805608. CC BY-NC-SA 4.0."
+              "alt": "Oblique sagittal T1 MRI showing the full Goutallier grading series, grades 0 to 4",
+              "caption": "Goutallier grading of fatty infiltration on the oblique-sagittal T1 'Y' view — the complete series: (a) grade 0, no fat; (b) grade 1, some fat streaks; (c) grade 2, more muscle than fat; (d) grade 3, fat equals muscle; (e) grade 4, more fat than muscle. Grade 3 or above predicts poor healing and may indicate an irreparable tear, so grade every cuff tear rather than just noting atrophy.",
+              "attribution": "Perez Yubran A et al., Insights Imaging, 2024;15:61. PMC10899560. CC-BY 4.0."
             }
           ]
         },
