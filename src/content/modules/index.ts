@@ -621,9 +621,9 @@ This pattern should create **high suspicion for ACL injury**. If it is present b
           },
           {
             src: '/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg',
-            alt: 'Pivot-shift contusion — LFC + posterolateral tibial plateau',
-            caption: 'Pivot-shift contusion — LFC + posterolateral tibial plateau',
-            attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
+            alt: 'Posterolateral tibial plateau injury severity spectrum on sagittal MRI',
+            caption: 'Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema.',
+            attribution: 'Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0.',
           },
         ],
       },
@@ -669,10 +669,13 @@ PCL injuries are less common than ACL injuries and are more frequently associate
           'After identifying the patellar dislocation contusion pattern, search the suprapatellar pouch, gutters, notch, and posterior recesses for chondral or osteochondral fragments. Report their size, composition, location, and donor site; when feasible, fragment fixation or cartilage restoration may be preferred to routine excision.',
         images: [
           {
-            src: '/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg',
-            alt: 'Patellar dislocation — kissing contusions',
-            caption: 'Patellar dislocation — kissing contusions',
-            attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
+            // Repointed from an NC-licensed duplicate to the CC BY image the
+            // patellar-dislocation case already ships, which shows the same
+            // pattern plus the MPFL avulsion.
+            src: '/images/teaching/cases/patellar-dislocation/patellar-dislocation-contusions-axial.jpg',
+            alt: 'Kissing bone contusions of lateral patellar dislocation on axial MRI',
+            caption: "Axial MRI — the 'kissing' contusion pattern of lateral patellar dislocation: paired marrow edema at the medial patellar facet and the lateral femoral condyle (stars, panel B), with avulsion of the MPFL from the femur (panel A, arrow).",
+            attribution: 'Tsai CH et al., J Orthop Surg Res 2012;7:21, Fig 2. PMC3511801. CC BY.',
           },
         ],
       },

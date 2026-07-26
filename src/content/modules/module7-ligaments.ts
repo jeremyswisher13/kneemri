@@ -206,9 +206,9 @@ A **PCL tear combined with a posterolateral corner injury** is a particularly un
       },
       {
         src: '/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg',
-        alt: 'MCL injury — sMCL on T1 + dMCL tear on T2',
-        caption: 'MCL injury — sMCL on T1 + dMCL tear on T2',
-        attribution: 'Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0.',
+        alt: 'Superficial and deep MCL injury on coronal and axial fat-suppressed PD',
+        caption: 'Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus.',
+        attribution: 'Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0.',
       },
     ],
   },

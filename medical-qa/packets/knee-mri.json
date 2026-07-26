@@ -335,9 +335,9 @@
             },
             {
               "src": "/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg",
-              "alt": "Pivot-shift contusion — LFC + posterolateral tibial plateau",
-              "caption": "Pivot-shift contusion — LFC + posterolateral tibial plateau",
-              "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0."
+              "alt": "Posterolateral tibial plateau injury severity spectrum on sagittal MRI",
+              "caption": "Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema.",
+              "attribution": "Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0."
             }
           ]
         },
@@ -358,10 +358,10 @@
           "pearl": "After identifying the patellar dislocation contusion pattern, search the suprapatellar pouch, gutters, notch, and posterior recesses for chondral or osteochondral fragments. Report their size, composition, location, and donor site; when feasible, fragment fixation or cartilage restoration may be preferred to routine excision.",
           "images": [
             {
-              "src": "/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg",
-              "alt": "Patellar dislocation — kissing contusions",
-              "caption": "Patellar dislocation — kissing contusions",
-              "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0."
+              "src": "/images/teaching/cases/patellar-dislocation/patellar-dislocation-contusions-axial.jpg",
+              "alt": "Kissing bone contusions of lateral patellar dislocation on axial MRI",
+              "caption": "Axial MRI — the 'kissing' contusion pattern of lateral patellar dislocation: paired marrow edema at the medial patellar facet and the lateral femoral condyle (stars, panel B), with avulsion of the MPFL from the femur (panel A, arrow).",
+              "attribution": "Tsai CH et al., J Orthop Surg Res 2012;7:21, Fig 2. PMC3511801. CC BY."
             }
           ]
         },
@@ -807,9 +807,9 @@
             },
             {
               "src": "/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg",
-              "alt": "MCL injury — sMCL on T1 + dMCL tear on T2",
-              "caption": "MCL injury — sMCL on T1 + dMCL tear on T2",
-              "attribution": "Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0."
+              "alt": "Superficial and deep MCL injury on coronal and axial fat-suppressed PD",
+              "caption": "Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus.",
+              "attribution": "Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0."
             }
           ]
         },
@@ -1376,9 +1376,9 @@
         },
         {
           "src": "/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg",
-          "alt": "Pivot-shift contusion on sagittal MRI",
-          "caption": "Pivot-shift contusion — LFC + posterolateral tibial plateau",
-          "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0.",
+          "alt": "Posterolateral tibial plateau injury severity spectrum on sagittal MRI",
+          "caption": "Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema.",
+          "attribution": "Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0.",
           "step": 2
         }
       ]
@@ -1495,13 +1495,6 @@
           "caption": "Post-relocation knee with a joint effusion — always scan every recess for a displaced osteochondral fragment, a common companion of patellar dislocation.",
           "attribution": "Garrison et al., Cureus, 2019. PMC6384034. CC-BY 3.0.",
           "step": 3
-        },
-        {
-          "src": "/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg",
-          "alt": "Kissing contusions from patellar dislocation",
-          "caption": "Patellar dislocation — kissing contusions (medial patella + anterolateral LFC)",
-          "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0.",
-          "step": 2
         },
         {
           "src": "/images/teaching/cases/patellar-dislocation/41_PatellarDislocation_MPFL_Tear_Axial.jpg",
@@ -2217,9 +2210,9 @@
       "teachingImages": [
         {
           "src": "/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg",
-          "alt": "MCL injury showing sMCL and dMCL on MRI",
-          "caption": "MCL injury — sMCL on T1 + dMCL tear on T2",
-          "attribution": "Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0.",
+          "alt": "Superficial and deep MCL injury on coronal and axial fat-suppressed PD",
+          "caption": "Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus.",
+          "attribution": "Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0.",
           "step": 5
         }
       ]

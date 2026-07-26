@@ -641,7 +641,7 @@ This pattern should create **high suspicion for ACL injury**. If it is present b
 
 Images:
 - src=/images/teaching/cases/acl-pivot-shift/acl_kissing_contusions.jpg | alt=Pivot-shift bone contusions with the ACL tear in the same knee | caption=Pivot-shift bone contusions on sagittal fat-suppressed T2. (a) Oedema and impaction at the central lateral femoral condyle and the posterior lateral tibial plateau (arrowheads). (b) The same knee, showing the ACL tear (arrow). | attribution=Bordalo-Rodrigues M & White LM, IDKD Musculoskeletal Diseases 2021-2024, Ch 7. NCBI Bookshelf NBK570163. CC-BY 4.0.
-- src=/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg | alt=Pivot-shift contusion — LFC + posterolateral tibial plateau | caption=Pivot-shift contusion — LFC + posterolateral tibial plateau | attribution=JCDR, 2016. PMC4866212. CC-BY-NC 3.0.
+- src=/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg | alt=Posterolateral tibial plateau injury severity spectrum on sagittal MRI | caption=Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema. | attribution=Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0.
 
 #### Topic 3: Dashboard contusion pattern (PCL injury)
 
@@ -682,7 +682,7 @@ Images:
 **Pearl:** After identifying the patellar dislocation contusion pattern, search the suprapatellar pouch, gutters, notch, and posterior recesses for chondral or osteochondral fragments. Report their size, composition, location, and donor site; when feasible, fragment fixation or cartilage restoration may be preferred to routine excision.
 
 Images:
-- src=/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg | alt=Patellar dislocation — kissing contusions | caption=Patellar dislocation — kissing contusions | attribution=JCDR, 2016. PMC4866212. CC-BY-NC 3.0.
+- src=/images/teaching/cases/patellar-dislocation/patellar-dislocation-contusions-axial.jpg | alt=Kissing bone contusions of lateral patellar dislocation on axial MRI | caption=Axial MRI — the 'kissing' contusion pattern of lateral patellar dislocation: paired marrow edema at the medial patellar facet and the lateral femoral condyle (stars, panel B), with avulsion of the MPFL from the femur (panel A, arrow). | attribution=Tsai CH et al., J Orthop Surg Res 2012;7:21, Fig 2. PMC3511801. CC BY.
 
 #### Topic 5: Insufficiency and stress fractures
 
@@ -1470,7 +1470,7 @@ Images:
 
 Images:
 - src=/images/teaching/modules/module6-menisci/15_Meniscus_Meniscotibial_MCL_Normal.jpg | alt=Normal meniscotibial + MCL ligaments — coronal PD | caption=Normal meniscotibial + MCL ligaments — coronal PD | attribution=Insights Imaging, 2016. PMC4877346. CC-BY 4.0.
-- src=/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg | alt=MCL injury — sMCL on T1 + dMCL tear on T2 | caption=MCL injury — sMCL on T1 + dMCL tear on T2 | attribution=Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0.
+- src=/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg | alt=Superficial and deep MCL injury on coronal and axial fat-suppressed PD | caption=Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus. | attribution=Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0.
 
 #### Topic 6: LCL and posterolateral corner (PLC) anatomy and injury
 
@@ -2494,7 +2494,7 @@ Teaching media:
 - src=/images/teaching/cases/acl-pivot-shift/04_ACL_Secondary_Signs.jpg | alt=Six-panel sagittal montage of ACL tear secondary signs in one proven case | caption=The secondary-sign sweep in a single arthroscopy-proven ACL tear, all sagittal PD unless noted. (a) Direct sign: fibre discontinuity. (b) Decreased ACL angle. (c) Blumensaat angle, apex distal. (d) T1 — NO deep lateral femoral notch sign here, which is why its absence proves nothing. (e) Anterior tibial translation 7.2 mm. (f) Normal PCL angle. Work the whole set: individually these are specific but insensitive, so absence never excludes a tear. | attribution=Celikyay F et al., J Belg Soc Radiol, 2020. PMC7333554. CC-BY 4.0.
 - src=/images/teaching/cases/acl-pivot-shift/05_ACL_Bone_Contusion_Pattern.jpg | alt=Bone contusion pattern with ACL tear | caption=Bone contusion — posterolateral tibial plateau + LFC | attribution=Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.
 - src=/images/teaching/modules/module7-ligaments/23_ESSR_ACL_Tear_TibialTranslation.jpg | alt=ACL tear with anterior tibial translation | caption=ACL tear + anterior tibial translation | attribution=ESSR Practice Recommendations, Eur Radiol, 2024. PMC11399221. CC-BY 4.0.
-- src=/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg | alt=Pivot-shift contusion on sagittal MRI | caption=Pivot-shift contusion — LFC + posterolateral tibial plateau | attribution=JCDR, 2016. PMC4866212. CC-BY-NC 3.0.
+- src=/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg | alt=Posterolateral tibial plateau injury severity spectrum on sagittal MRI | caption=Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema. | attribution=Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0.
 
 ### Patellar Dislocation + MPFL Tear
 
@@ -2559,7 +2559,6 @@ Teaching media:
 - src=/images/teaching/cases/patellar-dislocation/pd_mpfl_tear_axial.jpg | alt=MPFL tear with kissing contusions on axial MRI | caption=MPFL tear (blue arrow) + kissing contusions (white arrow = medial patella, red arrow = anterolateral LFC). | attribution=Garrison et al., Cureus, 2019. PMC6384034. CC-BY 3.0.
 - src=/images/teaching/cases/patellar-dislocation/patellar-dislocation-contusions-axial.jpg | alt=Kissing bone contusions of lateral patellar dislocation on axial MRI | caption=Axial MRI — the 'kissing' bone-contusion pattern of lateral patellar dislocation: paired marrow edema at the medial patellar facet and the lateral femoral condyle (stars, panel B), with avulsion of the MPFL from the femur (panel A, arrow). | attribution=Tsai CH et al., J Orthop Surg Res 2012;7:21, Fig 2. PMC3511801. CC BY.
 - src=/images/teaching/cases/patellar-dislocation/pd_osteochondral_fragment.jpg | alt=Osteochondral fragment after patellar dislocation | caption=Post-relocation knee with a joint effusion — always scan every recess for a displaced osteochondral fragment, a common companion of patellar dislocation. | attribution=Garrison et al., Cureus, 2019. PMC6384034. CC-BY 3.0.
-- src=/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg | alt=Kissing contusions from patellar dislocation | caption=Patellar dislocation — kissing contusions (medial patella + anterolateral LFC) | attribution=JCDR, 2016. PMC4866212. CC-BY-NC 3.0.
 - src=/images/teaching/cases/patellar-dislocation/41_PatellarDislocation_MPFL_Tear_Axial.jpg | alt=MPFL tear on axial MRI | caption=MPFL tear on axial MRI | attribution=Cureus, 2019. PMC6384034. CC-BY 3.0.
 - src=/images/teaching/cases/patellar-dislocation/lateral-patellar-dislocation-axial.jpg | alt=Frank lateral patellar dislocation on axial MRI | caption=Axial MRI — frank lateral patellar dislocation: the patella is displaced laterally off the trochlea (white arrow), with bony avulsion of the MPFL (purple arrow) and a shallow, dysplastic trochlea (red arrow). | attribution=Mohan K et al., Cureus 2018;10(12):e3730, Fig 2. PMC6384034. CC BY.
 
@@ -2923,7 +2922,7 @@ Teaching points:
 - MCL injuries are graded 1-3: Grade 1 (edema, intact fibers), Grade 2 (partial tear), Grade 3 (complete disruption).
 - Peripheral medial meniscal / meniscocapsular injury can accompany an MCL tear, because the deep MCL attaches to the meniscus (meniscofemoral and meniscotibial portions). Note: the eponymous "ramp lesion" of the posteromedial meniscocapsular junction is classically associated with ACL tears, not isolated MCL injury.
 Teaching media:
-- src=/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg | alt=MCL injury showing sMCL and dMCL on MRI | caption=MCL injury — sMCL on T1 + dMCL tear on T2 | attribution=Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0.
+- src=/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg | alt=Superficial and deep MCL injury on coronal and axial fat-suppressed PD | caption=Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus. | attribution=Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0.
 
 ### Multiligament Knee Injury
 

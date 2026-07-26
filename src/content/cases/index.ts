@@ -251,9 +251,9 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/modules/module4-bones/35_BoneContusion_PivotShift_Sagittal.jpg',
-        alt: 'Pivot-shift contusion on sagittal MRI',
-        caption: 'Pivot-shift contusion — LFC + posterolateral tibial plateau',
-        attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
+        alt: 'Posterolateral tibial plateau injury severity spectrum on sagittal MRI',
+        caption: 'Posterolateral tibial plateau injury graded by severity on sagittal PD fat-sat: (a) no oedema, (b) oedema (arrow), (c) impaction fracture of the plateau. This is the TIBIAL half of the pivot-shift pair — see the kissing-contusion image for the lateral femoral condyle partner. Deeper impaction means a higher-energy pivot-shift event, so describe depth rather than just noting oedema.',
+        attribution: 'Von Rehlingen-Prinz F et al., Sports Med Open, 2023;9:70. PMC10409938. CC-BY 4.0.',
         step: 2,
       },
     ],
@@ -315,13 +315,9 @@ export const caseRegistry: CaseMetadata[] = [
         attribution: 'Garrison et al., Cureus, 2019. PMC6384034. CC-BY 3.0.',
         step: 3,
       },
-      {
-        src: '/images/teaching/cases/patellar-dislocation/40_BoneContusion_PatellarDislocation.jpg',
-        alt: 'Kissing contusions from patellar dislocation',
-        caption: 'Patellar dislocation — kissing contusions (medial patella + anterolateral LFC)',
-        attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
-        step: 2,
-      },
+      // NOTE: an NC-licensed second kissing-contusion image was removed here. It
+      // duplicated the CC BY Tsai image already shown at step 2 above, which
+      // additionally demonstrates the MPFL avulsion.
       {
         src: '/images/teaching/cases/patellar-dislocation/41_PatellarDislocation_MPFL_Tear_Axial.jpg',
         alt: 'MPFL tear on axial MRI',
@@ -703,9 +699,9 @@ export const caseRegistry: CaseMetadata[] = [
     teachingImages: [
       {
         src: '/images/teaching/cases/mcl-avulsion/44_MCL_Injury_MRI_sMCL_dMCL.jpg',
-        alt: 'MCL injury showing sMCL and dMCL on MRI',
-        caption: 'MCL injury — sMCL on T1 + dMCL tear on T2',
-        attribution: 'Arch Bone Jt Surg, 2021. PMC8221433. CC-BY-NC 4.0.',
+        alt: 'Superficial and deep MCL injury on coronal and axial fat-suppressed PD',
+        caption: 'Medial-sided injury on fat-sat PD: sequential coronals (a, b) and an axial (c). Tibial-sided superficial MCL lesion (blue), a deep MCL lesion at the meniscofemoral portion (yellow), with posteromedial capsular disruption. Name WHICH layer is torn — superficial, deep, or both — because the deep MCL is what tethers the medial meniscus.',
+        attribution: 'Willinger L et al., Knee Surg Sports Traumatol Arthrosc, 2022;30(1):167. PMC8800884. CC-BY 4.0.',
         step: 5,
       },
     ],
