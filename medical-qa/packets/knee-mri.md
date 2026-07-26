@@ -1142,7 +1142,7 @@ Images:
 
 Images:
 - src=/images/modules/meniscal-extrusion.svg | alt=Meniscal extrusion measurement diagram | caption=Measuring meniscal extrusion on coronal images | source=Course-authored diagram
-- src=/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg | alt=Lateral meniscal root tear — ghost meniscus sign | caption=Lateral meniscal root tear — the ghost meniscus sign (faint/absent posterior horn at its root on sagittal), with posterior-horn extrusion on the coronal. | attribution=Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.
+- src=/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg | alt=Ghost sign of a medial meniscus posterior root tear on sagittal MRI | caption=Ghost sign of a medial meniscus posterior root tear — on sagittal the posterior root is no longer identifiable at its expected attachment adjacent to the PCL (arrow). Confirm on the coronal, where the tear shows as a vertical cleft, and measure extrusion. | attribution=Moon HS et al., Medicina (Kaunas), 2023;59(7):1181. PMC10386469. CC-BY 4.0.
 
 #### Topic 5: Ramp lesions: location and ACL association
 
@@ -2618,8 +2618,8 @@ Teaching points:
 - Major medial extrusion (commonly ≥3 mm) is a secondary clue, not a diagnosis; exclude osteophytes and assess the root directly in multiple planes.
 - Root tears are often missed — the posterior root attachment is a mandatory check area on every knee MRI.
 Teaching media:
-- src=/images/teaching/cases/meniscal-root-tear/32_KneeMRI_Medial_Root_Tear_Coronal.jpg | alt=Medial meniscal root tear on coronal MRI | caption=Medial meniscal root tear — sequential coronal images (A–C) with a correlating sagittal image (D). | attribution=Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.
-- src=/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg | alt=Ghost meniscus sign of a posterior root tear (lateral example) | caption=Ghost meniscus sign of a posterior root tear. This published example is a LATERAL root tear; this case is a MEDIAL root tear — the sign looks the same, but the finding sits at the medial root, anteromedial to the PCL. | attribution=Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.
+- src=/images/teaching/cases/meniscal-root-tear/32_KneeMRI_Medial_Root_Tear_Coronal.jpg | alt=Medial meniscus posterior root tear — four MRI signs across coronal, axial and sagittal | caption=Medial meniscus posterior root tear — the four MRI signs in one case. (A) Coronal: vertical high signal at the attachment, the truncation or cleft sign (arrow). (B) Axial: vertical high signal (arrow). (C) Sagittal: the posterior root is no longer identifiable, the ghost sign (arrow). (D) Coronal: meniscal extrusion, measured along the arrow. | attribution=Moon HS et al., Medicina (Kaunas), 2023;59(7):1181. PMC10386469. CC-BY 4.0.
+- src=/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg | alt=Ghost sign of a medial meniscus posterior root tear on sagittal MRI | caption=Ghost sign of a medial meniscus posterior root tear — on sagittal the posterior root is no longer identifiable at its expected attachment adjacent to the PCL (arrow). Confirm on the coronal, where the tear shows as a vertical cleft, and measure extrusion. | attribution=Moon HS et al., Medicina (Kaunas), 2023;59(7):1181. PMC10386469. CC-BY 4.0.
 
 ### PCL + PLC Dashboard Injury
 

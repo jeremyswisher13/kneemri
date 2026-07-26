@@ -24,7 +24,7 @@ export const caseTeachingImageById: Record<string, CasePreviewImage> = {
   },
   "medial-root-tear": {
     "src": "/images/teaching/cases/meniscal-root-tear/32_KneeMRI_Medial_Root_Tear_Coronal.jpg",
-    "caption": "Medial meniscal root tear — sequential coronal images (A–C) with a correlating sagittal image (D)."
+    "caption": "Medial meniscus posterior root tear — coronal cleft sign, axial, sagittal ghost sign, and coronal extrusion."
   },
   "pcl-plc-dashboard": {
     "src": "/images/teaching/cases/pcl-plc/pcl-complete-tear-femoral-detachment.png",

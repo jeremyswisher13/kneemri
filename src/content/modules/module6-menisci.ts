@@ -183,9 +183,11 @@ Meniscal tear morphology is classified into several distinct patterns, each with
       },
       {
         src: '/images/teaching/cases/meniscal-root-tear/33_KneeMRI_Lateral_Root_Tear_GhostMeniscus.jpg',
-        alt: 'Lateral meniscal root tear — ghost meniscus sign',
-        caption: 'Lateral meniscal root tear — the ghost meniscus sign (faint/absent posterior horn at its root on sagittal), with posterior-horn extrusion on the coronal.',
-        attribution: 'Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.',
+        // This section teaches posterior MEDIAL root tears; the previous image was
+        // a lateral example, so the illustration now matches the text.
+        alt: 'Ghost sign of a medial meniscus posterior root tear on sagittal MRI',
+        caption: 'Ghost sign of a medial meniscus posterior root tear — on sagittal the posterior root is no longer identifiable at its expected attachment adjacent to the PCL (arrow). Confirm on the coronal, where the tear shows as a vertical cleft, and measure extrusion.',
+        attribution: 'Moon HS et al., Medicina (Kaunas), 2023;59(7):1181. PMC10386469. CC-BY 4.0.',
       },
     ],
   },
