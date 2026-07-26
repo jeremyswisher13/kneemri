@@ -179,13 +179,7 @@ export const caseRegistry: CaseMetadata[] = [
         attribution: 'Parkar AP, J Belg Soc Radiol, 2016. PMC6100662. CC-BY 4.0.',
         step: 5,
       },
-      {
-        src: '/images/teaching/cases/acl-pivot-shift/acl_variant_C.jpg',
-        alt: 'ACL tear variant — sagittal MRI',
-        caption: 'ACL tear appearance variant 2 — bulky proximal stump.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
-        step: 5,
-      },
+      
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_tear_sagittal.jpg',
         alt: 'Complete acute ACL tear on sagittal fat-suppressed T2',
@@ -196,17 +190,11 @@ export const caseRegistry: CaseMetadata[] = [
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_tear_coronal.jpg',
         alt: 'ACL tear coronal view',
-        caption: 'ACL tear on coronal — disrupted ligament in intercondylar notch.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        caption: 'ACL tear on the paracoronal T2 — total rupture of the ligament in the intercondylar notch (arrow). Same knee also had a Segond fracture and a partial MCL tear, so keep reading past the cruciate.',
+        attribution: 'Adwan H et al., Cureus, 2025. PMC12007960. CC-BY 4.0.',
         step: 5,
       },
-      {
-        src: '/images/teaching/cases/acl-pivot-shift/acl_coronal.jpg',
-        alt: 'ACL attachment on coronal proton-density',
-        caption: 'Coronal PD — empty notch sign at ACL attachment site (arrow).',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
-        step: 5,
-      },
+      
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_pcl_buckling.jpg',
         alt: 'Anterior tibial translation and PCL angle on sagittal MRI',
@@ -238,8 +226,8 @@ export const caseRegistry: CaseMetadata[] = [
       {
         src: '/images/teaching/cases/acl-pivot-shift/05_ACL_Bone_Contusion_Pattern.jpg',
         alt: 'Bone contusion pattern with ACL tear',
-        caption: 'Bone contusion — posterolateral tibial plateau + LFC',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        caption: 'Bone-bruise patterns in ACL rupture — the common 3-compartment (A-F) and 4-compartment (G, H) patterns, sagittal (A, C, E, G) paired with coronal (B, D, F, H). Red arrow = femoral bruise, blue ellipse = tibial bruise. The classic two-site pivot-shift pair is the teaching archetype, but real ACL knees often bruise more compartments than that.',
+        attribution: 'Dai R et al., Bioengineering (Basel), 2023;10(12):1366. PMC10740614. CC-BY 4.0.',
         step: 2,
       },
       {
@@ -433,13 +421,7 @@ export const caseRegistry: CaseMetadata[] = [
         attribution: 'Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). PMC6538732. CC BY 4.0.',
         step: 5,
       },
-      {
-        src: '/images/teaching/modules/module4-bones/38_BoneContusion_Dashboard_Sagittal.jpg',
-        alt: 'Dashboard bone contusion pattern',
-        caption: 'Dashboard injury — proximal tibia edema',
-        attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
-        step: 2,
-      },
+      
     ],
     teachingStacks: [
       {

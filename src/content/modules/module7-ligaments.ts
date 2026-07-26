@@ -162,12 +162,7 @@ The PCL may **buckle anteriorly** in the setting of an ACL tear with anterior ti
 A **PCL tear combined with a posterolateral corner injury** is a particularly unstable pattern that warrants prompt specialist evaluation. Operative versus nonoperative treatment depends on injury grade, chronicity, alignment, examination, associated injuries, and patient goals.`,
     pearl: `A PCL that is thickened and diffusely increased in signal but maintains its general contour may represent a partial or interstitial tear rather than simple contusion. Correlate with the clinical posterior drawer test. Also remember that apparent PCL "buckling" can be secondary to anterior tibial translation from an ACL tear, not a primary PCL injury.`,
     images: [
-      {
-        src: '/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg',
-        alt: 'PCL intrasubstance tear — sagittal',
-        caption: 'Possible PCL intrasubstance injury — thickening and diffuse internal signal with preserved overall contour can represent a partial/interstitial tear; correlate with trauma timing and posterior-laxity examination.',
-        attribution: 'Sports Health, 2013. PMC3548666. CC-BY-NC 3.0.',
-      },
+      
     ],
   },
   {

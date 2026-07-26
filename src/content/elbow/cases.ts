@@ -5,8 +5,8 @@ type TeachingImage = NonNullable<CaseMetadata["teachingImages"]>[number];
 const elbowUclUsImage: TeachingImage = {
   src: "/images/teaching/us/elbow-ucl.jpg",
   alt: "Long-axis ultrasound of the elbow UCL anterior bundle",
-  caption: "US correlate: long-axis UCL anterior bundle from the medial epicondyle with a labeled overlay.",
-  attribution: "Manske RC, Voight M, Wolfe C, Page P. Int J Sports Phys Ther 2023;18(2). CC BY-NC 4.0.",
+  caption: "US correlate: long-axis medial elbow — medial epicondyle, trochlea, sublime tubercle, and the humeroulnar joint gap that valgus-stress US measures.",
+  attribution: "van Trigt B et al., J Shoulder Elbow Surg Int, 2024. PMC11065662. CC-BY 4.0.",
   step: 3,
 };
 
@@ -20,9 +20,9 @@ const elbowCommonFlexorUsImage: TeachingImage = {
 
 const elbowUlnarNerveUsImage: TeachingImage = {
   src: "/images/teaching/us/elbow-ulnar-nerve.jpg",
-  alt: "Short-axis ultrasound of the ulnar nerve in the cubital tunnel",
-  caption: "US correlate: ulnar nerve in the cubital tunnel with labeled anatomic overlay.",
-  attribution: "Manske RC, Voight M, Page P, Wolfe C. Int J Sports Phys Ther 2024;19(4):502-6. CC BY-NC 4.0.",
+  alt: "Ultrasound and MRI of the normal ulnar nerve at the elbow",
+  caption: "US and MRI correlate: the normal ulnar nerve — honeycomb fascicles in short axis, and isointense to muscle on T1 with only mild fluid-sensitive signal in the cubital tunnel. Mild T2 signal alone is not neuritis.",
+  attribution: "Albano D et al., Insights Imaging, 2025. PMC11780019. CC-BY 4.0.",
   step: 6,
 };
 
@@ -40,14 +40,6 @@ const elbowCommonExtensorUsImage: TeachingImage = {
   caption: "US correlate: common extensor origin at the lateral epicondyle with the radial head deep.",
   attribution: "Allen GM, Jacobson JA, in IDKD 'Musculoskeletal Diseases 2021-2024' (NCBI Bookshelf NBK570156). CC BY 4.0.",
   step: 5,
-};
-
-const elbowRadialHeadUsImage: TeachingImage = {
-  src: "/images/teaching/us/elbow-radial-head.jpg",
-  alt: "Ultrasound of the radiocapitellar joint and radial head",
-  caption: "US correlate: radiocapitellar joint and radial head; the MRI task is still to confirm a true fracture line plus edema.",
-  attribution: "Malahias MA, et al. Arch Bone Jt Surg 2018;6(6):539. CC BY-NC 3.0.",
-  step: 2,
 };
 
 /**
@@ -869,7 +861,6 @@ export const elbowCaseRegistry: CaseMetadata[] = [
     "radiopaediaUrl": "https://radiopaedia.org/search?lang=us&scope=cases&q=occult%20radial%20head%20fracture",
     "radiopaediaTitle": "Occult radial head fracture (fat-pad sign) — Radiopaedia cases",
     "teachingImages": [
-      elbowRadialHeadUsImage
     ],
     "modelReport": {
       "findings": "PROTOCOL: Non-contrast elbow MRI with T1 and fluid-sensitive fat-suppressed (T2 FS/STIR) sequences in coronal, sagittal, and axial planes. Clinical question: occult fracture in an adult after a FOOSH with a displaced posterior fat-pad sign on radiograph and no visible fracture line; exclude an osteochondral lesion.\n\nBONES & MARROW: There is a non-displaced, obliquely oriented FRACTURE LINE through the radial head extending into the proximal radial neck, low-signal on T1 with surrounding fat-suppressed-bright marrow EDEMA on the fluid-sensitive sequences. The line reaches the articular surface but the fragments are anatomically aligned without a step-off or depression. Importantly, this is a true fracture (a discrete LINE plus marrow edema), not merely a bone bruise (which would show edema WITHOUT a line). The capitellum, trochlea, olecranon, and coronoid show no fracture line or marrow edema. The radiocapitellar line — drawn along the central long axis of the radial NECK (not the shaft) and judged primarily on the sagittal/lateral plane — passes through the capitellum, and the radial head is anatomically located with a congruent radiocapitellar joint: no radial-head subluxation/dislocation (no occult Monteggia). The line is supportive rather than definitive.\n\nNORMAL VARIANTS — DO NOT OVERCALL: The posterolateral capitellar bare-area groove (the PSEUDODEFECT of the capitellum) is seen at the capitellum–lateral-epicondyle junction and is a normal contour, NOT an osteochondral lesion — there is no fluid-undercut fragment, no subchondral cyst, and no cartilage breach to suggest capitellar OCD. The transverse TROCHLEAR RIDGE/groove is likewise a normal osseous landmark and must not be called a fracture or osteochondral defect.\n\nLIGAMENTS: The anterior bundle of the ulnar collateral ligament is intact to the sublime tubercle with no T-sign (no fluid tracking beyond the articular-cartilage edge). The lateral ulnar collateral ligament and radial collateral/annular ligament complex are intact; no secondary signs of posterolateral rotatory instability and no posterolateral capitellar (Osborne–Cotterill) impaction.\n\nTENDONS: Common extensor and common flexor-pronator origins are normal without tendinosis or tear. Distal biceps and triceps insertions are intact.\n\nNERVES: Ulnar nerve in the cubital tunnel is normal in caliber and signal; median/AIN and radial/PIN territories show no muscle denervation edema.\n\nJOINT, CARTILAGE & CAPSULE: There is a moderate joint EFFUSION/hemarthrosis distending the capsule and displacing the posterior fat pad out of the olecranon fossa — the imaging correlate of the radiographic fat-pad sign. Radiocapitellar and ulnotrochlear cartilage are intact. No intra-articular loose body in the coronoid fossa, olecranon fossa, or radiocapitellar recess; no thickened radiocapitellar plica.",

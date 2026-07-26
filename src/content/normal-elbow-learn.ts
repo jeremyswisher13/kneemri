@@ -729,7 +729,7 @@ export const elbowStructureCorrelate: Record<string, StructureCorrelate> = {
       appearance:
         "The UCL anterior bundle is superficial and well seen on US as a fibrillar band from the medial epicondyle to the sublime tubercle — and US uniquely adds the DYNAMIC valgus-stress test (side-to-side medial joint-gapping) that static MRI cannot.",
       tip: "Long-axis over the medial joint with the elbow flexed ~30°, then apply valgus stress and compare medial gapping to the contralateral side.",
-      image: { src: "/images/teaching/us/elbow-ucl.jpg", caption: "Long-axis US of the UCL anterior bundle from the medial epicondyle (2a) with a labeled overlay (2b).", attribution: "Manske RC, Voight M, Wolfe C, Page P. Int J Sports Phys Ther 2023;18(2). CC BY-NC 4.0." },
+      image: { src: "/images/teaching/us/elbow-ucl.jpg", caption: "Long-axis US of the medial elbow: 1 medial epicondyle, 2 humeral trochlea, 3 sublime tubercle, 4 humeroulnar joint gap, 5 UCL thickness, 6 UCL length. The joint gap (4) is what valgus-stress US measures.", attribution: "van Trigt B et al., J Shoulder Elbow Surg Int, 2024. PMC11065662. CC-BY 4.0." },
     },
   },
   "Common extensor origin": {
@@ -755,7 +755,7 @@ export const elbowStructureCorrelate: Record<string, StructureCorrelate> = {
       appearance:
         "The ulnar nerve is superficial in the cubital tunnel and excellent on US — measure its cross-sectional area and, crucially, perform the DYNAMIC test for flexion subluxation/dislocation over the medial epicondyle and for snapping triceps, which static MRI can miss.",
       tip: "Short-axis posterior to the medial epicondyle, then flex the elbow to watch for nerve (± medial triceps head) subluxation.",
-      image: { src: "/images/teaching/us/elbow-ulnar-nerve.jpg", caption: "Short-axis US of the ulnar nerve in the cubital tunnel (2a) with a labeled anatomic overlay (2b).", attribution: "Manske RC, Voight M, Page P, Wolfe C. Int J Sports Phys Ther 2024;19(4):502–6. CC BY-NC 4.0." },
+      image: { src: "/images/teaching/us/elbow-ulnar-nerve.jpg", caption: "Normal ulnar nerve, US and MRI side by side. (a) Short axis: the honeycomb fascicular pattern. (b) Long axis: a coarse hypoechoic band. (c) T1 and (d) fat-suppressed PD in the cubital tunnel (arrow) — isointense to muscle on T1, mildly hyperintense on fluid-sensitive. Mild T2 signal alone is NOT neuritis.", attribution: "Albano D et al., Insights Imaging, 2025. PMC11780019. CC-BY 4.0." },
     },
   },
   "Brachialis & distal biceps (anterior)": {
@@ -771,7 +771,6 @@ export const elbowStructureCorrelate: Record<string, StructureCorrelate> = {
       seen: true,
       appearance:
         "US shows the radial head cortex and the radiocapitellar joint, and a posterior fat-pad elevation / joint effusion (the lipohemarthrosis of an occult fracture) — but the marrow fracture line itself is an MRI finding.",
-      image: { src: "/images/teaching/us/elbow-radial-head.jpg", caption: "US of the radiocapitellar joint and radial head.", attribution: "Malahias MA, et al. Arch Bone Jt Surg 2018;6(6):539. CC BY-NC 3.0." },
     },
   },
 };

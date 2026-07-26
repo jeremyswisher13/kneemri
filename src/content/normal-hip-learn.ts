@@ -907,7 +907,7 @@ export const hipStructureCorrelate: Record<string, StructureCorrelate> = {
       appearance:
         "This is prime US territory and the imaging workhorse of greater-trochanteric pain syndrome: the gluteus minimus inserts on the anterior facet and the gluteus medius on the lateral and superoposterior facets, both fibrillar hyperechoic bands. Tendinopathy shows hypoechoic swelling and footprint irregularity; a tear shows fibre discontinuity or an anechoic cleft — the 'rotator cuff of the hip.'",
       tip: "Lateral decubitus, affected side up; long-axis over the greater trochanter, identify each facet (anterior = minimus, lateral/posterior = medius), and tilt the probe to defeat anisotropy at the curved footprint.",
-      image: { src: "/images/teaching/us/hip-gluteal-abductors.jpg", caption: "Long-axis US over the greater trochanter — normal gluteal tendon footprint (asymptomatic side).", attribution: "Chang KV, Wu WT. J Med Ultrasound 2019;27(2):113–4. CC BY-NC-SA 4.0." },
+      image: { src: "/images/teaching/us/hip-gluteal-abductors.jpg", caption: "TRANSVERSE US over the greater trochanter — the bony apex (asterisk) separates the gluteus MINIMUS insertion on the anterior facet (A) from the gluteus MEDIUS insertion on the lateral facet (L). Naming the facet is what makes an abductor-tendon report useful.", attribution: "Yeap PM & Robinson P, J Belg Soc Radiol, 2017;101(S2):6. PMC6251072. CC-BY 4.0." },
     },
   },
   "Adductors & pubic symphysis": {
@@ -916,7 +916,7 @@ export const hipStructureCorrelate: Record<string, StructureCorrelate> = {
       appearance:
         "The adductor longus/common-adductor origin at the pubis is superficial and well seen as a fibrillar tendon; tendinopathy, the athletic-pubalgia/core-muscle-injury complex, enthesophytes, and any parasymphyseal fluid are demonstrable. But the pubic-symphysis fibrocartilage, the rectus-adductor aponeurotic plate, and the marrow edema of osteitis pubis are MRI questions — US owns the adductor enthesis, MRI owns the symphysis.",
       tip: "Supine, hip slightly abducted/externally rotated (frog-leg); long-axis over the adductor longus origin onto the pubic body, and tilt to beat anisotropy at the enthesis.",
-      image: { src: "/images/teaching/us/hip-adductor-origin.jpg", caption: "Long-axis US of the adductor longus origin at the pubis (2A) with a labeled overlay (2B).", attribution: "Manske RC, Wolfe C, Page P, Voight M. Int J Sports Phys Ther 2025;20(11). CC BY-NC 4.0." },
+      image: { src: "/images/teaching/us/hip-adductor-origin.jpg", caption: "Sagittal US of the anterior pubic attachments — rectus abdominis (RA) and the adductor longus (AL) merging at the pubis (P), with the common aponeurosis (arrows) and adductor tendon (asterisk). PROX = proximal, DIS = distal.", attribution: "Yeap PM & Robinson P, J Belg Soc Radiol, 2017;101(S2):6. PMC6251072. CC-BY 4.0." },
     },
   },
   "Iliopsoas tendon & bursa": {

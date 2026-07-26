@@ -578,18 +578,8 @@ The answers guide you to **associated soft tissue injuries** that you need to ac
             alt: 'MRI-style bone contusion patterns showing edema locations for pivot-shift, dashboard, and patellar dislocation injuries',
             caption: 'Bone contusion patterns on MRI: mechanism-based edema locations with associated injury alerts',
           },
-          {
-            src: '/images/teaching/modules/module4-bones/37_BoneContusion_ClipInjury_Sagittal.jpg',
-            alt: 'Clip injury — LFC edema',
-            caption: 'Clip injury — LFC edema',
-            attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
-          },
-          {
-            src: '/images/teaching/modules/module4-bones/39_BoneContusion_Hyperextension.jpg',
-            alt: 'Hyperextension injury pattern on sagittal fat-suppressed MRI',
-            caption: 'Hyperextension mechanism — the target finding is anterior "kissing" bone-marrow contusions of the femur and tibia; look for paired anterior subchondral edema on fat-suppressed images.',
-            attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
-          },
+          
+          
         ],
       },
       {
@@ -646,12 +636,7 @@ PCL injuries are less common than ACL injuries and are more frequently associate
         pearl:
           'The normal PCL should have a smooth, gently curved arc of uniformly low signal on sagittal images. After dashboard injuries, look for loss of the normal curvature (the PCL appears "kinked" or redundant), thickening, or increased intrasubstance signal. A complete PCL tear shows frank discontinuity with surrounding hemorrhage.',
         images: [
-          {
-            src: '/images/teaching/modules/module4-bones/38_BoneContusion_Dashboard_Sagittal.jpg',
-            alt: 'Dashboard injury — proximal tibia edema',
-            caption: 'Dashboard injury — proximal tibia edema',
-            attribution: 'JCDR, 2016. PMC4866212. CC-BY-NC 3.0.',
-          },
+          
         ],
       },
       {

@@ -308,18 +308,6 @@
               "src": "/images/modules/bone-contusion-mri.svg",
               "alt": "MRI-style bone contusion patterns showing edema locations for pivot-shift, dashboard, and patellar dislocation injuries",
               "caption": "Bone contusion patterns on MRI: mechanism-based edema locations with associated injury alerts"
-            },
-            {
-              "src": "/images/teaching/modules/module4-bones/37_BoneContusion_ClipInjury_Sagittal.jpg",
-              "alt": "Clip injury — LFC edema",
-              "caption": "Clip injury — LFC edema",
-              "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0."
-            },
-            {
-              "src": "/images/teaching/modules/module4-bones/39_BoneContusion_Hyperextension.jpg",
-              "alt": "Hyperextension injury pattern on sagittal fat-suppressed MRI",
-              "caption": "Hyperextension mechanism — the target finding is anterior \"kissing\" bone-marrow contusions of the femur and tibia; look for paired anterior subchondral edema on fat-suppressed images.",
-              "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0."
             }
           ]
         },
@@ -344,14 +332,7 @@
         {
           "content": "### Dashboard Contusion Pattern (PCL Injury)\n\n**Mechanism:** Direct anterior blow to the proximal tibia with the knee flexed — classically, the knee hitting the dashboard in a motor vehicle accident. The tibia is driven **posteriorly** relative to the femur, stressing the **PCL**.\n\n**MRI findings:**\n- **Anterior proximal tibia** edema (from direct impact)\n- Potentially the **anterior femoral condyles**\n\n### Checklist When You See This Pattern\n\n1. **PCL** — evaluate for partial tear (thickening, increased signal, some intact fibers) vs. complete tear (discontinuity, amorphous signal replacing normal smooth arc)\n2. **Posterior tibial cortex** — look for fractures\n3. **Posterolateral corner** — assess the **LCL**, **popliteus tendon**, and **popliteofibular ligament**\n\nPCL injuries are less common than ACL injuries and are more frequently associated with **multi-ligament injury patterns**.",
           "pearl": "The normal PCL should have a smooth, gently curved arc of uniformly low signal on sagittal images. After dashboard injuries, look for loss of the normal curvature (the PCL appears \"kinked\" or redundant), thickening, or increased intrasubstance signal. A complete PCL tear shows frank discontinuity with surrounding hemorrhage.",
-          "images": [
-            {
-              "src": "/images/teaching/modules/module4-bones/38_BoneContusion_Dashboard_Sagittal.jpg",
-              "alt": "Dashboard injury — proximal tibia edema",
-              "caption": "Dashboard injury — proximal tibia edema",
-              "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0."
-            }
-          ]
+          "images": []
         },
         {
           "content": "### Patellar Dislocation Contusion Pattern\n\n**Classic pattern:** bone marrow edema at the **medial patellar facet** and the **anterolateral aspect of the lateral femoral condyle**. Results from the patella impacting the lateral condyle as it dislocates laterally and then reduces. Even without a clinical history of patellar dislocation, this edema pattern should prompt focused evaluation for transient lateral patellar dislocation.\n\n### Associated Injuries Checklist\n\n1. **MPFL/medial retinacular injury** — present in approximately **90%** of acute traumatic patellar dislocations. Best seen on axial images as disruption and edema along the medial patellar retinacular region.\n2. **Osteochondral injury** — look for cartilage/bone fragments off the **medial patella** or **lateral femoral condyle**. A displaced fragment is a time-sensitive, management-changing finding.\n3. **Loose bodies** — search the **suprapatellar pouch**, **intercondylar notch**, and **posterior recesses**\n4. **Medial retinacular tear** — thickening and edema of the medial retinaculum on axial images",
@@ -786,14 +767,7 @@
         {
           "content": "### PCL Tears\n\n**PCL tears** are less common than ACL tears and are most often caused by a **posterior-directed force** on the proximal tibia with the knee flexed -- the classic **\"dashboard injury.\"**\n\nThe PCL is best evaluated on **sagittal images**, where it normally appears as a smooth, arcuate, uniformly low-signal structure with a gentle curve from the medial femoral condyle to the posterior tibial plateau.\n\n### Tear Patterns\n\n- **Acute complete tear:** Discontinuity of fibers with surrounding edema and hemorrhage\n- **Interstitial/partial tear:** Maintains general shape but demonstrates **diffusely increased signal and thickening** -- a subtle pattern\n- **Chronic tear:** Thickened, lax ligament that re-establishes continuity through **scarring** but remains functionally incompetent\n\n### PCL Buckling Pitfall\n\nThe PCL may **buckle anteriorly** in the setting of an ACL tear with anterior tibial translation. This should **not** be confused with a primary PCL injury.\n\n### Associated Injuries\n\n- **Posterolateral corner injuries** -- present in up to **60%** of grade III PCL tears\n- **Bone contusions** on the anterior tibial plateau\n- **Popliteal artery injury** -- particularly with combined PCL/PLC disruption and knee dislocation\n- **Meniscal tears**\n\nA **PCL tear combined with a posterolateral corner injury** is a particularly unstable pattern that warrants prompt specialist evaluation. Operative versus nonoperative treatment depends on injury grade, chronicity, alignment, examination, associated injuries, and patient goals.",
           "pearl": "A PCL that is thickened and diffusely increased in signal but maintains its general contour may represent a partial or interstitial tear rather than simple contusion. Correlate with the clinical posterior drawer test. Also remember that apparent PCL \"buckling\" can be secondary to anterior tibial translation from an ACL tear, not a primary PCL injury.",
-          "images": [
-            {
-              "src": "/images/teaching/cases/pcl-plc/31_KneeMRI_PCL_Intrasubstance_Tear.jpg",
-              "alt": "PCL intrasubstance tear — sagittal",
-              "caption": "Possible PCL intrasubstance injury — thickening and diffuse internal signal with preserved overall contour can represent a partial/interstitial tear; correlate with trauma timing and posterior-laxity examination.",
-              "attribution": "Sports Health, 2013. PMC3548666. CC-BY-NC 3.0."
-            }
-          ]
+          "images": []
         },
         {
           "content": "### MCL Injuries\n\n**MCL injuries** are the most common ligamentous injuries of the knee.\n\n### MCL Injury Grading\n\n| Grade | Description | MRI Findings |\n|-------|-------------|-------------|\n| **Grade I** (sprain) | Ligament stretched but intact | **Periligamentous edema** with intact fibers |\n| **Grade II** (partial tear) | Some fibers disrupted, others intact | **Partial discontinuity** with surrounding edema |\n| **Grade III** (complete tear) | Complete fiber disruption | **Complete disruption** with fluid filling the gap |\n\n### MCL Anatomy: Two Distinct Layers\n\n- **Superficial MCL (sMCL):** Primary valgus stabilizer; extends from the medial femoral epicondyle to approximately **5--7 cm below the joint line** on the tibia\n- **Deep MCL (dMCL):** Meniscofemoral and meniscotibial ligaments; thickenings of the joint capsule with **direct attachments to the medial meniscus**\n- The deep and superficial layers are separated by a **bursa**\n\n### Clinical Pearls for Reporting\n\n- **Deep MCL injury** can result in **peripheral detachment of the medial meniscus** (meniscocapsular separation)\n- On coronal images, look for **fluid signal between the deep MCL and the meniscal body**, indicating meniscocapsular injury\n- **Distal tibial-sided** MCL tears can result in a **Stener-like lesion**, where the torn distal sMCL displaces superficial to the pes anserine tendons and may impede anatomic healing\n- Combined **MCL/ACL injuries** are common\n- When a **grade III MCL tear** is present, always evaluate for associated **cruciate and posterolateral corner injuries** suggesting a multiligament knee injury",
@@ -1305,13 +1279,6 @@
           "step": 5
         },
         {
-          "src": "/images/teaching/cases/acl-pivot-shift/acl_variant_C.jpg",
-          "alt": "ACL tear variant — sagittal MRI",
-          "caption": "ACL tear appearance variant 2 — bulky proximal stump.",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
-          "step": 5
-        },
-        {
           "src": "/images/teaching/cases/acl-pivot-shift/acl_tear_sagittal.jpg",
           "alt": "Complete acute ACL tear on sagittal fat-suppressed T2",
           "caption": "ACL tear, direct sign — sagittal T2 with fat suppression shows increased signal at the expected location of the ligament in a complete acute tear (arrow); the normal taut low-signal band is gone.",
@@ -1321,15 +1288,8 @@
         {
           "src": "/images/teaching/cases/acl-pivot-shift/acl_tear_coronal.jpg",
           "alt": "ACL tear coronal view",
-          "caption": "ACL tear on coronal — disrupted ligament in intercondylar notch.",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
-          "step": 5
-        },
-        {
-          "src": "/images/teaching/cases/acl-pivot-shift/acl_coronal.jpg",
-          "alt": "ACL attachment on coronal proton-density",
-          "caption": "Coronal PD — empty notch sign at ACL attachment site (arrow).",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
+          "caption": "ACL tear on the paracoronal T2 — total rupture of the ligament in the intercondylar notch (arrow). Same knee also had a Segond fracture and a partial MCL tear, so keep reading past the cruciate.",
+          "attribution": "Adwan H et al., Cureus, 2025. PMC12007960. CC-BY 4.0.",
           "step": 5
         },
         {
@@ -1363,8 +1323,8 @@
         {
           "src": "/images/teaching/cases/acl-pivot-shift/05_ACL_Bone_Contusion_Pattern.jpg",
           "alt": "Bone contusion pattern with ACL tear",
-          "caption": "Bone contusion — posterolateral tibial plateau + LFC",
-          "attribution": "Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.",
+          "caption": "Bone-bruise patterns in ACL rupture — the common 3-compartment (A-F) and 4-compartment (G, H) patterns, sagittal (A, C, E, G) paired with coronal (B, D, F, H). Red arrow = femoral bruise, blue ellipse = tibial bruise. The classic two-site pivot-shift pair is the teaching archetype, but real ACL knees often bruise more compartments than that.",
+          "attribution": "Dai R et al., Bioengineering (Basel), 2023;10(12):1366. PMC10740614. CC-BY 4.0.",
           "step": 2
         },
         {
@@ -1712,13 +1672,6 @@
           "caption": "Complete PCL tear with femoral detachment (white arrow). The normally continuous low-signal PCL is interrupted at its femoral attachment. This published image is a chronic example; the dashboard teaching case models an acute combined PCL and PLC injury.",
           "attribution": "Wilson KJ et al. J Exp Orthop. 2019;6:22. Fig 1, Subject A (cropped). PMC6538732. CC BY 4.0.",
           "step": 5
-        },
-        {
-          "src": "/images/teaching/modules/module4-bones/38_BoneContusion_Dashboard_Sagittal.jpg",
-          "alt": "Dashboard bone contusion pattern",
-          "caption": "Dashboard injury — proximal tibia edema",
-          "attribution": "JCDR, 2016. PMC4866212. CC-BY-NC 3.0.",
-          "step": 2
         }
       ],
       "teachingStacks": [
