@@ -13,7 +13,7 @@ export const TEACHING_SESSION = {
   timeLabel: "1:00 – 3:00 PM",
   faculty: ["Dr. Jeremy Swisher", "Dr. Kimberly Burbank"],
   courseId: "knee-mri",
-  appUrl: "https://jeremyswisherkneemri.com/courses/knee-mri",
+  appUrl: "https://sportsmriacademy.com/courses/knee-mri",
 } as const;
 
 export function isTeachingSessionLearnerReady(learner: {

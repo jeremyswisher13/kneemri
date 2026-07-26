@@ -5,7 +5,7 @@
 > **Faculty copy. Contains every answer.** Do not hand this to the fellows and do not project it.
 > The live version is in the app at **`/admin/session`** — same plan, with a **Projector-safe** toggle that hides everything faculty-only.
 
-App: <https://jeremyswisherkneemri.com/courses/knee-mri>
+App: <https://sportsmriacademy.com/courses/knee-mri>
 
 ---
 
