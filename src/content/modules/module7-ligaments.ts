@@ -41,9 +41,12 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/modules/module7-ligaments/01_ACL_Normal_Anatomy_SagCorAx.jpg',
-        alt: 'Normal ACL anatomy — sagittal PD FS, coronal T2 FS, axial T2 FS',
-        caption: 'Normal ACL anatomy — sagittal PD FS, coronal T2 FS, axial T2 FS',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        // Caption says T1, not axial: the replacement figure's third panel is a
+        // sagittal T1, which is the point — the normal ACL stays dark on EVERY
+        // sequence. The previous image was a sag/cor/axial composite.
+        alt: 'Normal ACL anatomy — sagittal T2, coronal T2, and sagittal T1',
+        caption: 'Normal ACL anatomy — (a) sagittal T2, (b) coronal T2, (c) sagittal T1. The ACL stays dark on all pulse sequences (arrows).',
+        attribution: 'Parkar AP, J Belg Soc Radiol, 2016. PMC6100662. CC-BY 4.0.',
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/02_ACL_Complete_Tear_Sagittal.jpg',
@@ -53,9 +56,9 @@ The combination of **pivot-shift bone bruise pattern** with a disrupted ACL is *
       },
       {
         src: '/images/teaching/modules/module7-ligaments/03_ACL_Partial_Tear.jpg',
-        alt: 'Partial ACL tear — sagittal and coronal T2 FS',
-        caption: 'Partial ACL tear — sagittal (A) and coronal (B) T2 FS images (arrows).',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'Partial ACL tear — high signal in a thickened ACL without fibre discontinuity',
+        caption: 'Partial ACL tear — (a) sagittal and (b) coronal T2: high signal in a thickened ACL with NO fibre discontinuity. (c) A different patient: high signal with surrounding fluid but intact anterior fibres (arrows).',
+        attribution: 'Parkar AP, J Belg Soc Radiol, 2016. PMC6100662. CC-BY 4.0.',
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/04_ACL_Secondary_Signs.jpg',

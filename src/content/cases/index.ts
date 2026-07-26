@@ -174,9 +174,9 @@ export const caseRegistry: CaseMetadata[] = [
       },
       {
         src: '/images/teaching/cases/acl-pivot-shift/acl_variant_A.jpg',
-        alt: 'ACL tear variant — sagittal PD FS',
-        caption: 'ACL tear appearance variant 1 — discontinuous fibers, abnormal signal.',
-        attribution: 'Al Mohammad & Gharaibeh, Orthop Res Rev, 2024. PMC11463185. CC-BY-NC 3.0.',
+        alt: 'ACL tear variant — sagittal and coronal T2',
+        caption: 'ACL tear appearance variant 1 — (a) sagittal and (b) coronal T2: high signal in the ACL with fibre discontinuity posteriorly (arrows).',
+        attribution: 'Parkar AP, J Belg Soc Radiol, 2016. PMC6100662. CC-BY 4.0.',
         step: 5,
       },
       {
