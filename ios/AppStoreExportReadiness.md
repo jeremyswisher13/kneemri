@@ -7,9 +7,9 @@ This checklist tracks the remaining signing/upload step between a successful loc
 ## Current State
 
 - Team: `X578T4K65B` (`Jeremy Swisher`)
-- Bundle ID: `com.jeremyswisher.uclasportsmri`
+- Bundle ID: `com.jeremyswisher.sportsmriacademy`
 - Version/build: `1.0 (1)`
-- Local archive path: `ios/build/UCLASportsMRI.xcarchive`
+- Local archive path: `ios/build/SportsMRIAcademy.xcarchive`
 - Apple Development identity: present
 - Apple Distribution identity: present
 - Matching development provisioning profile: present
@@ -20,7 +20,7 @@ This checklist tracks the remaining signing/upload step between a successful loc
 Two independent Apple-side blockers remain:
 
 1. Xcode must be signed in with an Apple ID that has App Store Connect access for Team `X578T4K65B`.
-2. An App Store distribution provisioning profile must exist for `com.jeremyswisher.uclasportsmri` and be installed locally.
+2. An App Store distribution provisioning profile must exist for `com.jeremyswisher.sportsmriacademy` and be installed locally.
 
 For the Xcode export/upload path, the Apple ID in Xcode must have an App Store Connect role that can upload builds for this team/app: Account Holder, Admin, App Manager, or Developer.
 
@@ -41,7 +41,7 @@ App Store export signing ready: yes
 ```
 
 The `Matching App Store profiles:` count should be `1` or higher for
-`com.jeremyswisher.uclasportsmri / X578T4K65B`; more than one installed matching
+`com.jeremyswisher.sportsmriacademy / X578T4K65B`; more than one installed matching
 App Store profile is acceptable as long as the export-signing line is `yes`.
 
 ## Required Apple Steps
@@ -52,18 +52,18 @@ Apple's App Store Connect provisioning profile workflow requires an explicit App
 2. Confirm the explicit App ID exists for:
 
 ```text
-com.jeremyswisher.uclasportsmri
+com.jeremyswisher.sportsmriacademy
 ```
 
 3. Confirm Sign in with Apple remains enabled on that App ID.
 4. Open Profiles and create a new Distribution profile.
 5. Select **App Store Connect** for iOS/iPadOS distribution.
-6. Choose the App ID matching `com.jeremyswisher.uclasportsmri`.
+6. Choose the App ID matching `com.jeremyswisher.sportsmriacademy`.
 7. Select the Apple Distribution certificate for Team `X578T4K65B`.
 8. Name the profile clearly, for example:
 
 ```text
-UCLA Sports MRI App Store Connect
+Sports MRI Academy App Store Connect
 ```
 
 9. Generate and download the profile, then install it in Xcode or double-click it.

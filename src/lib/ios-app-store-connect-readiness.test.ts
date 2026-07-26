@@ -90,8 +90,8 @@ describe("iOS App Store Connect readiness", () => {
   it("keeps the metadata within App Store Connect field limits", () => {
     const keywords = metadata.keywords.join(", ");
 
-    expect(metadata.bundleId).toBe("com.jeremyswisher.uclasportsmri");
-    expect(metadata.sku).toBe("ucla-sports-mri-ios");
+    expect(metadata.bundleId).toBe("com.jeremyswisher.sportsmriacademy");
+    expect(metadata.sku).toBe("sports-mri-academy-ios");
     expect(metadata.version).toBe("1.0");
     expect(metadata.build).toBe("1");
     expect(metadata.name.length).toBeGreaterThanOrEqual(2);

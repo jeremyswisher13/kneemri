@@ -7,154 +7,191 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CDC3E66D4EA36DE85E8F334 /* WebShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB3F5DC9E6F644E3A5BD1D /* WebShellView.swift */; };
-		45FFDC720481DED57C37CF75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A05C7031C481A1B95A590D /* Assets.xcassets */; };
-		7ED781CBCA0961A91286032E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 491F7248A839E827E107AE6C /* PrivacyInfo.xcprivacy */; };
-		D6501E2593C4C034083DE44A /* UCLASportsMRIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE8F2815AF75C44C5856E4 /* UCLASportsMRIApp.swift */; };
+		6032A88748B1612CAD7D7C2D /* WebShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F8D3E639044F8EF633FE0 /* WebShellView.swift */; };
+		8AD8B796A20D322DA4B838AE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = ED51C62E523B2BF517D1DB5C /* PrivacyInfo.xcprivacy */; };
+		E3CD4D3BB21B757D4F6616EA /* SportsMRIAcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D273EB47593D52E37E73 /* SportsMRIAcademyApp.swift */; };
+		FA5C567A26F8B79F8B0A3B00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70081043F98CD4761AB47D0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		347C68C9511F50A43014CE09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		491F7248A839E827E107AE6C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		77DA9B85CBAFCDF4C4B2267E /* UCLASportsMRI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCLASportsMRI.entitlements; sourceTree = "<group>"; };
-		A7AE8F2815AF75C44C5856E4 /* UCLASportsMRIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCLASportsMRIApp.swift; sourceTree = "<group>"; };
-		B6A05C7031C481A1B95A590D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CDBB3F5DC9E6F644E3A5BD1D /* WebShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebShellView.swift; sourceTree = "<group>"; };
-		F3549CA015651F212A541189 /* UCLASportsMRI.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = UCLASportsMRI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		076F8D3E639044F8EF633FE0 /* WebShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebShellView.swift; sourceTree = "<group>"; };
+		0D3AB3DC20EA16461ECF07B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3156D273EB47593D52E37E73 /* SportsMRIAcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsMRIAcademyApp.swift; sourceTree = "<group>"; };
+		8955824E060FD56D167262C7 /* SportsMRIAcademy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SportsMRIAcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7E89C5F3F4009A7D64D5FDD /* SportsMRIAcademy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SportsMRIAcademy.entitlements; sourceTree = "<group>"; };
+		D70081043F98CD4761AB47D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED51C62E523B2BF517D1DB5C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		8C87B1D0F831B97663164128 /* UCLASportsMRI */ = {
+		0897E916022CE550A9F1B23E = {
 			isa = PBXGroup;
 			children = (
-				B6A05C7031C481A1B95A590D /* Assets.xcassets */,
-				347C68C9511F50A43014CE09 /* Info.plist */,
-				491F7248A839E827E107AE6C /* PrivacyInfo.xcprivacy */,
-				77DA9B85CBAFCDF4C4B2267E /* UCLASportsMRI.entitlements */,
-				A7AE8F2815AF75C44C5856E4 /* UCLASportsMRIApp.swift */,
-				CDBB3F5DC9E6F644E3A5BD1D /* WebShellView.swift */,
+				8C4DCEEE23335AD646777FBE /* SportsMRIAcademy */,
+				E0122F9F6A8CA263683900E8 /* Products */,
 			);
-			path = UCLASportsMRI;
 			sourceTree = "<group>";
 		};
-		94C7AB939F01C83D920EF830 /* Products */ = {
+		8C4DCEEE23335AD646777FBE /* SportsMRIAcademy */ = {
 			isa = PBXGroup;
 			children = (
-				F3549CA015651F212A541189 /* UCLASportsMRI.app */,
+				D70081043F98CD4761AB47D0 /* Assets.xcassets */,
+				0D3AB3DC20EA16461ECF07B4 /* Info.plist */,
+				ED51C62E523B2BF517D1DB5C /* PrivacyInfo.xcprivacy */,
+				B7E89C5F3F4009A7D64D5FDD /* SportsMRIAcademy.entitlements */,
+				3156D273EB47593D52E37E73 /* SportsMRIAcademyApp.swift */,
+				076F8D3E639044F8EF633FE0 /* WebShellView.swift */,
+			);
+			path = SportsMRIAcademy;
+			sourceTree = "<group>";
+		};
+		E0122F9F6A8CA263683900E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8955824E060FD56D167262C7 /* SportsMRIAcademy.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A680D5D5724C67918AE2B11F = {
-			isa = PBXGroup;
-			children = (
-				8C87B1D0F831B97663164128 /* UCLASportsMRI */,
-				94C7AB939F01C83D920EF830 /* Products */,
-			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A6C84A715EEB08CE15BB3217 /* UCLASportsMRI */ = {
+		306C3470832B1F215D2CE7F1 /* SportsMRIAcademy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68B8206097EE75D276CCD5F0 /* Build configuration list for PBXNativeTarget "UCLASportsMRI" */;
+			buildConfigurationList = 3F790BC24BB4268A085CADDA /* Build configuration list for PBXNativeTarget "SportsMRIAcademy" */;
 			buildPhases = (
-				E6EF7E631792F3017632238A /* Sources */,
-				CF750D1B179FBF1A1577F45A /* Resources */,
+				C87EE90039596CC88D5933E9 /* Sources */,
+				8EF7E880E83CB030303EE992 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UCLASportsMRI;
+			name = SportsMRIAcademy;
 			packageProductDependencies = (
 			);
-			productName = UCLASportsMRI;
-			productReference = F3549CA015651F212A541189 /* UCLASportsMRI.app */;
+			productName = SportsMRIAcademy;
+			productReference = 8955824E060FD56D167262C7 /* SportsMRIAcademy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		39509ABC0529B5999644A9C2 /* Project object */ = {
+		37EF005D18D6FA8E250CD52D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					A6C84A715EEB08CE15BB3217 = {
+					306C3470832B1F215D2CE7F1 = {
+						DevelopmentTeam = X578T4K65B;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = AF9E4CFD96A885E449D9CE2B /* Build configuration list for PBXProject "UCLASportsMRI" */;
+			buildConfigurationList = CDCD608689C159CE881D877A /* Build configuration list for PBXProject "SportsMRIAcademy" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
 			);
-			mainGroup = A680D5D5724C67918AE2B11F;
+			mainGroup = 0897E916022CE550A9F1B23E;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 94C7AB939F01C83D920EF830 /* Products */;
+			productRefGroup = E0122F9F6A8CA263683900E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6C84A715EEB08CE15BB3217 /* UCLASportsMRI */,
+				306C3470832B1F215D2CE7F1 /* SportsMRIAcademy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CF750D1B179FBF1A1577F45A /* Resources */ = {
+		8EF7E880E83CB030303EE992 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45FFDC720481DED57C37CF75 /* Assets.xcassets in Resources */,
-				7ED781CBCA0961A91286032E /* PrivacyInfo.xcprivacy in Resources */,
+				FA5C567A26F8B79F8B0A3B00 /* Assets.xcassets in Resources */,
+				8AD8B796A20D322DA4B838AE /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E6EF7E631792F3017632238A /* Sources */ = {
+		C87EE90039596CC88D5933E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6501E2593C4C034083DE44A /* UCLASportsMRIApp.swift in Sources */,
-				2CDC3E66D4EA36DE85E8F334 /* WebShellView.swift in Sources */,
+				E3CD4D3BB21B757D4F6616EA /* SportsMRIAcademyApp.swift in Sources */,
+				6032A88748B1612CAD7D7C2D /* WebShellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0DDECF2AE0C6EFED50F28FFA /* Release */ = {
+		87D283889D2A50AE2F0EEF12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UCLASportsMRI/UCLASportsMRI.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X578T4K65B;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = UCLASportsMRI/Info.plist;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremyswisher.uclasportsmri;
-				PRODUCT_NAME = "UCLA Sports MRI";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
 		};
-		6252282608982CC8DC4175D1 /* Debug */ = {
+		88E0612F41672AA8F8B7A3E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -219,108 +256,72 @@
 			};
 			name = Debug;
 		};
-		89632AF57A727B79EA9DA1CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.9;
-			};
-			name = Release;
-		};
-		E79B5382826904EB4B8ACA6E /* Debug */ = {
+		94119672D6A214B49B04DE02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UCLASportsMRI/UCLASportsMRI.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SportsMRIAcademy/SportsMRIAcademy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X578T4K65B;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = UCLASportsMRI/Info.plist;
+				INFOPLIST_FILE = SportsMRIAcademy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jeremyswisher.uclasportsmri;
-				PRODUCT_NAME = "UCLA Sports MRI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremyswisher.sportsmriacademy;
+				PRODUCT_NAME = "Sports MRI Academy";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
+		C3E055DC5639CC23AC660283 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsMRIAcademy/SportsMRIAcademy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X578T4K65B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SportsMRIAcademy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremyswisher.sportsmriacademy;
+				PRODUCT_NAME = "Sports MRI Academy";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68B8206097EE75D276CCD5F0 /* Build configuration list for PBXNativeTarget "UCLASportsMRI" */ = {
+		3F790BC24BB4268A085CADDA /* Build configuration list for PBXNativeTarget "SportsMRIAcademy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E79B5382826904EB4B8ACA6E /* Debug */,
-				0DDECF2AE0C6EFED50F28FFA /* Release */,
+				94119672D6A214B49B04DE02 /* Debug */,
+				C3E055DC5639CC23AC660283 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		AF9E4CFD96A885E449D9CE2B /* Build configuration list for PBXProject "UCLASportsMRI" */ = {
+		CDCD608689C159CE881D877A /* Build configuration list for PBXProject "SportsMRIAcademy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6252282608982CC8DC4175D1 /* Debug */,
-				89632AF57A727B79EA9DA1CF /* Release */,
+				88E0612F41672AA8F8B7A3E6 /* Debug */,
+				87D283889D2A50AE2F0EEF12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 39509ABC0529B5999644A9C2 /* Project object */;
+	rootObject = 37EF005D18D6FA8E250CD52D /* Project object */;
 }

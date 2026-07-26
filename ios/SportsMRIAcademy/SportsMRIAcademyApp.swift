@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct UCLASportsMRIApp: App {
+struct SportsMRIAcademyApp: App {
     var body: some Scene {
         WindowGroup {
             WebShellView()

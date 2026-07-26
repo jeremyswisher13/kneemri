@@ -51,12 +51,12 @@ function pngSize(file) {
   };
 }
 
-assertFile("Xcode project exists", "ios", "UCLASportsMRI.xcodeproj", "project.pbxproj");
+assertFile("Xcode project exists", "ios", "SportsMRIAcademy.xcodeproj", "project.pbxproj");
 assertFile("XcodeGen spec exists", "ios", "project.yml");
-assertFile("Info.plist exists", "ios", "UCLASportsMRI", "Info.plist");
-assertFile("Privacy manifest exists", "ios", "UCLASportsMRI", "PrivacyInfo.xcprivacy");
-assertFile("Entitlements exist", "ios", "UCLASportsMRI", "UCLASportsMRI.entitlements");
-assertFile("Native shell exists", "ios", "UCLASportsMRI", "WebShellView.swift");
+assertFile("Info.plist exists", "ios", "SportsMRIAcademy", "Info.plist");
+assertFile("Privacy manifest exists", "ios", "SportsMRIAcademy", "PrivacyInfo.xcprivacy");
+assertFile("Entitlements exist", "ios", "SportsMRIAcademy", "SportsMRIAcademy.entitlements");
+assertFile("Native shell exists", "ios", "SportsMRIAcademy", "WebShellView.swift");
 assertFile("Export options template exists", "ios", "ExportOptions.plist");
 assertFile("App Store export readiness checklist exists", "ios", "AppStoreExportReadiness.md");
 assertFile("App Store handoff exists", "ios", "AppStoreSubmission.md");
@@ -89,22 +89,22 @@ const project = readText("ios", "project.yml");
 const packageJson = readText("package.json");
 assertIncludes("Submission packet command exists", packageJson, '"submit:ios:packet": "node scripts/ios-submission-packet.mjs"');
 
-assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri");
+assertIncludes("Bundle ID configured", project, "PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.sportsmriacademy");
 assertIncludes("iPhone and iPad enabled", project, 'TARGETED_DEVICE_FAMILY: "1,2"');
 assertIncludes("App icon catalog configured", project, "ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon");
 assertIncludes("Sign in with Apple entitlement wired", project, "CODE_SIGN_ENTITLEMENTS");
 assertIncludes("Apple Developer Team pinned in XcodeGen spec", project, "DEVELOPMENT_TEAM: X578T4K65B");
 
-const info = readText("ios", "UCLASportsMRI", "Info.plist");
-assertIncludes("Display name configured", info, "<string>UCLA Sports MRI</string>");
+const info = readText("ios", "SportsMRIAcademy", "Info.plist");
+assertIncludes("Display name configured", info, "<string>Sports MRI Academy</string>");
 assertIncludes("Encryption export declaration present", info, "<key>ITSAppUsesNonExemptEncryption</key>");
 assertIncludes("Launch color configured", info, "<string>LaunchBackground</string>");
 assertIncludes("iPad orientations configured", info, "<key>UISupportedInterfaceOrientations~ipad</key>");
 
-const entitlements = readText("ios", "UCLASportsMRI", "UCLASportsMRI.entitlements");
+const entitlements = readText("ios", "SportsMRIAcademy", "SportsMRIAcademy.entitlements");
 assertIncludes("Sign in with Apple entitlement present", entitlements, "com.apple.developer.applesignin");
 
-const privacy = readText("ios", "UCLASportsMRI", "PrivacyInfo.xcprivacy");
+const privacy = readText("ios", "SportsMRIAcademy", "PrivacyInfo.xcprivacy");
 assertIncludes("Privacy manifest says no tracking", privacy, "<key>NSPrivacyTracking</key>");
 assertIncludes("Name privacy label present", privacy, "NSPrivacyCollectedDataTypeName");
 assertIncludes("Email privacy label present", privacy, "NSPrivacyCollectedDataTypeEmailAddress");
@@ -112,7 +112,7 @@ assertIncludes("User ID privacy label present", privacy, "NSPrivacyCollectedData
 assertIncludes("Product interaction privacy label present", privacy, "NSPrivacyCollectedDataTypeProductInteraction");
 assertIncludes("Privacy purpose is app functionality", privacy, "NSPrivacyCollectedDataTypePurposeAppFunctionality");
 
-const webShell = readText("ios", "UCLASportsMRI", "WebShellView.swift");
+const webShell = readText("ios", "SportsMRIAcademy", "WebShellView.swift");
 assertIncludes("Native shell loads Firebase app", webShell, "https://ucla-knee-mri.firebaseapp.com");
 assertIncludes("Native shell marks iOS source", webShell, 'setQueryItem(name: "source", value: "ios-app"');
 assertIncludes("Reviewer demo launch flag present", webShell, 'setQueryItem(name: "reviewerDemo", value: "1"');
@@ -163,7 +163,7 @@ assertIncludes("Medical education disclaimer documented", appStoreSubmission, "n
 assertIncludes("Account deletion risk documented", appStoreSubmission, "Account deletion");
 
 const appStoreExportReadiness = readText("ios", "AppStoreExportReadiness.md");
-assertIncludes("Export checklist names bundle ID", appStoreExportReadiness, "com.jeremyswisher.uclasportsmri");
+assertIncludes("Export checklist names bundle ID", appStoreExportReadiness, "com.jeremyswisher.sportsmriacademy");
 assertIncludes("Export checklist names Apple team", appStoreExportReadiness, "X578T4K65B");
 assertIncludes("Export checklist names App Store profile type", appStoreExportReadiness, "App Store distribution provisioning profile");
 assertIncludes("Export checklist accepts one or more App Store profiles", appStoreExportReadiness, "1` or higher");
@@ -182,8 +182,8 @@ assertIncludes("Submission gate hosting evidence includes live check count", sub
 assertIncludes("Submission gate hosting evidence includes install assets", submissionGateText, "manifest/favicon/Apple touch icon/PWA 512 icon");
 
 const authSetup = readText("ios", "AppleFirebaseAuthSetup.md");
-assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.uclasportsmri");
-assertIncludes("Apple setup doc names Apple Services ID", authSetup, "com.jeremyswisher.uclasportsmri.web");
+assertIncludes("Apple setup doc names bundle ID", authSetup, "com.jeremyswisher.sportsmriacademy");
+assertIncludes("Apple setup doc names Apple Services ID", authSetup, "com.jeremyswisher.sportsmriacademy.web");
 assertIncludes("Apple setup doc lists Firebase provider", authSetup, "Firebase Authentication");
 assertIncludes("Apple setup doc gives exact return URL", authSetup, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Apple setup doc gives secondary auth handler", authSetup, "https://ucla-knee-mri.web.app/__/auth/handler");
@@ -249,7 +249,7 @@ assertIncludes("Submission packet prints locked values", submissionPacketScript,
 assertIncludes("Submission packet prints ordered portal tasks", submissionPacketScript, "Ordered Portal Tasks");
 assertIncludes("Submission packet prints next actions", submissionPacketScript, "Next action:");
 assertIncludes("Submission packet prints screenshot upload packet", submissionPacketScript, "Screenshot Upload Packet");
-assertIncludes("Submission packet includes Apple Service ID", submissionPacketScript, "com.jeremyswisher.uclasportsmri.web");
+assertIncludes("Submission packet includes Apple Service ID", submissionPacketScript, "com.jeremyswisher.sportsmriacademy.web");
 assertIncludes("Submission packet includes Apple return URL", submissionPacketScript, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Submission packet includes App Store profile next action", submissionPacketScript, "App Store distribution provisioning profile");
 assertIncludes("Submission packet includes final release evidence", submissionPacketScript, "ios/AppStoreReleaseEvidence.json");
@@ -272,7 +272,7 @@ assertIncludes("Hard gate runs screenshot verifier", submissionGateScript, "scri
 assertIncludes("Hard gate runs App Store Connect verifier", submissionGateScript, "scripts/ios-app-store-connect-evidence.mjs --verify");
 
 const submissionGate = JSON.parse(readText("ios", "AppStoreSubmissionGate.json"));
-if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.uclasportsmri") {
+if (submissionGate.appleDeveloper?.bundleId === "com.jeremyswisher.sportsmriacademy") {
   pass("Submission gate bundle ID matches native bundle");
 } else {
   fail("Submission gate bundle ID matches native bundle", submissionGate.appleDeveloper?.bundleId ?? "missing");
@@ -304,12 +304,12 @@ if (submissionGate.appStoreConnect?.regulatedMedicalDeviceStatusCompleted === fa
 }
 
 const metadata = JSON.parse(readText("ios", "AppStoreConnectMetadata.json"));
-if (metadata.bundleId === "com.jeremyswisher.uclasportsmri") {
+if (metadata.bundleId === "com.jeremyswisher.sportsmriacademy") {
   pass("Metadata bundle ID matches native bundle");
 } else {
   fail("Metadata bundle ID matches native bundle", metadata.bundleId ?? "missing");
 }
-if (metadata.name === "UCLA Sports MRI") {
+if (metadata.name === "Sports MRI Academy") {
   pass("Metadata app name is ready");
 } else {
   fail("Metadata app name is ready", metadata.name ?? "missing");
@@ -377,7 +377,7 @@ if (metadata.reviewNotes?.includes("Continue in App Review demo") && metadata.re
 }
 if (
   Array.isArray(metadata.submissionChecklist) &&
-  metadata.submissionChecklist.some((item) => item.includes("com.jeremyswisher.uclasportsmri.web")) &&
+  metadata.submissionChecklist.some((item) => item.includes("com.jeremyswisher.sportsmriacademy.web")) &&
   metadata.submissionChecklist.some((item) => item.includes("https://ucla-knee-mri.firebaseapp.com/__/auth/handler")) &&
   metadata.submissionChecklist.some((item) => item.includes("ucla-knee-mri.web.app"))
 ) {
@@ -414,7 +414,7 @@ assertIncludes("Export destination uploads to App Store Connect", exportOptions,
 assertIncludes("Export method targets App Store Connect", exportOptions, "<string>app-store-connect</string>");
 assertIncludes("Automatic signing export configured", exportOptions, "<string>automatic</string>");
 
-const xcodeProject = readText("ios", "UCLASportsMRI.xcodeproj", "project.pbxproj");
+const xcodeProject = readText("ios", "SportsMRIAcademy.xcodeproj", "project.pbxproj");
 const xcodeTeamMatches = xcodeProject.match(/DEVELOPMENT_TEAM = X578T4K65B;/g) ?? [];
 if (xcodeTeamMatches.length === 2) {
   pass("Apple Developer Team pinned in generated Xcode project", "Debug and Release");
@@ -486,7 +486,7 @@ const liveReadiness = readText("scripts", "ios-live-readiness.mjs");
 assertIncludes("Live readiness checks firebaseapp auth handler", liveReadiness, "https://ucla-knee-mri.firebaseapp.com/__/auth/handler");
 assertIncludes("Live readiness checks web.app auth handler", liveReadiness, "https://ucla-knee-mri.web.app/__/auth/handler");
 assertIncludes("Live readiness validates Firebase auth helper", liveReadiness, "firebase-auth-helper");
-assertIncludes("Live readiness validates native iOS marker", liveReadiness, "UCLASportsMRIiOS");
+assertIncludes("Live readiness validates native iOS marker", liveReadiness, "SportsMRIAcademyiOS");
 assertIncludes("Live readiness fetches lazy chunks", liveReadiness, "Live JS bundle and lazy chunks fetched");
 assertIncludes("Live readiness checks web manifest", liveReadiness, "/manifest.webmanifest");
 assertIncludes("Live readiness checks Apple touch icon", liveReadiness, "/apple-touch-icon.png");
@@ -515,13 +515,13 @@ assertIncludes("Gate report includes App Store Connect evidence command", gateRe
 assertIncludes("Gate report includes release evidence command", gateReport, "npm run release:ios:evidence");
 assertIncludes("Gate report includes evidence audit command", gateReport, "npm run evidence:ios");
 
-const appIconManifestPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
+const appIconManifestPath = path("ios", "SportsMRIAcademy", "Assets.xcassets", "AppIcon.appiconset", "Contents.json");
 const appIconManifest = JSON.parse(readFileSync(appIconManifestPath, "utf8"));
 const expectedMarketing = appIconManifest.images.find(
   (image) => image.idiom === "ios-marketing" && image.size === "1024x1024" && image.scale === "1x",
 );
 if (expectedMarketing?.filename) {
-  const iconPath = path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", expectedMarketing.filename);
+  const iconPath = path("ios", "SportsMRIAcademy", "Assets.xcassets", "AppIcon.appiconset", expectedMarketing.filename);
   if (!existsSync(iconPath)) {
     fail("Marketing app icon exists", `${expectedMarketing.filename} is missing`);
   } else {
@@ -538,7 +538,7 @@ if (expectedMarketing?.filename) {
 
 for (const image of appIconManifest.images) {
   if (!image.filename) continue;
-  if (!existsSync(path("ios", "UCLASportsMRI", "Assets.xcassets", "AppIcon.appiconset", image.filename))) {
+  if (!existsSync(path("ios", "SportsMRIAcademy", "Assets.xcassets", "AppIcon.appiconset", image.filename))) {
     fail("All declared app icon files exist", `${image.filename} is missing`);
   }
 }

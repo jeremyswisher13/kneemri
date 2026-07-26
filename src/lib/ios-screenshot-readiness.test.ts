@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 describe("iOS App Store screenshot readiness", () => {
   const screenshotPlan = readFileSync("ios/ScreenshotPlan.md", "utf8");
-  const webShell = readFileSync("ios/UCLASportsMRI/WebShellView.swift", "utf8");
+  const webShell = readFileSync("ios/SportsMRIAcademy/WebShellView.swift", "utf8");
   const annotatedSlice = readFileSync("src/components/normal/AnnotatedSlice.tsx", "utf8");
   const crossPlaneDrill = readFileSync("src/components/normal/CrossPlaneDrill.tsx", "utf8");
   const captureScript = readFileSync("scripts/ios-capture-screenshots.mjs", "utf8");

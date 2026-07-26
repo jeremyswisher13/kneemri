@@ -1,4 +1,13 @@
-name: UCLASportsMRI
+# Xcode project is GENERATED from this file. After editing, run:
+#   cd ios && xcodegen generate
+# and commit the regenerated SportsMRIAcademy.xcodeproj alongside it.
+#
+# PRODUCT_BUNDLE_IDENTIFIER is effectively permanent once the app is first
+# submitted to App Store Connect — Apple does not allow it to change afterwards.
+# It was renamed off com.jeremyswisher.uclasportsmri while that was still free to
+# do, to match the Sports MRI Academy rebrand and to keep a UCLA trademark out of
+# the identifier of an app shipped from a personal developer account.
+name: SportsMRIAcademy
 options:
   bundleIdPrefix: com.jeremyswisher
   deploymentTarget:
@@ -9,18 +18,18 @@ settings:
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
 targets:
-  UCLASportsMRI:
+  SportsMRIAcademy:
     type: application
     platform: iOS
     deploymentTarget: "16.0"
     sources:
-      - path: UCLASportsMRI
+      - path: SportsMRIAcademy
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.uclasportsmri
-        PRODUCT_NAME: UCLA Sports MRI
-        INFOPLIST_FILE: UCLASportsMRI/Info.plist
-        CODE_SIGN_ENTITLEMENTS: UCLASportsMRI/UCLASportsMRI.entitlements
+        PRODUCT_BUNDLE_IDENTIFIER: com.jeremyswisher.sportsmriacademy
+        PRODUCT_NAME: Sports MRI Academy
+        INFOPLIST_FILE: SportsMRIAcademy/Info.plist
+        CODE_SIGN_ENTITLEMENTS: SportsMRIAcademy/SportsMRIAcademy.entitlements
         DEVELOPMENT_TEAM: X578T4K65B
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: "1,2"

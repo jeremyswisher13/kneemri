@@ -6,7 +6,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const verify = process.argv.includes("--verify");
 const evidencePath = join(root, "ios", "AppleFirebaseAuthEvidence.json");
 const submissionGatePath = join(root, "ios", "AppStoreSubmissionGate.json");
-const entitlementsPath = join(root, "ios", "UCLASportsMRI", "UCLASportsMRI.entitlements");
+const entitlementsPath = join(root, "ios", "SportsMRIAcademy", "SportsMRIAcademy.entitlements");
 const authSourcePath = join(root, "src", "lib", "auth.ts");
 const loginPagePath = join(root, "src", "pages", "LoginPage.tsx");
 const evidenceText = readFileSync(evidencePath, "utf8");
@@ -17,9 +17,9 @@ const authSource = readFileSync(authSourcePath, "utf8");
 const loginPage = readFileSync(loginPagePath, "utf8");
 
 const expected = {
-  bundleId: "com.jeremyswisher.uclasportsmri",
+  bundleId: "com.jeremyswisher.sportsmriacademy",
   firebaseProjectId: "ucla-knee-mri",
-  serviceId: "com.jeremyswisher.uclasportsmri.web",
+  serviceId: "com.jeremyswisher.sportsmriacademy.web",
   primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
   secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
   authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],
@@ -58,7 +58,7 @@ const items = [
       apple.bundleId === expected.bundleId &&
       text(apple.confirmedAt) &&
       text(apple.confirmedBy),
-    next: "Enable Sign in with Apple on App ID com.jeremyswisher.uclasportsmri, then record confirmedAt and confirmedBy.",
+    next: "Enable Sign in with Apple on App ID com.jeremyswisher.sportsmriacademy, then record confirmedAt and confirmedBy.",
   },
   {
     group: "Firebase Auth",

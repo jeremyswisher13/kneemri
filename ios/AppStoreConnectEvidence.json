@@ -5,9 +5,9 @@
   "doNotStoreSecrets": "Do not enter App Store Connect API keys, issuer IDs, app-specific passwords, private keys, or Apple account credentials in this file.",
   "appRecord": {
     "created": false,
-    "bundleId": "com.jeremyswisher.uclasportsmri",
-    "sku": "ucla-sports-mri-ios",
-    "appName": "UCLA Sports MRI",
+    "bundleId": "com.jeremyswisher.sportsmriacademy",
+    "sku": "sports-mri-academy-ios",
+    "appName": "Sports MRI Academy",
     "platform": "iOS",
     "confirmedAt": "",
     "confirmedBy": "",

@@ -20,7 +20,7 @@ async function fetchText(pathname) {
   const response = await fetch(url, {
     redirect: "follow",
     headers: {
-      "User-Agent": "UCLASportsMRI-AppStoreReadiness/1.0",
+      "User-Agent": "SportsMRIAcademy-AppStoreReadiness/1.0",
     },
   });
   const text = await response.text();
@@ -167,7 +167,7 @@ async function main() {
   assertBodyIncludes("Live bundle includes Sign in with Apple", bundleText, "Sign in with Apple");
   assertBodyIncludes("Live bundle includes App Review demo", bundleText, "Continue in App Review demo");
   assertBodyIncludes("Live bundle includes medical disclaimer", bundleText, "Educational training only");
-  assertBodyIncludes("Live bundle includes native iOS shell marker", bundleText, "UCLASportsMRIiOS");
+  assertBodyIncludes("Live bundle includes native iOS shell marker", bundleText, "SportsMRIAcademyiOS");
   assertBodyIncludes("Live bundle includes account deletion route", bundleText, "Request account deletion");
   assertBodyIncludes("Live bundle includes account deletion confirmation", bundleText, "Confirm deletion request");
   assertBodyIncludes("Live bundle includes account deletion notice", bundleText, "Your account deletion request has been recorded.");

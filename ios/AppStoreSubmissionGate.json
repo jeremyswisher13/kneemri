@@ -4,7 +4,7 @@
   "purpose": "This file tracks external App Store gates that cannot be proven by local build/tests alone. Set an item to true only after the listed evidence exists.",
   "appleDeveloper": {
     "signInWithAppleEnabledForBundleId": false,
-    "bundleId": "com.jeremyswisher.uclasportsmri",
+    "bundleId": "com.jeremyswisher.sportsmriacademy",
     "evidence": "Apple Developer > Certificates, Identifiers & Profiles > App ID shows Sign in with Apple enabled."
   },
   "firebaseAuth": {

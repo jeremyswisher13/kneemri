@@ -122,7 +122,7 @@ describe("login return paths", () => {
     ).toBe(true);
     expect(
       shouldUseRedirectSignIn("https://ucla-knee-mri.firebaseapp.com/login", {
-        userAgent: "Mozilla/5.0 UCLASportsMRIiOS",
+        userAgent: "Mozilla/5.0 SportsMRIAcademyiOS",
       }),
     ).toBe(true);
   });

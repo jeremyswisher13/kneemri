@@ -5,7 +5,7 @@
   "doNotStoreSecrets": "Do not enter Apple private-key file contents, Firebase credentials, client secrets, or API keys in this file.",
   "appleDeveloper": {
     "signInWithAppleEnabledForBundleId": false,
-    "bundleId": "com.jeremyswisher.uclasportsmri",
+    "bundleId": "com.jeremyswisher.sportsmriacademy",
     "confirmedAt": "",
     "confirmedBy": "",
     "evidenceNote": ""
@@ -17,7 +17,7 @@
     "redirectUrlVerifiedInAppleAndFirebase": false,
     "authorizedDomainsIncludeFirebaseHosting": false,
     "firebaseProjectId": "ucla-knee-mri",
-    "serviceId": "com.jeremyswisher.uclasportsmri.web",
+    "serviceId": "com.jeremyswisher.sportsmriacademy.web",
     "primaryReturnUrl": "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
     "secondaryAuthHandler": "https://ucla-knee-mri.web.app/__/auth/handler",
     "authorizedDomains": [

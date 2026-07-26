@@ -7,7 +7,7 @@
     "source": "Native iOS simulator Debug build",
     "capturedAt": "2026-07-01T06:38:01Z",
     "device": "iPhone 17 Pro Max simulator, iOS 26.5",
-    "appBuild": "UCLA Sports MRI 1.0 (1), Debug iphonesimulator",
+    "appBuild": "Sports MRI Academy 1.0 (1), Debug iphonesimulator",
     "files": [
       "iphone-6-9-01-dashboard.png",
       "iphone-6-9-02-normal-guided-tour.png",
@@ -23,7 +23,7 @@
     "source": "Native iOS simulator Debug build",
     "capturedAt": "2026-07-01T06:38:01Z",
     "device": "iPad Pro 13-inch (M5) simulator, iOS 26.5",
-    "appBuild": "UCLA Sports MRI 1.0 (1), Debug iphonesimulator",
+    "appBuild": "Sports MRI Academy 1.0 (1), Debug iphonesimulator",
     "files": [
       "ipad-13-01-dashboard.png",
       "ipad-13-02-normal-guided-tour.png",

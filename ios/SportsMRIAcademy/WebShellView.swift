@@ -69,7 +69,7 @@ private enum WebApp {
 
     static var nativeShellScript: String {
         var script = #"""
-    window.UCLASportsMRIiOS = true;
+    window.SportsMRIAcademyiOS = true;
     """#
         if debugScreenshotDemoEnabled {
             script += #"""
@@ -201,7 +201,7 @@ struct WebShellView: View {
                     .controlSize(.large)
                     .padding(18)
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
-                    .accessibilityLabel("Loading UCLA Sports MRI")
+                    .accessibilityLabel("Loading Sports MRI Academy")
             }
 
             if let loadError {
@@ -209,7 +209,7 @@ struct WebShellView: View {
                     Image(systemName: "wifi.exclamationmark")
                         .font(.system(size: 34, weight: .semibold))
                         .foregroundStyle(Color(red: 0.0, green: 0.33, blue: 0.53))
-                    Text("Unable to load UCLA Sports MRI")
+                    Text("Unable to load Sports MRI Academy")
                         .font(.headline)
                     Text(loadError)
                         .font(.footnote)
@@ -248,7 +248,7 @@ struct WebAppView: UIViewRepresentable {
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
         configuration.allowsInlineMediaPlayback = true
         configuration.websiteDataStore = .default()
-        configuration.applicationNameForUserAgent = "UCLASportsMRIiOS"
+        configuration.applicationNameForUserAgent = "SportsMRIAcademyiOS"
         configuration.userContentController.addUserScript(
             WKUserScript(
                 source: WebApp.nativeShellScript,

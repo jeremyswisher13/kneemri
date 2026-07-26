@@ -8,7 +8,7 @@ describe("iOS archive readiness", () => {
   const exportReadiness = readFileSync("ios/AppStoreExportReadiness.md", "utf8");
   const readme = readFileSync("ios/README.md", "utf8");
   const projectSpec = readFileSync("ios/project.yml", "utf8");
-  const xcodeProject = readFileSync("ios/UCLASportsMRI.xcodeproj/project.pbxproj", "utf8");
+  const xcodeProject = readFileSync("ios/SportsMRIAcademy.xcodeproj/project.pbxproj", "utf8");
 
   it("exposes and documents the Release signing report", () => {
     expect(packageJson).toContain('"archive:ios:signing": "node scripts/ios-archive.mjs --signing"');
@@ -92,7 +92,7 @@ describe("iOS archive readiness", () => {
   });
 
   it("keeps an exact App Store distribution profile checklist", () => {
-    expect(exportReadiness).toContain("com.jeremyswisher.uclasportsmri");
+    expect(exportReadiness).toContain("com.jeremyswisher.sportsmriacademy");
     expect(exportReadiness).toContain("X578T4K65B");
     expect(exportReadiness).toContain("App Store distribution provisioning profile");
     expect(exportReadiness).toContain("1` or higher");

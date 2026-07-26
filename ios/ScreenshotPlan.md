@@ -33,17 +33,17 @@ Preferred access path:
 
 Repeatable simulator capture path:
 
-1. Build and install a Debug simulator build of `UCLA Sports MRI.app`.
+1. Build and install a Debug simulator build of `Sports MRI Academy.app`.
 2. Capture the iPhone 6.9-inch set from the booted iPhone simulator:
 
    ```sh
-   npm run screenshots:ios:capture -- --set iphone-6-9 --device booted --app "<path-to-UCLA Sports MRI.app>"
+   npm run screenshots:ios:capture -- --set iphone-6-9 --device booted --app "<path-to-Sports MRI Academy.app>"
    ```
 
 3. Capture the iPad 13-inch set from an iPad Pro/Air 13-inch simulator:
 
    ```sh
-   npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-UCLA Sports MRI.app>"
+   npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-Sports MRI Academy.app>"
    ```
 
 The capture command relaunches the native `WKWebView` shell for each planned route with Debug-only launch arguments, pre-enables the local App Review demo state, and writes the final App Store filenames into the folders below. Treat the generated screenshots as final evidence only after the no-PHI/local-debug/clipped-text review is complete.

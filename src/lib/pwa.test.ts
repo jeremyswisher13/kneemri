@@ -68,6 +68,8 @@ describe("pwa helpers", () => {
 
   it("detects the native iOS shell so browser install prompts can be hidden", () => {
     expect(isNativeIosAppShell("?source=ios-app", "")).toBe(true);
+    expect(isNativeIosAppShell("", "Mozilla/5.0 SportsMRIAcademyiOS")).toBe(true);
+    // Legacy token stays accepted for any dev build already on a device.
     expect(isNativeIosAppShell("", "Mozilla/5.0 UCLASportsMRIiOS")).toBe(true);
     expect(isNativeIosAppShell("?source=homescreen", "Mozilla/5.0 Safari/605.1.15")).toBe(false);
   });

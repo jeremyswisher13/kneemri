@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 const FIREBASE_APP_AUTH_HANDLER = "https://ucla-knee-mri.firebaseapp.com/__/auth/handler";
 const WEB_APP_AUTH_HANDLER = "https://ucla-knee-mri.web.app/__/auth/handler";
-const APPLE_SERVICE_ID = "com.jeremyswisher.uclasportsmri.web";
+const APPLE_SERVICE_ID = "com.jeremyswisher.sportsmriacademy.web";
 
 describe("iOS Sign in with Apple readiness", () => {
   const setupDoc = readFileSync("ios/AppleFirebaseAuthSetup.md", "utf8");
@@ -61,7 +61,7 @@ describe("iOS Sign in with Apple readiness", () => {
   });
 
   it("keeps the auth evidence script tied to the submission gates without storing secrets", () => {
-    expect(evidence.appleDeveloper.bundleId).toBe("com.jeremyswisher.uclasportsmri");
+    expect(evidence.appleDeveloper.bundleId).toBe("com.jeremyswisher.sportsmriacademy");
     expect(evidenceScript).toContain("appleDeveloper.signInWithAppleEnabledForBundleId");
     expect(evidenceScript).toContain("firebaseAuth.appleProviderConfigured");
     expect(evidenceScript).toContain("firebaseAuth.authorizedDomainsIncludeFirebaseHosting");

@@ -4,9 +4,9 @@ Last updated: July 24, 2026
 
 ## Current binary
 
-- Xcode project: `ios/UCLASportsMRI.xcodeproj`
-- Scheme: `UCLASportsMRI`
-- Bundle ID: `com.jeremyswisher.uclasportsmri`
+- Xcode project: `ios/SportsMRIAcademy.xcodeproj`
+- Scheme: `SportsMRIAcademy`
+- Bundle ID: `com.jeremyswisher.sportsmriacademy`
 - Version/build: `1.0 (1)`
 - Deployment target: iOS 16.0
 - App type: SwiftUI `WKWebView` shell loading the hosted Firebase app
@@ -18,12 +18,12 @@ Last updated: July 24, 2026
 - Firebase Hosting and all four Cloud Functions were deployed successfully on July 24, 2026.
 - `npm run preflight:ios:live` passes against `https://ucla-knee-mri.firebaseapp.com` with 112 live checks, including public privacy/support/accessibility/account routes, all discovered lazy-loaded route chunks, deployed manifest/favicon/Apple touch icon/PWA 512 icon content-type checks, account deletion UI, login/App Review demo affordances, and both Firebase Auth callback endpoints.
 - `ios/AppStoreSubmissionGate.json` has hosting marked verified.
-- The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `UCLASportsMRI` scheme.
+- The native iOS shell builds successfully for the iPhone 17 Pro Max simulator with the `SportsMRIAcademy` scheme.
 - The latest simulator screenshot showed the current login UI with Google, Sign in with Apple, and **Continue in App Review demo** visible.
 - Native iOS shell sign-in URLs use Firebase full-page redirect auth (`source=ios-app`) to avoid fragile popup behavior inside `WKWebView`.
-- Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `UCLASportsMRIiOS`.
-- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.uclasportsmri`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, Apple Developer Team `X578T4K65B` (`Jeremy Swisher`), 1 Apple Development identity, and 1 Apple Distribution identity. It also reports 1 matching development provisioning profile but 0 matching App Store distribution profiles, so App Store export signing is not ready yet.
-- `npm run archive:ios:only` created `ios/build/UCLASportsMRI.xcarchive` on July 1, 2026. The archive step succeeds; `npm run export:ios` fails with `Failed to find an account with App Store Connect access for team X578T4K65B`. A local `destination=export` retry also fails because no App Store distribution provisioning profile is installed for `com.jeremyswisher.uclasportsmri`. The current blocker is App Store Connect-capable Xcode account access plus an App Store distribution provisioning profile for Team `X578T4K65B`.
+- Native iOS shell initial loads ignore stale local WebKit cache data, and the web app skips/clears PWA service-worker cache state when running inside `SportsMRIAcademyiOS`.
+- `npm run archive:ios:signing` confirms Release bundle ID `com.jeremyswisher.sportsmriacademy`, version `1.0`, build `1`, automatic signing, Sign in with Apple entitlements, Apple Developer Team `X578T4K65B` (`Jeremy Swisher`), 1 Apple Development identity, and 1 Apple Distribution identity. It also reports 1 matching development provisioning profile but 0 matching App Store distribution profiles, so App Store export signing is not ready yet.
+- `npm run archive:ios:only` created `ios/build/SportsMRIAcademy.xcarchive` on July 1, 2026. The archive step succeeds; `npm run export:ios` fails with `Failed to find an account with App Store Connect access for team X578T4K65B`. A local `destination=export` retry also fails because no App Store distribution provisioning profile is installed for `com.jeremyswisher.sportsmriacademy`. The current blocker is App Store Connect-capable Xcode account access plus an App Store distribution provisioning profile for Team `X578T4K65B`.
 - `npm run preflight:ios:submit` still intentionally fails on unverified external gates: Apple Developer Sign in with Apple setup, Firebase Apple provider setup, archive/export signing, real-device/TestFlight auth, account deletion operations, and App Store Connect submission/compliance fields.
 - iPhone 6.9-inch and iPad 13-inch App Store screenshots have been captured from the native iOS simulator path and reviewed for no PHI; the remaining screenshot work is uploading the verified sets to App Store Connect.
 - Account deletion now has a Firestore rules-backed request path, deployed Firestore rules, and an Admin SDK processing script, but the gate must stay false until a real signed-in request and admin fulfillment are verified.
@@ -37,7 +37,7 @@ npm run build
 npm run preflight:ios
 npm run archive:ios:check
 npm run archive:ios:signing
-plutil -lint ios/ExportOptions.plist ios/UCLASportsMRI/UCLASportsMRI.entitlements ios/UCLASportsMRI/PrivacyInfo.xcprivacy ios/UCLASportsMRI/Info.plist
+plutil -lint ios/ExportOptions.plist ios/SportsMRIAcademy/SportsMRIAcademy.entitlements ios/SportsMRIAcademy/PrivacyInfo.xcprivacy ios/SportsMRIAcademy/Info.plist
 ```
 
 `npm run preflight:ios` checks the native bundle metadata, privacy manifest, Sign in with Apple entitlement, app icons, reviewer demo path, required public URLs, login/disclaimer routes, Firebase Hosting configuration, and built `dist/index.html`.
@@ -91,8 +91,8 @@ The App Store Connect evidence script also reads the native version/build from `
 After final native simulator or TestFlight screenshots are captured, run:
 
 ```sh
-npm run screenshots:ios:capture -- --set iphone-6-9 --device <iphone-simulator-udid-or-booted> --app "<path-to-UCLA Sports MRI.app>"
-npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-UCLA Sports MRI.app>"
+npm run screenshots:ios:capture -- --set iphone-6-9 --device <iphone-simulator-udid-or-booted> --app "<path-to-Sports MRI Academy.app>"
+npm run screenshots:ios:capture -- --set ipad-13 --device <ipad-simulator-udid> --app "<path-to-Sports MRI Academy.app>"
 npm run screenshots:ios:check
 npm run screenshots:ios:evidence
 npm run screenshots:ios:evidence:verify
@@ -114,7 +114,7 @@ npm run archive:ios:only
 npm run export:ios
 ```
 
-`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account and an App Store distribution provisioning profile for Team `X578T4K65B`. The Xcode-signed-in Apple ID must have an App Store Connect upload-capable role for this team/app: Account Holder, Admin, App Manager, or Developer. If Xcode account access is unavailable, `export:ios` can use a local App Store Connect API key when `IOS_ASC_API_KEY_PATH`, `IOS_ASC_API_KEY_ID`, and `IOS_ASC_API_ISSUER_ID` are set. Keep the `.p8` key file, key ID, issuer ID, and any Apple credentials out of git and out of evidence JSON files. If export fails, the helper now reads Xcode's distribution log and prints the exact account/profile next action.
+`archive:ios:only` creates or refreshes `ios/build/SportsMRIAcademy.xcarchive`. `export:ios` retries App Store Connect export/upload from the existing archive after Xcode has an App Store Connect-capable account and an App Store distribution provisioning profile for Team `X578T4K65B`. The Xcode-signed-in Apple ID must have an App Store Connect upload-capable role for this team/app: Account Holder, Admin, App Manager, or Developer. If Xcode account access is unavailable, `export:ios` can use a local App Store Connect API key when `IOS_ASC_API_KEY_PATH`, `IOS_ASC_API_KEY_ID`, and `IOS_ASC_API_ISSUER_ID` are set. Keep the `.p8` key file, key ID, issuer ID, and any Apple credentials out of git and out of evidence JSON files. If export fails, the helper now reads Xcode's distribution log and prints the exact account/profile next action.
 Only set `archiveExport.appStoreExportSigningReady` and `archiveExport.appStoreConnectAccountAccessVerified` in `ios/AppStoreSubmissionGate.json` after the matching command evidence exists.
 
 When Apple Developer signing is configured, command-line archive/export is available:
@@ -123,14 +123,14 @@ When Apple Developer signing is configured, command-line archive/export is avail
 IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 ```
 
-The Xcode project now pins `DEVELOPMENT_TEAM = X578T4K65B`, so the environment variable is optional. Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, resolved Development Team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching provisioning profile count, and matching App Store profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`. If `App Store export signing ready` is `no`, open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team `X578T4K65B`; then create/download an App Store distribution provisioning profile for `com.jeremyswisher.uclasportsmri` and retry the export/upload.
+The Xcode project now pins `DEVELOPMENT_TEAM = X578T4K65B`, so the environment variable is optional. Use `npm run archive:ios:signing` first to confirm the Release bundle ID, version/build, automatic signing style, entitlements path, workspace-local DerivedData path, resolved Development Team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching provisioning profile count, and matching App Store profile count for `com.jeremyswisher.sportsmriacademy / X578T4K65B`. If `App Store export signing ready` is `no`, open Xcode > Settings > Accounts and confirm the signed-in Apple ID has App Store Connect access for Team `X578T4K65B`; then create/download an App Store distribution provisioning profile for `com.jeremyswisher.sportsmriacademy` and retry the export/upload.
 
 ## App Store Connect metadata draft
 
 Structured copy lives in `ios/AppStoreConnectMetadata.json`.
 External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEvidence.json`.
 
-- Name: `UCLA Sports MRI`
+- Name: `Sports MRI Academy`
 - Subtitle: `Sports medicine MRI learning`
 - Primary language: `English (U.S.)`
 - User access when creating the app record: `Full Access`
@@ -148,7 +148,7 @@ External App Store Connect entry/upload evidence lives in `ios/AppStoreConnectEv
 
 ## Description draft
 
-UCLA Sports MRI is an interactive sports medicine MRI education app for fellows and advanced learners. Work through normal MRI workstations for knee, shoulder, hip, and elbow, practice guided tours and cross-plane correlation, answer image-based knowledge checks, review cases, and reinforce missed concepts with spaced review.
+Sports MRI Academy is an interactive sports medicine MRI education app for fellows and advanced learners. Work through normal MRI workstations for knee, shoulder, hip, and elbow, practice guided tours and cross-plane correlation, answer image-based knowledge checks, review cases, and reinforce missed concepts with spaced review.
 
 The app is designed for education and training. It is not a diagnostic device, treatment tool, or substitute for professional clinical judgment.
 
@@ -162,7 +162,7 @@ MRI, sports medicine, musculoskeletal, MSK, radiology, knee, shoulder, hip, elbo
 
 ## Review notes draft
 
-UCLA Sports MRI is a medical education app for sports medicine MRI interpretation. It is not intended to diagnose, treat, or guide patient-specific care. The app teaches normal anatomy, MRI search patterns, guided landmark recognition, cross-plane correlation, cases, quizzes, and spaced review.
+Sports MRI Academy is a medical education app for sports medicine MRI interpretation. It is not intended to diagnose, treat, or guide patient-specific care. The app teaches normal anatomy, MRI search patterns, guided landmark recognition, cross-plane correlation, cases, quizzes, and spaced review.
 
 The app currently requires sign-in to save learner progress. Google sign-in and Sign in with Apple are available in the app. TestFlight/App Review builds also expose a **Continue in App Review demo** button on the login screen so reviewers can inspect all courses without a live fellow account. Backend services are live through Firebase Hosting/Auth/Firestore.
 
@@ -233,9 +233,9 @@ External Apple/Firebase setup evidence lives in `ios/AppleFirebaseAuthEvidence.j
 
 The web app now exposes a Sign in with Apple button through Firebase Auth's `apple.com` provider. Before uploading for review:
 
-1. In Apple Developer, enable **Sign in with Apple** for the app identifier associated with `com.jeremyswisher.uclasportsmri`.
+1. In Apple Developer, enable **Sign in with Apple** for the app identifier associated with `com.jeremyswisher.sportsmriacademy`.
 2. Create the web/service identifier required by Firebase Auth for Apple provider redirects.
-   Use Services ID `com.jeremyswisher.uclasportsmri.web`.
+   Use Services ID `com.jeremyswisher.sportsmriacademy.web`.
 3. Configure the Apple Service ID Return URL exactly:
 
 ```text

@@ -4,7 +4,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const bundleId = "com.jeremyswisher.uclasportsmri";
+const bundleId = "com.jeremyswisher.sportsmriacademy";
 
 const screenshotRoutes = [
   {
@@ -67,8 +67,8 @@ function hasFlag(name) {
 
 function usage(exitCode = 1) {
   console.log(`Usage:
-  npm run screenshots:ios:capture -- --set iphone-6-9 --device <simulator-udid-or-booted> [--app <path-to-UCLA Sports MRI.app>]
-  npm run screenshots:ios:capture -- --set ipad-13 --device <simulator-udid> --app <path-to-UCLA Sports MRI.app>
+  npm run screenshots:ios:capture -- --set iphone-6-9 --device <simulator-udid-or-booted> [--app <path-to-Sports MRI Academy.app>]
+  npm run screenshots:ios:capture -- --set ipad-13 --device <simulator-udid> --app <path-to-Sports MRI Academy.app>
 
 Options:
   --set       ${Object.keys(screenshotSets).join(" | ")}

@@ -3,9 +3,9 @@ import { readFileSync } from "node:fs";
 import { beforeAll, describe, expect, it } from "vitest";
 
 const APPLE_TEAM_ID = "X578T4K65B";
-const BUNDLE_ID = "com.jeremyswisher.uclasportsmri";
+const BUNDLE_ID = "com.jeremyswisher.sportsmriacademy";
 const FIREBASE_PROJECT_ID = "ucla-knee-mri";
-const APPLE_SERVICE_ID = "com.jeremyswisher.uclasportsmri.web";
+const APPLE_SERVICE_ID = "com.jeremyswisher.sportsmriacademy.web";
 const PRIMARY_RETURN_URL = "https://ucla-knee-mri.firebaseapp.com/__/auth/handler";
 const AUTHORIZED_DOMAINS = ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"];
 

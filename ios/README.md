@@ -1,6 +1,6 @@
-# UCLA Sports MRI iOS Shell
+# Sports MRI Academy iOS Shell
 
-This folder contains the first native iOS shell for the UCLA Sports MRI web app.
+This folder contains the first native iOS shell for the Sports MRI Academy web app.
 
 ## What this version does
 
@@ -23,19 +23,19 @@ xcodegen generate --spec ios/project.yml
 Then open:
 
 ```sh
-open ios/UCLASportsMRI.xcodeproj
+open ios/SportsMRIAcademy.xcodeproj
 ```
 
 ## Signing for device or TestFlight
 
-1. Select the `UCLASportsMRI` target.
+1. Select the `SportsMRIAcademy` target.
 2. Open **Signing & Capabilities**.
 3. Select your Apple Developer Team.
 4. Confirm that **Sign in with Apple** is enabled for the app identifier.
 5. Confirm or change the bundle identifier. The default is:
 
 ```text
-com.jeremyswisher.uclasportsmri
+com.jeremyswisher.sportsmriacademy
 ```
 
 6. For TestFlight, choose **Product > Archive** in Xcode, then upload through Organizer.
@@ -82,7 +82,7 @@ npm run archive:ios:only
 npm run export:ios
 ```
 
-`archive:ios:only` creates or refreshes `ios/build/UCLASportsMRI.xcarchive`.
+`archive:ios:only` creates or refreshes `ios/build/SportsMRIAcademy.xcarchive`.
 `export:ios` retries App Store Connect export/upload from the existing archive.
 If export fails, the helper reads Xcode's distribution log and prints the exact
 account/profile next action.
@@ -90,7 +90,7 @@ If export fails with App Store Connect account access, open Xcode > Settings >
 Accounts and confirm the signed-in Apple ID has App Store Connect access for
 Team `X578T4K65B`. If `npm run archive:ios:signing` reports
 `App Store export signing ready: no`, create/download an App Store distribution
-provisioning profile for `com.jeremyswisher.uclasportsmri` before retrying
+provisioning profile for `com.jeremyswisher.sportsmriacademy` before retrying
 export/upload.
 If Xcode account access is flaky, `npm run export:ios` can also use a local App
 Store Connect API key when `IOS_ASC_API_KEY_PATH`, `IOS_ASC_API_KEY_ID`, and
@@ -105,7 +105,7 @@ IOS_DEVELOPMENT_TEAM=<Apple Team ID> npm run archive:ios
 
 The Xcode project pins Team ID `X578T4K65B` for `Jeremy Swisher`, so `IOS_DEVELOPMENT_TEAM` is optional after Xcode account credentials and signing assets are valid.
 The archive helper writes to `ios/build/`, which is ignored by git.
-`npm run archive:ios:signing` reports the Release signing settings, detected team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching profile count, matching App Store profile count for `com.jeremyswisher.uclasportsmri / X578T4K65B`, and whether archive signing and App Store export signing are ready before you attempt upload.
+`npm run archive:ios:signing` reports the Release signing settings, detected team, Apple Development/Distribution identity counts, decoded provisioning profile count, exact matching profile count, matching App Store profile count for `com.jeremyswisher.sportsmriacademy / X578T4K65B`, and whether archive signing and App Store export signing are ready before you attempt upload.
 
 ## Reviewer access
 

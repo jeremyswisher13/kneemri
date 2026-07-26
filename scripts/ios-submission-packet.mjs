@@ -37,9 +37,9 @@ const releaseEvidence = readJson("ios", "AppStoreReleaseEvidence.json");
 
 const expected = {
   appleTeamId: "X578T4K65B",
-  bundleId: "com.jeremyswisher.uclasportsmri",
+  bundleId: "com.jeremyswisher.sportsmriacademy",
   firebaseProjectId: "ucla-knee-mri",
-  serviceId: "com.jeremyswisher.uclasportsmri.web",
+  serviceId: "com.jeremyswisher.sportsmriacademy.web",
   primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
   secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
   authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],

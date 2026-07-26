@@ -5,9 +5,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const projectPath = join(root, "ios", "UCLASportsMRI.xcodeproj");
+const projectPath = join(root, "ios", "SportsMRIAcademy.xcodeproj");
 const exportOptionsPath = join(root, "ios", "ExportOptions.plist");
-const archivePath = process.env.IOS_ARCHIVE_PATH || join(root, "ios", "build", "UCLASportsMRI.xcarchive");
+const archivePath = process.env.IOS_ARCHIVE_PATH || join(root, "ios", "build", "SportsMRIAcademy.xcarchive");
 const exportPath = process.env.IOS_EXPORT_PATH || join(root, "ios", "build", "export");
 const derivedDataPath = process.env.IOS_DERIVED_DATA_PATH || join(root, "ios", "build", "DerivedData");
 const mode = process.argv.includes("--archive")
@@ -136,7 +136,7 @@ function diagnoseExportFailure(output) {
     console.error("Alternative: set IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID for an App Store Connect API key with app/team access, then rerun npm run export:ios.");
   }
   if (combined.includes("No profiles for")) {
-    console.error("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B.");
+    console.error("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.sportsmriacademy on Team X578T4K65B.");
   }
   console.error("Then rerun npm run archive:ios:signing and npm run export:ios.");
   if (standardLogPath) {
@@ -334,7 +334,7 @@ function baseArchiveArgs() {
     "-project",
     projectPath,
     "-scheme",
-    "UCLASportsMRI",
+    "SportsMRIAcademy",
     "-configuration",
     "Release",
     "-destination",
@@ -360,7 +360,7 @@ function buildSettingsArgs() {
     "-project",
     projectPath,
     "-scheme",
-    "UCLASportsMRI",
+    "SportsMRIAcademy",
     "-configuration",
     "Release",
     "-destination",
@@ -446,9 +446,9 @@ function printSigningReport() {
   }
 
   const archiveSettingsReady =
-    settings.get("PRODUCT_BUNDLE_IDENTIFIER") === "com.jeremyswisher.uclasportsmri" &&
+    settings.get("PRODUCT_BUNDLE_IDENTIFIER") === "com.jeremyswisher.sportsmriacademy" &&
     settings.get("CODE_SIGN_STYLE") === "Automatic" &&
-    settings.get("CODE_SIGN_ENTITLEMENTS") === "UCLASportsMRI/UCLASportsMRI.entitlements" &&
+    settings.get("CODE_SIGN_ENTITLEMENTS") === "SportsMRIAcademy/SportsMRIAcademy.entitlements" &&
     !!developmentTeam;
   const distributionIdentityReady = identitySummary.distributionCount > 0;
   const matchingProfileReady = profileSummary.matching.length > 0;
@@ -480,11 +480,11 @@ function printSigningReport() {
   if (!developmentTeam) {
     console.log("Next: set IOS_DEVELOPMENT_TEAM=<Apple Team ID> or select the Apple Developer Team in Xcode before archiving.");
   } else if (!distributionIdentityReady && !matchingProfileReady) {
-    console.log("Next: open Xcode > Settings > Accounts, sign in or refresh Jeremy Swisher, then let Xcode create/download signing certificates and provisioning profiles for com.jeremyswisher.uclasportsmri.");
+    console.log("Next: open Xcode > Settings > Accounts, sign in or refresh Jeremy Swisher, then let Xcode create/download signing certificates and provisioning profiles for com.jeremyswisher.sportsmriacademy.");
   } else if (!distributionIdentityReady) {
     console.log("Next: open Xcode > Settings > Accounts > Jeremy Swisher > Manage Certificates, then create/download an Apple Distribution certificate with its private key on this Mac.");
   } else if (!matchingProfileReady || !appStoreProfileReady) {
-    console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri on Team X578T4K65B, then rerun npm run archive:ios:signing until App Store export signing ready: yes.");
+    console.log("Next: create/download an App Store distribution provisioning profile for com.jeremyswisher.sportsmriacademy on Team X578T4K65B, then rerun npm run archive:ios:signing until App Store export signing ready: yes.");
     console.log("After that, rerun npm run export:ios from an Xcode account with App Store Connect access for Team X578T4K65B, or with IOS_ASC_API_KEY_PATH, IOS_ASC_API_KEY_ID, and IOS_ASC_API_ISSUER_ID set for an App Store Connect API key.");
   }
   console.log("Run npm run archive:ios after Apple Developer account credentials and signing assets are configured.");
@@ -498,12 +498,12 @@ run("xcodebuild", ["-version"]);
 
 console.log("\nChecking project schemes...");
 const projectList = runCaptured("xcodebuild", ["-list", "-project", projectPath]);
-if (!projectList.includes("UCLASportsMRI")) {
+if (!projectList.includes("SportsMRIAcademy")) {
   console.error(projectList.trim());
-  console.error("Missing UCLASportsMRI scheme in Xcode project.");
+  console.error("Missing SportsMRIAcademy scheme in Xcode project.");
   process.exit(1);
 }
-console.log("PASS UCLASportsMRI scheme is visible to xcodebuild.");
+console.log("PASS SportsMRIAcademy scheme is visible to xcodebuild.");
 
 if (mode === "signing") {
   printSigningReport();

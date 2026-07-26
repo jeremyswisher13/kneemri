@@ -22,7 +22,12 @@ export function isNativeIosAppShell(search?: string, userAgent?: string): boolea
   const ua =
     userAgent ?? (typeof navigator === "undefined" ? "" : navigator.userAgent);
   const source = new URLSearchParams(rawSearch).get("source")?.toLowerCase();
-  return source === "ios-app" || /\bUCLASportsMRIiOS\b/i.test(ua);
+  // The native shell announces itself via applicationNameForUserAgent — see
+  // ios/SportsMRIAcademy/WebShellView.swift, which must stay in lockstep with this.
+  // The legacy UCLASportsMRIiOS token is still accepted because a dev/TestFlight
+  // build carrying it may already be installed on a device; drop it once no such
+  // build survives.
+  return source === "ios-app" || /\b(SportsMRIAcademy|UCLASportsMRI)iOS\b/i.test(ua);
 }
 
 export function browserRedirectSignInHints(): RedirectSignInHints {

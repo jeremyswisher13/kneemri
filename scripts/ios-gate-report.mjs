@@ -8,9 +8,9 @@ const gate = JSON.parse(readFileSync(gatePath, "utf8"));
 
 const expected = {
   appleTeamId: "X578T4K65B",
-  bundleId: "com.jeremyswisher.uclasportsmri",
+  bundleId: "com.jeremyswisher.sportsmriacademy",
   firebaseProjectId: "ucla-knee-mri",
-  serviceId: "com.jeremyswisher.uclasportsmri.web",
+  serviceId: "com.jeremyswisher.sportsmriacademy.web",
   primaryReturnUrl: "https://ucla-knee-mri.firebaseapp.com/__/auth/handler",
   secondaryAuthHandler: "https://ucla-knee-mri.web.app/__/auth/handler",
   authorizedDomains: ["ucla-knee-mri.firebaseapp.com", "ucla-knee-mri.web.app"],
@@ -82,7 +82,7 @@ const groups = [
       {
         key: "archiveExport.appStoreExportSigningReady",
         value: gate.archiveExport?.appStoreExportSigningReady,
-        next: "Create/download an App Store distribution provisioning profile for com.jeremyswisher.uclasportsmri, then run npm run archive:ios:signing and confirm App Store export signing ready: yes.",
+        next: "Create/download an App Store distribution provisioning profile for com.jeremyswisher.sportsmriacademy, then run npm run archive:ios:signing and confirm App Store export signing ready: yes.",
       },
       {
         key: "archiveExport.appStoreConnectAccountAccessVerified",
@@ -156,7 +156,7 @@ const groups = [
       {
         key: "appStoreConnect.appRecordCreated",
         value: gate.appStoreConnect?.appRecordCreated,
-        next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.uclasportsmri, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
+        next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.sportsmriacademy, update ios/AppStoreConnectEvidence.json, and run npm run asc:ios:evidence:verify.",
       },
       {
         key: "appStoreConnect.metadataEntered",

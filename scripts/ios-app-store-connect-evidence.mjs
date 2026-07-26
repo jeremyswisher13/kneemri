@@ -10,7 +10,7 @@ const evidencePath = join(root, "ios", "AppStoreConnectEvidence.json");
 const metadataPath = join(root, "ios", "AppStoreConnectMetadata.json");
 const screenshotEvidencePath = join(root, "ios", "ScreenshotEvidence.json");
 const submissionGatePath = join(root, "ios", "AppStoreSubmissionGate.json");
-const infoPlistPath = join(root, "ios", "UCLASportsMRI", "Info.plist");
+const infoPlistPath = join(root, "ios", "SportsMRIAcademy", "Info.plist");
 const projectSpecPath = join(root, "ios", "project.yml");
 
 const evidenceText = readFileSync(evidencePath, "utf8");
@@ -25,12 +25,12 @@ const nativeMarketingVersion = yamlStringValue(projectSpec, "MARKETING_VERSION")
 const nativeBuildNumber = yamlStringValue(projectSpec, "CURRENT_PROJECT_VERSION");
 
 const expected = {
-  bundleId: "com.jeremyswisher.uclasportsmri",
-  sku: "ucla-sports-mri-ios",
+  bundleId: "com.jeremyswisher.sportsmriacademy",
+  sku: "sports-mri-academy-ios",
   platform: "iOS",
   version: nativeMarketingVersion,
   build: nativeBuildNumber,
-  name: "UCLA Sports MRI",
+  name: "Sports MRI Academy",
   subtitle: "Sports medicine MRI learning",
   supportUrl: "https://ucla-knee-mri.firebaseapp.com/support",
   privacyPolicyUrl: "https://ucla-knee-mri.firebaseapp.com/privacy",
@@ -267,7 +267,7 @@ const items = [
       appRecord.platform === expected.platform &&
       text(appRecord.confirmedAt) &&
       text(appRecord.confirmedBy),
-    next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.uclasportsmri and SKU ucla-sports-mri-ios.",
+    next: "Create the App Store Connect app record for bundle ID com.jeremyswisher.sportsmriacademy and SKU sports-mri-academy-ios.",
   },
   {
     group: "App Store Connect",
@@ -339,7 +339,7 @@ const items = [
       build.build === expected.build &&
       text(build.uploadedAt) &&
       text(build.confirmedBy),
-    next: "Archive and upload UCLA Sports MRI 1.0 (1) to App Store Connect/TestFlight.",
+    next: "Archive and upload Sports MRI Academy 1.0 (1) to App Store Connect/TestFlight.",
   },
   {
     group: "App Store Connect",
